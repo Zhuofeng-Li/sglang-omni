@@ -786,9 +786,20 @@ def build_embedding_cache_key_ids(input_embeds: torch.Tensor) -> list[int]:
     """Build stable radix-cache token ids for a precomputed embedding prefix."""
     rows = input_embeds.detach().to(dtype=torch.float32, device="cpu")
     key_ids: list[int] = []
-    for row in rows:
-        digest = hashlib.blake2b(row.numpy().tobytes(), digest_size=8).digest()
-        key_ids.append(int.from_bytes(digest, "little") & ((1 << 63) - 1))
+    if (
+        type(rows) is torch.Tensor
+        and rows.layout == torch.strided
+        and rows.ndim == 2
+        and rows.shape[0] > 0
+        and not rows.is_neg()
+    ):
+        for row in rows.numpy():
+            digest = hashlib.blake2b(row.tobytes(), digest_size=8).digest()
+            key_ids.append(int.from_bytes(digest, "little") & ((1 << 63) - 1))
+    else:
+        for row in rows:
+            digest = hashlib.blake2b(row.numpy().tobytes(), digest_size=8).digest()
+            key_ids.append(int.from_bytes(digest, "little") & ((1 << 63) - 1))
     return key_ids
 
 

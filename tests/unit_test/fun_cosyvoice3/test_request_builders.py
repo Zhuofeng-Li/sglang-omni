@@ -5,11 +5,14 @@ from __future__ import annotations
 import asyncio
 import threading
 from collections.abc import Iterator
+from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
+import msgpack
 import numpy as np
 import pytest
+import soundfile as sf
 import torch
 
 from sglang_omni.models.fun_cosyvoice3 import request_builders
@@ -417,7 +420,10 @@ def test_preprocess_and_build_request_share_prepared_state(
         == "req-cosy"
     )
     assert prepared_payload.data["flow_prompt_speech_token"] == [[40]]
-    assert prepared_payload.data["flow_prompt_speech_feat"] == [[[1.0] * 80] * 2]
+    torch.testing.assert_close(
+        torch.as_tensor(prepared_payload.data["flow_prompt_speech_feat"]),
+        torch.ones(1, 2, 80), rtol=0, atol=0,
+    )
     assert prepared_payload.data["flow_embedding"] == [[2.0] * 192]
 
     prepared = request_builders.pop_prepared_cosyvoice3_request(prepared_payload)
@@ -863,7 +869,10 @@ def test_result_adapter_preserves_reference_conditioning_for_vocoder(
     assert restored.speed == 1.25
     assert restored.flow_embedding == [[1.0] * 192]
     assert restored.flow_prompt_speech_token == [[40, 41]]
-    assert restored.flow_prompt_speech_feat[0][0] == [1.0] * 80
+    torch.testing.assert_close(
+        torch.as_tensor(restored.flow_prompt_speech_feat), torch.ones(1, 2, 80),
+        rtol=0, atol=0,
+    )
     assert restored.audio_codes == [[50], [51]]
     assert restored.prompt_tokens == 7
     assert restored.completion_tokens == 2
@@ -1072,3 +1081,91 @@ def test_prepared_request_cleanup_and_missing_marker_are_explicit() -> None:
     )
     with pytest.raises(RuntimeError, match="state is missing"):
         pop_prepared_cosyvoice3_request(marked)
+
+
+@pytest.mark.parametrize("strided", [False, True])
+def test_reference_features_survive_terminal_messagepack(strided: bool) -> None:
+    features = torch.linspace(-2, 2, 640).reshape(1, 8, 80)
+    if strided:
+        features = features[:, ::2, :]
+    else:
+        pass
+    state = FunCosyVoice3State(flow_prompt_speech_feat=features)
+    first = state.to_dict()
+    second = state.to_dict()
+    terminal = state.to_terminal_dict()
+    decoded = FunCosyVoice3State.from_dict(
+        msgpack.unpackb(msgpack.packb(terminal, use_bin_type=True), raw=False)
+    )
+    torch.testing.assert_close(decoded.flow_prompt_speech_feat, features, rtol=0, atol=0)
+    expected = features.clone()
+    first["flow_prompt_speech_feat"].fill_(99)
+    features.fill_(88)
+    torch.testing.assert_close(second["flow_prompt_speech_feat"], expected, rtol=0, atol=0)
+    torch.testing.assert_close(decoded.flow_prompt_speech_feat, expected, rtol=0, atol=0)
+    assert terminal["flow_prompt_speech_feat_dtype"] == "float32"
+
+
+@pytest.mark.parametrize("dtype", [torch.float16, torch.bfloat16, torch.float64])
+def test_reference_features_preserve_fallback_lists(dtype: torch.dtype) -> None:
+    features = torch.arange(160, dtype=dtype).reshape(1, 2, 80)
+    state = FunCosyVoice3State(flow_prompt_speech_feat=features)
+    wire = state.to_dict()
+    assert wire["flow_prompt_speech_feat"] == features.tolist()
+    decoded = FunCosyVoice3State.from_dict(wire)
+    assert decoded.flow_prompt_speech_feat == features.tolist()
+    msgpack.packb(state.to_terminal_dict(), use_bin_type=True)
+
+
+@pytest.mark.parametrize("features", [None, [], [[1.0, 2.0]]])
+def test_reference_features_preserve_legacy_payloads(
+    features: list[list[float]] | list[float] | None,
+) -> None:
+    wire = {"flow_prompt_speech_feat": features, "text": "hello"}
+    state = FunCosyVoice3State.from_dict(wire)
+    assert state.flow_prompt_speech_feat == features
+    assert state.text == "hello"
+    assert wire == {"flow_prompt_speech_feat": features, "text": "hello"}
+    assert FunCosyVoice3State.from_dict(state.to_terminal_dict()).flow_prompt_speech_feat == features
+
+
+@pytest.mark.parametrize("sample_rate", [16000, 22050, 24000, 48000])
+@pytest.mark.parametrize("channels", [1, 2])
+def test_prompt_audio_pair_matches_path_decoders(
+    tmp_path: Path, sample_rate: int, channels: int,
+) -> None:
+    samples = np.linspace(-0.8, 0.8, sample_rate // 10, dtype=np.float32)
+    if channels == 2:
+        samples = np.stack((samples, samples[::-1]), axis=1)
+    else:
+        pass
+    reference = tmp_path / "reference.wav"
+    sf.write(reference, samples, sample_rate, subtype="PCM_16")
+    expected_16k = request_builders.load_prompt_audio(str(reference))
+    expected_24k = request_builders.load_prompt_audio_24k(str(reference))
+    actual_16k, actual_24k = request_builders.load_prompt_audio_pair(str(reference))
+    np.testing.assert_array_equal(actual_16k, expected_16k)
+    np.testing.assert_array_equal(actual_24k, expected_24k)
+    sf.write(reference, samples * 0.5, sample_rate, subtype="PCM_16")
+    updated_16k, updated_24k = request_builders.load_prompt_audio_pair(str(reference))
+    np.testing.assert_array_equal(updated_16k, request_builders.load_prompt_audio(str(reference)))
+    np.testing.assert_array_equal(updated_24k, request_builders.load_prompt_audio_24k(str(reference)))
+    assert not np.array_equal(updated_16k, actual_16k)
+
+
+@pytest.mark.parametrize("subtype", ["PCM_24", "FLOAT"])
+def test_prompt_audio_pair_preserves_other_wav_formats(tmp_path: Path, subtype: str) -> None:
+    reference = tmp_path / "reference.wav"
+    sf.write(reference, np.linspace(-0.5, 0.5, 2400), 24000, subtype=subtype)
+    actual_16k, actual_24k = request_builders.load_prompt_audio_pair(str(reference))
+    np.testing.assert_array_equal(actual_16k, request_builders.load_prompt_audio(str(reference)))
+    np.testing.assert_array_equal(actual_24k, request_builders.load_prompt_audio_24k(str(reference)))
+
+
+def test_prompt_audio_pair_preserves_bytes_input(tmp_path: Path) -> None:
+    reference = tmp_path / "reference.wav"
+    sf.write(reference, np.linspace(-0.5, 0.5, 2400), 24000, subtype="PCM_16")
+    encoded = reference.read_bytes()
+    actual_16k, actual_24k = request_builders.load_prompt_audio_pair(encoded)
+    np.testing.assert_array_equal(actual_16k, request_builders.load_prompt_audio(encoded))
+    np.testing.assert_array_equal(actual_24k, request_builders.load_prompt_audio_24k(encoded))

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import asyncio
+import concurrent.futures
+import hashlib
 import inspect
 import json
 import logging
@@ -964,6 +966,60 @@ def test_qwen3_tts_embedding_cache_keys_are_stable_and_content_based() -> None:
     assert build_embedding_cache_key_ids(embeds) != build_embedding_cache_key_ids(
         different_same_length
     )
+
+
+@pytest.mark.parametrize("dtype", [torch.float16, torch.bfloat16, torch.float32, torch.float64])
+@pytest.mark.parametrize("layout", ["contiguous", "transposed", "sliced", "expanded", "empty"])
+def test_embedding_cache_keys_preserve_row_bytes(dtype: torch.dtype, layout: str) -> None:
+    embeddings = torch.arange(48, dtype=dtype).reshape(6, 8)
+    if layout == "transposed":
+        embeddings = embeddings.T
+    elif layout == "sliced":
+        embeddings = embeddings[:, ::2]
+    elif layout == "expanded":
+        embeddings = embeddings[:1].expand(6, -1)
+    elif layout == "empty":
+        embeddings = embeddings[:0]
+    else:
+        pass
+    original = embeddings.clone()
+    expected = [
+        int.from_bytes(
+            hashlib.blake2b(row.numpy().tobytes(), digest_size=8).digest(), "little"
+        ) & ((1 << 63) - 1)
+        for row in embeddings.detach().float().cpu()
+    ]
+    assert build_embedding_cache_key_ids(embeddings) == expected
+    torch.testing.assert_close(embeddings, original, rtol=0, atol=0)
+
+
+@pytest.mark.parametrize("shape", [(8,), (2, 3, 4), (3, 0)])
+def test_embedding_cache_keys_preserve_nonmatrix_inputs(shape: tuple[int, ...]) -> None:
+    embeddings = torch.arange(int(np.prod(shape)), dtype=torch.float32).reshape(shape)
+    expected = [
+        int.from_bytes(
+            hashlib.blake2b(row.numpy().tobytes(), digest_size=8).digest(), "little"
+        ) & ((1 << 63) - 1)
+        for row in embeddings
+    ]
+    assert build_embedding_cache_key_ids(embeddings) == expected
+
+
+def test_embedding_cache_keys_are_request_local() -> None:
+    embeddings = torch.arange(32, dtype=torch.float32).reshape(4, 8)
+    expected = build_embedding_cache_key_ids(embeddings)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+        results = list(executor.map(build_embedding_cache_key_ids, [embeddings] * 32))
+    assert all(result == expected for result in results)
+    results[0][0] = -1
+    embeddings[0, 0] = 99
+    assert all(result == expected for result in results[1:])
+    assert build_embedding_cache_key_ids(embeddings)[0] != expected[0]
+
+
+def test_embedding_cache_keys_preserve_scalar_error() -> None:
+    with pytest.raises(TypeError, match="0-d tensor"):
+        build_embedding_cache_key_ids(torch.tensor(1.0))
 
 
 def test_qwen3_tts_maps_ref_audio_form_and_explicit_sampling() -> None:

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import struct
 import threading
 import time
 from collections.abc import Callable, Mapping
@@ -58,6 +59,15 @@ if TYPE_CHECKING:
     )
 else:
     pass
+
+
+PCM16_WAV_HEADER = struct.Struct("<4sI4s4sIHHIIHH4sI")
+RIFF_PREFIX_SIZE_BYTES = 8
+PCM_WAV_FORMAT_SIZE_BYTES = 16
+PCM_WAV_ENCODING = 1
+MONO_CHANNEL_COUNT = 1
+PCM16_SAMPLE_SIZE_BYTES = 2
+PCM16_SAMPLE_SIZE_BITS = 16
 
 _SAMPLE_RATE = 24000
 _PROMPT_AUDIO_SR = 16000
@@ -352,8 +362,7 @@ class CosyVoice3ReferenceEncodeHook(
         else:
             pass
 
-        prompt_audio_16k = load_prompt_audio(item.ref_audio)
-        prompt_audio_24k = load_prompt_audio_24k(item.ref_audio)
+        prompt_audio_16k, prompt_audio_24k = load_prompt_audio_pair(item.ref_audio)
         speaker_embedding = self.speaker_encoder.extract_embedding(
             prompt_audio_16k, _PROMPT_AUDIO_SR
         )
@@ -507,6 +516,64 @@ def pop_prepared_cosyvoice3_request(
     else:
         pass
     return prepared
+
+
+def load_prompt_audio_pair(
+    source: object,
+) -> tuple[NDArray[np.float32], NDArray[np.float32]]:
+    """Reuse immutable encoded bytes for canonical mono PCM16 reference WAVs."""
+    reference_source = source
+    if isinstance(source, str) and not urlparse(source).scheme:
+        try:
+            reference_bytes = Path(source).read_bytes()
+        except OSError:
+            # note (Codex): Preserve the original loader's I/O failure behavior.
+            pass
+        else:
+            if len(reference_bytes) >= PCM16_WAV_HEADER.size:
+                (
+                    container_tag,
+                    container_size_bytes,
+                    waveform_tag,
+                    format_tag,
+                    format_size_bytes,
+                    encoding,
+                    channel_count,
+                    sample_rate,
+                    byte_rate,
+                    block_size_bytes,
+                    sample_size_bits,
+                    samples_tag,
+                    samples_size_bytes,
+                ) = PCM16_WAV_HEADER.unpack_from(reference_bytes)
+                if (
+                    container_tag == b"RIFF"
+                    and container_size_bytes
+                    == len(reference_bytes) - RIFF_PREFIX_SIZE_BYTES
+                    and waveform_tag == b"WAVE"
+                    and format_tag == b"fmt "
+                    and format_size_bytes == PCM_WAV_FORMAT_SIZE_BYTES
+                    and encoding == PCM_WAV_ENCODING
+                    and channel_count == MONO_CHANNEL_COUNT
+                    and sample_rate > 0
+                    and byte_rate == sample_rate * PCM16_SAMPLE_SIZE_BYTES
+                    and block_size_bytes == PCM16_SAMPLE_SIZE_BYTES
+                    and sample_size_bits == PCM16_SAMPLE_SIZE_BITS
+                    and samples_tag == b"data"
+                    and samples_size_bytes
+                    == len(reference_bytes) - PCM16_WAV_HEADER.size
+                    and samples_size_bytes > 0
+                    and samples_size_bytes % PCM16_SAMPLE_SIZE_BYTES == 0
+                ):
+                    # note (Codex): Other layouts retain the path decoder contract.
+                    reference_source = reference_bytes
+                else:
+                    pass
+            else:
+                pass
+    else:
+        pass
+    return load_prompt_audio(reference_source), load_prompt_audio_24k(reference_source)
 
 
 def load_prompt_audio(source: object) -> NDArray[np.float32]:
