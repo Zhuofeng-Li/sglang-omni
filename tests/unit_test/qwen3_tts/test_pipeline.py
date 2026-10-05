@@ -968,9 +968,15 @@ def test_qwen3_tts_embedding_cache_keys_are_stable_and_content_based() -> None:
     )
 
 
-@pytest.mark.parametrize("dtype", [torch.float16, torch.bfloat16, torch.float32, torch.float64])
-@pytest.mark.parametrize("layout", ["contiguous", "transposed", "sliced", "expanded", "empty"])
-def test_embedding_cache_keys_preserve_row_bytes(dtype: torch.dtype, layout: str) -> None:
+@pytest.mark.parametrize(
+    "dtype", [torch.float16, torch.bfloat16, torch.float32, torch.float64]
+)
+@pytest.mark.parametrize(
+    "layout", ["contiguous", "transposed", "sliced", "expanded", "empty"]
+)
+def test_embedding_cache_keys_preserve_row_bytes(
+    dtype: torch.dtype, layout: str
+) -> None:
     embeddings = torch.arange(48, dtype=dtype).reshape(6, 8)
     if layout == "transposed":
         embeddings = embeddings.T
@@ -986,7 +992,8 @@ def test_embedding_cache_keys_preserve_row_bytes(dtype: torch.dtype, layout: str
     expected = [
         int.from_bytes(
             hashlib.blake2b(row.numpy().tobytes(), digest_size=8).digest(), "little"
-        ) & ((1 << 63) - 1)
+        )
+        & ((1 << 63) - 1)
         for row in embeddings.detach().float().cpu()
     ]
     assert build_embedding_cache_key_ids(embeddings) == expected
@@ -999,7 +1006,8 @@ def test_embedding_cache_keys_preserve_nonmatrix_inputs(shape: tuple[int, ...]) 
     expected = [
         int.from_bytes(
             hashlib.blake2b(row.numpy().tobytes(), digest_size=8).digest(), "little"
-        ) & ((1 << 63) - 1)
+        )
+        & ((1 << 63) - 1)
         for row in embeddings
     ]
     assert build_embedding_cache_key_ids(embeddings) == expected

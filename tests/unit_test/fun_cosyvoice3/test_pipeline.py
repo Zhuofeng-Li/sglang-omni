@@ -233,7 +233,9 @@ def test_fun_cosyvoice3_state_round_trip_preserves_wire_contract() -> None:
     assert restored.generation_kwargs == {"max_new_tokens": 32}
     assert restored.flow_prompt_speech_token == [[10, 11]]
     torch.testing.assert_close(
-        torch.as_tensor(restored.flow_prompt_speech_feat), torch.ones(1, 2, 80),
-        rtol=0, atol=0,
+        torch.as_tensor(restored.flow_prompt_speech_feat),
+        torch.ones(1, 2, 80),
+        rtol=0,
+        atol=0,
     )
     assert restored.audio_codes == [[20], [21]]
