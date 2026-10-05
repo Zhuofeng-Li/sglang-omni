@@ -1151,7 +1151,7 @@ def test_prompt_audio_pair_matches_path_decoders(
 ) -> None:
     samples = np.linspace(-0.8, 0.8, sample_rate // 10, dtype=np.float32)
     if channels == 2:
-        samples = np.stack((samples, samples[::-1]), axis=1)
+        samples = np.stack((samples, samples * 0.25), axis=1)
     else:
         pass
     reference = tmp_path / "reference.wav"
