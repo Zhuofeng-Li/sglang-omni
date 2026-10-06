@@ -139,4 +139,4 @@ def test_cosyvoice3_reference_encoders_pin_onnx_providers(
         ["CPUExecutionProvider"],
         ["CPUExecutionProvider"],
     ]
-    assert session_configs[-1] == {"session.intra_op.allow_spinning": "0"}
+    assert session_configs == [{}, {}, {"session.intra_op.allow_spinning": "0"}]
