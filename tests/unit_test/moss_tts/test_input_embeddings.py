@@ -23,15 +23,17 @@ from sglang_omni.models.moss_tts.sglang_model import MossTTSDelaySGLangModel
 )
 @pytest.mark.parametrize("rows", [0, 1, 7])
 @pytest.mark.parametrize("flatten", [False, True])
-def test_input_embeddings_preserve_sum_dtype_and_request_ownership(
+@pytest.mark.parametrize("freeze", [False, True])
+def test_input_embeddings_preserve_ordered_sum_and_independent_outputs(
     dtypes: tuple[torch.dtype, torch.dtype, torch.dtype],
     rows: int,
     flatten: bool,
+    freeze: bool,
 ) -> None:
     generator = torch.Generator().manual_seed(42)
     layers = [
         torch.nn.Embedding.from_pretrained(
-            torch.randn(16, 8, generator=generator).to(dtype), freeze=False
+            torch.randn(16, 8, generator=generator).to(dtype), freeze=freeze
         )
         for dtype in dtypes
     ]
@@ -63,8 +65,14 @@ def test_input_embeddings_preserve_sum_dtype_and_request_ownership(
     for layer, saved_weight in zip(layers, saved_weights):
         assert torch.equal(layer.weight, saved_weight)
 
-    weights = [layer.weight for layer in layers]
-    actual_gradients = torch.autograd.grad(actual.float().sum(), weights)
-    expected_gradients = torch.autograd.grad(expected.float().sum(), weights)
-    for actual_gradient, expected_gradient in zip(actual_gradients, expected_gradients):
-        assert torch.equal(actual_gradient, expected_gradient)
+    if freeze:
+        assert not actual.requires_grad
+        assert not next_output.requires_grad
+    else:
+        weights = [layer.weight for layer in layers]
+        actual_gradients = torch.autograd.grad(actual.float().sum(), weights)
+        expected_gradients = torch.autograd.grad(expected.float().sum(), weights)
+        for actual_gradient, expected_gradient in zip(
+            actual_gradients, expected_gradients
+        ):
+            assert torch.equal(actual_gradient, expected_gradient)
