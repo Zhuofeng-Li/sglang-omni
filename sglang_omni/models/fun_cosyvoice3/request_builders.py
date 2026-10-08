@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import threading
 import time
 from collections.abc import Callable, Mapping
@@ -16,6 +17,8 @@ from urllib.parse import unquote, urlparse
 import numpy as np
 import torch
 from numpy.typing import NDArray
+from sglang.srt.layers.quantization.unquant import UnquantizedEmbeddingMethod
+from sglang.srt.layers.vocab_parallel_embedding import VocabParallelEmbedding
 from sglang.srt.managers.schedule_batch import Req
 from sglang.srt.sampling.sampling_params import SamplingParams
 
@@ -88,6 +91,9 @@ _IMPLICIT_SAMPLING_DEFAULTS = {
 }
 
 _COSYVOICE3_PREPARED_MARKER = "_cosyvoice3_prepared_request"
+
+
+logger = logging.getLogger(__name__)
 
 
 class CosyVoice3NullTokenizer:
@@ -410,6 +416,54 @@ class CosyVoice3ReferenceEncodeHook(
         )
 
 
+@dataclass(frozen=True)
+class CosyVoice3EmbeddingCacheKeys:
+    """Exact row hashes tied to one loaded pair of embedding tables."""
+
+    text_weight: torch.Tensor
+    speech_weight: torch.Tensor
+    text_weight_version: int
+    speech_weight_version: int
+    text_weight_data_ptr: int
+    speech_weight_data_ptr: int
+    weight_load_revision: int
+    embedding_dtype: torch.dtype
+    embedding_device: torch.device
+    text_keys: tuple[int, ...]
+    speech_keys: tuple[int, ...]
+
+    def matches_model_weights(
+        self,
+        model: FunCosyVoice3SGLangModel,
+        embedding_dtype: torch.dtype,
+        embedding_device: torch.device,
+    ) -> bool:
+        return (
+            model.weight_load_revision == self.weight_load_revision
+            and type(model.text_embed_tokens) is VocabParallelEmbedding
+            and model.text_embed_tokens.tp_size == 1
+            and type(model.text_embed_tokens.quant_method) is UnquantizedEmbeddingMethod
+            and model.text_embed_tokens.output_dtype in (None, embedding_dtype)
+            and type(model.speech_embedding) is torch.nn.Embedding
+            and model.speech_embedding.max_norm is None
+            and model.text_embed_tokens.weight is self.text_weight
+            and model.speech_embedding.weight is self.speech_weight
+            and not torch.is_inference(self.text_weight)
+            and not torch.is_inference(self.speech_weight)
+            # note (Codex): PyTorch's mutation counters invalidate cached row hashes.
+            and self.text_weight._version
+            == self.text_weight_version  # noqa: leading-underscore
+            and self.speech_weight._version
+            == self.speech_weight_version  # noqa: leading-underscore
+            and self.text_weight.data_ptr() == self.text_weight_data_ptr
+            and self.speech_weight.data_ptr() == self.speech_weight_data_ptr
+            and self.text_weight.dtype == self.speech_weight.dtype == embedding_dtype
+            and self.text_weight.device == self.speech_weight.device == embedding_device
+            and embedding_dtype == self.embedding_dtype
+            and embedding_device == self.embedding_device
+        )
+
+
 @dataclass
 class CosyVoice3PreprocessingContext:
     model: FunCosyVoice3SGLangModel | None
@@ -422,6 +476,7 @@ class CosyVoice3PreprocessingContext:
         CosyVoice3ReferenceArtifact,
         CosyVoice3StoredReference,
     ]
+    embedding_cache_keys: CosyVoice3EmbeddingCacheKeys | None = None
 
 
 _PREPROCESSING_CONTEXT: CosyVoice3PreprocessingContext | None = None
@@ -449,8 +504,66 @@ def set_cosyvoice3_preprocessing_context(
         speech_tokenizer=speech_tokenizer,
         speaker_encoder=speaker_encoder,
     )
+    embedding_cache_keys = None
+    if isinstance(model, FunCosyVoice3SGLangModel) and not use_mlx:
+        text_embeddings = model.text_embed_tokens
+        speech_embeddings = model.speech_embedding
+        embedding_dtype = next(model.parameters()).dtype
+        embedding_device = next(model.parameters()).device
+        if (
+            type(text_embeddings) is VocabParallelEmbedding
+            and text_embeddings.tp_size == 1
+            and type(text_embeddings.quant_method) is UnquantizedEmbeddingMethod
+            and text_embeddings.output_dtype in (None, embedding_dtype)
+            and type(speech_embeddings) is torch.nn.Embedding
+            and speech_embeddings.max_norm is None
+            and text_embeddings.weight.dtype
+            == speech_embeddings.weight.dtype
+            == embedding_dtype
+            and text_embeddings.weight.device
+            == speech_embeddings.weight.device
+            == embedding_device
+            and embedding_device.type == "cuda"
+            and not torch.is_inference(text_embeddings.weight)
+            and not torch.is_inference(speech_embeddings.weight)
+        ):
+            embedding_cache_keys = CosyVoice3EmbeddingCacheKeys(
+                text_weight=text_embeddings.weight,
+                speech_weight=speech_embeddings.weight,
+                # note (Codex): Retain PyTorch's mutation counters for later validation.
+                text_weight_version=(
+                    text_embeddings.weight._version  # noqa: leading-underscore
+                ),
+                speech_weight_version=(
+                    speech_embeddings.weight._version  # noqa: leading-underscore
+                ),
+                text_weight_data_ptr=text_embeddings.weight.data_ptr(),
+                speech_weight_data_ptr=speech_embeddings.weight.data_ptr(),
+                weight_load_revision=model.weight_load_revision,
+                embedding_dtype=embedding_dtype,
+                embedding_device=embedding_device,
+                text_keys=tuple(build_embedding_cache_key_ids(text_embeddings.weight)),
+                speech_keys=tuple(
+                    build_embedding_cache_key_ids(speech_embeddings.weight)
+                ),
+            )
+            if embedding_cache_keys.matches_model_weights(
+                model, embedding_dtype, embedding_device
+            ):
+                logger.info(
+                    f"Fun-CosyVoice3 prompt key tables: "
+                    f"{len(embedding_cache_keys.text_keys)} text rows, "
+                    f"{len(embedding_cache_keys.speech_keys)} speech rows"
+                )
+            else:
+                embedding_cache_keys = None
+        else:
+            pass
+    else:
+        pass
     with _PREPARED_REQUESTS_LOCK:
         _PREPROCESSING_CONTEXT = CosyVoice3PreprocessingContext(
+            embedding_cache_keys=embedding_cache_keys,
             model=model,
             use_mlx=use_mlx,
             tokenizer=tokenizer,
@@ -769,6 +882,7 @@ def prepare_cosyvoice3_request(
     state: FunCosyVoice3State,
     reference_artifact: CosyVoice3ReferenceArtifact | None,
     use_mlx: bool = False,
+    embedding_cache_keys: CosyVoice3EmbeddingCacheKeys | None = None,
 ) -> CosyVoice3PreparedRequest:
     gen_kwargs = state.generation_kwargs
 
@@ -842,7 +956,23 @@ def prepare_cosyvoice3_request(
         prompt_input_embeds = (
             prompt_input_embeds.squeeze(0).detach().to(device=device, dtype=dtype)
         )
-        input_ids_list = build_embedding_cache_key_ids(prompt_input_embeds)
+        if (
+            embedding_cache_keys is not None
+            and embedding_cache_keys.matches_model_weights(model, dtype, device)
+        ):
+            # note (Codex): Preserve completion before handing GPU tensors to the scheduler.
+            torch.cuda.current_stream(device=device).synchronize()
+            input_ids_list = [embedding_cache_keys.speech_keys[SOS_ID]]
+            input_ids_list.extend(
+                embedding_cache_keys.text_keys[token_id] for token_id in text_token_ids
+            )
+            input_ids_list.append(embedding_cache_keys.speech_keys[TASK_ID])
+            input_ids_list.extend(
+                embedding_cache_keys.speech_keys[token_id]
+                for token_id in llm_prompt_speech_token_ids
+            )
+        else:
+            input_ids_list = build_embedding_cache_key_ids(prompt_input_embeds)
     input_ids = torch.tensor(input_ids_list, dtype=torch.long)
 
     return CosyVoice3PreparedRequest(
@@ -886,6 +1016,7 @@ def preprocess_cosyvoice3_payload(payload: StagePayload) -> StagePayload:
             state=state,
             reference_artifact=reference_artifact,
             use_mlx=context.use_mlx,
+            embedding_cache_keys=context.embedding_cache_keys,
         )
 
     prepared.state.flow_embedding = prepared.flow_embedding

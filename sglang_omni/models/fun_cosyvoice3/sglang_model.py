@@ -28,6 +28,8 @@ CONTROL_TOKEN_IDS: tuple[int, ...] = tuple(range(VOCAB_SIZE, TOTAL_VOCAB_SIZE))
 
 class FunCosyVoice3SGLangModel(Qwen2ForCausalLM):
 
+    weight_load_revision: int = 0
+
     def __init__(
         self,
         config: Qwen2Config,
@@ -98,6 +100,7 @@ class FunCosyVoice3SGLangModel(Qwen2ForCausalLM):
         )
 
     def load_weights(self, weights: Iterable[tuple[str, torch.Tensor]]) -> None:
+        self.weight_load_revision += 1
         backbone_weights = []
 
         for name, loaded_weight in weights:
