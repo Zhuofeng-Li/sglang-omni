@@ -4,13 +4,17 @@
 from __future__ import annotations
 
 import contextlib
+import copy
 import gc
 import importlib
 import logging
 import os
+from _thread import LockType
+from collections import OrderedDict
 from collections.abc import Iterator, Mapping, Sequence
 from dataclasses import dataclass, field
 from functools import lru_cache
+from threading import Lock
 from types import ModuleType
 from typing import TYPE_CHECKING, Protocol, cast
 
@@ -440,6 +444,7 @@ class FlowCudaGraphRunner:
         self.device_module: ModuleType = torch.get_device_module(self.device)
         self.graphs: dict[tuple[int, int], CapturedFlowCudaGraph] = {}
         self.pool: DeviceGraphPool | None = None
+        self.estimator_cache: FlowEstimatorGraphCache = FlowEstimatorGraphCache()
 
     def capture_inputs(
         self, batch_size: int, mel_frame: int
@@ -528,6 +533,7 @@ class FlowCudaGraphRunner:
         current_stream.wait_stream(stream)
         self.device_module.empty_cache()
         self.graphs = graphs
+        self.estimator_cache = FlowEstimatorGraphCache()
         return
 
     @staticmethod
@@ -612,6 +618,148 @@ class FlowCudaGraphRunner:
                         static.copy_(value)
                     captured.graph.replay()
                     return captured.static_output[..., :actual_mel_frame].clone()
+
+
+# note (Codex): Small batches can amortize capture across the repeated estimator calls.
+FLOW_ESTIMATOR_GRAPH_MAX_BATCH_SIZE = 4
+
+
+# note (Codex): A bounded working set amortizes exact-shape capture across solves.
+FLOW_ESTIMATOR_GRAPH_CACHE_ENTRIES = 6
+FlowEstimatorInputSignature = tuple[
+    tuple[tuple[int, ...], torch.dtype, torch.device], ...
+]
+FlowEstimatorCaptureKey = tuple[FlowEstimatorInputSignature, bool, torch.dtype]
+
+
+class FlowEstimatorGraphCache:
+    def __init__(self) -> None:
+        self.graphs: OrderedDict[FlowEstimatorCaptureKey, CapturedFlowCudaGraph] = (
+            OrderedDict()
+        )
+        self.lock: LockType = Lock()
+        self.last_use: torch.cuda.Event | None = None
+        self.pool: tuple[int, int] | None = None
+        self.capture_stream: torch.cuda.Stream | None = None
+
+    def store(
+        self, capture_key: FlowEstimatorCaptureKey, captured: CapturedFlowCudaGraph
+    ) -> None:
+        if len(self.graphs) >= FLOW_ESTIMATOR_GRAPH_CACHE_ENTRIES:
+            if self.last_use is not None:
+                self.last_use.synchronize()
+            else:
+                pass
+            self.graphs.popitem(last=False)
+        else:
+            pass
+        self.graphs[capture_key] = captured
+
+
+class FlowEstimatorGraphDispatch:
+    def __init__(self, decoder: ConditionalCFM, cache: FlowEstimatorGraphCache) -> None:
+        self.decoder: ConditionalCFM = decoder
+        self.cache: FlowEstimatorGraphCache = cache
+        self.is_warmed: bool = False
+        self.capture_key: FlowEstimatorCaptureKey | None = None
+        self.captured: CapturedFlowCudaGraph | None = None
+
+    def __call__(
+        self,
+        noisy_mel: torch.Tensor,
+        mel_mask: torch.Tensor,
+        token_condition: torch.Tensor,
+        flow_time: torch.Tensor,
+        speaker_embedding: torch.Tensor,
+        prompt_mel: torch.Tensor,
+        *,
+        streaming: bool = False,
+    ) -> torch.Tensor:
+        inputs = (
+            noisy_mel,
+            mel_mask,
+            token_condition,
+            flow_time,
+            speaker_embedding,
+            prompt_mel,
+        )
+        if self.capture_key is None:
+            self.capture_key = (
+                tuple(
+                    (tuple(value.shape), value.dtype, value.device) for value in inputs
+                ),
+                torch.is_autocast_enabled("cuda"),
+                torch.get_autocast_dtype("cuda"),
+            )
+            self.captured = self.cache.graphs.pop(self.capture_key, None)
+            if self.captured is not None:
+                self.cache.graphs[self.capture_key] = self.captured
+            else:
+                pass
+        else:
+            pass
+        if self.captured is not None:
+            # note (Codex): PyTorch's batched copy avoids six Python dispatches.
+            torch._foreach_copy_(  # noqa: leading-underscore
+                self.captured.static_inputs, inputs
+            )
+        elif not self.is_warmed:
+            self.is_warmed = True
+            return self.decoder.forward_estimator(
+                noisy_mel,
+                mel_mask,
+                token_condition,
+                flow_time,
+                speaker_embedding,
+                prompt_mel,
+                streaming=streaming,
+            )
+        else:
+            static_inputs = tuple(value.clone() for value in inputs)
+            current_stream = torch.cuda.current_stream(noisy_mel.device)
+            if self.cache.capture_stream is None:
+                self.cache.capture_stream = torch.cuda.Stream(device=noisy_mel.device)
+            else:
+                pass
+            # note (Codex): Pool allocation reuse requires the same capture stream.
+            capture_stream = self.cache.capture_stream
+            capture_stream.wait_stream(current_stream)
+            graph = torch.cuda.CUDAGraph()
+            # note (Codex): A pool handle expires when its last graph is released.
+            if not self.cache.graphs:
+                self.cache.pool = torch.cuda.graph_pool_handle()
+            else:
+                pass
+            collection_enabled = gc.isenabled()
+            # note (Codex): Collection can destroy CUDA resources during capture.
+            gc.disable()
+            try:
+                with torch.cuda.stream(capture_stream):
+                    # note (Codex): The lease and last-use event serialize pooled execution.
+                    graph.capture_begin(
+                        pool=self.cache.pool, capture_error_mode="thread_local"
+                    )
+                    try:
+                        output = self.decoder.forward_estimator(
+                            *static_inputs, streaming=streaming
+                        )
+                    finally:
+                        graph.capture_end()
+            finally:
+                if collection_enabled:
+                    gc.enable()
+                else:
+                    pass
+            current_stream.wait_stream(capture_stream)
+            self.captured = CapturedFlowCudaGraph(graph, static_inputs, output)
+            self.cache.store(self.capture_key, self.captured)
+        current_stream = torch.cuda.current_stream(noisy_mel.device)
+        assert self.captured is not None
+        for value in self.captured.static_inputs:
+            value.record_stream(current_stream)
+        self.captured.static_output.record_stream(current_stream)
+        self.captured.graph.replay()
+        return self.captured.static_output
 
 
 @dataclass(frozen=True)
@@ -783,16 +931,53 @@ def generate_flow(
         return generated
     else:
         pass
-    return solve_flow_euler(
-        decoder,
-        conditioning.noisy_mel,
-        conditioning.time_span,
-        token_condition,
-        mel_mask,
-        conditioning.speaker_embedding,
-        conditioning.prompt_mel,
-        streaming=False,
-    )
+    cache = flow.cuda_graph_runner.estimator_cache
+    if (
+        token_condition.device.type == "cuda"
+        and torch.is_inference_mode_enabled()
+        and isinstance(decoder.estimator, torch.nn.Module)
+        and token_condition.shape[0] <= FLOW_ESTIMATOR_GRAPH_MAX_BATCH_SIZE
+        and cache.lock.acquire(blocking=False)
+    ):
+        try:
+            if cache.last_use is not None:
+                cache.last_use.wait(torch.cuda.current_stream(token_condition.device))
+            else:
+                pass
+            dispatch_decoder = copy.copy(decoder)
+            dispatch_decoder.forward_estimator = FlowEstimatorGraphDispatch(
+                decoder, cache
+            )
+            return solve_flow_euler(
+                dispatch_decoder,
+                conditioning.noisy_mel,
+                conditioning.time_span,
+                token_condition,
+                mel_mask,
+                conditioning.speaker_embedding,
+                conditioning.prompt_mel,
+                streaming=False,
+            )
+        finally:
+            try:
+                if cache.last_use is None:
+                    cache.last_use = torch.cuda.Event()
+                else:
+                    pass
+                cache.last_use.record(torch.cuda.current_stream(token_condition.device))
+            finally:
+                cache.lock.release()
+    else:
+        return solve_flow_euler(
+            decoder,
+            conditioning.noisy_mel,
+            conditioning.time_span,
+            token_condition,
+            mel_mask,
+            conditioning.speaker_embedding,
+            conditioning.prompt_mel,
+            streaming=False,
+        )
 
 
 @torch.inference_mode()
