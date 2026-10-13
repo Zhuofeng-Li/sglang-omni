@@ -44,6 +44,17 @@ All 27 prescribed performance/quality gates passed, with zero scored failures or
 | Streaming C16 | Corpus WER (%) | 1.7277 | 1.9816 |
 | Streaming C16 | C50 (%) | 43.1967 | 50.4600 |
 
+## All prescribed throughput repetitions
+
+| Mode | Seed | Pristine requests/s | Retained candidate requests/s |
+| --- | ---: | ---: | ---: |
+| Non-streaming C16 | 42 | 10.817 | 13.248 |
+| Non-streaming C16 | 43 | 10.599 | 13.358 |
+| Non-streaming C16 | 44 | 10.703 | 13.227 |
+| Streaming C16 | 42 | 3.730 | 3.825 |
+| Streaming C16 | 43 | 3.750 | 3.776 |
+| Streaming C16 | 44 | 3.639 | 3.858 |
+
 ## Evidence and limits
 
 [Frozen accepted metrics](https://github.com/OpenRSI-Foundation/sglang-omni-moss-v1.5-runtime-d154/blob/main/recovery/radix-20261010/latest/rolling-current.json), [pristine baseline](https://github.com/OpenRSI-Foundation/sglang-omni-moss-v1.5-runtime-d154/blob/main/recovery/radix-20261010/latest/baseline.json), [complete Judge output](https://github.com/OpenRSI-Foundation/sglang-omni-moss-v1.5-runtime-d154/blob/main/logs/runs/c6d156895bb2425789d2d6516359a063/sglang-omni-moss-v1.5-runtime/submissions/agent-10/test_output.txt), and [research snapshot](https://github.com/OpenRSI-Foundation/sglang-omni-moss-v1.5-runtime-d154/blob/main/recovery/radix-20261010/latest/workspace.tar.gz). The evidence repository requires access; the tables above are self-contained.
