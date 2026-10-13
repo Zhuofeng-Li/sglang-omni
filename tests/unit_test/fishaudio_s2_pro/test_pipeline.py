@@ -144,7 +144,7 @@ def test_fish_config_state_and_tokenizer_prompt_contracts() -> None:
 
 @pytest.mark.parametrize(
     "cpu_count,expected_intraop_threads",
-    [(4, 1), (32, 4), (224, 8)],
+    [(4, 1), (32, 8), (224, 8)],
 )
 def test_fish_preprocessing_uses_bounded_cpu_threads(
     monkeypatch: pytest.MonkeyPatch,
@@ -212,7 +212,7 @@ def run_configure_preprocessing_threads(
         (
             {"OMP_NUM_THREADS": "32", "SGLANG_OMNI_OMP_FROM_CPU_PLAN": "1"},
             8,
-            4,
+            8,
         ),
         (
             {"OMP_NUM_THREADS": "2", "SGLANG_OMNI_OMP_FROM_CPU_PLAN": "1"},

@@ -122,7 +122,9 @@ class S2ProVocoderScheduler(StreamingVocoderScheduler):
             data["usage"] = usage
         else:
             pass
-        data["audio_data"] = audio_np.tolist()
+        data["audio_waveform"] = data["audio_samples_bytes"]
+        data["audio_waveform_shape"] = data["audio_samples_shape"]
+        data["audio_waveform_dtype"] = data["audio_samples_dtype"]
         data["sample_rate"] = self.codec.sample_rate
         data["modality"] = "audio"
         return StagePayload(

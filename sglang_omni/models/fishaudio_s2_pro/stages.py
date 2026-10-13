@@ -7,6 +7,7 @@ Each factory returns a callable (for SimpleScheduler) or an OmniScheduler.
 from __future__ import annotations
 
 import base64
+import ctypes
 import logging
 import os
 import threading
@@ -14,10 +15,16 @@ import time
 from collections.abc import Mapping
 from contextlib import nullcontext
 from dataclasses import dataclass
+from functools import partial
 from typing import TYPE_CHECKING
 
 import torch
+from dac.nn.layers import Snake1d
 
+from sglang_omni.models.fishaudio_s2_pro.fish_speech.models.dac.modded_dac import (
+    CausalConvNet,
+    get_extra_padding_for_conv1d,
+)
 from sglang_omni.models.fishaudio_s2_pro.payload_types import S2ProState
 from sglang_omni.preprocessing.audio import decode_audio_bytes_av, parse_wav_bytes
 from sglang_omni.preprocessing.cache_key import hash_bytes as _hash_bytes
@@ -46,6 +53,11 @@ else:
 logger = logging.getLogger(__name__)
 
 _MAX_PREPROCESSING_INTRAOP_THREADS = 8
+PREPROCESSING_THREAD_BUDGET_MULTIPLIER = 2
+REFERENCE_SNAKE_EPSILON = 1e-9
+REFERENCE_MMAP_THRESHOLD_BYTES = 64 * 1024 * 1024
+GLIBC_M_MMAP_THRESHOLD = -3
+REFERENCE_ACTIVATION_VECTOR_ELEMENTS = 16
 
 
 def configure_preprocessing_threads(worker_count: int) -> int:
@@ -64,10 +76,9 @@ def configure_preprocessing_threads(worker_count: int) -> int:
             if hasattr(os, "sched_getaffinity")
             else (os.cpu_count() or 1)
         )
-    # Requests already fan out across worker threads; bound the shared intra-op
-    # pool so reference encoding cannot starve the GPU pipeline process.
+    # note (Zhuofeng-Li): coalesced reference waiters leave CPU capacity for encoders.
     intraop_threads = min(
-        max(cpu_count // worker_count, 1),
+        max(cpu_count * PREPROCESSING_THREAD_BUDGET_MULTIPLIER // worker_count, 1),
         _MAX_PREPROCESSING_INTRAOP_THREADS,
     )
     torch.set_num_threads(intraop_threads)
@@ -363,6 +374,109 @@ class FishReferenceEncodeHook(TensorReferenceEncodeHook[FishReferenceInput]):
         return indices.cpu()
 
 
+def reuse_reference_activation(
+    hidden_states: torch.Tensor, *, alpha: torch.Tensor
+) -> torch.Tensor:
+    original_shape = hidden_states.shape
+    hidden_states = hidden_states.reshape(original_shape[0], original_shape[1], -1)
+    # note (Zhuofeng-Li): mutate only a private temporary, preserving shared inputs.
+    activation = alpha * hidden_states
+    activation.sin_()
+    activation.square_()
+    activation.mul_((alpha + REFERENCE_SNAKE_EPSILON).reciprocal())
+    activation.add_(hidden_states)
+    return activation.reshape(original_shape)
+
+
+@dataclass(frozen=True)
+class ReferenceActivationPadding:
+    padded: torch.Tensor
+    consumer: CausalConvNet
+    left_samples: int
+    right_samples: int
+    tensor_version: int
+
+
+def produce_padded_reference_activation(
+    hidden_states: torch.Tensor, *, alpha: torch.Tensor, consumer: CausalConvNet
+) -> torch.Tensor:
+    if (
+        hidden_states.ndim != 3
+        or hidden_states.device.type != "cpu"
+        or hidden_states.dtype != torch.float32
+        or alpha.dtype != hidden_states.dtype
+        or not hidden_states.is_contiguous()
+        or hidden_states.shape[-1] % REFERENCE_ACTIVATION_VECTOR_ELEMENTS
+        or torch.is_grad_enabled()
+        or torch.is_inference_mode_enabled()
+        or consumer.training
+        or consumer.padding <= 0
+    ):
+        return reuse_reference_activation(hidden_states, alpha=alpha)
+    else:
+        pass
+
+    left_samples = consumer.padding
+    right_samples = get_extra_padding_for_conv1d(
+        hidden_states, consumer.kernel_size, consumer.stride, left_samples
+    )
+    input_samples = hidden_states.shape[-1]
+    padded = torch.empty(
+        (*hidden_states.shape[:-1], left_samples + input_samples + right_samples),
+        device=hidden_states.device,
+        dtype=hidden_states.dtype,
+    )
+    padded[..., :left_samples].zero_()
+    if right_samples:
+        padded[..., -right_samples:].zero_()
+    else:
+        pass
+    activation = padded[..., left_samples : left_samples + input_samples]
+    torch.mul(alpha, hidden_states, out=activation)
+    activation.sin_()
+    activation.square_()
+    activation.mul_((alpha + REFERENCE_SNAKE_EPSILON).reciprocal())
+    activation.add_(hidden_states)
+    # note (Zhuofeng-Li): only the adjacent convolution can consume this owned storage.
+    activation.fish_reference_padding = ReferenceActivationPadding(
+        padded,
+        consumer,
+        left_samples,
+        right_samples,
+        activation._version,  # noqa: leading-underscore - PyTorch storage mutation counter.
+    )
+    return activation
+
+
+def consume_padded_reference_activation(
+    hidden_states: torch.Tensor, *, consumer: CausalConvNet
+) -> torch.Tensor:
+    padding = getattr(hidden_states, "fish_reference_padding", None)
+    if (
+        isinstance(padding, ReferenceActivationPadding)
+        and padding.consumer is consumer
+        and not torch.is_grad_enabled()
+        and not torch.is_inference_mode_enabled()
+        and not consumer.training
+        and not consumer.conv._forward_pre_hooks  # noqa: leading-underscore - Preserve PyTorch module hook semantics.
+        and not consumer.conv._forward_hooks  # noqa: leading-underscore - Preserve PyTorch module hook semantics.
+        and not torch.nn.modules.module._global_forward_pre_hooks  # noqa: leading-underscore - Preserve PyTorch module hook semantics.
+        and not torch.nn.modules.module._global_forward_hooks  # noqa: leading-underscore - Preserve PyTorch module hook semantics.
+        and hidden_states._version
+        == padding.tensor_version  # noqa: leading-underscore - PyTorch storage mutation counter.
+        and padding.padded._version
+        == padding.tensor_version  # noqa: leading-underscore - PyTorch storage mutation counter.
+        and padding.left_samples == consumer.padding
+        and padding.right_samples
+        == get_extra_padding_for_conv1d(
+            hidden_states, consumer.kernel_size, consumer.stride, consumer.padding
+        )
+    ):
+        return consumer.conv(padding.padded).contiguous()
+    else:
+        return CausalConvNet.forward(consumer, hidden_states)
+
+
 def create_preprocessing_executor(
     model_path: str,
     *,
@@ -373,10 +487,23 @@ def create_preprocessing_executor(
 
     worker_count = max(int(max_concurrency), 1)
     intraop_threads = configure_preprocessing_threads(worker_count)
+    try:
+        configure_allocator = ctypes.CDLL(None).mallopt
+    except AttributeError:
+        logger.info("Fish reference allocation retains the platform allocator policy")
+    else:
+        configure_allocator.argtypes = [ctypes.c_int, ctypes.c_int]
+        configure_allocator.restype = ctypes.c_int
+        # note (Zhuofeng-Li): reuse large CPU temporaries across reference encodes.
+        allocator_configured = configure_allocator(
+            GLIBC_M_MMAP_THRESHOLD, REFERENCE_MMAP_THRESHOLD_BYTES
+        )
+        logger.info(
+            f"Fish reference allocator mmap threshold bytes={REFERENCE_MMAP_THRESHOLD_BYTES}, "
+            f"configured={allocator_configured}"
+        )
     logger.info(
-        "Fish preprocessing uses %d workers, %d shared intra-op threads",
-        worker_count,
-        intraop_threads,
+        f"Fish preprocessing uses {worker_count} workers, {intraop_threads} shared intra-op threads"
     )
     checkpoint_dir = _resolve_checkpoint(model_path)
 
@@ -390,6 +517,45 @@ def create_preprocessing_executor(
     tokenizer = PreTrainedTokenizerFast.from_pretrained(checkpoint_dir)
     adapter = S2ProTokenizerAdapter(tokenizer)
     codec = load_codec(checkpoint_dir, "cpu")
+    activation_count = 0
+    for activation in codec.encoder.modules():
+        if isinstance(activation, Snake1d):
+            activation.forward = partial(
+                reuse_reference_activation, alpha=activation.alpha
+            )
+            activation_count += 1
+        else:
+            pass
+    logger.info(
+        f"Fish reference encoder private activation buffers: {activation_count}"
+    )
+    padding_pair_count = 0
+    if torch.backends.cpu.get_cpu_capability() in ("AVX2", "AVX512"):
+        for parent in codec.encoder.modules():
+            if isinstance(parent, torch.nn.Sequential):
+                children = list(parent.children())
+                for producer, consumer in zip(children, children[1:]):
+                    if (
+                        isinstance(producer, Snake1d)
+                        and isinstance(consumer, CausalConvNet)
+                        and consumer.padding > 0
+                    ):
+                        producer.forward = partial(
+                            produce_padded_reference_activation,
+                            alpha=producer.alpha,
+                            consumer=consumer,
+                        )
+                        consumer.forward = partial(
+                            consume_padded_reference_activation, consumer=consumer
+                        )
+                        padding_pair_count += 1
+                    else:
+                        pass
+            else:
+                pass
+    else:
+        pass
+    logger.info(f"Fish reference encoder owned padding pairs: {padding_pair_count}")
     reference_encode_service = ReferenceEncodeService(
         FishReferenceEncodeHook(codec=codec, checkpoint_id=checkpoint_dir),
         max_items=256,
