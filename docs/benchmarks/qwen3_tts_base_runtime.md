@@ -139,6 +139,17 @@ The 0.6B experiment used the same six-run workload and hardware envelope above. 
 | Streaming C16 | Corpus WER (%) | 1.2308 | 1.2755 |
 | Streaming C16 | C50 (%) | 99.6633 | 99.9400 |
 
+All prescribed 0.6B throughput repetitions:
+
+| Mode | Seed | Pristine requests/s | Submission 10 requests/s |
+| --- | ---: | ---: | ---: |
+| Non-streaming C16 | 42 | 21.709 | 31.666 |
+| Non-streaming C16 | 43 | 21.014 | 31.319 |
+| Non-streaming C16 | 44 | 21.343 | 29.498 |
+| Streaming C16 | 42 | 22.899 | 25.217 |
+| Streaming C16 | 43 | 22.759 | 24.068 |
+| Streaming C16 | 44 | 22.117 | 23.351 |
+
 [Frozen accepted metrics](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-0.6b-runtime-d154/blob/main/recovery/radix-20261010/latest/rolling-current.json), [pristine baseline](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-0.6b-runtime-d154/blob/main/recovery/radix-20261010/latest/baseline.json), [complete Judge output](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-0.6b-runtime-d154/blob/main/logs/runs/62937fcd31464d01b46ce685e6ca78e3/sglang-omni-qwen3-tts-base-0.6b-runtime/submissions/agent-10/test_output.txt), and [research snapshot](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-0.6b-runtime-d154/blob/main/recovery/radix-20261010/latest/workspace.tar.gz). The evidence repository requires access; the tables above are self-contained.
 
 Submission 14 reached a higher non-streaming score but failed a streaming guard; the retained candidate is submission 10. Its static-input padding optimization is independently covered by [#2754](https://github.com/sgl-project/sglang-omni/pull/2754), so it is not duplicated here. The combined port also shares the 1.7B capture order and initial-cohort overlap changes. Consequently, neither historical result is a new measurement of this combined patch.
