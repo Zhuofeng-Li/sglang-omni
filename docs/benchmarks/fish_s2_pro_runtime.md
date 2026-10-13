@@ -44,10 +44,21 @@ All 27 prescribed performance/quality gates passed, with zero scored failures or
 | Streaming C16 | Corpus WER (%) | 1.0801 | 1.0438 |
 | Streaming C16 | C50 (%) | 100.0000 | 100.0000 |
 
+## All prescribed throughput repetitions
+
+| Mode | Seed | Pristine requests/s | Retained candidate requests/s |
+| --- | ---: | ---: | ---: |
+| Non-streaming C16 | 42 | 2.654 | 4.503 |
+| Non-streaming C16 | 43 | 2.673 | 4.493 |
+| Non-streaming C16 | 44 | 2.666 | 4.498 |
+| Streaming C16 | 42 | 2.662 | 4.377 |
+| Streaming C16 | 43 | 2.654 | 4.363 |
+| Streaming C16 | 44 | 2.688 | 4.360 |
+
 ## Evidence and limits
 
 [Frozen accepted metrics](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/blob/main/recovery/radix-20261010/latest/rolling-current.json), [pristine baseline](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/blob/main/recovery/radix-20261010/latest/baseline.json), [complete Judge output](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/blob/main/logs/runs/185b0e62f4b34e518f85f587fc17c67e/sglang-omni-fish-s2-pro-runtime/submissions/agent-10/test_output.txt), and [research snapshot](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/blob/main/recovery/radix-20261010/latest/workspace.tar.gz). The evidence repository requires access; the tables above are self-contained.
 
 Later C45 work did not replace the scored C39 candidate. The CPU activation fast path is conditional; other architectures retain the normal padding path. The new port has not been measured on the original x86/H200 setup.
 
-The port targets upstream `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141` and preserves newer runtime changes. Current-port CPU tests and full pre-commit checks are reported in the PR. No new GPU benchmark, multilingual qualification or low-concurrency result is claimed. Graph capture adds startup work and resident memory where used.
+The port targets upstream `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141` and preserves newer runtime changes. Current-port CPU tests and full pre-commit checks are reported in the PR. No new GPU benchmark, multilingual qualification or low-concurrency result is claimed.
