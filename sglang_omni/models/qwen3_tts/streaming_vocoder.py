@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import inspect
 import logging
 import queue
 import threading
@@ -68,6 +69,8 @@ DEFAULT_QWEN3_TTS_STREAM_CHUNK_RAMP = (1, 2, 4)
 DEFAULT_QWEN3_TTS_LEFT_CONTEXT_FRAMES = 16
 DEFAULT_QWEN3_TTS_CODEC_STATE_SLOTS = 64
 DEFAULT_QWEN3_TTS_INCREMENTAL_WINDOW_FRAMES = (1, 2, 4, 8, 16, 32, 64)
+QWEN3_TTS_FULL_DECODE_GRAPH_MAX_FRAMES = 256
+QWEN3_TTS_FULL_DECODE_GRAPH_MAX_REQUESTS = 4
 # note (ratish): first-chunk widths with tail graphs; longer first chunks use the window graphs.
 QWEN3_TTS_TAIL_GRAPH_FRAMES = (32, 48, 64, 96, 128, 192, 256)
 _CODEC_STATS_LOG_INTERVAL_S = 60.0
@@ -491,8 +494,11 @@ class Qwen3TTSInitialDecodeGraphs:
             pass
         capture_stream = self.device_module.Stream(device=self.device)
         graph_pool = self.graph_backend.graph_pool_handle()
+        # note (Zhuofeng-Li): largest-first capture reduces shared-pool fragmentation.
         for input_frames, batch_size in (
-            (f, b) for f in self.input_frames for b in self.batch_sizes
+            (frames, requests)
+            for frames in reversed(self.input_frames)
+            for requests in reversed(self.batch_sizes)
         ):
             try:
                 static_input = torch.zeros(
@@ -567,6 +573,7 @@ class Qwen3TTSStreamingVocoderScheduler(
         tokenizer: "Qwen3TTSTokenizer",
         *,
         device: str,
+        tts_model_size: Literal["0b6", "1b7"] | None = None,
         stream_stride: int = DEFAULT_QWEN3_TTS_STREAM_STRIDE,
         stream_followup_stride: int = DEFAULT_QWEN3_TTS_STREAM_FOLLOWUP_STRIDE,
         stream_initial_followup_stride: int | None = None,
@@ -809,6 +816,43 @@ class Qwen3TTSStreamingVocoderScheduler(
             )
         )
         self.followup_decode_graphs = self.followup_graph_holders[0]
+        self.full_decode_chunk_frames = 0
+        self.full_decode_context_frames = 0
+        full_decode_graphs_enabled = bool(
+            initial_cuda_graph
+            and self.device.type == "cuda"
+            and num_quantizers > 0
+            and not self.deterministic_inference
+            and tts_model_size in {"0b6", "1b7"}
+        )
+        self.full_decode_stream: torch.cuda.Stream | None = None
+        if tts_model_size == "0b6" and full_decode_graphs_enabled:
+            decode_parameters = inspect.signature(
+                self.decoder.chunked_decode
+            ).parameters
+            self.full_decode_chunk_frames = int(decode_parameters["chunk_size"].default)
+            self.full_decode_context_frames = int(
+                decode_parameters["left_context_size"].default
+            )
+            self.full_decode_stream = torch.cuda.Stream(device=self.device)
+        else:
+            pass
+        max_full_decode_frames = (
+            self.full_decode_chunk_frames + self.full_decode_context_frames
+            if self.full_decode_chunk_frames
+            else QWEN3_TTS_FULL_DECODE_GRAPH_MAX_FRAMES
+        )
+        max_full_decode_requests = (
+            2 if tts_model_size == "0b6" else QWEN3_TTS_FULL_DECODE_GRAPH_MAX_REQUESTS
+        )
+        self.full_decode_graphs = Qwen3TTSInitialDecodeGraphs(
+            self.decoder,
+            device=self.device,
+            num_quantizers=num_quantizers,
+            input_frames=tuple(range(1, max_full_decode_frames + 1)),
+            batch_sizes=tuple(range(1, max_full_decode_requests + 1)),
+            enabled=full_decode_graphs_enabled,
+        )
         self.samples_per_frame = int(self.decoder.total_upsample)
         self.stream_stride = int(stream_stride)
         self.stream_followup_stride = int(stream_followup_stride)
@@ -1172,6 +1216,7 @@ class Qwen3TTSStreamingVocoderScheduler(
             self.initial_tail_decode_graphs.capture()
         else:
             pass
+        self.full_decode_graphs.capture()
 
     def on_serving_start(self) -> None:
         # note (Haoling Pu): decode workers are plain threads without the stage binding.
@@ -2642,17 +2687,29 @@ class Qwen3TTSStreamingVocoderScheduler(
                     window_runner=self.initial_window_decode_graphs,
                 )
             )
-        for group, group_tail_runner in incremental_groups:
-            decoded = self.decode_incremental_group(
-                group, stream=self.decode_stream, tail_runner=group_tail_runner
-            )
-            if decoded is None:
-                continue
-            else:
-                pass
-            for decoded_entry, delta in zip(*decoded):
-                request_id, state, plan = decoded_entry
-                self.commit_initial(request_id, state, plan, delta)
+        unlaunched_slots = {entry[2].slot for entry in planned_incremental}
+        pending: PendingIncrementalGroup | None = None
+        try:
+            for group, group_tail_runner in incremental_groups:
+                previous_pending, pending = pending, self.launch_incremental_group(
+                    group, stream=self.decode_stream, tail_runner=group_tail_runner
+                )
+                unlaunched_slots.difference_update(entry[2].slot for entry in group)
+                if previous_pending is not None:
+                    self.finish_initial_group(previous_pending)
+                else:
+                    pass
+        finally:
+            try:
+                if pending is not None:
+                    self.finish_initial_group(pending)
+                else:
+                    pass
+            finally:
+                if unlaunched_slots:
+                    self.finish_codec_slots(list(unlaunched_slots))
+                else:
+                    pass
         for group in self.group_decode_plans(planned):
             decoded = self.decode_group(group, stream=self.decode_stream)
             if decoded is None:
@@ -2662,6 +2719,17 @@ class Qwen3TTSStreamingVocoderScheduler(
             for entry, delta in zip(*decoded):
                 request_id, state, plan = entry
                 self.commit_initial(request_id, state, plan, delta)
+
+    def finish_initial_group(self, pending: PendingIncrementalGroup) -> None:
+        """Resolve an initial cohort and commit its surviving streams."""
+        decoded = self.finish_incremental_group(pending)
+        if decoded is None:
+            return
+        else:
+            pass
+        for entry, delta in zip(*decoded):
+            request_id, state, plan = entry
+            self.commit_initial(request_id, state, plan, delta)
 
     def decode_group(
         self,
@@ -2755,29 +2823,6 @@ class Qwen3TTSStreamingVocoderScheduler(
         return [
             group[index : index + largest] for index in range(0, len(group), largest)
         ]
-
-    def decode_incremental_group(
-        self,
-        group: list[tuple[str, Qwen3TTSStreamState, IncrementalDecodePlan]],
-        *,
-        stream: torch.Stream | None,
-        tail_runner: Qwen3TTSIncrementalCodecCudaGraphRunner | None = None,
-    ) -> (
-        tuple[
-            list[tuple[str, Qwen3TTSStreamState, IncrementalDecodePlan]],
-            list[torch.Tensor],
-        ]
-        | None
-    ):
-        """Decode a cohort and return the surviving entries with their deltas."""
-        pending = self.launch_incremental_group(
-            group, stream=stream, tail_runner=tail_runner
-        )
-        if pending is None:
-            return None
-        else:
-            pass
-        return self.finish_incremental_group(pending)
 
     def launch_incremental_group(
         self,
@@ -3372,6 +3417,71 @@ class Qwen3TTSStreamingVocoderScheduler(
                 decoded, sample_rate = self.tokenizer.decode([{"audio_codes": item}])
                 (wav,) = decoded
                 wavs.append(wav)
+        elif self.full_decode_chunk_frames and self.full_decode_graphs.graphs:
+            assert self.full_decode_stream is not None
+            self.full_decode_stream.wait_stream(torch.cuda.current_stream(self.device))
+            # note (Zhuofeng-Li): retain GPU inputs until the decode stream consumes them.
+            for audio_codes in codes:
+                if audio_codes.is_cuda and audio_codes.device == self.device:
+                    audio_codes.record_stream(self.full_decode_stream)
+                else:
+                    pass
+            with torch.inference_mode(), torch.cuda.stream(self.full_decode_stream):
+                padded_codes = torch.nn.utils.rnn.pad_sequence(
+                    codes, batch_first=True, padding_value=-1
+                ).to(self.device)
+                audio_lengths = (padded_codes[..., 0] > -1).sum(1) * int(
+                    self.tokenizer.model.decode_upsample_rate
+                )
+                decoder_codes = padded_codes.clamp_min(0).transpose(1, 2)
+                waveform_chunks: list[torch.Tensor] = []
+                for start_frame in range(
+                    0, decoder_codes.shape[-1], self.full_decode_chunk_frames
+                ):
+                    end_frame = min(
+                        start_frame + self.full_decode_chunk_frames,
+                        decoder_codes.shape[-1],
+                    )
+                    context_frames = min(self.full_decode_context_frames, start_frame)
+                    chunk_codes = decoder_codes[
+                        ..., start_frame - context_frames : end_frame
+                    ]
+                    waveform = self.full_decode_graphs.decode(chunk_codes)
+                    if waveform is None:
+                        waveform = self.decoder(chunk_codes)
+                    else:
+                        pass
+                    waveform_chunks.append(
+                        waveform[..., context_frames * self.decoder.total_upsample :]
+                    )
+                audio_values = torch.cat(waveform_chunks, dim=-1).squeeze(1)
+                wavs = [
+                    waveform[:length].to(torch.float32).detach().cpu().numpy()
+                    for waveform, length in zip(audio_values, audio_lengths)
+                ]
+            sample_rate = self.sample_rate
+        elif (
+            len(codes) in self.full_decode_graphs.batch_sizes
+            and (max(int(code.shape[0]) for code in codes), len(codes))
+            in self.full_decode_graphs.graphs
+        ):
+            # note (Zhuofeng-Li): exact shapes retain the native single-chunk decode.
+            with torch.inference_mode():
+                padded_codes = torch.nn.utils.rnn.pad_sequence(
+                    codes, batch_first=True, padding_value=-1
+                ).to(self.device)
+                audio_lengths = (padded_codes[..., 0] > -1).sum(1) * int(
+                    self.tokenizer.model.decode_upsample_rate
+                )
+                audio_values = self.full_decode_graphs.decode(
+                    padded_codes.clamp_min(0).transpose(1, 2)
+                )
+                assert audio_values is not None
+                wavs = [
+                    waveform[0, :length].to(torch.float32).detach().cpu().numpy()
+                    for waveform, length in zip(audio_values, audio_lengths)
+                ]
+            sample_rate = self.sample_rate
         else:
             wavs, sample_rate = self.tokenizer.decode(
                 [{"audio_codes": item} for item in codes]
