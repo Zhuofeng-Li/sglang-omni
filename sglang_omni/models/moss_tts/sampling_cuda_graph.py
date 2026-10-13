@@ -6,11 +6,11 @@ from __future__ import annotations
 import gc
 import logging
 from bisect import bisect_left
-from typing import TYPE_CHECKING, NamedTuple
+from typing import TYPE_CHECKING, NamedTuple, Protocol
 
 import torch
 
-from sglang_omni.models.moss_tts.sampler import DelayGraphBatch, DelaySamplingOutput
+from sglang_omni.models.moss_tts.sampler import DelayGraphBatch
 
 if TYPE_CHECKING:
     from sglang_omni.models.moss_tts.sglang_model import MossTTSDelaySGLangModel
@@ -20,6 +20,16 @@ else:
 logger = logging.getLogger(__name__)
 
 _MIN_CAPTURE_FREE_BYTES = 512 * 1024**2
+
+
+class FeedbackEmbedding(Protocol):
+    def __call__(self, token_rows: torch.Tensor, /) -> torch.Tensor: ...
+
+
+class SamplingGraphOutput(NamedTuple):
+    rows: torch.Tensor
+    next_delay_state: torch.Tensor
+    feedback_embeddings: torch.Tensor | None = None
 
 
 class StaticSamplingInputs(NamedTuple):
@@ -35,14 +45,14 @@ class CapturedSamplingGraph(NamedTuple):
     graph: torch.cuda.CUDAGraph
     rows: torch.Tensor
     next_delay_state: torch.Tensor
+    feedback_embeddings: torch.Tensor | None = None
 
 
 class MossTTSDelaySamplingCudaGraphRunner:
     """Sampling/FSM graphs aligned to the backbone CUDA-graph buckets.
 
-    LM heads and feedback embedding deliberately remain eager. Every graph uses
-    all 32 codebook rows and applies the Delay mask only to its fixed-shape
-    output, so replay topology does not depend on the number of active channels.
+    LM heads remain eager. Feedback embedding can follow the sampled rows in
+    the same graph without changing its arithmetic or sampling topology.
     """
 
     def __init__(
@@ -51,6 +61,7 @@ class MossTTSDelaySamplingCudaGraphRunner:
         model: MossTTSDelaySGLangModel,
         capture_bs: tuple[int, ...],
         disable_padding: bool = False,
+        feedback_embedding: FeedbackEmbedding | None = None,
     ) -> None:
         if not capture_bs:
             raise ValueError("MOSS-TTS Delay sampling CUDA graph bs must be non-empty")
@@ -69,6 +80,7 @@ class MossTTSDelaySamplingCudaGraphRunner:
         self.model = model
         self.capture_bs = tuple(int(batch_size) for batch_size in capture_bs)
         self.disable_padding = bool(disable_padding)
+        self.feedback_embedding: FeedbackEmbedding | None = feedback_embedding
         self.graphs: dict[int, CapturedSamplingGraph] = {}
         self.inputs: StaticSamplingInputs | None = None
         self.graph_pool = None
@@ -82,11 +94,13 @@ class MossTTSDelaySamplingCudaGraphRunner:
         model: MossTTSDelaySGLangModel,
         capture_bs: tuple[int, ...],
         disable_padding: bool = False,
+        feedback_embedding: FeedbackEmbedding | None = None,
     ) -> "MossTTSDelaySamplingCudaGraphRunner":
         runner = cls(
             model=model,
             capture_bs=capture_bs,
             disable_padding=disable_padding,
+            feedback_embedding=feedback_embedding,
         )
         capture_failed = False
         try:
@@ -226,21 +240,31 @@ class MossTTSDelaySamplingCudaGraphRunner:
             pass
         return self.inputs
 
+    @torch.no_grad()
     def run_static(
         self,
         bucket: int,
-    ) -> DelaySamplingOutput:
+    ) -> SamplingGraphOutput:
         inputs = self.require_inputs()
         batch = DelayGraphBatch(
             delay_state=inputs.delay_state[:bucket],
             seeds=inputs.seeds[:bucket],
             generation_steps=inputs.generation_steps[:bucket],
         )
-        return self.model.sample_delay_fixed_shape(
+        sampled = self.model.sample_delay_fixed_shape(
             inputs.control_logits[:bucket],
             inputs.audio_logits[:bucket],
             batch,
             audio_sample_output=inputs.audio_sample_output,
+        )
+        if self.feedback_embedding is None:
+            feedback_embeddings = None
+        else:
+            feedback_embeddings = self.feedback_embedding(sampled.rows)
+        return SamplingGraphOutput(
+            rows=sampled.rows,
+            next_delay_state=sampled.next_delay_state,
+            feedback_embeddings=feedback_embeddings,
         )
 
     def capture_bucket(
@@ -284,6 +308,7 @@ class MossTTSDelaySamplingCudaGraphRunner:
             graph=graph,
             rows=output.rows,
             next_delay_state=output.next_delay_state,
+            feedback_embeddings=output.feedback_embeddings,
         )
 
     def canonical_bucket(self, batch_size: int) -> int | None:
@@ -316,7 +341,7 @@ class MossTTSDelaySamplingCudaGraphRunner:
         control_logits: torch.Tensor,
         audio_logits: torch.Tensor,
         batch: DelayGraphBatch,
-    ) -> DelaySamplingOutput:
+    ) -> SamplingGraphOutput:
         batch_size = int(control_logits.shape[0])
         bucket = self.canonical_bucket(batch_size)
         key = self.graph_key(batch_size)
@@ -370,7 +395,12 @@ class MossTTSDelaySamplingCudaGraphRunner:
 
         captured = self.graphs[key]
         captured.graph.replay()
-        return DelaySamplingOutput(
+        if captured.feedback_embeddings is None:
+            feedback_embeddings = None
+        else:
+            feedback_embeddings = captured.feedback_embeddings[:batch_size]
+        return SamplingGraphOutput(
             rows=captured.rows[:batch_size],
             next_delay_state=captured.next_delay_state[:batch_size],
+            feedback_embeddings=feedback_embeddings,
         )

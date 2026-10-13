@@ -40,6 +40,7 @@ from sglang_omni.models.moss_tts.sampler import (
 )
 from sglang_omni.models.moss_tts.sampling_cuda_graph import (
     MossTTSDelaySamplingCudaGraphRunner,
+    SamplingGraphOutput,
 )
 from sglang_omni.platforms import current_platform
 
@@ -110,6 +111,9 @@ class MossTTSDelaySGLangModel(torch.nn.Module):
         self.hidden_size = int(self.config.hidden_size)
         self.delay_graph_sampler = MossTTSDelayAudioGraphSampler(self.config)
         self.sampling_graph_runner: MossTTSDelaySamplingCudaGraphRunner | None = None
+        self.feedback_sampling_graph_runner: (
+            MossTTSDelaySamplingCudaGraphRunner | None
+        ) = None
 
         self.embedding_list = torch.nn.ModuleList()
         if self.pp_group.is_first_rank or (
@@ -754,6 +758,14 @@ class MossTTSDelaySGLangModel(torch.nn.Module):
         else:
             pass
         self.sampling_graph_runner = runner
+        self.feedback_sampling_graph_runner = (
+            MossTTSDelaySamplingCudaGraphRunner.capture(
+                model=self,
+                capture_bs=buckets,
+                disable_padding=disable_padding,
+                feedback_embedding=self.prepare_multi_modal_inputs,
+            )
+        )
 
     def sampling_graph_available(
         self,
@@ -768,10 +780,22 @@ class MossTTSDelaySGLangModel(torch.nn.Module):
         control_logits: torch.Tensor,
         audio_logits: torch.Tensor,
         batch: DelayGraphBatch,
-    ) -> DelaySamplingOutput:
+        *,
+        include_feedback: bool = False,
+    ) -> SamplingGraphOutput:
         """Replay one fixed-shape sampling/FSM CUDA graph."""
 
         runner = self.sampling_graph_runner
+        if include_feedback:
+            feedback_runner = self.feedback_sampling_graph_runner
+            if feedback_runner is not None and feedback_runner.can_replay(
+                int(control_logits.shape[0])
+            ):
+                runner = feedback_runner
+            else:
+                pass
+        else:
+            pass
         if runner is None:
             raise RuntimeError("MOSS-TTS Delay sampling CUDA graph is not configured")
         else:

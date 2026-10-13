@@ -21,6 +21,7 @@ from sglang_omni.scheduling.engine_factory import (
     SchedulerExtras,
     TtsEngineBuilder,
 )
+from sglang_omni.scheduling.generation_batch_policy import CudaGraphBackend
 
 if TYPE_CHECKING:
     from sglang.srt.hardware_backend.mlx.tp_worker import MlxTpModelWorker
@@ -76,6 +77,7 @@ class MossTtsEngineBuilder(TtsEngineBuilder[MossTTSSGLangRequestData]):
             "max_running_requests": 16,
             "dtype": dtype,
             "disable_cuda_graph": False,
+            "cuda_graph_backend_prefill": CudaGraphBackend.BREAKABLE,
             "disable_overlap_schedule": True,
             "enable_torch_compile": False,
             "max_prefill_tokens": min(self.context_length, 8192),
@@ -126,7 +128,10 @@ class MossTtsEngineBuilder(TtsEngineBuilder[MossTTSSGLangRequestData]):
         return request_builders.make_moss_tts_scheduler_adapters(model=model)
 
     def extra_scheduler_kwargs(self) -> SchedulerExtras[MossTTSSGLangRequestData]:
-        return {"stream_output_builder": self.stream_output_builder}
+        return {
+            "stream_output_builder": self.stream_output_builder,
+            "enable_async_decode": True,
+        }
 
     def make_abort_callback(self) -> Callable[[str], None]:
         return request_builders.cleanup_prepared_moss_tts_request

@@ -127,13 +127,17 @@ def test_engine_builder_uses_backbone_capture_buckets() -> None:
     assert calls == [([1, 2, 4], True)]
 
 
-def test_engine_builder_allows_breakable_prefill_as_an_opt_in() -> None:
+def test_engine_builder_enables_breakable_prefill_and_async_decode() -> None:
     builder = MossTtsEngineBuilder()
 
     assert builder.supports_breakable_prefill_cuda_graph is True
-    assert "cuda_graph_backend_prefill" not in builder.generation_defaults(
-        dtype="bfloat16"
+    assert (
+        builder.generation_defaults(dtype="bfloat16")["cuda_graph_backend_prefill"]
+        == "breakable"
     )
+    builder.stream_output_builder = None
+    builder.stream_output_builder = None
+    assert builder.extra_scheduler_kwargs()["enable_async_decode"] is True
 
 
 def test_model_runner_routes_supported_audio_batch_to_sampling_graph() -> None:
@@ -440,3 +444,22 @@ def test_sampling_cuda_graph_replay_matches_fixed_shape_eager() -> None:
             assert not torch.count_nonzero(static_inputs.seeds[1:2])
             assert not torch.count_nonzero(static_inputs.generation_steps[1:2])
     runner.clear()
+
+
+@pytest.mark.accelerator
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA is required")
+def test_sampling_graph_feedback_keeps_sampled_rows_and_delay_state() -> None:
+    model = CudaGraphModel(torch.device("cuda"))
+    runner = MossTTSDelaySamplingCudaGraphRunner.capture(
+        model=model,
+        capture_bs=(1,),
+        feedback_embedding=lambda rows: rows.float() + 0.5,
+    )
+    assert set(runner.graphs) == {1}
+    result = runner.run_static(1)
+    assert torch.equal(result.feedback_embeddings, result.rows.float() + 0.5)
+    runner.feedback_embedding = None
+    eager = runner.run_static(1)
+    assert torch.equal(result.rows, eager.rows)
+    assert torch.equal(result.next_delay_state, eager.next_delay_state)
+    assert eager.feedback_embeddings is None

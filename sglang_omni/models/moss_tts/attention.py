@@ -385,6 +385,9 @@ def single_module(module: nn.Module, singular: str, plural: str) -> nn.Module:
 class PositionIdsCache:
     def __init__(self) -> None:
         self.items: dict[tuple[str, int | None], torch.Tensor] = {}
+        self.cumulative_sequence_lengths: dict[
+            tuple[str, int | None], tuple[int, torch.Tensor]
+        ] = {}
 
     def get(
         self,
@@ -403,7 +406,12 @@ class PositionIdsCache:
             self.items[key] = position_ids
         else:
             pass
-        cu_seqlens = torch.tensor([0, max_seqlen], dtype=torch.int32, device=device)
+        cached_lengths = self.cumulative_sequence_lengths.get(key)
+        if cached_lengths is None or cached_lengths[0] != max_seqlen:
+            cu_seqlens = torch.tensor([0, max_seqlen], dtype=torch.int32, device=device)
+            self.cumulative_sequence_lengths[key] = (max_seqlen, cu_seqlens)
+        else:
+            cu_seqlens = cached_lengths[1]
         return cu_seqlens, position_ids[:max_seqlen]
 
 

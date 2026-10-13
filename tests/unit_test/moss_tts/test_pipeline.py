@@ -30,6 +30,10 @@ from sglang_omni.models.moss_tts.config import (
     MossTTSPipelineConfig,
     MossTTSSingleProcessPipelineConfig,
 )
+from sglang_omni.models.moss_tts.model_runner import (
+    MossTTSDecodeJournal,
+    MossTTSModelRunner,
+)
 from sglang_omni.models.moss_tts.payload_types import MossTTSState
 from sglang_omni.models.moss_tts.request_builders import (
     _INF_DELAY,
@@ -2557,3 +2561,143 @@ def test_single_process_variant_keeps_legacy_topology() -> None:
     assert [(group.name, group.stage_names) for group in topology.groups] == [
         ("pipeline", ("preprocessing", "tts_engine", "vocoder"))
     ]
+
+
+@pytest.mark.parametrize(
+    "is_streaming,is_retracted,finished,delay_slots,eligible",
+    [
+        (False, False, False, 0, True),
+        (True, False, False, 0, False),
+        (False, True, False, 0, False),
+        (False, False, True, 0, False),
+        (False, False, False, 2, False),
+    ],
+)
+def test_moss_async_decode_admission_preserves_streaming_and_delay_boundary(
+    is_streaming: bool,
+    is_retracted: bool,
+    finished: bool,
+    delay_slots: int,
+    eligible: bool,
+) -> None:
+    runner = MossTTSModelRunner.__new__(MossTTSModelRunner)
+    runner.model = SimpleNamespace(
+        config=SimpleNamespace(n_vq=4),
+        sampling_graph_available=lambda request_count: request_count == 1,
+        is_sampling_cuda_graph_compatible=lambda request: True,
+    )
+    request = SimpleNamespace(
+        omni_data=SimpleNamespace(
+            stage_payload=SimpleNamespace(
+                request=SimpleNamespace(params={"stream": is_streaming})
+            ),
+            is_audio=True,
+            lookahead_delay_slots=delay_slots,
+        ),
+        is_retracted=is_retracted,
+        finished=lambda: finished,
+    )
+    assert runner.lookahead_eligible(SimpleNamespace(reqs=[request])) is eligible
+
+
+@pytest.mark.parametrize(
+    "finished,is_retracted", [(False, False), (True, False), (False, True)]
+)
+def test_moss_async_resolve_commits_owned_rows_or_restores_finished_request(
+    finished: bool,
+    is_retracted: bool,
+) -> None:
+    runner = MossTTSModelRunner.__new__(MossTTSModelRunner)
+    runner.async_enabled = True
+    runner.model = SimpleNamespace(
+        config=SimpleNamespace(
+            im_end_token_id=14,
+            audio_start_token_id=10,
+            audio_end_token_id=11,
+            audio_assistant_delay_slot_token_id=13,
+        )
+    )
+    committed_state = torch.tensor([1, 9, 1])
+    launched_state = torch.tensor([2, 8, 1])
+    request = SimpleNamespace(
+        request_id="active",
+        data=SimpleNamespace(
+            req=SimpleNamespace(finished=lambda: finished, is_retracted=is_retracted),
+            stage_payload=SimpleNamespace(
+                request=SimpleNamespace(params={"stream": False})
+            ),
+            delay_state=launched_state,
+            committed_delay_state=committed_state,
+            generation_steps=3,
+            launched_generation_steps=4,
+            launch_feedback_embedding=torch.ones(3),
+            lookahead_delay_slots=0,
+            output_rows=[],
+            pending_feedback_queue=[],
+            is_audio=True,
+        ),
+    )
+    journal = MossTTSDecodeJournal(
+        rows=torch.tensor([[13, 2, 4]]),
+        feedback_embeddings=torch.ones(1, 3),
+        next_delay_states=[launched_state],
+    )
+    result = SimpleNamespace(moss_delay_journal=journal)
+    runner.post_decode_resolve(torch.tensor([13]), result, None, None, [request])
+    runner.post_process_outputs(
+        result,
+        SimpleNamespace(requests=[request]),
+        {"active": RequestOutput("active", data=13)},
+    )
+    if finished or is_retracted:
+        assert request.data.delay_state is committed_state
+        assert request.data.launched_generation_steps == 3
+        assert request.data.launch_feedback_embedding is None
+        assert request.data.output_rows == []
+    else:
+        assert request.data.committed_delay_state is launched_state
+        assert request.data.lookahead_delay_slots == 1
+        assert [row.tolist() for row in request.data.output_rows] == [[13, 2, 4]]
+    assert request.data.pending_feedback_queue == []
+
+
+def test_moss_non_streaming_committed_rows_survive_sampler_buffer_reuse() -> None:
+    runner = MossTTSModelRunner.__new__(MossTTSModelRunner)
+    runner.model = SimpleNamespace(
+        config=SimpleNamespace(
+            im_end_token_id=14,
+            audio_start_token_id=10,
+            audio_end_token_id=11,
+        )
+    )
+    rows = torch.tensor([[12, 2, 4], [12, 3, 4]])
+    embeddings = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+    runner.pending_rows = rows
+    runner.pending_embeds = embeddings
+    requests = [
+        SimpleNamespace(
+            request_id=str(index),
+            data=SimpleNamespace(
+                stage_payload=SimpleNamespace(
+                    request=SimpleNamespace(params={"stream": False})
+                ),
+                output_rows=[],
+                pending_feedback_queue=[],
+            ),
+        )
+        for index in range(2)
+    ]
+    runner.post_process_outputs(
+        None,
+        SimpleNamespace(requests=requests),
+        {str(index): RequestOutput(str(index), data=12) for index in range(2)},
+    )
+    rows.zero_()
+    embeddings.zero_()
+    assert [request.data.output_rows[0].tolist() for request in requests] == [
+        [12, 2, 4],
+        [12, 3, 4],
+    ]
+    assert [
+        request.data.pending_feedback_queue[0].tolist() for request in requests
+    ] == [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]

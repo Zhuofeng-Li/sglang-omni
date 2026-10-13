@@ -94,6 +94,10 @@ class MossTTSSGLangRequestData(ARRequestData):
     req: Req | None = None
     synced: bool = False
     generation_steps: int = 0
+    launched_generation_steps: int = 0
+    lookahead_delay_slots: int = 0
+    launch_feedback_embedding: torch.Tensor | None = None
+    committed_delay_state: torch.Tensor | None = None
     suppress_tokens: list[int] | None = None
     input_embeds_are_projected: bool = False
     stage_payload: StagePayload | None = None
