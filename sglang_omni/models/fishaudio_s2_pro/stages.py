@@ -41,6 +41,7 @@ from sglang_omni.scheduling.reference_encoder import (
 )
 from sglang_omni.utils.audio import load_audio
 from sglang_omni.utils.checkpoint import resolve_checkpoint as _resolve_checkpoint
+from sglang_omni.utils.device import resolve_concrete_device
 
 if TYPE_CHECKING:
     from sglang_omni.models.fishaudio_s2_pro.fish_speech.models.dac.modded_dac import (
@@ -480,28 +481,15 @@ def consume_padded_reference_activation(
 def create_preprocessing_executor(
     model_path: str,
     *,
+    device: str | None = None,
+    gpu_id: int | None = None,
     max_concurrency: int = 8,
 ):
-    """Returns a threaded scheduler for CPU-heavy preprocessing."""
+    """Returns a threaded scheduler that tokenizes and encodes reference audio."""
     from sglang_omni.scheduling.threaded_simple_scheduler import ThreadedSimpleScheduler
 
     worker_count = max(int(max_concurrency), 1)
     intraop_threads = configure_preprocessing_threads(worker_count)
-    try:
-        configure_allocator = ctypes.CDLL(None).mallopt
-    except AttributeError:
-        logger.info("Fish reference allocation retains the platform allocator policy")
-    else:
-        configure_allocator.argtypes = [ctypes.c_int, ctypes.c_int]
-        configure_allocator.restype = ctypes.c_int
-        # note (Zhuofeng-Li): reuse large CPU temporaries across reference encodes.
-        allocator_configured = configure_allocator(
-            GLIBC_M_MMAP_THRESHOLD, REFERENCE_MMAP_THRESHOLD_BYTES
-        )
-        logger.info(
-            f"Fish reference allocator mmap threshold bytes={REFERENCE_MMAP_THRESHOLD_BYTES}, "
-            f"configured={allocator_configured}"
-        )
     logger.info(
         f"Fish preprocessing uses {worker_count} workers, {intraop_threads} shared intra-op threads"
     )
@@ -516,48 +504,85 @@ def create_preprocessing_executor(
 
     tokenizer = PreTrainedTokenizerFast.from_pretrained(checkpoint_dir)
     adapter = S2ProTokenizerAdapter(tokenizer)
-    codec = load_codec(checkpoint_dir, "cpu")
-    activation_count = 0
-    for activation in codec.encoder.modules():
-        if isinstance(activation, Snake1d):
-            activation.forward = partial(
-                reuse_reference_activation, alpha=activation.alpha
-            )
-            activation_count += 1
-        else:
-            pass
-    logger.info(
-        f"Fish reference encoder private activation buffers: {activation_count}"
-    )
-    padding_pair_count = 0
-    if torch.backends.cpu.get_cpu_capability() in ("AVX2", "AVX512"):
-        for parent in codec.encoder.modules():
-            if isinstance(parent, torch.nn.Sequential):
-                children = list(parent.children())
-                for producer, consumer in zip(children, children[1:]):
-                    if (
-                        isinstance(producer, Snake1d)
-                        and isinstance(consumer, CausalConvNet)
-                        and consumer.padding > 0
-                    ):
-                        producer.forward = partial(
-                            produce_padded_reference_activation,
-                            alpha=producer.alpha,
-                            consumer=consumer,
-                        )
-                        consumer.forward = partial(
-                            consume_padded_reference_activation, consumer=consumer
-                        )
-                        padding_pair_count += 1
-                    else:
-                        pass
-            else:
-                pass
+    if device is None and gpu_id is None:
+        device = "cpu"
     else:
         pass
-    logger.info(f"Fish reference encoder owned padding pairs: {padding_pair_count}")
+    device = str(resolve_concrete_device(device, gpu_id))
+    codec = load_codec(checkpoint_dir, device)
+    if torch.device(device).type == "cpu":
+        try:
+            configure_allocator = ctypes.CDLL(None).mallopt
+        except AttributeError:
+            logger.info(
+                "Fish reference allocation retains the platform allocator policy"
+            )
+        else:
+            configure_allocator.argtypes = [ctypes.c_int, ctypes.c_int]
+            configure_allocator.restype = ctypes.c_int
+            # note (Zhuofeng-Li): reuse large CPU temporaries across reference encodes.
+            allocator_configured = configure_allocator(
+                GLIBC_M_MMAP_THRESHOLD, REFERENCE_MMAP_THRESHOLD_BYTES
+            )
+            logger.info(
+                f"Fish reference allocator mmap threshold bytes={REFERENCE_MMAP_THRESHOLD_BYTES}, "
+                f"configured={allocator_configured}"
+            )
+        activation_count = 0
+        for activation in codec.encoder.modules():
+            if isinstance(activation, Snake1d):
+                activation.forward = partial(
+                    reuse_reference_activation, alpha=activation.alpha
+                )
+                activation_count += 1
+            else:
+                pass
+        logger.info(
+            f"Fish reference encoder private activation buffers: {activation_count}"
+        )
+        padding_pair_count = 0
+        if torch.backends.cpu.get_cpu_capability() in ("AVX2", "AVX512"):
+            for parent in codec.encoder.modules():
+                if isinstance(parent, torch.nn.Sequential):
+                    children = list(parent.children())
+                    for producer, consumer in zip(children, children[1:]):
+                        if (
+                            isinstance(producer, Snake1d)
+                            and isinstance(consumer, CausalConvNet)
+                            and consumer.padding > 0
+                        ):
+                            producer.forward = partial(
+                                produce_padded_reference_activation,
+                                alpha=producer.alpha,
+                                consumer=consumer,
+                            )
+                            consumer.forward = partial(
+                                consume_padded_reference_activation, consumer=consumer
+                            )
+                            padding_pair_count += 1
+                        else:
+                            pass
+                else:
+                    pass
+        else:
+            pass
+        logger.info(f"Fish reference encoder owned padding pairs: {padding_pair_count}")
+    else:
+        pass
+    reference_encode_hook = FishReferenceEncodeHook(
+        codec=codec, checkpoint_id=checkpoint_dir, device=device
+    )
+    if torch.device(device).type != "cpu":
+        # Note (Jiaxin Deng): TF32 convolutions flip ~3% of reference codes versus
+        # the CPU encode; full fp32 keeps them identical at the same speed.
+        torch.backends.cudnn.allow_tf32 = False
+        reference_encode_hook.encode_reference_waveform(
+            torch.zeros((1, int(codec.sample_rate))), int(codec.sample_rate)
+        )
+    else:
+        pass
     reference_encode_service = ReferenceEncodeService(
-        FishReferenceEncodeHook(codec=codec, checkpoint_id=checkpoint_dir),
+        reference_encode_hook,
         max_items=256,
         max_bytes=64 * 1024 * 1024,
         timeout_s=130.0,

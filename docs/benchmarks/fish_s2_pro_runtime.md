@@ -10,8 +10,18 @@ This port recovers the retained **C39 / agent-10** research candidate. The histo
 - Allow two CPU shares per preprocessing worker, capped at eight intra-op threads, while respecting an explicit OMP override and the current CPU-plan distinction. On glibc, raise the process allocator mmap threshold to 64 MiB so large CPU temporaries can be reused. This allocator setting affects the preprocessing process, not just one tensor.
 
 The port retains the current shared streaming-vocoder implementation and current CPU-affinity policy. It does not restore the older scheduler from the snapshot.
+After integrating upstream #2798, GPU-placed preprocessing retains upstream's
+full-fp32 reference encoding and warmup. The activation/padding and allocator
+optimizations apply only to CPU preprocessing; unplaced preprocessing stays
+on the CPU.
 
 ## Paired current-port measurements (2026-10-14)
+
+These measurements preceded the integration of upstream #2798, which changes
+default reference encoding from CPU to GPU. They describe the exact measured
+commits below, not the merged runtime. A new paired measurement against the
+updated upstream base is pending; the gains below must not be attributed to
+the default GPU-reference path.
 
 Base is the original branch point `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141`;
 measured head is `827d97c17561d5785626a005707a6ba8e4969e13`. Both source
