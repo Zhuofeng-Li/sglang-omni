@@ -379,12 +379,20 @@ def test_fixed_shape_sampling_matches_current_compacted_eager() -> None:
 
 @pytest.mark.accelerator
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA is required")
-def test_sampling_cuda_graph_replay_matches_fixed_shape_eager() -> None:
+@pytest.mark.parametrize("with_feedback_embedding", [False, True])
+def test_sampling_cuda_graph_replay_matches_fixed_shape_eager(
+    with_feedback_embedding: bool,
+) -> None:
     device = torch.device("cuda")
     model = CudaGraphModel(device)
     runner = MossTTSDelaySamplingCudaGraphRunner.capture(
         model=model,
         capture_bs=(2,),
+        feedback_embedding=(
+            (lambda token_rows: token_rows.float() + 0.5)
+            if with_feedback_embedding
+            else None
+        ),
     )
     assert set(runner.graphs) == {2}
     assert runner.can_replay(1)
@@ -409,7 +417,12 @@ def test_sampling_cuda_graph_replay_matches_fixed_shape_eager() -> None:
         )
         batch = DelayGraphBatch(
             delay_state=torch.tensor(
-                [[MOSS_DELAY_N_VQ + 1, INT64_MAX, 1]] * batch_size,
+                [
+                    [1, INT64_MAX, 1],
+                    [MOSS_DELAY_N_VQ + 1, 0, 1],
+                    [MOSS_DELAY_N_VQ + 1, MOSS_DELAY_N_VQ - 1, 1],
+                ][replay_index : replay_index + 1]
+                * batch_size,
                 device=device,
             ),
             seeds=torch.arange(batch_size, device=device, dtype=torch.long)
@@ -436,6 +449,10 @@ def test_sampling_cuda_graph_replay_matches_fixed_shape_eager() -> None:
 
         assert torch.equal(expected.rows, actual_rows)
         assert torch.equal(expected.next_delay_state, actual_state)
+        if with_feedback_embedding:
+            assert torch.equal(actual.feedback_embeddings, expected.rows.float() + 0.5)
+        else:
+            assert actual.feedback_embeddings is None
         if batch_size == 1:
             static_inputs = runner.require_inputs()
             assert not torch.count_nonzero(static_inputs.control_logits[1:2])
@@ -443,23 +460,6 @@ def test_sampling_cuda_graph_replay_matches_fixed_shape_eager() -> None:
             assert not torch.count_nonzero(static_inputs.delay_state[1:2])
             assert not torch.count_nonzero(static_inputs.seeds[1:2])
             assert not torch.count_nonzero(static_inputs.generation_steps[1:2])
+        else:
+            pass
     runner.clear()
-
-
-@pytest.mark.accelerator
-@pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA is required")
-def test_sampling_graph_feedback_keeps_sampled_rows_and_delay_state() -> None:
-    model = CudaGraphModel(torch.device("cuda"))
-    runner = MossTTSDelaySamplingCudaGraphRunner.capture(
-        model=model,
-        capture_bs=(1,),
-        feedback_embedding=lambda rows: rows.float() + 0.5,
-    )
-    assert set(runner.graphs) == {1}
-    result = runner.run_static(1)
-    assert torch.equal(result.feedback_embeddings, result.rows.float() + 0.5)
-    runner.feedback_embedding = None
-    eager = runner.run_static(1)
-    assert torch.equal(result.rows, eager.rows)
-    assert torch.equal(result.next_delay_state, eager.next_delay_state)
-    assert eager.feedback_embeddings is None
