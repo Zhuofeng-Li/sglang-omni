@@ -7,6 +7,7 @@ import contextlib
 import inspect
 import json
 import logging
+import os
 import sys
 import threading
 import time
@@ -9643,6 +9644,74 @@ def test_qwen3_tts_scheduler_adopts_prepared_tensors_after_the_preprocessing_eve
     assert waited == [ready]
     assert [stream for _, stream in recorded] == [scheduler_stream] * 4
     assert any(tensor is embeds for tensor, _ in recorded)
+
+
+@pytest.mark.benchmark
+@pytest.mark.accelerator
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="requires CUDA")
+@pytest.mark.parametrize("frame_lengths", [(301,), (325, 299)])
+@pytest.mark.parametrize("capture_tail", [False, True])
+def test_real_small_base_chunked_vocoder_matches_tokenizer_decode(
+    frame_lengths: tuple[int, ...], capture_tail: bool
+) -> None:
+    checkpoint = os.environ.get("QWEN3_TTS_BASE_0_6B_PATH")
+    if checkpoint is None:
+        pytest.skip("Set QWEN3_TTS_BASE_0_6B_PATH to run the real checkpoint gate")
+    else:
+        pass
+    checkpoint_config = qwen3_tts_config.load_qwen3_tts_checkpoint_config(checkpoint)
+    assert checkpoint_config["tts_model_size"] == "0b6"
+    assert checkpoint_config["tts_model_type"] == "base"
+    tokenizer = qwen3_stages.load_qwen3_tts_tokenizer(
+        checkpoint, device="cuda:0", dtype="bfloat16", attn_implementation="sdpa"
+    )
+    scheduler = Qwen3TTSStreamingVocoderScheduler(
+        tokenizer, device="cuda:0", tts_model_size="0b6"
+    )
+    assert scheduler.full_decode_chunk_frames == 300
+    assert scheduler.full_decode_context_frames == 25
+    generator = torch.Generator().manual_seed(42)
+    audio_codes = [
+        torch.randint(
+            scheduler.decoder.config.codebook_size,
+            (frames, scheduler.decoder.config.num_quantizers),
+            generator=generator,
+        )
+        for frames in frame_lengths
+    ]
+    expected_waveforms, sample_rate = tokenizer.decode(
+        [{"audio_codes": codes} for codes in audio_codes]
+    )
+    graph = scheduler.full_decode_graphs
+    tail_frames = max(frame_lengths) - 300 + 25
+    graph.input_frames = (tail_frames, 300) if capture_tail else (300,)
+    graph.batch_sizes = (len(frame_lengths),)
+    graph.capture()
+    assert (300, len(frame_lengths)) in graph.graphs
+    if capture_tail:
+        assert (tail_frames, len(frame_lengths)) in graph.graphs
+    else:
+        pass
+    reference_frame_lengths = (19, 31)[: len(frame_lengths)]
+    payloads = []
+    for index, (codes, reference_frames) in enumerate(
+        zip(audio_codes, reference_frame_lengths)
+    ):
+        payload = make_payload(inputs=str(index))
+        payload.data = Qwen3TTSState(
+            audio_codes=codes, ref_code_len=reference_frames
+        ).to_dict()
+        payloads.append(payload)
+    results = asyncio.run(scheduler.vocode_payloads(payloads))
+    for result, expected, frames, reference_frames in zip(
+        results, expected_waveforms, frame_lengths, reference_frame_lengths
+    ):
+        trim_samples = reference_frames * tokenizer.model.decode_upsample_rate
+        expected = expected[trim_samples:]
+        actual = np.frombuffer(result.data["audio_waveform"], dtype=np.float32)
+        assert result.data["sample_rate"] == sample_rate
+        assert actual.size == (frames - reference_frames) * scheduler.samples_per_frame
+        np.testing.assert_array_equal(actual, expected)
 
 
 @pytest.mark.parametrize("frame_lengths", [(1,), (3, 7), (8, 6), (4, 8, 5)])
