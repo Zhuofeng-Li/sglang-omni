@@ -1,6 +1,6 @@
 # Fish S2 Pro runtime research
 
-This port recovers the retained **C39 / agent-10** research candidate. The results below measure the original complete candidate, not the current upstream port or an isolated component.
+This port recovers the retained **C39 / agent-10** research candidate. The historical results measure the original complete candidate. A separate paired current-port experiment below measures the complete upstream port, not an isolated component.
 
 ## Runtime changes
 
@@ -10,6 +10,126 @@ This port recovers the retained **C39 / agent-10** research candidate. The resul
 - Allow two CPU shares per preprocessing worker, capped at eight intra-op threads, while respecting an explicit OMP override and the current CPU-plan distinction. On glibc, raise the process allocator mmap threshold to 64 MiB so large CPU temporaries can be reused. This allocator setting affects the preprocessing process, not just one tensor.
 
 The port retains the current shared streaming-vocoder implementation and current CPU-affinity policy. It does not restore the older scheduler from the snapshot.
+
+## Paired current-port measurements (2026-10-14)
+
+Base is the original branch point `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141`;
+measured head is `827d97c17561d5785626a005707a6ba8e4969e13`. Both source
+trees were clean. Both revisions ran sequentially on the same allocated
+NVIDIA H200 (143,771 MiB, driver 595.71.05), using the unchanged base
+benchmark client and scorers.
+
+Server and client affinity was CPU 0–15: 16 physical cores on the GPU-local
+NUMA node. These CPUs were not exclusively reserved; no 128 GiB host-memory
+cap was imposed. `OMP_NUM_THREADS` was unset so each revision used its own
+native preprocessing policy within the same affinity mask. This measures
+the complete port, including the CPU thread-policy changes.
+
+The image was
+`docker.io/hongccc/sglang-omni@sha256:ebe4239e29a764ee3a2806385c061c5fd438a26f01458e503d3822dcba5790df`,
+with SGLang upgraded to 0.5.21 as required by the checkout, Python 3.12,
+PyTorch 2.13.0+cu130 and Transformers 5.12.1. Weights were already downloaded.
+
+Each cohort used all 1,088 SeedTTS EN requests in native order, concurrency
+16, seed 42 and a 2,048-token cap. Each mode started a fresh server and
+excluded 16 warmup requests using the first reference. Normal caching and
+default engine settings were retained. These are single runs on the
+current port, separate from the historical three-seed results below.
+
+### Throughput and quality
+
+| Mode (C16) | Base requests/s | Head requests/s | Change | Base WER (%) | Head WER (%) | Base SIM | Head SIM |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Non-streaming | 1.496 | 3.559 | +137.90% | 1.0048 | 1.0048 | 65.0296 | 64.8667 |
+| Streaming | 1.483 | 3.538 | +138.57% | 1.0466 | 1.0801 | 64.5553 | 64.5598 |
+
+WER uses full corpus edit counts, and SIM is mean WavLM cosine similarity
+multiplied by 100. Each of the four cohorts contains 1,088 successful
+requests and matching WER/SIM records, with zero failures, skips,
+max-token hits or samples with WER >50%. The corpus WER and SIM mean were
+independently recomputed from all per-sample records. SIM used batch size
+1 uniformly with complete waveforms and identical scoring models.
+
+Streaming WER increased by 0.0335 percentage points, while non-streaming
+SIM decreased by 0.1629 points. These single-run measurements do not
+establish quality equivalence or statistical significance, and the larger
+speedup than in the historical experiment is not a like-for-like comparison
+with that older runtime/environment.
+
+| Metric | Base | Head |
+| --- | ---: | ---: |
+| Non-streaming mean full latency (s) | 10.642 | 4.477 |
+| Streaming mean full latency (s) | 10.733 | 4.503 |
+| Streaming mean first audio (s) | 10.2555 | 3.8409 |
+| Streaming p99 first audio (s) | 14.7222 | 5.8805 |
+
+### Reproduction
+
+Pinned inputs:
+
+| Input | Revision or SHA-256 |
+| --- | --- |
+| `fishaudio/s2-pro` | `1de9996b6be38b745688de084d87a5633f714e4e` |
+| `zhaochenyang20/seed-tts-eval-arrow` (EN) | `27f4c1adee83b5b29b7c4b375f6b976324bda308` |
+| `Qwen/Qwen3-ASR-1.7B` | `7278e1e70fe206f11671096ffdd38061171dd6e5` |
+| SIM `wavlm_large_finetune.pth` | `51f07e3b94d9e0262a6a675ef5a087be3dd09e8c62e9d886827f44f82fe7f94b` |
+| SIM `wavlm_large.pt` | `6fb4b3c3e6aa567f0a997b30855859cb81528ee8078802af439f7b2da0bf100f` |
+
+The unchanged benchmark loader pins the dataset revision above. Set
+`MODEL_PATH` and `ASR_PATH` to the local snapshots of the listed revisions,
+`MODEL_ID` to the checkpoint ID, `OUT` to a separate directory per cohort,
+and `PORT` to an unused port. Use `s2pro_tts.yaml` as `CONFIG`. Run the server from the selected base/head
+checkout, with the following environment also applied to the clients:
+
+```bash
+export CUDA_VISIBLE_DEVICES=0
+export HF_HOME=/work/hf-cache
+export SEEDTTS_SIM_CACHE_DIR=/work/sim-cache
+export SGLANG_OMNI_TORCH_COMPILE_DEFAULT=0
+export SGLANG_OMNI_STRICT_PORT=1
+unset OMP_NUM_THREADS
+taskset -c 0-15 python -m sglang_omni.cli serve \
+  --model-path "$MODEL_PATH" --host 127.0.0.1 --port "$PORT" \
+  --config "examples/configs/$CONFIG"
+```
+
+From the base checkout in another shell, wait for `/health`, then use the
+same mode for both warmup and measurement (`MODE=()` for non-streaming,
+`MODE=(--stream)` for streaming; Bash array syntax):
+
+```bash
+MODE=()
+COMMON=(--model "$MODEL_ID" --meta zhaochenyang20/seed-tts-eval-arrow
+  --lang en --concurrency 16 --port "$PORT" --seed 42 --max-new-tokens 2048)
+taskset -c 0-15 python -m benchmarks.eval.benchmark_tts_seedtts \
+  "${COMMON[@]}" "${MODE[@]}" --generate-only --use-existing-server \
+  --max-samples 1 --warmup 15 --output-dir "$OUT/excluded-warmup"
+nvidia-smi --query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory \
+  --format=csv,nounits
+taskset -c 0-15 python -m benchmarks.eval.benchmark_tts_seedtts \
+  "${COMMON[@]}" "${MODE[@]}" --generate-only --use-existing-server \
+  --max-samples 1088 --warmup 0 --fingerprint --output-dir "$OUT"
+```
+
+Stop the owned TTS server before scoring its saved WAVs. Run both scorers
+from the base checkout; ASR uses the default concurrency of 32. The runtime
+SIM override below leaves the repository and waveform lengths unchanged:
+
+```bash
+taskset -c 0-15 python -m benchmarks.eval.benchmark_tts_seedtts \
+  "${COMMON[@]}" "${MODE[@]}" --transcribe-only --skip-gpu-cleanup \
+  --asr-model-path "$ASR_PATH" --server-timeout 3600 --output-dir "$OUT"
+taskset -c 0-15 python -c \
+  "import runpy; import benchmarks.tasks.tts as t; t.SPEAKER_SIMILARITY_BATCH_SIZE = 1; runpy.run_module('benchmarks.eval.benchmark_tts_seedtts', run_name='__main__')" \
+  "${COMMON[@]}" "${MODE[@]}" --similarity-only --device cuda:0 \
+  --output-dir "$OUT"
+```
+
+Saved evidence per cohort includes command arguments, source identities,
+startup/memory snapshots, `speed_results.json`, `generated.json`, and
+per-sample `wer_results.json` and `similarity_results.json`. This fixed
+English workload on one H200 does not establish multilingual,
+low-concurrency or smaller-device behavior.
 
 ## Historical experiment
 
@@ -59,6 +179,6 @@ All 27 prescribed performance/quality gates passed, with zero scored failures or
 
 [Frozen accepted metrics](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/blob/main/recovery/radix-20261010/latest/rolling-current.json), [pristine baseline](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/blob/main/recovery/radix-20261010/latest/baseline.json), [complete Judge output](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/blob/main/logs/runs/185b0e62f4b34e518f85f587fc17c67e/sglang-omni-fish-s2-pro-runtime/submissions/agent-10/test_output.txt), and [research snapshot](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/blob/main/recovery/radix-20261010/latest/workspace.tar.gz). The evidence repository requires access; the tables above are self-contained.
 
-Later C45 work did not replace the scored C39 candidate. The CPU activation fast path is conditional; other architectures retain the normal padding path. The new port has not been measured on the original x86/H200 setup.
+Later C45 work did not replace the scored C39 candidate. The CPU activation fast path is conditional; other architectures retain the normal padding path. The paired follow-up above uses the current port and a separate x86/H200 allocation; its CPU policy and runtime differ from the historical snapshot.
 
-The port targets upstream `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141` and preserves newer runtime changes. Current-port CPU tests and full pre-commit checks are reported in the PR. No new GPU benchmark, multilingual qualification or low-concurrency result is claimed.
+The port targets upstream `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141` and preserves newer runtime changes. Current-port CPU tests and full pre-commit checks are reported in the PR. The paired H200 measurements above cover SeedTTS EN at C16; multilingual and low-concurrency behavior remains unqualified.
