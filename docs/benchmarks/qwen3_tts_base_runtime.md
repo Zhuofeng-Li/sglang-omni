@@ -6,6 +6,8 @@ concurrency-16 throughput by **44.36% (0.6B)** and **26.15% (1.7B)**;
 streaming throughput improved by **7.17%** and **6.20%**, respectively.
 These measurements use the historical source and are not a new benchmark of
 the current upstream port, or an isolated measurement of any one component.
+The paired current-port measurements below separately cover both checkpoint
+sizes, including quality, startup time and resident GPU memory.
 
 ## Runtime changes
 
@@ -34,6 +36,166 @@ in [#2548](https://github.com/sgl-project/sglang-omni/pull/2548). This port uses
 that implementation. It also preserves the follow-up scheduling in
 [#2400](https://github.com/sgl-project/sglang-omni/pull/2400) and the first-chunk
 tail runner in [#2658](https://github.com/sgl-project/sglang-omni/pull/2658).
+
+## Paired current-port measurements (2026-10-14)
+
+Both revisions ran sequentially on the same allocated NVIDIA H200
+(143,771 MiB, driver 595.71.05). Base is the original branch point
+`fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141`; the measured PR head is
+`8becbc36f1fd78b1c3cd99d1b075201326b4e240`. This comparison does not use a
+moving `main`. Both source trees were clean, and all clients and scorers ran
+from the unchanged base checkout.
+
+Server and client affinity was CPU 0–15: 16 physical cores on the GPU-local
+NUMA node. Those CPUs were not exclusively reserved, and no 128 GiB host-memory
+cap was imposed for this follow-up. The container image was
+`docker.io/hongccc/sglang-omni@sha256:ebe4239e29a764ee3a2806385c061c5fd438a26f01458e503d3822dcba5790df`,
+with SGLang upgraded to 0.5.21 as required by this checkout, Python 3.12,
+PyTorch 2.13.0+cu130 and Transformers 5.12.1.
+
+Each of the eight cohorts used the full 1,088-request SeedTTS EN split in
+native order, concurrency 16, seed 42 and a 2,048-token cap. A fresh server
+was started for each mode. Sixteen requests using the first reference were
+excluded as warmup; normal reference caching and default KV-cache sizing
+were retained. Weights were already downloaded. These are single runs,
+not three-seed means or estimates with confidence intervals.
+
+### Throughput and quality
+
+WER is the full corpus edit-count ratio, including outliers. SIM is mean
+WavLM cosine similarity multiplied by 100, not a percentage of passing
+samples. Each row's base and head generated 1,088 successful requests, and
+each WER/SIM calculation covered those same 1,088 IDs with zero failures or
+skips. The corpus WER and SIM mean were independently recomputed from the
+per-sample records.
+
+| Model | Mode (C16) | Base requests/s | Head requests/s | Change | Base WER (%) | Head WER (%) | Base SIM | Head SIM |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 0.6B | Non-streaming | 21.058 | 31.580 | +49.97% | 1.8923 | 1.3816 | 70.1584 | 70.0585 |
+| 0.6B | Streaming | 27.073 | 35.671 | +31.76% | 1.5323 | 1.1639 | 70.3511 | 70.4384 |
+| 1.7B | Non-streaming | 24.430 | 30.245 | +23.80% | 0.9462 | 1.1387 | 71.5595 | 71.4940 |
+| 1.7B | Streaming | 32.223 | 32.459 | +0.73% | 1.1304 | 1.2560 | 71.5773 | 71.1164 |
+
+The 1.7B WER increased by 0.1926 percentage points in non-streaming and
+0.1256 points in streaming. Its streaming throughput difference is small,
+and its SIM decreased by 0.4609 points. These observations do not establish
+quality equivalence or a repeatable streaming speedup.
+
+| Model | Mode | Base/head max-token hits | Base/head samples with WER >50% |
+| --- | --- | ---: | ---: |
+| 0.6B | Non-streaming | 1 / 3 | 2 / 2 |
+| 0.6B | Streaming | 1 / 0 | 1 / 0 |
+| 1.7B | Non-streaming | 0 / 0 | 0 / 1 |
+| 1.7B | Streaming | 0 / 1 | 1 / 1 |
+
+No capped or high-WER sample was dropped. SIM used batch size 1 for every
+cohort with complete waveforms and the same scorer. The initial batch-8
+attempt exhausted memory while padding long 0.6B baseline outputs, including
+a 163.84-second sample; batch size was reduced uniformly without changing
+audio, scoring models or thresholds.
+
+### Startup and resident memory
+
+Startup is process spawn to the first healthy HTTP response, measured before
+the 16 excluded warmups. The second successful launch of each revision
+(streaming mode) provides the warm-cache comparison: compiler caches were
+warm, but each new process still captured its CUDA graphs.
+
+| Model | Base startup (s) | Head startup (s) | Additional time (s) |
+| --- | ---: | ---: | ---: |
+| 0.6B | 179.079 | 248.180 | 69.101 |
+| 1.7B | 138.569 | 306.147 | 167.577 |
+
+The preceding non-streaming launches took 329.675/243.170 seconds
+(base/head, 0.6B) and 154.100/349.664 seconds (1.7B). The first 0.6B base
+launch had cold compiler caches, so its longer time is not evidence that
+this PR reduces startup time. Each timing is one observation.
+
+Resident memory below is serving-process `nvidia-smi used_gpu_memory` after
+the 16 excluded warmup requests, rather than a peak or an isolated graph
+allocation measurement.
+
+| Model | Mode | Base resident memory (MiB) | Head resident memory (MiB) |
+| --- | --- | ---: | ---: |
+| 0.6B | Non-streaming | 126068 | 124386 |
+| 0.6B | Streaming | 123430 | 124390 |
+| 1.7B | Non-streaming | 126494 | 127638 |
+| 1.7B | Streaming | 123514 | 124676 |
+
+Default automatic KV-cache sizing was retained, so total resident memory
+mixes weights, KV cache, graphs and allocator reservations. A lower total
+does not imply that graph capture is free. These measurements do not
+qualify the graph ladders for smaller GPUs.
+
+### Reproduction
+
+Pinned inputs:
+
+| Input | Revision or SHA-256 |
+| --- | --- |
+| `Qwen/Qwen3-TTS-12Hz-0.6B-Base` | `5d83992436eae1d760afd27aff78a71d676296fc` |
+| `Qwen/Qwen3-TTS-12Hz-1.7B-Base` | `fd4b254389122332181a7c3db7f27e918eec64e3` |
+| `zhaochenyang20/seed-tts-eval-arrow` (EN) | `27f4c1adee83b5b29b7c4b375f6b976324bda308` |
+| `Qwen/Qwen3-ASR-1.7B` | `7278e1e70fe206f11671096ffdd38061171dd6e5` |
+| SIM `wavlm_large_finetune.pth` | `51f07e3b94d9e0262a6a675ef5a087be3dd09e8c62e9d886827f44f82fe7f94b` |
+| SIM `wavlm_large.pt` | `6fb4b3c3e6aa567f0a997b30855859cb81528ee8078802af439f7b2da0bf100f` |
+
+The unchanged benchmark loader pins the dataset revision above. Set
+`MODEL_PATH` and `ASR_PATH` to the local snapshots of the listed revisions,
+`MODEL_ID` to the checkpoint ID, `OUT` to a separate directory per cohort,
+and `PORT` to an unused port. Use `qwen3_tts_0_6b.yaml` or
+`qwen3_tts_1_7b.yaml` as `CONFIG`. Run the server from the selected base/head
+checkout, with the following environment also applied to the clients:
+
+```bash
+export CUDA_VISIBLE_DEVICES=0
+export HF_HOME=/work/hf-cache
+export SEEDTTS_SIM_CACHE_DIR=/work/sim-cache
+export SGLANG_OMNI_TORCH_COMPILE_DEFAULT=0
+export SGLANG_OMNI_STRICT_PORT=1
+unset OMP_NUM_THREADS
+taskset -c 0-15 python -m sglang_omni.cli serve \
+  --model-path "$MODEL_PATH" --host 127.0.0.1 --port "$PORT" \
+  --config "examples/configs/$CONFIG"
+```
+
+From the base checkout in another shell, wait for `/health`, then use the
+same mode for both warmup and measurement (`MODE=()` for non-streaming,
+`MODE=(--stream)` for streaming; Bash array syntax):
+
+```bash
+MODE=()
+COMMON=(--model "$MODEL_ID" --meta zhaochenyang20/seed-tts-eval-arrow
+  --lang en --concurrency 16 --port "$PORT" --seed 42 --max-new-tokens 2048)
+taskset -c 0-15 python -m benchmarks.eval.benchmark_tts_seedtts \
+  "${COMMON[@]}" "${MODE[@]}" --generate-only --use-existing-server \
+  --max-samples 1 --warmup 15 --output-dir "$OUT/excluded-warmup"
+nvidia-smi --query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory \
+  --format=csv,nounits
+taskset -c 0-15 python -m benchmarks.eval.benchmark_tts_seedtts \
+  "${COMMON[@]}" "${MODE[@]}" --generate-only --use-existing-server \
+  --max-samples 1088 --warmup 0 --fingerprint --output-dir "$OUT"
+```
+
+Stop the owned TTS server before scoring its saved WAVs. Run both scorers
+from the base checkout; ASR uses the default concurrency of 32. The runtime
+SIM override below leaves the repository and waveform lengths unchanged:
+
+```bash
+taskset -c 0-15 python -m benchmarks.eval.benchmark_tts_seedtts \
+  "${COMMON[@]}" "${MODE[@]}" --transcribe-only --skip-gpu-cleanup \
+  --asr-model-path "$ASR_PATH" --server-timeout 3600 --output-dir "$OUT"
+taskset -c 0-15 python -c \
+  "import runpy; import benchmarks.tasks.tts as t; t.SPEAKER_SIMILARITY_BATCH_SIZE = 1; runpy.run_module('benchmarks.eval.benchmark_tts_seedtts', run_name='__main__')" \
+  "${COMMON[@]}" "${MODE[@]}" --similarity-only --device cuda:0 \
+  --output-dir "$OUT"
+```
+
+Saved evidence per cohort includes command arguments, source identities,
+startup/memory snapshots, `speed_results.json`, `generated.json`, and
+per-sample `wer_results.json` and `similarity_results.json`. This fixed
+English workload on one H200 does not establish multilingual,
+low-concurrency or smaller-device behavior.
 
 ## Historical 1.7B experiment identity
 
@@ -107,8 +269,8 @@ retain the original feedback, hypothesis history and source diff. The evidence
 repository requires access; the tables above are self-contained.
 
 The historical experiment used a fixed public English workload and one
-allocation. It provides no current-port GPU measurement, low-concurrency,
-multilingual or smaller-device serving qualification. Graph capture can
+allocation. The separate current-port comparison above does not provide
+low-concurrency, multilingual or smaller-device serving qualification. Graph capture can
 increase startup time and memory use. The port also retains newer upstream
 tail-decode and device abstractions, so byte identity with the historical
 candidate is not claimed. Current-port regression coverage and the exact
