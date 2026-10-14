@@ -17,23 +17,20 @@ on the CPU.
 
 ## Paired current-port measurements (2026-10-14)
 
-These measurements preceded the integration of upstream #2798, which changes
-default reference encoding from CPU to GPU. They describe the exact measured
-commits below, not the merged runtime. A new paired measurement against the
-updated upstream base is pending; the gains below must not be attributed to
-the default GPU-reference path.
-
-Base is the original branch point `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141`;
-measured head is `827d97c17561d5785626a005707a6ba8e4969e13`. Both source
-trees were clean. Both revisions ran sequentially on the same allocated
-NVIDIA H200 (143,771 MiB, driver 595.71.05), using the unchanged base
-benchmark client and scorers.
+Base is upstream `94730a87b2b3b2f8383274918c3c4ed041821ecb` after #2798;
+measured head is merge `27bc65d424382d4b1e5405f89a1a57801e4c6ee1`.
+Both revisions use the default GPU reference encoder, retaining upstream's
+full-fp32/TF32-disabled policy, warmup, process isolation and 6 GiB reserve.
+The CPU activation/padding and allocator fast paths are inactive for this
+GPU preprocessing path. Both source trees were clean and ran sequentially
+on the same allocated NVIDIA H200 (143,771 MiB, driver 595.71.05), using the
+unchanged `94730a87` benchmark client and scorers for both revisions.
 
 Server and client affinity was CPU 0–15: 16 physical cores on the GPU-local
 NUMA node. These CPUs were not exclusively reserved; no 128 GiB host-memory
 cap was imposed. `OMP_NUM_THREADS` was unset so each revision used its own
 native preprocessing policy within the same affinity mask. This measures
-the complete port, including the CPU thread-policy changes.
+the complete port, rather than isolating a particular optimization.
 
 The image was
 `docker.io/hongccc/sglang-omni@sha256:ebe4239e29a764ee3a2806385c061c5fd438a26f01458e503d3822dcba5790df`,
@@ -50,8 +47,8 @@ current port, separate from the historical three-seed results below.
 
 | Mode (C16) | Base requests/s | Head requests/s | Change | Base WER (%) | Head WER (%) | Base SIM | Head SIM |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Non-streaming | 1.496 | 3.559 | +137.90% | 1.0048 | 1.0048 | 65.0296 | 64.8667 |
-| Streaming | 1.483 | 3.538 | +138.57% | 1.0466 | 1.0801 | 64.5553 | 64.5598 |
+| Non-streaming | 7.107 | 8.130 | +14.39% | 1.0215 | 1.0131 | 65.0241 | 64.9896 |
+| Streaming | 7.187 | 7.317 | +1.81% | 1.0299 | 1.0550 | 64.7811 | 64.6032 |
 
 WER uses full corpus edit counts, and SIM is mean WavLM cosine similarity
 multiplied by 100. Each of the four cohorts contains 1,088 successful
@@ -60,18 +57,44 @@ max-token hits or samples with WER >50%. The corpus WER and SIM mean were
 independently recomputed from all per-sample records. SIM used batch size
 1 uniformly with complete waveforms and identical scoring models.
 
-Streaming WER increased by 0.0335 percentage points, while non-streaming
-SIM decreased by 0.1629 points. These single-run measurements do not
-establish quality equivalence or statistical significance, and the larger
-speedup than in the historical experiment is not a like-for-like comparison
-with that older runtime/environment.
+Streaming WER increased by 0.0251 percentage points. SIM decreased by
+0.0345 points for non-streaming and 0.1779 points for streaming. These
+single-run measurements do not establish quality equivalence or
+statistical significance; in particular, the 1.81% streaming throughput
+change is only one paired observation. The older CPU-reference gains below
+do not describe this default GPU-reference path.
 
 | Metric | Base | Head |
 | --- | ---: | ---: |
-| Non-streaming mean full latency (s) | 10.642 | 4.477 |
-| Streaming mean full latency (s) | 10.733 | 4.503 |
-| Streaming mean first audio (s) | 10.2555 | 3.8409 |
-| Streaming p99 first audio (s) | 14.7222 | 5.8805 |
+| Non-streaming mean full latency (s) | 2.241 | 1.960 |
+| Streaming mean full latency (s) | 2.219 | 2.180 |
+| Streaming mean first audio (s) | 1.0986 | 1.0747 |
+| Streaming p99 first audio (s) | 1.4070 | 1.3640 |
+
+### Earlier CPU-reference comparison (before merging #2798)
+
+This separate measurement used original branch point
+`fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141` and pre-merge runtime
+`827d97c17561d5785626a005707a6ba8e4969e13`, both with CPU reference encoding.
+The same H200 allocation, CPU affinity and input/scoring protocol were used,
+with the unchanged `fa4e6d1f` client. Each revision used its native CPU
+preprocessing thread policy, so the complete-port comparison includes that
+policy change. These values are retained for provenance, not as results
+for the merged GPU-reference runtime.
+
+| Mode (C16) | Base requests/s | Head requests/s | Change | Base WER (%) | Head WER (%) | Base SIM | Head SIM |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Non-streaming | 1.496 | 3.559 | +137.90% | 1.0048 | 1.0048 | 65.0296 | 64.8667 |
+| Streaming | 1.483 | 3.538 | +138.57% | 1.0466 | 1.0801 | 64.5553 | 64.5598 |
+
+All four earlier cohorts also had 1,088 successful requests and full quality
+coverage with zero skips, max-token hits or samples with WER >50%.
+Streaming WER increased by 0.0335 percentage points and non-streaming SIM
+fell by 0.1629 points. Mean full latency was 10.642 → 4.477 seconds for
+non-streaming and 10.733 → 4.503 seconds for streaming; streaming mean/p99
+first audio was 10.2555/14.7222 → 3.8409/5.8805 seconds. These single runs
+are separate from both the GPU-reference comparison and the historical
+three-seed experiment.
 
 ### Reproduction
 
@@ -191,4 +214,4 @@ All 27 prescribed performance/quality gates passed, with zero scored failures or
 
 Later C45 work did not replace the scored C39 candidate. The CPU activation fast path is conditional; other architectures retain the normal padding path. The paired follow-up above uses the current port and a separate x86/H200 allocation; its CPU policy and runtime differ from the historical snapshot.
 
-The port targets upstream `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141` and preserves newer runtime changes. Current-port CPU tests and full pre-commit checks are reported in the PR. The paired H200 measurements above cover SeedTTS EN at C16; multilingual and low-concurrency behavior remains unqualified.
+The port started from upstream `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141` and now includes upstream `94730a87b2b3b2f8383274918c3c4ed041821ecb`, preserving its GPU reference encoder and newer runtime changes. Current-port CPU tests and full pre-commit checks are reported in the PR. The paired H200 measurements above cover SeedTTS EN at C16; multilingual and low-concurrency behavior remains unqualified.
