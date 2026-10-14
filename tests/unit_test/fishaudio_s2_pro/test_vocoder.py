@@ -71,6 +71,22 @@ def test_fish_vocoder_batches_and_trims_audio_by_code_length(
         == [2.0] * 12
     )
     assert outputs["req-short"].data["usage"]["total_tokens"] == 6
+    for request_id, sample_count in (("req-short", 8), ("req-long", 12)):
+        result = outputs[request_id]
+        assert result.request_id == request_id
+        assert result.data["audio_waveform_shape"] == [sample_count]
+        assert result.data["audio_waveform_dtype"] == "float32"
+        assert result.data["sample_rate"] == 44100
+        assert result.data["modality"] == "audio"
+        assert "audio_samples_bytes" not in result.data
+        assert set(result.data) == {
+            "audio_waveform",
+            "audio_waveform_shape",
+            "audio_waveform_dtype",
+            "sample_rate",
+            "modality",
+            "usage",
+        }
 
 
 CODEC_CONFIG_PATH = (
