@@ -37,6 +37,38 @@ that implementation. It also preserves the follow-up scheduling in
 [#2400](https://github.com/sgl-project/sglang-omni/pull/2400) and the first-chunk
 tail runner in [#2658](https://github.com/sgl-project/sglang-omni/pull/2658).
 
+## Exact frame shapes and capture cost
+
+The 1.7B ladder captures 256 frame lengths for four batch sizes: up to 1,024
+whole-utterance graphs. This is an intentional startup tradeoff, not a claim
+that length bucketing is impossible. The measured warm-cache startup cost
+below increases from 138.569 to 306.147 seconds; streaming throughput is
+nearly unchanged in that single pair.
+
+For a native batch whose longest sequence is N frames, the tokenizer pads
+shorter requests to N, decodes that batch, and trims each waveform to its
+original length. The graph path preserves those same frame and batch shapes.
+All captured 1.7B lengths are below the tokenizer's 300-frame chunk boundary,
+so the graph replaces exactly one native decoder call.
+
+Padding N to a larger bucket would change the decoder's tensor shapes. The
+causal decoder makes prefix-preserving bucketing plausible, but that alone
+does not establish bitwise equality: attention and convolution kernels can
+have shape-dependent floating-point behavior. Trimming the extra output
+samples does not establish equality of the retained samples. Exact shapes
+therefore retain the currently validated contract; they are not asserted to
+be mathematically necessary. No exact-versus-bucketed experiment has been run,
+so this PR does not claim that 1,024 captures are the best cost/performance
+choice or that buckets would lose the throughput gain.
+
+A bucketed policy needs a real-tokenizer comparison across lengths on both
+sides of each bucket boundary, mixed-length batches, reference trimming and
+fallback paths, followed by startup/memory and paired serving measurements.
+It must also preserve the 0.6B tokenizer's separate 300/25-frame chunk/context
+policy. For startup-sensitive deployments, disabling the existing
+`initial_cuda_graph` option also disables these whole-utterance graphs and
+keeps the tokenizer fallback; it also disables initial streaming graphs.
+
 ## Paired current-port measurements (2026-10-14)
 
 Both revisions ran sequentially on the same allocated NVIDIA H200

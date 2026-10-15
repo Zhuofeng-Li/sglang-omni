@@ -849,6 +849,7 @@ class Qwen3TTSStreamingVocoderScheduler(
             self.decoder,
             device=self.device,
             num_quantizers=num_quantizers,
+            # note (Zhuofeng-Li): exact lengths preserve native decoder shapes; bucket padding needs parity validation.
             input_frames=tuple(range(1, max_full_decode_frames + 1)),
             batch_sizes=tuple(range(1, max_full_decode_requests + 1)),
             enabled=full_decode_graphs_enabled,
