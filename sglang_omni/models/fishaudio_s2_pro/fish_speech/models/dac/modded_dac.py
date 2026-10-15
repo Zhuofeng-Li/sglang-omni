@@ -568,10 +568,7 @@ class CausalConvNet(nn.Module):
         extra_padding = get_extra_padding_for_conv1d(
             x, self.kernel_size, self.stride, pad
         )
-        if pad != 0 or extra_padding != 0:
-            x = pad1d(x, (pad, extra_padding), mode="constant", value=0)
-        else:
-            pass
+        x = pad1d(x, (pad, extra_padding), mode="constant", value=0)
         return self.conv(x).contiguous()
 
     def weight_norm(self, name="weight", dim=0):

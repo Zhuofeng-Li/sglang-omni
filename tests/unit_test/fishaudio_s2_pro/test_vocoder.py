@@ -7,7 +7,6 @@ from pathlib import Path
 import numpy as np
 import pytest
 import torch
-from dac.nn.layers import Snake1d
 from hydra.utils import instantiate
 from omegaconf import OmegaConf
 
@@ -185,48 +184,3 @@ def test_reference_code_only_quantization_matches_full_forward(samples: int) -> 
     assert lengths.tolist() == [
         (samples + codec.frame_length - 1) // codec.frame_length
     ]
-
-
-@pytest.mark.parametrize("samples", [16, 17, 64])
-def test_reference_activation_preserves_input_and_convolution(samples: int) -> None:
-    torch.manual_seed(41)
-    activation = Snake1d(4).eval()
-    consumer = modded_dac.CausalConvNet(4, 4, 7, stride=2).eval()
-    hidden_states = torch.randn(1, 4, samples)
-    original = hidden_states.clone()
-    with torch.no_grad():
-        expected_activation = activation(hidden_states)
-        reused = stages.reuse_reference_activation(
-            hidden_states, alpha=activation.alpha
-        )
-        assert torch.equal(reused, expected_activation)
-        padded = stages.produce_padded_reference_activation(
-            hidden_states, alpha=activation.alpha, consumer=consumer
-        )
-        actual = stages.consume_padded_reference_activation(padded, consumer=consumer)
-        expected = consumer(expected_activation)
-    assert torch.equal(hidden_states, original)
-    assert torch.equal(actual, expected)
-
-
-def test_reference_padding_falls_back_after_mutation_or_forward_hook() -> None:
-    activation = Snake1d(4).eval()
-    consumer = modded_dac.CausalConvNet(4, 4, 7).eval()
-    hidden_states = torch.randn(1, 4, 64)
-    with torch.no_grad():
-        padded = stages.produce_padded_reference_activation(
-            hidden_states, alpha=activation.alpha, consumer=consumer
-        )
-        padded.add_(1)
-        actual = stages.consume_padded_reference_activation(padded, consumer=consumer)
-        assert torch.equal(actual, consumer(padded))
-        padded = stages.produce_padded_reference_activation(
-            hidden_states, alpha=activation.alpha, consumer=consumer
-        )
-        hook = consumer.conv.register_forward_pre_hook(
-            lambda module, inputs: (inputs[0].clone(),)
-        )
-        actual = stages.consume_padded_reference_activation(padded, consumer=consumer)
-        expected = consumer(padded)
-        hook.remove()
-        assert torch.equal(actual, expected)

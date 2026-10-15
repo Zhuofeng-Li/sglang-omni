@@ -153,9 +153,7 @@ def test_fish_preprocessing_encodes_references_on_the_placement_device(
     expected_device: str,
     expected_tf32: bool,
 ) -> None:
-    activation = s2pro_stages.Snake1d(4)
-    native_activation = activation.forward
-    codec = SimpleNamespace(sample_rate=44100, encoder=torch.nn.Sequential(activation))
+    codec = SimpleNamespace(sample_rate=44100)
     loaded_on: list[str] = []
     warmups: list[tuple[str, int]] = []
     monkeypatch.setattr(s2pro_stages, "_resolve_checkpoint", lambda path: path)
@@ -185,7 +183,6 @@ def test_fish_preprocessing_encodes_references_on_the_placement_device(
     assert loaded_on == [expected_device]
     assert warmups == ([] if expected_device == "cpu" else [(expected_device, 44100)])
     assert torch.backends.cudnn.allow_tf32 is expected_tf32
-    assert (activation.forward == native_activation) is (expected_device != "cpu")
 
 
 def test_fish_gpu_preprocessing_rejects_a_shared_process() -> None:
@@ -206,7 +203,7 @@ def test_fish_gpu_preprocessing_rejects_a_shared_process() -> None:
 
 @pytest.mark.parametrize(
     "cpu_count,expected_intraop_threads",
-    [(4, 1), (32, 8), (224, 8)],
+    [(4, 1), (32, 4), (224, 8)],
 )
 def test_fish_preprocessing_uses_bounded_cpu_threads(
     monkeypatch: pytest.MonkeyPatch,
@@ -274,7 +271,7 @@ def run_configure_preprocessing_threads(
         (
             {"OMP_NUM_THREADS": "32", "SGLANG_OMNI_OMP_FROM_CPU_PLAN": "1"},
             8,
-            8,
+            4,
         ),
         (
             {"OMP_NUM_THREADS": "2", "SGLANG_OMNI_OMP_FROM_CPU_PLAN": "1"},

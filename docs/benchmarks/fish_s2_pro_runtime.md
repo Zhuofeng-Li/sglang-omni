@@ -5,17 +5,27 @@ This port recovers the retained **C39 / agent-10** research candidate. The histo
 ## Runtime changes
 
 - Encode reference code indices without running the quantizer's unused reconstruction path. Full quantizer forward remains available for training and calls with extra arguments.
-- Reuse private CPU Snake activation temporaries. On AVX2/AVX512, place eligible activations directly in their adjacent convolution's padded input storage; version, shape, gradient and hook checks retain the normal convolution fallback.
-- Skip zero-width convolution padding, retain waveform tensors in typed transport and return packed waveform bytes instead of Python sample lists.
-- Allow two CPU shares per preprocessing worker, capped at eight intra-op threads, while respecting an explicit OMP override and the current CPU-plan distinction. On glibc, raise the process allocator mmap threshold to 64 MiB so large CPU temporaries can be reused. This allocator setting affects the preprocessing process, not just one tensor.
+- Retain waveform tensors in typed transport and return packed waveform bytes instead of Python sample lists, including the shared no-chunks streaming fallback.
 
-The port retains the current shared streaming-vocoder implementation and current CPU-affinity policy. It does not restore the older scheduler from the snapshot.
-After integrating upstream #2798, GPU-placed preprocessing retains upstream's
-full-fp32 reference encoding and warmup. The activation/padding and allocator
-optimizations apply only to CPU preprocessing; unplaced preprocessing stays
-on the CPU.
+The shipped `s2pro_tts.yaml` uses `S2ProPipelineConfig`, whose preprocessing
+stage defaults to GPU 0 after #2798. No shipped Fish configuration selects CPU
+preprocessing. Explicitly setting that stage's `gpu` to `null` remains supported
+with upstream's unmodified encoder and thread policy.
 
-## Paired current-port measurements (2026-10-14)
+Following review, this PR no longer changes CPU Snake activations, convolution
+padding, preprocessing thread budgets or the process allocator's mmap threshold.
+Those changes and their dedicated tests were removed so their CPU-only costs and
+benefits can be reviewed independently. The quantizer equivalence and waveform
+transport regression tests remain.
+
+**The measurements below predate this scope reduction.** They describe the
+specified complete historical revisions, including changes removed during
+review, and are not a new measurement of the reduced patch. In particular,
+the default-GPU pair also included the former thread policy and zero-width
+padding shortcut; its speedup cannot be attributed solely to the retained
+quantizer and waveform changes.
+
+## Paired pre-split port measurements (2026-10-14)
 
 Base is upstream `94730a87b2b3b2f8383274918c3c4ed041821ecb` after #2798;
 measured head is merge `27bc65d424382d4b1e5405f89a1a57801e4c6ee1`.
