@@ -11,11 +11,101 @@ This port recovers the retained **H12 / agent-10** research candidate. The histo
 
 Current upstream already owns reference encoding in the model-local reference encoder with a dedicated CUDA stream. This port keeps that implementation instead of restoring the snapshot's older encoder service in stages.py. The existing same-dtype input-embedding accumulator is also retained.
 
+## Three-seed current-port quality follow-up (2026-10-15)
+
+This follow-up adds paired seeds 43 and 44 in both modes and reruns seed
+42 in the same new environment. It does not pool the October 14 single
+pairs with these repetitions. Base remains the fixed branch point
+`fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141`; evaluated head is
+`2c373574653039bd0542072df890bf12407b5679`. The documentation update containing these results
+does not change that runtime.
+
+The model is the pinned **MOSS-TTS v1.5 Delay** checkpoint with
+`moss_tts.yaml`, reference cloning and `--token-count auto`. These
+measurements cover Delay independently of the LocalTransformer CI suite.
+
+Each server log identifies MossTTSDelaySGLangModel; all 12 logs confirm
+the Delay path, with no LocalTransformer class present.
+
+Every arm/mode/seed used a fresh server, all 1,088 SeedTTS EN requests in
+native order, concurrency 16, a 2,048-token cap and 16 excluded warmups.
+Base ran first for seeds 42/44; head ran first for seed 43. All generation,
+WER, SIM and speed records have the same 1,088 IDs per cohort, zero failed
+requests and zero skipped scores. WER below is the full corpus edit-count
+ratio; SIM is mean WavLM cosine similarity multiplied by 100. Both were
+independently recomputed from the checksum-verified raw archives. All
+outliers and token-cap hits remain included.
+
+| Mode (C16) | Seed | Base WER (%) | Head WER (%) | Δ WER (pp) | Base SIM | Head SIM | Δ SIM |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Non-streaming | 42 | 2.3361 | 2.3026 | -0.0335 | 68.8976 | 68.9849 | +0.0873 |
+| Non-streaming | 43 | 1.6579 | 1.6328 | -0.0251 | 68.9098 | 68.8072 | -0.1025 |
+| Non-streaming | 44 | 1.6579 | 1.5741 | -0.0837 | 68.7693 | 68.7242 | -0.0451 |
+| Streaming | 42 | 2.2189 | 2.4701 | +0.2512 | 65.5258 | 65.2051 | -0.3207 |
+| Streaming | 43 | 1.6076 | 1.6746 | +0.0670 | 65.0883 | 65.2129 | +0.1246 |
+| Streaming | 44 | 1.7332 | 1.7667 | +0.0335 | 65.2977 | 65.4806 | +0.1829 |
+
+| Mode | Mean base/head WER (%) | Mean Δ WER ± sample SD (pp) | Mean base/head SIM | Mean Δ SIM ± sample SD |
+| --- | ---: | ---: | ---: | ---: |
+| Non-streaming | 1.8839 / 1.8365 | -0.0474 ± 0.0317 | 68.8589 / 68.8388 | -0.0201 ± 0.0973 |
+| Streaming | 1.8532 / 1.9705 | +0.1172 ± 0.1172 | 65.3039 / 65.2995 | -0.0044 ± 0.2755 |
+
+Head WER was higher in 0/3 non-streaming and 3/3 streaming seeds.
+The means weight each seed equally; SD describes the three paired deltas.
+These repetitions show the observed variability but do not establish that
+a quality shift is noise, prove non-inferiority, or measure perceptual
+equivalence. No significance or quality-pass claim is made from three seeds.
+
+| Mode | Seed | Base/head max-token hits | Base/head samples with WER >50% |
+| --- | ---: | ---: | ---: |
+| Non-streaming | 42 | 0 / 0 | 12 / 11 |
+| Non-streaming | 43 | 0 / 0 | 4 / 3 |
+| Non-streaming | 44 | 0 / 0 | 3 / 4 |
+| Streaming | 42 | 0 / 0 | 10 / 12 |
+| Streaming | 43 | 0 / 0 | 3 / 3 |
+| Streaming | 44 | 0 / 0 | 4 / 3 |
+
+4/12 cohorts exceed the historical 2% absolute WER admission cap.
+This current-port follow-up is not a new pass of the historical gates.
+
+### Follow-up environment and reproduction
+
+The runs used one H200 per cohort on VISION, 16 allocated physical benchmark
+cores plus one separate monitoring core, and a 192 GiB host-memory allocation.
+The fixed Pyxis image SHA-256 is
+`319cb4ed277c809ac52bd422802efc4bb2e316fcb9fc01f33e36d1a6276fe86e`
+(derived from `lmsysorg/sglang` digest
+`06e4f2ed21afde4ff513cda65070124e727ba23ccaeff7712b8c40e1097d611f`).
+It uses SGLang 0.5.21, Python 3.12, PyTorch 2.13.0+cu130 and Transformers
+5.12.1. This is a different container from the October 14 comparison.
+All model, dataset, ASR and SIM input revisions/hashes remain those in the
+reproduction table below. Clients and scorers use the unchanged base source;
+SIM batch size is uniformly one with complete waveforms.
+
+All 12 MOSS cohorts share one allocation. The 1,800-second startup
+timeout used by the quality controller applies equally to both arms.
+This follow-up makes no new pooled throughput claim.
+
+Use the reproduction commands below with `--seed 42`, `--seed 43`, and
+`--seed 44` for both modes and both sources. For this allocation, replace
+the affinity with `0-3,11-12,14-19,26-29`, set the startup timeout to 1,800
+seconds and `SPEAKER_SAMPLES_DIR` to a writable node-local directory. Use
+a fresh available port for each TTS/ASR process and stop only the owned TTS
+process before scoring. Keep the pinned inputs and the remaining
+generation/scoring settings unchanged.
+
+[Audited per-seed summaries, compact per-sample scores and protocol](https://github.com/OpenRSI-Foundation/sglang-omni-moss-v1.5-runtime-d154/tree/43e3de072fb0de49c3b6a923409a57c400d8f132/review-evidence/pr2780/20261015/paired-quality)
+are backed up in the evidence repository, which requires access. The tables
+above are self-contained; the backup excludes dataset text, reference audio
+and generated WAVs. Audited summary SHA-256:
+`bd03d57ced16faaac03a91d2de49c5ed496e4e47945e8e6f3e27771e033540c4`.
+
 ## Paired current-port measurements (2026-10-14)
 
 This experiment exercises MOSS **Delay** with `moss_tts.yaml`, including
 reference cloning and streaming, rather than the LocalTransformer model
-selected by the `run-moss` CI suite. Base is the original branch point
+selected by the `run-tts-moss-tts-local-transformer-v1.5` CI suite
+(formerly `run-moss`). Base is the original branch point
 `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141`; measured PR head is
 `cc39d5f11d0bd96ccf018f0b66c8e6bb0c2415d8`. Both source trees were clean,
 and all clients and scorers ran from the unchanged base checkout.
