@@ -146,6 +146,7 @@ def test_moss_tts_config_and_registry_contracts() -> None:
         "ref_audio_cache_max_bytes": 64 * 1024 * 1024,
     }
     assert vocoder.factory.model_dump(exclude_none=True) == {
+        "segment_graph_max_frames": 128,
         "dtype": "float32",
         "compute_dtype": "bfloat16",
     }
@@ -170,6 +171,7 @@ def test_moss_tts_production_config_resolves_codec_memory_policy() -> None:
         "gpu_id": 0,
     }
     assert vocoder_args == {
+        "segment_graph_max_frames": 128,
         "dtype": "float32",
         "compute_dtype": "bfloat16",
         "model_path": "OpenMOSS-Team/MOSS-TTS-v1.5",
@@ -201,6 +203,7 @@ def test_moss_tts_32gb_config_bounds_runtime_memory() -> None:
     }
     assert vocoder_args["dtype"] == "bfloat16"
     assert vocoder_args["compute_dtype"] == "bfloat16"
+    assert vocoder_args["segment_graph_max_frames"] == 0
     assert vocoder_args["max_batch_size"] == 1
     assert vocoder_args["max_batch_wait_ms"] == 2
 
@@ -230,6 +233,7 @@ def test_moss_tts_24gb_config_bounds_runtime_memory() -> None:
     }
     assert vocoder_args["dtype"] == "bfloat16"
     assert vocoder_args["compute_dtype"] == "bfloat16"
+    assert vocoder_args["segment_graph_max_frames"] == 0
     assert vocoder_args["max_batch_size"] == 1
     assert vocoder_args["max_batch_wait_ms"] == 2
 

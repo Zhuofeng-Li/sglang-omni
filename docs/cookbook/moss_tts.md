@@ -90,6 +90,34 @@ Both policies can be changed explicitly through the preprocessing/vocoder
 stages' `factory.*` entries when profiling another layout. Explicit `device`
 values take precedence over the GPU selected by stage placement.
 
+### Runtime capture and decode overlap
+
+The default colocated layout captures exact prefill lengths from 1 to 512 tokens
+and single-segment non-streaming vocoder lengths from 1 to 128 frames. Longer or
+unsupported shapes use eager execution. The single-process layout leaves these
+two capture ladders disabled. Default-profile decode batches of at least two
+requests can overlap host bookkeeping with the next GPU decode step.
+
+To disable the two capture ladders and decode overlap, add:
+
+```yaml
+stages:
+  tts_engine:
+    engine:
+      cuda_graph_backend_prefill: disabled
+    factory:
+      enable_async_decode: false
+  vocoder:
+    factory:
+      segment_graph_max_frames: 0
+```
+
+`segment_graph_max_frames` limits the largest exact frame count to capture.
+`vocoder_cuda_graph: false` disables both streaming and non-streaming vocoder
+graphs. Custom sampling parameters retain eager sampling. Historical results and
+the remaining qualification work are recorded in the
+[runtime experiment report](../benchmarks/moss_tts_claude_runtime.md).
+
 ## Synthesizing Speech
 
 ### Basic Speech
