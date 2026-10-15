@@ -9699,7 +9699,7 @@ def test_real_small_base_chunked_vocoder_matches_tokenizer_decode(
     tail_frames = max(frame_lengths) - 300 + 25
     graph.input_frames = (tail_frames, 300) if capture_tail else (300,)
     graph.batch_sizes = (len(frame_lengths),)
-    graph.pad_frames = capture_tail
+    assert not graph.pad_frames
     graph.capture()
     assert (300, len(frame_lengths)) in graph.graphs
     if capture_tail:
@@ -9753,6 +9753,8 @@ def test_real_base_padded_decoder_graph_matches_padded_eager(
         tokenizer, device="cuda:0", tts_model_size=model_size
     )
     graph = scheduler.full_decode_graphs
+    assert graph.pad_frames == (model_size == "1b7")
+    graph.pad_frames = True
     graph.input_frames = (16, 48, 256)
     graph.batch_sizes = (len(frame_lengths),)
     graph.capture()

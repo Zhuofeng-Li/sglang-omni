@@ -874,16 +874,21 @@ class Qwen3TTSStreamingVocoderScheduler(
             device=self.device,
             num_quantizers=num_quantizers,
             input_frames=(
-                *range(
-                    QWEN3_TTS_FULL_DECODE_GRAPH_FRAME_STEP,
+                (
+                    *range(
+                        QWEN3_TTS_FULL_DECODE_GRAPH_FRAME_STEP,
+                        max_full_decode_frames,
+                        QWEN3_TTS_FULL_DECODE_GRAPH_FRAME_STEP,
+                    ),
                     max_full_decode_frames,
-                    QWEN3_TTS_FULL_DECODE_GRAPH_FRAME_STEP,
-                ),
-                max_full_decode_frames,
+                )
+                if tts_model_size == "1b7"
+                else tuple(range(1, max_full_decode_frames + 1))
             ),
             batch_sizes=tuple(range(1, max_full_decode_requests + 1)),
             enabled=full_decode_graphs_enabled,
-            pad_frames=True,
+            # note (Zhuofeng-Li): retain exact 0.6B shapes after higher WER in its three-seed bucketed check.
+            pad_frames=tts_model_size == "1b7",
         )
         self.samples_per_frame = int(self.decoder.total_upsample)
         self.stream_stride = int(stream_stride)
