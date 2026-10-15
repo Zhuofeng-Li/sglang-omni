@@ -1,6 +1,6 @@
 # Fish S2 Pro runtime research
 
-This port recovers the retained **C39 / agent-10** research candidate. The historical results measure the original complete candidate. A separate paired current-port experiment below measures the complete upstream port, not an isolated component.
+This port recovers the retained **C39 / agent-10** research candidate. The historical results measure the original complete candidate. The new paired reduced-patch experiment below measures the retained quantizer and waveform transport changes together. Earlier complete-port measurements remain separately labeled.
 
 ## Runtime changes
 
@@ -18,12 +18,73 @@ Those changes and their dedicated tests were removed so their CPU-only costs and
 benefits can be reviewed independently. The quantizer equivalence and waveform
 transport regression tests remain.
 
-**The measurements below predate this scope reduction.** They describe the
+**The pre-split and historical measurements below predate this scope reduction.** They describe the
 specified complete historical revisions, including changes removed during
 review, and are not a new measurement of the reduced patch. In particular,
 the default-GPU pair also included the former thread policy and zero-width
 padding shortcut; its speedup cannot be attributed solely to the retained
 quantizer and waveform changes.
+
+## Paired reduced-patch measurements (2026-10-15)
+
+This new pair compares upstream base
+`94730a87b2b3b2f8383274918c3c4ed041821ecb` with reduced runtime
+`e27da793b4c86c4eeb4cdb13a4e18c0b9a569700`. Both source trees were clean.
+Only the retained quantizer and waveform transport changes are present in
+the model runtime difference. The CI label resolver and documentation do
+not affect serving. Earlier pre-split results remain separate below.
+
+| Mode (C16) | Base requests/s | Head requests/s | Change | Base WER (%) | Head WER (%) | Base SIM | Head SIM |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Non-streaming | 7.020 | 7.980 | +13.68% | 0.9797 | 0.9797 | 65.0286 | 65.0655 |
+| Streaming | 7.093 | 7.220 | +1.79% | 1.1220 | 1.0048 | 64.6890 | 64.7857 |
+
+Non-streaming: ΔWER +0.0000 percentage points; ΔSIM +0.0369. Streaming: ΔWER -0.1172 percentage points; ΔSIM +0.0967.
+WER is the complete corpus edit-count ratio; SIM is mean cosine similarity
+multiplied by 100. All four cohorts contain 1,088 unique successful requests
+and matching generation, WER, SIM and speed IDs, with zero failed requests
+or skipped scores. The raw archive SHA-256 values, complete ID sets, corpus
+edit counts and similarity means were independently audited. No output hit
+the token cap. One streaming baseline sample had WER >50%; it remains
+included. This single paired seed does not establish
+statistical significance, quality equivalence or a repeatable speedup.
+
+| Metric | Base → head (s) |
+| --- | ---: |
+| Non-streaming mean full latency | 2.268 → 1.997 |
+| Streaming mean full latency | 2.249 → 2.209 |
+| Streaming mean first audio | 1.1128 → 1.0906 |
+| Streaming p99 first audio | 1.5048 → 1.3879 |
+
+### Reduced-patch protocol
+
+The four cohorts ran sequentially on the same Radix H200 and task-local
+Python 3.12 environment: SGLang 0.5.21, PyTorch 2.13.0+cu130, Transformers
+5.12.1 and task-local CUDA compiler 13.4.92. Server/client affinity was
+16 distinct physical cores, CPU 0–15, on a shared host without exclusive
+CPU reservation. Weights and compiler caches were warm. This environment
+is separate from the October 14 container; old/new values are not pooled.
+
+Both arms use shipped `s2pro_tts.yaml` and default GPU reference encoding,
+upstream full-fp32/TF32-disabled encoder policy and 6 GiB preprocessing
+reserve. Every server log confirms preprocessing on `cuda:0`, eight workers
+and one shared intra-op thread. `OMP_NUM_THREADS` and the startup-timeout
+override were unset; default CPU planning is identical in both arms.
+
+The unchanged `94730a87` client and scorers use all 1,088 pinned SeedTTS EN
+samples in native order, concurrency 16, seed 42 and a 2,048-token cap.
+Each cohort starts a fresh server and excludes 16 warmup requests. The
+order is non-streaming base/head, then streaming base/head. ASR uses its
+default concurrency 32; SIM uses batch one and complete waveforms for all
+cohorts. All model, dataset and scorer revisions are those in the pinned
+input table below. The generation/scoring commands in Reproduction apply
+to these two source revisions with the task-local paths substituted.
+
+The current Fish unit suite passed **144 tests**, with three accelerator cases
+deselected and no skips. [Audited numeric records, script and protocol](https://github.com/OpenRSI-Foundation/sglang-omni-fish-s2-pro-runtime-d154/tree/7363bd18c7fcc4ea9a24a74bcb249ed671ce28ca/review-evidence/pr2778/20261015/radix-fish)
+are backed up with remote byte verification. That repository requires
+access; this table and the reproduction instructions are self-contained.
+Raw audio and dataset text are not included in the compact backup.
 
 ## Paired pre-split port measurements (2026-10-14)
 
