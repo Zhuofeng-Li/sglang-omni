@@ -9686,6 +9686,7 @@ def test_real_small_base_chunked_vocoder_matches_tokenizer_decode(
     tail_frames = max(frame_lengths) - 300 + 25
     graph.input_frames = (tail_frames, 300) if capture_tail else (300,)
     graph.batch_sizes = (len(frame_lengths),)
+    graph.pad_frames = capture_tail
     graph.capture()
     assert (300, len(frame_lengths)) in graph.graphs
     if capture_tail:
@@ -9712,6 +9713,50 @@ def test_real_small_base_chunked_vocoder_matches_tokenizer_decode(
         assert result.data["sample_rate"] == sample_rate
         assert actual.size == (frames - reference_frames) * scheduler.samples_per_frame
         np.testing.assert_array_equal(actual, expected)
+
+
+@pytest.mark.benchmark
+@pytest.mark.accelerator
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="requires CUDA")
+@pytest.mark.parametrize("frame_lengths", [(1,), (15, 17), (37, 200, 255)])
+def test_real_small_base_padded_decoder_graph_matches_padded_eager(
+    frame_lengths: tuple[int, ...],
+) -> None:
+    checkpoint = os.environ.get("QWEN3_TTS_BASE_0_6B_PATH")
+    if checkpoint is None:
+        pytest.skip("Set QWEN3_TTS_BASE_0_6B_PATH to run the real checkpoint gate")
+    else:
+        pass
+    tokenizer = qwen3_stages.load_qwen3_tts_tokenizer(
+        checkpoint, device="cuda:0", dtype="bfloat16", attn_implementation="sdpa"
+    )
+    scheduler = Qwen3TTSStreamingVocoderScheduler(
+        tokenizer, device="cuda:0", tts_model_size="0b6"
+    )
+    graph = scheduler.full_decode_graphs
+    graph.input_frames = (16, 48, 256)
+    graph.batch_sizes = (len(frame_lengths),)
+    graph.capture()
+    generator = torch.Generator().manual_seed(42)
+    codes = torch.randint(
+        scheduler.decoder.config.codebook_size,
+        (
+            len(frame_lengths),
+            scheduler.decoder.config.num_quantizers,
+            max(frame_lengths),
+        ),
+        generator=generator,
+    ).to("cuda:0")
+    padded_frames = min(
+        frames for frames in graph.input_frames if frames >= codes.shape[2]
+    )
+    with torch.inference_mode():
+        expected = scheduler.decoder(
+            torch.nn.functional.pad(codes, (0, padded_frames - codes.shape[2]))
+        )[..., : codes.shape[2] * scheduler.decoder.total_upsample]
+        actual = graph.decode(codes)
+    assert actual is not None
+    assert torch.equal(actual, expected)
 
 
 @pytest.mark.parametrize("frame_lengths", [(1,), (3, 7), (8, 6), (4, 8, 5)])

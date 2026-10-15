@@ -71,6 +71,7 @@ DEFAULT_QWEN3_TTS_CODEC_STATE_SLOTS = 64
 DEFAULT_QWEN3_TTS_INCREMENTAL_WINDOW_FRAMES = (1, 2, 4, 8, 16, 32, 64)
 QWEN3_TTS_FULL_DECODE_GRAPH_MAX_FRAMES = 256
 QWEN3_TTS_FULL_DECODE_GRAPH_MAX_REQUESTS = 4
+QWEN3_TTS_FULL_DECODE_GRAPH_FRAME_STEP = 16
 # note (ratish): first-chunk widths with tail graphs; longer first chunks use the window graphs.
 QWEN3_TTS_TAIL_GRAPH_FRAMES = (32, 48, 64, 96, 128, 192, 256)
 _CODEC_STATS_LOG_INTERVAL_S = 60.0
@@ -465,6 +466,7 @@ class Qwen3TTSInitialDecodeGraphs:
         input_frames: int | tuple[int, ...],
         batch_sizes: tuple[int, ...] = (1, 2, 4, 8),
         enabled: bool = True,
+        pad_frames: bool = False,
     ) -> None:
         self.decoder = decoder
         self.device = device
@@ -474,6 +476,7 @@ class Qwen3TTSInitialDecodeGraphs:
         )
         self.input_frames = tuple(sorted(set((int(f) for f in frames if int(f) > 0))))
         self.batch_sizes = tuple(sorted(set((int(size) for size in batch_sizes))))
+        self.pad_frames = bool(pad_frames)
         self.device_module = torch.get_device_module(device)
         self.graph_backend: DeviceGraphBackend | None = (
             current_platform.get_device_graph_backend(device)
@@ -539,28 +542,49 @@ class Qwen3TTSInitialDecodeGraphs:
         else:
             pass
 
+    def graph_shape(self, frames: int, batch_size: int) -> tuple[int, int] | None:
+        padded_batch_size = next(
+            (size for size in self.batch_sizes if size >= batch_size), None
+        )
+        if padded_batch_size is None:
+            return None
+        elif self.pad_frames:
+            # note (db-ol): the decoder is causal, so trailing zero frames do not
+            # change the leading samples mathematically (float rounding may differ).
+            return min(
+                (
+                    shape
+                    for shape in self.graphs
+                    if shape[1] == padded_batch_size and shape[0] >= frames
+                ),
+                default=None,
+            )
+        else:
+            exact_shape = (frames, padded_batch_size)
+            return exact_shape if exact_shape in self.graphs else None
+
     def decode(self, codes: torch.Tensor) -> torch.Tensor | None:
         if (
             not self.graphs
             or codes.ndim != 3
             or int(codes.shape[1]) != self.num_quantizers
-            or (int(codes.shape[2]) not in self.input_frames)
         ):
             return None
         else:
             pass
         batch_size = int(codes.shape[0])
-        bucket = next((size for size in self.batch_sizes if size >= batch_size), None)
-        key = (int(codes.shape[2]), bucket) if bucket is not None else None
-        if key is None or key not in self.graphs:
+        frames = int(codes.shape[2])
+        key = self.graph_shape(frames, batch_size)
+        if key is None:
             return None
         else:
             pass
         static_input = self.inputs[key]
         static_input.zero_()
-        static_input[:batch_size].copy_(codes)
+        static_input[:batch_size, :, :frames].copy_(codes)
         self.graphs[key].replay()
-        return self.outputs[key][:batch_size].clone()
+        output_sample_count = frames * int(self.decoder.total_upsample)
+        return self.outputs[key][:batch_size, ..., :output_sample_count].clone()
 
 
 class Qwen3TTSStreamingVocoderScheduler(
@@ -849,10 +873,17 @@ class Qwen3TTSStreamingVocoderScheduler(
             self.decoder,
             device=self.device,
             num_quantizers=num_quantizers,
-            # note (Zhuofeng-Li): exact lengths preserve native decoder shapes; bucket padding needs parity validation.
-            input_frames=tuple(range(1, max_full_decode_frames + 1)),
+            input_frames=(
+                *range(
+                    QWEN3_TTS_FULL_DECODE_GRAPH_FRAME_STEP,
+                    max_full_decode_frames,
+                    QWEN3_TTS_FULL_DECODE_GRAPH_FRAME_STEP,
+                ),
+                max_full_decode_frames,
+            ),
             batch_sizes=tuple(range(1, max_full_decode_requests + 1)),
             enabled=full_decode_graphs_enabled,
+            pad_frames=True,
         )
         self.samples_per_frame = int(self.decoder.total_upsample)
         self.stream_stride = int(stream_stride)
@@ -3463,10 +3494,13 @@ class Qwen3TTSStreamingVocoderScheduler(
             sample_rate = self.sample_rate
         elif (
             len(codes) in self.full_decode_graphs.batch_sizes
-            and (max(int(code.shape[0]) for code in codes), len(codes))
-            in self.full_decode_graphs.graphs
+            and self.full_decode_graphs.graph_shape(
+                max(int(code.shape[0]) for code in codes), len(codes)
+            )
+            is not None
         ):
-            # note (Zhuofeng-Li): exact shapes retain the native single-chunk decode.
+            # note (db-ol): graphs stop at 256 frames, below the native 300 frame
+            # chunk, so one replay matches the single chunk tokenizer decode.
             with torch.inference_mode():
                 padded_codes = torch.nn.utils.rnn.pad_sequence(
                     codes, batch_first=True, padding_value=-1
