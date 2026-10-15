@@ -57,9 +57,74 @@ does not establish bitwise equality: attention and convolution kernels can
 have shape-dependent floating-point behavior. Trimming the extra output
 samples does not establish equality of the retained samples. Exact shapes
 therefore retain the currently validated contract; they are not asserted to
-be mathematically necessary. No exact-versus-bucketed experiment has been run,
-so this PR does not claim that 1,024 captures are the best cost/performance
-choice or that buckets would lose the throughput gain.
+be mathematically necessary. This PR does not claim that 1,024 captures are
+the best cost/performance choice or that buckets would lose the throughput gain.
+
+A native-decoder padding diagnostic on 2026-10-15 provides a direct check of
+that contract. It used the pinned 1.7B tokenizer below, BF16, the configured
+29 fused SnakeBeta modules, H200, PyTorch 2.13.0+cu130, Transformers 5.12.1
+and qwen-tts 0.1.1, without the optional `flash-attn` package. The tokenizer
+used its native PyTorch fallback. The 66 cases combined frame lengths
+31/32/33/63/64/65/127/128/129/255/256, batch sizes 1/2/4 and fixture seeds
+7/11. Each batch retained its native longest length; shorter rows used the
+native zero-code padding. The alternative padded that longest length to the
+next power of two. Both outputs were trimmed to each row's original length
+and reference-prefix boundary.
+
+All 66 identical-shape repeats and all 24 cases needing no extra padding
+were bitwise equal. Of the 42 cases with additional padding, 34 changed
+retained waveform samples. For example, a single 31-frame request padded to
+32 frames had maximum absolute difference 0.0541992 and mean absolute
+difference 0.00139271 after trimming five reference frames. Differences were
+also present outside its last two frames. The largest absolute difference
+over the matrix was 0.223145.
+
+These are synthetic valid codec IDs decoded by the real tokenizer, with
+eager execution on both sides. They demonstrate that padding and trimming
+do not preserve byte parity for this backend. They do not measure perceptual
+quality, serving performance or a CUDA-graph bucketing implementation.
+Result JSON SHA-256:
+`d4e9d5da648c5e5ecfd4c6030845736a1c8f3c7fef88135060370dcb4635c557`.
+[The complete fixture matrix and executed script](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-1.7b-runtime-d154/tree/cf4a50d447d659624bdb32ba4591b0287f272ee6/review-evidence/pr2779/20261015/frame-padding)
+are retained in the evidence repository, which requires access.
+
+The first counterexample can be reproduced from this checkout with
+`MODEL_PATH` pointing to the pinned 1.7B snapshot:
+
+```python
+import os
+
+os.environ["SGLANG_OMNI_TORCH_COMPILE_DEFAULT"] = "0"
+
+import torch
+
+from sglang_omni.models.qwen3_tts.stages import load_qwen3_tts_tokenizer
+from sglang_omni.utils.snake_beta import fuse_vocoder_decoder
+
+torch.set_num_threads(4)
+torch.set_num_interop_threads(1)
+tokenizer = load_qwen3_tts_tokenizer(
+    os.environ["MODEL_PATH"],
+    device="cuda:0",
+    dtype="bfloat16",
+    attn_implementation=None,
+)
+decoder = tokenizer.model.decoder.eval()
+fuse_vocoder_decoder(decoder)
+quantizers = tokenizer.model.config.decoder_config.num_quantizers
+generator = torch.Generator().manual_seed(7 * 10000 + 31 * 10 + 1)
+codes = torch.randint(0, 128, (1, quantizers, 31), generator=generator).cuda()
+padded = torch.nn.functional.pad(codes, (0, 1))
+with torch.inference_mode():
+    decoder(torch.zeros_like(padded))
+    native = decoder(codes).clone()
+    repeat = decoder(codes).clone()
+    bucketed = decoder(padded).clone()
+    assert torch.equal(native.view(torch.uint8), repeat.view(torch.uint8))
+    native = native[..., 5 * 1920 : 31 * 1920].float()
+    bucketed = bucketed[..., 5 * 1920 : 31 * 1920].float()
+    print((native - bucketed).abs().max().item())
+```
 
 A bucketed policy needs a real-tokenizer comparison across lengths on both
 sides of each bucket boundary, mixed-length batches, reference trimming and
@@ -68,6 +133,100 @@ It must also preserve the 0.6B tokenizer's separate 300/25-frame chunk/context
 policy. For startup-sensitive deployments, disabling the existing
 `initial_cuda_graph` option also disables these whole-utterance graphs and
 keeps the tokenizer fallback; it also disables initial streaming graphs.
+
+## Three-seed current-port quality follow-up (2026-10-15)
+
+For Base 1.7B, this follow-up adds paired seeds 43 and 44 and reruns seed
+42 in the same new environment. It does not pool the October 14 single
+pairs with these repetitions. Base remains the fixed branch point
+`fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141`; evaluated head is
+`d8977e6f8814320bdbc3549218c872450912caa5`. The documentation update containing these results
+does not change that runtime.
+
+Every arm/mode/seed used a fresh server, all 1,088 SeedTTS EN requests in
+native order, concurrency 16, a 2,048-token cap and 16 excluded warmups.
+Base ran first for seeds 42/44; head ran first for seed 43. All generation,
+WER, SIM and speed records have the same 1,088 IDs per cohort, zero failed
+requests and zero skipped scores. WER below is the full corpus edit-count
+ratio; SIM is mean WavLM cosine similarity multiplied by 100. Both were
+independently recomputed from the checksum-verified raw archives. All
+outliers and token-cap hits remain included.
+
+| Mode (C16) | Seed | Base WER (%) | Head WER (%) | Δ WER (pp) | Base SIM | Head SIM | Δ SIM |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Non-streaming | 42 | 0.9797 | 1.1806 | +0.2010 | 71.2558 | 71.2574 | +0.0016 |
+| Non-streaming | 43 | 1.0215 | 1.0718 | +0.0502 | 71.4009 | 71.3138 | -0.0872 |
+| Non-streaming | 44 | 1.0466 | 1.0550 | +0.0084 | 71.4951 | 71.2800 | -0.2150 |
+| Streaming | 42 | 1.1471 | 1.1722 | +0.0251 | 71.5253 | 71.3977 | -0.1276 |
+| Streaming | 43 | 1.0299 | 1.0634 | +0.0335 | 71.1812 | 71.3749 | +0.1936 |
+| Streaming | 44 | 0.9964 | 0.9964 | +0.0000 | 71.3606 | 71.3682 | +0.0076 |
+
+| Mode | Mean base/head WER (%) | Mean Δ WER ± sample SD (pp) | Mean base/head SIM | Mean Δ SIM ± sample SD |
+| --- | ---: | ---: | ---: | ---: |
+| Non-streaming | 1.0159 / 1.1025 | +0.0865 ± 0.1013 | 71.3839 / 71.2837 | -0.1002 ± 0.1089 |
+| Streaming | 1.0578 / 1.0773 | +0.0195 ± 0.0174 | 71.3557 / 71.3802 | +0.0245 ± 0.1613 |
+
+Head WER was higher in 3/3 non-streaming and 2/3 streaming seeds.
+The means weight each seed equally; SD describes the three paired deltas.
+These repetitions show the observed variability but do not establish that
+a quality shift is noise, prove non-inferiority, or measure perceptual
+equivalence. No significance or quality-pass claim is made from three seeds.
+
+| Mode | Seed | Base/head max-token hits | Base/head samples with WER >50% |
+| --- | ---: | ---: | ---: |
+| Non-streaming | 42 | 0 / 1 | 0 / 1 |
+| Non-streaming | 43 | 0 / 0 | 0 / 0 |
+| Non-streaming | 44 | 0 / 0 | 0 / 0 |
+| Streaming | 42 | 0 / 0 | 0 / 1 |
+| Streaming | 43 | 0 / 0 | 0 / 0 |
+| Streaming | 44 | 0 / 0 | 0 / 0 |
+
+### Follow-up environment and reproduction
+
+The runs used one H200 per cohort on VISION, 16 allocated physical benchmark
+cores plus one separate monitoring core, and a 192 GiB host-memory allocation.
+The fixed Pyxis image SHA-256 is
+`319cb4ed277c809ac52bd422802efc4bb2e316fcb9fc01f33e36d1a6276fe86e`
+(derived from `lmsysorg/sglang` digest
+`06e4f2ed21afde4ff513cda65070124e727ba23ccaeff7712b8c40e1097d611f`).
+It uses SGLang 0.5.21, Python 3.12, PyTorch 2.13.0+cu130 and Transformers
+5.12.1. This is a different container from the October 14 comparison.
+All model, dataset, ASR and SIM input revisions/hashes remain those in the
+reproduction table below. Clients and scorers use the unchanged base source;
+SIM batch size is uniformly one with complete waveforms.
+
+The seed-42 non-streaming baseline completed in the preceding allocation
+on another H200 of the same host/image; its quality records are retained.
+Its health-probe delay makes its startup time invalid, and no throughput
+comparison is made for that pair across allocations. The remaining 11
+cohorts share the resumed allocation. These repetitions support the
+quality table, not a new pooled throughput claim.
+
+**Startup limitation:** an initial head launch exceeded the upstream
+600-second startup timeout before any formal requests. After preserving
+that failure, both arms used `SGLANG_OMNI_STARTUP_TIMEOUT=1800` for all
+new launches. The imported successful baseline above used the default
+600 seconds. Extending the evaluation wait is not an upstream startup fix.
+
+The five valid baseline launches took about 180 seconds;
+the six head launches took 841–992 seconds. Health was polled every
+10 seconds, so these are first-observed-health times with that polling
+resolution. The previous 139/306-second warm-cache pair is specific to
+its October 14 environment and does not describe this deployment.
+
+Use the reproduction commands below with `--seed 42`, `--seed 43`, and
+`--seed 44` for both modes and both sources. For this allocation, replace
+the affinity with `0-3,11-12,14-19,26-29`, set the startup timeout to 1,800
+seconds and `SPEAKER_SAMPLES_DIR` to a writable node-local directory. Use
+a fresh available port for each TTS/ASR process and stop only the owned TTS
+process before scoring. Keep the pinned inputs and the remaining
+generation/scoring settings unchanged.
+
+[Audited per-seed summaries, compact per-sample scores and protocol](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-1.7b-runtime-d154/tree/f156f33b617a1f4d4871636009db26b6720178e1/review-evidence/pr2779/20261015/paired-quality)
+are backed up in the evidence repository, which requires access. The tables
+above are self-contained; the backup excludes dataset text, reference audio
+and generated WAVs. Audited summary SHA-256:
+`832b67d44483776d0659578a464a948cee1c42c0cdffd5be504604ce376ee047`.
 
 ## Paired current-port measurements (2026-10-14)
 
