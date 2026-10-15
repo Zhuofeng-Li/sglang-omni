@@ -17,6 +17,7 @@ from collections.abc import Iterable, Iterator
 from pathlib import Path
 from queue import Empty, Queue
 from types import SimpleNamespace
+from typing import Literal
 
 import numpy as np
 import pytest
@@ -3604,7 +3605,10 @@ def test_qwen3_tts_decode_graphs_key_by_frames_and_batch_bucket() -> None:
     assert graphs.decode(torch.zeros((1, 2, 24), dtype=torch.long)) is None
 
 
-def test_qwen3_tts_decode_graphs_replay_pads_batch_and_slices_output() -> None:
+@pytest.mark.parametrize("input_frames,pad_frames", [(24, False), (17, True)])
+def test_qwen3_tts_decode_graphs_replay_pads_batch_and_slices_output(
+    input_frames: int, pad_frames: bool
+) -> None:
     decoder = FakeQwen3TTSDecoder()
     graphs = Qwen3TTSInitialDecodeGraphs(
         decoder,
@@ -3612,6 +3616,7 @@ def test_qwen3_tts_decode_graphs_replay_pads_batch_and_slices_output() -> None:
         num_quantizers=2,
         input_frames=(24, 32),
         batch_sizes=(1, 4),
+        pad_frames=pad_frames,
     )
     for frames, batch in ((24, 1), (24, 4), (32, 1)):
         graphs.graphs[(frames, batch)] = FakeCudaGraph()
@@ -3622,18 +3627,22 @@ def test_qwen3_tts_decode_graphs_replay_pads_batch_and_slices_output() -> None:
             batch * frames * 4, dtype=torch.float32
         ).view(batch, 1, frames * 4)
 
-    codes = torch.arange(3 * 2 * 24, dtype=torch.long).view(3, 2, 24) + 1
+    codes = (
+        torch.arange(3 * 2 * input_frames, dtype=torch.long).view(3, 2, input_frames)
+        + 1
+    )
     waveform = graphs.decode(codes)
 
     assert graphs.graphs[(24, 4)].replays == 1
     assert graphs.graphs[(24, 1)].replays == 0
     assert graphs.graphs[(32, 1)].replays == 0
     static_input = graphs.inputs[(24, 4)]
-    assert torch.equal(static_input[:3], codes)
+    assert torch.equal(static_input[:3, :, :input_frames], codes)
+    assert torch.count_nonzero(static_input[:3, :, input_frames:]) == 0
     assert torch.equal(static_input[3], torch.zeros((2, 24), dtype=torch.long))
     assert waveform is not None
-    assert waveform.shape == (3, 1, 96)
-    assert torch.equal(waveform, graphs.outputs[(24, 4)][:3])
+    assert waveform.shape == (3, 1, input_frames * 4)
+    assert torch.equal(waveform, graphs.outputs[(24, 4)][:3, :, : input_frames * 4])
     assert (
         waveform.untyped_storage().data_ptr()
         != graphs.outputs[(24, 4)].untyped_storage().data_ptr()
@@ -3647,7 +3656,11 @@ def test_qwen3_tts_decode_graphs_replay_pads_batch_and_slices_output() -> None:
 
     assert graphs.decode(torch.zeros((3, 2, 32), dtype=torch.long)) is None
     assert graphs.decode(torch.zeros((5, 2, 24), dtype=torch.long)) is None
-    assert graphs.decode(torch.zeros((1, 2, 20), dtype=torch.long)) is None
+    assert graphs.decode(torch.zeros((1, 2, 33), dtype=torch.long)) is None
+    if not pad_frames:
+        assert graphs.decode(torch.zeros((1, 2, 20), dtype=torch.long)) is None
+    else:
+        pass
     assert graphs.decode(torch.zeros((1, 3, 24), dtype=torch.long)) is None
     assert graphs.decode(torch.zeros((2, 24), dtype=torch.long)) is None
     assert graphs.graphs[(24, 4)].replays == 1
@@ -9719,19 +9732,25 @@ def test_real_small_base_chunked_vocoder_matches_tokenizer_decode(
 @pytest.mark.accelerator
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="requires CUDA")
 @pytest.mark.parametrize("frame_lengths", [(1,), (15, 17), (37, 200, 255)])
-def test_real_small_base_padded_decoder_graph_matches_padded_eager(
+@pytest.mark.parametrize(
+    "checkpoint_variable,model_size",
+    [("QWEN3_TTS_BASE_0_6B_PATH", "0b6"), ("QWEN3_TTS_BASE_1_7B_PATH", "1b7")],
+)
+def test_real_base_padded_decoder_graph_matches_padded_eager(
     frame_lengths: tuple[int, ...],
+    checkpoint_variable: str,
+    model_size: Literal["0b6", "1b7"],
 ) -> None:
-    checkpoint = os.environ.get("QWEN3_TTS_BASE_0_6B_PATH")
+    checkpoint = os.environ.get(checkpoint_variable)
     if checkpoint is None:
-        pytest.skip("Set QWEN3_TTS_BASE_0_6B_PATH to run the real checkpoint gate")
+        pytest.skip(f"Set {checkpoint_variable} to run the real checkpoint gate")
     else:
         pass
     tokenizer = qwen3_stages.load_qwen3_tts_tokenizer(
         checkpoint, device="cuda:0", dtype="bfloat16", attn_implementation="sdpa"
     )
     scheduler = Qwen3TTSStreamingVocoderScheduler(
-        tokenizer, device="cuda:0", tts_model_size="0b6"
+        tokenizer, device="cuda:0", tts_model_size=model_size
     )
     graph = scheduler.full_decode_graphs
     graph.input_frames = (16, 48, 256)

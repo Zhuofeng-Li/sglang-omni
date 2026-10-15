@@ -6,21 +6,23 @@ concurrency-16 throughput by **44.36% (0.6B)** and **26.15% (1.7B)**;
 streaming throughput improved by **7.17%** and **6.20%**, respectively.
 These measurements use the historical source and are not a new benchmark of
 the current upstream port, or an isolated measurement of any one component.
-The paired current-port measurements below separately cover both checkpoint
-sizes, including quality, startup time and resident GPU memory.
+The paired measurements below cover the exact-frame implementation before
+the review-time bucketing change. Their source revisions remain explicit;
+they are not measurements of the current bucketed implementation.
 
 ## Runtime changes
 
 - Base cloning requests use the existing full prefill graph backend, with
   token buckets through 1,024 for 1.7B and the 8,192-token prefill budget for 0.6B. CustomVoice retains its existing 512-token
   ladder; VoiceDesign and unknown variants keep the breakable default.
-- For 1.7B, whole-utterance CUDA vocoding reuses exact frame/batch graphs for 1–256
-  frames and 1–4 requests. Missing shapes, larger batches, deterministic
-  decoding and disabled graphs use the original tokenizer path. No graph
-  bucket padding substitutes for an exact batch shape.
+- For 1.7B, whole-utterance CUDA vocoding uses 16-frame buckets through 256
+  frames and batch sizes 1–4: up to 64 graphs. Requests are zero-padded to
+  the smallest captured frame bucket and decoded audio is trimmed to the
+  original length. Unsupported shapes, deterministic decoding and disabled
+  graphs use the original tokenizer path.
 - For 0.6B, whole-utterance CUDA vocoding preserves the native chunk/context
-  boundaries (300/25 codec frames), captures exact chunk shapes for one or two
-  requests and uses a dedicated stream. Default non-streaming vocoder batching
+  boundaries (300/25 codec frames), uses 16-frame buckets plus the 325-frame
+  maximum for one or two requests (42 graphs), and uses a dedicated stream. Default non-streaming vocoder batching
   becomes two requests with no collection wait; explicit overrides win.
   Whole-utterance graphs require a recognized Base checkpoint size.
 - Capture larger shapes first within a shared graph pool to limit reserved
@@ -37,28 +39,61 @@ that implementation. It also preserves the follow-up scheduling in
 [#2400](https://github.com/sgl-project/sglang-omni/pull/2400) and the first-chunk
 tail runner in [#2658](https://github.com/sgl-project/sglang-omni/pull/2658).
 
-## Exact frame shapes and capture cost
+## Bucketed whole-utterance graphs
 
-The 1.7B ladder captures 256 frame lengths for four batch sizes: up to 1,024
-whole-utterance graphs. This is an intentional startup tradeoff, not a claim
-that length bucketing is impossible. The measured warm-cache startup cost
-below increases from 138.569 to 306.147 seconds; streaming throughput is
-nearly unchanged in that single pair.
+The review-time change adopts [db-ol's bucketing implementation](https://github.com/db-ol/sglang-omni/commit/ffd8a22f9008ac9b6a0dab03ffaf25896e22dda8).
+It replaces up to 1,024 exact-frame 1.7B captures with 64 graphs, and up to
+650 exact-frame 0.6B captures with 42 graphs. Capture remains in descending
+shape order within a shared pool. Only the whole-utterance holder enables
+frame padding; initial and follow-up streaming graph policies are unchanged.
+The 0.6B native 300/25-frame chunk/context boundaries and reference-prefix
+trimming remain in place. Static inputs are cleared before every replay;
+returned audio is cloned and trimmed to the original frame count.
 
-For a native batch whose longest sequence is N frames, the tokenizer pads
-shorter requests to N, decodes that batch, and trims each waveform to its
-original length. The graph path preserves those same frame and batch shapes.
-All captured 1.7B lengths are below the tokenizer's 300-frame chunk boundary,
-so the graph replaces exactly one native decoder call.
+The tokenizer already zero-pads shorter requests to the longest request in
+a native batch. Batch composition can therefore change tensor shapes and
+floating-point results even without CUDA graphs. The causal decoder permits
+trailing padding, but bitwise equality with a narrower native call is not
+the contract for the bucketed path. The appropriate replay check compares
+the graph with eager execution at the same padded shape, then checks
+original-length trimming and fallback behavior.
 
-Padding N to a larger bucket would change the decoder's tensor shapes. The
-causal decoder makes prefix-preserving bucketing plausible, but that alone
-does not establish bitwise equality: attention and convolution kernels can
-have shape-dependent floating-point behavior. Trimming the extra output
-samples does not establish equality of the retained samples. Exact shapes
-therefore retain the currently validated contract; they are not asserted to
-be mathematically necessary. This PR does not claim that 1,024 captures are
-the best cost/performance choice or that buckets would lose the throughput gain.
+[The reviewer reported](https://github.com/sgl-project/sglang-omni/pull/2779#discussion_r4286208221)
+H200 SeedTTS EN non-streaming C16 results with interleaved seeds 42/43/44:
+mean startup decreased from 333 to 157 seconds for 1.7B and 317 to 150
+seconds for 0.6B over four launches each, with mean latency and WER within
+their observed run-to-run variation. These are reviewer-reported results;
+they were not independently recomputed from raw records in this evidence
+archive and are not pooled with the measurements below.
+
+### Independent Radix validation (2026-10-15)
+
+The bucketed implementation in `6718550d76cc498fce830819879a7c5a6491ea88`
+was tested on one Radix H200 with Python 3.12, SGLang 0.5.21, PyTorch
+2.13.0+cu130, Transformers 5.12.1 and qwen-tts 0.1.1. The added tests
+passed: **462 unit tests**, with three Ascend-only skips and 193
+benchmark/accelerator cases deselected; **10 real-checkpoint CUDA tests**,
+with no skips. The GPU cases cover padded graph versus padded eager
+execution for both Base sizes, plus the existing 0.6B native chunk,
+reference-trim and fallback cases. Full pre-commit passed.
+
+Fresh bucketed servers reached health in **240.8 seconds (1.7B)** and
+**180.5 seconds (0.6B)** with `SGLANG_OMNI_STARTUP_TIMEOUT` unset, using
+the upstream 600-second limit. Each served two non-streaming and two
+streaming requests successfully after 16 excluded warmups. The observed
+health times have a 10-second polling resolution and include warm compiler
+caches. These single-launch observations verify startup in this Radix
+environment; they are not a paired startup-speedup estimate or a serving
+quality benchmark. The earlier VISION startup limitation remains documented
+below with its original source and environment.
+
+The 1.7B snapshot is `fd4b254389122332181a7c3db7f27e918eec64e3`; the
+0.6B snapshot is `5d83992436eae1d760afd27aff78a71d676296fc`. Both use
+BF16 and the default pipeline configurations, with Torch compile disabled
+uniformly. The runtime file SHA-256 is
+`84203399a0e92a471755097bb7a9a7b300cbe994a6d94363d91990456824b444`.
+
+### Earlier native-padding diagnostic
 
 A native-decoder padding diagnostic on 2026-10-15 provides a direct check of
 that contract. It used the pinned 1.7B tokenizer below, BF16, the configured
@@ -126,22 +161,21 @@ with torch.inference_mode():
     print((native - bucketed).abs().max().item())
 ```
 
-A bucketed policy needs a real-tokenizer comparison across lengths on both
-sides of each bucket boundary, mixed-length batches, reference trimming and
-fallback paths, followed by startup/memory and paired serving measurements.
-It must also preserve the 0.6B tokenizer's separate 300/25-frame chunk/context
-policy. For startup-sensitive deployments, disabling the existing
-`initial_cuda_graph` option also disables these whole-utterance graphs and
-keeps the tokenizer fallback; it also disables initial streaming graphs.
+The diagnostic above checks narrower versus padded eager execution; it does
+not establish that the numerical difference is larger than the native
+batch-composition effect, or that frame bucketing is unsuitable. The new
+replay tests compare padded graphs with padded eager execution for both
+Base sizes. Disabling the existing initial_cuda_graph option retains the
+tokenizer fallback and also disables initial streaming graphs.
 
-## Three-seed current-port quality follow-up (2026-10-15)
+## Pre-bucketing three-seed quality follow-up (2026-10-15)
 
 For Base 1.7B, this follow-up adds paired seeds 43 and 44 and reruns seed
 42 in the same new environment. It does not pool the October 14 single
 pairs with these repetitions. Base remains the fixed branch point
 `fa4e6d1f1b4c962ecc223e1422f6e879f5ce1141`; evaluated head is
-`d8977e6f8814320bdbc3549218c872450912caa5`. The documentation update containing these results
-does not change that runtime.
+`d8977e6f8814320bdbc3549218c872450912caa5`. These measurements predate the bucketing change and describe the
+exact-frame runtime, not the current bucketed implementation.
 
 Every arm/mode/seed used a fresh server, all 1,088 SeedTTS EN requests in
 native order, concurrency 16, a 2,048-token cap and 16 excluded warmups.
@@ -202,7 +236,7 @@ comparison is made for that pair across allocations. The remaining 11
 cohorts share the resumed allocation. These repetitions support the
 quality table, not a new pooled throughput claim.
 
-**Startup limitation:** an initial head launch exceeded the upstream
+**Pre-bucketing startup limitation:** an initial exact-frame head launch exceeded the upstream
 600-second startup timeout before any formal requests. After preserving
 that failure, both arms used `SGLANG_OMNI_STARTUP_TIMEOUT=1800` for all
 new launches. The imported successful baseline above used the default
@@ -228,7 +262,7 @@ above are self-contained; the backup excludes dataset text, reference audio
 and generated WAVs. Audited summary SHA-256:
 `832b67d44483776d0659578a464a948cee1c42c0cdffd5be504604ce376ee047`.
 
-## Paired current-port measurements (2026-10-14)
+## Pre-bucketing paired port measurements (2026-10-14)
 
 Both revisions ran sequentially on the same allocated NVIDIA H200
 (143,771 MiB, driver 595.71.05). Base is the original branch point
