@@ -6,9 +6,10 @@ concurrency-16 throughput by **44.36% (0.6B)** and **26.15% (1.7B)**;
 streaming throughput improved by **7.17%** and **6.20%**, respectively.
 These measurements use the historical source and are not a new benchmark of
 the current upstream port, or an isolated measurement of any one component.
-The paired measurements below cover the exact-frame implementation before
-the review-time bucketing change. Their source revisions remain explicit;
-they are not measurements of the current bucketed implementation.
+The older upstream comparisons below cover the exact-frame implementation.
+Their source revisions remain explicit. Separate Radix comparisons isolate
+the review-time bucketing candidate within the PR runtime. The final policy
+retains bucketing for 1.7B and exact-frame captures for 0.6B.
 
 ## Runtime changes
 
@@ -21,8 +22,8 @@ they are not measurements of the current bucketed implementation.
   original length. Unsupported shapes, deterministic decoding and disabled
   graphs use the original tokenizer path.
 - For 0.6B, whole-utterance CUDA vocoding preserves the native chunk/context
-  boundaries (300/25 codec frames), uses 16-frame buckets plus the 325-frame
-  maximum for one or two requests (42 graphs), and uses a dedicated stream. Default non-streaming vocoder batching
+  boundaries (300/25 codec frames), uses exact lengths 1–325 for one or two
+  requests (650 graphs), and uses a dedicated stream. Default non-streaming vocoder batching
   becomes two requests with no collection wait; explicit overrides win.
   Whole-utterance graphs require a recognized Base checkpoint size.
 - Capture larger shapes first within a shared graph pool to limit reserved
@@ -41,14 +42,21 @@ tail runner in [#2658](https://github.com/sgl-project/sglang-omni/pull/2658).
 
 ## Bucketed whole-utterance graphs
 
-The review-time change adopts [db-ol's bucketing implementation](https://github.com/db-ol/sglang-omni/commit/ffd8a22f9008ac9b6a0dab03ffaf25896e22dda8).
-It replaces up to 1,024 exact-frame 1.7B captures with 64 graphs, and up to
-650 exact-frame 0.6B captures with 42 graphs. Capture remains in descending
-shape order within a shared pool. Only the whole-utterance holder enables
-frame padding; initial and follow-up streaming graph policies are unchanged.
-The 0.6B native 300/25-frame chunk/context boundaries and reference-prefix
-trimming remain in place. Static inputs are cleared before every replay;
-returned audio is cloned and trimmed to the original frame count.
+The review-time change adopts [db-ol's bucketing implementation](https://github.com/db-ol/sglang-omni/commit/ffd8a22f9008ac9b6a0dab03ffaf25896e22dda8),
+retaining the original author attribution. For 1.7B it replaces up to 1,024
+exact-frame captures with 64 graphs. The candidate also reduced 0.6B to 42
+graphs, but the independent three-seed check below showed higher corpus WER
+in all three pairs. Commit `6075e99c902d1e9565110c20b5f155139dd7b4ad`
+therefore restores the 650 exact-frame 0.6B captures and disables frame
+padding for that holder. This is a conservative default-policy decision;
+the serving measurements do not establish that padding caused the shift.
+
+Capture remains in descending shape order within a shared pool. Only the
+1.7B whole-utterance holder enables frame padding; initial and follow-up
+streaming graph policies are unchanged. The 0.6B native 300/25-frame
+chunk/context boundaries and reference-prefix trimming remain in place.
+Static inputs are cleared before every replay; returned audio is cloned and
+trimmed to the original frame count.
 
 The tokenizer already zero-pads shorter requests to the longest request in
 a native batch. Batch composition can therefore change tensor shapes and
@@ -66,9 +74,9 @@ their observed run-to-run variation. These are reviewer-reported results;
 they were not independently recomputed from raw records in this evidence
 archive and are not pooled with the measurements below.
 
-### Independent Radix validation (2026-10-15)
+### Initial both-size bucket candidate validation (2026-10-15)
 
-The bucketed implementation in `6718550d76cc498fce830819879a7c5a6491ea88`
+The intermediate both-size bucket implementation in `6718550d76cc498fce830819879a7c5a6491ea88`
 was tested on one Radix H200 with Python 3.12, SGLang 0.5.21, PyTorch
 2.13.0+cu130, Transformers 5.12.1 and qwen-tts 0.1.1. The added tests
 passed: **462 unit tests**, with three Ascend-only skips and 193
@@ -92,6 +100,122 @@ The 1.7B snapshot is `fd4b254389122332181a7c3db7f27e918eec64e3`; the
 BF16 and the default pipeline configurations, with Torch compile disabled
 uniformly. The runtime file SHA-256 is
 `84203399a0e92a471755097bb7a9a7b300cbe994a6d94363d91990456824b444`.
+These startup measurements precede the final 0.6B policy restoration and do
+not describe its current default. Final source validation is recorded below.
+
+### Independent exact-frame versus bucket comparison (2026-10-15)
+
+This additional pair isolates frame bucketing within the existing PR runtime:
+exact-frame `5f4de745afc9c2e7a6e5dea19513a9aaff959b82` versus the bucketed
+runtime from `6718550d76cc498fce830819879a7c5a6491ea88`, published with
+tests/documentation in `b6ece10ee6e77141b46dcb6efd307be33a0c21de`.
+It does not compare the full PR with its upstream branch point.
+Both Base sizes use one paired seed, 42, in non-streaming C16 mode. The
+0.6B bucket arm is the rejected candidate, not the final default. The final
+1.7B runtime path is unchanged from this measured bucket arm.
+
+| Base size (non-streaming C16) | Exact requests/s | Bucket requests/s | Change | Exact WER (%) | Bucket WER (%) | Exact SIM | Bucket SIM |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 0.6B | 29.545 | 28.703 | -2.85% | 1.6328 | 2.6375 | 70.3556 | 70.1101 |
+| 1.7B | 30.215 | 30.100 | -0.38% | 1.1722 | 1.0550 | 71.5250 | 71.0479 |
+
+0.6B: ΔWER +1.0048 percentage points; ΔSIM -0.2455; exact/bucket token-cap hits 1/3, samples with WER >50% 1/2.
+
+1.7B: ΔWER -0.1172 percentage points; ΔSIM -0.4771; exact/bucket token-cap hits 0/0, samples with WER >50% 1/1.
+
+All four cohorts contain 1,088 unique successful requests and matching
+generation/WER/SIM/speed IDs, with zero failed requests or skipped scores.
+Full-corpus WER and mean cosine similarity times 100 were independently
+recomputed from checksum-verified archives. Token-cap hits and high-WER
+outliers are retained. One paired seed does not establish that observed
+differences are noise, prove quality equivalence or show statistical
+significance. These values are separate from the earlier three-seed study.
+
+| Base size | Exact / bucket startup (s) | Exact / bucket mean full latency (s) |
+| --- | ---: | ---: |
+| 0.6B | 333.1 / 180.1 | 0.439 / 0.462 |
+| 1.7B | 340.5 / 181.8 | 0.525 / 0.528 |
+
+Both arms use the upstream 600-second startup limit, with no environment
+override. Health was polled every 10 seconds. Startup observations include
+warm compiler caches on a shared host, so the single pairs describe this
+environment and are not a controlled cold-start study. The separate
+default-timeout smoke checks above also exercised streaming requests.
+
+The four cohorts ran sequentially on the same Radix H200 and the pinned
+environment described above. Order: 0.6B exact/bucket, then 1.7B exact/bucket.
+Each starts a fresh server, excludes 16 warmup requests, and evaluates all
+1,088 SeedTTS EN samples in native order with concurrency 16, seed 42 and
+a 2,048-token cap. Client and scorer source is fixed at `94730a87`, identical
+for both arms. All inputs use the pinned revisions below; SIM uses batch
+one with complete waveforms and ASR retains its default concurrency 32.
+Server/client affinity is 16 physical CPU cores (0–15), without exclusive
+reservation. The bucket runtime/test hashes match `b6ece10e`; the later
+`6075e99c` restores the 0.6B policy as described above.
+
+Use the generation/scoring commands below with these two runtime sources,
+`qwen3_tts_0_6b.yaml` or `qwen3_tts_1_7b.yaml`, seed 42, and startup-timeout
+override unset. [0.6B audited numeric records and protocol](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-1.7b-runtime-d154/tree/a6a74c5688a1ff948b5740508cba62299e213e63/review-evidence/pr2779/20261015/radix-qwen06), [1.7B audited numeric records and protocol](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-1.7b-runtime-d154/tree/b14382514c885136769258e6f46677d586dfcc53/review-evidence/pr2779/20261015/radix-qwen17)
+are backed up with remote byte verification; the evidence repositories
+require access. The public tables and protocol are self-contained.
+
+### Three-seed 0.6B bucket candidate check (2026-10-15)
+
+After the seed-42 shift, seeds 43 and 44 were declared before execution.
+The order was exact/bucket for 42, bucket/exact for 43, and exact/bucket for
+44. Sources, settings, scorers and inputs are the same as the preceding
+pair. The original seed 42 remains included. Each of the six cohorts has
+1,088 successful requests and matching generation/WER/SIM/speed IDs, with
+zero failures or skipped scores. All capped and high-WER samples remain.
+
+| Seed | Exact WER (%) | Bucket WER (%) | Δ WER (pp) | Exact SIM | Bucket SIM | Exact / bucket requests/s | Exact / bucket cap hits | Exact / bucket WER >50% samples |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 42 | 1.6328 | 2.6375 | +1.0048 | 70.3556 | 70.1101 | 29.545 / 28.703 | 1 / 3 | 1 / 2 |
+| 43 | 1.2392 | 1.3648 | +0.1256 | 70.2263 | 70.3008 | 28.164 / 34.882 | 2 / 1 | 2 / 1 |
+| 44 | 1.1555 | 1.2141 | +0.0586 | 70.0344 | 70.0432 | 35.203 / 33.446 | 1 / 1 | 0 / 1 |
+
+Equal-weight mean corpus WER is **1.3425% exact / 1.7388% bucket**. Mean
+paired ΔWER is **+0.3963 percentage points**, sample SD **0.5280**. Mean SIM
+is **70.2055 / 70.1514**; mean paired ΔSIM is **-0.0541**, sample SD
+**0.1690**. WER is higher for the bucket candidate in all three pairs;
+throughput and SIM deltas change sign. SD is descriptive over three pairs,
+not a significance or equivalence test.
+
+For seed 42, two capped samples account for 117 of the 120 additional word
+errors. Generated token counts differ for 1,005 of 1,088 request IDs, so
+this is not a fixed-codec decoder comparison and cannot attribute the WER
+shift to frame padding alone. The final policy restores the pre-bucketing
+0.6B capture shapes while retaining 1.7B bucketing. This removes the newly
+introduced 0.6B default change without discarding its unfavorable evidence.
+
+[Audited per-sample numeric records, all six cohort summaries, predeclared
+seed order and paired statistics](https://github.com/OpenRSI-Foundation/sglang-omni-qwen3-tts-base-1.7b-runtime-d154/tree/e003cf994a71befee4f3b44acb490b5f5710c88a/review-evidence/pr2779/20261015/radix-qwen06-three-seed)
+are backed up with remote byte verification; repository access is required.
+
+### Final source validation (2026-10-15)
+
+Final runtime `6075e99c902d1e9565110c20b5f155139dd7b4ad` passed **462
+unit tests** (three Ascend-only skips, 193 benchmark/accelerator cases
+deselected) and **10 real-checkpoint CUDA tests with no skips** on the same
+Radix H200 environment. Four GPU cases check exact waveform equality for
+the production 0.6B native chunk/reference-trim and fallback paths. Six
+utility cases compare padded graph replay with padded eager decoding across
+both sizes; those tests explicitly enable padding for the 0.6B utility,
+whose production default is now disabled.
+
+Fresh final-source servers reached health in **311.0 seconds (0.6B,
+exact frames)** and **190.1 seconds (1.7B, buckets)**. Both retained the
+upstream 600-second timeout with no environment override and successfully
+served two non-streaming and two streaming requests after 16 excluded
+warmups. Health polling resolution is 10 seconds, with warm compiler caches
+on a shared host. These checks establish startup and serving in this Radix
+environment, not a paired speedup or a new quality measurement. Full
+pre-commit passed on the final source and this benchmark document.
+
+Runtime SHA-256:
+`57bde622dad03afdd71a608c4a50507d999e3df2c7237cd06b282ec8cd6ac3be`.
+Test-file SHA-256:
+`5e3177f123e41d1183db3e59b05db5efa8d26338bc2d4c471b5b95feb554557e`.
 
 ### Earlier native-padding diagnostic
 
