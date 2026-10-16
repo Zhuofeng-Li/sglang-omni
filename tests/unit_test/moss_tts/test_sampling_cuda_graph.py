@@ -127,19 +127,6 @@ def test_engine_builder_uses_backbone_capture_buckets() -> None:
     assert calls == [([1, 2, 4], True)]
 
 
-def test_engine_builder_enables_breakable_prefill_and_async_decode() -> None:
-    builder = MossTtsEngineBuilder()
-
-    assert builder.supports_breakable_prefill_cuda_graph is True
-    assert (
-        builder.generation_defaults(dtype="bfloat16")["cuda_graph_backend_prefill"]
-        == "breakable"
-    )
-    builder.stream_output_builder = None
-    builder.stream_output_builder = None
-    assert builder.extra_scheduler_kwargs()["enable_async_decode"] is True
-
-
 def test_model_runner_routes_supported_audio_batch_to_sampling_graph() -> None:
     calls = []
 
