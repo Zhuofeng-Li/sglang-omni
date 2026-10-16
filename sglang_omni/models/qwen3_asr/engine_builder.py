@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import logging
+import sys
 from typing import TYPE_CHECKING, Callable
 
+from sglang.srt.hardware_backend.mlx import runtime as mlx_runtime
 from sglang.srt.managers.mm_utils import init_mm_embedding_cache
 from sglang.srt.server_args import ServerArgs
 from sglang.srt.utils import get_hip_version, is_gfx95_supported
@@ -23,12 +25,14 @@ from sglang_omni.models.qwen3_asr.audio_lengths import (
     qwen3_asr_max_audio_tokens,
     qwen3_asr_max_output_tokens,
 )
+from sglang_omni.models.qwen3_asr.audio_workers import AudioWorkerPool
 from sglang_omni.models.qwen3_asr.encoder_service import (
     Qwen3ASRPreLMEncoderService,
     build_cache_namespace,
 )
 from sglang_omni.models.qwen3_asr.request_builders import Qwen3ASRRequestData
 from sglang_omni.platforms import current_platform
+from sglang_omni.preprocessing.transcription import prepare_audio
 from sglang_omni.proto.request import StagePayload
 from sglang_omni.scheduling.engine_factory import (
     AsrEngineBuilder,
@@ -144,6 +148,7 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         self.device: str | None = None
         self.model_path: str | None = None
         self.audio_encoder_service: Qwen3ASRPreLMEncoderService | None = None
+        self.audio_worker_pool: AudioWorkerPool | None = None
         self.torch_mps_model_runner: Qwen3ASRTorchMpsModelRunner | None = None
         self._should_wait_for_encode: Callable[[], bool] | None = (
             None  # noqa: leading-underscore  # upstream spelling, or the public name is already taken
@@ -168,18 +173,15 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
 
     def uses_torch_mps(self) -> bool:
         import torch
-        from sglang.srt.hardware_backend.mlx.runtime import use_mlx
 
         return (
-            not use_mlx()
+            not mlx_runtime.use_mlx()
             and self.device is not None
             and torch.device(self.device).type == "mps"
         )
 
     def generation_defaults(self, *, dtype: str) -> GenerationDefaults:
-        from sglang.srt.hardware_backend.mlx.runtime import use_mlx
-
-        if use_mlx():
+        if mlx_runtime.use_mlx():
             if not current_platform.is_mps():
                 raise RuntimeError("SGLANG_USE_MLX=1 requires the Apple Metal platform")
             else:
@@ -260,9 +262,7 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         model_worker: ModelWorker | MlxTpModelWorker,
         output_proc: SGLangOutputProcessor,
     ) -> ModelRunner[Qwen3ASRRequestData]:
-        from sglang.srt.hardware_backend.mlx.runtime import use_mlx
-
-        if use_mlx():
+        if mlx_runtime.use_mlx():
             from sglang_omni.model_runner.mlx_model_worker import (
                 MlxSchedulerModelRunner,
             )
@@ -316,10 +316,9 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
 
     def validate_before_infrastructure(self, server_args: ServerArgs) -> None:
         from sglang.srt.arg_groups.model_override_base import resolved_view
-        from sglang.srt.hardware_backend.mlx.runtime import use_mlx
 
         cfg = resolved_view(server_args)
-        if use_mlx() and cfg.mlx_enable_sampling:
+        if mlx_runtime.use_mlx() and cfg.mlx_enable_sampling:
             raise ValueError(
                 "Qwen3-ASR MLX currently requires mlx_enable_sampling=False"
             )
@@ -365,13 +364,11 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         self.log_memory_checkpoint("post_static_allocation")
 
     def adjust_overrides(self, overrides: dict[str, object]) -> None:
-        from sglang.srt.hardware_backend.mlx.runtime import use_mlx
-
         if "context_length" in overrides:
             self.context_length = int(overrides.pop("context_length"))
         else:
             pass
-        if use_mlx() or self.uses_torch_mps():
+        if mlx_runtime.use_mlx() or self.uses_torch_mps():
             # Note (yexiaodong): Typed pipeline engine defaults are merged after
             # the backend profile and otherwise re-enable Torch compilation.
             overrides["enable_torch_compile"] = False
@@ -388,9 +385,7 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         *,
         generation_cuda_graph_enabled: bool,
     ) -> None:
-        from sglang.srt.hardware_backend.mlx.runtime import use_mlx
-
-        if use_mlx():
+        if mlx_runtime.use_mlx():
             # Note (yexiaodong): Native MLX prefill owns audio encoding, so the
             # Torch pre-LM service and its CUDA graphs must remain uninitialized.
             return
@@ -447,6 +442,18 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
             )
         else:
             pass
+        if (
+            current_platform.is_cuda()
+            and sys.platform == "linux"
+            and self.request_build_max_workers > 1
+            and int(server_args.tp_size) == 1
+        ):
+            # note (rsi): decoding and resampling an upload hold the GIL for
+            # milliseconds; one worker process per build thread keeps that work
+            # off the scheduler's interpreter. TP ranks build on one thread.
+            self.audio_worker_pool = AudioWorkerPool(self.request_build_max_workers)
+        else:
+            pass
 
     def should_wait_for_encode(self) -> bool:
         return (
@@ -463,8 +470,6 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         Callable[[Qwen3ASRRequestData], StagePayload],
     ]:
         del model
-        from sglang.srt.hardware_backend.mlx.runtime import use_mlx
-
         return request_builders.make_qwen3_asr_scheduler_adapters(
             tokenizer=self.tokenizer,
             feature_extractor=self.feature_extractor,
@@ -472,7 +477,12 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
             context_length=self.context_length,
             audio_encoder_service=self.audio_encoder_service,
             should_wait_for_encode=self.should_wait_for_encode,
-            greedy_only=use_mlx() or self.uses_torch_mps(),
+            greedy_only=mlx_runtime.use_mlx() or self.uses_torch_mps(),
+            audio_preparer=(
+                prepare_audio
+                if self.audio_worker_pool is None
+                else self.audio_worker_pool.prepare_audio
+            ),
         )
 
     def make_abort_callback(self) -> Callable[[str], None] | None:
@@ -491,16 +501,31 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         )  # noqa: leading-underscore  # upstream spelling, or the public name is already taken
 
     def extra_scheduler_callbacks(self) -> dict[str, Callable[[], None]]:
-        if self.audio_encoder_service is None:
+        if self.audio_encoder_service is None and self.audio_worker_pool is None:
             return {}
         else:
             pass
-        return {"shutdown_callback": self.audio_encoder_service.close}
+        return {"shutdown_callback": self.close_model_resources}
+
+    def close_model_resources(self) -> None:
+        if self.audio_encoder_service is not None:
+            self.audio_encoder_service.close()
+        else:
+            pass
+        if self.audio_worker_pool is not None:
+            self.audio_worker_pool.close()
+        else:
+            pass
 
     def cleanup_build_failure(self) -> None:
         if self.audio_encoder_service is not None:
             self.audio_encoder_service.close()
             self.audio_encoder_service = None
+        else:
+            pass
+        if self.audio_worker_pool is not None:
+            self.audio_worker_pool.close()
+            self.audio_worker_pool = None
         else:
             pass
 
