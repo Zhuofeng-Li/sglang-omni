@@ -1,9 +1,63 @@
 # MOSS-TTS Delay: Claude runtime experiment and upstream port
 
 This change ports runtime optimizations from an evaluated MOSS-TTS v1.5
-experiment. The numbers below describe the historical experiment, not the
-performance of this port on current main. Full-model quality and throughput
-qualification of the port remains outstanding.
+experiment. Fresh qualification against current main is reported first; the
+historical experiment and its provenance remain separate below.
+
+## Current-main incremental qualification (2026-10-16 UTC)
+
+On one H100 80GB HBM3, the remaining runtime changes improve non-streaming throughput by **39.9%** and streaming throughput by about **30%** against main at `85d4219916c5457995fc7ac3b53b7e5b5ab75ea0`. These are fresh matched measurements, separate from the historical experiment below.
+
+The initial merged candidate could not serve this workload unchanged: its default 0.72 AR memory fraction exhausted memory during dense prefill graph capture, and the first requests at a reduced budget failed because the tensor-parallel query still used a removed function. Qualification uses `get_parallel().tp_size` and an AR stage fraction of **0.60 for both main and candidate**. The PR now makes that candidate budget the default; the single-process configurations retain their existing policy.
+
+Protocol: full SeedTTS English split, 1,088 requests per pass; both modes; seeds 42/43/44; client concurrency 16; running-request and decode-graph caps 64; 2,048-token limit; references-format cloning and automatic token count; 16 excluded warm-ups. Each pass starts a new service with separate empty compiler/JIT caches. Non-streaming precedes streaming; main runs first for seeds 42/44 and candidate first for seed 43. The same card and OMP/MKL thread count 8 are used under shared CPU scheduling, without CPU pinning or quota.
+
+Core software: Python 3.12.15, PyTorch 2.13.0+cu130, SGLang 0.5.21, Transformers 5.12.1, FlashInfer 0.6.18. The environment sets CUDA_HOME to the installed CUDA 13 toolkit, provides its lib64/libcudart linker paths, and disables unused DeepGEMM JIT in both variants. Model, codec, dataset and ASR revisions, all repeat summaries, and evaluated source identity are in the [machine-readable results](moss_tts_main_incremental_20261016.json).
+
+All 13,056 generated clips received Qwen3-ASR-1.7B WER and WavLM speaker-similarity scoring after serving stopped. Quality scoring shares one ASR service across passes; WavLM scores are cosine similarity ×100. Means below are arithmetic means of repeat-level metrics, including corpus WER and percentiles; percentiles are not pooled.
+
+| Metric | Main non-streaming | Candidate non-streaming | Main streaming | Candidate streaming |
+|---|---:|---:|---:|---:|
+| Requests/s | 11.736 | 16.415 | 9.376 | 12.190 |
+| Audio seconds/s | 52.581 | 73.544 | 42.008 | 54.614 |
+| Mean request latency (s) | 1.356 | 0.969 | 1.698 | 1.304 |
+| p95 request latency (s) | 1.713 | 1.212 | 2.134 | 1.632 |
+| Mean first audio (s) | — | — | 0.7259 | 0.6073 |
+| p95 first audio (s) | — | — | 0.8412 | 0.6976 |
+| p95 inter-chunk interval (s) | — | — | 0.2325 | 0.1465 |
+| Corpus WER (%) | 1.7611 | 1.7332 | 1.8142 | 1.7249 |
+| Speaker similarity (cosine ×100) | 69.0594 | 68.9953 | 68.9874 | 69.0849 |
+| Service startup (s) | 92.06 | 129.08 | 92.06 | 129.42 |
+| Sampled peak VRAM (GiB) | 67.12 | 70.86 | 66.94 | 70.63 |
+
+| Mode | Seed | Main / candidate requests/s | Main / candidate WER (%) | Main / candidate SIM |
+|---|---:|---:|---:|---:|
+| nonstream | 42 | 11.742 / 16.404 | 2.1938 / 2.1519 | 69.3383 / 69.1936 |
+| nonstream | 43 | 11.753 / 16.402 | 1.4904 / 1.3983 | 68.7877 / 68.7269 |
+| nonstream | 44 | 11.714 / 16.440 | 1.5993 / 1.6495 | 69.0524 / 69.0654 |
+| stream | 42 | 9.369 / 12.137 | 2.3194 / 2.1519 | 69.2032 / 69.2465 |
+| stream | 43 | 9.350 / 12.216 | 1.4485 / 1.3564 | 68.7576 / 68.9411 |
+| stream | 44 | 9.409 / 12.216 | 1.6746 / 1.6662 | 69.0015 / 69.0670 |
+
+Coverage: 12/12 full passes, 13,056/13,056 successful requests, no generation failures, no reported token-cap hits, and no skipped WER or similarity scores. Both variants exceed 2% WER in seed 42 individually, although every mode-level three-repeat mean is below 2%. No outlier clips are excluded. Finish reasons are not observed by this protocol, so zero reported token-cap hits does not independently prove absence of truncation.
+
+Tradeoffs: candidate startup takes about 37 seconds longer and sampled peak VRAM increases by about 3.7 GiB at the matched 0.60 budget. VRAM is sampled every 10 seconds, not an allocator-recorded instantaneous peak. These results cover concurrency 16 and one H100; they do not establish other load levels, hardware, listening quality or formal historical Judge eligibility. This is direct PR qualification, not a new RSI-Harness research run.
+
+### Publication validation
+
+The updated default configuration completed a fresh four-request end-to-end
+smoke without the comparison YAML. Local checks on the same H100 and pinned
+software completed with:
+
+- MOSS-TTS CPU suite plus shared async-decode/model-runner hooks: **393 passed,
+  4 skipped, 96 accelerator cases deselected**.
+- Embedding, sampling-graph and vocoder test files on CUDA: **95 passed**,
+  including the new model-level runtime-context/eager-fallback regression.
+- `pre-commit run --all-files` and `git diff --check`: passed.
+
+The non-streaming SIM mean decreases by 0.0641 points on its 0–100 scale;
+streaming SIM increases by 0.0975 points. These objective metrics do not establish
+perceptual equivalence, and no listening test is claimed.
 
 ## Provenance
 
@@ -97,7 +151,7 @@ points relative to B0. WER alone does not establish speaker similarity or
 perceptual equivalence. These Qwen3-ASR numbers are not directly comparable to
 the cookbook's Whisper/FunASR reference results.
 
-## Validation of the port
+## Earlier validation of the port
 
 Local checks used Python 3.12, PyTorch 2.13.0+cu130, SGLang 0.5.21,
 Transformers 5.12.1, and an H100 NVL for the targeted CUDA suite:
@@ -124,8 +178,7 @@ sampling across text/audio boundaries and tied logits, lookahead cancellation
 and retraction bookkeeping, pinned upload reuse, and graph-owned vocoder inputs.
 They also retain the existing multi-segment eager routing tests.
 
-Full-model evaluation on this port is still required before asserting a speedup
-or unchanged output quality: rerun both modes against its exact main baseline,
-report all three seeds, measure startup/peak memory, and include speaker
-similarity or listening checks alongside WER. Unit tests with synthetic logits
-and a small decoder do not replace that evaluation.
+The current-main qualification above supplies full-model throughput, WER, speaker
+similarity, startup and sampled peak-memory evidence. Listening tests and other
+concurrency/hardware settings remain unmeasured. Unit tests with synthetic logits
+and a small decoder do not replace full-model qualification.

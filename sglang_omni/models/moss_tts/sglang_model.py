@@ -333,7 +333,7 @@ class MossTTSDelaySGLangModel(torch.nn.Module):
         if (
             not input_ids_2d.is_cuda
             or input_ids_2d.dtype not in (torch.int32, torch.int64)
-            or get_tensor_model_parallel_world_size() != 1
+            or get_parallel().tp_size != 1
             or not self.pp_group.is_first_rank
         ):
             return None

@@ -21,7 +21,8 @@ _PKG = "sglang_omni.models.moss_tts"
 _REF_AUDIO_CACHE_MAX_ITEMS = 8192
 _REF_AUDIO_CACHE_MAX_BYTES = 64 * 1024 * 1024
 _COLOCATED_PREPROCESSING_GPU_MEMORY_FRACTION = 0.10
-_COLOCATED_AR_GPU_MEMORY_FRACTION = 0.72
+# note (Zhuofeng Li): dense prefill graphs need headroom beyond the KV budget.
+_COLOCATED_AR_GPU_MEMORY_FRACTION = 0.60
 _COLOCATED_VOCODER_GPU_MEMORY_FRACTION = 0.18
 # note (Zhuofeng Li): exact token counts preserve the eager prefill shape.
 COLOCATED_PREFILL_CUDA_GRAPH_MAX_TOKENS = 512
