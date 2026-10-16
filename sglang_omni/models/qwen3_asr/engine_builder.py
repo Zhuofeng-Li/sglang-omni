@@ -6,6 +6,7 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING, Callable
 
+from sglang.srt.hardware_backend.mlx import runtime as mlx_runtime
 from sglang.srt.managers.mm_utils import init_mm_embedding_cache
 from sglang.srt.server_args import ServerArgs
 from sglang.srt.utils import get_hip_version, is_gfx95_supported
@@ -61,10 +62,14 @@ else:
 logger = logging.getLogger(__name__)
 
 
+QWEN3_ASR_FULL_PREFILL_MAX_REQUESTS = 32
+
+
 class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
     model_name = "Qwen3-ASR"
     model_arch_override = "Qwen3ASRForConditionalGeneration"
     supports_breakable_prefill_cuda_graph = True
+    supports_full_prefill_cuda_graph = True
 
     def __init__(
         self,
@@ -177,9 +182,7 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         )
 
     def generation_defaults(self, *, dtype: str) -> GenerationDefaults:
-        from sglang.srt.hardware_backend.mlx.runtime import use_mlx
-
-        if use_mlx():
+        if mlx_runtime.use_mlx():
             if not current_platform.is_mps():
                 raise RuntimeError("SGLANG_USE_MLX=1 requires the Apple Metal platform")
             else:
@@ -234,6 +237,14 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
             "dtype": dtype,
             "cuda_graph_backend_prefill": CudaGraphBackend.BREAKABLE,
         }
+        if current_platform.is_cuda():
+            # note (Zhuofeng Li): full capture removes per-layer attention dispatch.
+            defaults["cuda_graph_backend_prefill"] = CudaGraphBackend.FULL
+            defaults["cuda_graph_config"] = {
+                "prefill": {"full_prefill_max_req": QWEN3_ASR_FULL_PREFILL_MAX_REQUESTS}
+            }
+        else:
+            pass
         # ROCm 7.2's AITER batch-prefill specialization is inaccurate for the
         # Qwen3-ASR attention shape on gfx950. Keep decode on the selected
         # backend, but use Triton for prefill until the affected stack is fixed.
