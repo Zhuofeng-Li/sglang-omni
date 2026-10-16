@@ -3564,12 +3564,14 @@ def test_qwen3_tts_decode_graphs_replay_pads_batch_and_slices_output(
 def test_qwen3_tts_streaming_vocoder_followup_graphs_can_be_disabled(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    requested_enabled: list[bool] = []
+    """Followup capture can be disabled independently of initial capture."""
+    enabled_requests_by_graph_holder_id: dict[int, bool] = {}
     holder_cls = qwen3_streaming_vocoder.Qwen3TTSInitialDecodeGraphs
 
     def recording_holder(*args, enabled: bool, **kwargs):
-        requested_enabled.append(enabled)
-        return holder_cls(*args, enabled=enabled, **kwargs)
+        graph_holder = holder_cls(*args, enabled=enabled, **kwargs)
+        enabled_requests_by_graph_holder_id[id(graph_holder)] = enabled
+        return graph_holder
 
     monkeypatch.setattr(
         qwen3_streaming_vocoder, "Qwen3TTSInitialDecodeGraphs", recording_holder
@@ -3584,7 +3586,13 @@ def test_qwen3_tts_streaming_vocoder_followup_graphs_can_be_disabled(
 
     assert scheduler.followup_decode_graphs.enabled is False
     assert scheduler.initial_decode_graphs is not scheduler.followup_decode_graphs
-    assert requested_enabled == [True] + [False] * len(scheduler.followup_graph_holders)
+    assert (
+        enabled_requests_by_graph_holder_id[id(scheduler.initial_decode_graphs)] is True
+    )
+    assert all(
+        enabled_requests_by_graph_holder_id[id(graph_holder)] is False
+        for graph_holder in scheduler.followup_graph_holders
+    )
 
 
 def test_qwen3_tts_vocoder_warms_graphs_before_serving_start(
