@@ -101,6 +101,11 @@ class Qwen3ASRPipelineConfig(PipelineConfig):
         )
     ]
 
+    def resolved_stage_env_defaults(self, stage_name: str) -> dict[str, str]:
+        env_defaults = super().resolved_stage_env_defaults(stage_name)
+        env_defaults.setdefault("SGLANG_ENABLE_METADATA_GLUE_GRAPH", "1")
+        return env_defaults
+
     @property
     def resolved_audio_chunking(self) -> ResolvedAudioChunking:
         from sglang.srt.hardware_backend.mlx.runtime import use_mlx

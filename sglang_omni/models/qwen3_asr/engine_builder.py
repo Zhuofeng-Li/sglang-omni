@@ -6,6 +6,7 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING, Callable
 
+from sglang.srt.environ import envs
 from sglang.srt.hardware_backend.mlx import runtime as mlx_runtime
 from sglang.srt.managers.mm_utils import init_mm_embedding_cache
 from sglang.srt.server_args import ServerArgs
@@ -19,7 +20,11 @@ from transformers import (
 
 from sglang_omni.model_runner.base import ModelRunner
 from sglang_omni.model_runner.model_worker import ModelWorker
-from sglang_omni.models.qwen3_asr import mrope_fast_path, request_builders
+from sglang_omni.models.qwen3_asr import (
+    metadata_glue,
+    mrope_fast_path,
+    request_builders,
+)
 from sglang_omni.models.qwen3_asr.audio_lengths import (
     qwen3_asr_max_audio_tokens,
     qwen3_asr_max_output_tokens,
@@ -38,6 +43,7 @@ from sglang_omni.scheduling.engine_factory import (
 )
 from sglang_omni.scheduling.generation_batch_policy import (
     CudaGraphBackend,
+    build_default_cuda_graph_bs,
     get_decode_cuda_graph_bs,
 )
 from sglang_omni.scheduling.sglang_backend.output_processor import SGLangOutputProcessor
@@ -305,6 +311,22 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         server_args: ServerArgs,
     ) -> None:
         del device, gpu_id, server_args
+        if current_platform.is_cuda():
+            # note (Zhuofeng Li): host-fed FlashInfer plans cannot be replayed as metadata graphs.
+            runner = model_worker.model_runner
+            if (
+                runner.prefill_attention_backend_str
+                == runner.decode_attention_backend_str
+                == "fa3"
+            ):
+                if envs.SGLANG_ENABLE_METADATA_GLUE_GRAPH.get():
+                    metadata_glue.apply_thread_local_glue_capture()
+                else:
+                    pass
+            else:
+                envs.SGLANG_ENABLE_METADATA_GLUE_GRAPH.set(False)
+        else:
+            pass
         if self.uses_torch_mps():
             from sglang_omni.models.qwen3_asr.torch_mps_runner import (
                 install_torch_mps_language_model,
@@ -386,6 +408,20 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
             # Note (yexiaodong): Typed pipeline engine defaults are merged after
             # the backend profile and otherwise re-enable Torch compilation.
             overrides["enable_torch_compile"] = False
+        else:
+            pass
+
+        if current_platform.is_cuda() and not overrides.get(
+            "disable_cuda_graph", False
+        ):
+            max_decode_rows = int(overrides["cuda_graph_max_bs"])
+            if overrides.get("cuda_graph_bs") == build_default_cuda_graph_bs(
+                max_decode_rows
+            ):
+                # note (Zhuofeng Li): exact-size replay avoids resetting padded slots.
+                overrides["cuda_graph_bs"] = list(range(1, max_decode_rows + 1))
+            else:
+                pass
         else:
             pass
 
