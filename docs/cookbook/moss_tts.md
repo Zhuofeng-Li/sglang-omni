@@ -30,8 +30,8 @@ The processor ships with the checkpoint, so no extra TTS package is needed. Deco
 ## Server Configuration
 
 The pipeline is `preprocessing → tts_engine → vocoder`. By default the vocoder
-runs in its own process (GPU memory fractions 0.10 / 0.60 / 0.18 for the three
-stages, leaving 12% headroom for graph capture): its Python decode loop no longer shares the interpreter with the AR
+runs in its own process (GPU memory fractions 0.10 / 0.72 / 0.18 for the three
+stages): its Python decode loop no longer shares the interpreter with the AR
 scheduler, which on H200 lifts single-replica throughput by about 70% at every
 concurrency cap. `config_cls: MossTTSSingleProcessPipelineConfig` restores the
 single-process layout; the bounded 24 GB and 32 GB configurations keep it.
@@ -89,42 +89,6 @@ CUDA-Graph-cap-1 qualification point, not a broader 24 GB capacity claim.
 Both policies can be changed explicitly through the preprocessing/vocoder
 stages' `factory.*` entries when profiling another layout. Explicit `device`
 values take precedence over the GPU selected by stage placement.
-
-### Runtime capture and decode overlap
-
-The default colocated layout captures exact prefill lengths from 1 to 512 tokens
-and single-segment non-streaming vocoder lengths from 1 to 128 frames. Longer or
-unsupported shapes use eager execution. The single-process layout leaves these
-two capture ladders disabled. Default-profile decode batches of at least two
-requests can overlap host bookkeeping with the next GPU decode step.
-
-To disable the two capture ladders and decode overlap and restore the previous
-0.72 AR stage memory budget, add:
-
-```yaml
-stages:
-  tts_engine:
-    gpu_memory_fraction: 0.72
-    engine:
-      cuda_graph_backend_prefill: disabled
-    factory:
-      enable_async_decode: false
-  vocoder:
-    factory:
-      segment_graph_max_frames: 0
-```
-
-Disabling capture does not automatically change the AR stage memory budget:
-omit `gpu_memory_fraction: 0.72` to retain the default 0.60 budget. The 0.60
-default reserves headroom for dense capture; restoring 0.72 with both ladders
-disabled returns the three stage fractions to 0.10 / 0.72 / 0.18. This is an
-explicit configuration option, not a new performance or memory qualification.
-
-`segment_graph_max_frames` limits the largest exact frame count to capture.
-`vocoder_cuda_graph: false` disables both streaming and non-streaming vocoder
-graphs. Custom sampling parameters retain eager sampling. Historical results and
-the remaining qualification work are recorded in the
-[runtime experiment report](../benchmarks/moss_tts_delay_runtime.md).
 
 ## Synthesizing Speech
 
