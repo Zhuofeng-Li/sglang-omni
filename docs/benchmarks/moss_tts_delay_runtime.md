@@ -1,4 +1,4 @@
-# MOSS-TTS Delay: Claude runtime experiment and upstream port
+# MOSS-TTS Delay runtime optimizations and qualification
 
 This change ports runtime optimizations from an evaluated MOSS-TTS v1.5
 experiment. Fresh qualification against current main is reported first; the

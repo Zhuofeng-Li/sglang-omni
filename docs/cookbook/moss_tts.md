@@ -98,11 +98,13 @@ unsupported shapes use eager execution. The single-process layout leaves these
 two capture ladders disabled. Default-profile decode batches of at least two
 requests can overlap host bookkeeping with the next GPU decode step.
 
-To disable the two capture ladders and decode overlap, add:
+To disable the two capture ladders and decode overlap and restore the previous
+0.72 AR stage memory budget, add:
 
 ```yaml
 stages:
   tts_engine:
+    gpu_memory_fraction: 0.72
     engine:
       cuda_graph_backend_prefill: disabled
     factory:
@@ -112,11 +114,17 @@ stages:
       segment_graph_max_frames: 0
 ```
 
+Disabling capture does not automatically change the AR stage memory budget:
+omit `gpu_memory_fraction: 0.72` to retain the default 0.60 budget. The 0.60
+default reserves headroom for dense capture; restoring 0.72 with both ladders
+disabled returns the three stage fractions to 0.10 / 0.72 / 0.18. This is an
+explicit configuration option, not a new performance or memory qualification.
+
 `segment_graph_max_frames` limits the largest exact frame count to capture.
 `vocoder_cuda_graph: false` disables both streaming and non-streaming vocoder
 graphs. Custom sampling parameters retain eager sampling. Historical results and
 the remaining qualification work are recorded in the
-[runtime experiment report](../benchmarks/moss_tts_claude_runtime.md).
+[runtime experiment report](../benchmarks/moss_tts_delay_runtime.md).
 
 ## Synthesizing Speech
 
