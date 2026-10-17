@@ -39,15 +39,6 @@ stages:
 
 The graph is captured after SGLang's generation graphs. With pre-LM off, raise `max_prefill_tokens` before configuring larger LM-side buckets (12/16). Each request uses the smallest captured bucket that fits its batch. Requests larger than every captured bucket, with a different feature shape, or without a successful capture run eagerly. Startup and first-replay logs identify the captured and executed buckets.
 
-## Encoder attention
-
-The native encoder uses FlashAttention-4 when it is installed and the input is
-CUDA FP16/BF16 with 64-dimensional heads on compute capability 9 or newer.
-Other inputs retain PyTorch scaled dot-product attention. Both paths return a
-contiguous output so the compiler's fake tensor contract matches every SDPA
-backend. This does not change decoder attention or preprocessing. The benchmark
-tables below predate this encoder dispatch change.
-
 ## Breakable Prefill CUDA Graph
 
 The decoder body uses SGLang's breakable prefill CUDA Graph backend by default.
