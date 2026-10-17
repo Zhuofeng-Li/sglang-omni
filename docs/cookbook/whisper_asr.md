@@ -41,16 +41,8 @@ The graph is captured after SGLang's generation graphs. With pre-LM off, raise `
 
 ## Breakable Prefill CUDA Graph
 
-On CUDA, the decoder uses whole-decoder prefill graphs for uncached requests with pre-LM
-encoder states and a uniform four-token prompt. These graphs include the
-request's self-attention and cross-attention KV writes. They capture up to the
-request count allowed by the atomic prefill budget and maximum running requests
-(four requests with the default 6,144-token budget). Returned logits own their
-storage, so subsequent replays cannot overwrite a prior result.
-
-Other prompt shapes, cached prefixes, mixed batches, logprobs, hidden-state
-outputs and extra forward inputs use SGLang's existing breakable prefill path.
-That path prepares encoder states and cross-attention K/V outside the captured
+The decoder body uses SGLang's breakable prefill CUDA Graph backend by default.
+Whisper encoder states and cross-attention K/V are prepared outside the captured
 decoder body. The default capture ladder stops at the largest aggregate decoder
 token count atomic admission can form. The cap considers every reachable request
 count because a batch of more, shorter prompts can contain more decoder tokens
@@ -59,7 +51,7 @@ budget, 1,500 encoder placeholders, and at most 232 decoder tokens per request,
 the cap is 696. Startup logs report the capture cost and confirm the active
 buckets with `prefill CUDA graphs attested`.
 
-The benchmark results below predate whole-decoder prefill capture and used
+The current benchmark results were collected with
 `cuda_graph_max_bs_prefill=256`. To reproduce that capture profile and limit
 startup time and GPU memory, set the prefill graph cap explicitly:
 
@@ -70,15 +62,14 @@ stages:
       cuda_graph_max_bs_prefill: 256
 ```
 
-Whisper runs three independently configured graph planes. The ordinary prefill
-path is bucketed by request count and prompt length; the breakable path uses
-aggregate decoder token counts. Cross-attention K/V is written once per request
-at prefill and only read afterwards:
+Whisper runs three independently configured graph planes, each bucketed on its
+own axis; cross-attention K/V is written once per request between the first
+two and only read afterwards:
 
 | plane | bucket axis | config |
 |---|---|---|
 | encoder forward | batch size | `enable_encoder_cuda_graph`, encoder graph buckets |
-| decoder prefill body | requests / prompt length, or aggregate prefill tokens | `cuda_graph_backend_prefill`, `cuda_graph_bs_prefill` |
+| decoder prefill body | aggregate prefill tokens | `cuda_graph_backend_prefill`, `cuda_graph_bs_prefill` |
 | decoder decode | batch size | `cuda_graph_bs`, `cuda_graph_max_bs` |
 
 Disabling one plane leaves the other two active.
