@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import logging
-import os
 from collections.abc import Callable
 from typing import TYPE_CHECKING
 
@@ -21,6 +20,7 @@ from sglang_omni.models.whisper_asr.request_builders import (
 )
 from sglang_omni.platforms import current_platform
 from sglang_omni.proto.request import StagePayload
+from sglang_omni.utils.cpu import effective_cpu_count
 from sglang_omni.scheduling.engine_factory import (
     AsrEngineBuilder,
     GenerationDefaults,
@@ -328,12 +328,9 @@ class WhisperASREngineBuilder(AsrEngineBuilder[WhisperASRRequestData]):
     ) -> None:
         del server_args
         if self.cpu_intra_op_threads is not None:
-            available_cpus = (
-                len(os.sched_getaffinity(0))
-                if hasattr(os, "sched_getaffinity")
-                else os.cpu_count() or 1
+            torch.set_num_threads(
+                min(self.cpu_intra_op_threads, effective_cpu_count())
             )
-            torch.set_num_threads(min(self.cpu_intra_op_threads, available_cpus))
         else:
             pass
         if not self.enable_pre_lm_encoder:
