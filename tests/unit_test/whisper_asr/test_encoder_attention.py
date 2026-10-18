@@ -63,15 +63,19 @@ def test_encoder_projection_preserves_attention_math_without_fa4(
 
 @pytest.mark.accelerator
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA is unavailable")
-def test_fa4_encoder_attention_matches_sdpa_on_cuda() -> None:
-    """The native FA4 path must preserve non-causal FP16 attention outputs."""
+@pytest.mark.parametrize("dtype", [torch.float16, torch.bfloat16])
+def test_fa4_encoder_attention_matches_sdpa_on_cuda(
+    monkeypatch: pytest.MonkeyPatch, dtype: torch.dtype
+) -> None:
+    """Both supported dtypes preserve attention math and allow an SDPA opt-out."""
+    monkeypatch.setenv("SGLANG_OMNI_WHISPER_ENCODER_ATTENTION_BACKEND", "fa4")
     if sglang_model.flash_attn_func is None:
         pytest.skip("FA4 is unavailable")
     elif torch.cuda.get_device_capability()[0] < 9:
         pytest.skip("The FA4 path requires Hopper or newer")
     else:
         torch.manual_seed(23)
-        projected = torch.randn(2, 31, 384, device="cuda", dtype=torch.float16)
+        projected = torch.randn(2, 31, 384, device="cuda", dtype=dtype)
         query, key, value = (
             states.reshape(2, 31, 2, 64) for states in projected.chunk(3, dim=-1)
         )
@@ -83,5 +87,28 @@ def test_fa4_encoder_attention_matches_sdpa_on_cuda() -> None:
                 value.float().transpose(1, 2),
             ).transpose(1, 2)
         assert actual.shape == expected.shape
-        assert actual.dtype == torch.float16
-        torch.testing.assert_close(actual.float(), expected, rtol=2e-3, atol=2e-3)
+        assert actual.dtype == dtype
+        tolerance = 2e-3 if dtype == torch.float16 else 2e-2
+        torch.testing.assert_close(
+            actual.float(), expected, rtol=tolerance, atol=tolerance
+        )
+        monkeypatch.setenv("SGLANG_OMNI_WHISPER_ENCODER_ATTENTION_BACKEND", "sdpa")
+        monkeypatch.setattr(sglang_model, "flash_attn_func", pytest.fail)
+        with torch.no_grad():
+            fallback = whisper_encoder_attention(query, key, value)
+        torch.testing.assert_close(
+            fallback.float(), expected, rtol=tolerance, atol=tolerance
+        )
+
+
+@pytest.mark.parametrize(
+    "backend,error", [("unknown", ValueError), ("fa4", RuntimeError)]
+)
+def test_encoder_attention_rejects_invalid_or_unavailable_backend(
+    monkeypatch: pytest.MonkeyPatch, backend: str, error: type[Exception]
+) -> None:
+    """Explicit backend requests cannot silently select a different implementation."""
+    monkeypatch.setenv("SGLANG_OMNI_WHISPER_ENCODER_ATTENTION_BACKEND", backend)
+    states = torch.randn(1, 3, 2, 64)
+    with pytest.raises(error):
+        whisper_encoder_attention(states, states, states)

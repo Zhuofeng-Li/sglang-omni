@@ -88,13 +88,21 @@ def whisper_encoder_attention(
     query: torch.Tensor, key: torch.Tensor, value: torch.Tensor
 ) -> torch.Tensor:
     """Non-causal attention over [batch, frames, heads, head_dim] encoder states."""
-    if (
+    backend = os.environ.get("SGLANG_OMNI_WHISPER_ENCODER_ATTENTION_BACKEND", "auto")
+    if backend not in ("auto", "sdpa", "fa4"):
+        raise ValueError(f"Unknown Whisper encoder attention backend: {backend}")
+    else:
+        pass
+    can_use_fa4 = (
         flash_attn_func is not None
         and query.device.type == "cuda"
         and query.dtype in (torch.float16, torch.bfloat16)
         and query.shape[-1] == 64
         and torch.cuda.get_device_capability(query.device)[0] >= 9
-    ):
+    )
+    if backend == "fa4" and not can_use_fa4:
+        raise RuntimeError("FA4 requires an installed backend and eligible CUDA inputs")
+    elif backend != "sdpa" and can_use_fa4:
         attention_output = flash_attn_func(query, key, value, causal=False)
         if isinstance(attention_output, tuple):
             return attention_output[0].contiguous()
