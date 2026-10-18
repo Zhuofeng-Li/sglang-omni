@@ -26,6 +26,7 @@ class WhisperASRFactoryArgs(FactoryArgs):
 
     enable_encoder_cuda_graph: bool | None = None
     cpu_intra_op_threads: int | None = Field(default=None, ge=1)
+    stream_emit_interval_s: float | None = Field(default=None, ge=0)
     enable_pre_lm_encoder: bool | None = None
     pre_lm_cache_max_entries: int | None = Field(default=None, ge=1)
     pre_lm_cache_size_bytes: int | None = Field(default=None, ge=1)
