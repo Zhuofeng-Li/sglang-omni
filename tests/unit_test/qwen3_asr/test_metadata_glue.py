@@ -1,7 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Decode metadata graph capture lifecycle and eager recovery."""
 
+from concurrent.futures import ThreadPoolExecutor
 from contextlib import nullcontext
+from threading import Barrier
 from unittest.mock import MagicMock
 
 import pytest
@@ -85,3 +87,47 @@ def test_metadata_graph_refreshes_live_inputs_after_capture() -> None:
         torch.testing.assert_close(output, positions + 1, rtol=0, atol=0)
         assert backend.forward_metadata is output
         backend.forward_metadata = None
+
+
+@pytest.mark.accelerator
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA required")
+def test_metadata_capture_and_replay_with_concurrent_cuda_work() -> None:
+    """Thread-local capture must preserve both streams' results during overlap."""
+    positions = torch.arange(4, device="cuda")
+    output = torch.empty_like(positions)
+    other_input = torch.arange(4096, device="cuda", dtype=torch.float32)
+    other_output = torch.empty_like(other_input)
+    other_stream = torch.cuda.Stream()
+    other_stream.wait_stream(torch.cuda.current_stream())
+    barrier = Barrier(2)
+    backend = MagicMock(spec=AttentionBackend)
+    backend.attn_backend_list = None
+
+    def prepare_metadata(forward_batch: ForwardBatch) -> None:
+        torch.add(positions, 1, out=output)
+        backend.forward_metadata = output
+
+    def submit_other_work() -> None:
+        with torch.cuda.stream(other_stream):
+            for value in range(glue.NUM_WARMUP + 3):
+                barrier.wait()
+                torch.add(other_input, value, out=other_output)
+                barrier.wait()
+
+    backend.init_forward_metadata_out_graph.side_effect = prepare_metadata
+    forward_batch = MagicMock(spec=ForwardBatch)
+    glue = MetadataGlueGraph(torch.device("cuda"))
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        future = executor.submit(submit_other_work)
+        for value in range(glue.NUM_WARMUP + 3):
+            positions.fill_(value)
+            barrier.wait()
+            run_with_thread_local_capture(
+                glue, backend, forward_batch, (4, "decode", "default")
+            )
+            barrier.wait()
+            other_stream.synchronize()
+            torch.testing.assert_close(output, positions + 1, rtol=0, atol=0)
+            torch.testing.assert_close(other_output, other_input + value, rtol=0, atol=0)
+            assert not glue.disabled
+        future.result()

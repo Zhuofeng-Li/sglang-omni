@@ -23,6 +23,7 @@ from sglang_omni.models.qwen3_asr.config import Qwen3ASRPipelineConfig
 from sglang_omni.models.qwen3_asr.stages import create_sglang_qwen3_asr_executor
 from sglang_omni.models.registry import PIPELINE_CONFIG_REGISTRY
 from sglang_omni.scheduling.generation_batch_policy import (
+    build_default_cuda_graph_bs,
     build_generation_batch_overrides,
     validate_generation_batch_policy,
 )
@@ -677,7 +678,7 @@ def test_qwen3_asr_nested_prefill_override_supersedes_the_derived_ladder(
     assert recorded.build_kwargs["cuda_graph_max_bs_prefill"] == 256
 
 
-@pytest.mark.parametrize("operator_batches", [None, [1, 8, 64]])
+@pytest.mark.parametrize("operator_batches", [None, [1, 8, 64], build_default_cuda_graph_bs(64)])
 def test_qwen3_asr_cuda_decode_graphs_preserve_operator_buckets(
     monkeypatch: pytest.MonkeyPatch, operator_batches: list[int] | None
 ) -> None:
@@ -685,6 +686,7 @@ def test_qwen3_asr_cuda_decode_graphs_preserve_operator_buckets(
     monkeypatch.setattr(qwen3_asr_builder.current_platform, "is_cuda", lambda: True)
     builder = make_engine_builder(mm_attention_backend="fa3")
     options = {} if operator_batches is None else {"cuda_graph_bs": operator_batches}
+    builder.server_args_overrides = options
     overrides = build_generation_batch_overrides(
         **builder.generation_defaults(dtype="bfloat16"), server_args_overrides=options
     )
@@ -762,3 +764,25 @@ def test_qwen3_asr_cuda_pipeline_builds_full_and_exact_size_graphs(
     )
     assert len(recorded.graph_init_calls) == 1
     assert len(recorded.attest_calls) == 1
+
+
+@pytest.mark.parametrize("prefill_override", [{}, {"full_prefill_max_req": 12}])
+def test_decode_only_override_retains_full_prefill_capacity(
+    monkeypatch: pytest.MonkeyPatch, prefill_override: dict[str, int]
+) -> None:
+    """A decode override must not silently reduce full-prefill admission."""
+    monkeypatch.setattr(qwen3_asr_builder.current_platform, "is_cuda", lambda: True)
+    builder = make_engine_builder(mm_attention_backend="fa3")
+    builder.server_args_overrides = {
+        "cuda_graph_config": {"decode": {"max_bs": 16}, "prefill": prefill_override}
+    }
+    overrides = build_generation_batch_overrides(
+        **builder.generation_defaults(dtype="bfloat16"),
+        server_args_overrides=builder.server_args_overrides,
+    )
+    builder.adjust_overrides(overrides)
+    graph_config = overrides["cuda_graph_config"]
+    assert graph_config["decode"]["max_bs"] == 16
+    assert graph_config["prefill"]["full_prefill_max_req"] == prefill_override.get(
+        "full_prefill_max_req", 32
+    )

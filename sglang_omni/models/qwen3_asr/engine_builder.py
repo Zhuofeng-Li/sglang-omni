@@ -42,7 +42,6 @@ from sglang_omni.scheduling.engine_factory import (
 )
 from sglang_omni.scheduling.generation_batch_policy import (
     CudaGraphBackend,
-    build_default_cuda_graph_bs,
     get_decode_cuda_graph_bs,
 )
 from sglang_omni.scheduling.sglang_backend.output_processor import SGLangOutputProcessor
@@ -148,6 +147,7 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         self.tokenizer: PreTrainedTokenizerBase | None = None
         self.feature_extractor: WhisperFeatureExtractor | None = None
         self.context_length = 0
+        self.server_args_overrides = {}
         self.device: str | None = None
         self.model_path: str | None = None
         self.audio_encoder_service: Qwen3ASRPreLMEncoderService | None = None
@@ -364,13 +364,24 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
         else:
             pass
 
+        if current_platform.is_cuda():
+            graph_config = overrides.get("cuda_graph_config", {})
+            prefill_config = graph_config.get("prefill", {})
+            overrides["cuda_graph_config"] = {
+                **graph_config,
+                "prefill": {
+                    "full_prefill_max_req": QWEN3_ASR_FULL_PREFILL_MAX_REQUESTS,
+                    **prefill_config,
+                },
+            }
+        else:
+            pass
+
         if current_platform.is_cuda() and not overrides.get(
             "disable_cuda_graph", False
         ):
             max_decode_rows = int(overrides["cuda_graph_max_bs"])
-            if overrides.get("cuda_graph_bs") == build_default_cuda_graph_bs(
-                max_decode_rows
-            ):
+            if "cuda_graph_bs" not in self.server_args_overrides:
                 # note (Zhuofeng Li): exact-size replay avoids resetting padded slots.
                 overrides["cuda_graph_bs"] = list(range(1, max_decode_rows + 1))
             else:
