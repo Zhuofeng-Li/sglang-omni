@@ -10,9 +10,9 @@
 
 ## Paired comparison on current main
 
-Measured **2026-10-19 UTC**. **6 of eight final-head primary ABBA blocks are verified:** c1 nonstream, c1 stream, c16 nonstream, c16 stream, c32 nonstream, c32 stream. Unverified cells remain Pending. Observed upstream main is `a2a3861fe4319eaedbfa47554d71c519a01c2e23`; the paired baseline stays frozen at `2d5de98cd92b17df7974ac2ef4192b4a99263845`. These independent frozen-head comparisons do not measure the combined merged series.
+Measured **2026-10-19 UTC**. **7 of eight final-head primary ABBA blocks are verified:** c1 nonstream, c1 stream, c16 nonstream, c16 stream, c32 nonstream, c32 stream, c64 nonstream. Unverified cells remain Pending. Observed upstream main is `1240a6993c8073593aa0ad074859ccee2797adff`; the paired baseline stays frozen at `2d5de98cd92b17df7974ac2ef4192b4a99263845`. These independent frozen-head comparisons do not measure the combined merged series.
 
-Model `Qwen/Qwen3-ASR-1.7B@7278e1e70fe206f11671096ffdd38061171dd6e5`, BF16; dataset `zhaochenyang20/seed-tts-eval-arrow@27f4c1adee83b5b29b7c4b375f6b976324bda308`. Original Radix H100 80GB (`GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1`), Torch 2.13.0+cu130, SGLang 0.5.21, Transformers 5.12.1. Every fresh service fully warms and scores both splits. YAML uses `Qwen3ASRPipelineConfig`, ASR GPU0, BF16, `pre_lm_cache_size_bytes=1`, `mm_embedding_cache_size_bytes=0`, `disable_radix_cache=true`, and `random_seed=42|43`; greedy decoding, no client token override, isolated fresh compilation caches. Exact YAML, source/asset identities and costs are under `primary-matrix/` at the evidence link.
+Model `Qwen/Qwen3-ASR-1.7B@7278e1e70fe206f11671096ffdd38061171dd6e5`, BF16; dataset `zhaochenyang20/seed-tts-eval-arrow@27f4c1adee83b5b29b7c4b375f6b976324bda308`. Original Radix H100 80GB (`GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1`), Torch 2.13.0+cu130, SGLang 0.5.21, Transformers 5.12.1. Every fresh service fully warms and scores both splits. YAML uses `Qwen3ASRPipelineConfig`, ASR GPU0, BF16, `pre_lm_cache_size_bytes=1`, `mm_embedding_cache_size_bytes=0`, `disable_radix_cache=true`, and `random_seed=42|43`; greedy decoding, no client token override, fresh per-cohort Inductor, Triton, CUDA, Torch extensions and FlashInfer workspace directories; the package/image and default SGLang JIT cache are retained across cohorts (see `cache-protocol.json`). Exact YAML, source/asset identities and costs are under `primary-matrix/` at the evidence link.
 
 Historical complete matrices retain their original dates, main and candidate identities in `description-before-final-head-backfill.md`. The intervening Qwen API startup GC default change (#2609) and evidence reuse assessment are recorded in `performance-evidence-applicability-20261019.json`.
 
@@ -27,7 +27,7 @@ H100 80GB, SeedTTS EN (1088) / ZH (2020), seeds 42/43; each block runs main(42) 
 | 1 | +1.34% |
 | 16 | +0.32% |
 | 32 | +2.31% |
-| 64 | Pending |
+| 64 | +2.49% |
 
 Detailed metrics (main → PR; slash-separated values retain seed42/43):
 
@@ -39,6 +39,8 @@ Detailed metrics (main → PR; slash-separated values retain seed42/43):
 | 16 / ZH | 155.129 → 155.002 | 101.87 → 101.94 | 138.20/137.57 → 136.92/138.22 | N/A → N/A | N/A → N/A | 0.5933/0.5874 → 0.5844/0.6023 | 0/4040 → 0/4040 |
 | 32 / EN | 231.075 → 236.140 | 136.55 → 133.82 | 175.96/179.04 → 175.06/179.99 | N/A → N/A | N/A → N/A | 1.2031/1.2107 → 1.2031/1.2107 | 0/2176 → 0/2176 |
 | 32 / ZH | 246.887 → 252.862 | 128.45 → 125.50 | 167.27/168.82 → 165.58/166.84 | N/A → N/A | N/A → N/A | 0.5904/0.6083 → 0.5904/0.6083 | 0/4040 → 0/4040 |
+| 64 / EN | 292.805 → 298.977 | 211.57 → 206.52 | 284.11/278.28 → 284.14/289.99 | N/A → N/A | N/A → N/A | 1.2031/1.2107 → 1.2258/1.2107 | 0/2176 → 0/2176 |
+| 64 / ZH | 305.080 → 313.856 | 205.91 → 198.33 | 294.01/277.29 → 268.12/264.21 | N/A → N/A | N/A → N/A | 0.6293/0.6233 → 0.6173/0.6083 | 0/4040 → 0/4040 |
 
 ### Streaming
 
@@ -70,9 +72,11 @@ C32 non-streaming throughput change is+2.31%, with equal corpus WER in both seed
 
 C32 streaming throughput change is+2.75%. EN first-text p95 increases100.50/98.20→100.80/99.40ms; ZH first-text p95 improves95.00/95.20→92.90/92.20ms. ZH WER at seed42 increases0.6023→0.6113%, while its seed43 and both EN values stay equal. Mean startup increases about1.56s. These latency/quality tradeoffs remain visible alongside the throughput gain.
 
+C64 non-streaming throughput change is+2.49%. EN response p95 increases284.11/278.28→284.14/289.99ms, and EN WER at seed42 increases1.2031→1.2258% (seed43 unchanged). Both ZH WER and response p95 improve. Mean startup increases about1.43s; maximum sampled memory is71.84→72.29GiB. Successful capture events change1468→174/178, not counts of unique graph shapes. All scored requests succeed; these quality/latency and resource tradeoffs remain part of the result.
+
 ## Costs
 
-Startup is server launch to health-ready, including model/graph initialization and excluding downloads/workload warmup. Device memory is sampled every0.5s. Only verified blocks are tabulated; other costs remain Pending.
+Startup is server launch to health-ready, including model/graph initialization and excluding downloads/workload warmup. These are starts under the disclosed partial cache isolation, not universally cold JIT starts. Device memory is sampled every0.5s. Only verified blocks are tabulated; other costs remain Pending.
 
 Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capture calls (seed42/43; main → PR). Capture calls include segmented prefill captures; they are not unique shape counts. No pooled quantiles or inferred unmeasured costs.
 
@@ -81,13 +85,14 @@ Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capt
 | nonstream / 1 | 76.75/75.58 → 77.18/77.60 | 70.80/70.79 → 70.78/70.77 | 1468/1468 → 121/121 | 1468/1468 → 121/121 | -1347/-1347 |
 | nonstream / 16 | 76.33/77.07 → 77.28/77.08 | 71.45/71.42 → 71.45/71.74 | 1468/1468 → 136/136 | 1468/1468 → 136/136 | -1332/-1332 |
 | nonstream / 32 | 76.78/75.58 → 77.24/76.63 | 71.46/71.95 → 71.85/71.83 | 1468/1468 → 152/151 | 1468/1468 → 152/151 | -1316/-1317 |
+| nonstream / 64 | 76.08/76.22 → 78.58/76.58 | 71.81/71.84 → 72.12/72.29 | 1468/1468 → 174/178 | 1468/1468 → 174/178 | -1294/-1290 |
 | stream / 1 | 76.11/76.13 → 77.10/78.10 | 70.80/70.79 → 70.78/70.77 | 1468/1468 → 121/121 | 1468/1468 → 121/121 | -1347/-1347 |
 | stream / 16 | 75.15/76.77 → 77.08/77.13 | 71.58/71.62 → 71.44/71.58 | 1468/1468 → 136/136 | 1468/1468 → 136/136 | -1332/-1332 |
 | stream / 32 | 76.58/75.08 → 77.08/77.70 | 71.63/71.79 → 71.69/71.83 | 1468/1468 → 152/152 | 1468/1468 → 152/152 | -1316/-1316 |
 
 ## Tests
 
-- Final-head primary backfill: **6/8 blocks verified**, 48/64 language/cohort cells: c1 nonstream, c1 stream, c16 nonstream, c16 stream, c32 nonstream, c32 stream. Review-specific ablations/repeats and transcript checks are tracked separately from primary coverage. This PR has already merged; post-merge qualification is continuing. These independent comparisons do not replace final merged-series validation or tradeoff assessment.
+- Final-head primary backfill: **7/8 blocks verified**, 56/64 language/cohort cells: c1 nonstream, c1 stream, c16 nonstream, c16 stream, c32 nonstream, c32 stream, c64 nonstream. Review-specific ablations/repeats and transcript checks are tracked separately from primary coverage. This PR has already merged; post-merge qualification is continuing. These independent comparisons do not replace final merged-series validation or tradeoff assessment.
 - **Reviewer approval obtained for current head** `67e28de8`: db-ol approved on 2026-10-19T22:17:01Z, noting the explicit-override/fallback scope and passed CI. The post-merge final-source comparison on the changed baseline remains incomplete; the old measured source/base is kept explicit above.
 - Review-fix source: **137 CPU tests and 5 accelerator tests passed** on the assigned H100; logs and source identities are in the evidence link.
 - Final review-fix head `67e28de8` **FlashInfer smoke passed in both modes** on the original Radix H100 (2026-10-19): c32, seed42, eager frozen-main reference versus FULL candidate, metadata glue disabled in all four services, EN8/ZH8 each (**64 scored requests, 0 failures**). Each FULL cohort recorded **50 successful prefill capture stacks containing both the prefill runner and FULL backend**, with FlashInfer startup-log evidence. This is small-sample backend-path coverage, not a throughput or quality claim; the full EN/ZH two-seed backend comparison and final-head primary matrix remain pending. Audit, YAML, costs and capture evidence are under `flashinfer-smoke-20261019/` at the evidence link below.

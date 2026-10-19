@@ -1,11 +1,11 @@
 {
-  "at_utc": "2026-10-19T23:25:20.241361+00:00",
+  "at_utc": "2026-10-19T23:36:44.852565+00:00",
   "pr": 2880,
   "url": "https://github.com/sgl-project/sglang-omni/pull/2880",
   "head": "67e28de826af967a9dec76506c91473e257aa156",
   "state": "MERGED",
   "initial_body_verified": true,
-  "verified_blocks": 6,
-  "covered_cells": 48,
-  "evidence_commit": "d5045badd69a09899622a186dd37f73903ec77ac"
+  "verified_blocks": 7,
+  "covered_cells": 56,
+  "evidence_commit": "9e9e7a9"
 }
