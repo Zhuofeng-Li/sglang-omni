@@ -6,6 +6,14 @@ smoke='--smoke' in sys.argv
 state=R/'control/moss-state.json'
 def save(value):
  value['at']=time.time();p=state.with_suffix('.partial');p.write_text(json.dumps(value,indent=2));p.replace(state)
+if not smoke:
+ regression=R/'control/moss-regression.exit'
+ if not regression.exists() or regression.read_text().strip()!='0':
+  regression_env=dict(os.environ,PYTHONPATH=str(R/'source/pr-2859'),OMP_NUM_THREADS='8',MKL_NUM_THREADS='8')
+  with (R/'control/moss-regression.log').open('w') as output:
+   regression_code=subprocess.run([sys.executable,'-m','pytest','-q','tests/unit_test/moss_tts'],cwd=R/'source/pr-2859',env=regression_env,stdout=output,stderr=subprocess.STDOUT,timeout=1800).returncode
+  regression.write_text(str(regression_code))
+  if regression_code:raise RuntimeError('Integrated MOSS regression failed; inspect moss-regression.log')
 for concurrency in ([1] if smoke else [1,64]):
  for mode in (['nonstream'] if smoke else ['nonstream','stream']):
   for arm,seed in ([('main',42),('pr',42)] if smoke else [('main',42),('pr',42),('pr',43),('main',43)]):
@@ -26,6 +34,8 @@ for concurrency in ([1] if smoke else [1,64]):
    cmd=[sys.executable,str(R/'control/pinned_tts_benchmark.py'),'--generate-only','--port',str(19860+(0 if smoke else 100)+[1,64].index(concurrency)*8+['nonstream','stream'].index(mode)*4+[('main',42),('pr',42),('pr',43),('main',43)].index((arm,seed))),'--model',str(R/'assets/moss'),'--server-config',str(out/'config.yaml'),'--meta','zhaochenyang20/seed-tts-eval-arrow','--ref-format','references','--token-count','auto','--concurrency',str(concurrency),'--warmup','16','--seed',str(seed),'--max-new-tokens','2048','--server-timeout','1200','--skip-gpu-cleanup','--output-dir',str(out)]
    if smoke:cmd+=['--max-samples','4']
    if mode=='stream':cmd+=['--stream']
+   gpu_uuid=subprocess.check_output(['nvidia-smi','--query-gpu=uuid','--format=csv,noheader'],text=True).strip()
+   assert gpu_uuid=='GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1'
    start=time.time();peak=0
    with (out/'operator.log').open('w') as log:
     child=subprocess.Popen(cmd,cwd=source,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
@@ -35,7 +45,7 @@ for concurrency in ([1] if smoke else [1,64]):
      save({'status':'running','cohort':tag,'pid':child.pid,'elapsed':time.time()-start,'peak_mib':peak})
      if time.time()-start>10800:os.killpg(child.pid,signal.SIGTERM);child.wait(timeout=30);break
      time.sleep(.5)
-   result={'tag':tag,'arm':arm,'seed':seed,'concurrency':concurrency,'mode':mode,'command':cmd,'exit_code':child.returncode,'elapsed_s':time.time()-start,'peak_mib':peak}
+   result={'tag':tag,'arm':arm,'seed':seed,'concurrency':concurrency,'mode':mode,'source':str(source),'gpu_uuid':gpu_uuid,'started_at':start,'finished_at':time.time(),'command':cmd,'exit_code':child.returncode,'elapsed_s':time.time()-start,'peak_mib':peak}
    result_path.write_text(json.dumps(result,indent=2));save(result)
    if child.returncode:raise RuntimeError(f'{tag} exited {child.returncode}')
 save({'status':'smoke_complete' if smoke else 'generation_complete'})

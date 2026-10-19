@@ -1,0 +1,16 @@
+{
+  "scope": "c32, both modes, full EN/ZH; separate from standalone main comparisons",
+  "fixed_seed_repeat": {
+    "prs": [
+      2880,
+      2881,
+      2882
+    ],
+    "seed": 42,
+    "order": "main,PR,PR,main; same seed/order in all four executions"
+  },
+  "ablation_2880": "same final source FULL + exact decode buckets, glue disabled/enabled; seeds42/43 ABBA",
+  "ablation_2881": "async prefill with original-main build/admission methods vs final scoped admission; MRoPE shortcut is absent from both",
+  "backend_2880": "FlashInfer eager-prefill reference vs FULL candidate, metadata glue off; verify actual FULL captures and complete quality",
+  "transcripts": "save every normalized transcript difference for standalone matrices and repeated blocks"
+}

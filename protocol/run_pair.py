@@ -100,14 +100,14 @@ async def strict_stream(response, result, start_time):
 asr_client._consume_transcription_stream = strict_stream
 
 
-def cohort(pr, arm, seed, mode, concurrency, smoke=False):
-    name = f"pr{pr}-c{concurrency}-{mode}-{arm}-seed{seed}" + ("-smoke" if smoke else "")
+def cohort(pr, arm, seed, mode, concurrency, smoke=False, *, tag=None, source_name=None, engine_overrides=None, env_overrides=None):
+    name = f"pr{pr}-c{concurrency}-{mode}-{arm}-seed{seed}" + (f"-{tag}" if tag else "") + ("-smoke" if smoke else "")
     output = ROOT / "results" / name
     output.mkdir(parents=True, exist_ok=True)
     result_path = output / "result.json"
     if result_path.exists():
         return json.loads(result_path.read_text())
-    source = ROOT / "source" / ("main" if arm == "main" else f"pr-{pr}")
+    source = ROOT / "source" / (source_name or ("main" if arm == "main" else f"pr-{pr}"))
     scratch = output / "scratch"
     scratch.mkdir(exist_ok=True)
     graph_dir = output / "graphs"
@@ -116,6 +116,8 @@ def cohort(pr, arm, seed, mode, concurrency, smoke=False):
         "stages": {"asr": {"gpu": 0, "factory": {"dtype": "bfloat16", "pre_lm_cache_size_bytes": 1, "mm_embedding_cache_size_bytes": 0},
             "engine": {"disable_radix_cache": True, "random_seed": seed}}},
     }
+    if engine_overrides:
+        config["stages"]["asr"]["engine"].update(engine_overrides)
     config_path = output / "config.yaml"
     config_path.write_text(yaml.safe_dump(config, sort_keys=False))
     env = dict(os.environ)
@@ -124,12 +126,14 @@ def cohort(pr, arm, seed, mode, concurrency, smoke=False):
         "TORCHINDUCTOR_CACHE_DIR": str(scratch / "inductor"), "TRITON_CACHE_DIR": str(scratch / "triton"),
         "TORCH_EXTENSIONS_DIR": str(scratch / "extensions"), "CUDA_CACHE_PATH": str(scratch / "cuda"),
         "FLASHINFER_WORKSPACE_BASE": str(scratch / "flashinfer"), "TMPDIR": str(scratch)})
+    if env_overrides:
+        env.update(env_overrides)
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as port_probe:
         port_probe.bind(("127.0.0.1", 0))
         port = port_probe.getsockname()[1]
     command = [sys.executable, "-m", "sglang_omni.cli", "serve", "--config", str(config_path), "--model-name", "Qwen/Qwen3-ASR-1.7B",
         "--host", "127.0.0.1", "--port", str(port), "--skip-server-warmup"]
-    save(output / "launch.json", {"command": command, "source": str(source), "config": config, "seed": seed, "mode": mode, "concurrency": concurrency, "arm": arm})
+    save(output / "launch.json", {"command": command, "source": str(source), "config": config, "seed": seed, "mode": mode, "concurrency": concurrency, "arm": arm, "environment_overrides": env_overrides or {}})
     samples_memory = []
     stop = threading.Event()
     monitor = threading.Thread(target=memory_sample, args=(stop, samples_memory), daemon=True)
@@ -219,6 +223,8 @@ def main():
                 for mode in ["nonstream", "stream"]:
                     for arm, seed in [("main", 42), ("pr", 42), ("pr", 43), ("main", 43)]:
                         cohort(pr, arm, seed, mode, concurrency)
+    if not args.smoke and set(args.prs) == {2880, 2882}:
+        subprocess.run([sys.executable, str(ROOT / "control/review_backfill.py")], check=True)
     save(ROOT / "results" / ("smoke-complete.json" if args.smoke else "complete-" + "-".join(map(str,args.prs)) + ".json"), {"prs": args.prs, "completed_at": time.time()})
 
 

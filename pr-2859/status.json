@@ -1,8 +1,8 @@
 {
-  "observed_at_utc": "2026-10-19T16:03:11.623321+00:00",
+  "observed_at_utc": "2026-10-19T16:24:50.185526+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "757c09eb272079b6c08f88bcaa393ffe3845029a",
-  "performance_readiness": "pending final-source measurements",
+  "performance_readiness": "pending final-source paired measurements and review validation",
   "correctness": "prior-head c16 results retained; requested c1/c64 in progress",
   "gpu": "single NVIDIA H100 80GB HBM3",
   "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
@@ -25,5 +25,6 @@
       43
     ]
   ],
-  "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification."
+  "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification.",
+  "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains."
 }
