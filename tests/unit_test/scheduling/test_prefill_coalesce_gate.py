@@ -515,3 +515,38 @@ def test_expired_coalescing_does_not_repeat_wait_when_admission_is_blocked(
     assert scheduler.admit_imminent_request_builds.call_count == (
         3 if not batch_full and available_slots else 0
     )
+
+
+@pytest.mark.parametrize("async_prefill", [False, True])
+def test_drain_admits_a_build_that_finishes_during_another_admission(
+    async_prefill: bool,
+) -> None:
+    """Opt-out admission must retain same-iteration completion collection."""
+    first = Future()
+    second = Future()
+    first.set_result("first-result")
+    admitted = []
+
+    def admit(payload, pending_stream_done, result, *, request_admission_lock_held):
+        assert not pending_stream_done
+        assert request_admission_lock_held
+        admitted.append((payload, result))
+        if payload == "first-payload":
+            second.set_result("second-result")
+
+    scheduler = SimpleNamespace(
+        async_prefill=async_prefill,
+        request_admission_lock=threading.RLock(),
+        pending_request_builds={
+            "first": ("first-payload", False, first),
+            "second": ("second-payload", False, second),
+        },
+        aborted_request_ids=set(),
+        admit_or_defer_built_request=admit,
+    )
+    OmniScheduler.drain_request_build_results(scheduler)
+    assert admitted == [
+        ("first-payload", "first-result"),
+        ("second-payload", "second-result"),
+    ]
+    assert not scheduler.pending_request_builds

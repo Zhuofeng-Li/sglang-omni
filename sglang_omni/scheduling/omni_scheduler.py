@@ -1496,20 +1496,34 @@ class OmniScheduler(Generic[RequestDataT]):
             return selected, rejected
 
     def drain_request_build_results(self) -> None:
-        # note (Zhuofeng Li): only async prefill opts into out-of-order admission.
-        with self.request_admission_lock:
-            finished_builds = []
-            for req_id, pending in self.pending_request_builds.items():
-                if pending[2].done():
-                    finished_builds.append((req_id, pending))
-                elif not self.async_prefill:
-                    break
+        while True:
+            with self.request_admission_lock:
+                if not self.pending_request_builds:
+                    return
                 else:
                     pass
-            for req_id, _ in finished_builds:
+                if self.async_prefill:
+                    finished_build = next(
+                        (
+                            (request_id, request_build)
+                            for request_id, request_build in self.pending_request_builds.items()
+                            if request_build[2].done()
+                        ),
+                        None,
+                    )
+                    if finished_build is None:
+                        return
+                    else:
+                        req_id, (payload, pending_stream_done, future) = finished_build
+                else:
+                    req_id, (payload, pending_stream_done, future) = next(
+                        iter(self.pending_request_builds.items())
+                    )
+                if not future.done():
+                    return
+                else:
+                    pass
                 self.pending_request_builds.pop(req_id, None)
-        for req_id, (payload, pending_stream_done, future) in finished_builds:
-            with self.request_admission_lock:
                 if req_id in self.aborted_request_ids:
                     continue
                 else:
