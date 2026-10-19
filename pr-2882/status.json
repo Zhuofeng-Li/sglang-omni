@@ -1,5 +1,5 @@
 {
-  "observed_at_utc": "2026-10-19T16:24:50.183104+00:00",
+  "observed_at_utc": "2026-10-19T16:31:07.744279+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "2cad178053585b41d486c1584796d58b205541a0",
   "performance_readiness": "pending final-source paired measurements and review validation",
@@ -26,5 +26,8 @@
     ]
   ],
   "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification.",
-  "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains."
+  "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
+  "verified_standalone_cells": 0,
+  "expected_standalone_cells": 64,
+  "verified_blocks": []
 }
