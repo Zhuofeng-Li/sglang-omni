@@ -1,5 +1,5 @@
 {
-  "observed_at_utc": "2026-10-19T22:55:41.955518+00:00",
+  "observed_at_utc": "2026-10-19T23:04:30.268005+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "67e28de826af967a9dec76506c91473e257aa156",
   "performance_readiness": "Partial post-merge qualification; remaining primary/review checks and final merged-series validation are separate.",
@@ -27,7 +27,7 @@
   ],
   "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification.",
   "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
-  "verified_standalone_cells": 16,
+  "verified_standalone_cells": 24,
   "expected_standalone_cells": 64,
   "verified_blocks": [
     {
@@ -73,6 +73,29 @@
         [
           1792450098.562724,
           1792450415.1687472
+        ]
+      ]
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "status": "verified",
+      "actual_abba_intervals": [
+        [
+          1792450416.104047,
+          1792450534.876682
+        ],
+        [
+          1792450535.4758341,
+          1792450654.6435387
+        ],
+        [
+          1792450655.2821207,
+          1792450773.8525832
+        ],
+        [
+          1792450774.623933,
+          1792450893.9739954
         ]
       ]
     }
