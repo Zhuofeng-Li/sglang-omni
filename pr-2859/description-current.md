@@ -11,7 +11,7 @@ Published head: `1894fa88fa8b09392b0aa0625eec34aae3e95edd`. Prepared candidate `
 
 ## Paired comparison on current main
 
-Requested **c1 and c64 × non-streaming and streaming** backfill is queued on one Radix H100 80GB HBM3 after successful main/candidate smoke. Full SeedTTS EN (1,088 requests), model/codec/data revisions pinned, 16 excluded warmups, 2,048-token cap, request/decode-graph caps 64, matched AR budget 0.60 in both arms, seeds 42/43 in main(42) → PR(42) → PR(43) → main(43) order. WER and WavLM SIM will be scored for every generation pass. These are direct PR-qualification runs, not a new research run.
+Requested **c1 and c64 × non-streaming and streaming** backfill is running on one Radix H100 80GB HBM3 after successful main/candidate smoke. Full SeedTTS EN (1,088 requests), model/codec/data revisions pinned, 16 excluded warmups, 2,048-token cap, request/decode-graph caps 64, matched AR budget 0.60 in both arms, seeds 42/43 in main(42) → PR(42) → PR(43) → main(43) order. WER and WavLM SIM will be scored for every generation pass. These are direct PR-qualification runs, not a new research run.
 
 ### Non-streaming
 

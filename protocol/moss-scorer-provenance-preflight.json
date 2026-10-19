@@ -1,0 +1,9 @@
+{
+  "at_utc": "2026-10-19T19:15:26.164359+00:00",
+  "wheel_sha256": "961225c224c1e6723788cdcb02e132c44d30871e60c897dfe9e3080e0ed505a4",
+  "quality_script_sha256": "fd6f9b3f84589662e04af59b314bb4c47ad7e77d53da7b9cf5e249df3f63bd99",
+  "s3prl_version": "0.4.18",
+  "source": "PyPI s3prl0.4.18 sdist SHA checked against PyPI metadata; inspected setup and WavLM imports; local wheel built without dependency installation",
+  "scope": "Dependency installation with no-deps/no-index deferred to quality stage; currently timed generation environment unchanged. Core dependencies already present. Scorer file hashes/HF metadata recorded and verified unchanged across all arms.",
+  "phase_at_deploy": "moss-c1-c64-generation"
+}

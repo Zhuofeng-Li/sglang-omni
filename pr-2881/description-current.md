@@ -8,7 +8,7 @@
 
 ## Paired comparison on current main
 
-Measured on **2026-10-19**. All eight primary blocks below are complete; review ablations and repeated fixed-seed checks remain pending. Pre-review 2026-10-17/18 measurements used main `8fff1e0e8c99a710afe876d1514209e1157c5502`; those heads and the superseded `207b2d0b` preliminary block are archived separately and are not final-head results.
+Measured **2026-10-19** on the final head; all eight primary ABBA blocks are complete and audited. Historical 2026-10-17/18 main `8fff1e0e8c99a710afe876d1514209e1157c5502` results and superseded `207b2d0b` results remain separate in the evidence archive.
 
 Candidate `e98bcf05e6d27d877cfb134900900ca6fad5d76a` vs frozen main `2d5de98cd92b17df7974ac2ef4192b4a99263845`.
 
@@ -58,9 +58,9 @@ Detailed metrics (main → PR; slash-separated values retain seed42/43):
 | 64 / EN | 287.814 → 297.104 | 215.93 → 210.81 | 291.26/282.90 → 420.97/293.96 | 92.40/92.70 → 108.80/108.40 | 179.30/175.20 → 348.70/187.50 | 1.2107/1.2182 → 1.2182/1.2107 | 0/2176 → 0/2176 |
 | 64 / ZH | 301.487 → 325.351 | 209.98 → 193.08 | 274.80/290.23 → 259.87/256.21 | 93.70/96.50 → 98.10/98.80 | 133.90/129.90 → 174.90/138.70 | 0.6203/0.6173 → 0.6203/0.6293 | 0/4040 → 0/4040 |
 
-**Observed tradeoffs:** throughput improves at c16/c32/c64, while streaming first-text latency generally increases. At c64 streaming, EN response P95 is 291.26/282.90 → 420.97/293.96 ms and first-text P95 is 179.30/175.20 → 348.70/187.50 ms (seed42/43). Non-streaming c64 EN seed42 P95 also worsens. A c64 seed42 ABBA repeat in both modes has been added; these regressions are retained and this PR is not merge-ready.
+**Tradeoffs:** streaming first-text latency generally increases. At c64 EN, response P95 is 291.26/282.90 → 420.97/293.96 ms and first-text P95 is 179.30/175.20 → 348.70/187.50 ms (seeds42/43); non-streaming c64 EN seed42 response P95 also increases. These are retained results, not discarded outliers. Fixed-seed42 ABBA repeats at c64 in both modes have been added before judging readiness.
 
-Quality is not identical: 88 of 49,728 paired request comparisons change normalized text across the primary conditions (31 improve per-sample WER, 36 worsen, 21 have equal WER). All 29 distinct reference/main/PR triples were inspected: names, homophones, pluralization and small particles; no changed hypothesis is empty. Some corpus WER points worsen in both seeds, including c16 non-streaming EN/ZH and c64 non-streaming ZH. No outliers are removed, and this inspection does not establish the cause or output equivalence.
+**Quality:** 88 of 49,728 paired utterance comparisons change normalized text (29 distinct reference/main/PR triples inspected): 31 improve per-utterance WER, 36 worsen, and 21 keep equal WER. Changes include names, homophones, pluralization and short particles; there are no empty changed hypotheses, but equivalence or a numerical root cause is not established. In particular c16 non-streaming EN/ZH and c64 non-streaming ZH corpus WER worsen in both seeds. All per-seed values and changed transcripts are preserved in the evidence.
 
 ## Costs
 
@@ -84,7 +84,7 @@ Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capt
 - `pre-commit run --all-files`: passed. Complete diff versus the frozen main contains no `doc/` or `docs/` changes.
 - Current-head [Omni CI](https://github.com/sgl-project/sglang-omni/actions/runs/39288752772) passed (attempt 1). Existing labels: `run-asr-ci` + `run-asr-qwen3-asr-1.7b`; preflight selected `run_asr=true`, `asr_ci_model=qwen3`, and stage-2 logs confirm **Qwen/Qwen3-ASR-1.7B**. Unit, accelerator, MOSS-TD prerequisite and Qwen SeedTTS stages passed; unselected stages are not hardware-validation evidence.
 - Added a deterministic regression in which a second build finishes during the first admission; main and this head collect both in the same call. The prior review head did not.
-- Review-specific validation pending: async-prefill/admission ablation, c32 fixed-seed42 repeats, added c64 seed42 repeats for the measured tail regression, and their normalized transcript comparisons. Primary transcript differences have been inspected and archived separately.
-- Performance readiness remains pending until all requested final-source comparisons and review validations, observed tradeoffs, and independent reviewer approval are resolved.
+- Review-specific validation pending: async-prefill/admission ablation, c32 fixed-seed42 repeats, and additional c64 fixed-seed42 ABBA repeats in both modes to investigate the measured tail/first-text regression. Primary normalized transcript inspection is saved; repeat transcript checks remain pending.
+- Performance readiness remains pending until requested review ablations/repeats and the latency/quality tradeoffs are assessed; current CI success does not establish merge readiness.
 
 Developed by an autonomous research agent using [RSI-Harness](https://github.com/OpenRSI-Foundation/OpenRSI-Index/tree/main/RSI-Harness) in [OpenRSI-Index](https://github.com/OpenRSI-Foundation/OpenRSI-Index), with co-author [Kangda Wei (@WeiKangda)](https://github.com/WeiKangda); [qualification and historical evidence](https://github.com/Zhuofeng-Li/sglang-omni/tree/codex/omni-review-evidence-20261019/pr-2881).

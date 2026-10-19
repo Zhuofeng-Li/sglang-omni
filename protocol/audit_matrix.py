@@ -163,6 +163,8 @@ print(json.dumps({number: {key: value.get(key) for key in ["covered", "expected"
 
 terminal_path = ROOT / "evidence/remote-control/queue-state.json"
 if terminal_path.exists() and json.loads(terminal_path.read_text()).get("phase") == "complete":
+    scorer_identity = json.loads((ROOT / "evidence/remote-control/moss-scorer-identity.json").read_text())
+    assert scorer_identity["verified_unchanged_after_all_scores"], "MOSS scorer weights were not verified stable across all arms"
     assert all(audits[number]["covered"] == 64 for number in ["2880", "2881", "2882"]), "Final Qwen pairing/identity audit failed"
     assert all(block["status"] == "verified" for block in audits["2859"]["blocks"]), "Final MOSS pairing/quality/cost audit failed"
     assert review["status"] == "verified", "Additional review validation or saved transcript differences are incomplete"
