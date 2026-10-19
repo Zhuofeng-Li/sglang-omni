@@ -1,0 +1,34 @@
+Candidate `67e28de826af967a9dec76506c91473e257aa156` vs frozen main `2d5de98cd92b17df7974ac2ef4192b4a99263845`.
+
+H100 80GB, SeedTTS EN (1088) / ZH (2020), seeds 42/43; each block runs main(42) → PR(42) → PR(43) → main(43). Throughput and mean latency are arithmetic means across the two seeds. P95, first-text latency and corpus WER retain seed42/43 values. Geometric change uses the ratio of mean req/s for each language, followed by the geometric mean of the two language ratios. Missing or incompletely paired blocks remain Pending. ASR SIM is N/A because the output is text.
+
+### Non-streaming
+
+| Concurrency | EN/ZH geometric throughput change |
+| ---: | ---: |
+| 1 | +1.34% |
+| 16 | Pending |
+| 32 | Pending |
+| 64 | Pending |
+
+Detailed metrics (main → PR; slash-separated values retain seed42/43):
+
+| c / split | req/s | Mean response ms | P95 response ms | First-text mean ms | First-text P95 ms | WER % | Failed/attempted |
+| --- | ---: | ---: | --- | --- | --- | --- | --- |
+| 1 / EN | 24.520 → 24.935 | 40.63 → 39.97 | 49.63/49.89 → 48.69/49.06 | N/A → N/A | N/A → N/A | 1.2258/1.2258 → 1.2258/1.2258 | 0/2176 → 0/2176 |
+| 1 / ZH | 26.896 → 27.164 | 37.01 → 36.67 | 47.04/47.01 → 46.46/47.00 | N/A → N/A | N/A → N/A | 0.5933/0.5933 → 0.5933/0.5933 | 0/4040 → 0/4040 |
+
+### Streaming
+
+| Concurrency | EN/ZH geometric throughput change |
+| ---: | ---: |
+| 1 | Pending |
+| 16 | Pending |
+| 32 | Pending |
+| 64 | Pending |
+
+Detailed metrics (main → PR; slash-separated values retain seed42/43):
+
+| c / split | req/s | Mean response ms | P95 response ms | First-text mean ms | First-text P95 ms | WER % | Failed/attempted |
+| --- | ---: | ---: | --- | --- | --- | --- | --- |
+| Pending | — | — | — | — | — | — | — |

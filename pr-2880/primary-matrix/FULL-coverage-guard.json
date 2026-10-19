@@ -1,0 +1,32 @@
+{
+  "observed_at_utc": "2026-10-19T22:20:03.560156+00:00",
+  "audit_script_sha256": "8a4fca4c426cb5215c0b7bcd7835df1bff5ddc6ddc854a182e5fe40ffcb3b84d",
+  "scope": "Final PR2880 primary cells now require successful FULL backend and prefill runner in the same capture stack. This guard changes evidence validation only.",
+  "existing_evidence_checks": [
+    {
+      "cohort": "pr2880-c1-nonstream-main-seed42",
+      "all_prefill_captures": 50,
+      "FULL_prefill_captures": 0,
+      "would_satisfy_intended_FULL_coverage": false
+    },
+    {
+      "cohort": "pr2880-c32-nonstream-full-seed42-flashinfer-full-coverage-smoke",
+      "all_prefill_captures": 50,
+      "FULL_prefill_captures": 50,
+      "would_satisfy_intended_FULL_coverage": true
+    },
+    {
+      "cohort": "pr2880-c32-stream-full-seed42-flashinfer-full-coverage-smoke",
+      "all_prefill_captures": 50,
+      "FULL_prefill_captures": 50,
+      "would_satisfy_intended_FULL_coverage": true
+    }
+  ],
+  "current_default_candidate_live_trace": {
+    "cohort": "pr2880-c1-nonstream-pr-seed42",
+    "FULL_prefill_captures": 50,
+    "other_prefill_captures": 0,
+    "cohort_still_running": true
+  },
+  "new_runtime_changes": false
+}
