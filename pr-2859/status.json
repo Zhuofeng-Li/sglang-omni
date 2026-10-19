@@ -1,9 +1,9 @@
 {
-  "observed_at_utc": "2026-10-19T20:13:23.736698+00:00",
+  "observed_at_utc": "2026-10-19T20:23:31.324784+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "757c09eb272079b6c08f88bcaa393ffe3845029a",
   "performance_readiness": "pending final-source paired measurements and review validation",
-  "correctness": "Prepared integration regression:365 passed; full pre-commit passed with unchanged source. Seven generation cohorts complete, each1088requests and zero failures. Last c1 streaming baseline seed43 running; all c64 generations and WER/SIM pending.",
+  "correctness": "Prepared integration regression365 passed; full pre-commit passed. All8 c1 generation cohorts completed1088requests each, zero failures. ABBA, source, GPU, config and sample-order checks passed. Streaming playback-continuity evaluated1088/1088 per cohort with zero p99 underrun. All c64 generation and WER/SIM remain pending.",
   "gpu": "single NVIDIA H100 80GB HBM3",
   "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
   "scope": "Qwen full c1/c16/c32/c64 EN+ZH both modes; MOSS requested c1/c64 EN both modes, matched 0.60 AR budget",
@@ -27,9 +27,9 @@
   ],
   "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification.",
   "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
-  "generation_complete": 7,
+  "generation_complete": 8,
   "generation_expected": 16,
-  "current_phase": "c1 streaming generation",
+  "current_phase": "c64 non-streaming generation",
   "scorer_preparation": "Verified S3PRL0.4.18 wheel staged; installation/import validation deferred to quality stage. Scorer hashes/HF metadata will be recorded before all quality passes.",
   "precommit": {
     "candidate": "757c09eb272079b6c08f88bcaa393ffe3845029a",
