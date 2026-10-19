@@ -1,0 +1,108 @@
+{
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "metrics": [
+    {
+      "mode": "nonstream",
+      "concurrency": 1,
+      "language": "en",
+      "arms": {
+        "main": {
+          "req_s": 24.58356401055967,
+          "mean_latency_ms": 40.52959779330516,
+          "p95_ms": "49.24/49.61",
+          "wer_percent": "1.2258/1.2258",
+          "first_text_mean_ms": "N/A",
+          "first_text_p95_ms": "N/A",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2882-c1-nonstream-main-seed42/result.json",
+            "evidence/results/pr2882-c1-nonstream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 24.854375655888113,
+          "mean_latency_ms": 40.0903807113697,
+          "p95_ms": "49.34/48.79",
+          "wer_percent": "1.2258/1.2258",
+          "first_text_mean_ms": "N/A",
+          "first_text_p95_ms": "N/A",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2882-c1-nonstream-pr-seed42/result.json",
+            "evidence/results/pr2882-c1-nonstream-pr-seed43/result.json"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "nonstream",
+      "concurrency": 1,
+      "language": "zh",
+      "arms": {
+        "main": {
+          "req_s": 27.266327128243177,
+          "mean_latency_ms": 36.53494359690254,
+          "p95_ms": "46.11/46.72",
+          "wer_percent": "0.5933/0.5933",
+          "first_text_mean_ms": "N/A",
+          "first_text_p95_ms": "N/A",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2882-c1-nonstream-main-seed42/result.json",
+            "evidence/results/pr2882-c1-nonstream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 27.712295191008995,
+          "mean_latency_ms": 35.95019461872923,
+          "p95_ms": "46.27/45.24",
+          "wer_percent": "0.5933/0.5933",
+          "first_text_mean_ms": "N/A",
+          "first_text_p95_ms": "N/A",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2882-c1-nonstream-pr-seed42/result.json",
+            "evidence/results/pr2882-c1-nonstream-pr-seed43/result.json"
+          ]
+        }
+      }
+    }
+  ],
+  "costs": [
+    {
+      "mode": "nonstream",
+      "concurrency": 1,
+      "arms": {
+        "main": {
+          "startup_s": "75.72/75.77",
+          "peak_gib": "70.80/70.79",
+          "successful_captures": [
+            1468,
+            1468
+          ],
+          "live_captures": [
+            1468,
+            1468
+          ]
+        },
+        "pr": {
+          "startup_s": "74.58/76.08",
+          "peak_gib": "70.79/70.79",
+          "successful_captures": [
+            1468,
+            1468
+          ],
+          "live_captures": [
+            1468,
+            1468
+          ]
+        }
+      }
+    }
+  ]
+}

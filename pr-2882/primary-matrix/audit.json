@@ -1,0 +1,1198 @@
+{
+  "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "cells": [
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "main",
+      "seed": 42,
+      "status": "verified",
+      "evidence": "evidence/results/pr2882-c1-nonstream-main-seed42/result.json",
+      "sample_order_sha256": "a46c16011daef8e0a0fbfe423256a3c7559ad9255d2a21a6dfcf4fb9770f4082",
+      "metrics": {
+        "summary": {
+          "lang": "en",
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "wer_corpus": 0.012257869249394673,
+          "wer_per_sample_mean": 0.012113631874661288,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.033245048548005224,
+          "wer_per_sample_p95": 0.09090909090909091,
+          "wer_per_sample_max": 0.18181818181818182,
+          "wer_below_50_corpus": 0.012257869249394673,
+          "wer_below_50_per_sample_mean": 0.012113631874661288,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.04049677217570955,
+          "latency_median_s": 0.040370645467191935,
+          "latency_p95_s": 0.04924381116870791,
+          "rtf_mean": 0.008761840686631547,
+          "audio_duration_mean_s": 4.736102136948529,
+          "corpus_wer": 0.012257869249394673
+        },
+        "speed": {
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.04049677217570955,
+          "asr_latency_median_s": 0.040370645467191935,
+          "asr_latency_p95_s": 0.04924381116870791,
+          "asr_latency_p99_s": 0.05705238635884559,
+          "asr_total_time_s": 44.20693602086976,
+          "asr_latency_sum_s": 44.06048812717199,
+          "asr_throughput_samples_per_s": 24.61152248792731,
+          "asr_rtf_mean": 0.008761840686631547,
+          "asr_rtf_median": 0.008725648485606623,
+          "asr_audio_processed_s": 5152.879125,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 1,
+          "asr_rtf_p95": 0.0112,
+          "rtfx": 116.563,
+          "throughput_samples_per_s": 24.61152248792731,
+          "latency_mean_s": 0.04049677217570955,
+          "latency_median_s": 0.040370645467191935,
+          "latency_p95_s": 0.04924381116870791,
+          "latency_p99_s": 0.05705238635884559,
+          "rtf_mean": 0.008761840686631547,
+          "rtf_median": 0.008725648485606623,
+          "rtf_p95": 0.0112
+        },
+        "wall_clock_s": 44.20693602086976,
+        "worker": {},
+        "sample_order_sha256": "a46c16011daef8e0a0fbfe423256a3c7559ad9255d2a21a6dfcf4fb9770f4082"
+      },
+      "costs": {
+        "startup_seconds": 75.71711795404553,
+        "peak_memory_mib": 72495.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/main/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/main/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/main/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 42,
+      "status": "verified",
+      "evidence": "evidence/results/pr2882-c1-nonstream-pr-seed42/result.json",
+      "sample_order_sha256": "a46c16011daef8e0a0fbfe423256a3c7559ad9255d2a21a6dfcf4fb9770f4082",
+      "metrics": {
+        "summary": {
+          "lang": "en",
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "wer_corpus": 0.012257869249394673,
+          "wer_per_sample_mean": 0.012113631874661288,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.033245048548005224,
+          "wer_per_sample_p95": 0.09090909090909091,
+          "wer_per_sample_max": 0.18181818181818182,
+          "wer_below_50_corpus": 0.012257869249394673,
+          "wer_below_50_per_sample_mean": 0.012113631874661288,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.0402909531014088,
+          "latency_median_s": 0.04029697994701564,
+          "latency_p95_s": 0.049338260677177434,
+          "rtf_mean": 0.008721653251252808,
+          "audio_duration_mean_s": 4.736102136948529,
+          "corpus_wer": 0.012257869249394673
+        },
+        "speed": {
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.0402909531014088,
+          "asr_latency_median_s": 0.04029697994701564,
+          "asr_latency_p95_s": 0.049338260677177434,
+          "asr_latency_p99_s": 0.05871390086133024,
+          "asr_total_time_s": 44.00172475608997,
+          "asr_latency_sum_s": 43.83655697433278,
+          "asr_throughput_samples_per_s": 24.72630348085202,
+          "asr_rtf_mean": 0.008721653251252808,
+          "asr_rtf_median": 0.008704568373630539,
+          "asr_audio_processed_s": 5152.879125,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 1,
+          "asr_rtf_p95": 0.0111,
+          "rtfx": 117.106,
+          "throughput_samples_per_s": 24.72630348085202,
+          "latency_mean_s": 0.0402909531014088,
+          "latency_median_s": 0.04029697994701564,
+          "latency_p95_s": 0.049338260677177434,
+          "latency_p99_s": 0.05871390086133024,
+          "rtf_mean": 0.008721653251252808,
+          "rtf_median": 0.008704568373630539,
+          "rtf_p95": 0.0111
+        },
+        "wall_clock_s": 44.00172475608997,
+        "worker": {},
+        "sample_order_sha256": "a46c16011daef8e0a0fbfe423256a3c7559ad9255d2a21a6dfcf4fb9770f4082"
+      },
+      "costs": {
+        "startup_seconds": 74.57871788204648,
+        "peak_memory_mib": 72493.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2882/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 43,
+      "status": "verified",
+      "evidence": "evidence/results/pr2882-c1-nonstream-pr-seed43/result.json",
+      "sample_order_sha256": "a62f275f18f5b04d2164e6e081118c8da6b39e2a295b662dfa49f20ae09f2e4d",
+      "metrics": {
+        "summary": {
+          "lang": "en",
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "wer_corpus": 0.012257869249394673,
+          "wer_per_sample_mean": 0.012113631874661288,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.033245048548005224,
+          "wer_per_sample_p95": 0.09090909090909091,
+          "wer_per_sample_max": 0.18181818181818182,
+          "wer_below_50_corpus": 0.012257869249394673,
+          "wer_below_50_per_sample_mean": 0.012113631874661288,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.039889808321330586,
+          "latency_median_s": 0.03994044801220298,
+          "latency_p95_s": 0.04878593725152313,
+          "rtf_mean": 0.008634063874512704,
+          "audio_duration_mean_s": 4.736102136948529,
+          "corpus_wer": 0.012257869249394673
+        },
+        "speed": {
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.039889808321330586,
+          "asr_latency_median_s": 0.03994044801220298,
+          "asr_latency_p95_s": 0.04878593725152313,
+          "asr_latency_p99_s": 0.05734221339458565,
+          "asr_total_time_s": 43.550576283130795,
+          "asr_latency_sum_s": 43.40011145360768,
+          "asr_throughput_samples_per_s": 24.982447830924205,
+          "asr_rtf_mean": 0.008634063874512704,
+          "asr_rtf_median": 0.008564811372718521,
+          "asr_audio_processed_s": 5152.879125,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 1,
+          "asr_rtf_p95": 0.011,
+          "rtfx": 118.319,
+          "throughput_samples_per_s": 24.982447830924205,
+          "latency_mean_s": 0.039889808321330586,
+          "latency_median_s": 0.03994044801220298,
+          "latency_p95_s": 0.04878593725152313,
+          "latency_p99_s": 0.05734221339458565,
+          "rtf_mean": 0.008634063874512704,
+          "rtf_median": 0.008564811372718521,
+          "rtf_p95": 0.011
+        },
+        "wall_clock_s": 43.550576283130795,
+        "worker": {},
+        "sample_order_sha256": "a62f275f18f5b04d2164e6e081118c8da6b39e2a295b662dfa49f20ae09f2e4d"
+      },
+      "costs": {
+        "startup_seconds": 76.07945574587211,
+        "peak_memory_mib": 72485.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2882/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "main",
+      "seed": 43,
+      "status": "verified",
+      "evidence": "evidence/results/pr2882-c1-nonstream-main-seed43/result.json",
+      "sample_order_sha256": "a62f275f18f5b04d2164e6e081118c8da6b39e2a295b662dfa49f20ae09f2e4d",
+      "metrics": {
+        "summary": {
+          "lang": "en",
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "wer_corpus": 0.012257869249394673,
+          "wer_per_sample_mean": 0.012113631874661288,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.033245048548005224,
+          "wer_per_sample_p95": 0.09090909090909091,
+          "wer_per_sample_max": 0.18181818181818182,
+          "wer_below_50_corpus": 0.012257869249394673,
+          "wer_below_50_per_sample_mean": 0.012113631874661288,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.04056242341090076,
+          "latency_median_s": 0.04063298157416284,
+          "latency_p95_s": 0.04960733363404869,
+          "rtf_mean": 0.00878100796560209,
+          "audio_duration_mean_s": 4.736102136948529,
+          "corpus_wer": 0.012257869249394673
+        },
+        "speed": {
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.04056242341090076,
+          "asr_latency_median_s": 0.04063298157416284,
+          "asr_latency_p95_s": 0.04960733363404869,
+          "asr_latency_p99_s": 0.05738950980128718,
+          "asr_total_time_s": 44.30760212894529,
+          "asr_latency_sum_s": 44.131916671060026,
+          "asr_throughput_samples_per_s": 24.555605533192033,
+          "asr_rtf_mean": 0.00878100796560209,
+          "asr_rtf_median": 0.008737611850432238,
+          "asr_audio_processed_s": 5152.879125,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 1,
+          "asr_rtf_p95": 0.0112,
+          "rtfx": 116.298,
+          "throughput_samples_per_s": 24.555605533192033,
+          "latency_mean_s": 0.04056242341090076,
+          "latency_median_s": 0.04063298157416284,
+          "latency_p95_s": 0.04960733363404869,
+          "latency_p99_s": 0.05738950980128718,
+          "rtf_mean": 0.00878100796560209,
+          "rtf_median": 0.008737611850432238,
+          "rtf_p95": 0.0112
+        },
+        "wall_clock_s": 44.30760212894529,
+        "worker": {},
+        "sample_order_sha256": "a62f275f18f5b04d2164e6e081118c8da6b39e2a295b662dfa49f20ae09f2e4d"
+      },
+      "costs": {
+        "startup_seconds": 75.76815841486678,
+        "peak_memory_mib": 72487.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/main/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/main/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/main/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 42,
+      "status": "verified",
+      "evidence": "evidence/results/pr2882-c1-nonstream-main-seed42/result.json",
+      "sample_order_sha256": "bde9ca8a58f482969653fb1c7b821c1c1b58c3bdc89085385e221b1e1a1e4d4e",
+      "metrics": {
+        "summary": {
+          "lang": "zh",
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "wer_corpus": 0.005933473179502547,
+          "wer_per_sample_mean": 0.005808095475737936,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.0213616003046619,
+          "wer_per_sample_p95": 0.058823529411764705,
+          "wer_per_sample_max": 0.21052631578947367,
+          "wer_below_50_corpus": 0.005933473179502547,
+          "wer_below_50_per_sample_mean": 0.005808095475737936,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.036292594307019276,
+          "latency_median_s": 0.03585113992448896,
+          "latency_p95_s": 0.04610757029149681,
+          "rtf_mean": 0.007834118786907169,
+          "audio_duration_mean_s": 4.681733003300329,
+          "corpus_wer": 0.005933473179502547
+        },
+        "speed": {
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.036292594307019276,
+          "asr_latency_median_s": 0.03585113992448896,
+          "asr_latency_p95_s": 0.04610757029149681,
+          "asr_latency_p99_s": 0.04995671601267532,
+          "asr_total_time_s": 73.58532125898637,
+          "asr_latency_sum_s": 73.31104050017893,
+          "asr_throughput_samples_per_s": 27.45112701065111,
+          "asr_rtf_mean": 0.007834118786907169,
+          "asr_rtf_median": 0.007820383030198927,
+          "asr_audio_processed_s": 9457.100666666667,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 1,
+          "asr_rtf_p95": 0.0099,
+          "rtfx": 128.519,
+          "throughput_samples_per_s": 27.45112701065111,
+          "latency_mean_s": 0.036292594307019276,
+          "latency_median_s": 0.03585113992448896,
+          "latency_p95_s": 0.04610757029149681,
+          "latency_p99_s": 0.04995671601267532,
+          "rtf_mean": 0.007834118786907169,
+          "rtf_median": 0.007820383030198927,
+          "rtf_p95": 0.0099
+        },
+        "wall_clock_s": 73.58532125898637,
+        "worker": {},
+        "sample_order_sha256": "bde9ca8a58f482969653fb1c7b821c1c1b58c3bdc89085385e221b1e1a1e4d4e"
+      },
+      "costs": {
+        "startup_seconds": 75.71711795404553,
+        "peak_memory_mib": 72495.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/main/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/main/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/main/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 42,
+      "status": "verified",
+      "evidence": "evidence/results/pr2882-c1-nonstream-pr-seed42/result.json",
+      "sample_order_sha256": "bde9ca8a58f482969653fb1c7b821c1c1b58c3bdc89085385e221b1e1a1e4d4e",
+      "metrics": {
+        "summary": {
+          "lang": "zh",
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "wer_corpus": 0.005933473179502547,
+          "wer_per_sample_mean": 0.005808095475737936,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.0213616003046619,
+          "wer_per_sample_p95": 0.058823529411764705,
+          "wer_per_sample_max": 0.21052631578947367,
+          "wer_below_50_corpus": 0.005933473179502547,
+          "wer_below_50_per_sample_mean": 0.005808095475737936,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.03625879910184384,
+          "latency_median_s": 0.03604393359273672,
+          "latency_p95_s": 0.046266578033100816,
+          "rtf_mean": 0.007825432530229574,
+          "audio_duration_mean_s": 4.681733003300329,
+          "corpus_wer": 0.005933473179502547
+        },
+        "speed": {
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.03625879910184384,
+          "asr_latency_median_s": 0.03604393359273672,
+          "asr_latency_p95_s": 0.046266578033100816,
+          "asr_latency_p99_s": 0.050176707380451255,
+          "asr_total_time_s": 73.53015287290327,
+          "asr_latency_sum_s": 73.24277418572456,
+          "asr_throughput_samples_per_s": 27.471723110538967,
+          "asr_rtf_mean": 0.007825432530229574,
+          "asr_rtf_median": 0.0078073492359392125,
+          "asr_audio_processed_s": 9457.100666666667,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 1,
+          "asr_rtf_p95": 0.0099,
+          "rtfx": 128.615,
+          "throughput_samples_per_s": 27.471723110538967,
+          "latency_mean_s": 0.03625879910184384,
+          "latency_median_s": 0.03604393359273672,
+          "latency_p95_s": 0.046266578033100816,
+          "latency_p99_s": 0.050176707380451255,
+          "rtf_mean": 0.007825432530229574,
+          "rtf_median": 0.0078073492359392125,
+          "rtf_p95": 0.0099
+        },
+        "wall_clock_s": 73.53015287290327,
+        "worker": {},
+        "sample_order_sha256": "bde9ca8a58f482969653fb1c7b821c1c1b58c3bdc89085385e221b1e1a1e4d4e"
+      },
+      "costs": {
+        "startup_seconds": 74.57871788204648,
+        "peak_memory_mib": 72493.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2882/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 43,
+      "status": "verified",
+      "evidence": "evidence/results/pr2882-c1-nonstream-pr-seed43/result.json",
+      "sample_order_sha256": "32ec8b050522a33aded9ac787e2a63611464dc671bd3841ffff4541316a17e53",
+      "metrics": {
+        "summary": {
+          "lang": "zh",
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "wer_corpus": 0.005933473179502547,
+          "wer_per_sample_mean": 0.005808095475737937,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.0213616003046619,
+          "wer_per_sample_p95": 0.058823529411764705,
+          "wer_per_sample_max": 0.21052631578947367,
+          "wer_below_50_corpus": 0.005933473179502547,
+          "wer_below_50_per_sample_mean": 0.005808095475737937,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.03564159013561462,
+          "latency_median_s": 0.03526795550715178,
+          "latency_p95_s": 0.04523561560781673,
+          "rtf_mean": 0.007692997406820632,
+          "audio_duration_mean_s": 4.68173300330033,
+          "corpus_wer": 0.005933473179502547
+        },
+        "speed": {
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.03564159013561462,
+          "asr_latency_median_s": 0.03526795550715178,
+          "asr_latency_p95_s": 0.04523561560781673,
+          "asr_latency_p99_s": 0.04918816193705424,
+          "asr_total_time_s": 72.2645008249674,
+          "asr_latency_sum_s": 71.99601207394153,
+          "asr_throughput_samples_per_s": 27.952867271479022,
+          "asr_rtf_mean": 0.007692997406820632,
+          "asr_rtf_median": 0.007673090786647803,
+          "asr_audio_processed_s": 9457.100666666667,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 1,
+          "asr_rtf_p95": 0.0097,
+          "rtfx": 130.868,
+          "throughput_samples_per_s": 27.952867271479022,
+          "latency_mean_s": 0.03564159013561462,
+          "latency_median_s": 0.03526795550715178,
+          "latency_p95_s": 0.04523561560781673,
+          "latency_p99_s": 0.04918816193705424,
+          "rtf_mean": 0.007692997406820632,
+          "rtf_median": 0.007673090786647803,
+          "rtf_p95": 0.0097
+        },
+        "wall_clock_s": 72.2645008249674,
+        "worker": {},
+        "sample_order_sha256": "32ec8b050522a33aded9ac787e2a63611464dc671bd3841ffff4541316a17e53"
+      },
+      "costs": {
+        "startup_seconds": 76.07945574587211,
+        "peak_memory_mib": 72485.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2882/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 43,
+      "status": "verified",
+      "evidence": "evidence/results/pr2882-c1-nonstream-main-seed43/result.json",
+      "sample_order_sha256": "32ec8b050522a33aded9ac787e2a63611464dc671bd3841ffff4541316a17e53",
+      "metrics": {
+        "summary": {
+          "lang": "zh",
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "wer_corpus": 0.005933473179502547,
+          "wer_per_sample_mean": 0.005808095475737937,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.0213616003046619,
+          "wer_per_sample_p95": 0.058823529411764705,
+          "wer_per_sample_max": 0.21052631578947367,
+          "wer_below_50_corpus": 0.005933473179502547,
+          "wer_below_50_per_sample_mean": 0.005808095475737937,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.036777292886785794,
+          "latency_median_s": 0.036269500968046486,
+          "latency_p95_s": 0.046718350565060976,
+          "rtf_mean": 0.00793862237702548,
+          "audio_duration_mean_s": 4.68173300330033,
+          "corpus_wer": 0.005933473179502547
+        },
+        "speed": {
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.036777292886785794,
+          "asr_latency_median_s": 0.036269500968046486,
+          "asr_latency_p95_s": 0.046718350565060976,
+          "asr_latency_p99_s": 0.050649640597403046,
+          "asr_total_time_s": 74.58958948892541,
+          "asr_latency_sum_s": 74.2901316313073,
+          "asr_throughput_samples_per_s": 27.081527245835247,
+          "asr_rtf_mean": 0.00793862237702548,
+          "asr_rtf_median": 0.007921199015525314,
+          "asr_audio_processed_s": 9457.100666666667,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 1,
+          "asr_rtf_p95": 0.01,
+          "rtfx": 126.788,
+          "throughput_samples_per_s": 27.081527245835247,
+          "latency_mean_s": 0.036777292886785794,
+          "latency_median_s": 0.036269500968046486,
+          "latency_p95_s": 0.046718350565060976,
+          "latency_p99_s": 0.050649640597403046,
+          "rtf_mean": 0.00793862237702548,
+          "rtf_median": 0.007921199015525314,
+          "rtf_p95": 0.01
+        },
+        "wall_clock_s": 74.58958948892541,
+        "worker": {},
+        "sample_order_sha256": "32ec8b050522a33aded9ac787e2a63611464dc671bd3841ffff4541316a17e53"
+      },
+      "costs": {
+        "startup_seconds": 75.76815841486678,
+        "peak_memory_mib": 72487.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/main/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/main/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/main/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "language": "en",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c1-stream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c1-stream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c1-stream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "language": "en",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c1-stream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c1-stream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c1-stream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c1-stream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c1-stream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-nonstream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-nonstream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-nonstream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-nonstream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-nonstream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-nonstream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-nonstream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-nonstream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "language": "en",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-stream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-stream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-stream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "language": "en",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-stream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-stream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-stream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-stream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c16-stream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-nonstream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-nonstream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-nonstream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-nonstream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-nonstream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-nonstream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-nonstream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-nonstream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "language": "en",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-stream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-stream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-stream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "language": "en",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-stream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-stream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-stream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-stream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c32-stream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-nonstream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-nonstream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-nonstream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "language": "en",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-nonstream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-nonstream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-nonstream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-nonstream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-nonstream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "language": "en",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-stream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-stream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "language": "en",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-stream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "language": "en",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-stream-main-seed43/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-stream-main-seed42/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 42,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-stream-pr-seed42/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "pr",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-stream-pr-seed43/result.json"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "language": "zh",
+      "arm": "main",
+      "seed": 43,
+      "status": "missing",
+      "evidence": "evidence/results/pr2882-c64-stream-main-seed43/result.json"
+    }
+  ],
+  "blocks": [
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "status": "verified",
+      "actual_abba_intervals": [
+        [
+          1792453000.9636185,
+          1792453314.1310039
+        ],
+        [
+          1792453314.7943053,
+          1792453625.9214592
+        ],
+        [
+          1792453626.575286,
+          1792453937.1260228
+        ],
+        [
+          1792453937.5836577,
+          1792454252.7390337
+        ]
+      ]
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "status": "missing"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "status": "missing"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "status": "missing"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "status": "missing"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "status": "missing"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "status": "missing"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "status": "missing"
+    }
+  ],
+  "readiness": "pending",
+  "completed_cohort_cells": 8,
+  "covered": 8,
+  "expected": 64
+}
