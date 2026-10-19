@@ -1,0 +1,14 @@
+{
+  "at_utc": "2026-10-19T22:36:46.825491+00:00",
+  "url": "https://github.com/sgl-project/sglang-omni/pull/2880",
+  "head": "67e28de826af967a9dec76506c91473e257aa156",
+  "initial_body_verified": true,
+  "completed_blocks": 1,
+  "planned_blocks": 8,
+  "covered_language_cohort_cells": 8,
+  "expected_cells": 64,
+  "evidence_commit": "47c784c",
+  "historical_description_preserved": true,
+  "current_c1_nonstream_geometric_gain_percent": 1.34,
+  "readiness": "Other7primaryblocks/fullreviewvalidation/tradeoffsremainpending; approvalobtained"
+}
