@@ -1984,8 +1984,84 @@
       "language": "en",
       "arm": "main",
       "seed": 42,
-      "status": "missing",
-      "evidence": "evidence/results/pr2880-c16-stream-main-seed42/result.json"
+      "status": "verified",
+      "evidence": "evidence/results/pr2880-c16-stream-main-seed42/result.json",
+      "sample_order_sha256": "a46c16011daef8e0a0fbfe423256a3c7559ad9255d2a21a6dfcf4fb9770f4082",
+      "metrics": {
+        "summary": {
+          "lang": "en",
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "wer_corpus": 0.012106537530266344,
+          "wer_per_sample_mean": 0.011929808345249522,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.03303438587379025,
+          "wer_per_sample_p95": 0.09090909090909091,
+          "wer_per_sample_max": 0.18181818181818182,
+          "wer_below_50_corpus": 0.012106537530266344,
+          "wer_below_50_per_sample_mean": 0.011929808345249522,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.10628379388264661,
+          "latency_median_s": 0.10620824689976871,
+          "latency_p95_s": 0.1387312641250901,
+          "rtf_mean": 0.023040560734638338,
+          "audio_duration_mean_s": 4.736102136948529,
+          "corpus_wer": 0.012106537530266344
+        },
+        "speed": {
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.10628379388264661,
+          "asr_latency_median_s": 0.10620824689976871,
+          "asr_latency_p95_s": 0.1387312641250901,
+          "asr_latency_p99_s": 0.15026333805639291,
+          "asr_total_time_s": 7.301906432025135,
+          "asr_latency_sum_s": 115.63676774431951,
+          "asr_throughput_samples_per_s": 149.0021832145349,
+          "asr_rtf_mean": 0.023040560734638338,
+          "asr_rtf_median": 0.022515928834037607,
+          "asr_audio_processed_s": 5152.879125,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 16,
+          "asr_rtf_p95": 0.032,
+          "rtfx": 705.69,
+          "throughput_samples_per_s": 149.0021832145349,
+          "latency_mean_s": 0.10628379388264661,
+          "latency_median_s": 0.10620824689976871,
+          "latency_p95_s": 0.1387312641250901,
+          "latency_p99_s": 0.15026333805639291,
+          "rtf_mean": 0.023040560734638338,
+          "rtf_median": 0.022515928834037607,
+          "rtf_p95": 0.032,
+          "text_ttft_mean_s": 0.056,
+          "text_ttft_median_s": 0.0601,
+          "text_ttft_p95_s": 0.0772,
+          "text_ttft_p99_s": 0.0833,
+          "inter_chunk_mean_s": 0.0414,
+          "inter_chunk_p95_s": 0.0596,
+          "inter_chunk_p99_s": 0.0629
+        },
+        "wall_clock_s": 7.301906432025135,
+        "worker": {},
+        "sample_order_sha256": "a46c16011daef8e0a0fbfe423256a3c7559ad9255d2a21a6dfcf4fb9770f4082"
+      },
+      "costs": {
+        "startup_seconds": 75.15006794291548,
+        "peak_memory_mib": 73299.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/main/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/main/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/main/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
     },
     {
       "concurrency": 16,
@@ -1993,8 +2069,88 @@
       "language": "en",
       "arm": "pr",
       "seed": 42,
-      "status": "missing",
-      "evidence": "evidence/results/pr2880-c16-stream-pr-seed42/result.json"
+      "status": "verified",
+      "evidence": "evidence/results/pr2880-c16-stream-pr-seed42/result.json",
+      "sample_order_sha256": "a46c16011daef8e0a0fbfe423256a3c7559ad9255d2a21a6dfcf4fb9770f4082",
+      "metrics": {
+        "summary": {
+          "lang": "en",
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "wer_corpus": 0.01203087167070218,
+          "wer_per_sample_mean": 0.01186415708474532,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.03298701832738214,
+          "wer_per_sample_p95": 0.09090909090909091,
+          "wer_per_sample_max": 0.18181818181818182,
+          "wer_below_50_corpus": 0.01203087167070218,
+          "wer_below_50_per_sample_mean": 0.01186415708474532,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.10762592171650955,
+          "latency_median_s": 0.10832581389695406,
+          "latency_p95_s": 0.14018221518490462,
+          "rtf_mean": 0.02336464297710999,
+          "audio_duration_mean_s": 4.736102136948529,
+          "corpus_wer": 0.01203087167070218
+        },
+        "speed": {
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.10762592171650955,
+          "asr_latency_median_s": 0.10832581389695406,
+          "asr_latency_p95_s": 0.14018221518490462,
+          "asr_latency_p99_s": 0.15300865397322894,
+          "asr_total_time_s": 7.381196082802489,
+          "asr_latency_sum_s": 117.09700282756239,
+          "asr_throughput_samples_per_s": 147.4015847560181,
+          "asr_rtf_mean": 0.02336464297710999,
+          "asr_rtf_median": 0.022989947006548418,
+          "asr_audio_processed_s": 5152.879125,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 16,
+          "asr_rtf_p95": 0.0326,
+          "rtfx": 698.109,
+          "throughput_samples_per_s": 147.4015847560181,
+          "latency_mean_s": 0.10762592171650955,
+          "latency_median_s": 0.10832581389695406,
+          "latency_p95_s": 0.14018221518490462,
+          "latency_p99_s": 0.15300865397322894,
+          "rtf_mean": 0.02336464297710999,
+          "rtf_median": 0.022989947006548418,
+          "rtf_p95": 0.0326,
+          "text_ttft_mean_s": 0.0589,
+          "text_ttft_median_s": 0.0629,
+          "text_ttft_p95_s": 0.0809,
+          "text_ttft_p99_s": 0.0857,
+          "inter_chunk_mean_s": 0.0415,
+          "inter_chunk_p95_s": 0.0606,
+          "inter_chunk_p99_s": 0.0638
+        },
+        "wall_clock_s": 7.381196082802489,
+        "worker": {},
+        "sample_order_sha256": "a46c16011daef8e0a0fbfe423256a3c7559ad9255d2a21a6dfcf4fb9770f4082"
+      },
+      "costs": {
+        "startup_seconds": 77.08443768601865,
+        "peak_memory_mib": 73155.0,
+        "graphs_after_scoring": {
+          "successful_captures": 136,
+          "live_captures": 136,
+          "callers": {
+            "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 64,
+            "/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2880/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6,
+            "/qualification/source/pr-2880/sglang_omni/model_runner/base.py:prepare_and_forward;/qualification/source/pr-2880/sglang_omni/model_runner/model_worker.py:forward_batch_generation;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner.py:_forward_raw;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:execute;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:load_batch;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/metadata_glue.py:run_with_thread_local_capture": 16
+          }
+        }
+      },
+      "full_prefill_capture_callers": {
+        "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50
+      },
+      "full_prefill_successful_captures": 50
     },
     {
       "concurrency": 16,
@@ -2002,8 +2158,88 @@
       "language": "en",
       "arm": "pr",
       "seed": 43,
-      "status": "missing",
-      "evidence": "evidence/results/pr2880-c16-stream-pr-seed43/result.json"
+      "status": "verified",
+      "evidence": "evidence/results/pr2880-c16-stream-pr-seed43/result.json",
+      "sample_order_sha256": "a62f275f18f5b04d2164e6e081118c8da6b39e2a295b662dfa49f20ae09f2e4d",
+      "metrics": {
+        "summary": {
+          "lang": "en",
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "wer_corpus": 0.01203087167070218,
+          "wer_per_sample_mean": 0.011864157084745322,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.03298701832738214,
+          "wer_per_sample_p95": 0.09090909090909091,
+          "wer_per_sample_max": 0.18181818181818182,
+          "wer_below_50_corpus": 0.01203087167070218,
+          "wer_below_50_per_sample_mean": 0.011864157084745322,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.10648509559220709,
+          "latency_median_s": 0.10724555340129882,
+          "latency_p95_s": 0.14067590832710264,
+          "rtf_mean": 0.02311368833504814,
+          "audio_duration_mean_s": 4.736102136948529,
+          "corpus_wer": 0.01203087167070218
+        },
+        "speed": {
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.10648509559220709,
+          "asr_latency_median_s": 0.10724555340129882,
+          "asr_latency_p95_s": 0.14067590832710264,
+          "asr_latency_p99_s": 0.1541864279704167,
+          "asr_total_time_s": 7.464327599154785,
+          "asr_latency_sum_s": 115.85578400432132,
+          "asr_throughput_samples_per_s": 145.7599476372391,
+          "asr_rtf_mean": 0.02311368833504814,
+          "asr_rtf_median": 0.022794074765714593,
+          "asr_audio_processed_s": 5152.879125,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 16,
+          "asr_rtf_p95": 0.0324,
+          "rtfx": 690.334,
+          "throughput_samples_per_s": 145.7599476372391,
+          "latency_mean_s": 0.10648509559220709,
+          "latency_median_s": 0.10724555340129882,
+          "latency_p95_s": 0.14067590832710264,
+          "latency_p99_s": 0.1541864279704167,
+          "rtf_mean": 0.02311368833504814,
+          "rtf_median": 0.022794074765714593,
+          "rtf_p95": 0.0324,
+          "text_ttft_mean_s": 0.0586,
+          "text_ttft_median_s": 0.0622,
+          "text_ttft_p95_s": 0.081,
+          "text_ttft_p99_s": 0.0871,
+          "inter_chunk_mean_s": 0.0411,
+          "inter_chunk_p95_s": 0.0602,
+          "inter_chunk_p99_s": 0.0625
+        },
+        "wall_clock_s": 7.464327599154785,
+        "worker": {},
+        "sample_order_sha256": "a62f275f18f5b04d2164e6e081118c8da6b39e2a295b662dfa49f20ae09f2e4d"
+      },
+      "costs": {
+        "startup_seconds": 77.1305742629338,
+        "peak_memory_mib": 73297.0,
+        "graphs_after_scoring": {
+          "successful_captures": 136,
+          "live_captures": 136,
+          "callers": {
+            "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 64,
+            "/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2880/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6,
+            "/qualification/source/pr-2880/sglang_omni/model_runner/base.py:prepare_and_forward;/qualification/source/pr-2880/sglang_omni/model_runner/model_worker.py:forward_batch_generation;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner.py:_forward_raw;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:execute;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:load_batch;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/metadata_glue.py:run_with_thread_local_capture": 16
+          }
+        }
+      },
+      "full_prefill_capture_callers": {
+        "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50
+      },
+      "full_prefill_successful_captures": 50
     },
     {
       "concurrency": 16,
@@ -2011,8 +2247,84 @@
       "language": "en",
       "arm": "main",
       "seed": 43,
-      "status": "missing",
-      "evidence": "evidence/results/pr2880-c16-stream-main-seed43/result.json"
+      "status": "verified",
+      "evidence": "evidence/results/pr2880-c16-stream-main-seed43/result.json",
+      "sample_order_sha256": "a62f275f18f5b04d2164e6e081118c8da6b39e2a295b662dfa49f20ae09f2e4d",
+      "metrics": {
+        "summary": {
+          "lang": "en",
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "wer_corpus": 0.01203087167070218,
+          "wer_per_sample_mean": 0.011864157084745322,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.03298701832738214,
+          "wer_per_sample_p95": 0.09090909090909091,
+          "wer_per_sample_max": 0.18181818181818182,
+          "wer_below_50_corpus": 0.01203087167070218,
+          "wer_below_50_per_sample_mean": 0.011864157084745322,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.10694923068491763,
+          "latency_median_s": 0.10738955391570926,
+          "latency_p95_s": 0.13856365610845386,
+          "rtf_mean": 0.023227064940554872,
+          "audio_duration_mean_s": 4.736102136948529,
+          "corpus_wer": 0.01203087167070218
+        },
+        "speed": {
+          "total_samples": 1088,
+          "evaluated": 1088,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.10694923068491763,
+          "asr_latency_median_s": 0.10738955391570926,
+          "asr_latency_p95_s": 0.13856365610845386,
+          "asr_latency_p99_s": 0.15476119002560154,
+          "asr_total_time_s": 7.321031155064702,
+          "asr_latency_sum_s": 116.36076298519038,
+          "asr_throughput_samples_per_s": 148.61294494660356,
+          "asr_rtf_mean": 0.023227064940554872,
+          "asr_rtf_median": 0.02264045981553541,
+          "asr_audio_processed_s": 5152.879125,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 16,
+          "asr_rtf_p95": 0.0325,
+          "rtfx": 703.846,
+          "throughput_samples_per_s": 148.61294494660356,
+          "latency_mean_s": 0.10694923068491763,
+          "latency_median_s": 0.10738955391570926,
+          "latency_p95_s": 0.13856365610845386,
+          "latency_p99_s": 0.15476119002560154,
+          "rtf_mean": 0.023227064940554872,
+          "rtf_median": 0.02264045981553541,
+          "rtf_p95": 0.0325,
+          "text_ttft_mean_s": 0.0566,
+          "text_ttft_median_s": 0.0602,
+          "text_ttft_p95_s": 0.0782,
+          "text_ttft_p99_s": 0.0852,
+          "inter_chunk_mean_s": 0.0412,
+          "inter_chunk_p95_s": 0.06,
+          "inter_chunk_p99_s": 0.0619
+        },
+        "wall_clock_s": 7.321031155064702,
+        "worker": {},
+        "sample_order_sha256": "a62f275f18f5b04d2164e6e081118c8da6b39e2a295b662dfa49f20ae09f2e4d"
+      },
+      "costs": {
+        "startup_seconds": 76.77088775811717,
+        "peak_memory_mib": 73343.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/main/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/main/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/main/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
     },
     {
       "concurrency": 16,
@@ -2020,8 +2332,84 @@
       "language": "zh",
       "arm": "main",
       "seed": 42,
-      "status": "missing",
-      "evidence": "evidence/results/pr2880-c16-stream-main-seed42/result.json"
+      "status": "verified",
+      "evidence": "evidence/results/pr2880-c16-stream-main-seed42/result.json",
+      "sample_order_sha256": "bde9ca8a58f482969653fb1c7b821c1c1b58c3bdc89085385e221b1e1a1e4d4e",
+      "metrics": {
+        "summary": {
+          "lang": "zh",
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "wer_corpus": 0.005873539106982319,
+          "wer_per_sample_mean": 0.005753089975187881,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.021304882896348947,
+          "wer_per_sample_p95": 0.058823529411764705,
+          "wer_per_sample_max": 0.21052631578947367,
+          "wer_below_50_corpus": 0.005873539106982319,
+          "wer_below_50_per_sample_mean": 0.005753089975187881,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.10233533458500677,
+          "latency_median_s": 0.10370944638270885,
+          "latency_p95_s": 0.13949540411122144,
+          "rtf_mean": 0.022114882180355573,
+          "audio_duration_mean_s": 4.681733003300329,
+          "corpus_wer": 0.005873539106982319
+        },
+        "speed": {
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.10233533458500677,
+          "asr_latency_median_s": 0.10370944638270885,
+          "asr_latency_p95_s": 0.13949540411122144,
+          "asr_latency_p99_s": 0.14787688583135603,
+          "asr_total_time_s": 12.995468979002908,
+          "asr_latency_sum_s": 206.71737586171366,
+          "asr_throughput_samples_per_s": 155.43879203311266,
+          "asr_rtf_mean": 0.022114882180355573,
+          "asr_rtf_median": 0.02240491605747898,
+          "asr_audio_processed_s": 9457.100666666667,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 16,
+          "asr_rtf_p95": 0.0302,
+          "rtfx": 727.723,
+          "throughput_samples_per_s": 155.43879203311266,
+          "latency_mean_s": 0.10233533458500677,
+          "latency_median_s": 0.10370944638270885,
+          "latency_p95_s": 0.13949540411122144,
+          "latency_p99_s": 0.14787688583135603,
+          "rtf_mean": 0.022114882180355573,
+          "rtf_median": 0.02240491605747898,
+          "rtf_p95": 0.0302,
+          "text_ttft_mean_s": 0.0579,
+          "text_ttft_median_s": 0.0635,
+          "text_ttft_p95_s": 0.0794,
+          "text_ttft_p99_s": 0.0852,
+          "inter_chunk_mean_s": 0.0388,
+          "inter_chunk_p95_s": 0.0607,
+          "inter_chunk_p99_s": 0.0623
+        },
+        "wall_clock_s": 12.995468979002908,
+        "worker": {},
+        "sample_order_sha256": "bde9ca8a58f482969653fb1c7b821c1c1b58c3bdc89085385e221b1e1a1e4d4e"
+      },
+      "costs": {
+        "startup_seconds": 75.15006794291548,
+        "peak_memory_mib": 73299.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/main/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/main/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/main/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
     },
     {
       "concurrency": 16,
@@ -2029,8 +2417,88 @@
       "language": "zh",
       "arm": "pr",
       "seed": 42,
-      "status": "missing",
-      "evidence": "evidence/results/pr2880-c16-stream-pr-seed42/result.json"
+      "status": "verified",
+      "evidence": "evidence/results/pr2880-c16-stream-pr-seed42/result.json",
+      "sample_order_sha256": "bde9ca8a58f482969653fb1c7b821c1c1b58c3bdc89085385e221b1e1a1e4d4e",
+      "metrics": {
+        "summary": {
+          "lang": "zh",
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "wer_corpus": 0.005873539106982319,
+          "wer_per_sample_mean": 0.005725587224912855,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.021294359937181644,
+          "wer_per_sample_p95": 0.055718954248365864,
+          "wer_per_sample_max": 0.21052631578947367,
+          "wer_below_50_corpus": 0.005873539106982319,
+          "wer_below_50_per_sample_mean": 0.005725587224912855,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.10218367964342827,
+          "latency_median_s": 0.1038570289965719,
+          "latency_p95_s": 0.1382906852173619,
+          "rtf_mean": 0.0220765934391036,
+          "audio_duration_mean_s": 4.681733003300329,
+          "corpus_wer": 0.005873539106982319
+        },
+        "speed": {
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.10218367964342827,
+          "asr_latency_median_s": 0.1038570289965719,
+          "asr_latency_p95_s": 0.1382906852173619,
+          "asr_latency_p99_s": 0.1494319954048842,
+          "asr_total_time_s": 12.995726118097082,
+          "asr_latency_sum_s": 206.4110328797251,
+          "asr_throughput_samples_per_s": 155.43571645350906,
+          "asr_rtf_mean": 0.0220765934391036,
+          "asr_rtf_median": 0.022441152697341676,
+          "asr_audio_processed_s": 9457.100666666667,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 16,
+          "asr_rtf_p95": 0.0299,
+          "rtfx": 727.709,
+          "throughput_samples_per_s": 155.43571645350906,
+          "latency_mean_s": 0.10218367964342827,
+          "latency_median_s": 0.1038570289965719,
+          "latency_p95_s": 0.1382906852173619,
+          "latency_p99_s": 0.1494319954048842,
+          "rtf_mean": 0.0220765934391036,
+          "rtf_median": 0.022441152697341676,
+          "rtf_p95": 0.0299,
+          "text_ttft_mean_s": 0.0594,
+          "text_ttft_median_s": 0.0652,
+          "text_ttft_p95_s": 0.0805,
+          "text_ttft_p99_s": 0.0875,
+          "inter_chunk_mean_s": 0.0381,
+          "inter_chunk_p95_s": 0.0604,
+          "inter_chunk_p99_s": 0.0627
+        },
+        "wall_clock_s": 12.995726118097082,
+        "worker": {},
+        "sample_order_sha256": "bde9ca8a58f482969653fb1c7b821c1c1b58c3bdc89085385e221b1e1a1e4d4e"
+      },
+      "costs": {
+        "startup_seconds": 77.08443768601865,
+        "peak_memory_mib": 73155.0,
+        "graphs_after_scoring": {
+          "successful_captures": 136,
+          "live_captures": 136,
+          "callers": {
+            "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 64,
+            "/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2880/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6,
+            "/qualification/source/pr-2880/sglang_omni/model_runner/base.py:prepare_and_forward;/qualification/source/pr-2880/sglang_omni/model_runner/model_worker.py:forward_batch_generation;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner.py:_forward_raw;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:execute;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:load_batch;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/metadata_glue.py:run_with_thread_local_capture": 16
+          }
+        }
+      },
+      "full_prefill_capture_callers": {
+        "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50
+      },
+      "full_prefill_successful_captures": 50
     },
     {
       "concurrency": 16,
@@ -2038,8 +2506,88 @@
       "language": "zh",
       "arm": "pr",
       "seed": 43,
-      "status": "missing",
-      "evidence": "evidence/results/pr2880-c16-stream-pr-seed43/result.json"
+      "status": "verified",
+      "evidence": "evidence/results/pr2880-c16-stream-pr-seed43/result.json",
+      "sample_order_sha256": "32ec8b050522a33aded9ac787e2a63611464dc671bd3841ffff4541316a17e53",
+      "metrics": {
+        "summary": {
+          "lang": "zh",
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "wer_corpus": 0.005993407252022775,
+          "wer_per_sample_mean": 0.005866336593967406,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.021576510213694385,
+          "wer_per_sample_p95": 0.058823529411764705,
+          "wer_per_sample_max": 0.21052631578947367,
+          "wer_below_50_corpus": 0.005993407252022775,
+          "wer_below_50_per_sample_mean": 0.005866336593967406,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.10288232278406141,
+          "latency_median_s": 0.1047546099871397,
+          "latency_p95_s": 0.13941678494447843,
+          "rtf_mean": 0.022237353749826404,
+          "audio_duration_mean_s": 4.68173300330033,
+          "corpus_wer": 0.005993407252022775
+        },
+        "speed": {
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.10288232278406141,
+          "asr_latency_median_s": 0.1047546099871397,
+          "asr_latency_p95_s": 0.13941678494447843,
+          "asr_latency_p99_s": 0.1482337137777358,
+          "asr_total_time_s": 13.051915237912908,
+          "asr_latency_sum_s": 207.82229202380404,
+          "asr_throughput_samples_per_s": 154.76655825440466,
+          "asr_rtf_mean": 0.022237353749826404,
+          "asr_rtf_median": 0.022686584366342247,
+          "asr_audio_processed_s": 9457.100666666667,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 16,
+          "asr_rtf_p95": 0.0302,
+          "rtfx": 724.576,
+          "throughput_samples_per_s": 154.76655825440466,
+          "latency_mean_s": 0.10288232278406141,
+          "latency_median_s": 0.1047546099871397,
+          "latency_p95_s": 0.13941678494447843,
+          "latency_p99_s": 0.1482337137777358,
+          "rtf_mean": 0.022237353749826404,
+          "rtf_median": 0.022686584366342247,
+          "rtf_p95": 0.0302,
+          "text_ttft_mean_s": 0.06,
+          "text_ttft_median_s": 0.0655,
+          "text_ttft_p95_s": 0.0816,
+          "text_ttft_p99_s": 0.0859,
+          "inter_chunk_mean_s": 0.0381,
+          "inter_chunk_p95_s": 0.0605,
+          "inter_chunk_p99_s": 0.0623
+        },
+        "wall_clock_s": 13.051915237912908,
+        "worker": {},
+        "sample_order_sha256": "32ec8b050522a33aded9ac787e2a63611464dc671bd3841ffff4541316a17e53"
+      },
+      "costs": {
+        "startup_seconds": 77.1305742629338,
+        "peak_memory_mib": 73297.0,
+        "graphs_after_scoring": {
+          "successful_captures": 136,
+          "live_captures": 136,
+          "callers": {
+            "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 64,
+            "/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2880/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6,
+            "/qualification/source/pr-2880/sglang_omni/model_runner/base.py:prepare_and_forward;/qualification/source/pr-2880/sglang_omni/model_runner/model_worker.py:forward_batch_generation;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner.py:_forward_raw;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:execute;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:load_batch;/qualification/source/pr-2880/sglang_omni/models/qwen3_asr/metadata_glue.py:run_with_thread_local_capture": 16
+          }
+        }
+      },
+      "full_prefill_capture_callers": {
+        "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50
+      },
+      "full_prefill_successful_captures": 50
     },
     {
       "concurrency": 16,
@@ -2047,8 +2595,84 @@
       "language": "zh",
       "arm": "main",
       "seed": 43,
-      "status": "missing",
-      "evidence": "evidence/results/pr2880-c16-stream-main-seed43/result.json"
+      "status": "verified",
+      "evidence": "evidence/results/pr2880-c16-stream-main-seed43/result.json",
+      "sample_order_sha256": "32ec8b050522a33aded9ac787e2a63611464dc671bd3841ffff4541316a17e53",
+      "metrics": {
+        "summary": {
+          "lang": "zh",
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "wer_corpus": 0.005933473179502547,
+          "wer_per_sample_mean": 0.005799844650655428,
+          "wer_per_sample_median": 0.0,
+          "wer_per_sample_std": 0.02150889165166305,
+          "wer_per_sample_p95": 0.058823529411764705,
+          "wer_per_sample_max": 0.21052631578947367,
+          "wer_below_50_corpus": 0.005933473179502547,
+          "wer_below_50_per_sample_mean": 0.005799844650655428,
+          "n_above_50_pct_wer": 0,
+          "pct_above_50_pct_wer": 0.0,
+          "latency_mean_s": 0.10183788123552107,
+          "latency_median_s": 0.10390503448434174,
+          "latency_p95_s": 0.13740335260517894,
+          "rtf_mean": 0.022009115296002853,
+          "audio_duration_mean_s": 4.68173300330033,
+          "corpus_wer": 0.005933473179502547
+        },
+        "speed": {
+          "total_samples": 2020,
+          "evaluated": 2020,
+          "skipped": 0,
+          "asr_latency_mean_s": 0.10183788123552107,
+          "asr_latency_median_s": 0.10390503448434174,
+          "asr_latency_p95_s": 0.13740335260517894,
+          "asr_latency_p99_s": 0.14490630795015022,
+          "asr_total_time_s": 12.910178513964638,
+          "asr_latency_sum_s": 205.71252009575255,
+          "asr_throughput_samples_per_s": 156.46569083572416,
+          "asr_rtf_mean": 0.022009115296002853,
+          "asr_rtf_median": 0.022256521808041427,
+          "asr_audio_processed_s": 9457.100666666667,
+          "asr_model": "Qwen/Qwen3-ASR-1.7B",
+          "asr_concurrency": 16,
+          "asr_rtf_p95": 0.0299,
+          "rtfx": 732.531,
+          "throughput_samples_per_s": 156.46569083572416,
+          "latency_mean_s": 0.10183788123552107,
+          "latency_median_s": 0.10390503448434174,
+          "latency_p95_s": 0.13740335260517894,
+          "latency_p99_s": 0.14490630795015022,
+          "rtf_mean": 0.022009115296002853,
+          "rtf_median": 0.022256521808041427,
+          "rtf_p95": 0.0299,
+          "text_ttft_mean_s": 0.0587,
+          "text_ttft_median_s": 0.0643,
+          "text_ttft_p95_s": 0.0795,
+          "text_ttft_p99_s": 0.0854,
+          "inter_chunk_mean_s": 0.0381,
+          "inter_chunk_p95_s": 0.0602,
+          "inter_chunk_p99_s": 0.0621
+        },
+        "wall_clock_s": 12.910178513964638,
+        "worker": {},
+        "sample_order_sha256": "32ec8b050522a33aded9ac787e2a63611464dc671bd3841ffff4541316a17e53"
+      },
+      "costs": {
+        "startup_seconds": 76.77088775811717,
+        "peak_memory_mib": 73343.0,
+        "graphs_after_scoring": {
+          "successful_captures": 1468,
+          "live_captures": 1468,
+          "callers": {
+            "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/models/qwen3.py:forward;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_wrapped_call_impl;/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py:_call_impl;/opt/sglang/lib/python3.12/site-packages/sglang/srt/layers/radix_attention.py:forward;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:wrapper;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 1400,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/breakable_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:__exit__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend_utils/breakable_cuda_graph/breakable_cuda_graph.py:_end_current_segment": 50,
+            "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/model_runner_components/cuda_graph_setup.py:capture_decode_graph;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/decode_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 12,
+            "/qualification/source/main/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/main/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/main/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/main/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+          }
+        }
+      }
     },
     {
       "concurrency": 32,
@@ -2412,7 +3036,25 @@
     {
       "concurrency": 16,
       "mode": "stream",
-      "status": "missing"
+      "status": "verified",
+      "actual_abba_intervals": [
+        [
+          1792450894.566678,
+          1792451012.0625222
+        ],
+        [
+          1792451012.5947099,
+          1792451132.0260339
+        ],
+        [
+          1792451132.5355387,
+          1792451251.9906483
+        ],
+        [
+          1792451252.8444242,
+          1792451372.0142605
+        ]
+      ]
     },
     {
       "concurrency": 32,
@@ -2436,7 +3078,7 @@
     }
   ],
   "readiness": "pending",
-  "completed_cohort_cells": 24,
-  "covered": 24,
+  "completed_cohort_cells": 32,
+  "covered": 32,
   "expected": 64
 }
