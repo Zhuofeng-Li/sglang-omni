@@ -1,0 +1,98 @@
+{
+  "at_utc": "2026-10-19T20:57:14.561257+00:00",
+  "source_head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "measured_base": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "hardware": "H200 supplementary; original H100 confirmation still pending",
+  "formal_cohorts": 24,
+  "smoke_cohorts": 4,
+  "formal_scored_requests": 74592,
+  "failed": 0,
+  "paired_language_cells": 24,
+  "transcript_changes": {
+    "admission_ablation": {
+      "changed": 27,
+      "equal": 5,
+      "empty_right": 0,
+      "empty_left": 0,
+      "better": 12,
+      "worse": 10
+    },
+    "main_pr_repeats": {
+      "changed": 72,
+      "equal": 14,
+      "empty_right": 0,
+      "empty_left": 0,
+      "worse": 29,
+      "better": 29
+    }
+  },
+  "distinct_changed_triples_inspected": 31,
+  "inspection": "Inspected all 31 distinct normalized reference/left/right triples. Names, homophones, singular/plural alternatives and short added/omitted particles; both improved and worsened WER. No changed hypothesis is empty. This does not establish numerical cause or rule out truncation.",
+  "costs": {
+    "admission_ablation": {
+      "async_only": {
+        "cohorts": 4,
+        "startup_mean_seconds": 104.36519892455544,
+        "startup_range_seconds": [
+          100.69039342319593,
+          111.83646697015502
+        ],
+        "peak_max_gib": 132.3818359375,
+        "successful_captures": [
+          1468
+        ],
+        "live_captures": [
+          1468
+        ]
+      },
+      "scoped_admission": {
+        "cohorts": 4,
+        "startup_mean_seconds": 103.29513833473902,
+        "startup_range_seconds": [
+          99.62352149700746,
+          111.77882231399417
+        ],
+        "peak_max_gib": 132.5341796875,
+        "successful_captures": [
+          1468
+        ],
+        "live_captures": [
+          1468
+        ]
+      }
+    },
+    "main_pr_repeats": {
+      "main": {
+        "cohorts": 8,
+        "startup_mean_seconds": 102.07078622543486,
+        "startup_range_seconds": [
+          100.10709121520631,
+          104.16460081189871
+        ],
+        "peak_max_gib": 132.8134765625,
+        "successful_captures": [
+          1468
+        ],
+        "live_captures": [
+          1468
+        ]
+      },
+      "pr": {
+        "cohorts": 8,
+        "startup_mean_seconds": 103.16678099645651,
+        "startup_range_seconds": [
+          101.1205669499468,
+          108.12321163387969
+        ],
+        "peak_max_gib": 132.7958984375,
+        "successful_captures": [
+          1468
+        ],
+        "live_captures": [
+          1468
+        ]
+      }
+    }
+  },
+  "readiness": "Not merge-ready: first-text latency increases persist; C64 streaming EN P95 worsens in one H200 repeat and improves in the other, so the original H100 regression cannot be dismissed. Admission-only streaming throughput change is near zero/negative. Await original H100 confirmation and independent reviewer approval."
+}
