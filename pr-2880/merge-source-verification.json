@@ -1,0 +1,43 @@
+{
+  "verified_at_utc": "2026-10-19T22:40:28.865129+00:00",
+  "actual_main": "a2a3861fe4319eaedbfa47554d71c519a01c2e23",
+  "pr": 2880,
+  "head": "67e28de826af967a9dec76506c91473e257aa156",
+  "merge": "cba9d418ad242077831982a32f3c55e3509a8826",
+  "merged_at": "2026-10-19T22:17:05Z",
+  "merged_by": "db-ol",
+  "ancestor_of_observed_main": true,
+  "full_PR_files_have_no_doc_dirs": true,
+  "merged_PR_file_blobs_match_reviewed_head": [
+    {
+      "file": "sglang_omni/models/qwen3_asr/config.py",
+      "head_blob": "c13768fde1ac79ed4412c491d2f8e77098fb507a",
+      "merge_blob": "c13768fde1ac79ed4412c491d2f8e77098fb507a",
+      "equal": true
+    },
+    {
+      "file": "sglang_omni/models/qwen3_asr/engine_builder.py",
+      "head_blob": "78c03e767c22a9574f07df49cd5fdbf426d8a970",
+      "merge_blob": "78c03e767c22a9574f07df49cd5fdbf426d8a970",
+      "equal": true
+    },
+    {
+      "file": "sglang_omni/models/qwen3_asr/metadata_glue.py",
+      "head_blob": "adf50e0a747636c8b13996ac4de229ce9ea76974",
+      "merge_blob": "adf50e0a747636c8b13996ac4de229ce9ea76974",
+      "equal": true
+    },
+    {
+      "file": "tests/unit_test/qwen3_asr/test_metadata_glue.py",
+      "head_blob": "ffd7391ff06c519c89c75f8fa7090c8dc6bb8c81",
+      "merge_blob": "ffd7391ff06c519c89c75f8fa7090c8dc6bb8c81",
+      "equal": true
+    },
+    {
+      "file": "tests/unit_test/qwen3_asr/test_pipeline.py",
+      "head_blob": "984e03d478c47847393e0458167f82e5f20da73f",
+      "merge_blob": "984e03d478c47847393e0458167f82e5f20da73f",
+      "equal": true
+    }
+  ]
+}

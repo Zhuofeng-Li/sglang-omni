@@ -1,0 +1,37 @@
+{
+  "verified_at_utc": "2026-10-19T22:40:28.865129+00:00",
+  "actual_main": "a2a3861fe4319eaedbfa47554d71c519a01c2e23",
+  "pr": 2882,
+  "head": "2cad178053585b41d486c1584796d58b205541a0",
+  "merge": "a2a3861fe4319eaedbfa47554d71c519a01c2e23",
+  "merged_at": "2026-10-19T22:21:56Z",
+  "merged_by": "db-ol",
+  "ancestor_of_observed_main": true,
+  "full_PR_files_have_no_doc_dirs": true,
+  "merged_PR_file_blobs_match_reviewed_head": [
+    {
+      "file": "sglang_omni/models/qwen3_asr/encoder_cuda_graph.py",
+      "head_blob": "47952d6da6028d6b5a485e69709ce0af33fb8e62",
+      "merge_blob": "47952d6da6028d6b5a485e69709ce0af33fb8e62",
+      "equal": true
+    },
+    {
+      "file": "sglang_omni/models/qwen3_asr/sglang_model.py",
+      "head_blob": "355a5c04c4c2f7171b0046a02bf6799e9eee0c23",
+      "merge_blob": "355a5c04c4c2f7171b0046a02bf6799e9eee0c23",
+      "equal": true
+    },
+    {
+      "file": "tests/unit_test/qwen3_asr/test_encoder_cuda_graph.py",
+      "head_blob": "8bb9d0d305c284b8c4a0459c33237a89a372ed8e",
+      "merge_blob": "8bb9d0d305c284b8c4a0459c33237a89a372ed8e",
+      "equal": true
+    },
+    {
+      "file": "tests/unit_test/qwen3_asr/test_sglang_model.py",
+      "head_blob": "087efc646a1f848b2efed792d96ae80e3f280535",
+      "merge_blob": "087efc646a1f848b2efed792d96ae80e3f280535",
+      "equal": true
+    }
+  ]
+}

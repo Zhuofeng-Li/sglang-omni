@@ -1,5 +1,7 @@
 ## Changes
 
+**Merged:** db-ol merged the reviewed head `67e28de8` as `cba9d418ad242077831982a32f3c55e3509a8826` on 2026-10-19T22:17:05Z. The standalone final-head measurements still running below are post-merge qualification on the frozen control; they do not represent the combined merged series. Final series validation remains required after the remaining Qwen PR #2881 lands.
+
 - Preserve the full LM prefill limit when a CUDA graph override only changes decode; explicit prefill values still win.
 - Distinguish omitted decode buckets from operator-supplied buckets, including a sparse list equal to the shared default ladder.
 - Capture decode metadata with thread-local CUDA capture and test concurrent CUDA submission, capture and replay outputs.
@@ -63,14 +65,14 @@ Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capt
 
 ## Tests
 
-- **Reviewer approval obtained for current head** `67e28de8`: db-ol approved on 2026-10-19T22:17:01Z, noting the explicit-override/fallback scope and passed CI. Final-source comparison on the changed baseline remains incomplete; the old measured source/base is kept explicit above.
+- **Reviewer approval obtained for current head** `67e28de8`: db-ol approved on 2026-10-19T22:17:01Z, noting the explicit-override/fallback scope and passed CI. The post-merge final-source comparison on the changed baseline remains incomplete; the old measured source/base is kept explicit above.
 - Review-fix source: **137 CPU tests and 5 accelerator tests passed** on the assigned H100; logs and source identities are in the evidence link.
 - Final review-fix head `67e28de8` **FlashInfer smoke passed in both modes** on the original Radix H100 (2026-10-19): c32, seed42, eager frozen-main reference versus FULL candidate, metadata glue disabled in all four services, EN8/ZH8 each (**64 scored requests, 0 failures**). Each FULL cohort recorded **50 successful prefill capture stacks containing both the prefill runner and FULL backend**, with FlashInfer startup-log evidence. This is small-sample backend-path coverage, not a throughput or quality claim; the full EN/ZH two-seed backend comparison and final-head primary matrix remain pending. Audit, YAML, costs and capture evidence are under `flashinfer-smoke-20261019/` at the evidence link below.
 - `pre-commit run --all-files`: passed. Complete diff versus the frozen main contains no `doc/` or `docs/` changes.
 - Current-head [Omni CI](https://github.com/sgl-project/sglang-omni/actions/runs/39282362618) passed (attempt 2). Existing labels: `run-asr-ci` + `run-asr-qwen3-asr-1.7b`; preflight selected `run_asr=true`, `asr_ci_model=qwen3`, and stage-2 logs confirm **Qwen/Qwen3-ASR-1.7B**. Unit, accelerator, MOSS-TD prerequisite and Qwen SeedTTS stages passed; unselected stages are not hardware-validation evidence.
 - Current-head ordinary CI: **9032 passed, 86 skipped**; accelerator CI: **771 passed, 15 skipped**. Tested synthetic merge revisions and logs are archived in the evidence.
 - CPU/XPU workflow gate retries passed after the initial lint-wait cancellations. Intel CPU/XPU tests were skipped by the unchanged stage selection; this is gate recovery, not Intel hardware validation.
-- Final-head primary backfill: **c1 non-streaming is complete and independently audited** (4cohorts, fullEN/ZH, two-seed ABBA, zero failures; both PR services recorded50FULL-prefill captures). The other7primary blocks, fullsplit backend/glue ablations, fixed-seed repeats and transcript comparisons continue in the existing queue. This PR has reviewer approval but performance readiness remains pending those checks and tradeoff assessment.
+- Final-head primary backfill: **c1 non-streaming is complete and independently audited** (4cohorts, fullEN/ZH, two-seed ABBA, zero failures; both PR services recorded50FULL-prefill captures). The other7primary blocks, fullsplit backend/glue ablations, fixed-seed repeats and transcript comparisons continue in the existing queue. This PR has already merged. The remaining post-merge qualification and tradeoff assessment still need completion; this is not a claim that the full merged series is validated.
 
 Developed by an autonomous research agent using [RSI-Harness](https://github.com/OpenRSI-Foundation/OpenRSI-Index/tree/main/RSI-Harness) in [OpenRSI-Index](https://github.com/OpenRSI-Foundation/OpenRSI-Index), with co-author [Kangda Wei (@WeiKangda)](https://github.com/WeiKangda); [qualification and historical evidence](https://github.com/Zhuofeng-Li/sglang-omni/tree/codex/omni-review-evidence-20261019/pr-2880).
 

@@ -1,0 +1,23 @@
+{
+  "observed_at_utc": "2026-10-19T22:42:09.843014+00:00",
+  "frozen_pre_series_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "intended_Qwen_PRs": [
+    2880,
+    2881,
+    2882
+  ],
+  "excluded_PRs": [
+    2883
+  ],
+  "merged_PRs": {
+    "2880": "cba9d418ad242077831982a32f3c55e3509a8826",
+    "2882": "a2a3861fe4319eaedbfa47554d71c519a01c2e23"
+  },
+  "remaining_Qwen_PR": 2881,
+  "observed_actual_main": "a2a3861fe4319eaedbfa47554d71c519a01c2e23",
+  "final_merged_main": null,
+  "status": "Partialmerge only. Await remainingacceptedQwenPR; finalmergedmain vsfrozenpreseriesmain pairedvalidation not yetstarted.",
+  "required_protocol": "c1/c16/c32/c64, bothmodes, EN1088/ZH2020, at least2seedsABBA, WER/failures/response/firsttext/startup/memory/capturecosts; preserveactualsourcesandadditionalmainchangesasconfounders.",
+  "independent_runs": "Continue registeredfrozenper-PR independentmeasurements; they do not replace finalmergedseries comparison and their gains must not be summed.",
+  "resource": "Existingassignment still running other registeredvalidation; release when its actual consumers finish, requestminimalRadixGPUfor finalseries whenready ifnecessary."
+}
