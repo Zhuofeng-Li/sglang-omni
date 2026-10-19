@@ -151,9 +151,6 @@ class Qwen3ASRForConditionalGeneration(nn.Module):
         enable_fused_asr_qk_norm_rope(self.language_model)
         self.pattern = MultiModalityDataPaddingPatternMultimodalTokens()
         self.encoder_graph_runner: Qwen3ASREncoderLayerStackGraphRunner | None = None
-        # Captured graphs pass a static MRoPE slot that replay leaves unfilled
-        # once the engine stops computing MRoPE, so the CUDA path clears this.
-        self.reads_mrope_positions = True
 
     def init_encoder_graphs(
         self, *, max_batch_size: int, max_tokens_per_clip: int
@@ -278,7 +275,7 @@ class Qwen3ASRForConditionalGeneration(nn.Module):
         forward_batch: ForwardBatch,
         **kwargs: object,
     ) -> torch.Tensor:
-        if self.reads_mrope_positions and forward_batch.mrope_positions is not None:
+        if forward_batch.mrope_positions is not None:
             positions = forward_batch.mrope_positions[0]
         else:
             pass

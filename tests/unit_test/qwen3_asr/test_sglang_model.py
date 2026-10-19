@@ -52,9 +52,7 @@ def test_forward_uses_available_mrope_positions(
         "general_mm_embed_routine",
         fake_general_mm_embed_routine,
     )
-    model = SimpleNamespace(
-        language_model=object(), get_audio_feature=object(), reads_mrope_positions=True
-    )
+    model = SimpleNamespace(language_model=object(), get_audio_feature=object())
 
     actual = Qwen3ASRForConditionalGeneration.forward(
         model,
@@ -85,9 +83,7 @@ def test_forward_keeps_long_positions_for_native_rope(
         "general_mm_embed_routine",
         fake_general_mm_embed_routine,
     )
-    model = SimpleNamespace(
-        language_model=object(), get_audio_feature=object(), reads_mrope_positions=True
-    )
+    model = SimpleNamespace(language_model=object(), get_audio_feature=object())
 
     Qwen3ASRForConditionalGeneration.forward(
         model,

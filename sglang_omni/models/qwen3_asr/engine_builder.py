@@ -263,12 +263,6 @@ class Qwen3ASREngineBuilder(AsrEngineBuilder[Qwen3ASRRequestData]):
                 model_worker.model_runner.model,
                 checkpoint_dir,
             )
-        elif current_platform.is_cuda():
-            # note (Zhuofeng Li): every ASR MRoPE row equals the text position, so the
-            # forward reads plain positions; skip the per-step MRoPE rebuild
-            # and its host-to-device copy before the graphs are captured.
-            model_worker.model_runner.model_config.model_is_mrope = False
-            model_worker.model_runner.model.reads_mrope_positions = False
         else:
             pass
 
