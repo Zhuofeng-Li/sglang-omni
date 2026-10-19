@@ -1,14 +1,51 @@
 {
   "candidate_head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
-  "observed_at_utc": "2026-10-19T16:51:00.512243+00:00",
+  "observed_at_utc": "2026-10-19T17:13:22.288005+00:00",
   "correctness": {
     "cuda_hidden_qwen": "124 passed, 3 accelerator deselected",
     "cuda_hidden_scheduler_fun_ark": "250 passed, 8 skipped",
     "visible_gpu_qwen": "3 passed",
     "precommit_all_files": "passed"
   },
-  "performance_readiness": "pending new final-source ABBA matrix and review validations",
+  "performance_readiness": "pending remaining final-source ABBA blocks and additional review validations; not merge-ready",
   "superseded_head": "207b2d0b3fbd03528525624f0420add1f9213f11",
-  "superseded_results": "historical-head-207b2d0b retains the earlier preliminary c1 block; never relabeled as new-head data"
+  "superseded_results": "historical-head-207b2d0b retains the earlier preliminary c1 block; never relabeled as new-head data",
+  "current_accelerator_ci": {
+    "observed_at_utc": "2026-10-19T17:09:38.662770+00:00",
+    "pr_head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+    "tested_merge_head": "f3636fa8ff49bbbdb0e5d30f72bd96941e113079",
+    "merge_base": "a1939b97af92a5b8b944df74375ba766736e79ad",
+    "run": 39288752772,
+    "attempt": 1,
+    "job": 118185861874,
+    "passed": 769,
+    "skipped": 15,
+    "deselected": 9315,
+    "automatic_stage_attempts": 2,
+    "initial_failure": "tests/unit_test/cli/test_serve_exit.py::test_fast_exit_removes_the_cuda_ipc_reference_file",
+    "initial_failure_detail": "Shared-memory cleanup assertion found 22 torch_<sender_pid> files. Full stage passed on workflow automatic retry. Root cause not established; this test uses a stand-alone CUDA IPC sender and exit_without_teardown, without launching the ASR pipeline.",
+    "status": "passed_after_automatic_retry",
+    "log": "current-accelerator-ci.log"
+  },
+  "current_unit_ci": {
+    "observed_at_utc": "2026-10-19T17:10:32.461513+00:00",
+    "head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+    "tested_merge_head": "f3636fa8ff49bbbdb0e5d30f72bd96941e113079",
+    "run": 39288752772,
+    "job": 118185861718,
+    "passed": 9087,
+    "skipped": 86,
+    "deselected": 926,
+    "stage_attempts": 1,
+    "status": "passed"
+  },
+  "verified_primary_blocks": [
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "geometric_change_percent": -0.0747284940281312,
+      "evidence": "current-c1-nonstream"
+    }
+  ]
 }

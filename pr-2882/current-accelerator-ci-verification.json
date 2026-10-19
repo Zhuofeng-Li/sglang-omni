@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-10-19T17:12:38.672967+00:00",
+  "head": "2cad178053585b41d486c1584796d58b205541a0",
+  "tested_merge_head": "e4a26394f79c0363ecd56acd8c03be133984250e",
+  "merge_base": "8b60a60c00ec201140125dc0841ce5a32d7526a5",
+  "run": 39282431325,
+  "attempt": 2,
+  "job": 118186991431,
+  "passed": 769,
+  "skipped": 15,
+  "deselected": 9259,
+  "automatic_stage_attempts": 1,
+  "status": "passed",
+  "log": "2882-current-accelerator-ci.log"
+}

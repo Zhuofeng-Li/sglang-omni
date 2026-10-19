@@ -1,7 +1,7 @@
 {
   "observed_at_utc": "2026-10-19T17:09:38.662770+00:00",
   "pr_head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
-  "tested_merge_head": "f3636fa",
+  "tested_merge_head": "f3636fa8ff49bbbdb0e5d30f72bd96941e113079",
   "merge_base": "a1939b97af92a5b8b944df74375ba766736e79ad",
   "run": 39288752772,
   "attempt": 1,

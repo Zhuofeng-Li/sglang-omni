@@ -1,8 +1,8 @@
 {
-  "observed_at_utc": "2026-10-19T16:31:07.744279+00:00",
+  "observed_at_utc": "2026-10-19T17:13:22.291626+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "2cad178053585b41d486c1584796d58b205541a0",
-  "performance_readiness": "pending final-source paired measurements and review validation",
+  "performance_readiness": "pending remaining final-source ABBA blocks and additional review validations; not merge-ready",
   "correctness": "136 CPU and 3 GPU tests passed",
   "gpu": "single NVIDIA H100 80GB HBM3",
   "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
@@ -29,5 +29,20 @@
   "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
   "verified_standalone_cells": 0,
   "expected_standalone_cells": 64,
-  "verified_blocks": []
+  "verified_blocks": [],
+  "current_accelerator_ci": {
+    "observed_at_utc": "2026-10-19T17:12:38.672967+00:00",
+    "head": "2cad178053585b41d486c1584796d58b205541a0",
+    "tested_merge_head": "e4a26394f79c0363ecd56acd8c03be133984250e",
+    "merge_base": "8b60a60c00ec201140125dc0841ce5a32d7526a5",
+    "run": 39282431325,
+    "attempt": 2,
+    "job": 118186991431,
+    "passed": 769,
+    "skipped": 15,
+    "deselected": 9259,
+    "automatic_stage_attempts": 1,
+    "status": "passed",
+    "log": "2882-current-accelerator-ci.log"
+  }
 }

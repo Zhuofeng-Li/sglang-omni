@@ -1,0 +1,12 @@
+{
+  "observed_at_utc": "2026-10-19T17:10:32.461513+00:00",
+  "head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "tested_merge_head": "f3636fa8ff49bbbdb0e5d30f72bd96941e113079",
+  "run": 39288752772,
+  "job": 118185861718,
+  "passed": 9087,
+  "skipped": 86,
+  "deselected": 926,
+  "stage_attempts": 1,
+  "status": "passed"
+}

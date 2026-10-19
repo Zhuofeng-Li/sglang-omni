@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-19T17:12:08.973569+00:00",
+  "deployed_sha256": "39051284288d5bf7da55b1b5e6c9272aff7cb45afd3171120976b99f19ff38c1",
+  "scope": "Pending review-backfill acceptance guard only; running primary cohorts and source heads unchanged. Historical positive capture stack is a parser check, not final-head FlashInfer validation.",
+  "cases": [
+    {
+      "source_result": "/scratch/user/zhuofengli_tamu.edu/tasks/omni-review-fixes/runs/20261019/evidence/results/pr2881-c1-nonstream-main-seed42/result.json",
+      "prefill_runner_captures": 50,
+      "full_backend_prefill_captures": 0
+    },
+    {
+      "source_result": "/scratch/user/zhuofengli_tamu.edu/tasks/qwen3-asr-pr-qualification/runs/20261017T161904Z/minimal/results/pr2880-nonstream-pr-seed42/result.json",
+      "prefill_runner_captures": 50,
+      "full_backend_prefill_captures": 50
+    }
+  ]
+}

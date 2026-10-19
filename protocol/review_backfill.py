@@ -36,12 +36,16 @@ def run(pr, arm, seed, mode, label, *, source=None, engine=None, environment=Non
     record = {"name": result["name"], "pr": pr, "arm": arm, "seed": seed, "mode": mode, "label": label, "smoke": smoke, "source": source or ("main" if arm == "main" else f"pr-{pr}"), "engine_overrides": engine or {}, "environment_overrides": environment or {}}
     if label.startswith("flashinfer") and arm == "full":
         graph_counts = result["graphs_after_scoring"]["callers"]
-        captures = sum(count for caller, count in graph_counts.items() if "prefill_cuda_graph_runner.py" in caller)
+        # BREAKABLE also uses the prefill runner. Require the FULL backend in
+        # the same capture stack so automatic fallback cannot masquerade as
+        # successful FULL/FlashInfer coverage.
+        full_callers = {caller: count for caller, count in graph_counts.items() if "prefill_cuda_graph_runner.py" in caller and "full_cuda_graph_backend.py:capture_one" in caller}
+        captures = sum(full_callers.values())
         assert captures > 0, "FULL prefill did not capture with FlashInfer; do not claim backend coverage"
         log = (ROOT / "results" / result["name"] / "server.log").read_text()
         evidence = re.findall(r".{0,100}(?:attention_backend=['\"]?flashinfer|[Ff]lash[Ii]nfer.{0,50}attention|attention.{0,50}[Ff]lash[Ii]nfer).{0,100}", log)
         assert evidence, "No FlashInfer backend evidence in startup log"
-        record.update(full_prefill_successful_captures=captures, backend_log_evidence=evidence[:8])
+        record.update(full_prefill_successful_captures=captures, full_prefill_capture_callers=full_callers, backend_log_evidence=evidence[:8])
     state["cases"].append(record)
     save()
 
