@@ -1,0 +1,57 @@
+{
+  "observed_at_utc": "2026-10-19T16:31:07.741637+00:00",
+  "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate_head": "207b2d0b3fbd03528525624f0420add1f9213f11",
+  "performance_readiness": "pending final-source paired measurements and review validation",
+  "correctness": "124 Qwen CPU, 3 GPU and 122 scheduler/Fun-ASR/ArkASR tests passed",
+  "gpu": "single NVIDIA H100 80GB HBM3",
+  "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+  "scope": "Qwen full c1/c16/c32/c64 EN+ZH both modes; MOSS requested c1/c64 EN both modes, matched 0.60 AR budget",
+  "pair_order": [
+    [
+      "main",
+      42
+    ],
+    [
+      "pr",
+      42
+    ],
+    [
+      "pr",
+      43
+    ],
+    [
+      "main",
+      43
+    ]
+  ],
+  "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification.",
+  "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
+  "verified_standalone_cells": 8,
+  "expected_standalone_cells": 64,
+  "verified_blocks": [
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "status": "verified",
+      "actual_abba_intervals": [
+        [
+          1792426033.572215,
+          1792426354.113163
+        ],
+        [
+          1792426354.7275677,
+          1792426668.7485936
+        ],
+        [
+          1792426669.4033275,
+          1792426983.4637606
+        ],
+        [
+          1792426984.195332,
+          1792427298.6631472
+        ]
+      ]
+    }
+  ]
+}

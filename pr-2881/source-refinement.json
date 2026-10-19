@@ -1,0 +1,8 @@
+{
+  "at_utc": "2026-10-19T16:42:21.343764+00:00",
+  "old_candidate": "207b2d0b3fbd03528525624f0420add1f9213f11",
+  "new_candidate": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "reason": "Default FIFO path must collect a second future completed during the first admission in the same drain call, matching main. Proven old-head counterexample saved in fifo-admission-regression.json.",
+  "old_evidence": "/scratch/user/zhuofengli_tamu.edu/tasks/omni-review-fixes/runs/20261019/evidence/results-head-207b2d0b",
+  "reuse": "Old completed ABBA block is retained at its actual source identity; no old result is relabeled as new-head validation."
+}

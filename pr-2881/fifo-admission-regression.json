@@ -1,0 +1,33 @@
+{
+  "scope": "Exact production method body executed with stdlib futures and an admission boundary callback; full pytest validation follows on Radix.",
+  "results": [
+    {
+      "source": "frozen_main",
+      "revision": "origin/main",
+      "admitted": [
+        "first",
+        "second"
+      ],
+      "remaining": []
+    },
+    {
+      "source": "previous_review_head",
+      "revision": "207b2d0b3fbd03528525624f0420add1f9213f11",
+      "admitted": [
+        "first"
+      ],
+      "remaining": [
+        "second"
+      ]
+    },
+    {
+      "source": "corrected_worktree",
+      "revision": null,
+      "admitted": [
+        "first",
+        "second"
+      ],
+      "remaining": []
+    }
+  ]
+}
