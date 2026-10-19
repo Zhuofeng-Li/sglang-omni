@@ -7,6 +7,7 @@ import logging
 from collections.abc import Callable
 from typing import TYPE_CHECKING
 
+import torch
 from transformers import GenerationConfig, WhisperProcessor, WhisperTokenizer
 
 from sglang_omni.models.whisper_asr.encoder_service import (
@@ -31,6 +32,7 @@ from sglang_omni.scheduling.generation_batch_policy import (
     CudaGraphBackend,
     build_default_prefill_cuda_graph_bs,
 )
+from sglang_omni.utils.cpu import effective_cpu_count
 
 if TYPE_CHECKING:
 
@@ -190,6 +192,7 @@ class WhisperASREngineBuilder(AsrEngineBuilder[WhisperASRRequestData]):
         stream_emit_interval_s: float = 0.05,
         mem_fraction_static: float,
         enable_encoder_cuda_graph: bool = False,
+        cpu_intra_op_threads: int | None = None,
         encoder_graph_batch_buckets: list[int] | None = None,
         request_build_max_workers: int = 8,
         enable_async_decode: bool = True,
@@ -225,6 +228,11 @@ class WhisperASREngineBuilder(AsrEngineBuilder[WhisperASRRequestData]):
         self.stream_emit_interval_s = stream_emit_interval_s
         self.mem_fraction_static = mem_fraction_static
         self.enable_encoder_cuda_graph = bool(enable_encoder_cuda_graph)
+        self.cpu_intra_op_threads: int | None = cpu_intra_op_threads
+        if cpu_intra_op_threads is not None and cpu_intra_op_threads < 1:
+            raise ValueError("cpu_intra_op_threads must be positive")
+        else:
+            pass
         self.using_default_encoder_graph_buckets = encoder_graph_batch_buckets is None
         self.encoder_graph_batch_buckets = normalize_encoder_graph_buckets(
             encoder_graph_batch_buckets
@@ -326,6 +334,10 @@ class WhisperASREngineBuilder(AsrEngineBuilder[WhisperASRRequestData]):
         self, model: WhisperForConditionalGeneration | None, server_args: object
     ) -> None:
         del server_args
+        if self.cpu_intra_op_threads is not None:
+            torch.set_num_threads(min(self.cpu_intra_op_threads, effective_cpu_count()))
+        else:
+            pass
         if not self.enable_pre_lm_encoder:
             return
         else:
