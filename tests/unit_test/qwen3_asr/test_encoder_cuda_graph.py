@@ -60,12 +60,18 @@ def test_get_audio_feature_routing(monkeypatch):
     get = sglang_model.Qwen3ASRForConditionalGeneration.get_audio_feature
 
     model.encoder_graph_runner = SimpleNamespace(
-        tokens_per_window=104, plan=lambda *args: (104, []), failed=set(), run=lambda h, w: torch.ones(65, 8)
+        tokens_per_window=104,
+        plan=lambda *args: (104, []),
+        failed=set(),
+        run=lambda h, w: torch.ones(65, 8),
     )
     assert torch.equal(get(model, [item]), torch.ones(1, 65, 8))
 
     model.encoder_graph_runner = SimpleNamespace(
-        tokens_per_window=104, plan=lambda *args: (104, []), failed=set(), run=lambda h, w: None
+        tokens_per_window=104,
+        plan=lambda *args: (104, []),
+        failed=set(),
+        run=lambda h, w: None,
     )
     assert torch.equal(get(model, [item]), torch.full((1, 65, 8), 7.0))
 
@@ -318,9 +324,17 @@ def test_host_plan_checks_eligibility_before_frontend(monkeypatch, routing):
     assert preamble.call_count == int(routing in ("success", "rejected"))
     assert runner.run.call_count == preamble.call_count
     if routing in ("uncovered", "failed"):
-        tower.forward = Mock(return_value=SimpleNamespace(last_hidden_state=torch.full((1, 65, 8), 7.0)))
-        eager_frontend = Mock(side_effect=AssertionError("fallback must run the frontend only inside the tower"))
+        tower.forward = Mock(
+            return_value=SimpleNamespace(last_hidden_state=torch.full((1, 65, 8), 7.0))
+        )
+        eager_frontend = Mock(
+            side_effect=AssertionError(
+                "fallback must run the frontend only inside the tower"
+            )
+        )
         monkeypatch.setattr(sglang_model, "eager_preamble", eager_frontend)
-        torch.testing.assert_close(model.get_audio_feature([item]), torch.full((1, 65, 8), 7.0))
+        torch.testing.assert_close(
+            model.get_audio_feature([item]), torch.full((1, 65, 8), 7.0)
+        )
         tower.forward.assert_called_once()
         assert preamble.call_count == 0
