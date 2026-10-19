@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-10-19T23:38:25.996576+00:00",
+  "at_utc": "2026-10-19T23:43:04.873260+00:00",
   "pr": 2880,
   "url": "https://github.com/sgl-project/sglang-omni/pull/2880",
   "head": "67e28de826af967a9dec76506c91473e257aa156",
@@ -7,5 +7,5 @@
   "initial_body_verified": true,
   "verified_blocks": 8,
   "covered_cells": 64,
-  "evidence_commit": "a816ee5"
+  "evidence_commit": "119478d"
 }
