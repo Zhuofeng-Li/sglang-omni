@@ -1,0 +1,686 @@
+[
+  {
+    "language": "zh",
+    "id": "00005381-00000072",
+    "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+    "main": "我 们 快 点 走 以 后 我 会 升 级 的",
+    "pr": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+    "main_wer": 0.0,
+    "pr_wer": 0.08333333333333333,
+    "points": [
+      [
+        16,
+        "nonstream",
+        42,
+        "worsened"
+      ],
+      [
+        16,
+        "stream",
+        43,
+        "worsened"
+      ],
+      [
+        32,
+        "stream",
+        42,
+        "worsened"
+      ],
+      [
+        32,
+        "stream",
+        42,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        42,
+        "worsened"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00005432-00000027",
+    "reference": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+    "main": "金 球 奖 银 加 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+    "pr": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+    "main_wer": 0.1111111111111111,
+    "pr_wer": 0.0,
+    "points": [
+      [
+        16,
+        "nonstream",
+        42,
+        "improved"
+      ],
+      [
+        16,
+        "nonstream",
+        42,
+        "improved"
+      ],
+      [
+        16,
+        "stream",
+        43,
+        "improved"
+      ],
+      [
+        32,
+        "nonstream",
+        42,
+        "improved"
+      ],
+      [
+        64,
+        "nonstream",
+        42,
+        "improved"
+      ],
+      [
+        64,
+        "nonstream",
+        43,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004632-00000013",
+    "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "pr": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main_wer": 0.06666666666666667,
+    "pr_wer": 0.06666666666666667,
+    "points": [
+      [
+        16,
+        "nonstream",
+        42,
+        "equal"
+      ],
+      [
+        32,
+        "stream",
+        43,
+        "equal"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "id": "common_voice_en_26933529-common_voice_en_26933531",
+    "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+    "main": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+    "pr": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+    "main_wer": 0.07142857142857142,
+    "pr_wer": 0.07142857142857142,
+    "points": [
+      [
+        16,
+        "nonstream",
+        43,
+        "equal"
+      ],
+      [
+        16,
+        "stream",
+        42,
+        "equal"
+      ],
+      [
+        16,
+        "stream",
+        42,
+        "equal"
+      ],
+      [
+        32,
+        "nonstream",
+        43,
+        "equal"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00005432-00000027",
+    "reference": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+    "main": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+    "pr": "金 球 奖 银 加 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+    "main_wer": 0.0,
+    "pr_wer": 0.1111111111111111,
+    "points": [
+      [
+        16,
+        "nonstream",
+        43,
+        "worsened"
+      ],
+      [
+        16,
+        "stream",
+        42,
+        "worsened"
+      ],
+      [
+        16,
+        "stream",
+        43,
+        "worsened"
+      ],
+      [
+        32,
+        "nonstream",
+        42,
+        "worsened"
+      ],
+      [
+        32,
+        "stream",
+        42,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        42,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        43,
+        "worsened"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004932-00000081",
+    "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+    "main": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+    "pr": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+    "main_wer": 0.0,
+    "pr_wer": 0.11764705882352941,
+    "points": [
+      [
+        16,
+        "nonstream",
+        43,
+        "worsened"
+      ],
+      [
+        16,
+        "stream",
+        43,
+        "worsened"
+      ],
+      [
+        32,
+        "nonstream",
+        43,
+        "worsened"
+      ],
+      [
+        32,
+        "stream",
+        42,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        42,
+        "worsened"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004632-00000013",
+    "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "pr": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main_wer": 0.06666666666666667,
+    "pr_wer": 0.13333333333333333,
+    "points": [
+      [
+        16,
+        "nonstream",
+        43,
+        "worsened"
+      ],
+      [
+        32,
+        "nonstream",
+        42,
+        "worsened"
+      ],
+      [
+        32,
+        "stream",
+        43,
+        "worsened"
+      ],
+      [
+        64,
+        "nonstream",
+        43,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        42,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        43,
+        "worsened"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "id": "common_voice_en_20806032-common_voice_en_20806033",
+    "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+    "main": "also the town is pursuing increased tourism based on its ancient sireer culture",
+    "pr": "also the town is pursuing increased tourism based on its ancient siree culture",
+    "main_wer": 0.07692307692307693,
+    "pr_wer": 0.07692307692307693,
+    "points": [
+      [
+        16,
+        "stream",
+        42,
+        "equal"
+      ],
+      [
+        32,
+        "stream",
+        42,
+        "equal"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "id": "common_voice_en_19640906-common_voice_en_19640909",
+    "reference": "with this win levet became the leading frenchman in terms of european tour wins",
+    "main": "with this win levitt became the leading frenchman in terms of european tour wins",
+    "pr": "with this win levet became the leading frenchman in terms of european tour wins",
+    "main_wer": 0.07142857142857142,
+    "pr_wer": 0.0,
+    "points": [
+      [
+        16,
+        "stream",
+        42,
+        "improved"
+      ],
+      [
+        64,
+        "stream",
+        43,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00005381-00000072",
+    "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+    "main": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+    "pr": "我 们 快 点 走 以 后 我 会 升 级 的",
+    "main_wer": 0.08333333333333333,
+    "pr_wer": 0.0,
+    "points": [
+      [
+        16,
+        "stream",
+        42,
+        "improved"
+      ],
+      [
+        16,
+        "stream",
+        42,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004632-00000090",
+    "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "pr": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main_wer": 0.13333333333333333,
+    "pr_wer": 0.06666666666666667,
+    "points": [
+      [
+        16,
+        "stream",
+        43,
+        "improved"
+      ],
+      [
+        64,
+        "nonstream",
+        43,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004632-00000013",
+    "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "pr": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main_wer": 0.06666666666666667,
+    "pr_wer": 0.06666666666666667,
+    "points": [
+      [
+        16,
+        "stream",
+        43,
+        "equal"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "id": "common_voice_en_20806032-common_voice_en_20806033",
+    "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+    "main": "also the town is pursuing increased tourism based on its ancient siree culture",
+    "pr": "also the town is pursuing increased tourism based on its ancient sireer culture",
+    "main_wer": 0.07692307692307693,
+    "pr_wer": 0.07692307692307693,
+    "points": [
+      [
+        32,
+        "nonstream",
+        42,
+        "equal"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00005366-00000087",
+    "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+    "main": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+    "pr": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+    "main_wer": 0.05555555555555555,
+    "pr_wer": 0.0,
+    "points": [
+      [
+        32,
+        "nonstream",
+        42,
+        "improved"
+      ],
+      [
+        32,
+        "nonstream",
+        43,
+        "improved"
+      ],
+      [
+        32,
+        "stream",
+        42,
+        "improved"
+      ],
+      [
+        32,
+        "stream",
+        43,
+        "improved"
+      ],
+      [
+        64,
+        "stream",
+        42,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "id": "common_voice_en_37793802-common_voice_en_37793816",
+    "reference": "it has traditionally been used for growth of human lymphocytes",
+    "main": "it has traditionally been used for growth of human lymphocyte",
+    "pr": "it has traditionally been used for growth of human lymphocytes",
+    "main_wer": 0.1,
+    "pr_wer": 0.0,
+    "points": [
+      [
+        32,
+        "nonstream",
+        43,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "id": "common_voice_en_19640906-common_voice_en_19640909",
+    "reference": "with this win levet became the leading frenchman in terms of european tour wins",
+    "main": "with this win levet became the leading frenchman in terms of european tour wins",
+    "pr": "with this win levitt became the leading frenchman in terms of european tour wins",
+    "main_wer": 0.0,
+    "pr_wer": 0.07142857142857142,
+    "points": [
+      [
+        32,
+        "nonstream",
+        43,
+        "worsened"
+      ],
+      [
+        64,
+        "nonstream",
+        42,
+        "worsened"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004944-00000056",
+    "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+    "main": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+    "pr": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+    "main_wer": 0.05555555555555555,
+    "pr_wer": 0.0,
+    "points": [
+      [
+        32,
+        "nonstream",
+        43,
+        "improved"
+      ],
+      [
+        64,
+        "nonstream",
+        43,
+        "improved"
+      ],
+      [
+        64,
+        "stream",
+        42,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004632-00000090",
+    "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "pr": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+    "main_wer": 0.13333333333333333,
+    "pr_wer": 0.06666666666666667,
+    "points": [
+      [
+        32,
+        "stream",
+        42,
+        "improved"
+      ],
+      [
+        32,
+        "stream",
+        42,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "id": "common_voice_en_19724850-common_voice_en_19724900",
+    "reference": "the inca tern feeds primarily on small fish such as anchovies",
+    "main": "the inca tern feeds primarily on small fish such as anchovies",
+    "pr": "the inca turn feeds primarily on small fish such as anchovies",
+    "main_wer": 0.0,
+    "pr_wer": 0.09090909090909091,
+    "points": [
+      [
+        64,
+        "nonstream",
+        42,
+        "worsened"
+      ],
+      [
+        64,
+        "nonstream",
+        42,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        42,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        43,
+        "worsened"
+      ],
+      [
+        64,
+        "stream",
+        43,
+        "worsened"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004932-00000013",
+    "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+    "main": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+    "pr": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+    "main_wer": 0.11764705882352941,
+    "pr_wer": 0.0,
+    "points": [
+      [
+        64,
+        "nonstream",
+        42,
+        "improved"
+      ],
+      [
+        64,
+        "nonstream",
+        43,
+        "improved"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "id": "common_voice_en_26933529-common_voice_en_26933531",
+    "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+    "main": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+    "pr": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+    "main_wer": 0.07142857142857142,
+    "pr_wer": 0.07142857142857142,
+    "points": [
+      [
+        64,
+        "nonstream",
+        43,
+        "equal"
+      ],
+      [
+        64,
+        "nonstream",
+        43,
+        "equal"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004627-00000082",
+    "reference": "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 燕 游 之 所",
+    "main": "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 宴 游 之 所",
+    "pr": "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 烟 游 之 所",
+    "main_wer": 0.05555555555555555,
+    "pr_wer": 0.05555555555555555,
+    "points": [
+      [
+        64,
+        "stream",
+        42,
+        "equal"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00004944-00000117",
+    "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+    "main": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+    "pr": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+    "main_wer": 0.0,
+    "pr_wer": 0.05555555555555555,
+    "points": [
+      [
+        64,
+        "stream",
+        42,
+        "worsened"
+      ]
+    ]
+  },
+  {
+    "language": "zh",
+    "id": "00005366-00000087",
+    "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+    "main": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+    "pr": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+    "main_wer": 0.0,
+    "pr_wer": 0.05555555555555555,
+    "points": [
+      [
+        64,
+        "stream",
+        43,
+        "worsened"
+      ]
+    ]
+  }
+]

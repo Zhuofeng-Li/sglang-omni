@@ -1,0 +1,18 @@
+{
+  "at_utc": "2026-10-19T23:42:17.141741+00:00",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "67e28de826af967a9dec76506c91473e257aa156",
+  "scope": "2880 primary matrix;32 language/seed/concurrency/mode comparisons; review repeat comparisons remain pending",
+  "paired_samples": 49728,
+  "changed_comparisons": 70,
+  "distinct_normalized_reference_main_candidate_triples_inspected": 24,
+  "WER_directions": {
+    "improved": 25,
+    "worsened": 32,
+    "equal": 13
+  },
+  "empty_changed_hypotheses": 0,
+  "inspection": "All24distincttriples read: localized proper-name spelling, homophones, plural morphology, and Chinese erhua/particle changes; some same utterances change in opposite directions at different points. Both equal-WER and regressing text changes retained.",
+  "limitations": "No audio re-listening or numerical-cause proof; no output-equivalence or absence-of-truncation claim. Fixed-seed review repetitions are separate pending comparisons.",
+  "raw_export_sha256": "f82e5bcc48d2bd40e3c12cb5421f26f65bb348280c044adaab8172ef82baef90"
+}
