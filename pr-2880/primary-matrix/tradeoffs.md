@@ -1,3 +1,5 @@
 C16 non-streaming throughput change is close to zero (+0.32%). ZH corpus WER improves at seed42 (0.5933→0.5844%) and worsens at seed43 (0.5874→0.6023%); EN response p95 at seed43 increases140.10→143.46ms, and ZH137.57→138.22ms. Mean startup increases about0.48s; maximum sampled memory is71.45→71.74GiB. These seed-level regressions and costs are retained, without claiming stable benefit or output equivalence.
 
 C16 streaming changes throughput by-1.02%. First-text p95 increases in both seeds/languages: EN77.20/78.20→80.90/81.00ms; ZH79.40/79.50→80.50/81.60ms. ZH WER at seed43 increases0.5933→0.5993% (seed42 unchanged); EN improves at seed42 and stays equal at seed43. Mean startup increases about1.15s. This negative point and per-seed latency/quality tradeoffs are retained; throughput improvement is not universal.
+
+C32 non-streaming throughput change is+2.31%, with equal corpus WER in both seeds/languages. EN response p95 at seed43 rises179.04→179.99ms; the other three p95 points improve. Mean startup increases about0.76s. The measurements describe this block only; no output-equivalence or combined-series gain is inferred.
