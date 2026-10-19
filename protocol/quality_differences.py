@@ -9,7 +9,7 @@ for pr in [2880, 2881, 2882]:
     for concurrency in [1, 16, 32, 64]:
         for mode in ["nonstream", "stream"]:
             pairs = [(42, ""), (43, "")]
-            if concurrency == 32:
+            if concurrency == 32 or (pr == 2881 and concurrency == 64):
                 pairs += [(42, "-fixed-seed42-repeat1"), (42, "-fixed-seed42-repeat2")]
             for seed, suffix in pairs:
                 for language in ["en", "zh"]:

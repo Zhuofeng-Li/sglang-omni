@@ -1,14 +1,14 @@
 {
   "candidate_head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
-  "observed_at_utc": "2026-10-19T17:13:22.288005+00:00",
+  "observed_at_utc": "2026-10-19T18:37:57.796951+00:00",
   "correctness": {
     "cuda_hidden_qwen": "124 passed, 3 accelerator deselected",
     "cuda_hidden_scheduler_fun_ark": "250 passed, 8 skipped",
     "visible_gpu_qwen": "3 passed",
     "precommit_all_files": "passed"
   },
-  "performance_readiness": "pending remaining final-source ABBA blocks and additional review validations; not merge-ready",
+  "performance_readiness": "pending remaining requested final-source evidence and review validation; not merge-ready",
   "superseded_head": "207b2d0b3fbd03528525624f0420add1f9213f11",
   "superseded_results": "historical-head-207b2d0b retains the earlier preliminary c1 block; never relabeled as new-head data",
   "current_accelerator_ci": {
@@ -40,12 +40,7 @@
     "stage_attempts": 1,
     "status": "passed"
   },
-  "verified_primary_blocks": [
-    {
-      "concurrency": 1,
-      "mode": "nonstream",
-      "geometric_change_percent": -0.0747284940281312,
-      "evidence": "current-c1-nonstream"
-    }
-  ]
+  "verified_primary_blocks": "All 8 blocks, 64/64 language/seed/arm cells",
+  "omni_ci": "success; actual Qwen3 SeedTTS model verified; see current-qwen-ci-complete.json",
+  "tradeoffs": "c64 EN tail/TTFT regression; WER not equivalent. See primary-matrix assessment; added c64 fixed-seed repeats pending."
 }

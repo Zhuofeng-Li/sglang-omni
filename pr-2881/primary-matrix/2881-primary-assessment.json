@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-19T18:36:01.904209+00:00",
+  "candidate": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "scope": "32 primary language/seed comparisons only; additional repeats and ablations remain pending.",
+  "compared_requests": 49728,
+  "changed_requests": 88,
+  "unique_reference_main_pr_triples": 29,
+  "wer_direction_among_changes": {
+    "better": 31,
+    "equal": 21,
+    "worse": 36
+  },
+  "empty_changed_hypotheses": 0,
+  "inspection": "Inspected all 29 distinct normalized reference/main/PR triples: proper names, homophones, pluralization and small extra/omitted particles. Changes include both improved and worsened WER; outputs are not equivalent. Transcript inspection does not establish the numerical cause or absence of audio truncation.",
+  "quality_risk": "c16 nonstream EN and ZH WER worsen in both seeds; c64 nonstream ZH worsens in both seeds. Keep per-seed WER and do not call it flat.",
+  "latency_risk": "c64 streaming EN response P95 worsens in both seeds (291.26/282.90 -> 420.97/293.96 ms); first-text P95 179.30/175.20 -> 348.70/187.50 ms. Nonstream c64 EN seed42 P95 also worsens. Added c64 seed42 repeated ABBA in both modes; not merge-ready."
+}

@@ -1,8 +1,8 @@
 {
-  "observed_at_utc": "2026-10-19T17:13:22.284808+00:00",
+  "observed_at_utc": "2026-10-19T18:37:57.794414+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "67e28de826af967a9dec76506c91473e257aa156",
-  "performance_readiness": "pending remaining final-source ABBA blocks and additional review validations; not merge-ready",
+  "performance_readiness": "pending remaining requested final-source evidence and review validation; not merge-ready",
   "correctness": "137 CPU and 5 GPU tests passed",
   "gpu": "single NVIDIA H100 80GB HBM3",
   "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
@@ -44,5 +44,6 @@
     "new_concurrent_capture_test": "tests/unit_test/qwen3_asr/test_metadata_glue.py::test_metadata_capture_and_replay_with_concurrent_cuda_work",
     "status": "passed",
     "log": "2880-current-accelerator-ci.log"
-  }
+  },
+  "omni_ci": "success; actual Qwen3 SeedTTS model verified; see current-qwen-ci-complete.json"
 }

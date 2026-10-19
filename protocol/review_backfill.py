@@ -24,16 +24,16 @@ def save():
     temporary.replace(ROOT / "control/review-backfill-state.json")
 
 
-def run(pr, arm, seed, mode, label, *, source=None, engine=None, environment=None, smoke=False):
+def run(pr, arm, seed, mode, label, *, source=None, engine=None, environment=None, smoke=False, concurrency=32):
     state.update(status="running", current=f"{label}/{pr}/{arm}/{seed}/{mode}")
     save()
-    result = cohort(pr, arm, seed, mode, 32, smoke=smoke, tag=label, source_name=source, engine_overrides=engine, env_overrides=environment)
+    result = cohort(pr, arm, seed, mode, concurrency, smoke=smoke, tag=label, source_name=source, engine_overrides=engine, env_overrides=environment)
     expected = {"en": 8, "zh": 8} if smoke else {"en": 1088, "zh": 2020}
     assert result["status"] == "completed"
     for language, count in expected.items():
         summary = result["measurements"][language]["summary"]
         assert summary["evaluated"] == count and summary["skipped"] == 0
-    record = {"name": result["name"], "pr": pr, "arm": arm, "seed": seed, "mode": mode, "label": label, "smoke": smoke, "source": source or ("main" if arm == "main" else f"pr-{pr}"), "engine_overrides": engine or {}, "environment_overrides": environment or {}}
+    record = {"name": result["name"], "pr": pr, "arm": arm, "seed": seed, "mode": mode, "concurrency": concurrency, "label": label, "smoke": smoke, "source": source or ("main" if arm == "main" else f"pr-{pr}"), "engine_overrides": engine or {}, "environment_overrides": environment or {}}
     if label.startswith("flashinfer") and arm == "full":
         graph_counts = result["graphs_after_scoring"]["callers"]
         # BREAKABLE also uses the prefill runner. Require the FULL backend in
@@ -97,8 +97,14 @@ try:
             for arm, repetition in [("main", 1), ("pr", 1), ("pr", 2), ("main", 2)]:
                 run(pr, arm, 42, mode, f"fixed-seed42-repeat{repetition}")
 
-    state.update(status="complete", expected_cases=52)
-    assert len(state["cases"]) == 52
+    # The final-head primary matrix exposed an EN tail/TTFT regression at c64
+    # seed42. Repeat the same fixed order in both modes before judging it.
+    for mode in ["nonstream", "stream"]:
+        for arm, repetition in [("main", 1), ("pr", 1), ("pr", 2), ("main", 2)]:
+            run(2881, arm, 42, mode, f"fixed-seed42-repeat{repetition}", concurrency=64)
+
+    state.update(status="complete", expected_cases=60)
+    assert len(state["cases"]) == 60
     save()
     subprocess.run([sys.executable, str(ROOT / "control/quality_differences.py")], check=True)
 except Exception as error:

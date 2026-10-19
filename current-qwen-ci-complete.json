@@ -1,0 +1,281 @@
+[
+  {
+    "pr": 2880,
+    "run_id": 39282362618,
+    "head": "67e28de826af967a9dec76506c91473e257aa156",
+    "attempt": 2,
+    "status": "success",
+    "observed_at_utc": "2026-10-19T18:35:22.927235+00:00",
+    "unit_summary": [
+      "2026-10-19T17:18:25.7680401Z == 9032 passed, 86 skipped, 928 deselected, 54 warnings in 761.90s (0:12:41) ==="
+    ],
+    "selected_asr_model": "qwen3",
+    "asr_log_evidence": [
+      "2026-10-19T17:39:59.4334839Z   ASR_CI_MODEL: qwen3",
+      "2026-10-19T17:39:59.5747210Z ##[group]stage-2-seedtts attempt 1/3",
+      "2026-10-19T17:41:04.0072535Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:41:04.0078863Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:41:12.8988257Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:41:12.8995500Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:41:14.3268136Z ========================= 2 passed in 72.66s (0:01:12) ========================="
+    ],
+    "jobs": [
+      {
+        "conclusion": "success",
+        "databaseId": 118185467801,
+        "name": "omni-ci-gate",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118185467801"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118185584477,
+        "name": "setup - omni venv",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118185584477"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118186685422,
+        "name": "PR Test / unit-test-accelerator",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118186685422"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118186685457,
+        "name": "PR Test / unit-test",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118186685457"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118198192080,
+        "name": "ASR CI / stage 1 - MOSS-TD multi-speaker",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118198192080"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118208321575,
+        "name": "ASR CI / stage 2 - SeedTTS ASR",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118208321575"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118209515760,
+        "name": "TTS CI",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118209515760"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118209517245,
+        "name": "MPS CI",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118209517245"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118209517810,
+        "name": "cleanup - reclaim ephemeral run home",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118209517810"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118209518100,
+        "name": "Omni model CI ()",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282362618/job/118209518100"
+      }
+    ]
+  },
+  {
+    "pr": 2881,
+    "run_id": 39288752772,
+    "head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+    "attempt": 1,
+    "status": "success",
+    "observed_at_utc": "2026-10-19T18:35:24.198121+00:00",
+    "unit_summary": [
+      "2026-10-19T17:08:11.2748906Z == 9087 passed, 86 skipped, 926 deselected, 54 warnings in 710.35s (0:11:50) ==="
+    ],
+    "selected_asr_model": "qwen3",
+    "asr_log_evidence": [
+      "2026-10-19T17:26:11.3103317Z   ASR_CI_MODEL: qwen3",
+      "2026-10-19T17:26:11.4375399Z ##[group]stage-2-seedtts attempt 1/3",
+      "2026-10-19T17:27:15.5366297Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:27:15.5372077Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:27:24.3008683Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:27:24.3014705Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:27:25.6139468Z ========================= 2 passed in 72.13s (0:01:12) ========================="
+    ],
+    "jobs": [
+      {
+        "conclusion": "success",
+        "databaseId": 118184092414,
+        "name": "omni-ci-gate",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118184092414"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118184773415,
+        "name": "setup - omni venv",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118184773415"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118185861718,
+        "name": "PR Test / unit-test",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118185861718"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118185861874,
+        "name": "PR Test / unit-test-accelerator",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118185861874"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118193221655,
+        "name": "ASR CI / stage 1 - MOSS-TD multi-speaker",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118193221655"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118201493823,
+        "name": "ASR CI / stage 2 - SeedTTS ASR",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118201493823"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118202689944,
+        "name": "TTS CI",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118202689944"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118202691867,
+        "name": "MPS CI",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118202691867"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118202692142,
+        "name": "Omni model CI ()",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118202692142"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118202692322,
+        "name": "cleanup - reclaim ephemeral run home",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39288752772/job/118202692322"
+      }
+    ]
+  },
+  {
+    "pr": 2882,
+    "run_id": 39282431325,
+    "head": "2cad178053585b41d486c1584796d58b205541a0",
+    "attempt": 2,
+    "status": "success",
+    "observed_at_utc": "2026-10-19T18:35:26.438518+00:00",
+    "unit_summary": [
+      "2026-10-19T17:21:59.8659080Z == 9031 passed, 86 skipped, 926 deselected, 54 warnings in 772.57s (0:12:52) ==="
+    ],
+    "selected_asr_model": "qwen3",
+    "asr_log_evidence": [
+      "2026-10-19T17:41:58.3533409Z   ASR_CI_MODEL: qwen3",
+      "2026-10-19T17:41:58.4786360Z ##[group]stage-2-seedtts attempt 1/3",
+      "2026-10-19T17:43:02.8545207Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:43:02.8550906Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:43:11.5589511Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:43:11.5596013Z   ASR model:                     Qwen/Qwen3-ASR-1.7B",
+      "2026-10-19T17:43:12.8712236Z ========================= 2 passed in 72.28s (0:01:12) ========================="
+    ],
+    "jobs": [
+      {
+        "conclusion": "success",
+        "databaseId": 118185494886,
+        "name": "omni-ci-gate",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118185494886"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118185607809,
+        "name": "setup - omni venv",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118185607809"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118186991430,
+        "name": "PR Test / unit-test",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118186991430"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118186991431,
+        "name": "PR Test / unit-test-accelerator",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118186991431"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118199959137,
+        "name": "ASR CI / stage 1 - MOSS-TD multi-speaker",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118199959137"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 118209305973,
+        "name": "ASR CI / stage 2 - SeedTTS ASR",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118209305973"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118210472777,
+        "name": "TTS CI",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118210472777"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118210474876,
+        "name": "MPS CI",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118210474876"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118210475386,
+        "name": "Omni model CI ()",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118210475386"
+      },
+      {
+        "conclusion": "skipped",
+        "databaseId": 118210477155,
+        "name": "cleanup - reclaim ephemeral run home",
+        "status": "completed",
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39282431325/job/118210477155"
+      }
+    ]
+  }
+]

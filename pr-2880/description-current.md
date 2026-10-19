@@ -40,8 +40,9 @@ Final-source startup-to-ready time, sampled peak GPU memory and live capture cou
 
 - Review-fix source: **137 CPU tests and 5 accelerator tests passed** on the assigned H100; logs and source identities are in the evidence link.
 - `pre-commit run --all-files`: passed. Complete diff versus the frozen main contains no `doc/` or `docs/` changes.
-- Existing CI labels: `run-asr-ci` + `run-asr-qwen3-asr-1.7b`. [Current-head Omni CI](https://github.com/sgl-project/sglang-omni/actions/runs/39282362618) (attempt 2): preflight passed and verified `run_asr=true`, `asr_ci_model=qwen3` for `67e28de8`; unit, accelerator and ASR completion remains pending. Earlier runs are historical evidence.
+- Current-head [Omni CI](https://github.com/sgl-project/sglang-omni/actions/runs/39282362618) passed (attempt 2). Existing labels: `run-asr-ci` + `run-asr-qwen3-asr-1.7b`; preflight selected `run_asr=true`, `asr_ci_model=qwen3`, and stage-2 logs confirm **Qwen/Qwen3-ASR-1.7B**. Unit, accelerator, MOSS-TD prerequisite and Qwen SeedTTS stages passed; unselected stages are not hardware-validation evidence.
+- Current-head ordinary CI: **9032 passed, 86 skipped**; accelerator CI: **771 passed, 15 skipped**. Tested synthetic merge revisions and logs are archived in the evidence.
 - CPU/XPU workflow gate retries passed after the initial lint-wait cancellations. Intel CPU/XPU tests were skipped by the unchanged stage selection; this is gate recovery, not Intel hardware validation.
-- Performance readiness remains pending until final-source comparisons, costs and current CI are verified.
+- Performance readiness remains pending until all requested final-source comparisons and review validations, observed tradeoffs, and independent reviewer approval are resolved.
 
 Developed by an autonomous research agent using [RSI-Harness](https://github.com/OpenRSI-Foundation/OpenRSI-Index/tree/main/RSI-Harness) in [OpenRSI-Index](https://github.com/OpenRSI-Foundation/OpenRSI-Index), with co-author [Kangda Wei (@WeiKangda)](https://github.com/WeiKangda); [qualification and historical evidence](https://github.com/Zhuofeng-Li/sglang-omni/tree/codex/omni-review-evidence-20261019/pr-2880).

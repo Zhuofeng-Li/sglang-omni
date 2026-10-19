@@ -1,0 +1,87 @@
+{
+  "at_utc": "2026-10-19T18:35:05.692505+00:00",
+  "reason": "Final e98 primary c64 seed42 EN P95/TTFT regression; retain primary results, validate repeated same-seed/order before readiness.",
+  "old_cases_preserved": 52,
+  "total_cases": 60,
+  "total_groups": 16,
+  "expected_transcript_comparisons": 128,
+  "additional_cases": [
+    {
+      "pr": 2881,
+      "arm": "main",
+      "seed": 42,
+      "mode": "nonstream",
+      "label": "fixed-seed42-repeat1",
+      "concurrency": 64,
+      "options": {}
+    },
+    {
+      "pr": 2881,
+      "arm": "pr",
+      "seed": 42,
+      "mode": "nonstream",
+      "label": "fixed-seed42-repeat1",
+      "concurrency": 64,
+      "options": {}
+    },
+    {
+      "pr": 2881,
+      "arm": "pr",
+      "seed": 42,
+      "mode": "nonstream",
+      "label": "fixed-seed42-repeat2",
+      "concurrency": 64,
+      "options": {}
+    },
+    {
+      "pr": 2881,
+      "arm": "main",
+      "seed": 42,
+      "mode": "nonstream",
+      "label": "fixed-seed42-repeat2",
+      "concurrency": 64,
+      "options": {}
+    },
+    {
+      "pr": 2881,
+      "arm": "main",
+      "seed": 42,
+      "mode": "stream",
+      "label": "fixed-seed42-repeat1",
+      "concurrency": 64,
+      "options": {}
+    },
+    {
+      "pr": 2881,
+      "arm": "pr",
+      "seed": 42,
+      "mode": "stream",
+      "label": "fixed-seed42-repeat1",
+      "concurrency": 64,
+      "options": {}
+    },
+    {
+      "pr": 2881,
+      "arm": "pr",
+      "seed": 42,
+      "mode": "stream",
+      "label": "fixed-seed42-repeat2",
+      "concurrency": 64,
+      "options": {}
+    },
+    {
+      "pr": 2881,
+      "arm": "main",
+      "seed": 42,
+      "mode": "stream",
+      "label": "fixed-seed42-repeat2",
+      "concurrency": 64,
+      "options": {}
+    }
+  ],
+  "deployed_hashes": {
+    "review_backfill.py": "a42cabadb811bd098ed17198c9aae58aae2529e6710ef3ea3cf3fd2173d59e23",
+    "quality_differences.py": "6767612f566e1641cd09f768c705d8e6f3e503b5f82419e7c51a3c3ca8c0df6f"
+  },
+  "queue_phase_at_deploy": "moss-c1-c64-generation"
+}

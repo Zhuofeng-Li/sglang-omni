@@ -109,21 +109,22 @@ for concurrency in [1, 64]:
             except (AssertionError, KeyError) as error:
                 block.update(status="invalid", error=repr(error))
         audits["2859"]["blocks"].append(block)
-review = {"status": "missing", "completed_cases": 0, "expected_cases": 52}
+review = {"status": "missing", "completed_cases": 0, "expected_cases": 60}
 review_path = ROOT / "evidence/remote-control/review-backfill-state.json"
 if review_path.exists():
     recorded = json.loads(review_path.read_text())
     review.update(status=recorded["status"], completed_cases=len(recorded["cases"]), groups=[])
     if recorded["status"] == "complete":
         try:
-            assert len(recorded["cases"]) == 52
+            assert len(recorded["cases"]) == 60
             groups = {}
             for case in recorded["cases"]:
                 directory = ROOT / "evidence/results" / case["name"]
                 result = json.loads((directory / "result.json").read_text())
                 launch = json.loads((directory / "launch.json").read_text())
                 memory = json.loads((directory / "memory-samples.json").read_text())
-                assert result["status"] == "completed" and result["concurrency"] == 32
+                assert result["status"] == "completed" and result["concurrency"] == case["concurrency"]
+                assert case["concurrency"] == 32 or (case["concurrency"] == 64 and case["pr"] == 2881 and case["label"].startswith("fixed-seed42-repeat"))
                 assert launch["source"] == "/qualification/source/" + case["source"]
                 assert launch["environment_overrides"] == case["environment_overrides"]
                 for key, value in case["engine_overrides"].items():
@@ -140,9 +141,9 @@ if review_path.exists():
                     assert full_callers == case["full_prefill_capture_callers"]
                     assert sum(full_callers.values()) == case["full_prefill_successful_captures"]
                 category = "fixed-seed42-repeat" if case["label"].startswith("fixed-seed42-repeat") else case["label"]
-                key = (case["pr"], case["mode"], category, case["smoke"])
+                key = (case["pr"], case["mode"], category, case["smoke"], case["concurrency"])
                 groups.setdefault(key, []).append((case, result, (min(sample["time"] for sample in memory), max(sample["time"] for sample in memory))))
-            assert len(groups) == 14
+            assert len(groups) == 16
             for key, rows in groups.items():
                 assert len(rows) == (2 if key[3] else 4)
                 assert all(rows[index][2][1] < rows[index + 1][2][0] for index in range(len(rows) - 1))
@@ -150,9 +151,9 @@ if review_path.exists():
                     assert left[0]["seed"] == right[0]["seed"]
                     for language in ["en", "zh"]:
                         assert left[1]["measurements"][language]["sample_order_sha256"] == right[1]["measurements"][language]["sample_order_sha256"]
-                review["groups"].append({"pr": key[0], "mode": key[1], "experiment": key[2], "smoke": key[3], "status": "verified", "cohorts": [row[0]["name"] for row in rows]})
+                review["groups"].append({"pr": key[0], "mode": key[1], "experiment": key[2], "smoke": key[3], "concurrency": key[4], "status": "verified", "cohorts": [row[0]["name"] for row in rows]})
             differences = json.loads((ROOT / "evidence/remote-control/quality-differences.json").read_text())
-            assert len(differences["comparisons"]) == 120
+            assert len(differences["comparisons"]) == 128
             review["status"] = "verified"
         except (AssertionError, FileNotFoundError, KeyError) as error:
             review.update(status="invalid", error=repr(error))

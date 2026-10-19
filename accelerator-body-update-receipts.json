@@ -1,0 +1,23 @@
+[
+  {
+    "pr": 2880,
+    "head": "67e28de826af967a9dec76506c91473e257aa156",
+    "accelerator_passed": 771,
+    "skipped": 15,
+    "at_utc": "2026-10-19T17:16:32.383759+00:00"
+  },
+  {
+    "pr": 2881,
+    "head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+    "accelerator_passed": 769,
+    "skipped": 15,
+    "at_utc": "2026-10-19T17:16:36.128139+00:00"
+  },
+  {
+    "pr": 2882,
+    "head": "2cad178053585b41d486c1584796d58b205541a0",
+    "accelerator_passed": 769,
+    "skipped": 15,
+    "at_utc": "2026-10-19T17:16:40.032553+00:00"
+  }
+]
