@@ -353,6 +353,11 @@ class Qwen3ASRForConditionalGeneration(nn.Module):
         window_lens = window_lens_from_token_counts(
             token_counts, tokens_per_window=runner.tokens_per_window
         )
+        graph_plan = runner.plan(sum(window_lens), len(window_lens))
+        if graph_plan is None or graph_plan[0] in runner.failed:
+            return None
+        else:
+            pass
         hidden = planned_preamble(tower, plan, device)
         graphed = runner.run(hidden, window_lens)
         if graphed is None:
