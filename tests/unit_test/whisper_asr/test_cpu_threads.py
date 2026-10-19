@@ -28,8 +28,10 @@ def test_thread_limit_respects_affinity_and_cgroup_quota(
         cpu.os,
         "sched_getaffinity",
         lambda process_id: set(range(available_cpu_count)),
+        raising=False,
     )
     builder = engine_builder.WhisperASREngineBuilder(
+        encoder_attention_backend="auto",
         max_running_requests=4,
         max_new_tokens=32,
         mem_fraction_static=0.2,

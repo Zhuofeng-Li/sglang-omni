@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import sys
 from types import SimpleNamespace
 
@@ -20,7 +21,10 @@ from sglang_omni.model_runner.whisper_prefill_cuda_graph_runner import (
 from sglang_omni.models.registry import PIPELINE_CONFIG_REGISTRY
 from sglang_omni.models.whisper_asr import engine_builder as whisper_asr_builder
 from sglang_omni.models.whisper_asr import request_builders as whisper_request_builders
-from sglang_omni.models.whisper_asr.config import WhisperASRPipelineConfig
+from sglang_omni.models.whisper_asr.config import (
+    WhisperASRFactoryArgs,
+    WhisperASRPipelineConfig,
+)
 from sglang_omni.models.whisper_asr.sglang_model import WhisperForConditionalGeneration
 from sglang_omni.models.whisper_asr.text_streaming import (
     ExactWhisperStreamOutputBuilder,
@@ -39,6 +43,7 @@ def encoder_graph_builder(**kwargs):
     from sglang_omni.models.whisper_asr.engine_builder import WhisperASREngineBuilder
 
     params = {
+        "encoder_attention_backend": "auto",
         "max_running_requests": 16,
         "max_new_tokens": 32,
         "mem_fraction_static": 0.2,
@@ -152,6 +157,7 @@ def test_whisper_disables_chunked_prefill_for_atomic_encoder_prefix() -> None:
     from sglang_omni.models.whisper_asr.engine_builder import WhisperASREngineBuilder
 
     builder = WhisperASREngineBuilder(
+        encoder_attention_backend="auto",
         max_running_requests=4,
         max_new_tokens=32,
         mem_fraction_static=0.2,
@@ -181,6 +187,7 @@ def test_whisper_encoder_decoder_attention_backend_defaults(
 ) -> None:
     monkeypatch.setattr(whisper_asr_builder, "current_platform", platform_type())
     defaults = whisper_asr_builder.WhisperASREngineBuilder(
+        encoder_attention_backend="auto",
         max_running_requests=4,
         max_new_tokens=32,
         mem_fraction_static=0.2,
@@ -194,6 +201,7 @@ def test_whisper_encoder_decoder_attention_backend_defaults(
 
 def test_whisper_breakable_prefill_graph_policy() -> None:
     builder = whisper_asr_builder.WhisperASREngineBuilder(
+        encoder_attention_backend="auto",
         max_running_requests=4,
         max_new_tokens=32,
         mem_fraction_static=0.2,
@@ -223,6 +231,7 @@ def test_whisper_breakable_prefill_graph_policy() -> None:
 
 def test_whisper_prefill_graph_cap_covers_shorter_request_batches() -> None:
     builder = whisper_asr_builder.WhisperASREngineBuilder(
+        encoder_attention_backend="auto",
         max_running_requests=3,
         max_new_tokens=256,
         mem_fraction_static=0.2,
@@ -245,6 +254,7 @@ def test_whisper_prefill_coalescing_defaults_are_forwarded() -> None:
     from sglang_omni.models.whisper_asr.engine_builder import WhisperASREngineBuilder
 
     builder = WhisperASREngineBuilder(
+        encoder_attention_backend="auto",
         max_running_requests=16,
         max_new_tokens=32,
         mem_fraction_static=0.2,
@@ -273,6 +283,7 @@ def test_whisper_rejects_invalid_pre_lm_batch_knobs() -> None:
 
     with pytest.raises(ValueError, match="pre_lm_max_batch_size must be >= 1"):
         WhisperASREngineBuilder(
+            encoder_attention_backend="auto",
             max_running_requests=4,
             max_new_tokens=32,
             mem_fraction_static=0.2,
@@ -280,6 +291,7 @@ def test_whisper_rejects_invalid_pre_lm_batch_knobs() -> None:
         )
     with pytest.raises(ValueError, match="pre_lm_max_batch_wait_ms must be >= 0"):
         WhisperASREngineBuilder(
+            encoder_attention_backend="auto",
             max_running_requests=4,
             max_new_tokens=32,
             mem_fraction_static=0.2,
@@ -323,7 +335,10 @@ def test_whisper_asr_config_uses_single_batched_stage() -> None:
     )
 
 
-def test_whisper_asr_threads_explicit_cuda_graph_bs(monkeypatch) -> None:
+@pytest.mark.parametrize("encoder_attention_backend", ["auto", "sdpa", "fa4"])
+def test_whisper_asr_threads_explicit_cuda_graph_bs(
+    monkeypatch: pytest.MonkeyPatch, encoder_attention_backend: str
+) -> None:
     build_kwargs: dict[str, object] = {}
     scheduler_kwargs: dict[str, object] = {}
     graph_init_calls: list[object] = []
@@ -440,13 +455,22 @@ def test_whisper_asr_threads_explicit_cuda_graph_bs(monkeypatch) -> None:
         ),
     )
 
-    whisper_asr_stages.create_sglang_whisper_asr_executor(
-        "dummy",
+    factory = WhisperASRFactoryArgs(
+        encoder_attention_backend=encoder_attention_backend,
         enable_pre_lm_encoder=False,
         enable_async_decode=False,
         async_decode_min_batch_size=4,
     )
+    whisper_asr_stages.create_sglang_whisper_asr_executor(
+        "dummy",
+        **factory.model_dump(exclude_none=True),
+        server_args_overrides={"json_model_override_args": '{"test_setting": 7}'},
+    )
 
+    assert json.loads(build_kwargs["json_model_override_args"]) == {
+        "encoder_attention_backend": encoder_attention_backend,
+        "test_setting": 7,
+    }
     assert build_kwargs["cuda_graph_max_bs"] == 64
     assert build_kwargs["cuda_graph_bs"] == [1, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64]
     # note (jiannan-17): context_length = encoder_token_count + max_prev_tokens + max_new_tokens + 8

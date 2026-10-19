@@ -85,10 +85,9 @@ def load_projection_shard(
 
 @torch.library.custom_op("sglang_omni::whisper_encoder_attention", mutates_args=())
 def whisper_encoder_attention(
-    query: torch.Tensor, key: torch.Tensor, value: torch.Tensor
+    query: torch.Tensor, key: torch.Tensor, value: torch.Tensor, backend: str
 ) -> torch.Tensor:
     """Non-causal attention over [batch, frames, heads, head_dim] encoder states."""
-    backend = os.environ.get("SGLANG_OMNI_WHISPER_ENCODER_ATTENTION_BACKEND", "auto")
     if backend not in ("auto", "sdpa", "fa4"):
         raise ValueError(f"Unknown Whisper encoder attention backend: {backend}")
     else:
@@ -120,7 +119,7 @@ def whisper_encoder_attention(
 
 @whisper_encoder_attention.register_fake
 def whisper_encoder_attention_shape(
-    query: torch.Tensor, key: torch.Tensor, value: torch.Tensor
+    query: torch.Tensor, key: torch.Tensor, value: torch.Tensor, backend: str
 ) -> torch.Tensor:
     return torch.empty_like(query, memory_format=torch.contiguous_format)
 
@@ -131,6 +130,7 @@ class WhisperEncoderAttention(nn.Module):
         self.embed_dim = config.d_model
         self.num_heads = config.encoder_attention_heads
         self.head_dim = self.embed_dim // self.num_heads
+        self.backend = config.to_dict().get("encoder_attention_backend", "auto")
         self.qkv_proj = nn.Linear(self.embed_dim, 3 * self.embed_dim)
         # Whisper K projections have no bias. The zero K shard preserves that
         # checkpoint structure while issuing one GEMM for all three projections.
@@ -145,7 +145,7 @@ class WhisperEncoderAttention(nn.Module):
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
         query, key, value = self.qkv_proj(hidden_states).chunk(3, dim=-1)
         attn_output = whisper_encoder_attention(
-            self.shape(query), self.shape(key), self.shape(value)
+            self.shape(query), self.shape(key), self.shape(value), self.backend
         )
         attn_output = attn_output.reshape(
             hidden_states.shape[0],

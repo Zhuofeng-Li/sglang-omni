@@ -3,9 +3,10 @@
 
 from __future__ import annotations
 
+import json
 import logging
 from collections.abc import Callable
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 
 import torch
 from sglang.srt.server_args import ServerArgs
@@ -195,6 +196,7 @@ class WhisperASREngineBuilder(AsrEngineBuilder[WhisperASRRequestData]):
     def __init__(
         self,
         *,
+        encoder_attention_backend: Literal["auto", "sdpa", "fa4"],
         max_running_requests: int,
         max_new_tokens: int,
         stream_emit_interval_s: float = 0.05,
@@ -220,6 +222,12 @@ class WhisperASREngineBuilder(AsrEngineBuilder[WhisperASRRequestData]):
         pre_lm_max_batch_wait_ms: int = 0,
         pre_lm_cache_pin_host_memory: bool = True,
     ) -> None:
+        if encoder_attention_backend not in ("auto", "sdpa", "fa4"):
+            raise ValueError(
+                f"Unknown Whisper encoder attention backend: {encoder_attention_backend}"
+            )
+        else:
+            self.encoder_attention_backend = encoder_attention_backend
         if pre_lm_max_batch_size < 1:
             raise ValueError(
                 f"pre_lm_max_batch_size must be >= 1, got {pre_lm_max_batch_size}"
@@ -437,6 +445,9 @@ class WhisperASREngineBuilder(AsrEngineBuilder[WhisperASRRequestData]):
         )
 
     def adjust_overrides(self, overrides: dict[str, object]) -> None:
+        model_overrides = json.loads(overrides.get("json_model_override_args") or "{}")
+        model_overrides["encoder_attention_backend"] = self.encoder_attention_backend
+        overrides["json_model_override_args"] = json.dumps(model_overrides)
         if int(overrides.get("chunked_prefill_size") or 0) > 0:
             raise ValueError(
                 "Whisper ASR requires chunked_prefill_size=0 because its encoder "
