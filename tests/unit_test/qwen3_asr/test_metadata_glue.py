@@ -3,7 +3,7 @@
 
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import nullcontext
-from threading import Barrier
+from threading import Barrier, Event
 from unittest.mock import MagicMock
 
 import pytest
@@ -91,7 +91,9 @@ def test_metadata_graph_refreshes_live_inputs_after_capture() -> None:
 
 @pytest.mark.accelerator
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA required")
-def test_metadata_capture_and_replay_with_concurrent_cuda_work() -> None:
+def test_metadata_capture_and_replay_with_concurrent_cuda_work(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """Thread-local capture must preserve both streams' results during overlap."""
     positions = torch.arange(4, device="cuda")
     output = torch.empty_like(positions)
@@ -99,7 +101,20 @@ def test_metadata_capture_and_replay_with_concurrent_cuda_work() -> None:
     other_output = torch.empty_like(other_input)
     other_stream = torch.cuda.Stream()
     other_stream.wait_stream(torch.cuda.current_stream())
-    barrier = Barrier(2)
+    barrier = Barrier(2, timeout=30)
+    capture_started = Event()
+    other_work_submitted = Event()
+    captured_graphs = []
+    graph_type = torch.cuda.CUDAGraph
+
+    class ConcurrentGraph(graph_type):
+        def capture_begin(self, *args, **kwargs) -> None:
+            super().capture_begin(*args, **kwargs)
+            capture_started.set()
+            assert other_work_submitted.wait(timeout=30)
+            captured_graphs.append(self)
+
+    monkeypatch.setattr(torch.cuda, "CUDAGraph", ConcurrentGraph)
     backend = MagicMock(spec=AttentionBackend)
     backend.attn_backend_list = None
 
@@ -111,7 +126,11 @@ def test_metadata_capture_and_replay_with_concurrent_cuda_work() -> None:
         with torch.cuda.stream(other_stream):
             for value in range(glue.NUM_WARMUP + 3):
                 barrier.wait()
+                if value == glue.NUM_WARMUP:
+                    assert capture_started.wait(timeout=30)
                 torch.add(other_input, value, out=other_output)
+                if value == glue.NUM_WARMUP:
+                    other_work_submitted.set()
                 barrier.wait()
 
     backend.init_forward_metadata_out_graph.side_effect = prepare_metadata
@@ -128,6 +147,9 @@ def test_metadata_capture_and_replay_with_concurrent_cuda_work() -> None:
             barrier.wait()
             other_stream.synchronize()
             torch.testing.assert_close(output, positions + 1, rtol=0, atol=0)
-            torch.testing.assert_close(other_output, other_input + value, rtol=0, atol=0)
+            torch.testing.assert_close(
+                other_output, other_input + value, rtol=0, atol=0
+            )
             assert not glue.disabled
         future.result()
+    assert len(captured_graphs) == 1

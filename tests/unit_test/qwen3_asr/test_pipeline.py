@@ -678,7 +678,9 @@ def test_qwen3_asr_nested_prefill_override_supersedes_the_derived_ladder(
     assert recorded.build_kwargs["cuda_graph_max_bs_prefill"] == 256
 
 
-@pytest.mark.parametrize("operator_batches", [None, [1, 8, 64], build_default_cuda_graph_bs(64)])
+@pytest.mark.parametrize(
+    "operator_batches", [None, [1, 8, 64], build_default_cuda_graph_bs(64)]
+)
 def test_qwen3_asr_cuda_decode_graphs_preserve_operator_buckets(
     monkeypatch: pytest.MonkeyPatch, operator_batches: list[int] | None
 ) -> None:
