@@ -491,6 +491,76 @@
           ]
         }
       }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 64,
+      "language": "en",
+      "arms": {
+        "main": {
+          "req_s": 289.73180406707144,
+          "mean_latency_ms": 215.6739003765003,
+          "p95_ms": "286.36/316.21",
+          "wer_percent": "1.2107/1.2107",
+          "first_text_mean_ms": "92.00/93.50",
+          "first_text_p95_ms": "175.40/180.10",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2880-c64-stream-main-seed42/result.json",
+            "evidence/results/pr2880-c64-stream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 294.17684750601205,
+          "mean_latency_ms": 208.82514708479422,
+          "p95_ms": "273.59/273.45",
+          "wer_percent": "1.2182/1.2182",
+          "first_text_mean_ms": "93.20/88.70",
+          "first_text_p95_ms": "172.30/149.00",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2880-c64-stream-pr-seed42/result.json",
+            "evidence/results/pr2880-c64-stream-pr-seed43/result.json"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 64,
+      "language": "zh",
+      "arms": {
+        "main": {
+          "req_s": 300.4985490937497,
+          "mean_latency_ms": 209.1917625967284,
+          "p95_ms": "278.26/281.68",
+          "wer_percent": "0.6113/0.6113",
+          "first_text_mean_ms": "91.10/94.50",
+          "first_text_p95_ms": "134.20/130.40",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2880-c64-stream-main-seed42/result.json",
+            "evidence/results/pr2880-c64-stream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 315.2977458435646,
+          "mean_latency_ms": 200.20901923930035,
+          "p95_ms": "267.82/266.51",
+          "wer_percent": "0.6263/0.6233",
+          "first_text_mean_ms": "88.30/91.10",
+          "first_text_p95_ms": "127.60/128.70",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2880-c64-stream-pr-seed42/result.json",
+            "evidence/results/pr2880-c64-stream-pr-seed43/result.json"
+          ]
+        }
+      }
     }
   ],
   "costs": [
@@ -700,6 +770,36 @@
           "live_captures": [
             152,
             152
+          ]
+        }
+      }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 64,
+      "arms": {
+        "main": {
+          "startup_s": "74.58/75.63",
+          "peak_gib": "71.98/71.83",
+          "successful_captures": [
+            1468,
+            1468
+          ],
+          "live_captures": [
+            1468,
+            1468
+          ]
+        },
+        "pr": {
+          "startup_s": "77.59/77.27",
+          "peak_gib": "72.15/72.25",
+          "successful_captures": [
+            178,
+            180
+          ],
+          "live_captures": [
+            178,
+            180
           ]
         }
       }
