@@ -1,0 +1,69 @@
+{
+  "at_utc": "2026-10-19T20:32:23.902874+00:00",
+  "candidate": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "measured_base": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "measurement_date": "2026-10-19",
+  "primary_h100_evidence": "/scratch/user/zhuofengli_tamu.edu/tasks/omni-review-fixes/runs/20261019/evidence/results",
+  "primary_blocks": [
+    {
+      "c": 1,
+      "mode": "nonstream",
+      "status": "verified",
+      "language_seed_comparisons": 4,
+      "geometric_gain_percent": -0.0747284940281312
+    },
+    {
+      "c": 1,
+      "mode": "stream",
+      "status": "verified",
+      "language_seed_comparisons": 4,
+      "geometric_gain_percent": 0.5204419369878588
+    },
+    {
+      "c": 16,
+      "mode": "nonstream",
+      "status": "verified",
+      "language_seed_comparisons": 4,
+      "geometric_gain_percent": 5.449752713804146
+    },
+    {
+      "c": 16,
+      "mode": "stream",
+      "status": "verified",
+      "language_seed_comparisons": 4,
+      "geometric_gain_percent": 5.155696938133514
+    },
+    {
+      "c": 32,
+      "mode": "nonstream",
+      "status": "verified",
+      "language_seed_comparisons": 4,
+      "geometric_gain_percent": 7.775177276255185
+    },
+    {
+      "c": 32,
+      "mode": "stream",
+      "status": "verified",
+      "language_seed_comparisons": 4,
+      "geometric_gain_percent": 9.751807605535978
+    },
+    {
+      "c": 64,
+      "mode": "nonstream",
+      "status": "verified",
+      "language_seed_comparisons": 4,
+      "geometric_gain_percent": 8.459066932072279
+    },
+    {
+      "c": 64,
+      "mode": "stream",
+      "status": "verified",
+      "language_seed_comparisons": 4,
+      "geometric_gain_percent": 5.545514935074292
+    }
+  ],
+  "cohorts": 32,
+  "language_cells": 64,
+  "no_request_failures": true,
+  "scope_limit": "This rechecks saved source-labeled primary metrics and paired input-order hashes; source build/start timestamps and source provenance are additionally retained in the original run. It does not relabel results to current upstream tip. H200 supplemental checks remain separate and incomplete."
+}

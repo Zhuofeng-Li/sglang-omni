@@ -1,0 +1,2 @@
+GPU-2396c1ff-41ff-385f-30fe-0272d99c5d6c, NVIDIA H200, 595.71.05, 143771 MiB
+docker.io/lmsysorg/sglang@sha256:06e4f2ed21afde4ff513cda65070124e727ba23ccaeff7712b8c40e1097d611f shareable 0 0 0

@@ -1,0 +1,60 @@
+{
+  "cluster": "Radix",
+  "scope": "PR2881 supplemental independent H200 admission ablation and c32/c64 repeats; H100 primary and queued confirmation remain separately identified",
+  "head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "base": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "assignment_id": "01M5AV8FP57G9C4KAP6ZECV45E",
+  "gpu_indices": [
+    1
+  ],
+  "status": "complete_saved_released",
+  "gpu_uuid": "GPU-2396c1ff-41ff-385f-30fe-0272d99c5d6c",
+  "gpu_model": "NVIDIA H200",
+  "node_root": "/data/zhuofeng-li/home/pr2881-priority",
+  "container": "pr2881-priority",
+  "node_launcher_pid": 1455603,
+  "protocol": {
+    "smoke_cohorts": 4,
+    "measured_cohorts": 24,
+    "ablation": "async-only with frozen main admission methods vs final scoped admission",
+    "ablation_seeds": [
+      42,
+      43
+    ],
+    "repeat_concurrency": [
+      32,
+      64
+    ],
+    "repeat_seed": 42,
+    "repeat_order": [
+      "main",
+      "PR",
+      "PR",
+      "main"
+    ],
+    "modes": [
+      "nonstream",
+      "stream"
+    ],
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "samples": {
+      "en": 1088,
+      "zh": 2020
+    }
+  },
+  "expires_at_utc": "2026-10-20T01:47:18Z",
+  "limitations": "Separate H200 supplementary experiment; must not replace original H100 tail confirmation. Original H100 queue untouched.",
+  "controller_pid": 3869799,
+  "transfer": "verified",
+  "preflight": "passed",
+  "updated_at_utc": "2026-10-19T20:57:14.561257+00:00",
+  "results": "/scratch/user/zhuofengli_tamu.edu/tasks/pr2881-priority/runs/20261019T1947Z/evidence",
+  "monitor": "Persistent local controller syncs once per minute, verifies 24 measured language pairs, and releases only its exact H200 assignment after success. No GPT scheduled automation available.",
+  "formal_completed": 24,
+  "formal_expected": 24,
+  "monitor_release_guard": "Verify atomic completion receipt + hashes,24 language pairs,28 completed cohort/config/launch files and GPU consumers absent; then release exact assignment and verify absence.",
+  "release_verified_at_utc": "2026-10-19T20:55:47.889055+00:00"
+}
