@@ -1,0 +1,22 @@
+[
+  {
+    "pr": 2880,
+    "run": 39282362538,
+    "head": "67e28de826af967a9dec76506c91473e257aa156",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "reason": "Initial preflight cancelled waiting on queued lint; matching-head lint now green. First targeted CPU workflow retry.",
+    "at_utc": "2026-10-19T16:57:43.748188+00:00"
+  },
+  {
+    "pr": 2882,
+    "run": 39282431053,
+    "head": "2cad178053585b41d486c1584796d58b205541a0",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "reason": "Initial preflight cancelled waiting on queued lint; matching-head lint now green. First targeted CPU workflow retry.",
+    "at_utc": "2026-10-19T16:57:45.960420+00:00"
+  }
+]

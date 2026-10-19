@@ -1,0 +1,42 @@
+{
+  "observed_at_utc": "2026-10-19T16:59:19.221119+00:00",
+  "previous_tip": "8b60a60c00ec201140125dc0841ce5a32d7526a5",
+  "current_tip": "a1939b97af92a5b8b944df74375ba766736e79ad",
+  "frozen_qualification_base": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "commits": [
+    {
+      "sha": "b53be306c0472038944184396ce4ad2c486cde4b",
+      "message": "[Benchmark] record and export turn-based endpoints over the session protocol (#2830)"
+    },
+    {
+      "sha": "a1939b97af92a5b8b944df74375ba766736e79ad",
+      "message": "[Benchmark] score the listening quality of every FDB reply: omitted words, UTMOS, voice consistency (#2925)"
+    }
+  ],
+  "files": [
+    "benchmarks/duplex/artifacts.py",
+    "benchmarks/duplex/client.py",
+    "benchmarks/duplex/fdb/aggregate.py",
+    "benchmarks/duplex/fdb/asr.py",
+    "benchmarks/duplex/fdb/common.py",
+    "benchmarks/duplex/fdb/setup_assets.py",
+    "benchmarks/duplex/listening_replies.py",
+    "benchmarks/duplex/listening_scores.py",
+    "benchmarks/duplex/oracle.py",
+    "benchmarks/duplex/oracle_models.py",
+    "benchmarks/duplex/profiles.py",
+    "benchmarks/duplex/reference_audio.py",
+    "benchmarks/duplex/reference_capture.py",
+    "benchmarks/duplex/reference_export.py",
+    "benchmarks/duplex/reference_v10.py",
+    "benchmarks/duplex/v15_audio.py",
+    "benchmarks/duplex/v15_runner.py",
+    "benchmarks/eval/benchmark_duplex_listening.py",
+    "docs/developer_reference/full_duplex_bench.md",
+    "tests/unit_test/benchmarks/test_duplex_legacy.py",
+    "tests/unit_test/benchmarks/test_duplex_listening.py",
+    "tests/unit_test/benchmarks/test_duplex_turn_based.py",
+    "tests/unit_test/benchmarks/test_fdb_runbook.py"
+  ],
+  "impact": "Duplex benchmark-only changes; frozen Qwen ASR / MOSS serving and SeedTTS clients unaffected. Keep the existing frozen comparison identity; do not relabel it current main."
+}

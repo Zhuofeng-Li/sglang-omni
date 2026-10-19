@@ -1,0 +1,22 @@
+[
+  {
+    "pr": 2880,
+    "run": 39282362927,
+    "head": "67e28de826af967a9dec76506c91473e257aa156",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "reason": "Initial lint/mergeability gate cancelled while lint queued. Matching-head lint now green. First XPU workflow retry; no Intel stage label enabled.",
+    "at_utc": "2026-10-19T16:58:52.285308+00:00"
+  },
+  {
+    "pr": 2882,
+    "run": 39282431008,
+    "head": "2cad178053585b41d486c1584796d58b205541a0",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "reason": "Initial lint/mergeability gate cancelled while lint queued. Matching-head lint now green. First XPU workflow retry; no Intel stage label enabled.",
+    "at_utc": "2026-10-19T16:58:56.582959+00:00"
+  }
+]
