@@ -1,0 +1,27 @@
+{
+  "observed_at_utc": "2026-10-19T21:54:08.484464+00:00",
+  "latest_actual_main": "e43663e908bf1c3aee15abfd3a19d44373459108",
+  "candidate": "27216ebd18056a57406510b8588e351683d03d00",
+  "synthetic_merge_tree": "c09254651506cecc3622a64beb00e250b4d729c9",
+  "conflicts": false,
+  "full_PR_files": [
+    "sglang_omni/models/moss_tts/attention.py",
+    "sglang_omni/models/moss_tts/channel_embedding.py",
+    "sglang_omni/models/moss_tts/config.py",
+    "sglang_omni/models/moss_tts/engine_builder.py",
+    "sglang_omni/models/moss_tts/model_runner.py",
+    "sglang_omni/models/moss_tts/request_builders.py",
+    "sglang_omni/models/moss_tts/sampler.py",
+    "sglang_omni/models/moss_tts/sampling_cuda_graph.py",
+    "sglang_omni/models/moss_tts/sglang_model.py",
+    "sglang_omni/models/moss_tts/stages.py",
+    "sglang_omni/models/moss_tts/vocoder.py",
+    "sglang_omni/models/moss_tts/vocoder_graphs.py",
+    "tests/unit_test/moss_tts/test_input_embeddings.py",
+    "tests/unit_test/moss_tts/test_pipeline.py",
+    "tests/unit_test/moss_tts/test_sampling_cuda_graph.py",
+    "tests/unit_test/moss_tts/test_vocoder.py"
+  ],
+  "no_doc_directory_changes": true,
+  "scope": "Read-only latest-main compatibility preflight; no code changed and frozen GPU paired base remains2d5de98c. Does not replace integration CI or measured-source validation."
+}

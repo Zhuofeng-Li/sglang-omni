@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-19T21:50:10.147066+00:00",
+  "source": "27216ebd18056a57406510b8588e351683d03d00",
+  "base": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "worktree": "/scratch/user/zhuofengli_tamu.edu/tasks/omni-review-fixes/runs/20261019/pr-2859-stream-scope",
+  "namespace": "moss-stream-scope-27216ebd",
+  "precommit_all_files_exit": 0,
+  "pytest": "CUDA-hidden full MOSS suite278passed97skipped; GPU regression and16pairedgeneration/WER/SIM pending",
+  "registration": "Phase-boundary CUDA-hidden suite before backend smokes; final full MOSS GPU suite +16 generation +WER/SIM after original Qwen60-case hook and quality differences",
+  "source_immutable_preflight": true,
+  "old_primary_and_ablation_preserved": true,
+  "original_pr_body_receipt": "2859-complete-ablation-body-receipt.json",
+  "evidence_commit": "c72812a",
+  "published_original_head_unchanged": "1894fa88fa8b09392b0aa0625eec34aae3e95edd",
+  "full_off_node_coverage_release_guard": "control/audit_moss_stream_scope.py via audit_matrix.py",
+  "new_source_not_pushed": true
+}

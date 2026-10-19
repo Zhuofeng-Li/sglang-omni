@@ -1,0 +1,31 @@
+{
+  "observed_at_utc": "2026-10-19T21:56:34.397811+00:00",
+  "scope": "Current node snapshot compared against exact Git Python blobs; does not by itself establish historical immutability",
+  "sources": {
+    "main": {
+      "commit": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+      "python_files": 1710,
+      "mismatches": []
+    },
+    "pr-2859": {
+      "commit": "757c09eb272079b6c08f88bcaa393ffe3845029a",
+      "python_files": 1712,
+      "mismatches": []
+    },
+    "pr-2880": {
+      "commit": "67e28de826af967a9dec76506c91473e257aa156",
+      "python_files": 1712,
+      "mismatches": []
+    },
+    "pr-2881": {
+      "commit": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+      "python_files": 1710,
+      "mismatches": []
+    },
+    "pr-2882": {
+      "commit": "2cad178053585b41d486c1584796d58b205541a0",
+      "python_files": 1710,
+      "mismatches": []
+    }
+  }
+}

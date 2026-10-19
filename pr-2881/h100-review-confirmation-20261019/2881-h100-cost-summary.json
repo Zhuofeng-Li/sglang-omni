@@ -1,0 +1,16 @@
+{
+  "left_source_result": {
+    "mean_startup_s": 75.29821076459484,
+    "peak_GiB": 72.1591796875,
+    "capture_counts": [
+      1468
+    ]
+  },
+  "right_source_result": {
+    "mean_startup_s": 75.42009509226773,
+    "peak_GiB": 71.9638671875,
+    "capture_counts": [
+      1468
+    ]
+  }
+}

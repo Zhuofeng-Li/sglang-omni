@@ -1,0 +1,7 @@
+{
+  "status": "cuda_hidden_regression_passed",
+  "exit_code": 0,
+  "at": 1792447570.7610133,
+  "candidate": "27216ebd18056a57406510b8588e351683d03d00",
+  "source_digest_sha256": "c7404f1bc80d2320fd59e29a0ee51df1af5cd3589eec3e5193cf7ee369332a75"
+}

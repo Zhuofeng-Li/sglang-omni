@@ -1,0 +1,9 @@
+{
+  "observed_at_utc": "2026-10-19T21:59:12.604862+00:00",
+  "all_other_tracked_Python_files_match_final_head": true,
+  "other_files_checked": 1709,
+  "scheduler_exact_three_methods_restored_from_frozen_main": true,
+  "scheduler_sha256": "419e914c0b59f9a19d5e35eec6a9cfc53fe653a4a40dc2136495eab81fdb80f3",
+  "patch_sha256": "db56c55d55c31937e3b09c063e0aa6d674951e0b793b41b16c2178f1f6014f99",
+  "scope": "Current immutable ablation-source audit; not a claim of performance or quality equivalence"
+}

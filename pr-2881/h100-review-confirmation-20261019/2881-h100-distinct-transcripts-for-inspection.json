@@ -1,0 +1,272 @@
+{
+  "changed_comparisons": 101,
+  "counts": {
+    "worsen": 47,
+    "equal": 21,
+    "improve": 33
+  },
+  "empty_changed_right": 0,
+  "distinct_triples": [
+    [
+      "also the town is pursuing increased tourism based on its ancient serer culture",
+      "also the town is pursuing increased tourism based on its ancient siree culture",
+      "also the town is pursuing increased tourism based on its ancient sireer culture"
+    ],
+    [
+      "also the town is pursuing increased tourism based on its ancient serer culture",
+      "also the town is pursuing increased tourism based on its ancient sireer culture",
+      "also the town is pursuing increased tourism based on its ancient siree culture"
+    ],
+    [
+      "it has traditionally been used for growth of human lymphocytes",
+      "it has traditionally been used for growth of human lymphocyte",
+      "it has traditionally been used for growth of human lymphocytes"
+    ],
+    [
+      "it has traditionally been used for growth of human lymphocytes",
+      "it has traditionally been used for growth of human lymphocytes",
+      "it has traditionally been used for growth of human lymphocyte"
+    ],
+    [
+      "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+      "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+      "mike timkis is indeed helping us out right now and we are genuinely appreciative"
+    ],
+    [
+      "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+      "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+      "mike dimkis is indeed helping us out right now and we are genuinely appreciative"
+    ],
+    [
+      "the inca tern feeds primarily on small fish such as anchovies",
+      "the inca tern feeds primarily on small fish such as anchovies",
+      "the inca turn feeds primarily on small fish such as anchovies"
+    ],
+    [
+      "the inca tern feeds primarily on small fish such as anchovies",
+      "the inca turn feeds primarily on small fish such as anchovies",
+      "the inca tern feeds primarily on small fish such as anchovies"
+    ],
+    [
+      "with this win levet became the leading frenchman in terms of european tour wins",
+      "with this win levet became the leading frenchman in terms of european tour wins",
+      "with this win levitt became the leading frenchman in terms of european tour wins"
+    ],
+    [
+      "with this win levet became the leading frenchman in terms of european tour wins",
+      "with this win levitt became the leading frenchman in terms of european tour wins",
+      "with this win levet became the leading frenchman in terms of european tour wins"
+    ],
+    [
+      "因 此 他 屏 住 呼 吸 小 心 翼 翼 往 后 退",
+      "因 此 他 屏 住 呼 吸 小 心 翼 翼 地 往 后 退",
+      "因 此 他 屏 住 呼 吸 小 心 翼 翼 往 后 退"
+    ],
+    [
+      "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧"
+    ],
+    [
+      "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧"
+    ],
+    [
+      "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧"
+    ],
+    [
+      "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧"
+    ],
+    [
+      "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+      "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧"
+    ],
+    [
+      "我 们 快 点 走 以 后 我 会 升 级 的",
+      "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+      "我 们 快 点 走 以 后 我 会 升 级 的"
+    ],
+    [
+      "我 们 快 点 走 以 后 我 会 升 级 的",
+      "我 们 快 点 走 以 后 我 会 升 级 的",
+      "我 们 快 点 儿 走 以 后 我 会 升 级 的"
+    ],
+    [
+      "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+      "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+      "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿"
+    ],
+    [
+      "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+      "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+      "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩"
+    ],
+    [
+      "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+      "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+      "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨"
+    ],
+    [
+      "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+      "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+      "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨"
+    ],
+    [
+      "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+      "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 条 侃 侃 而 谈",
+      "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈"
+    ],
+    [
+      "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+      "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+      "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 条 侃 侃 而 谈"
+    ],
+    [
+      "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+      "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+      "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧"
+    ],
+    [
+      "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+      "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+      "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧"
+    ],
+    [
+      "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 燕 游 之 所",
+      "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 宴 游 之 所",
+      "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 烟 游 之 所"
+    ],
+    [
+      "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+      "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+      "金 球 奖 银 加 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦"
+    ]
+  ],
+  "inspection_status": "All28 reference/left/right normalized transcript triples read by agent; text inspection only, no audio listening or numerical-cause proof.",
+  "inspected_at_utc": "2026-10-19T22:06:53.038434+00:00",
+  "per_triple_categories": [
+    {
+      "index_1based": 1,
+      "category": "proper-name spelling"
+    },
+    {
+      "index_1based": 2,
+      "category": "proper-name spelling"
+    },
+    {
+      "index_1based": 3,
+      "category": "singular/plural"
+    },
+    {
+      "index_1based": 4,
+      "category": "singular/plural"
+    },
+    {
+      "index_1based": 5,
+      "category": "proper-name spelling"
+    },
+    {
+      "index_1based": 6,
+      "category": "proper-name spelling"
+    },
+    {
+      "index_1based": 7,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 8,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 9,
+      "category": "proper-name spelling"
+    },
+    {
+      "index_1based": 10,
+      "category": "proper-name spelling"
+    },
+    {
+      "index_1based": 11,
+      "category": "short particle"
+    },
+    {
+      "index_1based": 12,
+      "category": "name/homophone"
+    },
+    {
+      "index_1based": 13,
+      "category": "name/homophone"
+    },
+    {
+      "index_1based": 14,
+      "category": "name/homophone"
+    },
+    {
+      "index_1based": 15,
+      "category": "name/homophone"
+    },
+    {
+      "index_1based": 16,
+      "category": "name/homophone"
+    },
+    {
+      "index_1based": 17,
+      "category": "short particle"
+    },
+    {
+      "index_1based": 18,
+      "category": "short particle"
+    },
+    {
+      "index_1based": 19,
+      "category": "short particle"
+    },
+    {
+      "index_1based": 20,
+      "category": "short particle"
+    },
+    {
+      "index_1based": 21,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 22,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 23,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 24,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 25,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 26,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 27,
+      "category": "homophone"
+    },
+    {
+      "index_1based": 28,
+      "category": "homophone"
+    }
+  ],
+  "findings": {
+    "empty_changed_PR_hypotheses": 0,
+    "observed": "Names, homophones, singular/plural and short-particle changes, sometimes reversing direction across comparisons.",
+    "limits": "No equivalence, numerical root cause, or absence of truncation established."
+  }
+}

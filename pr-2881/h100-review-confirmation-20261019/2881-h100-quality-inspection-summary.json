@@ -1,0 +1,18 @@
+{
+  "admission-ablation": {
+    "changed": 33,
+    "directions": {
+      "worsen": 20,
+      "equal": 6,
+      "improve": 7
+    }
+  },
+  "fixed-seed-repeat": {
+    "changed": 68,
+    "directions": {
+      "improve": 26,
+      "equal": 15,
+      "worsen": 27
+    }
+  }
+}
