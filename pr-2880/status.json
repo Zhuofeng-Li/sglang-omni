@@ -1,8 +1,8 @@
 {
-  "observed_at_utc": "2026-10-19T23:25:13.444996+00:00",
+  "observed_at_utc": "2026-10-19T23:36:22.006178+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "67e28de826af967a9dec76506c91473e257aa156",
-  "performance_readiness": "Primary coverage 6/8; review-specific and final merged-series checks are tracked separately; primary coverage alone does not infer readiness.",
+  "performance_readiness": "Primary coverage 7/8; review-specific and final merged-series checks are tracked separately; primary coverage alone does not infer readiness.",
   "correctness": "137 CPU and 5 GPU tests passed",
   "gpu": "single NVIDIA H100 80GB HBM3",
   "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
@@ -27,7 +27,7 @@
   ],
   "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification.",
   "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
-  "verified_standalone_cells": 48,
+  "verified_standalone_cells": 56,
   "expected_standalone_cells": 64,
   "verified_blocks": [
     {
@@ -165,6 +165,29 @@
         [
           1792452104.906453,
           1792452207.918467
+        ]
+      ]
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "status": "verified",
+      "actual_abba_intervals": [
+        [
+          1792452208.4237573,
+          1792452306.339302
+        ],
+        [
+          1792452307.114767,
+          1792452407.145668
+        ],
+        [
+          1792452407.7543712,
+          1792452505.2632678
+        ],
+        [
+          1792452506.3107169,
+          1792452604.1406167
         ]
       ]
     }

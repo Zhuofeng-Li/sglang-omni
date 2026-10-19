@@ -1,0 +1,28 @@
+{
+  "observed_at_utc": "2026-10-19T23:33:34.440045+00:00",
+  "scope": "Current frozen Qwen primary/review cohort driver; no change to live runs or their settings",
+  "driver_sha256": "5ba65d08804b57977778492fd7554a4eb18baeb027f2c8bde6e1840247ce403d",
+  "cohort_function_sha256": "2c8b15b8a28031c521f55973d00af0056114f9fae980644b665df350796b2ed5",
+  "per_cohort_environment_directories": {
+    "TORCHINDUCTOR_CACHE_DIR": "scratch/inductor",
+    "TRITON_CACHE_DIR": "scratch/triton",
+    "TORCH_EXTENSIONS_DIR": "scratch/extensions",
+    "CUDA_CACHE_PATH": "scratch/cuda",
+    "FLASHINFER_WORKSPACE_BASE": "scratch/flashinfer",
+    "TMPDIR": "scratch"
+  },
+  "SGLANG_JIT_CACHE_DIR": "Not overridden by this driver; container default unset; installed cache_root defaults to ~/.cache/sglang/jit shared by cohorts",
+  "global_cache_purge_per_cohort": false,
+  "measured_cost_interpretation": "Startup-to-health-ready as operated with explicitly isolated named directories and retained package/image/shared SGLang JIT cache. Do not describe these as universally cold compilation-cache starts. Full-split warmup precedes every scored pass.",
+  "installed_source_verification": {
+    "python_package_version": "0.5.21",
+    "cache_source_path": "/opt/sglang/lib/python3.12/site-packages/sglang/kernels/jit/utils/compile/cache.py",
+    "cache_source_sha256": "93add080f9ee85405085f5d2a0f6f395408436375e5e6b19a42d046756d0b16a",
+    "cache_root_source_lines": [
+      "    configured = envs.SGLANG_JIT_CACHE_DIR.get() or \"~/.cache/sglang/jit\""
+    ],
+    "container_default_SGLANG_JIT_CACHE_DIR": null
+  },
+  "runtime_changes": false,
+  "reruns_started": false
+}
