@@ -1,0 +1,67 @@
+{
+  "name": "pr2859-ablation-c64-stream-default-seed43",
+  "variant": "default",
+  "seed": 43,
+  "config": {
+    "config_cls": "MossTTSPipelineConfig",
+    "model_path": "/qualification/assets/moss",
+    "stages": {
+      "preprocessing": {
+        "factory": {
+          "codec_model_path": "/qualification/assets/codec"
+        }
+      },
+      "tts_engine": {
+        "gpu_memory_fraction": 0.6,
+        "factory": {
+          "enable_async_decode": true
+        }
+      },
+      "vocoder": {
+        "factory": {
+          "codec_model_path": "/qualification/assets/codec"
+        }
+      }
+    }
+  },
+  "source": "/qualification/source/pr-2859",
+  "candidate": "757c09eb272079b6c08f88bcaa393ffe3845029a",
+  "source_digest_sha256": "7479e100d452ac91b66e7ed17a6dc52d7604c34ae4bf8d1b1074fbfa3bd6dc7b",
+  "protocol_sha256": "e999d0189f2b02860290be676ad58e840077d87589092b842e6d9061bd49d788",
+  "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+  "command": [
+    "/opt/sglang/bin/python",
+    "/qualification/control/pinned_tts_benchmark.py",
+    "--generate-only",
+    "--port",
+    "20503",
+    "--model",
+    "/qualification/assets/moss",
+    "--server-config",
+    "/qualification/moss-ablation-results/pr2859-ablation-c64-stream-default-seed43/config.yaml",
+    "--meta",
+    "zhaochenyang20/seed-tts-eval-arrow",
+    "--ref-format",
+    "references",
+    "--token-count",
+    "auto",
+    "--concurrency",
+    "64",
+    "--warmup",
+    "16",
+    "--seed",
+    "43",
+    "--max-new-tokens",
+    "2048",
+    "--server-timeout",
+    "1200",
+    "--skip-gpu-cleanup",
+    "--output-dir",
+    "/qualification/moss-ablation-results/pr2859-ablation-c64-stream-default-seed43",
+    "--stream"
+  ],
+  "started_at": 1792444617.397232,
+  "finished_at": 1792444864.9947453,
+  "peak_mib": 72495,
+  "exit_code": 0
+}

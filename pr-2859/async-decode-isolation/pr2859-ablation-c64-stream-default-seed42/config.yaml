@@ -1,0 +1,13 @@
+config_cls: MossTTSPipelineConfig
+model_path: /qualification/assets/moss
+stages:
+  preprocessing:
+    factory:
+      codec_model_path: /qualification/assets/codec
+  tts_engine:
+    factory:
+      enable_async_decode: true
+    gpu_memory_fraction: 0.6
+  vocoder:
+    factory:
+      codec_model_path: /qualification/assets/codec
