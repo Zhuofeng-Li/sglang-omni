@@ -257,12 +257,16 @@ class Qwen3ASRForConditionalGeneration(nn.Module):
                 window_lens = window_lens_from_token_counts(
                     token_counts, tokens_per_window=runner.tokens_per_window
                 )
-                hidden = eager_preamble(
-                    self.audio_tower, input_features, audio_feature_lengths
-                )
-                graphed = runner.run(hidden, window_lens)
-                if graphed is not None:
-                    return graphed.unsqueeze(0)
+                graph_plan = runner.plan(sum(window_lens), len(window_lens))
+                if graph_plan is not None and graph_plan[0] not in runner.failed:
+                    hidden = eager_preamble(
+                        self.audio_tower, input_features, audio_feature_lengths
+                    )
+                    graphed = runner.run(hidden, window_lens)
+                    if graphed is not None:
+                        return graphed.unsqueeze(0)
+                    else:
+                        pass
                 else:
                     pass
             else:
