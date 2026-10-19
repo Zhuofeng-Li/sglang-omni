@@ -1496,14 +1496,16 @@ class OmniScheduler(Generic[RequestDataT]):
             return selected, rejected
 
     def drain_request_build_results(self) -> None:
-        # note (rsi): builds are independent requests, so admit every finished
-        # one; a FIFO drain parked short clips behind a longer clip's mel build.
+        # note (Zhuofeng Li): only async prefill opts into out-of-order admission.
         with self.request_admission_lock:
-            finished_builds = [
-                (req_id, pending)
-                for req_id, pending in self.pending_request_builds.items()
-                if pending[2].done()
-            ]
+            finished_builds = []
+            for req_id, pending in self.pending_request_builds.items():
+                if pending[2].done():
+                    finished_builds.append((req_id, pending))
+                elif not self.async_prefill:
+                    break
+                else:
+                    pass
             for req_id, _ in finished_builds:
                 self.pending_request_builds.pop(req_id, None)
         for req_id, (payload, pending_stream_done, future) in finished_builds:
@@ -2053,7 +2055,7 @@ class OmniScheduler(Generic[RequestDataT]):
         if self.prefill_coalesce_holds(waiting, now):
             return NextBatchPlan(batch_to_run=None, running_batch=running_batch)
         else:
-            if getattr(self, "async_prefill", False):
+            if self.async_prefill and self.is_prefill_expected():
                 self.admit_imminent_request_builds()
             else:
                 pass
