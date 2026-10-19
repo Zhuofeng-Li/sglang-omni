@@ -1,0 +1,14 @@
+config_cls: Qwen3ASRPipelineConfig
+model_path: /qualification/assets/model
+stages:
+  asr:
+    gpu: 0
+    factory:
+      dtype: bfloat16
+      pre_lm_cache_size_bytes: 1
+      mm_embedding_cache_size_bytes: 0
+    engine:
+      disable_radix_cache: true
+      random_seed: 42
+      attention_backend: flashinfer
+      cuda_graph_backend_prefill: disabled

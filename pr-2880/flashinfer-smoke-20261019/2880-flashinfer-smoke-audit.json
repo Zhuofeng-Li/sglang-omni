@@ -1,0 +1,77 @@
+{
+  "observed_at_utc": "2026-10-19T22:11:56.301025+00:00",
+  "status": "verified",
+  "candidate": "67e28de826af967a9dec76506c91473e257aa156",
+  "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "GPU": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+  "metadata_glue": "disabled in all4cases",
+  "coverage": "c32 bothmodes, main eager vs final FULL; EN8ZH8 each,64scoredrequests total,0failures; FULL captures50eachmode",
+  "scope_limit": "Smoke coverage only. Full EN/ZH, two-seed formal backend comparison and final-head primary matrix remain pending. Small-sample throughput/quality is not a performance claim.",
+  "cases": [
+    {
+      "name": "pr2880-c32-nonstream-eager-seed42-flashinfer-full-coverage-smoke",
+      "arm": "eager",
+      "mode": "nonstream",
+      "source": "/qualification/source/main",
+      "full_prefill_captures": null,
+      "sample_count_EN_ZH": [
+        8,
+        8
+      ],
+      "failures": 0,
+      "timing": [
+        1792447570.8326516,
+        1792447646.612561
+      ]
+    },
+    {
+      "name": "pr2880-c32-nonstream-full-seed42-flashinfer-full-coverage-smoke",
+      "arm": "full",
+      "mode": "nonstream",
+      "source": "/qualification/source/pr-2880",
+      "full_prefill_captures": 50,
+      "sample_count_EN_ZH": [
+        8,
+        8
+      ],
+      "failures": 0,
+      "timing": [
+        1792447647.1996548,
+        1792447723.735126
+      ]
+    },
+    {
+      "name": "pr2880-c32-stream-eager-seed42-flashinfer-full-coverage-smoke",
+      "arm": "eager",
+      "mode": "stream",
+      "source": "/qualification/source/main",
+      "full_prefill_captures": null,
+      "sample_count_EN_ZH": [
+        8,
+        8
+      ],
+      "failures": 0,
+      "timing": [
+        1792447724.3980088,
+        1792447795.4545026
+      ]
+    },
+    {
+      "name": "pr2880-c32-stream-full-seed42-flashinfer-full-coverage-smoke",
+      "arm": "full",
+      "mode": "stream",
+      "source": "/qualification/source/pr-2880",
+      "full_prefill_captures": 50,
+      "sample_count_EN_ZH": [
+        8,
+        8
+      ],
+      "failures": 0,
+      "timing": [
+        1792447796.4865022,
+        1792447877.619147
+      ]
+    }
+  ],
+  "source_identity_snapshot": "evidence/remote-control/source-identity.json"
+}

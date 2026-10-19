@@ -1,0 +1,105 @@
+{
+  "status": "backend_smoke_complete",
+  "cases": [
+    {
+      "name": "pr2880-c32-nonstream-eager-seed42-flashinfer-full-coverage-smoke",
+      "pr": 2880,
+      "arm": "eager",
+      "seed": 42,
+      "mode": "nonstream",
+      "concurrency": 32,
+      "label": "flashinfer-full-coverage",
+      "smoke": true,
+      "source": "main",
+      "engine_overrides": {
+        "attention_backend": "flashinfer",
+        "cuda_graph_backend_prefill": "disabled"
+      },
+      "environment_overrides": {
+        "SGLANG_ENABLE_METADATA_GLUE_GRAPH": "0"
+      }
+    },
+    {
+      "name": "pr2880-c32-nonstream-full-seed42-flashinfer-full-coverage-smoke",
+      "pr": 2880,
+      "arm": "full",
+      "seed": 42,
+      "mode": "nonstream",
+      "concurrency": 32,
+      "label": "flashinfer-full-coverage",
+      "smoke": true,
+      "source": "pr-2880",
+      "engine_overrides": {
+        "attention_backend": "flashinfer"
+      },
+      "environment_overrides": {
+        "SGLANG_ENABLE_METADATA_GLUE_GRAPH": "0"
+      },
+      "full_prefill_successful_captures": 50,
+      "full_prefill_capture_callers": {
+        "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50
+      },
+      "backend_log_evidence": [
+        "6,356 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR runtime profile: dtype=bfloat16 attention_backend=flashinfer mm_attention_backend=None cuda_graph=True cuda_graph_bs=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,",
+        "lang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=0, sm=90, architecture=hopper, attention_backend=flashinfer, decode_attention_backend=flashinfer, prefill_attention_backend=flashinfer, sampling_backend=pytorc",
+        "em=9.39 GB):   0%|          | 0/50 [00:00<?, ?it/s]2026-10-19 22:08:02,563 [INFO] sglang.srt.layers.attention.flashinfer_backend: Full-CG prefill workspace: 120 MB (max bucket 4096 tokens, 32 request slots)"
+      ]
+    },
+    {
+      "name": "pr2880-c32-stream-eager-seed42-flashinfer-full-coverage-smoke",
+      "pr": 2880,
+      "arm": "eager",
+      "seed": 42,
+      "mode": "stream",
+      "concurrency": 32,
+      "label": "flashinfer-full-coverage",
+      "smoke": true,
+      "source": "main",
+      "engine_overrides": {
+        "attention_backend": "flashinfer",
+        "cuda_graph_backend_prefill": "disabled"
+      },
+      "environment_overrides": {
+        "SGLANG_ENABLE_METADATA_GLUE_GRAPH": "0"
+      }
+    },
+    {
+      "name": "pr2880-c32-stream-full-seed42-flashinfer-full-coverage-smoke",
+      "pr": 2880,
+      "arm": "full",
+      "seed": 42,
+      "mode": "stream",
+      "concurrency": 32,
+      "label": "flashinfer-full-coverage",
+      "smoke": true,
+      "source": "pr-2880",
+      "engine_overrides": {
+        "attention_backend": "flashinfer"
+      },
+      "environment_overrides": {
+        "SGLANG_ENABLE_METADATA_GLUE_GRAPH": "0"
+      },
+      "full_prefill_successful_captures": 50,
+      "full_prefill_capture_callers": {
+        "/qualification/source/pr-2880/sglang_omni/model_runner/sglang_model_runner.py:_dispatch_prefill_runner;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:__init__;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:_capture_one_stream;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py:capture_one_shape;/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py:capture_one;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 50
+      },
+      "backend_log_evidence": [
+        "5,776 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR runtime profile: dtype=bfloat16 attention_backend=flashinfer mm_attention_backend=None cuda_graph=True cuda_graph_bs=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,",
+        "lang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=0, sm=90, architecture=hopper, attention_backend=flashinfer, decode_attention_backend=flashinfer, prefill_attention_backend=flashinfer, sampling_backend=pytorc",
+        "em=9.39 GB):   0%|          | 0/50 [00:00<?, ?it/s]2026-10-19 22:10:31,869 [INFO] sglang.srt.layers.attention.flashinfer_backend: Full-CG prefill workspace: 120 MB (max bucket 4096 tokens, 32 request slots)"
+      ]
+    }
+  ],
+  "async_only_variant": {
+    "methods_restored_from_frozen_main": [
+      "process_input_requests",
+      "drain_request_build_results",
+      "get_new_batch_prefill"
+    ],
+    "patch_sha256": "db56c55d55c31937e3b09c063e0aa6d674951e0b793b41b16c2178f1f6014f99",
+    "scope": "Async prefill retained; original FIFO/input-wait admission restored. Both arms retain upstream MRoPE positions."
+  },
+  "at": 1792447878.5007126,
+  "current": "flashinfer-full-coverage/2880/full/42/stream",
+  "expected_cases": 4
+}
