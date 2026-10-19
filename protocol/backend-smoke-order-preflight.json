@@ -1,0 +1,13 @@
+{
+  "at_utc": "2026-10-19T19:51:00.039910+00:00",
+  "preserved_cases": 60,
+  "backend_smoke_cases": 4,
+  "extra_gpu_cases": 0,
+  "scope": "Run the same four cached/reusable FlashInfer smoke cases before2880/2882 primary matrices; keep final complete review hook. No changes to existing primary results or timed cohort logic.",
+  "completed_e98_primary_driver_sha256": "fc711e7b2f74d163ab1dfb425d78f2b005edcc17710da4dc78d861e8241697b2",
+  "deployed_hashes": {
+    "run_pair.py": "520f227520a9d7fa46618831c8b4efc49cbca509c7e64aebd3a90b2c105f5601",
+    "review_backfill.py": "a653de3615738a49d58a295f415905cfe3fd2f10b28cc1ac819a15bf88b2d93c"
+  },
+  "phase_at_deploy": "moss-c1-c64-generation"
+}

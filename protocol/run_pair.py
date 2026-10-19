@@ -213,6 +213,10 @@ def main():
     parser.add_argument("--concurrencies", nargs="+", type=int, default=[1,16,32,64])
     args = parser.parse_args()
     assert all(c in [1,16,32,64] for c in args.concurrencies)
+    if not args.smoke and set(args.prs) == {2880, 2882}:
+        # Check the requested alternative backend before the long primary
+        # matrices. The final review hook reuses these same smoke results.
+        subprocess.run([sys.executable, str(ROOT / "control/review_backfill.py"), "--backend-smoke-only"], check=True)
     if args.smoke:
         for arm in ["main", "pr"]:
             for mode in ["nonstream", "stream"]:

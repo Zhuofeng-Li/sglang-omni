@@ -15,6 +15,7 @@ from run_pair import cohort
 
 ROOT = Path(os.environ["QUAL_ROOT"])
 state = {"status": "preparing", "cases": []}
+backend_smoke_only = "--backend-smoke-only" in sys.argv
 
 
 def save():
@@ -77,7 +78,7 @@ try:
     state["async_only_variant"] = {"methods_restored_from_frozen_main": methods, "patch_sha256": hashlib.sha256(patch.encode()).hexdigest(), "scope": "Async prefill retained; original FIFO/input-wait admission restored. Both arms retain upstream MRoPE positions."}
     save()
 
-    for smoke in [True, False]:
+    for smoke in ([True] if backend_smoke_only else [True, False]):
         for mode in ["nonstream", "stream"]:
             order = [("eager", 42), ("full", 42)] if smoke else [("eager", 42), ("full", 42), ("full", 43), ("eager", 43)]
             for arm, seed in order:
@@ -85,6 +86,12 @@ try:
                 if arm == "eager":
                     engine["cuda_graph_backend_prefill"] = "disabled"
                 run(2880, arm, seed, mode, "flashinfer-full-coverage", source="main" if arm == "eager" else "pr-2880", engine=engine, environment={"SGLANG_ENABLE_METADATA_GLUE_GRAPH": "0"}, smoke=smoke)
+
+    if backend_smoke_only:
+        assert len(state["cases"]) == 4
+        state.update(status="backend_smoke_complete", expected_cases=4)
+        save()
+        raise SystemExit(0)
 
     for mode in ["nonstream", "stream"]:
         for arm, seed in [("no_glue", 42), ("glue", 42), ("glue", 43), ("no_glue", 43)]:
