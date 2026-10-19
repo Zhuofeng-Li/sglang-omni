@@ -1,0 +1,11 @@
+{
+  "at_utc": "2026-10-19T20:11:24.085173+00:00",
+  "head": "757c09eb272079b6c08f88bcaa393ffe3845029a",
+  "command": "python -m pre_commit run --all-files",
+  "exit_code": 0,
+  "log": "control/precommit-2859-current.log",
+  "log_sha256": "7c604f682e96e41f77fe8caba872a3c26f37107b741c117addf9f623e8eafdd2",
+  "worktree_clean_after": true,
+  "environment": "tools/precommit; pre-commit4.7.0; PRE_COMMIT_HOME=cache/pre-commit",
+  "scope": "Full repository pre-commit. No formatting/source changes. Unrelated nbstripout skipped because no matching files."
+}

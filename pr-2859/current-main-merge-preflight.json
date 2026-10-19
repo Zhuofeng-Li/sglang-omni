@@ -1,0 +1,28 @@
+{
+  "at_utc": "2026-10-19T20:08:40.173694+00:00",
+  "current_main": "b3c936ee3f30f888cc5a755e9f042d1c6532d33e",
+  "candidate": "757c09eb272079b6c08f88bcaa393ffe3845029a",
+  "pr_files": [
+    "sglang_omni/models/moss_tts/attention.py",
+    "sglang_omni/models/moss_tts/channel_embedding.py",
+    "sglang_omni/models/moss_tts/config.py",
+    "sglang_omni/models/moss_tts/engine_builder.py",
+    "sglang_omni/models/moss_tts/model_runner.py",
+    "sglang_omni/models/moss_tts/request_builders.py",
+    "sglang_omni/models/moss_tts/sampler.py",
+    "sglang_omni/models/moss_tts/sampling_cuda_graph.py",
+    "sglang_omni/models/moss_tts/sglang_model.py",
+    "sglang_omni/models/moss_tts/stages.py",
+    "sglang_omni/models/moss_tts/vocoder.py",
+    "sglang_omni/models/moss_tts/vocoder_graphs.py",
+    "tests/unit_test/moss_tts/test_input_embeddings.py",
+    "tests/unit_test/moss_tts/test_pipeline.py",
+    "tests/unit_test/moss_tts/test_sampling_cuda_graph.py",
+    "tests/unit_test/moss_tts/test_vocoder.py"
+  ],
+  "forbidden_docs": [],
+  "merge_tree_exit": 0,
+  "merge_tree_output": "374df577209ce682b032fdaa684b910f23c1b47e\n",
+  "stderr": "",
+  "assessment": "Read-only synthetic merge; does not replace runtime validation against updated main. Paired GPU qualification continues using frozen main2d5de98 and candidate757c09eb, preserving measurement identity."
+}

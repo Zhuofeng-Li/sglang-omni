@@ -1,9 +1,9 @@
 {
-  "observed_at_utc": "2026-10-19T19:17:02.365383+00:00",
+  "observed_at_utc": "2026-10-19T20:13:23.736698+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "757c09eb272079b6c08f88bcaa393ffe3845029a",
   "performance_readiness": "pending final-source paired measurements and review validation",
-  "correctness": "Prepared integration regression: 365 passed. c1 nonstream generation ABBA complete: 4x1088 requests, zero failures. Remaining generations and all quality scoring pending.",
+  "correctness": "Prepared integration regression:365 passed; full pre-commit passed with unchanged source. Seven generation cohorts complete, each1088requests and zero failures. Last c1 streaming baseline seed43 running; all c64 generations and WER/SIM pending.",
   "gpu": "single NVIDIA H100 80GB HBM3",
   "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
   "scope": "Qwen full c1/c16/c32/c64 EN+ZH both modes; MOSS requested c1/c64 EN both modes, matched 0.60 AR budget",
@@ -27,8 +27,23 @@
   ],
   "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification.",
   "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
-  "generation_complete": 4,
+  "generation_complete": 7,
   "generation_expected": 16,
   "current_phase": "c1 streaming generation",
-  "scorer_preparation": "Verified S3PRL0.4.18 wheel staged; installation/import validation deferred to quality stage. Scorer hashes/HF metadata will be recorded before all quality passes."
+  "scorer_preparation": "Verified S3PRL0.4.18 wheel staged; installation/import validation deferred to quality stage. Scorer hashes/HF metadata will be recorded before all quality passes.",
+  "precommit": {
+    "candidate": "757c09eb272079b6c08f88bcaa393ffe3845029a",
+    "result": "passed all applicable hooks, exit0, worktree unchanged",
+    "receipt": "precommit-validation.json",
+    "log": "precommit.log",
+    "measured_candidate_unchanged": true
+  },
+  "current_main_compatibility": {
+    "main": "b3c936ee3f30f888cc5a755e9f042d1c6532d33e",
+    "synthetic_merge": "clean",
+    "full_pr_files_no_doc_dirs": true,
+    "runtime_on_latest_main": "not yet validated; paired measurements still use frozen2d5de98",
+    "receipt": "current-main-merge-preflight.json"
+  },
+  "validation_updated_at_utc": "2026-10-19T20:13:16.665476+00:00"
 }
