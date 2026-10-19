@@ -15,7 +15,7 @@ def save(path, value):
     temporary.replace(path)
 
 
-for directory in (ROOT / "moss-results").glob("pr2859-*"):
+for directory in [*(ROOT / "moss-results").glob("pr2859-*"), *(ROOT / "moss-ablation-results").glob("pr2859-*")]:
     for kind in ["speed", "wer", "similarity"]:
         source = directory / f"{kind}_results.json"
         if not source.exists():

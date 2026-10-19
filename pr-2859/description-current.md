@@ -27,9 +27,9 @@ Published head: `1894fa88fa8b09392b0aa0625eec34aae3e95edd`. Prepared candidate `
 
 ## Paired comparison on current main
 
-Requested **c1 and c64 × non-streaming and streaming** backfill uses one Radix H100 80GB HBM3. All 16 requested generation cohorts completed on 2026-10-19: both c1/c64, both modes and both matched seeds. Every cohort completed 1088/1088 requests with zero failures. WER/SIM scoring has started. **All WER/SIM results remain pending**, so these preliminary generation results do not establish full qualification. Full SeedTTS EN (1,088 requests), model/codec/data revisions pinned, 16 excluded warmups, 2,048-token cap, request/decode-graph caps 64, matched AR budget 0.60 in both arms, seeds 42/43 in main(42) → PR(42) → PR(43) → main(43) order. WER and WavLM SIM will be scored for every generation pass. These are direct PR-qualification runs, not a new research run.
+Requested **c1 and c64 × non-streaming and streaming** backfill uses one Radix H100 80GB HBM3. All 16 requested generation cohorts completed on 2026-10-19: both c1/c64, both modes and both matched seeds. Every cohort completed 1088/1088 requests with zero failures. All WER passes completed; SIM scoring is running. **All 16 WER results are verified (1088 evaluated and zero skipped per cohort); SIM remains pending**, so these preliminary generation results do not establish full qualification. Full SeedTTS EN (1,088 requests), model/codec/data revisions pinned, 16 excluded warmups, 2,048-token cap, request/decode-graph caps 64, matched AR budget 0.60 in both arms, seeds 42/43 in main(42) → PR(42) → PR(43) → main(43) order. WER and WavLM SIM will be scored for every generation pass. These are direct PR-qualification runs, not a new research run.
 
-Req/s and mean latencies below are arithmetic means across seeds 42/43; p95 values are shown separately in seed order, not pooled or averaged. First audio means the first audio payload. Each arm has 2,176 scored generation requests per mode.
+Req/s, mean latencies and corpus WER below are arithmetic means across seeds 42/43; p95 values are shown separately in seed order, not pooled or averaged. First audio means the first audio payload. Each arm has 2,176 scored generation requests per mode.
 
 ### Non-streaming
 
@@ -42,8 +42,8 @@ Req/s and mean latencies below are arithmetic means across seeds 42/43; p95 valu
 
 | Concurrency | EN req/s, latency mean/p95, WER, SIM, failed/attempted |
 | ---: | --- |
-| 1 | Req/s **1.3135 → 1.4395 (+9.59%)**; latency mean **0.7615 → 0.6945 s**, p95 seeds **0.953/0.958 → 0.873/0.875 s**; WER **Pending**; SIM **Pending**; failures **0/2176 → 0/2176** |
-| 64 | Req/s **22.2285 → 34.6880 (+56.05%)**; latency mean **2.8155 → 1.8015 s**, p95 seeds **3.596/3.590 → 2.305/2.296 s**; WER **Pending**; SIM **Pending**; failures **0/2176 → 0/2176** |
+| 1 | Req/s **1.3135 → 1.4395 (+9.59%)**; latency mean **0.7615 → 0.6945 s**, p95 seeds **0.953/0.958 → 0.873/0.875 s**; WER **1.8295 → 1.8253%**; SIM **Pending**; failures **0/2176 → 0/2176** |
+| 64 | Req/s **22.2285 → 34.6880 (+56.05%)**; latency mean **2.8155 → 1.8015 s**, p95 seeds **3.596/3.590 → 2.305/2.296 s**; WER **1.8923 → 1.9342%**; SIM **Pending**; failures **0/2176 → 0/2176** |
 
 ### Streaming
 
@@ -56,10 +56,12 @@ Req/s and mean latencies below are arithmetic means across seeds 42/43; p95 valu
 
 | Concurrency | EN req/s, latency mean/p95, first audio mean/p95, WER, SIM, failed/attempted |
 | ---: | --- |
-| 1 | Req/s **1.2640 → 1.3485 (+6.69%)**; latency mean **0.7910 → 0.7415 s**, p95 seeds **0.993/0.991 → 0.934/0.931 s**; first audio mean **0.3419 → 0.3218 s**, p95 seeds **0.3619/0.3634 → 0.3458/0.3430 s**; WER **Pending**; SIM **Pending**; failures **0/2176 → 0/2176** |
-| 64 | Req/s **15.5695 → 14.7200 (−5.46%)**; latency mean **4.0300 → 4.3070 s**, p95 seeds **5.157/5.165 → 4.993/5.048 s**; first audio mean **2.13045 → 3.40420 s**, p95 seeds **2.4460/2.4786 → 3.9724/4.0667 s**; WER **Pending**; SIM **Pending**; failures **0/2176 → 0/2176** |
+| 1 | Req/s **1.2640 → 1.3485 (+6.69%)**; latency mean **0.7910 → 0.7415 s**, p95 seeds **0.993/0.991 → 0.934/0.931 s**; first audio mean **0.3419 → 0.3218 s**, p95 seeds **0.3619/0.3634 → 0.3458/0.3430 s**; WER **1.8212 → 1.8212%**; SIM **Pending**; failures **0/2176 → 0/2176** |
+| 64 | Req/s **15.5695 → 14.7200 (−5.46%)**; latency mean **4.0300 → 4.3070 s**, p95 seeds **5.157/5.165 → 4.993/5.048 s**; first audio mean **2.13045 → 3.40420 s**, p95 seeds **2.4460/2.4786 → 3.9724/4.0667 s**; WER **1.8505 → 1.9007%**; SIM **Pending**; failures **0/2176 → 0/2176** |
 
 **c64 streaming regresses in both seeds:** throughput falls while mean/full-response and first-audio latency increase, despite improved response p95. This is a measured tradeoff of the current candidate; component causality has not been established. Quality scoring and investigation remain pending, so the PR is not merge-ready.
+
+Current WER also changes at c64: mean corpus WER rises by **0.0419 percentage points non-streaming** and **0.0502 points streaming**. Non-streaming worsens in both seeds; streaming seed 42 is unchanged and seed 43 worsens by 0.1005 points. Seed 42 WER exceeds 2% in both arms for all four requested mode/concurrency blocks; the two-seed means are below 2%. No outliers were removed. SIM remains unverified.
 
 c64 playback continuity (main → PR; values in seed 42/43 order):
 
@@ -113,7 +115,7 @@ c64 non-streaming costs (main → PR; seeds 42/43, measured 2026-10-19):
 | Sampled peak VRAM, seeds 42/43 (GiB) | 67.231/67.331 → 71.028/71.054 (**+3.797/+3.723**) |
 | Successful captures, each seed | 152 → 19,236 (**+19,084**) |
 
-The same startup, memory-sampling and capture-count methods above apply. These are generation-only measurements; WER/SIM remain pending.
+The same startup, memory-sampling and capture-count methods above apply. These are generation-only measurements; SIM remains pending; WER is reported above.
 
 c64 streaming costs (main → PR; seeds 42/43, measured 2026-10-19):
 
@@ -123,13 +125,14 @@ c64 streaming costs (main → PR; seeds 42/43, measured 2026-10-19):
 | Sampled peak VRAM, seeds 42/43 (GiB) | 67.271/67.315 → 70.823/70.862 (**+3.553/+3.547**) |
 | Successful captures, each seed | 152 → 19,236 (**+19,084**) |
 
-The same measurement methods above apply. c64 streaming incurs these costs alongside the observed throughput/first-audio regressions; all WER/SIM results remain pending.
+The same measurement methods above apply. c64 streaming incurs these costs alongside the observed throughput/first-audio regressions; WER is now measured; SIM remains pending.
 
 ## Tests
 
 - Current-integration main and candidate c1 smoke succeeded. The first candidate attempt encountered a port-bind conflict; the retry uses independent ports and retains the failed attempt.
 - Current integrated MOSS regression suite passed **365 cases** on the assigned H100 before full generation. All c1 generation cohorts passed full request-count, zero-failure, ABBA-order, source/GPU/config and sample-order checks; c64 generation is running. WER/SIM and complete c64 streaming costs are reported below. The measured integration also passed the full pre-commit suite with its worktree unchanged. Historical repaired-source counts belong to their original revision.
 - Published-head CI is green, including non-streaming, streaming, consistency and stress in [Omni CI](https://github.com/sgl-project/sglang-omni/actions/runs/39045568536). The preset is MOSS LocalTransformer, so it does not replace dedicated Delay qualification. CI for a subsequently published integration will be checked separately.
+- A same-candidate async-decode on/off isolation is queued after the primary SIM pass: c64 streaming, full 1088 EN, seeds 42/43 in ABBA order, matched 0.60 budget and full WER/SIM. It changes only the factory toggle, preserves the measured candidate and all original results, and is not a standalone PR/main gain. This ablation has not started.
 - New qualification, independent reviewer approval and the MOSS-team notice mentioned by the reviewer remain pending; this PR is not represented as merge-ready.
 
 Developed by an autonomous research agent using [RSI-Harness](https://github.com/OpenRSI-Foundation/OpenRSI-Index/tree/main/RSI-Harness) in [OpenRSI-Index](https://github.com/OpenRSI-Foundation/OpenRSI-Index), with co-author [Kangda Wei (@WeiKangda)](https://github.com/WeiKangda); [qualification and historical evidence](https://github.com/Zhuofeng-Li/sglang-omni/tree/codex/omni-review-evidence-20261019/pr-2859).

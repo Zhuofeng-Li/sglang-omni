@@ -1,0 +1,21 @@
+{
+  "at_utc": "2026-10-19T20:59:00.104813+00:00",
+  "status": "Queued in future Qwen phase hook; no ablation launched yet",
+  "script_hashes": {
+    "moss_stream_ablation.py": "5b85ace04cda9cb00228a20403284adca071a1665bff4465a0e92902092b99a3",
+    "moss-ablation-protocol.json": "e999d0189f2b02860290be676ad58e840077d87589092b842e6d9061bd49d788",
+    "export_minimal.py": "fc530df90ffa334a54a2fd77a5a1a5e7624b3892a916b2f7e535d0a03c3c97bb",
+    "run_pair.py": "e50636ff35465a9a3da9f1cedbf475510b4f4ad5ccb9d90a8a34424be8379bc1"
+  },
+  "source_digest_verified": true,
+  "all_existing_primary_driver_AST_unchanged_except_new_hook": true,
+  "existing_Qwen_backend_smoke_and60_review_cases": "preserved",
+  "required_ablation_cases": 4,
+  "quality_guard": "Require primary16cohort scoring complete and weights verified before GPU work",
+  "assignment": "01M5ACTE5B2N5F7YH47QH6DS91",
+  "release_guard": "audit_matrix requires all4ablation generations/WER/SIM and matched config/source/ABBA/scorers before release",
+  "container_describe_matches_protocol": true,
+  "empty_output_root_created_for_sync": true,
+  "container_entrypoint_verified_at_utc": "2026-10-19T21:00:49.177363+00:00",
+  "controller_robustness_updated_at_utc": "2026-10-19T21:01:24.845311+00:00"
+}

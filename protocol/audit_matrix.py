@@ -1,8 +1,11 @@
 """Reconcile final-source paired blocks without treating smoke as evidence."""
 import datetime
+import hashlib
 import json
 import math
 from pathlib import Path
+
+import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 heads = json.loads((ROOT / "heads.json").read_text())
@@ -157,7 +160,53 @@ if review_path.exists():
             review["status"] = "verified"
         except (AssertionError, FileNotFoundError, KeyError) as error:
             review.update(status="invalid", error=repr(error))
-payload = dict(observed_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(), prs=audits, additional_review_validation=review)
+moss_ablation = {"required": False, "status": "not_registered"}
+ablation_protocol_path = ROOT / "control/moss-ablation-protocol.json"
+if ablation_protocol_path.exists():
+    moss_ablation.update(required=True, status="missing")
+    try:
+        protocol = json.loads(ablation_protocol_path.read_text())
+        protocol_sha = hashlib.sha256(ablation_protocol_path.read_bytes()).hexdigest()
+        ablation_state = json.loads((ROOT / "evidence/remote-control/moss-ablation-state.json").read_text())
+        assert ablation_state["status"] == "complete"
+        verification = json.loads((ROOT / "evidence/remote-control/moss-ablation-verification.json").read_text())
+        assert verification["verified_scorers_unchanged"] and verification["protocol_sha256"] == protocol_sha
+        assert verification["source_digest_sha256"] == protocol["source_digest_sha256"]
+        primary_scorers = json.loads((ROOT / "evidence/remote-control/moss-scorer-identity.json").read_text())
+        assert primary_scorers["verified_unchanged_after_all_scores"]
+        assert verification["scorer_files"] == [{key: row[key] for key in ["name", "sha256", "size_bytes"]} for row in primary_scorers["files"]]
+        assert [(case["variant"], case["seed"]) for case in protocol["cases"]] == [("default", 42), ("async-off", 42), ("async-off", 43), ("default", 43)]
+        assert ablation_state["cases"] == [case["name"] for case in protocol["cases"]]
+        rows = []
+        for case in protocol["cases"]:
+            directory = ROOT / "evidence/moss-ablation-results" / case["name"]
+            result = json.loads((directory / "result.json").read_text())
+            assert result["exit_code"] == 0 and result["protocol_sha256"] == protocol_sha
+            assert result["source_digest_sha256"] == protocol["source_digest_sha256"]
+            assert result["candidate"] == protocol["candidate"] and result["source"] == "/qualification/source/pr-2859"
+            assert result["gpu_uuid"] == "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1"
+            assert result["seed"] == case["seed"] and result["variant"] == case["variant"]
+            assert yaml.safe_load((directory / "config.yaml").read_text()) == case["config"] == result["config"]
+            speed = json.loads((directory / "speed-summary.json").read_text())
+            assert speed["sample_count"] == speed["summary"]["completed_requests"] == speed["summary"]["total_requests"] == 1088
+            assert speed["summary"]["failed_requests"] == 0
+            assert speed["config"]["concurrency"] == 64 and speed["config"]["stream"] and speed["config"]["seed"] == case["seed"]
+            assert speed["summary"]["playback_continuity_requests"] + speed["summary"]["playback_continuity_na_requests"] == 1088
+            for kind, metric in [("wer", "wer_corpus"), ("similarity", "speaker_similarity_mean")]:
+                quality = json.loads((directory / f"{kind}-summary.json").read_text())
+                assert quality["sample_count"] == quality["summary"]["evaluated"] == quality["summary"]["total_samples"] == 1088
+                assert quality["summary"]["skipped"] == 0 and math.isfinite(quality["summary"][metric])
+            costs = json.loads((directory / "cost-summary.json").read_text())
+            assert costs["startup_seconds"] > 0 and costs["successful_captures"] > 0 and result["peak_mib"] > 0
+            rows.append((result, speed))
+        assert all(rows[index][0]["finished_at"] < rows[index + 1][0]["started_at"] for index in range(3))
+        for left, right in [(rows[0], rows[1]), (rows[3], rows[2])]:
+            assert left[1]["sample_order_sha256"] == right[1]["sample_order_sha256"]
+            assert {key: value for key, value in left[1]["config"].items() if key not in ["base_url", "server_config"]} == {key: value for key, value in right[1]["config"].items() if key not in ["base_url", "server_config"]}
+        moss_ablation.update(status="verified", cases=[case["name"] for case in protocol["cases"]], protocol_sha256=protocol_sha)
+    except (AssertionError, FileNotFoundError, KeyError, ValueError) as error:
+        moss_ablation.update(status="pending_or_invalid", error=repr(error))
+payload = dict(observed_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(), prs=audits, additional_review_validation=review, moss_stream_ablation=moss_ablation)
 (ROOT / "performance-audit.json").write_text(json.dumps(payload, indent=2))
 print(json.dumps({number: {key: value.get(key) for key in ["covered", "expected", "readiness"]} for number, value in audits.items()}))
 
@@ -168,3 +217,4 @@ if terminal_path.exists() and json.loads(terminal_path.read_text()).get("phase")
     assert all(audits[number]["covered"] == 64 for number in ["2880", "2881", "2882"]), "Final Qwen pairing/identity audit failed"
     assert all(block["status"] == "verified" for block in audits["2859"]["blocks"]), "Final MOSS pairing/quality/cost audit failed"
     assert review["status"] == "verified", "Additional review validation or saved transcript differences are incomplete"
+    assert not moss_ablation["required"] or moss_ablation["status"] == "verified", "Registered MOSS streaming component isolation is incomplete or invalid"

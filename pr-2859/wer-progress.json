@@ -1,0 +1,62 @@
+[
+  {
+    "concurrency": 1,
+    "mode": "nonstream",
+    "quality": "WER only; SIM incomplete",
+    "values": {
+      "main": [
+        2.143515029724525,
+        1.515532110859918
+      ],
+      "pr": [
+        2.1351419241396634,
+        1.515532110859918
+      ]
+    }
+  },
+  {
+    "concurrency": 1,
+    "mode": "stream",
+    "quality": "WER only; SIM incomplete",
+    "values": {
+      "main": [
+        2.126768818554802,
+        1.515532110859918
+      ],
+      "pr": [
+        2.126768818554802,
+        1.515532110859918
+      ]
+    }
+  },
+  {
+    "concurrency": 64,
+    "mode": "nonstream",
+    "quality": "WER only; SIM incomplete",
+    "values": {
+      "main": [
+        2.260738507912585,
+        1.5239052164447793
+      ],
+      "pr": [
+        2.2858578246671692,
+        1.5825169555388092
+      ]
+    }
+  },
+  {
+    "concurrency": 64,
+    "mode": "stream",
+    "quality": "WER only; SIM incomplete",
+    "values": {
+      "main": [
+        2.1770074520639704,
+        1.5239052164447793
+      ],
+      "pr": [
+        2.1770074520639704,
+        1.6243824834631164
+      ]
+    }
+  }
+]

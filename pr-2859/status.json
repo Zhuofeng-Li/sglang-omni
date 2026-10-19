@@ -1,9 +1,9 @@
 {
-  "observed_at_utc": "2026-10-19T20:51:29.035591+00:00",
+  "observed_at_utc": "2026-10-19T21:02:17.843190+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "757c09eb272079b6c08f88bcaa393ffe3845029a",
   "performance_readiness": "pending final-source paired measurements and review validation",
-  "correctness": "All16generation cohorts completed1088requests each, zero failures; all4ABBA blocks passed source/GPU/config/sample-order and interval checks. Quality still pending; SIM dependency installed and both scorer files hashed. c64stream throughput -5.46% and increased first-audio latency in bothseeds are reported in original PRbody; cause unproven. Notmerge-ready.",
+  "correctness": "All16generation and WERcohorts have1088evaluated/completed, zero failures or skips. WER increases atc64 are stated in originalbody. SIMincomplete; streamingperformance regression unresolved.",
   "gpu": "single NVIDIA H100 80GB HBM3",
   "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
   "scope": "Qwen full c1/c16/c32/c64 EN+ZH both modes; MOSS requested c1/c64 EN both modes, matched 0.60 AR budget",
@@ -29,7 +29,7 @@
   "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
   "generation_complete": 16,
   "generation_expected": 16,
-  "current_phase": "WER/SIM scoring",
+  "current_phase": "SIM scoring",
   "scorer_preparation": "Verified S3PRL0.4.18 wheel staged; installation/import validation deferred to quality stage. Scorer hashes/HF metadata will be recorded before all quality passes.",
   "precommit": {
     "candidate": "757c09eb272079b6c08f88bcaa393ffe3845029a",
@@ -47,5 +47,9 @@
   },
   "validation_updated_at_utc": "2026-10-19T20:13:16.665476+00:00",
   "original_pr_body_update": "Key c1 and c64 non-streaming results/costs now in the initial PR2859 description; external archive is supporting evidence only.",
-  "scorer_identity": "scorer-identity.json"
+  "scorer_identity": "scorer-identity.json",
+  "WER_verified": 16,
+  "SIM": "running; incomplete",
+  "moss_stream_ablation": "Four same-candidate async on/off ABBA passes queued after primary quality and before unchanged Qwen matrices; includes WER/SIM. No ablation GPU work has started.",
+  "ablation_preflight": "../protocol/moss-stream-ablation-preflight.json"
 }

@@ -214,6 +214,10 @@ def main():
     args = parser.parse_args()
     assert all(c in [1,16,32,64] for c in args.concurrencies)
     if not args.smoke and set(args.prs) == {2880, 2882}:
+        if (ROOT / "control/moss-ablation-protocol.json").exists():
+            # Diagnose the measured MOSS regression after its primary quality
+            # pass, before this phase acquires the GPU for Qwen comparisons.
+            subprocess.run([sys.executable, str(ROOT / "control/moss_stream_ablation.py")], check=True)
         # Check the requested alternative backend before the long primary
         # matrices. The final review hook reuses these same smoke results.
         subprocess.run([sys.executable, str(ROOT / "control/review_backfill.py"), "--backend-smoke-only"], check=True)
