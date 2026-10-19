@@ -1,0 +1,38 @@
+{
+  "observed_at_utc": "2026-10-19T22:28:44.585264+00:00",
+  "pr": 2882,
+  "head": "2cad178053585b41d486c1584796d58b205541a0",
+  "approval": {
+    "id": "PRR_kwDOQ1KxM88AAAABTIDFdA",
+    "author": {
+      "login": "db-ol"
+    },
+    "authorAssociation": "COLLABORATOR",
+    "body": "Thanks for the fixes. The review changes only affect explicit overrides and fallback paths, and CI passed on this head.",
+    "submittedAt": "2026-10-19T22:21:47Z",
+    "includesCreatedEdit": false,
+    "reactionGroups": [],
+    "state": "APPROVED",
+    "commit": {
+      "oid": "2cad178053585b41d486c1584796d58b205541a0"
+    }
+  },
+  "historical_measured_main": "8fff1e0e8c99a710afe876d1514209e1157c5502",
+  "new_frozen_paired_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "reuse_decision": "Keep original valid two-seed historical default-path measurements with their actual date/main/candidate. Do not relabel them as measurements on the new baseline. Continue already-running final-head comparisons because a relevant baseline default changed; not rerunning because of data age or merely because approval arrived.",
+  "review_fix_scope": "Reviewer explicitly confirms repairs affect explicit overrides/fallback paths; final-head correctness tests and CI are applicable to those repairs.",
+  "confirmed_relevant_base_change": {
+    "commit": "3e90a4b5a1c02dc29a8535d71fc69ce04f928937",
+    "upstream_pr": 2609,
+    "source": "Qwen3ASRPipelineConfig.freeze_api_gc_on_startup nowTrue; launcher propagates flag and performs gc.collect/gc.freeze after API server startup. Earlier defaultFalse. This path is used by benchmarkserve.",
+    "implication": "API startup/runtime GC behavior changed between historical and currently measured baselines, so incremental performance/cost applicability cannot be established from review-fix scope or CI alone."
+  },
+  "additional_shared_change": {
+    "commit": "694ab10bf8be4062e0e0cbd5da15614f931d48c1",
+    "upstream_pr": 2899,
+    "source": "generation_batch_policy derives unset prefill bucket ladders forFULL aswell asBREAKABLE. FA4 added tosupportedFULL backends.",
+    "limit": "FA4 addition alone is not relevant to these FA3 measurements. Actual bucket-path impact remains conditional on resolved overrides; no inferred performance effect claimed."
+  },
+  "GPU_queue_restarted": false,
+  "merge_readiness": "Approval obtained; current-base independent performance/cost/quality comparison still pending. Follow existing queue and verify mergeability/checks/full no-docs diff at merge time."
+}

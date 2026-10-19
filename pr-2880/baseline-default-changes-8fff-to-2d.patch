@@ -1,0 +1,114 @@
+diff --git a/sglang_omni/models/qwen3_asr/config.py b/sglang_omni/models/qwen3_asr/config.py
+index 26fc4d63..d99467ad 100644
+--- a/sglang_omni/models/qwen3_asr/config.py
++++ b/sglang_omni/models/qwen3_asr/config.py
+@@ -51,6 +51,7 @@ class Qwen3ASRPipelineConfig(PipelineConfig):
+     """Single-stage batched ASR pipeline for Qwen3-ASR checkpoints."""
+ 
+     architecture: ClassVar[str] = "Qwen3ASRForConditionalGeneration"
++    freeze_api_gc_on_startup: ClassVar[bool] = True
+     allow_audio_chunking: ClassVar[bool] = True
+     max_native_clip_s: ClassVar[float] = float(QWEN3_ASR_MAX_INPUT_SECONDS)
+     audio_chunking: AudioChunkingConfig = QWEN3_ASR_AUDIO_CHUNKING
+diff --git a/sglang_omni/scheduling/generation_batch_policy.py b/sglang_omni/scheduling/generation_batch_policy.py
+index 3c1b7faa..b57dfdb4 100644
+--- a/sglang_omni/scheduling/generation_batch_policy.py
++++ b/sglang_omni/scheduling/generation_batch_policy.py
+@@ -33,7 +33,7 @@ _PREFILL_PADDING_FACTOR = 2
+ # an ordinary EXTEND batch. The triton backend captures decode, target verify,
+ # draft extend and dLLM extend, so a full prefill graph over it fails during
+ # capture.
+-FULL_PREFILL_ATTENTION_BACKENDS = frozenset({"fa3", "flashinfer"})
++FULL_PREFILL_ATTENTION_BACKENDS = frozenset({"fa3", "fa4", "flashinfer"})
+ 
+ 
+ def get_decode_cuda_graph_max_bs(server_args: ServerArgs) -> int | None:
+@@ -255,9 +255,9 @@ def build_generation_batch_overrides(
+ 
+     prefill_bs = overrides.get("cuda_graph_bs_prefill")
+     prefill_max_bs = overrides.get("cuda_graph_max_bs_prefill")
+-    if (
+-        prefill_bs is None
+-        and overrides.get("cuda_graph_backend_prefill") == CudaGraphBackend.BREAKABLE
++    if prefill_bs is None and overrides.get("cuda_graph_backend_prefill") in (
++        CudaGraphBackend.BREAKABLE,
++        CudaGraphBackend.FULL,
+     ):
+         # note (ratish): SGLang's prefill generator omits an off-grid cap, and
+         # an unset chunk is only known inside ServerArgs.
+diff --git a/sglang_omni/serve/launcher.py b/sglang_omni/serve/launcher.py
+index 462daf4c..c37b0b9f 100644
+--- a/sglang_omni/serve/launcher.py
++++ b/sglang_omni/serve/launcher.py
+@@ -25,6 +25,7 @@ Export a config to JSON::
+ from __future__ import annotations
+ 
+ import asyncio
++import gc
+ import json
+ import logging
+ import os
+@@ -142,8 +143,43 @@ class PipelineUvicornServer(uvicorn.Server):
+     the interpreter before ``_run_server`` can stop spawned pipeline workers.
+     The pipeline launcher owns child-process cleanup, so it restores the
+     original handlers but deliberately consumes the already-handled signal.
++
++    The optional startup GC freeze is process-wide and lasts until serve exits.
+     """
+ 
++    def __init__(
++        self,
++        config: uvicorn.Config,
++        *,
++        freeze_api_gc_on_startup: bool = False,
++    ) -> None:
++        super().__init__(config)
++        self.freeze_api_gc_on_startup: bool = freeze_api_gc_on_startup
++        self.has_frozen_api_gc: bool = False
++
++    async def serve(self, sockets: list[socket.socket] | None = None) -> None:
++        try:
++            await super().serve(sockets=sockets)
++        finally:
++            if self.has_frozen_api_gc:
++                gc.unfreeze()
++                self.has_frozen_api_gc = False
++            else:
++                pass
++
++    async def startup(self, sockets: list[socket.socket] | None = None) -> None:
++        await super().startup(sockets=sockets)
++        if self.started and self.freeze_api_gc_on_startup:
++            # note (yxs): New request cycles retain normal GC outside the startup graph.
++            gc.collect()
++            gc.freeze()
++            self.has_frozen_api_gc = True
++            logger.info(
++                f"Frozen API startup object graph ({gc.get_freeze_count()} objects)"
++            )
++        else:
++            pass
++
+     @contextmanager
+     def capture_signals(self) -> Generator[None, None, None]:
+         if threading.current_thread() is not threading.main_thread():
+@@ -672,6 +708,7 @@ async def run_server(
+             tts_batch_max_items=tts_batch_max_items,
+             architectures=[pipeline_config.architecture],
+             audio_chunking=pipeline_config.resolved_audio_chunking,
++            interleaved_output=type(pipeline_config).interleaved_output,
+         )
+         profiler_dir = os.environ.get("SGLANG_TORCH_PROFILER_DIR")
+         profiler_ctl = ProfilerControlClient(mp_runner.stage_control_endpoints)
+@@ -696,7 +733,10 @@ async def run_server(
+             log_level=log_level,
+             timeout_keep_alive=KEEP_ALIVE_S,
+         )
+-        server = PipelineUvicornServer(config)
++        server = PipelineUvicornServer(
++            config,
++            freeze_api_gc_on_startup=pipeline_config.freeze_api_gc_on_startup,
++        )
+         # note (ratish): a wildcard bind address is not a destination, so the
+         # server reaches itself on loopback.
+         if not host or host == "0.0.0.0":
