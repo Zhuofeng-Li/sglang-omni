@@ -40,7 +40,8 @@ def render(audit):
                     first_audio_mean_s=slash([r["speed"]["summary"]["audio_ttfp_mean_s"] for r in rows], 4) if mode == "stream" else "N/A",
                     first_audio_p95_s=slash([r["speed"]["summary"]["audio_ttfp_p95_s"] for r in rows], 4) if mode == "stream" else "N/A",
                     wer_percent=slash([100 * r["wer"]["summary"]["wer_corpus"] for r in rows], 4),
-                    sim_percent=slash([100 * r["similarity"]["summary"]["speaker_similarity_mean"] for r in rows], 4),
+                    # The upstream scorer already returns cosine similarity x100.
+                    sim_score_x100=slash([r["similarity"]["summary"]["speaker_similarity_mean"] for r in rows], 4),
                     failed=sum(r["speed"]["summary"]["failed_requests"] for r in rows),
                     attempted=sum(r["speed"]["summary"]["total_requests"] for r in rows),
                     startup_s=slash([r["costs"]["startup_seconds"] for r in rows], 2),
@@ -53,7 +54,7 @@ def render(audit):
             a, b = arms["main"], arms["pr"]
             change = 100 * (b["req_s"] / a["req_s"] - 1)
             paired = lambda key: f"{a[key]} → {b[key]}"
-            cells = [f"{a['req_s']:.3f} → {b['req_s']:.3f}", f"{change:+.2f}%", *[paired(k) for k in ["mean_latency_s", "p95_latency_s", "first_audio_mean_s", "first_audio_p95_s", "wer_percent", "sim_percent"]], f"{a['failed']}/{a['attempted']} → {b['failed']}/{b['attempted']}"]
+            cells = [f"{a['req_s']:.3f} → {b['req_s']:.3f}", f"{change:+.2f}%", *[paired(k) for k in ["mean_latency_s", "p95_latency_s", "first_audio_mean_s", "first_audio_p95_s", "wer_percent", "sim_score_x100"]], f"{a['failed']}/{a['attempted']} → {b['failed']}/{b['attempted']}"]
             lines.append(f"| {concurrency} | " + " | ".join(cells) + " |")
             sequence = lambda xs: "/".join(str(x) for x in xs)
             cost_lines.append(f"| {mode} / {concurrency} | {paired('startup_s')} | {paired('peak_gib')} | {sequence(a['captures'])} → {sequence(b['captures'])} | {sequence([right-left for left,right in zip(a['captures'],b['captures'])])} |")

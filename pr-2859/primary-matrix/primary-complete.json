@@ -1,0 +1,99 @@
+{
+  "at_utc": "2026-10-19T21:07:09.156143+00:00",
+  "candidate": "757c09eb272079b6c08f88bcaa393ffe3845029a",
+  "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "verified_generation_WER_SIM_cohorts": 16,
+  "verified_ABBA_blocks": 4,
+  "scorers_unchanged": true,
+  "rows": [
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "arms": {
+        "main": {
+          "wer_mean_percent": 1.8295235702922215,
+          "sim_mean_x100": 68.89971809089184,
+          "sim_per_seed_x100": [
+            68.8625403590062,
+            68.93689582277747
+          ]
+        },
+        "pr": {
+          "wer_mean_percent": 1.8253370174997907,
+          "sim_mean_x100": 68.89971809089184,
+          "sim_per_seed_x100": [
+            68.8625403590062,
+            68.93689582277747
+          ]
+        }
+      }
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "arms": {
+        "main": {
+          "wer_mean_percent": 1.82115046470736,
+          "sim_mean_x100": 68.89673076657688,
+          "sim_per_seed_x100": [
+            68.8625075992416,
+            68.93095393391216
+          ]
+        },
+        "pr": {
+          "wer_mean_percent": 1.82115046470736,
+          "sim_mean_x100": 68.89673076657688,
+          "sim_per_seed_x100": [
+            68.8625075992416,
+            68.93095393391216
+          ]
+        }
+      }
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "arms": {
+        "main": {
+          "wer_mean_percent": 1.8923218621786821,
+          "sim_mean_x100": 68.93592076967744,
+          "sim_per_seed_x100": [
+            69.01967864527421,
+            68.85216289408066
+          ]
+        },
+        "pr": {
+          "wer_mean_percent": 1.9341873901029891,
+          "sim_mean_x100": 68.91226535158998,
+          "sim_per_seed_x100": [
+            69.09573887025608,
+            68.72879183292389
+          ]
+        }
+      }
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "arms": {
+        "main": {
+          "wer_mean_percent": 1.8504563342543747,
+          "sim_mean_x100": 68.86836622743046,
+          "sim_per_seed_x100": [
+            68.90194669891807,
+            68.83478575594285
+          ]
+        },
+        "pr": {
+          "wer_mean_percent": 1.9006949677635434,
+          "sim_mean_x100": 68.97418262064457,
+          "sim_per_seed_x100": [
+            69.06345761523528,
+            68.88490762605386
+          ]
+        }
+      }
+    }
+  ],
+  "limitation": "Coverage complete, but c64streamingperformance/TTFAregression andqualitytradeoffs remain under investigation; notmerge-ready."
+}

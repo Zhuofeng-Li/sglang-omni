@@ -1,0 +1,6 @@
+{
+  "startup_seconds": 113.104,
+  "startup_method": "Timestamp immediately before server subprocess launch through health-ready, including model/graph initialization, excluding client imports/downloads and workload warmup.",
+  "successful_captures": 152,
+  "graph_method": "Unique successful capture events for this cohort; not post-shutdown live objects."
+}

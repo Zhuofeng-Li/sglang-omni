@@ -23,5 +23,6 @@
   ],
   "s3prl_version": "0.4.18",
   "cache": "/qualification/cache/sim",
-  "verified_unchanged_after_all_scores": false
+  "verified_unchanged_after_all_scores": true,
+  "verified_at": 1792443912.261808
 }

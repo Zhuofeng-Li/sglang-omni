@@ -1,9 +1,9 @@
 {
-  "at_utc": "2026-10-19T20:51:29.035591+00:00",
+  "at_utc": "2026-10-19T21:10:37.020391+00:00",
   "generation_complete": 16,
   "generation_expected": 16,
   "completed_block": "All c1/c64 generation, both modes; WER/SIM scoring running",
-  "quality": "Not yet verified; c64 streaming regression present in both seeds",
+  "quality": "All16WER+16SIM passes complete and independently audited; see primary-matrix",
   "rows": [
     {
       "name": "pr2859-c1-nonstream-main-seed42",
