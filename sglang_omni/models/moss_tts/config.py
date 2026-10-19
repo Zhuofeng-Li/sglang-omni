@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import os
-from typing import ClassVar
+from typing import ClassVar, Literal
 
 from pydantic import Field
 
@@ -73,6 +73,14 @@ class MossTTSPreprocessingStageConfig(StageConfig):
     )
 
 
+class MossTTSEngineFactoryArgs(FactoryArgs):
+    async_decode_mode: Literal["all", "nonstream"] | None = None
+
+
+class MossTTSEngineStageConfig(EngineStageConfig):
+    factory: MossTTSEngineFactoryArgs = Field(default_factory=MossTTSEngineFactoryArgs)
+
+
 class MossTTSVocoderFactoryArgs(FactoryArgs):
     compute_dtype: str | None = None
     segment_graph_max_frames: int = Field(default=0, ge=0)
@@ -105,11 +113,14 @@ def stages(*, colocated: bool) -> list[StageConfig]:
             gpu=0,
             next="tts_engine",
         ),
-        EngineStageConfig(
+        MossTTSEngineStageConfig(
             name="tts_engine",
             process="pipeline",
             factory_path=f"{_PKG}.stages.create_sglang_tts_engine_executor",
-            factory=FactoryArgs(dtype="bfloat16"),
+            factory=MossTTSEngineFactoryArgs(
+                dtype="bfloat16",
+                async_decode_mode="nonstream" if colocated else None,
+            ),
             engine=(
                 EngineArgs(
                     cuda_graph_backend_prefill=CudaGraphBackend.BREAKABLE,
@@ -161,7 +172,7 @@ class MossTTSPipelineConfig(PipelineConfig):
 
     stage_config_types: ClassVar[dict[str, type[StageConfig]]] = {
         "preprocessing": MossTTSPreprocessingStageConfig,
-        "tts_engine": EngineStageConfig,
+        "tts_engine": MossTTSEngineStageConfig,
         "vocoder": MossTTSVocoderStageConfig,
     }
 

@@ -6,7 +6,7 @@ from __future__ import annotations
 import logging
 import os
 from collections.abc import Mapping
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 
 import torch
 from transformers import AutoConfig, AutoTokenizer
@@ -226,6 +226,7 @@ def create_sglang_tts_engine_executor(
     server_args_overrides: Mapping[str, object] | None = None,
     enable_async_decode: bool = True,
     async_decode_min_batch_size: int = 2,
+    async_decode_mode: Literal["all", "nonstream"] | None = None,
 ) -> OmniScheduler[MossTTSSGLangRequestData]:
     overrides = dict(server_args_overrides or {})
     # Note (Jiaxin Deng): a declared stage fraction only reserves the card on paper, so
@@ -246,6 +247,7 @@ def create_sglang_tts_engine_executor(
     return MossTtsEngineBuilder(
         enable_async_decode=enable_async_decode,
         async_decode_min_batch_size=async_decode_min_batch_size,
+        async_decode_mode=async_decode_mode,
         total_gpu_memory_fraction=engine_fraction,
     ).build(
         model_path,

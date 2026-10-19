@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 
 import torch
 from sglang.srt.layers.sampler import multinomial_with_seed
@@ -73,6 +73,7 @@ class MossTTSModelRunner(ModelRunner):
         super().__init__(tp_worker, output_processor)
         self.pending_rows: torch.Tensor | None = None
         self.pending_embeds: torch.Tensor | None = None
+        self.async_decode_mode: Literal["all", "nonstream"] = "all"
         self.pending_skip_request_ids = frozenset()
         self.sampling_metadata_host_bufs: list[torch.Tensor] = []
         self.sampling_metadata_slot = 0
@@ -132,7 +133,23 @@ class MossTTSModelRunner(ModelRunner):
         datas: list[MossTTSSGLangRequestData] = [req.omni_data for req in batch.reqs]
         if not datas:
             return False
-        elif self.launch_is_audio(datas):
+        else:
+            pass
+        if self.async_decode_mode == "nonstream":
+            # note (Zhuofeng Li): streaming first audio must not wait behind lookahead work.
+            for request_data in datas:
+                payload = request_data.stage_payload
+                request = payload.request if payload is not None else None
+                parameters = request.params if request is not None else None
+                if isinstance(parameters, dict) and bool(
+                    parameters.get("stream", False)
+                ):
+                    return False
+                else:
+                    pass
+        else:
+            pass
+        if self.launch_is_audio(datas):
             return self.can_use_sampling_cuda_graph(datas, is_audio=True)
         else:
             return self.can_use_mixed_sampling_cuda_graph(datas, is_audio=False)

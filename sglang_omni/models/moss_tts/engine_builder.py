@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import importlib
 from collections.abc import Callable, Mapping
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 
 from sglang_omni.model_runner.model_worker import ModelWorker
 from sglang_omni.models.moss_tts import request_builders
@@ -45,11 +45,13 @@ class MossTtsEngineBuilder(TtsEngineBuilder[MossTTSSGLangRequestData]):
         *,
         enable_async_decode: bool = False,
         async_decode_min_batch_size: int = 2,
+        async_decode_mode: Literal["all", "nonstream"] | None = None,
         total_gpu_memory_fraction: float | None = None,
     ) -> None:
         super().__init__()
         self.enable_async_decode = enable_async_decode
         self.async_decode_min_batch_size = async_decode_min_batch_size
+        self.async_decode_mode = async_decode_mode
         self.total_gpu_memory_fraction = total_gpu_memory_fraction
 
     def infra_kwargs(self) -> InfrastructureOptions:
@@ -101,6 +103,10 @@ class MossTtsEngineBuilder(TtsEngineBuilder[MossTTSSGLangRequestData]):
     ) -> None:
         del checkpoint_dir, device, gpu_id, server_args
         self.model_runner = model_worker.model_runner
+        if self.async_decode_mode is not None:
+            self.model_runner.async_decode_mode = self.async_decode_mode
+        else:
+            pass
 
     def post_cuda_graph_setup(
         self, model: MossTTSDelaySGLangModel, server_args: object

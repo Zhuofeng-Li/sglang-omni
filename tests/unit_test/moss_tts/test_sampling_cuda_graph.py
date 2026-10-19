@@ -6,6 +6,7 @@ from __future__ import annotations
 from collections import deque
 from contextlib import nullcontext
 from types import SimpleNamespace
+from typing import Literal
 
 import pytest
 import torch
@@ -106,9 +107,12 @@ def test_model_runner_rejects_greedy_sampling_graph_batch() -> None:
     )
 
 
-def test_engine_builder_uses_backbone_capture_buckets() -> None:
+@pytest.mark.parametrize("async_decode_mode", ["all", "nonstream"])
+def test_engine_builder_uses_backbone_capture_buckets(
+    async_decode_mode: Literal["all", "nonstream"],
+) -> None:
     calls = []
-    builder = MossTtsEngineBuilder()
+    builder = MossTtsEngineBuilder(async_decode_mode=async_decode_mode)
     builder.setup_model(
         model_worker=SimpleNamespace(
             model_runner=SimpleNamespace(
@@ -131,6 +135,7 @@ def test_engine_builder_uses_backbone_capture_buckets() -> None:
     builder.post_cuda_graph_setup(model, SimpleNamespace())
 
     assert calls == [([1, 2, 4], True)]
+    assert builder.model_runner.async_decode_mode == async_decode_mode
 
 
 def test_model_runner_routes_supported_audio_batch_to_sampling_graph() -> None:
@@ -445,6 +450,7 @@ def test_lookahead_routes_delay_boundary_and_rejects_custom_sampling(
 ) -> None:
     config = make_config()
     runner = MossTTSModelRunner.__new__(MossTTSModelRunner)
+    runner.async_decode_mode = "all"
     runner.model = SimpleNamespace(
         config=config,
         sampling_graph_available=lambda batch_size: True,
@@ -465,6 +471,40 @@ def test_lookahead_routes_delay_boundary_and_rejects_custom_sampling(
     state.audio_temperature = 0.0
     assert not runner.lookahead_eligible(batch)
     assert not runner.lookahead_eligible(SimpleNamespace(reqs=[]))
+
+
+@pytest.mark.parametrize("async_decode_mode", ["all", "nonstream"])
+@pytest.mark.parametrize(
+    "streaming_requests", [(False, False), (True, False), (False, True), (True, True)]
+)
+def test_lookahead_keeps_streaming_and_mixed_batches_synchronous_when_requested(
+    async_decode_mode: Literal["all", "nonstream"],
+    streaming_requests: tuple[bool, bool],
+) -> None:
+    """Streaming batches must not inherit non-streaming lookahead eligibility."""
+    runner = MossTTSModelRunner.__new__(MossTTSModelRunner)
+    runner.async_decode_mode = async_decode_mode
+    runner.model = SimpleNamespace(
+        config=make_config(),
+        sampling_graph_available=lambda batch_size: True,
+        is_sampling_cuda_graph_compatible=MossTTSDelaySGLangModel.is_sampling_cuda_graph_compatible,
+    )
+    requests = []
+    for streaming in streaming_requests:
+        request_data = sampling_data(profile="default")
+        request_data.is_audio = True
+        request_data.output_rows = []
+        request_data.audio_end_step = None
+        request_data.audio_end_scanned_rows = 0
+        request_data.generation_steps = 0
+        request_data.sampling_steps = 0
+        request_data.stage_payload = SimpleNamespace(
+            request=SimpleNamespace(params={"stream": streaming})
+        )
+        requests.append(SimpleNamespace(omni_data=request_data))
+    assert runner.lookahead_eligible(SimpleNamespace(reqs=requests)) is (
+        async_decode_mode == "all" or not any(streaming_requests)
+    )
 
 
 def test_lookahead_resolve_preserves_owned_rows_and_skips_dropped_requests() -> None:
