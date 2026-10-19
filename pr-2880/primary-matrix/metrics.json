@@ -71,6 +71,76 @@
           ]
         }
       }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 1,
+      "language": "en",
+      "arms": {
+        "main": {
+          "req_s": 24.375393635236435,
+          "mean_latency_ms": 40.87064339097089,
+          "p95_ms": "50.10/49.72",
+          "wer_percent": "1.2258/1.2258",
+          "first_text_mean_ms": "12.40/12.20",
+          "first_text_p95_ms": "14.10/14.00",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2880-c1-stream-main-seed42/result.json",
+            "evidence/results/pr2880-c1-stream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 24.876326210654028,
+          "mean_latency_ms": 40.06630443815512,
+          "p95_ms": "49.14/49.29",
+          "wer_percent": "1.2258/1.2258",
+          "first_text_mean_ms": "11.70/11.70",
+          "first_text_p95_ms": "13.10/13.50",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2880-c1-stream-pr-seed42/result.json",
+            "evidence/results/pr2880-c1-stream-pr-seed43/result.json"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 1,
+      "language": "zh",
+      "arms": {
+        "main": {
+          "req_s": 26.744583215704182,
+          "mean_latency_ms": 37.208726370043244,
+          "p95_ms": "47.28/47.36",
+          "wer_percent": "0.5933/0.5933",
+          "first_text_mean_ms": "12.10/11.90",
+          "first_text_p95_ms": "13.40/13.50",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2880-c1-stream-main-seed42/result.json",
+            "evidence/results/pr2880-c1-stream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 27.300447550601813,
+          "mean_latency_ms": 36.48412078619003,
+          "p95_ms": "46.81/46.07",
+          "wer_percent": "0.5933/0.5933",
+          "first_text_mean_ms": "11.70/11.40",
+          "first_text_p95_ms": "12.70/12.50",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2880-c1-stream-pr-seed42/result.json",
+            "evidence/results/pr2880-c1-stream-pr-seed43/result.json"
+          ]
+        }
+      }
     }
   ],
   "costs": [
@@ -92,6 +162,36 @@
         },
         "pr": {
           "startup_s": "77.18/77.60",
+          "peak_gib": "70.78/70.77",
+          "successful_captures": [
+            121,
+            121
+          ],
+          "live_captures": [
+            121,
+            121
+          ]
+        }
+      }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 1,
+      "arms": {
+        "main": {
+          "startup_s": "76.11/76.13",
+          "peak_gib": "70.80/70.79",
+          "successful_captures": [
+            1468,
+            1468
+          ],
+          "live_captures": [
+            1468,
+            1468
+          ]
+        },
+        "pr": {
+          "startup_s": "77.10/78.10",
           "peak_gib": "70.78/70.77",
           "successful_captures": [
             121,

@@ -22,7 +22,7 @@ Detailed metrics (main → PR; slash-separated values retain seed42/43):
 
 | Concurrency | EN/ZH geometric throughput change |
 | ---: | ---: |
-| 1 | Pending |
+| 1 | +2.07% |
 | 16 | Pending |
 | 32 | Pending |
 | 64 | Pending |
@@ -31,4 +31,5 @@ Detailed metrics (main → PR; slash-separated values retain seed42/43):
 
 | c / split | req/s | Mean response ms | P95 response ms | First-text mean ms | First-text P95 ms | WER % | Failed/attempted |
 | --- | ---: | ---: | --- | --- | --- | --- | --- |
-| Pending | — | — | — | — | — | — | — |
+| 1 / EN | 24.375 → 24.876 | 40.87 → 40.07 | 50.10/49.72 → 49.14/49.29 | 12.40/12.20 → 11.70/11.70 | 14.10/14.00 → 13.10/13.50 | 1.2258/1.2258 → 1.2258/1.2258 | 0/2176 → 0/2176 |
+| 1 / ZH | 26.745 → 27.300 | 37.21 → 36.48 | 47.28/47.36 → 46.81/46.07 | 12.10/11.90 → 11.70/11.40 | 13.40/13.50 → 12.70/12.50 | 0.5933/0.5933 → 0.5933/0.5933 | 0/4040 → 0/4040 |
