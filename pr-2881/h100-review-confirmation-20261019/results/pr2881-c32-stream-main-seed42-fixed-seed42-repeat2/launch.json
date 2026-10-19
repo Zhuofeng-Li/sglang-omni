@@ -1,0 +1,41 @@
+{
+  "command": [
+    "/opt/sglang/bin/python",
+    "-m",
+    "sglang_omni.cli",
+    "serve",
+    "--config",
+    "/qualification/results/pr2881-c32-stream-main-seed42-fixed-seed42-repeat2/config.yaml",
+    "--model-name",
+    "Qwen/Qwen3-ASR-1.7B",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "54263",
+    "--skip-server-warmup"
+  ],
+  "source": "/qualification/source/main",
+  "config": {
+    "config_cls": "Qwen3ASRPipelineConfig",
+    "model_path": "/qualification/assets/model",
+    "stages": {
+      "asr": {
+        "gpu": 0,
+        "factory": {
+          "dtype": "bfloat16",
+          "pre_lm_cache_size_bytes": 1,
+          "mm_embedding_cache_size_bytes": 0
+        },
+        "engine": {
+          "disable_radix_cache": true,
+          "random_seed": 42
+        }
+      }
+    }
+  },
+  "seed": 42,
+  "mode": "stream",
+  "concurrency": 32,
+  "arm": "main",
+  "environment_overrides": {}
+}

@@ -1,0 +1,1026 @@
+[
+  {
+    "kind": "admission-ablation",
+    "c": 32,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_37793802-common_voice_en_37793803",
+        "reference": "it has traditionally been used for growth of human lymphocytes",
+        "left": "it has traditionally been used for growth of human lymphocytes",
+        "right": "it has traditionally been used for growth of human lymphocyte",
+        "left_wer": 0.0,
+        "right_wer": 0.1
+      },
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933531",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      },
+      {
+        "id": "common_voice_en_19640906-common_voice_en_19640909",
+        "reference": "with this win levet became the leading frenchman in terms of european tour wins",
+        "left": "with this win levitt became the leading frenchman in terms of european tour wins",
+        "right": "with this win levet became the leading frenchman in terms of european tour wins",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.0
+      }
+    ]
+  },
+  {
+    "kind": "admission-ablation",
+    "c": 32,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00004826-00000076",
+        "reference": "因 此 他 屏 住 呼 吸 小 心 翼 翼 往 后 退",
+        "left": "因 此 他 屏 住 呼 吸 小 心 翼 翼 地 往 后 退",
+        "right": "因 此 他 屏 住 呼 吸 小 心 翼 翼 往 后 退",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00004632-00000013",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00005366-00000084",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00004944-00000117",
+        "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "right": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004975-00000044",
+        "reference": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "right": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 条 侃 侃 而 谈",
+        "left_wer": 0.0,
+        "right_wer": 0.058823529411764705
+      },
+      {
+        "id": "00004932-00000013",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      }
+    ]
+  },
+  {
+    "kind": "admission-ablation",
+    "c": 32,
+    "mode": "nonstream",
+    "seed": 43,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_37793802-common_voice_en_37793803",
+        "reference": "it has traditionally been used for growth of human lymphocytes",
+        "left": "it has traditionally been used for growth of human lymphocyte",
+        "right": "it has traditionally been used for growth of human lymphocytes",
+        "left_wer": 0.1,
+        "right_wer": 0.0
+      },
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933531",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      },
+      {
+        "id": "common_voice_en_20806032-common_voice_en_20806033",
+        "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+        "left": "also the town is pursuing increased tourism based on its ancient siree culture",
+        "right": "also the town is pursuing increased tourism based on its ancient sireer culture",
+        "left_wer": 0.07692307692307693,
+        "right_wer": 0.07692307692307693
+      },
+      {
+        "id": "common_voice_en_19640906-common_voice_en_19640909",
+        "reference": "with this win levet became the leading frenchman in terms of european tour wins",
+        "left": "with this win levet became the leading frenchman in terms of european tour wins",
+        "right": "with this win levitt became the leading frenchman in terms of european tour wins",
+        "left_wer": 0.0,
+        "right_wer": 0.07142857142857142
+      }
+    ]
+  },
+  {
+    "kind": "admission-ablation",
+    "c": 32,
+    "mode": "nonstream",
+    "seed": 43,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00004932-00000013",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      },
+      {
+        "id": "00005381-00000003",
+        "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+        "right": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left_wer": 0.08333333333333333,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00005366-00000087",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat1",
+    "c": 32,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_37793802-common_voice_en_37793816",
+        "reference": "it has traditionally been used for growth of human lymphocytes",
+        "left": "it has traditionally been used for growth of human lymphocyte",
+        "right": "it has traditionally been used for growth of human lymphocytes",
+        "left_wer": 0.1,
+        "right_wer": 0.0
+      },
+      {
+        "id": "common_voice_en_20806032-common_voice_en_20806033",
+        "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+        "left": "also the town is pursuing increased tourism based on its ancient siree culture",
+        "right": "also the town is pursuing increased tourism based on its ancient sireer culture",
+        "left_wer": 0.07692307692307693,
+        "right_wer": 0.07692307692307693
+      },
+      {
+        "id": "common_voice_en_19640906-common_voice_en_19640909",
+        "reference": "with this win levet became the leading frenchman in terms of european tour wins",
+        "left": "with this win levitt became the leading frenchman in terms of european tour wins",
+        "right": "with this win levet became the leading frenchman in terms of european tour wins",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.0
+      },
+      {
+        "id": "common_voice_en_19724850-common_voice_en_19724900",
+        "reference": "the inca tern feeds primarily on small fish such as anchovies",
+        "left": "the inca tern feeds primarily on small fish such as anchovies",
+        "right": "the inca turn feeds primarily on small fish such as anchovies",
+        "left_wer": 0.0,
+        "right_wer": 0.09090909090909091
+      },
+      {
+        "id": "common_voice_en_19724850-common_voice_en_19724899",
+        "reference": "the inca tern feeds primarily on small fish such as anchovies",
+        "left": "the inca turn feeds primarily on small fish such as anchovies",
+        "right": "the inca tern feeds primarily on small fish such as anchovies",
+        "left_wer": 0.09090909090909091,
+        "right_wer": 0.0
+      },
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933532",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat1",
+    "c": 32,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00005381-00000072",
+        "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "right": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+        "left_wer": 0.0,
+        "right_wer": 0.08333333333333333
+      },
+      {
+        "id": "00005432-00000116",
+        "reference": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "right": "金 球 奖 银 加 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left_wer": 0.0,
+        "right_wer": 0.1111111111111111
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00004632-00000013",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00005381-00000003",
+        "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "right": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+        "left_wer": 0.0,
+        "right_wer": 0.08333333333333333
+      },
+      {
+        "id": "00005366-00000084",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004932-00000081",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      },
+      {
+        "id": "00005366-00000087",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat2",
+    "c": 32,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933531",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      },
+      {
+        "id": "common_voice_en_20806032-common_voice_en_20806033",
+        "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+        "left": "also the town is pursuing increased tourism based on its ancient sireer culture",
+        "right": "also the town is pursuing increased tourism based on its ancient siree culture",
+        "left_wer": 0.07692307692307693,
+        "right_wer": 0.07692307692307693
+      },
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933532",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat2",
+    "c": 32,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00005381-00000072",
+        "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+        "right": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left_wer": 0.08333333333333333,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004944-00000056",
+        "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "right": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.06666666666666667
+      },
+      {
+        "id": "00004627-00000082",
+        "reference": "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 燕 游 之 所",
+        "left": "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 宴 游 之 所",
+        "right": "遗 址 西 侧 原 有 一 池 相 传 即 为 楚 王 烟 游 之 所",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00005381-00000003",
+        "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+        "right": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left_wer": 0.08333333333333333,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00005366-00000084",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004944-00000117",
+        "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "right": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004932-00000081",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      },
+      {
+        "id": "00004932-00000013",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat1",
+    "c": 64,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933531",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      },
+      {
+        "id": "common_voice_en_20806032-common_voice_en_20806033",
+        "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+        "left": "also the town is pursuing increased tourism based on its ancient sireer culture",
+        "right": "also the town is pursuing increased tourism based on its ancient siree culture",
+        "left_wer": 0.07692307692307693,
+        "right_wer": 0.07692307692307693
+      },
+      {
+        "id": "common_voice_en_19724850-common_voice_en_19724900",
+        "reference": "the inca tern feeds primarily on small fish such as anchovies",
+        "left": "the inca turn feeds primarily on small fish such as anchovies",
+        "right": "the inca tern feeds primarily on small fish such as anchovies",
+        "left_wer": 0.09090909090909091,
+        "right_wer": 0.0
+      },
+      {
+        "id": "common_voice_en_19724850-common_voice_en_19724899",
+        "reference": "the inca tern feeds primarily on small fish such as anchovies",
+        "left": "the inca tern feeds primarily on small fish such as anchovies",
+        "right": "the inca turn feeds primarily on small fish such as anchovies",
+        "left_wer": 0.0,
+        "right_wer": 0.09090909090909091
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat1",
+    "c": 64,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00004944-00000056",
+        "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "right": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00005432-00000116",
+        "reference": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "right": "金 球 奖 银 加 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left_wer": 0.0,
+        "right_wer": 0.1111111111111111
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00004632-00000013",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00004932-00000081",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      },
+      {
+        "id": "00004932-00000013",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat2",
+    "c": 64,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933532",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat2",
+    "c": 64,
+    "mode": "nonstream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00004944-00000056",
+        "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "right": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004975-00000044",
+        "reference": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 条 侃 侃 而 谈",
+        "right": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left_wer": 0.058823529411764705,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004932-00000013",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left_wer": 0.11764705882352941,
+        "right_wer": 0.0
+      }
+    ]
+  },
+  {
+    "kind": "admission-ablation",
+    "c": 32,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933531",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      },
+      {
+        "id": "common_voice_en_19640906-common_voice_en_19640909",
+        "reference": "with this win levet became the leading frenchman in terms of european tour wins",
+        "left": "with this win levet became the leading frenchman in terms of european tour wins",
+        "right": "with this win levitt became the leading frenchman in terms of european tour wins",
+        "left_wer": 0.0,
+        "right_wer": 0.07142857142857142
+      },
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933532",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      }
+    ]
+  },
+  {
+    "kind": "admission-ablation",
+    "c": 32,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00004975-00000030",
+        "reference": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "right": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 条 侃 侃 而 谈",
+        "left_wer": 0.0,
+        "right_wer": 0.058823529411764705
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00004632-00000013",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00005366-00000084",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00005366-00000087",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      }
+    ]
+  },
+  {
+    "kind": "admission-ablation",
+    "c": 32,
+    "mode": "stream",
+    "seed": 43,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933532",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      },
+      {
+        "id": "common_voice_en_19724850-common_voice_en_19724900",
+        "reference": "the inca tern feeds primarily on small fish such as anchovies",
+        "left": "the inca tern feeds primarily on small fish such as anchovies",
+        "right": "the inca turn feeds primarily on small fish such as anchovies",
+        "left_wer": 0.0,
+        "right_wer": 0.09090909090909091
+      }
+    ]
+  },
+  {
+    "kind": "admission-ablation",
+    "c": 32,
+    "mode": "stream",
+    "seed": 43,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00005366-00000084",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00005432-00000027",
+        "reference": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "right": "金 球 奖 银 加 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left_wer": 0.0,
+        "right_wer": 0.1111111111111111
+      },
+      {
+        "id": "00004932-00000013",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00005432-00000116",
+        "reference": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "right": "金 球 奖 银 加 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left_wer": 0.0,
+        "right_wer": 0.1111111111111111
+      },
+      {
+        "id": "00005366-00000087",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat1",
+    "c": 32,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933532",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat1",
+    "c": 32,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00004975-00000030",
+        "reference": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 条 侃 侃 而 谈",
+        "right": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left_wer": 0.058823529411764705,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.13333333333333333,
+        "right_wer": 0.06666666666666667
+      },
+      {
+        "id": "00004632-00000013",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.13333333333333333,
+        "right_wer": 0.06666666666666667
+      },
+      {
+        "id": "00005366-00000084",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00005366-00000087",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00004975-00000044",
+        "reference": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 条 侃 侃 而 谈",
+        "right": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left_wer": 0.058823529411764705,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004932-00000013",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "left_wer": 0.0,
+        "right_wer": 0.11764705882352941
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat2",
+    "c": 32,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_37793802-common_voice_en_37793803",
+        "reference": "it has traditionally been used for growth of human lymphocytes",
+        "left": "it has traditionally been used for growth of human lymphocyte",
+        "right": "it has traditionally been used for growth of human lymphocytes",
+        "left_wer": 0.1,
+        "right_wer": 0.0
+      },
+      {
+        "id": "common_voice_en_26933529-common_voice_en_26933531",
+        "reference": "mike dimkich is indeed helping us out right now and we are genuinely appreciative",
+        "left": "mike dimkis is indeed helping us out right now and we are genuinely appreciative",
+        "right": "mike timkis is indeed helping us out right now and we are genuinely appreciative",
+        "left_wer": 0.07142857142857142,
+        "right_wer": 0.07142857142857142
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat2",
+    "c": 32,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00004975-00000030",
+        "reference": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 条 侃 侃 而 谈",
+        "right": "谈 到 丝 绸 胡 德 银 摘 下 老 花 镜 调 侃 侃 而 谈",
+        "left_wer": 0.058823529411764705,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.13333333333333333,
+        "right_wer": 0.06666666666666667
+      },
+      {
+        "id": "00005381-00000003",
+        "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+        "right": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left_wer": 0.08333333333333333,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00005366-00000084",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00005366-00000087",
+        "reference": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "left": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩",
+        "right": "猫 头 鹰 王 子 晚 上 从 不 睡 觉 还 喜 欢 捉 老 鼠 玩 儿",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00004932-00000013",
+        "reference": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 脚 风 脚 雨",
+        "right": "而 张 恒 也 不 可 能 现 在 就 在 纽 约 搅 风 搅 雨",
+        "left_wer": 0.11764705882352941,
+        "right_wer": 0.0
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat1",
+    "c": 64,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_20806032-common_voice_en_20806033",
+        "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+        "left": "also the town is pursuing increased tourism based on its ancient sireer culture",
+        "right": "also the town is pursuing increased tourism based on its ancient siree culture",
+        "left_wer": 0.07692307692307693,
+        "right_wer": 0.07692307692307693
+      },
+      {
+        "id": "common_voice_en_19724850-common_voice_en_19724900",
+        "reference": "the inca tern feeds primarily on small fish such as anchovies",
+        "left": "the inca turn feeds primarily on small fish such as anchovies",
+        "right": "the inca tern feeds primarily on small fish such as anchovies",
+        "left_wer": 0.09090909090909091,
+        "right_wer": 0.0
+      },
+      {
+        "id": "common_voice_en_19724850-common_voice_en_19724899",
+        "reference": "the inca tern feeds primarily on small fish such as anchovies",
+        "left": "the inca tern feeds primarily on small fish such as anchovies",
+        "right": "the inca turn feeds primarily on small fish such as anchovies",
+        "left_wer": 0.0,
+        "right_wer": 0.09090909090909091
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat1",
+    "c": 64,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00005432-00000116",
+        "reference": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left": "金 球 奖 赢 家 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "right": "金 球 奖 银 加 力 挺 卧 虎 藏 龙 哈 维 有 个 武 侠 梦",
+        "left_wer": 0.0,
+        "right_wer": 0.1111111111111111
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "默 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.06666666666666667
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat2",
+    "c": 64,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "en",
+    "changes": [
+      {
+        "id": "common_voice_en_20806032-common_voice_en_20806033",
+        "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+        "left": "also the town is pursuing increased tourism based on its ancient sireer culture",
+        "right": "also the town is pursuing increased tourism based on its ancient siree culture",
+        "left_wer": 0.07692307692307693,
+        "right_wer": 0.07692307692307693
+      },
+      {
+        "id": "common_voice_en_19724850-common_voice_en_19724899",
+        "reference": "the inca tern feeds primarily on small fish such as anchovies",
+        "left": "the inca tern feeds primarily on small fish such as anchovies",
+        "right": "the inca turn feeds primarily on small fish such as anchovies",
+        "left_wer": 0.0,
+        "right_wer": 0.09090909090909091
+      }
+    ]
+  },
+  {
+    "kind": "fixed-seed-repeat2",
+    "c": 64,
+    "mode": "stream",
+    "seed": 42,
+    "lang": "zh",
+    "changes": [
+      {
+        "id": "00004944-00000056",
+        "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "right": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left_wer": 0.0,
+        "right_wer": 0.05555555555555555
+      },
+      {
+        "id": "00004632-00000090",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00004632-00000013",
+        "reference": "墨 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left": "莫 儿 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "right": "默 尔 连 忙 说 我 扶 您 出 去 晒 晒 太 阳 吧",
+        "left_wer": 0.06666666666666667,
+        "right_wer": 0.13333333333333333
+      },
+      {
+        "id": "00005381-00000003",
+        "reference": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left": "我 们 快 点 儿 走 以 后 我 会 升 级 的",
+        "right": "我 们 快 点 走 以 后 我 会 升 级 的",
+        "left_wer": 0.08333333333333333,
+        "right_wer": 0.0
+      },
+      {
+        "id": "00004944-00000117",
+        "reference": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left": "还 是 四 环 泵 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "right": "还 是 四 环 奔 西 上 万 泉 河 路 走 圆 明 园 西 路 吧",
+        "left_wer": 0.05555555555555555,
+        "right_wer": 0.0
+      }
+    ]
+  }
+]

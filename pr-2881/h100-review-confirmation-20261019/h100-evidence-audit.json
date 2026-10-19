@@ -1,0 +1,295 @@
+{
+  "at_utc": "2026-10-19T22:06:17.881898+00:00",
+  "head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "base": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "source_identity": "h100-identity-at-start.json",
+  "cohorts": 24,
+  "scored_requests": 74592,
+  "failed": 0,
+  "warmup_full_split_verified": true,
+  "memory_sampling_same_original_GPU_verified": true,
+  "six_ABBA_groups_in_declared_order_verified": true,
+  "paired_sample_orders_and_aggregates_verified": true,
+  "intervals": [
+    {
+      "name": "pr2881-c32-nonstream-async_only-seed42-async-admission-ablation",
+      "first_sample": 1792445119.2206013,
+      "last_sample": 1792445226.4313765
+    },
+    {
+      "name": "pr2881-c32-nonstream-scoped_admission-seed42-async-admission-ablation",
+      "first_sample": 1792445227.1952293,
+      "last_sample": 1792445327.340871
+    },
+    {
+      "name": "pr2881-c32-nonstream-scoped_admission-seed43-async-admission-ablation",
+      "first_sample": 1792445328.2993793,
+      "last_sample": 1792445429.0308414
+    },
+    {
+      "name": "pr2881-c32-nonstream-async_only-seed43-async-admission-ablation",
+      "first_sample": 1792445429.8920596,
+      "last_sample": 1792445531.4595463
+    },
+    {
+      "name": "pr2881-c32-stream-async_only-seed42-async-admission-ablation",
+      "first_sample": 1792445532.1199958,
+      "last_sample": 1792445634.6173775
+    },
+    {
+      "name": "pr2881-c32-stream-scoped_admission-seed42-async-admission-ablation",
+      "first_sample": 1792445635.2632415,
+      "last_sample": 1792445736.1434023
+    },
+    {
+      "name": "pr2881-c32-stream-scoped_admission-seed43-async-admission-ablation",
+      "first_sample": 1792445737.155754,
+      "last_sample": 1792445839.3555932
+    },
+    {
+      "name": "pr2881-c32-stream-async_only-seed43-async-admission-ablation",
+      "first_sample": 1792445840.1479743,
+      "last_sample": 1792445941.4551728
+    },
+    {
+      "name": "pr2881-c32-nonstream-main-seed42-fixed-seed42-repeat1",
+      "first_sample": 1792445942.3518918,
+      "last_sample": 1792446045.7063434
+    },
+    {
+      "name": "pr2881-c32-nonstream-pr-seed42-fixed-seed42-repeat1",
+      "first_sample": 1792446046.527581,
+      "last_sample": 1792446146.7399607
+    },
+    {
+      "name": "pr2881-c32-nonstream-pr-seed42-fixed-seed42-repeat2",
+      "first_sample": 1792446147.6245558,
+      "last_sample": 1792446249.119191
+    },
+    {
+      "name": "pr2881-c32-nonstream-main-seed42-fixed-seed42-repeat2",
+      "first_sample": 1792446249.8438113,
+      "last_sample": 1792446352.9670575
+    },
+    {
+      "name": "pr2881-c32-stream-main-seed42-fixed-seed42-repeat1",
+      "first_sample": 1792446353.8961308,
+      "last_sample": 1792446457.1440756
+    },
+    {
+      "name": "pr2881-c32-stream-pr-seed42-fixed-seed42-repeat1",
+      "first_sample": 1792446458.0355601,
+      "last_sample": 1792446559.8512962
+    },
+    {
+      "name": "pr2881-c32-stream-pr-seed42-fixed-seed42-repeat2",
+      "first_sample": 1792446560.5592835,
+      "last_sample": 1792446662.1589835
+    },
+    {
+      "name": "pr2881-c32-stream-main-seed42-fixed-seed42-repeat2",
+      "first_sample": 1792446662.847327,
+      "last_sample": 1792446766.8845558
+    },
+    {
+      "name": "pr2881-c64-nonstream-main-seed42-fixed-seed42-repeat1",
+      "first_sample": 1792446767.4998116,
+      "last_sample": 1792446865.3035643
+    },
+    {
+      "name": "pr2881-c64-nonstream-pr-seed42-fixed-seed42-repeat1",
+      "first_sample": 1792446866.182094,
+      "last_sample": 1792446961.0160847
+    },
+    {
+      "name": "pr2881-c64-nonstream-pr-seed42-fixed-seed42-repeat2",
+      "first_sample": 1792446962.007526,
+      "last_sample": 1792447056.846367
+    },
+    {
+      "name": "pr2881-c64-nonstream-main-seed42-fixed-seed42-repeat2",
+      "first_sample": 1792447057.3741674,
+      "last_sample": 1792447154.8232183
+    },
+    {
+      "name": "pr2881-c64-stream-main-seed42-fixed-seed42-repeat1",
+      "first_sample": 1792447155.7313254,
+      "last_sample": 1792447253.3385823
+    },
+    {
+      "name": "pr2881-c64-stream-pr-seed42-fixed-seed42-repeat1",
+      "first_sample": 1792447254.2394984,
+      "last_sample": 1792447350.031182
+    },
+    {
+      "name": "pr2881-c64-stream-pr-seed42-fixed-seed42-repeat2",
+      "first_sample": 1792447350.8948092,
+      "last_sample": 1792447446.9114387
+    },
+    {
+      "name": "pr2881-c64-stream-main-seed42-fixed-seed42-repeat2",
+      "first_sample": 1792447447.559445,
+      "last_sample": 1792447543.7678962
+    }
+  ],
+  "costs": {
+    "admission": {
+      "async_only": [
+        {
+          "startup_s": 76.62998339813203,
+          "peak_gib": 71.7958984375,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.68740708800033,
+          "peak_gib": 71.6142578125,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.72294602985494,
+          "peak_gib": 71.3349609375,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.09585019713268,
+          "peak_gib": 71.7744140625,
+          "successful": 1468,
+          "live": 1468
+        }
+      ],
+      "scoped_admission": [
+        {
+          "startup_s": 75.16549522709101,
+          "peak_gib": 71.9697265625,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.59779461706057,
+          "peak_gib": 71.9697265625,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.09815839095972,
+          "peak_gib": 71.5244140625,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 76.13768055499531,
+          "peak_gib": 71.6318359375,
+          "successful": 1468,
+          "live": 1468
+        }
+      ]
+    },
+    "repeats": {
+      "main": [
+        {
+          "startup_s": 75.59539471194148,
+          "peak_gib": 71.7763671875,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.59873661282472,
+          "peak_gib": 71.8017578125,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.30874222307466,
+          "peak_gib": 71.7939453125,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.73504202603363,
+          "peak_gib": 71.7998046875,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.8211645630654,
+          "peak_gib": 72.1591796875,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.5988700890448,
+          "peak_gib": 71.6494140625,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.09457225189544,
+          "peak_gib": 71.6494140625,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 73.63316363887861,
+          "peak_gib": 71.8017578125,
+          "successful": 1468,
+          "live": 1468
+        }
+      ],
+      "pr": [
+        {
+          "startup_s": 75.09681420587003,
+          "peak_gib": 71.8095703125,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 76.09858292806894,
+          "peak_gib": 71.9365234375,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 76.10094682406634,
+          "peak_gib": 71.9638671875,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.59857384185307,
+          "peak_gib": 71.8115234375,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.09183534700423,
+          "peak_gib": 71.7626953125,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 74.59548420505598,
+          "peak_gib": 71.7626953125,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.18112638802268,
+          "peak_gib": 71.9404296875,
+          "successful": 1468,
+          "live": 1468
+        },
+        {
+          "startup_s": 75.59739699820057,
+          "peak_gib": 71.7919921875,
+          "successful": 1468,
+          "live": 1468
+        }
+      ]
+    }
+  },
+  "coverage": "complete original-card review qualification",
+  "readiness": "Decide from all retained latency/quality results and independent review; complete coverage does not imply readiness."
+}

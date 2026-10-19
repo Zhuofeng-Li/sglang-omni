@@ -1,0 +1,45 @@
+{
+  "at": 1792445275.563589,
+  "runtime_git_blobs": {
+    "main": {
+      "sglang_omni/model_runner/base.py": "f7c6c1e5615f17a8a96440acd7cf2f67523de583",
+      "sglang_omni/models/qwen3_asr/engine_builder.py": "a466e577bb6a6efa6b3b9118f50daf38099ce4a5",
+      "sglang_omni/scheduling/engine_factory.py": "2404e27b0d2acef06041e13eeb00a85236c6486c",
+      "sglang_omni/scheduling/omni_scheduler.py": "95acff64673a494193211b0fdb3a4c80df788f8d"
+    },
+    "pr-2881": {
+      "sglang_omni/model_runner/base.py": "3a5cc0280fcf2ed8f60dcf318a5002a16cd97623",
+      "sglang_omni/models/qwen3_asr/engine_builder.py": "f5c0f9145328339f27b81e58166a3c1c4723effa",
+      "sglang_omni/scheduling/engine_factory.py": "ae4ced7a26213008eeeff2bcdd36eddcadfa8c7b",
+      "sglang_omni/scheduling/omni_scheduler.py": "ec8d4dd677439933a9d80e004f8d1c1489dbb4d7"
+    }
+  },
+  "packages": {
+    "torch": "2.13.0+cu130",
+    "sglang": "0.5.21",
+    "transformers": "5.12.1",
+    "flashinfer-python": "0.6.18",
+    "triton": "3.7.1",
+    "huggingface-hub": "1.32.0"
+  },
+  "hardware": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1, NVIDIA H100 80GB HBM3, 580.126.20",
+  "first_cohort_yaml": {
+    "config_cls": "Qwen3ASRPipelineConfig",
+    "model_path": "/qualification/assets/model",
+    "stages": {
+      "asr": {
+        "gpu": 0,
+        "factory": {
+          "dtype": "bfloat16",
+          "pre_lm_cache_size_bytes": 1,
+          "mm_embedding_cache_size_bytes": 0
+        },
+        "engine": {
+          "disable_radix_cache": true,
+          "random_seed": 42
+        }
+      }
+    }
+  },
+  "scope": "Live original-card qualification; four changed runtime files match GitHub blobs at frozen main2d5de98c and final candidatee98bcf05. No workload/source/config changes."
+}
