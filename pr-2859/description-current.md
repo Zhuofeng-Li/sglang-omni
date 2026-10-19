@@ -7,11 +7,27 @@
 
 **Changed defaults:** the colocated AR stage budget is 0.60 instead of 0.72 to reserve graph-capture headroom. Disabling dense capture alone retains 0.60; operators who disable capture can explicitly restore `stages.tts_engine.gpu_memory_fraction: 0.72`.
 
+Additional default changes: the MOSS factory enables eligible async decode (previously off) with minimum batch size 2; the colocated configuration requests exact breakable prefill buckets 1–512 and non-streaming segment graphs 1–128. Eligibility and eager/failed-capture fallbacks remain in force. The following is an override fragment for an existing MOSS pipeline config to disable these three additions; the AR budget stays 0.60 unless explicitly changed:
+
+```yaml
+stages:
+  tts_engine:
+    factory:
+      enable_async_decode: false
+    engine:
+      cuda_graph_backend_prefill: disabled
+  vocoder:
+    factory:
+      segment_graph_max_frames: 0
+```
+
+This override has not been benchmarked as a mitigation for the c64 streaming regression. The cause remains under investigation; no result below is attributed to an individual component.
+
 Published head: `1894fa88fa8b09392b0aa0625eec34aae3e95edd`. Prepared candidate `757c09eb272079b6c08f88bcaa393ffe3845029a` integrates the runtime with frozen main `2d5de98cd92b17df7974ac2ef4192b4a99263845` and is under qualification; it is not yet the published PR head. No doc/docs files are changed.
 
 ## Paired comparison on current main
 
-Requested **c1 and c64 × non-streaming and streaming** backfill uses one Radix H100 80GB HBM3. All eight c1 generation cohorts and all four c64 non-streaming generation cohorts completed on 2026-10-19; c64 streaming generation is running. **All WER/SIM results remain pending**, so these preliminary generation results do not establish full qualification. Full SeedTTS EN (1,088 requests), model/codec/data revisions pinned, 16 excluded warmups, 2,048-token cap, request/decode-graph caps 64, matched AR budget 0.60 in both arms, seeds 42/43 in main(42) → PR(42) → PR(43) → main(43) order. WER and WavLM SIM will be scored for every generation pass. These are direct PR-qualification runs, not a new research run.
+Requested **c1 and c64 × non-streaming and streaming** backfill uses one Radix H100 80GB HBM3. All 16 requested generation cohorts completed on 2026-10-19: both c1/c64, both modes and both matched seeds. Every cohort completed 1088/1088 requests with zero failures. WER/SIM scoring has started. **All WER/SIM results remain pending**, so these preliminary generation results do not establish full qualification. Full SeedTTS EN (1,088 requests), model/codec/data revisions pinned, 16 excluded warmups, 2,048-token cap, request/decode-graph caps 64, matched AR budget 0.60 in both arms, seeds 42/43 in main(42) → PR(42) → PR(43) → main(43) order. WER and WavLM SIM will be scored for every generation pass. These are direct PR-qualification runs, not a new research run.
 
 Req/s and mean latencies below are arithmetic means across seeds 42/43; p95 values are shown separately in seed order, not pooled or averaged. First audio means the first audio payload. Each arm has 2,176 scored generation requests per mode.
 
@@ -41,7 +57,19 @@ Req/s and mean latencies below are arithmetic means across seeds 42/43; p95 valu
 | Concurrency | EN req/s, latency mean/p95, first audio mean/p95, WER, SIM, failed/attempted |
 | ---: | --- |
 | 1 | Req/s **1.2640 → 1.3485 (+6.69%)**; latency mean **0.7910 → 0.7415 s**, p95 seeds **0.993/0.991 → 0.934/0.931 s**; first audio mean **0.3419 → 0.3218 s**, p95 seeds **0.3619/0.3634 → 0.3458/0.3430 s**; WER **Pending**; SIM **Pending**; failures **0/2176 → 0/2176** |
-| 64 | Pending final-source measurements |
+| 64 | Req/s **15.5695 → 14.7200 (−5.46%)**; latency mean **4.0300 → 4.3070 s**, p95 seeds **5.157/5.165 → 4.993/5.048 s**; first audio mean **2.13045 → 3.40420 s**, p95 seeds **2.4460/2.4786 → 3.9724/4.0667 s**; WER **Pending**; SIM **Pending**; failures **0/2176 → 0/2176** |
+
+**c64 streaming regresses in both seeds:** throughput falls while mean/full-response and first-audio latency increase, despite improved response p95. This is a measured tradeoff of the current candidate; component causality has not been established. Quality scoring and investigation remain pending, so the PR is not merge-ready.
+
+c64 playback continuity (main → PR; values in seed 42/43 order):
+
+| Metric | Main → PR |
+| --- | --- |
+| Evaluated / single-chunk N/A | 1083/1083 evaluated, 5/5 N/A → 1085/1087 evaluated, 3/1 N/A |
+| Playback underrun p99 (ms) | 65.7/0 → 0/8 |
+| C50 (%) | 98.80/99.45 → 99.08/99.63 |
+| C100 (%) | 99.17/99.54 → 99.26/99.63 |
+| C200 (%) | 99.91/99.82 → 99.72/99.63 |
 
 The summary cannot supply a bilingual geometric mean from an EN-only benchmark. The requested backfill is explicitly narrower than a complete bilingual c1/c16/c32/c64 matrix.
 
@@ -75,7 +103,7 @@ Current-integration c1 costs (main → PR; measurements from 2026-10-19):
 | Sampled peak VRAM, both seeds (GiB) | 66.864 → 70.423 (**+3.559**) | 66.733 → 70.423 (**+3.690**) |
 | Successful captures, each seed | 152 → 19,236 (**+19,084**) | 152 → 19,236 (**+19,084**) |
 
-Startup runs from just before the server subprocess launch until health-ready, including model/graph initialization and excluding client imports, downloads and workload warmup. GPU memory is sampled every 0.5 seconds; peaks are the same across both seeds for each cell. Capture counts are unique successful capture events over the whole cohort, not live graphs after shutdown. c64 streaming costs remain pending. The increased startup, memory and capture count must be weighed against the measured throughput; quality qualification is still incomplete.
+Startup runs from just before the server subprocess launch until health-ready, including model/graph initialization and excluding client imports, downloads and workload warmup. GPU memory is sampled every 0.5 seconds; peaks are the same across both seeds for each cell. Capture counts are unique successful capture events over the whole cohort, not live graphs after shutdown. c64 streaming costs are reported below. The increased startup, memory and capture count must be weighed against the measured throughput; quality qualification is still incomplete.
 
 c64 non-streaming costs (main → PR; seeds 42/43, measured 2026-10-19):
 
@@ -87,10 +115,20 @@ c64 non-streaming costs (main → PR; seeds 42/43, measured 2026-10-19):
 
 The same startup, memory-sampling and capture-count methods above apply. These are generation-only measurements; WER/SIM remain pending.
 
+c64 streaming costs (main → PR; seeds 42/43, measured 2026-10-19):
+
+| Metric | Main → PR |
+| --- | --- |
+| Startup-to-ready, mean (s) | 112.601 → 152.135 (**+39.534**) |
+| Sampled peak VRAM, seeds 42/43 (GiB) | 67.271/67.315 → 70.823/70.862 (**+3.553/+3.547**) |
+| Successful captures, each seed | 152 → 19,236 (**+19,084**) |
+
+The same measurement methods above apply. c64 streaming incurs these costs alongside the observed throughput/first-audio regressions; all WER/SIM results remain pending.
+
 ## Tests
 
 - Current-integration main and candidate c1 smoke succeeded. The first candidate attempt encountered a port-bind conflict; the retry uses independent ports and retains the failed attempt.
-- Current integrated MOSS regression suite passed **365 cases** on the assigned H100 before full generation. All c1 generation cohorts passed full request-count, zero-failure, ABBA-order, source/GPU/config and sample-order checks; c64 generation is running. WER/SIM and complete c64 streaming costs remain pending. The measured integration also passed the full pre-commit suite with its worktree unchanged. Historical repaired-source counts belong to their original revision.
+- Current integrated MOSS regression suite passed **365 cases** on the assigned H100 before full generation. All c1 generation cohorts passed full request-count, zero-failure, ABBA-order, source/GPU/config and sample-order checks; c64 generation is running. WER/SIM and complete c64 streaming costs are reported below. The measured integration also passed the full pre-commit suite with its worktree unchanged. Historical repaired-source counts belong to their original revision.
 - Published-head CI is green, including non-streaming, streaming, consistency and stress in [Omni CI](https://github.com/sgl-project/sglang-omni/actions/runs/39045568536). The preset is MOSS LocalTransformer, so it does not replace dedicated Delay qualification. CI for a subsequently published integration will be checked separately.
 - New qualification, independent reviewer approval and the MOSS-team notice mentioned by the reviewer remain pending; this PR is not represented as merge-ready.
 
