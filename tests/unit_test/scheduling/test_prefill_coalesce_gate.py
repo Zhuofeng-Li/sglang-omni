@@ -477,15 +477,25 @@ def test_build_admission_preserves_fifo_unless_async_prefill_is_enabled(
     OmniScheduler.drain_request_build_results(scheduler)
     assert scheduler.admit_or_defer_built_request.call_count == int(async_prefill)
     if async_prefill:
-        assert scheduler.admit_or_defer_built_request.call_args.args[0] == "second-payload"
+        assert (
+            scheduler.admit_or_defer_built_request.call_args.args[0] == "second-payload"
+        )
     first.set_result("first-result")
     OmniScheduler.drain_request_build_results(scheduler)
-    expected = ["second-payload", "first-payload"] if async_prefill else ["first-payload", "second-payload"]
-    assert [call.args[0] for call in scheduler.admit_or_defer_built_request.call_args_list] == expected
+    expected = (
+        ["second-payload", "first-payload"]
+        if async_prefill
+        else ["first-payload", "second-payload"]
+    )
+    assert [
+        call.args[0] for call in scheduler.admit_or_defer_built_request.call_args_list
+    ] == expected
     assert not scheduler.pending_request_builds
 
 
-@pytest.mark.parametrize("batch_full,available_slots", [(True, 4), (False, 0), (False, 4)])
+@pytest.mark.parametrize(
+    "batch_full,available_slots", [(True, 4), (False, 0), (False, 4)]
+)
 def test_expired_coalescing_does_not_repeat_wait_when_admission_is_blocked(
     upstream: mock.MagicMock,
     clock: mock.MagicMock,
@@ -502,4 +512,6 @@ def test_expired_coalescing_does_not_repeat_wait_when_admission_is_blocked(
     scheduler.admit_imminent_request_builds = mock.Mock()
     for _ in range(3):
         assert scheduler.get_new_batch_prefill() is UPSTREAM_BATCH
-    assert scheduler.admit_imminent_request_builds.call_count == (3 if not batch_full and available_slots else 0)
+    assert scheduler.admit_imminent_request_builds.call_count == (
+        3 if not batch_full and available_slots else 0
+    )
