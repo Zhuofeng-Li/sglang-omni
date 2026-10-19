@@ -1,0 +1,1384 @@
+﻿2026-10-19T16:56:06.6604761Z Current runner version: '2.338.0'
+2026-10-19T16:56:06.6608849Z Runner name: 'omni-runner-h100-4'
+2026-10-19T16:56:06.6609396Z Runner group name: 'Default'
+2026-10-19T16:56:06.6610023Z Machine name: 'host-85-234-79-221'
+2026-10-19T16:56:06.6612192Z ##[group]GITHUB_TOKEN Permissions
+2026-10-19T16:56:06.6613618Z Checks: read
+2026-10-19T16:56:06.6614032Z Contents: read
+2026-10-19T16:56:06.6614446Z Metadata: read
+2026-10-19T16:56:06.6614845Z PullRequests: read
+2026-10-19T16:56:06.6615251Z ##[endgroup]
+2026-10-19T16:56:06.6616626Z Secret source: None
+2026-10-19T16:56:06.6617334Z Cache mode: write
+2026-10-19T16:56:06.6617833Z Prepare workflow directory
+2026-10-19T16:56:06.7013120Z Prepare all required actions
+2026-10-19T16:56:06.7048842Z Getting action download info
+2026-10-19T16:56:07.0566725Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-19T16:56:07.4711493Z Uses: sgl-project/sglang-omni/.github/workflows/test.yaml@refs/pull/2880/merge (accc0cc685cea84d4e29ec37ad47c0f9a34606c6)
+2026-10-19T16:56:07.4714776Z ##[group] Inputs
+2026-10-19T16:56:07.4715242Z   omni_ci_home: /data/omni-ci/pr-2880
+2026-10-19T16:56:07.4715698Z ##[endgroup]
+2026-10-19T16:56:07.4716147Z Complete job name: PR Test / unit-test-accelerator
+2026-10-19T16:56:07.5738869Z ##[group]Checking docker version
+2026-10-19T16:56:07.5747778Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker version --format '{{.Server.APIVersion}}'
+2026-10-19T16:56:07.6368062Z ''6.1.2'
+2026-10-19T16:56:07.6477829Z Docker daemon API version: ''6.1.2'
+2026-10-19T16:56:07.6478589Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker version --format '{{.Client.APIVersion}}'
+2026-10-19T16:56:07.7094639Z '6.1.2'
+2026-10-19T16:56:07.7105999Z Docker client API version: '6.1.2'
+2026-10-19T16:56:07.7109859Z ##[endgroup]
+2026-10-19T16:56:07.7111637Z ##[group]Clean up resources from previous jobs
+2026-10-19T16:56:07.7115715Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker ps --all --quiet --no-trunc --filter "label=9568a0"
+2026-10-19T16:56:07.7779018Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker network prune --force --filter "label=9568a0"
+2026-10-19T16:56:07.8433952Z ##[endgroup]
+2026-10-19T16:56:07.8434388Z ##[group]Create local container network
+2026-10-19T16:56:07.8441500Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker network create --label 9568a0 github_network_5d5afd9a25c34630bc7fc315fe53abef
+2026-10-19T16:56:07.9083884Z github_network_5d5afd9a25c34630bc7fc315fe53abef
+2026-10-19T16:56:07.9102707Z ##[endgroup]
+2026-10-19T16:56:07.9121875Z ##[group]Starting job container
+2026-10-19T16:56:07.9137460Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker pull hongccc/sglang-omni@sha256:ebe4239e29a764ee3a2806385c061c5fd438a26f01458e503d3822dcba5790df
+2026-10-19T16:56:07.9794693Z Trying to pull docker.io/hongccc/sglang-omni@sha256:ebe4239e29a764ee3a2806385c061c5fd438a26f01458e503d3822dcba5790df...
+2026-10-19T16:56:08.6802339Z Getting image source signatures
+2026-10-19T16:56:08.6805940Z Copying blob sha256:f0af354daeda18f18684b23520969ef6bb3de82bb267936f867b12769be9125d
+2026-10-19T16:56:08.6807739Z Copying blob sha256:689b91d88a0f4086057ec826027b128902ecf2b516be510371c115bc55da19a6
+2026-10-19T16:56:08.6809585Z Copying blob sha256:ccf9c70a85fc6158d617c85f3f719f669efb00c28fd45fa292575d351435bd2f
+2026-10-19T16:56:08.6811427Z Copying blob sha256:5e25946ba40dcbc2410bf1852d135a46cb31cc7f89c05b9ef1ab12a6ef988aeb
+2026-10-19T16:56:08.6813253Z Copying blob sha256:95e35692d3cc347d712fd236fd2af3b1c697783518182b1ae716722f694ed616
+2026-10-19T16:56:08.6815159Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-19T16:56:08.6817098Z Copying blob sha256:730c8029606bf4b4533d7a7159458cf5e3f348ea956ccfb10ce5da3e20adac8f
+2026-10-19T16:56:08.6819009Z Copying blob sha256:a30da298bda6986d68697bc361b9204f189616a3b7cc748c91846ecddbb873aa
+2026-10-19T16:56:08.6820947Z Copying blob sha256:21e0ed254c8bac8e7e21e80b250a5dc4a92211bbc2f658f9f81ef93c7c623f03
+2026-10-19T16:56:08.6823256Z Copying blob sha256:cb3db0ad5ae089b6ae0c5b39b73e73cac40a558df052e602f8b0f24972b003b4
+2026-10-19T16:56:08.6825461Z Copying blob sha256:8bd080c2e4b22c71c5058be60551a2735c1bead7341fe005313ca704578d9fa5
+2026-10-19T16:56:08.6827503Z Copying blob sha256:b533a7368b7da8141f98b9a2442f84b5aa5d32f2d286c2611a32f725361f84b6
+2026-10-19T16:56:08.6829553Z Copying blob sha256:cc689184d8c0977f56d2da63b3a3d225dc9c7fadb9375338768cf4909b016b32
+2026-10-19T16:56:08.6831737Z Copying blob sha256:400821fd86ee1a17c460a7addf3892121cfb660a274b37e6a23cf36e7eaa931c
+2026-10-19T16:56:08.6834001Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-19T16:56:08.6836324Z Copying blob sha256:adebc1576f3c07100011ce7679aef5e7bb1e4aaca050e6d8e729273d22a2442a
+2026-10-19T16:56:08.6838645Z Copying blob sha256:aa7bf3f028118956d0025410ff6a4983ae6b94fce88b561e4ebbfeb202ab81af
+2026-10-19T16:56:08.6840917Z Copying blob sha256:a74e534a5303ee320bf31e5086657358973c9fe856c86c65bbe1f68ba8469fb1
+2026-10-19T16:56:08.6843247Z Copying blob sha256:da22e3c381fae8ed6bf319cc1c1febf7c5df38f0fbddd3ea8d0c0e0caeec3402
+2026-10-19T16:56:08.6845477Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-19T16:56:08.6847860Z Copying blob sha256:eb3e517cc5adba9530578449409cc15b501d3ff665ddb2045e420642e1d8370d
+2026-10-19T16:56:08.6850246Z Copying blob sha256:8edd9b9d14bac15c4f4f438ef5756fff07838e9e20b64e0fdc047147e6e30d29
+2026-10-19T16:56:08.6852597Z Copying blob sha256:ccb5a7f7aa1d2ff0d27e7678302568d3c29881937e7d9a6605b9ae347ed60948
+2026-10-19T16:56:08.6854925Z Copying blob sha256:2a438288ebd9e01397584c62775b46c3096e9cefda2478abf6d863f32167dd81
+2026-10-19T16:56:08.6857265Z Copying blob sha256:c89e8c4f4eb36628fe71eb30a4b2b9e24897fa16df44bb09b199d603f61bb3d3
+2026-10-19T16:56:08.6859665Z Copying blob sha256:4e46afba2af5498890645ef2e0d1ee63cd15a3db080babd50b002abb698c0855
+2026-10-19T16:56:08.6861999Z Copying blob sha256:470c45992915e256cd6f63e6697599089d70e848605df1150c3a3f357f9eea5c
+2026-10-19T16:56:08.6864283Z Copying blob sha256:5e64ecc3531f2a8ebfa4e85768b2ab7acaeb98d248fa568cc8a35de31b33b551
+2026-10-19T16:56:08.6866587Z Copying blob sha256:a5416631a37003b23d1593e9b47a40a68527e61330ae53e6f3663f9492879ff7
+2026-10-19T16:56:08.6868832Z Copying blob sha256:93010393125d39ae8a26ed67ed7dceadecfd2cadf024f54238213c892aef38a9
+2026-10-19T16:56:08.6871059Z Copying blob sha256:995be75ae4849f80067db258d42473c5ff4fec893e800dcf442869b676c32fb6
+2026-10-19T16:56:08.6873312Z Copying blob sha256:077dd148daee43ec1a0ca8eb617b941a0e948f87124e7eea61c4de7bd38a2d2d
+2026-10-19T16:56:08.6875645Z Copying blob sha256:849d2ebef768fae5f683f64caa953c6707f15dde5df88911f3d7106af03ed494
+2026-10-19T16:56:08.6877948Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-19T16:56:08.6880231Z Copying blob sha256:c8cb58f60f1dba8b1c811b9b96e27d094fba75e03ec03da4cefbec2d5ebf95ef
+2026-10-19T16:56:08.6882521Z Copying blob sha256:28200c3f2a1d250dba2b3d00c72b3cb74e1e3b45f83f33471a60b81c9af91f9a
+2026-10-19T16:56:08.6884716Z Copying blob sha256:c1187b3db370efd7a277dadec64c6f55ab79f44e9f3bbbd824461d3b0e991804
+2026-10-19T16:56:08.6886826Z Copying blob sha256:a9667995ea410b4971fdcd0d83c2c6ca191197f2378c46e06ce46d32513962c7
+2026-10-19T16:56:08.6888921Z Copying blob sha256:05fa446c1e2d435cc989ed02ed7e79d93e5b0c9e3ee41a458079afc83e679343
+2026-10-19T16:56:08.6890992Z Copying blob sha256:469472079699c6de567e57ff9b2e32dcf668c15e9d263990c10b9421a6b5696f
+2026-10-19T16:56:08.6893061Z Copying blob sha256:ae7aa27f8a09080d321be3145abf9be54dde005ff92ab1ba7200cb00ae063fc3
+2026-10-19T16:56:08.6895127Z Copying blob sha256:e5799387b9aaf06a9f3e02f3cc7c9cdc11948482d61b30683ee6122d468f9fee
+2026-10-19T16:56:08.6897115Z Copying blob sha256:4eeb6d1394c403b168acc53266576c79e188ab5bce204381e5fa155ba3421cc8
+2026-10-19T16:56:08.6899053Z Copying blob sha256:781a1c5eb5d5b81b4a912464788fd6da8b1ba4125e70505c10d5bb60d49430e1
+2026-10-19T16:56:08.6900992Z Copying blob sha256:3ea18b37807dbce005496be231f5aff04b8b05d05f5e76f980379f12f9e37dea
+2026-10-19T16:56:08.6903099Z Copying blob sha256:a523fe971c12a54c25ecfcfa545addcd93d2ad6e2ecbb18d9af9095895d51ecb
+2026-10-19T16:56:08.6905134Z Copying blob sha256:53fc185ec88ded468a74823816e1bfb06587bbd1721370a90e6a5b9edae1cd77
+2026-10-19T16:56:08.6907165Z Copying blob sha256:36018313298a2d39cd337d3c2e33afaf3a55a89bdbf5f90ab49cc127c9ef9eef
+2026-10-19T16:56:08.6909165Z Copying blob sha256:fa796129676a80971ac3030cf301bfffe79a3e1b5b250e713f4339c01a5fda54
+2026-10-19T16:56:08.6911161Z Copying blob sha256:45f8deceb861decb3db1ea4bfc14adba9f76ad61eb701602a6bfab42455524b3
+2026-10-19T16:56:08.6913176Z Copying blob sha256:05e9dbf75cd7bfabd9eaf6e033b167afc87942a85bc33b87a0264295be452e31
+2026-10-19T16:56:08.6915158Z Copying blob sha256:404535d7a378b96e2a488db8a3d830569ff78e43518769751c5101ec43eec03d
+2026-10-19T16:56:08.6917097Z Copying blob sha256:bce47d9a05f8d42ac4a803cef13130470ccf5d23f660b94f8b745ee2d9574501
+2026-10-19T16:56:08.6919071Z Copying blob sha256:3eb55fe8afcdd260cecf62334497c8685e0775283f183dfdf16c4c261e4d9574
+2026-10-19T16:56:08.6921025Z Copying blob sha256:27afe79adc49d41a75e6a2ad39ef5084db61b9f93269754c8edc088b8dab311f
+2026-10-19T16:56:08.6922954Z Copying blob sha256:5fee2fafaac2839f6a2e052036f87ac725f35befd33029fa37e806a56ca71620
+2026-10-19T16:56:08.6924883Z Copying blob sha256:4b5501ac543dbb3b03628d562da0686548dd8217ae52a7ec0bdf4adda70fff5b
+2026-10-19T16:56:08.6926767Z Copying blob sha256:38c9ea34f0a8d3f8c0b86d824cde43e021df64271c28c09836d68360a29c8862
+2026-10-19T16:56:08.6928634Z Copying blob sha256:e3687acb084aa2217ec8fd6c78f226289a680b1639373e63156118982062d136
+2026-10-19T16:56:08.6930536Z Copying blob sha256:81fdb1604cbe0f55bb53796bf1bc06eff99c3f4751f38404d245efe0248e26c3
+2026-10-19T16:56:08.6932817Z Copying blob sha256:3c277e23be580e6ae1c149206204f4b9586b20b61ff67e2feb478c9353f2c178
+2026-10-19T16:56:08.6934753Z Copying blob sha256:9de777b5c4aed8672911245710f8865dd679c9b7bd2fc3eac50fc4ee44b00ef5
+2026-10-19T16:56:08.6936691Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-19T16:56:08.6938624Z Copying blob sha256:8f5ae3e1f95b221afe694820b4a85b65b3589be1dd38b0c8acc6a58e1925959d
+2026-10-19T16:56:08.6940558Z Copying blob sha256:ca203bfcad8f7ba2d79634d3ac9fb6163697a48bd61db0643b1354961286cc6a
+2026-10-19T16:56:08.6942469Z Copying blob sha256:b3f974ea3f41b515366700b3c2490992b796802340d5e08b8eccc499d25dabc6
+2026-10-19T16:56:08.6944352Z Copying blob sha256:b935de2c3724eb3acea998c281cf6d6629ca7c4b09d733c12aea89dc6fed1518
+2026-10-19T16:56:08.6946268Z Copying blob sha256:e7d03359f36bae4e8ae980e86ccb629dd14c41ba57aa50c801b389acdc34b9aa
+2026-10-19T16:56:08.6948142Z Copying blob sha256:50803bad3b0b1ac194e521f4cb08f8892ff68bc94846c2c77b402385b38a9a7a
+2026-10-19T16:56:08.6950017Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-19T16:56:08.6951910Z Copying blob sha256:f7cd71ba7f2cb0b69ef26151c90ed4d9e01e6308082285f4dd9a1245d82ff31f
+2026-10-19T16:56:08.6953808Z Copying blob sha256:8fb8cd585a8a95d9e2e31645981e743a4748798ce6d2d1474a49d9b4aecb2207
+2026-10-19T16:56:08.6955690Z Copying blob sha256:1dba0de910ee59f5e5797de091a903c2c6303a26ac8782f13d369fa41c1b59d2
+2026-10-19T16:56:08.6957580Z Copying blob sha256:61d85052837fce5b6e9fb64635adf1a89765d2f47955f21608730edcb0fac545
+2026-10-19T16:56:08.6959438Z Copying blob sha256:9729514298460a950ea2b8c25b60c2c0b8e3baab3387ea8946052b828fae2860
+2026-10-19T16:56:08.6961284Z Copying blob sha256:6332b94c035686e0daa54650e6a0cd83e43d299213fe8b6e74678a4b0f781389
+2026-10-19T16:56:08.6963157Z Copying blob sha256:bcd925c63e788a66aceff56b600b2cf55dc1f1860b7b43c6ce9b183e14eee79a
+2026-10-19T16:56:08.6965121Z Copying config sha256:2bac261779c813672df92a8ce1cab74a4eaa18681b5c645ee89e4dc8765c6119
+2026-10-19T16:56:08.6966680Z Writing manifest to image destination
+2026-10-19T16:56:08.6967959Z 2bac261779c813672df92a8ce1cab74a4eaa18681b5c645ee89e4dc8765c6119
+2026-10-19T16:56:08.7054636Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker create --name 9e2827d2df0442308e29e358b64747b0_hongcccsglangomnisha256ebe4239e29a764ee3a2806385c061c5fd438a26f01458e503d3822dcba5790df_847e79 --label 9568a0 --workdir /__w/sglang-omni/sglang-omni --network github_network_5d5afd9a25c34630bc7fc315fe53abef --rm -e NVIDIA_VISIBLE_DEVICES -e OMNI_CI_CPUSET -v /dev/shm:/dev/shm -v /data/omni-ci:/data/omni-ci -v /data/cache/huggingface:/github/home/.cache/huggingface -v /data/cache/huggingface:/root/.cache/huggingface -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-4/_work":"/__w" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-4/externals":"/__e":ro -v "/var/tmp/omni-ci-yxs-30019/runners/runner-4/_work/_temp":"/__w/_temp" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-4/_work/_actions":"/__w/_actions" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-4/_work/_tool":"/__w/_tool" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-4/_work/_temp/_github_home":"/github/home" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-4/_work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" hongccc/sglang-omni@sha256:ebe4239e29a764ee3a2806385c061c5fd438a26f01458e503d3822dcba5790df "-f" "/dev/null"
+2026-10-19T16:56:08.8302967Z 1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7
+2026-10-19T16:56:08.8331753Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker start 1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7
+2026-10-19T16:56:09.3368127Z 1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7
+2026-10-19T16:56:09.3386768Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker ps --all --filter id=1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-10-19T16:56:09.4073263Z 1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7 Up Less than a second
+2026-10-19T16:56:09.4095776Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7
+2026-10-19T16:56:09.4778136Z SGLANG_RUST_BUILD_MODE=never
+2026-10-19T16:56:09.4778628Z HOME=/github/home
+2026-10-19T16:56:09.4779041Z CI=true
+2026-10-19T16:56:09.4779346Z NCCL_NVLS_ENABLE=0
+2026-10-19T16:56:09.4779753Z NV_CUDNN_PACKAGE_NAME=libcudnn9-cuda-13
+2026-10-19T16:56:09.4780156Z CUDA_HOME=/usr/local/cuda
+2026-10-19T16:56:09.4780529Z NVARCH=x86_64
+2026-10-19T16:56:09.4780893Z NV_CUDNN_PACKAGE_DEV=libcudnn9-dev-cuda-13=9.14.0.64-1
+2026-10-19T16:56:09.4781320Z FLASHINFER_JIT_DEBUG=0
+2026-10-19T16:56:09.4781657Z NV_LIBCUSPARSE_VERSION=12.6.3.3-1
+2026-10-19T16:56:09.4782048Z LIBRARY_PATH=/usr/local/cuda/lib64/stubs
+2026-10-19T16:56:09.4782545Z NV_LIBNCCL_PACKAGE=libnccl2=2.28.3-1+cuda13.0
+2026-10-19T16:56:09.4782891Z NV_CUDA_CUDART_DEV_VERSION=13.0.96-1
+2026-10-19T16:56:09.4783307Z NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE=cuda-nsight-compute-13-0=13.0.3-1
+2026-10-19T16:56:09.4783714Z NV_LIBNCCL_DEV_PACKAGE_NAME=libnccl-dev
+2026-10-19T16:56:09.4784094Z NV_LIBCUBLAS_DEV_VERSION=13.1.1.3-1
+2026-10-19T16:56:09.4784456Z FLASHINFER_VERSION=0.6.18
+2026-10-19T16:56:09.4784740Z GITHUB_ACTIONS=true
+2026-10-19T16:56:09.4785055Z SGLANG_IMAGE_TAG=lmsysorg/sglang:v0.5.19
+2026-10-19T16:56:09.4785429Z LC_ALL=en_US.UTF-8
+2026-10-19T16:56:09.4785715Z NV_LIBNCCL_PACKAGE_VERSION=2.28.3-1
+2026-10-19T16:56:09.4786046Z container=podman
+2026-10-19T16:56:09.4786346Z CUDA_VERSION=13.0.3
+2026-10-19T16:56:09.4786651Z NV_LIBNCCL_PACKAGE_NAME=libnccl2
+2026-10-19T16:56:09.4787009Z NV_LIBCUBLAS_PACKAGE_NAME=libcublas-13-0
+2026-10-19T16:56:09.4787358Z GDRCOPY_HOME=/usr/src/gdrdrv-2.5.1/
+2026-10-19T16:56:09.4787746Z NV_CUDA_LIB_VERSION=13.0.3-1
+2026-10-19T16:56:09.4788092Z NV_LIBNPP_DEV_VERSION=13.0.1.2-1
+2026-10-19T16:56:09.4788400Z LANGUAGE=en_US:en
+2026-10-19T16:56:09.4788695Z NV_NVML_DEV_VERSION=13.0.87-1
+2026-10-19T16:56:09.4788989Z OMNI_CI_CPUSET=2-15,66-79
+2026-10-19T16:56:09.4789456Z NV_NVTX_VERSION=13.0.85-1
+2026-10-19T16:56:09.4789824Z NV_CUDNN_PACKAGE=libcudnn9-cuda-13=9.14.0.64-1
+2026-10-19T16:56:09.4790467Z NV_LIBCUBLAS_PACKAGE=libcublas-13-0=13.1.1.3-1
+2026-10-19T16:56:09.4790824Z NV_LIBNCCL_DEV_PACKAGE_VERSION=2.28.3-1
+2026-10-19T16:56:09.4791149Z NV_CUDA_CUDART_VERSION=13.0.96-1
+2026-10-19T16:56:09.4791461Z OMNI_CI_RUNNER_ID=4
+2026-10-19T16:56:09.4791867Z NV_CUDNN_PACKAGE_DEV_HEADERS=libcudnn9-headers-cuda-13=9.14.0.64-1
+2026-10-19T16:56:09.4792262Z NV_LIBNPP_VERSION=13.0.1.2-1
+2026-10-19T16:56:09.4792783Z SGLANG_BUILD_URL=https://github.com/sgl-project/sglang/actions/runs/33912440803
+2026-10-19T16:56:09.4793219Z NVIDIA_PRODUCT_NAME=CUDA
+2026-10-19T16:56:09.4793549Z NV_CUDNN_VERSION=9.14.0.64-1
+2026-10-19T16:56:09.4793877Z NV_LIBCUSPARSE_DEV_VERSION=12.6.3.3-1
+2026-10-19T16:56:09.4794558Z LD_LIBRARY_PATH=/opt/sglang/lib/python3.12/site-packages/nvidia/nccl/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-10-19T16:56:09.4795229Z FLASHINFER_WORKSPACE_BASE=/root
+2026-10-19T16:56:09.4795557Z NV_CUDA_NSIGHT_COMPUTE_VERSION=13.0.3-1
+2026-10-19T16:56:09.4795881Z LANG=en_US.UTF-8
+2026-10-19T16:56:09.4796183Z NVIDIA_DRIVER_CAPABILITIES=compute,utility
+2026-10-19T16:56:09.4796530Z NV_LIBNPP_PACKAGE=libnpp-13-0=13.0.1.2-1
+2026-10-19T16:56:09.4797018Z NV_LIBNCCL_DEV_PACKAGE=libnccl-dev=2.28.3-1+cuda13.0
+2026-10-19T16:56:09.4797393Z DEBIAN_FRONTEND=noninteractive
+2026-10-19T16:56:09.4797737Z NV_LIBCUBLAS_DEV_PACKAGE_NAME=libcublas-dev-13-0
+2026-10-19T16:56:09.4798129Z NV_LIBCUBLAS_DEV_PACKAGE=libcublas-dev-13-0=13.1.1.3-1
+2026-10-19T16:56:09.4798747Z PATH=/root/.cargo/bin:/opt/sglang/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/nvidia/bin
+2026-10-19T16:56:09.4799326Z NV_LIBCUBLAS_VERSION=13.1.1.3-1
+2026-10-19T16:56:09.4799653Z NCCL_VERSION=2.28.3-1
+2026-10-19T16:56:09.4799994Z SGLANG_BUILD_COMMIT=0bcd822377da7b5718e674eaf9c870d349424dd1
+2026-10-19T16:56:09.4805061Z NVIDIA_REQUIRE_CUDA=cuda>=13.0 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=575,driver<576 brand=grid,driver>=575,driver<576 brand=tesla,driver>=575,driver<576 brand=nvidia,driver>=575,driver<576 brand=quadro,driver>=575,driver<576 brand=quadrortx,driver>=575,driver<576 brand=nvidiartx,driver>=575,driver<576 brand=vapps,driver>=575,driver<576 brand=vpc,driver>=575,driver<576 brand=vcs,driver>=575,driver<576 brand=vws,driver>=575,driver<576 brand=cloudgaming,driver>=575,driver<576
+2026-10-19T16:56:09.4810506Z NV_LIBNPP_DEV_PACKAGE=libnpp-dev-13-0=13.0.1.2-1
+2026-10-19T16:56:09.4810838Z HOSTNAME=1013441623c0
+2026-10-19T16:56:09.4811118Z NVIDIA_CTK_LIBCUDA_DIR=/usr/lib/x86_64-linux-gnu
+2026-10-19T16:56:09.4811457Z NVIDIA_VISIBLE_DEVICES=void
+2026-10-19T16:56:09.4818289Z ##[endgroup]
+2026-10-19T16:56:09.4825654Z ##[group]Waiting for all services to be ready
+2026-10-19T16:56:09.4826850Z ##[endgroup]
+2026-10-19T16:56:09.5074654Z ##[group]Run actions/checkout@v4
+2026-10-19T16:56:09.5075036Z with:
+2026-10-19T16:56:09.5075270Z   repository: sgl-project/sglang-omni
+2026-10-19T16:56:09.5077138Z   token: ***
+2026-10-19T16:56:09.5077349Z   ssh-strict: true
+2026-10-19T16:56:09.5077564Z   ssh-user: git
+2026-10-19T16:56:09.5077786Z   persist-credentials: true
+2026-10-19T16:56:09.5078019Z   clean: true
+2026-10-19T16:56:09.5078239Z   sparse-checkout-cone-mode: true
+2026-10-19T16:56:09.5078480Z   fetch-depth: 1
+2026-10-19T16:56:09.5078684Z   fetch-tags: false
+2026-10-19T16:56:09.5078922Z   show-progress: true
+2026-10-19T16:56:09.5079137Z   lfs: false
+2026-10-19T16:56:09.5079341Z   submodules: false
+2026-10-19T16:56:09.5079556Z   set-safe-directory: true
+2026-10-19T16:56:09.5079799Z   allow-unsafe-pr-checkout: false
+2026-10-19T16:56:09.5080119Z env:
+2026-10-19T16:56:09.5080372Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:09.5080625Z ##[endgroup]
+2026-10-19T16:56:09.5126206Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker exec  1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7 sh -c "cat /etc/*release | grep ^ID"
+2026-10-19T16:56:09.8953514Z Syncing repository: sgl-project/sglang-omni
+2026-10-19T16:56:09.8954391Z ##[group]Getting Git version info
+2026-10-19T16:56:09.8954646Z Working directory is '/__w/sglang-omni/sglang-omni'
+2026-10-19T16:56:09.8955017Z [command]/usr/bin/git version
+2026-10-19T16:56:09.8960110Z git version 2.43.0
+2026-10-19T16:56:09.8971376Z ##[endgroup]
+2026-10-19T16:56:09.8979683Z Temporarily overriding HOME='/__w/_temp/4bb10676-81ce-4cbe-9f8e-42a1f5b97fe8' before making global git config changes
+2026-10-19T16:56:09.8980223Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-19T16:56:09.8982863Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang-omni/sglang-omni
+2026-10-19T16:56:09.9013079Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-10-19T16:56:09.9029066Z https://github.com/sgl-project/sglang-omni
+2026-10-19T16:56:09.9035921Z ##[group]Removing previously created refs, to avoid conflicts
+2026-10-19T16:56:09.9038484Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-10-19T16:56:09.9055212Z HEAD
+2026-10-19T16:56:09.9082936Z ##[endgroup]
+2026-10-19T16:56:09.9085664Z [command]/usr/bin/git submodule status
+2026-10-19T16:56:09.9298769Z ##[group]Cleaning the repository
+2026-10-19T16:56:09.9301014Z [command]/usr/bin/git clean -ffdx
+2026-10-19T16:56:09.9359055Z Removing omni
+2026-10-19T16:56:09.9359233Z Removing sglang_omni.egg-info/
+2026-10-19T16:56:09.9359476Z Removing sglang_omni/__pycache__/
+2026-10-19T16:56:09.9359684Z Removing sglang_omni/client/__pycache__/
+2026-10-19T16:56:09.9359904Z Removing sglang_omni/config/__pycache__/
+2026-10-19T16:56:09.9360113Z Removing sglang_omni/models/__pycache__/
+2026-10-19T16:56:09.9360337Z Removing sglang_omni/models/qwen3_tts/__pycache__/
+2026-10-19T16:56:09.9360574Z Removing sglang_omni/pipeline/__pycache__/
+2026-10-19T16:56:09.9360811Z Removing sglang_omni/pipeline/stage/__pycache__/
+2026-10-19T16:56:09.9361046Z Removing sglang_omni/platforms/__pycache__/
+2026-10-19T16:56:09.9361264Z Removing sglang_omni/profiler/__pycache__/
+2026-10-19T16:56:09.9361474Z Removing sglang_omni/proto/__pycache__/
+2026-10-19T16:56:09.9361686Z Removing sglang_omni/serve/__pycache__/
+2026-10-19T16:56:09.9361930Z Removing sglang_omni/utils/__pycache__/
+2026-10-19T16:56:09.9362148Z Removing sglang_omni/vendor/sglang/__pycache__/
+2026-10-19T16:56:09.9364114Z [command]/usr/bin/git reset --hard HEAD
+2026-10-19T16:56:09.9502885Z HEAD is now at e4a2639 Merge 2cad178053585b41d486c1584796d58b205541a0 into 8b60a60c00ec201140125dc0841ce5a32d7526a5
+2026-10-19T16:56:09.9506255Z ##[endgroup]
+2026-10-19T16:56:09.9508409Z ##[group]Disabling automatic garbage collection
+2026-10-19T16:56:09.9511787Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-19T16:56:09.9530592Z ##[endgroup]
+2026-10-19T16:56:09.9530848Z ##[group]Setting up auth
+2026-10-19T16:56:09.9535715Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-19T16:56:09.9556396Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-19T16:56:09.9749464Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-19T16:56:09.9771876Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-19T16:56:09.9962812Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-19T16:56:09.9981727Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-19T16:56:10.0176345Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-19T16:56:10.0198213Z ##[endgroup]
+2026-10-19T16:56:10.0198513Z ##[group]Fetching the repository
+2026-10-19T16:56:10.0204226Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +accc0cc685cea84d4e29ec37ad47c0f9a34606c6:refs/remotes/pull/2880/merge
+2026-10-19T16:56:10.5378883Z From https://github.com/sgl-project/sglang-omni
+2026-10-19T16:56:10.5379265Z  * [new ref]         accc0cc685cea84d4e29ec37ad47c0f9a34606c6 -> pull/2880/merge
+2026-10-19T16:56:10.5394055Z ##[endgroup]
+2026-10-19T16:56:10.5394359Z ##[group]Determining the checkout info
+2026-10-19T16:56:10.5395361Z ##[endgroup]
+2026-10-19T16:56:10.5399026Z [command]/usr/bin/git sparse-checkout disable
+2026-10-19T16:56:10.5456131Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-19T16:56:10.5475633Z ##[group]Checking out the ref
+2026-10-19T16:56:10.5478481Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/2880/merge
+2026-10-19T16:56:10.5559134Z Previous HEAD position was e4a2639 Merge 2cad178053585b41d486c1584796d58b205541a0 into 8b60a60c00ec201140125dc0841ce5a32d7526a5
+2026-10-19T16:56:10.5562660Z HEAD is now at accc0cc Merge 67e28de826af967a9dec76506c91473e257aa156 into 8b60a60c00ec201140125dc0841ce5a32d7526a5
+2026-10-19T16:56:10.5565407Z ##[endgroup]
+2026-10-19T16:56:10.5590339Z [command]/usr/bin/git log -1 --format=%H
+2026-10-19T16:56:10.5609862Z accc0cc685cea84d4e29ec37ad47c0f9a34606c6
+2026-10-19T16:56:10.5978384Z Prepare all required actions
+2026-10-19T16:56:10.6064242Z ##[group]Run ./.github/actions/omni-setup
+2026-10-19T16:56:10.6064469Z with:
+2026-10-19T16:56:10.6064630Z   venv-name: omni
+2026-10-19T16:56:10.6064802Z   install-deps: false
+2026-10-19T16:56:10.6064982Z env:
+2026-10-19T16:56:10.6065154Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:10.6065360Z ##[endgroup]
+2026-10-19T16:56:10.6111200Z ##[start-action display=Validate PR-scoped CI home;id=__self.__run]
+2026-10-19T16:56:10.6145091Z ##[group]Run bash .github/scripts/validate_omni_ci_home.sh
+2026-10-19T16:56:10.6145487Z [36;1mbash .github/scripts/validate_omni_ci_home.sh[0m
+2026-10-19T16:56:10.6148430Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-19T16:56:10.6148677Z env:
+2026-10-19T16:56:10.6148863Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:10.6149076Z ##[endgroup]
+2026-10-19T16:56:10.8090228Z ##[end-action id=__self.__run;outcome=success;conclusion=success;duration_ms=197]
+2026-10-19T16:56:10.8092546Z ##[start-action display=Align CI cache home;id=__self.__run_2]
+2026-10-19T16:56:10.8125720Z ##[group]Run echo "HOME=/github/home" >> "${GITHUB_ENV}"
+2026-10-19T16:56:10.8126056Z [36;1mecho "HOME=/github/home" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8126371Z [36;1mecho "HF_HOME=/github/home/.cache/huggingface" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8126721Z [36;1mecho "XDG_CACHE_HOME=${OMNI_CI_HOME}/.cache" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8127090Z [36;1m# SGLang builds DeepGEMM, Triton and its own JIT kernels at first use.[0m
+2026-10-19T16:56:10.8127476Z [36;1m# Share them across PRs like the wheel cache, so a new pin is built once[0m
+2026-10-19T16:56:10.8127856Z [36;1m# per host and every later job starts warm. The JIT kernels follow their[0m
+2026-10-19T16:56:10.8128231Z [36;1m# own variable, which otherwise resolves under the per-job HOME.[0m
+2026-10-19T16:56:10.8128606Z [36;1mecho "SGLANG_CACHE_DIR=/data/omni-ci/sglang-cache" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8129030Z [36;1mecho "SGLANG_JIT_CACHE_DIR=/data/omni-ci/sglang-cache/jit" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8129436Z [36;1m# The CI venv inherits the image's Python/Torch/FlashInfer environment,[0m
+2026-10-19T16:56:10.8129809Z [36;1m# so it can safely reuse the architecture-specific prewarmed cache.[0m
+2026-10-19T16:56:10.8130156Z [36;1mecho "FLASHINFER_WORKSPACE_BASE=/root" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8130463Z [36;1mecho "FLASHINFER_JIT_DEBUG=0" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8130829Z [36;1m# note (zhaochenyang20): speed thresholds assume each model's own compile setting.[0m
+2026-10-19T16:56:10.8131214Z [36;1mecho "SGLANG_OMNI_TORCH_COMPILE_DEFAULT=0" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8131523Z [36;1mecho "HF_HUB_DISABLE_XET=0" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8131870Z [36;1mecho "HF_ENDPOINT=${HF_ENDPOINT:-https://huggingface.co}" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8132279Z [36;1m# PyPI mirror + shared wheel cache (HF mirror does not accelerate pip/uv).[0m
+2026-10-19T16:56:10.8132727Z [36;1mecho "UV_INDEX_URL=${UV_INDEX_URL:-https://mirrors.aliyun.com/pypi/simple}" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8133156Z [36;1m# Keep downloaded wheels on the persistent /data/omni-ci mount.[0m
+2026-10-19T16:56:10.8133496Z [36;1mecho "UV_CACHE_DIR=/data/omni-ci/uv-cache" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8133843Z [36;1mecho "OMNI_CI_PYTHON=${OMNI_CI_HOME}/omni/bin/python" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:10.8134267Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-19T16:56:10.8134499Z env:
+2026-10-19T16:56:10.8134671Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:10.8134909Z ##[endgroup]
+2026-10-19T16:56:11.0178016Z ##[end-action id=__self.__run_2;outcome=success;conclusion=success;duration_ms=208]
+2026-10-19T16:56:11.0181130Z ##[start-action display=Restore cache;id=__self.__run_3]
+2026-10-19T16:56:11.0198748Z ##[group]Run source .github/scripts/pin_to_ci_cpuset.sh
+2026-10-19T16:56:11.0199173Z [36;1msource .github/scripts/pin_to_ci_cpuset.sh[0m
+2026-10-19T16:56:11.0199438Z [36;1mHOST="${OMNI_CI_HOME}/${VENV_NAME}"[0m
+2026-10-19T16:56:11.0199704Z [36;1mif [ -d "${HOST}" ] && [ -n "$(ls -A "${HOST}/")" ]; then[0m
+2026-10-19T16:56:11.0199958Z [36;1m  rm -rf "./${VENV_NAME}"[0m
+2026-10-19T16:56:11.0200172Z [36;1m  ln -sfn "${HOST}" "./${VENV_NAME}"[0m
+2026-10-19T16:56:11.0200381Z [36;1mfi[0m
+2026-10-19T16:56:11.0200661Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-19T16:56:11.0200896Z env:
+2026-10-19T16:56:11.0201060Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:11.0201260Z   HOME: /github/home
+2026-10-19T16:56:11.0201448Z   HF_HOME: /github/home/.cache/huggingface
+2026-10-19T16:56:11.0201682Z   XDG_CACHE_HOME: /data/omni-ci/pr-2880/.cache
+2026-10-19T16:56:11.0202013Z   SGLANG_CACHE_DIR: /data/omni-ci/sglang-cache
+2026-10-19T16:56:11.0202269Z   SGLANG_JIT_CACHE_DIR: /data/omni-ci/sglang-cache/jit
+2026-10-19T16:56:11.0202516Z   FLASHINFER_WORKSPACE_BASE: /root
+2026-10-19T16:56:11.0202726Z   FLASHINFER_JIT_DEBUG: 0
+2026-10-19T16:56:11.0203007Z   SGLANG_OMNI_TORCH_COMPILE_DEFAULT: 0
+2026-10-19T16:56:11.0203219Z   HF_HUB_DISABLE_XET: 0
+2026-10-19T16:56:11.0203422Z   HF_ENDPOINT: https://huggingface.co
+2026-10-19T16:56:11.0203671Z   UV_INDEX_URL: https://mirrors.aliyun.com/pypi/simple
+2026-10-19T16:56:11.0203926Z   UV_CACHE_DIR: /data/omni-ci/uv-cache
+2026-10-19T16:56:11.0204168Z   OMNI_CI_PYTHON: /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:11.0204405Z   VENV_NAME: omni
+2026-10-19T16:56:11.0204570Z ##[endgroup]
+2026-10-19T16:56:11.2213078Z ##[end-action id=__self.__run_3;outcome=success;conclusion=success;duration_ms=203]
+2026-10-19T16:56:11.2216495Z ##[start-action display=Reconcile or install dependencies;id=__self.__run_4]
+2026-10-19T16:56:11.2224249Z ##[end-action id=__self.__run_4;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-19T16:56:11.2226555Z ##[start-action display=Validate or recover prepared environment;id=__self.__run_5]
+2026-10-19T16:56:11.2245759Z ##[group]Run if bash .github/scripts/validate_omni_env_reusable.sh "${VENV_NAME}"; then
+2026-10-19T16:56:11.2246233Z [36;1mif bash .github/scripts/validate_omni_env_reusable.sh "${VENV_NAME}"; then[0m
+2026-10-19T16:56:11.2246643Z [36;1m  echo "Prepared ${VENV_NAME} environment is reusable under ${OMNI_CI_HOME}."[0m
+2026-10-19T16:56:11.2246947Z [36;1m  exit 0[0m
+2026-10-19T16:56:11.2247106Z [36;1mfi[0m
+2026-10-19T16:56:11.2247268Z [36;1m[0m
+2026-10-19T16:56:11.2247582Z [36;1mecho "::warning::Prepared ${VENV_NAME} environment is missing or drifted under ${OMNI_CI_HOME}; rebuilding."[0m
+2026-10-19T16:56:11.2248024Z [36;1mbash .github/scripts/reconcile_omni_ci_env.sh "${VENV_NAME}"[0m
+2026-10-19T16:56:11.2248413Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-19T16:56:11.2248637Z env:
+2026-10-19T16:56:11.2248802Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:11.2249005Z   HOME: /github/home
+2026-10-19T16:56:11.2249184Z   HF_HOME: /github/home/.cache/huggingface
+2026-10-19T16:56:11.2249417Z   XDG_CACHE_HOME: /data/omni-ci/pr-2880/.cache
+2026-10-19T16:56:11.2249658Z   SGLANG_CACHE_DIR: /data/omni-ci/sglang-cache
+2026-10-19T16:56:11.2249902Z   SGLANG_JIT_CACHE_DIR: /data/omni-ci/sglang-cache/jit
+2026-10-19T16:56:11.2250145Z   FLASHINFER_WORKSPACE_BASE: /root
+2026-10-19T16:56:11.2250344Z   FLASHINFER_JIT_DEBUG: 0
+2026-10-19T16:56:11.2250527Z   SGLANG_OMNI_TORCH_COMPILE_DEFAULT: 0
+2026-10-19T16:56:11.2250723Z   HF_HUB_DISABLE_XET: 0
+2026-10-19T16:56:11.2250919Z   HF_ENDPOINT: https://huggingface.co
+2026-10-19T16:56:11.2251163Z   UV_INDEX_URL: https://mirrors.aliyun.com/pypi/simple
+2026-10-19T16:56:11.2251407Z   UV_CACHE_DIR: /data/omni-ci/uv-cache
+2026-10-19T16:56:11.2251641Z   OMNI_CI_PYTHON: /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:11.2251867Z   VENV_NAME: omni
+2026-10-19T16:56:11.2252036Z ##[endgroup]
+2026-10-19T16:56:19.3751596Z 
+2026-10-19T16:56:30.6729887Z Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-19T16:56:30.9777718Z [transformers] The `check_model_inputs` decorator is deprecated in favor of `merge_with_config_defaults`.
+2026-10-19T16:56:31.0058791Z /opt/sglang/lib/python3.12/site-packages/audiotools/core/audio_signal.py:32: SyntaxWarning: invalid escape sequence '\_'
+2026-10-19T16:56:31.0059276Z   """
+2026-10-19T16:56:31.0067798Z /opt/sglang/lib/python3.12/site-packages/audiotools/core/audio_signal.py:1012: SyntaxWarning: invalid escape sequence '\_'
+2026-10-19T16:56:31.0068338Z   """Wrapper around scipy.signal.get_window so one can also get the
+2026-10-19T16:56:31.0068963Z /opt/sglang/lib/python3.12/site-packages/audiotools/core/audio_signal.py:1092: SyntaxWarning: invalid escape sequence '\_'
+2026-10-19T16:56:31.0069448Z   """Compute how the STFT should be padded, based on match\_stride.
+2026-10-19T16:56:31.0069930Z /opt/sglang/lib/python3.12/site-packages/audiotools/core/audio_signal.py:1131: SyntaxWarning: invalid escape sequence '\_'
+2026-10-19T16:56:31.0070415Z   """Computes the short-time Fourier transform of the audio data,
+2026-10-19T16:56:31.0070856Z /opt/sglang/lib/python3.12/site-packages/audiotools/core/audio_signal.py:1222: SyntaxWarning: invalid escape sequence '\_'
+2026-10-19T16:56:31.0071525Z   """Computes inverse STFT and sets it to audio\_data.
+2026-10-19T16:56:38.0728428Z 
+2026-10-19T16:56:38.0728736Z ********
+2026-10-19T16:56:38.0729279Z Warning: flash-attn is not installed. Will only run the manual PyTorch version. Please install flash-attn for faster inference.
+2026-10-19T16:56:38.0729740Z ********
+2026-10-19T16:56:38.0729907Z  
+2026-10-19T16:56:38.0730778Z [ERROR] `cache_position` is part of Qwen3TTSTokenizerV2DecoderTransformerModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /opt/sglang/lib/python3.12/site-packages/qwen_tts/core/tokenizer_12hz/modeling_qwen3_tts_tokenizer_v2.py.
+2026-10-19T16:56:39.5160913Z Import probe ok: /data/omni-ci/pr-2880/omni
+2026-10-19T16:56:39.5849121Z Verified 20 exact dependency pins via /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:39.5936881Z OMNI CI environment reusable: /data/omni-ci/pr-2880 (venv=omni, deps_hash=13a5db9aafa7401271ee97977b488e95e5d30920071ad3bbcc9e16c76eb46b36)
+2026-10-19T16:56:39.5938692Z Prepared omni environment is reusable under /data/omni-ci/pr-2880.
+2026-10-19T16:56:39.6058358Z ##[end-action id=__self.__run_5;outcome=success;conclusion=success;duration_ms=28383]
+2026-10-19T16:56:39.6062352Z ##[start-action display=Assert OMNI environment passes reuse gate;id=__self.__run_6]
+2026-10-19T16:56:39.6078935Z ##[group]Run bash .github/scripts/validate_omni_env_reusable.sh "${VENV_NAME}"
+2026-10-19T16:56:39.6079315Z [36;1mbash .github/scripts/validate_omni_env_reusable.sh "${VENV_NAME}"[0m
+2026-10-19T16:56:39.6079705Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-19T16:56:39.6079914Z env:
+2026-10-19T16:56:39.6080079Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:39.6080285Z   HOME: /github/home
+2026-10-19T16:56:39.6080470Z   HF_HOME: /github/home/.cache/huggingface
+2026-10-19T16:56:39.6080691Z   XDG_CACHE_HOME: /data/omni-ci/pr-2880/.cache
+2026-10-19T16:56:39.6080923Z   SGLANG_CACHE_DIR: /data/omni-ci/sglang-cache
+2026-10-19T16:56:39.6081158Z   SGLANG_JIT_CACHE_DIR: /data/omni-ci/sglang-cache/jit
+2026-10-19T16:56:39.6081387Z   FLASHINFER_WORKSPACE_BASE: /root
+2026-10-19T16:56:39.6081577Z   FLASHINFER_JIT_DEBUG: 0
+2026-10-19T16:56:39.6081846Z   SGLANG_OMNI_TORCH_COMPILE_DEFAULT: 0
+2026-10-19T16:56:39.6082044Z   HF_HUB_DISABLE_XET: 0
+2026-10-19T16:56:39.6082246Z   HF_ENDPOINT: https://huggingface.co
+2026-10-19T16:56:39.6082483Z   UV_INDEX_URL: https://mirrors.aliyun.com/pypi/simple
+2026-10-19T16:56:39.6082716Z   UV_CACHE_DIR: /data/omni-ci/uv-cache
+2026-10-19T16:56:39.6082940Z   OMNI_CI_PYTHON: /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:39.6083158Z   VENV_NAME: omni
+2026-10-19T16:56:39.6083319Z ##[endgroup]
+2026-10-19T16:56:42.8567235Z 
+2026-10-19T16:56:48.1620533Z Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-19T16:56:48.2852108Z [transformers] The `check_model_inputs` decorator is deprecated in favor of `merge_with_config_defaults`.
+2026-10-19T16:56:51.8020471Z 
+2026-10-19T16:56:51.8020809Z ********
+2026-10-19T16:56:51.8021332Z Warning: flash-attn is not installed. Will only run the manual PyTorch version. Please install flash-attn for faster inference.
+2026-10-19T16:56:51.8021781Z ********
+2026-10-19T16:56:51.8021930Z  
+2026-10-19T16:56:51.8022775Z [ERROR] `cache_position` is part of Qwen3TTSTokenizerV2DecoderTransformerModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /opt/sglang/lib/python3.12/site-packages/qwen_tts/core/tokenizer_12hz/modeling_qwen3_tts_tokenizer_v2.py.
+2026-10-19T16:56:53.1055931Z Import probe ok: /data/omni-ci/pr-2880/omni
+2026-10-19T16:56:53.1745319Z Verified 20 exact dependency pins via /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:53.1831091Z OMNI CI environment reusable: /data/omni-ci/pr-2880 (venv=omni, deps_hash=13a5db9aafa7401271ee97977b488e95e5d30920071ad3bbcc9e16c76eb46b36)
+2026-10-19T16:56:53.1970906Z ##[end-action id=__self.__run_6;outcome=success;conclusion=success;duration_ms=13590]
+2026-10-19T16:56:53.1973088Z ##[start-action display=Export Rust router paths;id=__self.__run_7]
+2026-10-19T16:56:53.1988191Z ##[group]Run binary="$(bash .github/scripts/prepare_rust_router.sh path)"
+2026-10-19T16:56:53.1988574Z [36;1mbinary="$(bash .github/scripts/prepare_rust_router.sh path)"[0m
+2026-10-19T16:56:53.1988904Z [36;1mecho "SGLANG_OMNI_ROUTER_BIN=${binary}" >> "${GITHUB_ENV}"[0m
+2026-10-19T16:56:53.1989281Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-19T16:56:53.1989521Z env:
+2026-10-19T16:56:53.1989689Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:53.1989890Z   HOME: /github/home
+2026-10-19T16:56:53.1990073Z   HF_HOME: /github/home/.cache/huggingface
+2026-10-19T16:56:53.1990322Z   XDG_CACHE_HOME: /data/omni-ci/pr-2880/.cache
+2026-10-19T16:56:53.1990595Z   SGLANG_CACHE_DIR: /data/omni-ci/sglang-cache
+2026-10-19T16:56:53.1990843Z   SGLANG_JIT_CACHE_DIR: /data/omni-ci/sglang-cache/jit
+2026-10-19T16:56:53.1991116Z   FLASHINFER_WORKSPACE_BASE: /root
+2026-10-19T16:56:53.1991307Z   FLASHINFER_JIT_DEBUG: 0
+2026-10-19T16:56:53.1991485Z   SGLANG_OMNI_TORCH_COMPILE_DEFAULT: 0
+2026-10-19T16:56:53.1991673Z   HF_HUB_DISABLE_XET: 0
+2026-10-19T16:56:53.1991863Z   HF_ENDPOINT: https://huggingface.co
+2026-10-19T16:56:53.1992099Z   UV_INDEX_URL: https://mirrors.aliyun.com/pypi/simple
+2026-10-19T16:56:53.1992334Z   UV_CACHE_DIR: /data/omni-ci/uv-cache
+2026-10-19T16:56:53.1992565Z   OMNI_CI_PYTHON: /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:53.1992788Z ##[endgroup]
+2026-10-19T16:56:53.4056578Z ##[end-action id=__self.__run_7;outcome=success;conclusion=success;duration_ms=208]
+2026-10-19T16:56:53.4058519Z ##[start-action display=Kill GPU processes;id=__self.__run_8]
+2026-10-19T16:56:53.4122657Z ##[group]Run bash .github/scripts/delete_gpu_process.sh
+2026-10-19T16:56:53.4122980Z [36;1mbash .github/scripts/delete_gpu_process.sh[0m
+2026-10-19T16:56:53.4123336Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-19T16:56:53.4123560Z env:
+2026-10-19T16:56:53.4123730Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:53.4123960Z   HOME: /github/home
+2026-10-19T16:56:53.4124158Z   HF_HOME: /github/home/.cache/huggingface
+2026-10-19T16:56:53.4124405Z   XDG_CACHE_HOME: /data/omni-ci/pr-2880/.cache
+2026-10-19T16:56:53.4124657Z   SGLANG_CACHE_DIR: /data/omni-ci/sglang-cache
+2026-10-19T16:56:53.4124908Z   SGLANG_JIT_CACHE_DIR: /data/omni-ci/sglang-cache/jit
+2026-10-19T16:56:53.4125156Z   FLASHINFER_WORKSPACE_BASE: /root
+2026-10-19T16:56:53.4125359Z   FLASHINFER_JIT_DEBUG: 0
+2026-10-19T16:56:53.4125550Z   SGLANG_OMNI_TORCH_COMPILE_DEFAULT: 0
+2026-10-19T16:56:53.4125751Z   HF_HUB_DISABLE_XET: 0
+2026-10-19T16:56:53.4125955Z   HF_ENDPOINT: https://huggingface.co
+2026-10-19T16:56:53.4126206Z   UV_INDEX_URL: https://mirrors.aliyun.com/pypi/simple
+2026-10-19T16:56:53.4126590Z   UV_CACHE_DIR: /data/omni-ci/uv-cache
+2026-10-19T16:56:53.4126838Z   OMNI_CI_PYTHON: /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:53.4127263Z   SGLANG_OMNI_ROUTER_BIN: /data/omni-ci/rust-router/bin/7befe3e2b79bf13a5a13f044da993ec032af7b67/sgl-omni-router
+2026-10-19T16:56:53.4127646Z ##[endgroup]
+2026-10-19T16:56:53.5822669Z === GPU cleanup scope (physical): 0 1 (input CVD='') ===
+2026-10-19T16:56:53.5822984Z === Checking GPU Utilization ===
+2026-10-19T16:56:53.6353484Z   No processes found on GPU 0.
+2026-10-19T16:56:53.7343239Z   No processes found on GPU 1.
+2026-10-19T16:56:53.7343577Z Waiting for selected GPU memory.used to drop below 1024 MiB...
+2026-10-19T16:56:53.8089595Z   GPU 0: 0 MiB used
+2026-10-19T16:56:53.8402485Z   GPU 1: 0 MiB used
+2026-10-19T16:56:53.8402780Z GPU memory cleanup complete: max memory.used=0 MiB.
+2026-10-19T16:56:53.8402968Z 
+2026-10-19T16:56:53.8688842Z ##[end-action id=__self.__run_8;outcome=success;conclusion=success;duration_ms=462]
+2026-10-19T16:56:53.8717735Z ##[group]Run source omni/bin/activate
+2026-10-19T16:56:53.8717990Z [36;1msource omni/bin/activate[0m
+2026-10-19T16:56:53.8718313Z [36;1mexport PYTHONPATH=$PWD[0m
+2026-10-19T16:56:53.8718534Z [36;1mbash .github/scripts/run_flaky_pytest.sh \[0m
+2026-10-19T16:56:53.8718813Z [36;1m  pytest tests/ -v -m "accelerator and not benchmark" -x[0m
+2026-10-19T16:56:53.8719381Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-19T16:56:53.8719594Z env:
+2026-10-19T16:56:53.8719755Z   OMNI_CI_HOME: /data/omni-ci/pr-2880
+2026-10-19T16:56:53.8719955Z   HOME: /github/home
+2026-10-19T16:56:53.8720131Z   HF_HOME: /github/home/.cache/huggingface
+2026-10-19T16:56:53.8720352Z   XDG_CACHE_HOME: /data/omni-ci/pr-2880/.cache
+2026-10-19T16:56:53.8720581Z   SGLANG_CACHE_DIR: /data/omni-ci/sglang-cache
+2026-10-19T16:56:53.8720818Z   SGLANG_JIT_CACHE_DIR: /data/omni-ci/sglang-cache/jit
+2026-10-19T16:56:53.8721049Z   FLASHINFER_WORKSPACE_BASE: /root
+2026-10-19T16:56:53.8721274Z   FLASHINFER_JIT_DEBUG: 0
+2026-10-19T16:56:53.8721456Z   SGLANG_OMNI_TORCH_COMPILE_DEFAULT: 0
+2026-10-19T16:56:53.8721642Z   HF_HUB_DISABLE_XET: 0
+2026-10-19T16:56:53.8721893Z   HF_ENDPOINT: https://huggingface.co
+2026-10-19T16:56:53.8722129Z   UV_INDEX_URL: https://mirrors.aliyun.com/pypi/simple
+2026-10-19T16:56:53.8722362Z   UV_CACHE_DIR: /data/omni-ci/uv-cache
+2026-10-19T16:56:53.8722585Z   OMNI_CI_PYTHON: /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:53.8722985Z   SGLANG_OMNI_ROUTER_BIN: /data/omni-ci/rust-router/bin/7befe3e2b79bf13a5a13f044da993ec032af7b67/sgl-omni-router
+2026-10-19T16:56:53.8723348Z ##[endgroup]
+2026-10-19T16:56:54.0019181Z ##[group]unit-test-accelerator attempt 1/3
+2026-10-19T16:56:55.9164935Z ============================= test session starts ==============================
+2026-10-19T16:56:55.9165391Z platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /data/omni-ci/pr-2880/omni/bin/python
+2026-10-19T16:56:55.9165732Z cachedir: .pytest_cache
+2026-10-19T16:56:55.9165967Z rootdir: /__w/sglang-omni/sglang-omni
+2026-10-19T16:56:55.9166179Z configfile: pyproject.toml
+2026-10-19T16:56:55.9166537Z plugins: ai-dynamo-1.5.0.dev20260904, anyio-4.15.0, hydra-core-1.3.6, jaxtyping-0.3.11, asyncio-1.4.0, typeguard-4.6.0
+2026-10-19T16:56:55.9167133Z asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+2026-10-19T16:57:27.9231925Z collecting ... collected 10046 items / 9260 deselected / 786 selected
+2026-10-19T16:57:27.9232216Z 
+2026-10-19T16:57:27.9290034Z tests/test_model/test_auk_parity.py::test_speech_matches_upstream[False] SKIPPED [  0%]
+2026-10-19T16:57:27.9297883Z tests/test_model/test_auk_parity.py::test_speech_matches_upstream[True] SKIPPED [  0%]
+2026-10-19T16:57:27.9310283Z tests/test_model/test_personaplex_components.py::test_mimi_encode_matches_reference SKIPPED [  0%]
+2026-10-19T16:57:27.9320505Z tests/test_model/test_personaplex_components.py::test_mimi_decode_matches_reference SKIPPED [  0%]
+2026-10-19T16:57:27.9331075Z tests/test_model/test_personaplex_components.py::test_input_embeddings_match_reference SKIPPED [  0%]
+2026-10-19T16:57:27.9343541Z tests/test_model/test_personaplex_components.py::test_depformer_logits_match_reference[float32] SKIPPED [  0%]
+2026-10-19T16:57:27.9354704Z tests/test_model/test_personaplex_components.py::test_depformer_logits_match_reference[bfloat16] SKIPPED [  0%]
+2026-10-19T16:57:27.9365373Z tests/test_model/test_personaplex_parity.py::test_greedy_prefix_matches_reference[assistant] SKIPPED [  1%]
+2026-10-19T16:57:27.9375846Z tests/test_model/test_personaplex_parity.py::test_greedy_prefix_matches_reference[service] SKIPPED [  1%]
+2026-10-19T16:57:27.9385392Z tests/test_model/test_personaplex_parity.py::test_greedy_reply_repeats SKIPPED [  1%]
+2026-10-19T16:57:27.9395049Z tests/test_model/test_personaplex_parity.py::test_same_seed_repeats SKIPPED [  1%]
+2026-10-19T16:57:27.9407718Z tests/test_model/test_personaplex_parity.py::test_different_seed_differs SKIPPED [  1%]
+2026-10-19T16:57:27.9441773Z tests/test_model/test_rl_distributed_weight_update.py::test_distributed_refit_matches_base_and_keeps_serving SKIPPED [  1%]
+2026-10-19T16:57:28.0725286Z tests/unit_test/arkasr/test_encoder_cuda_graph.py::test_run_without_precapture_does_not_capture PASSED [  1%]
+2026-10-19T16:57:28.3700808Z tests/unit_test/arkasr/test_encoder_cuda_graph.py::test_graph_replay_matches_eager_masked_forward PASSED [  1%]
+2026-10-19T16:57:28.3872792Z tests/unit_test/arkasr/test_encoder_cuda_graph.py::test_capture_working_set_fills_batch_and_t_buckets PASSED [  2%]
+2026-10-19T16:57:28.3981187Z tests/unit_test/arkasr/test_encoder_cuda_graph.py::test_replay_failure_sticks_to_eager PASSED [  2%]
+2026-10-19T16:57:30.8702599Z tests/unit_test/cli/test_serve_exit.py::test_fast_exit_removes_the_cuda_ipc_reference_file PASSED [  2%]
+2026-10-19T16:57:31.0257310Z tests/unit_test/dots_tts/test_flow_head.py::test_single_stream_seed_survives_accelerator_rematerialization PASSED [  2%]
+2026-10-19T16:57:31.0342096Z tests/unit_test/dots_tts/test_flow_head.py::test_rotary_angles_stay_fp32_under_accelerator_autocast PASSED [  2%]
+2026-10-19T16:57:31.1421630Z tests/unit_test/dots_tts/test_tail.py::test_batched_tail_cuda_graph_matches_eager_for_dynamic_slot_order PASSED [  2%]
+2026-10-19T16:57:31.1963643Z tests/unit_test/dots_tts/test_vocoder_cuda_graph.py::test_graph_step_is_bit_identical_to_eager_across_aging_rows PASSED [  2%]
+2026-10-19T16:57:31.2088500Z tests/unit_test/dots_tts/test_vocoder_cuda_graph.py::test_uncaptured_shape_falls_back_to_eager_bit_identically PASSED [  2%]
+2026-10-19T16:57:31.2232396Z tests/unit_test/dots_tts/test_vocoder_cuda_graph.py::test_default_vocoder_captures_serving_shapes PASSED [  3%]
+2026-10-19T16:57:31.2257790Z tests/unit_test/dots_tts/test_vocoder_cuda_graph.py::test_capture_failure_aborts_pool_setup[warmup] PASSED [  3%]
+2026-10-19T16:57:31.2293115Z tests/unit_test/dots_tts/test_vocoder_cuda_graph.py::test_capture_failure_aborts_pool_setup[capture] PASSED [  3%]
+2026-10-19T16:57:31.8590614Z tests/unit_test/fishaudio_drama3/test_audio_decoder.py::test_bfloat16_tower_tracks_the_fp32_formulas[cuda] PASSED [  3%]
+2026-10-19T16:57:31.8652023Z tests/unit_test/fishaudio_drama3/test_first_frame_graphs.py::test_capture_records_every_request_count_largest_first_in_capture_mode PASSED [  3%]
+2026-10-19T16:57:31.8692217Z tests/unit_test/fishaudio_drama3/test_first_frame_graphs.py::test_a_failed_capture_names_its_request_count_and_the_switch PASSED [  3%]
+2026-10-19T16:58:09.3477240Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_speech_holds_exactly_the_frames_asked_for[no-reference] PASSED [  3%]
+2026-10-19T16:58:09.5606156Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_speech_holds_exactly_the_frames_asked_for[reference-audio] PASSED [  3%]
+2026-10-19T16:58:09.6377780Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_speech_holds_exactly_the_frames_asked_for[reference-codes] PASSED [  4%]
+2026-10-19T16:58:09.9908476Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_streamed_speech_arrives_in_the_fixed_windows PASSED [  4%]
+2026-10-19T16:58:10.8935127Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_concurrent_requests_all_complete PASSED [  4%]
+2026-10-19T16:58:10.9105841Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_without_streaming[instructions] PASSED [  4%]
+2026-10-19T16:58:10.9260547Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_without_streaming[stage-sampling] PASSED [  4%]
+2026-10-19T16:58:10.9414456Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_without_streaming[reference-speaker] PASSED [  4%]
+2026-10-19T16:58:10.9597304Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_without_streaming[repetition-penalty] PASSED [  4%]
+2026-10-19T16:58:10.9765574Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_without_streaming[speaker-one] PASSED [  4%]
+2026-10-19T16:58:10.9916805Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_before_the_first_chunk[instructions] PASSED [  5%]
+2026-10-19T16:58:11.0069190Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_before_the_first_chunk[stage-sampling] PASSED [  5%]
+2026-10-19T16:58:11.0220248Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_before_the_first_chunk[reference-speaker] PASSED [  5%]
+2026-10-19T16:58:11.0385096Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_before_the_first_chunk[repetition-penalty] PASSED [  5%]
+2026-10-19T16:58:11.0692922Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_requests_the_model_cannot_honor_are_400_before_the_first_chunk[speaker-one] PASSED [  5%]
+2026-10-19T16:58:14.3815829Z tests/unit_test/fishaudio_drama3/test_http_e2e.py::test_a_full_round_completes_after_streams_are_dropped PASSED [  5%]
+2026-10-19T16:58:14.4041454Z tests/unit_test/fishaudio_drama3/test_sampling.py::test_tied_top_tokens_resolve_as_in_the_biased_full_row_on_the_device PASSED [  5%]
+2026-10-19T16:58:14.7381686Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[1-64] PASSED [  5%]
+2026-10-19T16:58:14.7437733Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[1-1024] PASSED [  6%]
+2026-10-19T16:58:14.7501114Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[1-4096] PASSED [  6%]
+2026-10-19T16:58:14.7526230Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[37-64] PASSED [  6%]
+2026-10-19T16:58:14.7553223Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[37-1024] PASSED [  6%]
+2026-10-19T16:58:14.7603099Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[37-4096] PASSED [  6%]
+2026-10-19T16:58:14.7627909Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[200-64] PASSED [  6%]
+2026-10-19T16:58:14.7663679Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[200-1024] PASSED [  6%]
+2026-10-19T16:58:14.7732268Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_draws_what_the_reference_draws_with_the_same_noise[200-4096] PASSED [  6%]
+2026-10-19T16:58:14.7950086Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_draws_what_the_reference_draws_with_the_same_noise[1-64] PASSED [  7%]
+2026-10-19T16:58:14.8061333Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_draws_what_the_reference_draws_with_the_same_noise[1-4096] PASSED [  7%]
+2026-10-19T16:58:14.8106357Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_draws_what_the_reference_draws_with_the_same_noise[37-64] PASSED [  7%]
+2026-10-19T16:58:14.8147987Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_draws_what_the_reference_draws_with_the_same_noise[37-4096] PASSED [  7%]
+2026-10-19T16:58:14.8243953Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_draws_what_the_reference_draws_with_the_same_noise[200-64] PASSED [  7%]
+2026-10-19T16:58:14.8318431Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_draws_what_the_reference_draws_with_the_same_noise[200-4096] PASSED [  7%]
+2026-10-19T16:58:14.8345658Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_keeps_repeated_eos_and_replaces_repeated_semantic[inside] PASSED [  7%]
+2026-10-19T16:58:14.8371888Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_keeps_repeated_eos_and_replaces_repeated_semantic[start] PASSED [  8%]
+2026-10-19T16:58:14.8397401Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_keeps_repeated_eos_and_replaces_repeated_semantic[end] PASSED [  8%]
+2026-10-19T16:58:14.8463158Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_kept_probabilities_follow_the_rule_on_both_branches[False] PASSED [  8%]
+2026-10-19T16:58:14.8513287Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_kept_probabilities_follow_the_rule_on_both_branches[True] PASSED [  8%]
+2026-10-19T16:58:14.8546106Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_tied_and_signed_zero_scores_split_by_column PASSED [  8%]
+2026-10-19T16:58:14.8570277Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_non_finite_rows_stay_in_range_and_leave_other_rows_alone[nan] PASSED [  8%]
+2026-10-19T16:58:14.8593774Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_non_finite_rows_stay_in_range_and_leave_other_rows_alone[inf] PASSED [  8%]
+2026-10-19T16:58:14.8616800Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_non_finite_rows_stay_in_range_and_leave_other_rows_alone[-inf] PASSED [  8%]
+2026-10-19T16:58:14.8797635Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_graph_replays_read_the_step_and_parameters_at_replay PASSED [  9%]
+2026-10-19T16:58:14.8893983Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_streams_and_steps_draw_independent_noise PASSED [  9%]
+2026-10-19T16:58:14.8907736Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_this_gpu_takes_the_triton_kernels_only_if_validated PASSED [  9%]
+2026-10-19T16:58:14.8943556Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_breaks_top_k_one_ties_like_the_pytorch_sampler[33] PASSED [  9%]
+2026-10-19T16:58:14.8979095Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_breaks_top_k_one_ties_like_the_pytorch_sampler[64] PASSED [  9%]
+2026-10-19T16:58:14.9031380Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_head_kernel_breaks_top_k_one_ties_like_the_pytorch_sampler[4096] PASSED [  9%]
+2026-10-19T16:58:14.9074280Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_breaks_top_k_one_ties_like_the_pytorch_sampler[33] PASSED [  9%]
+2026-10-19T16:58:14.9105844Z tests/unit_test/fishaudio_drama3/test_sampling_kernels.py::test_semantic_kernel_breaks_top_k_one_ties_like_the_pytorch_sampler[4097] PASSED [  9%]
+2026-10-19T16:58:14.9292756Z tests/unit_test/fishaudio_drama3/test_stages.py::test_preprocessing_warms_the_encoder_up_once_on_an_accelerator[cuda] PASSED [ 10%]
+2026-10-19T16:58:14.9329602Z tests/unit_test/fishaudio_drama3/test_stages.py::test_the_padded_frame_limit_is_the_share_left_after_held_memory PASSED [ 10%]
+2026-10-19T16:58:14.9362022Z tests/unit_test/fishaudio_drama3/test_stages.py::test_a_share_that_cannot_hold_one_longest_request_is_refused PASSED [ 10%]
+2026-10-19T16:58:15.5726100Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_each_kernel_tracks_the_fp32_reference_like_the_plain_path[1] PASSED [ 10%]
+2026-10-19T16:58:15.6522116Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_each_kernel_tracks_the_fp32_reference_like_the_plain_path[3] PASSED [ 10%]
+2026-10-19T16:58:15.7389886Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_each_kernel_tracks_the_fp32_reference_like_the_plain_path[8] PASSED [ 10%]
+2026-10-19T16:58:15.8224946Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_each_kernel_tracks_the_fp32_reference_like_the_plain_path[12] PASSED [ 10%]
+2026-10-19T16:58:15.8942238Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_each_kernel_tracks_the_fp32_reference_like_the_plain_path[16] PASSED [ 10%]
+2026-10-19T16:58:16.0643954Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_every_fused_layer_tracks_the_fp32_reference_like_the_plain_path[5] PASSED [ 11%]
+2026-10-19T16:58:16.2333959Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_every_fused_layer_tracks_the_fp32_reference_like_the_plain_path[16] PASSED [ 11%]
+2026-10-19T16:58:16.7948385Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_the_stacked_fused_tower_tracks_the_fp32_reference_like_the_plain_path PASSED [ 11%]
+2026-10-19T16:58:16.9745634Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_a_row_gets_the_same_bits_at_every_row_count_and_every_run PASSED [ 11%]
+2026-10-19T16:58:17.0678416Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_a_captured_tower_step_replays_the_eager_bits[1] PASSED [ 11%]
+2026-10-19T16:58:17.1595730Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_a_captured_tower_step_replays_the_eager_bits[3] PASSED [ 11%]
+2026-10-19T16:58:17.2512977Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_a_captured_tower_step_replays_the_eager_bits[8] PASSED [ 11%]
+2026-10-19T16:58:17.3429235Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_a_captured_tower_step_replays_the_eager_bits[16] PASSED [ 11%]
+2026-10-19T16:58:17.4136664Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_a_step_writes_only_its_rows_slots_and_skips_slot_zero PASSED [ 12%]
+2026-10-19T16:58:17.4853929Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_launches_reset_their_counters_and_leave_rows_past_the_pass_alone PASSED [ 12%]
+2026-10-19T16:58:17.6486665Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_only_decode_passes_take_the_fused_layers[1] PASSED [ 12%]
+2026-10-19T16:58:17.8107846Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_only_decode_passes_take_the_fused_layers[4] PASSED [ 12%]
+2026-10-19T16:58:17.9729803Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_only_decode_passes_take_the_fused_layers[5] PASSED [ 12%]
+2026-10-19T16:58:18.1348719Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_only_decode_passes_take_the_fused_layers[3] PASSED [ 12%]
+2026-10-19T16:58:18.2987911Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_passes_above_the_fused_rows_keep_the_plain_path_bit_for_bit PASSED [ 12%]
+2026-10-19T16:58:18.3798277Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_the_resolver_takes_only_plain_bf16_layers_and_a_plain_kv_pool PASSED [ 12%]
+2026-10-19T16:58:18.4469733Z tests/unit_test/fishaudio_drama3/test_tower_kernels.py::test_this_gpu_takes_the_fused_layers_only_if_validated PASSED [ 13%]
+2026-10-19T16:58:18.4518148Z tests/unit_test/fishaudio_drama3/test_vocoder.py::test_window_graphs_decode_every_window_length_like_eager PASSED [ 13%]
+2026-10-19T16:58:18.4562512Z tests/unit_test/fishaudio_drama3/test_vocoder.py::test_the_snake_kernel_follows_the_formula_on_a_trimmed_activation[dtype0] PASSED [ 13%]
+2026-10-19T16:58:18.4592380Z tests/unit_test/fishaudio_drama3/test_vocoder.py::test_the_snake_kernel_follows_the_formula_on_a_trimmed_activation[dtype1] PASSED [ 13%]
+2026-10-19T16:58:20.0003904Z tests/unit_test/fishaudio_drama3/test_vocoder.py::test_the_channels_last_decoder_decodes_like_the_codec[float32] PASSED [ 13%]
+2026-10-19T16:58:21.6102957Z tests/unit_test/fishaudio_drama3/test_vocoder.py::test_the_channels_last_decoder_decodes_like_the_codec[float16] PASSED [ 13%]
+2026-10-19T16:58:21.8169360Z tests/unit_test/fishaudio_s2_pro/test_pipeline.py::test_encodes_on_a_gpu_run_one_at_a_time PASSED [ 13%]
+2026-10-19T16:58:23.5986316Z tests/unit_test/fishaudio_s2_pro/test_tts.py::test_fish_s2pro_seeded_sampler_preserves_probability_distribution PASSED [ 13%]
+2026-10-19T16:58:24.2725392Z tests/unit_test/fishaudio_s2_pro/test_vocoder.py::test_a_codec_decode_can_be_captured_in_a_cuda_graph PASSED [ 14%]
+2026-10-19T16:58:32.8797632Z tests/unit_test/fun_cosyvoice3/test_dit_compile_gpu.py::test_compile_dit_backbone_matches_eager_beyond_the_warmup_shapes PASSED [ 14%]
+2026-10-19T16:58:33.0460673Z tests/unit_test/fun_cosyvoice3/test_dit_compile_gpu.py::test_the_compiled_chunk_mask_matches_eager[50] PASSED [ 14%]
+2026-10-19T16:58:33.1358002Z tests/unit_test/fun_cosyvoice3/test_dit_compile_gpu.py::test_the_compiled_chunk_mask_matches_eager[0] PASSED [ 14%]
+2026-10-19T16:58:35.5076491Z tests/unit_test/fun_cosyvoice3/test_dit_compile_gpu.py::test_production_packed_dit_compile_is_as_close_to_float32_as_eager PASSED [ 14%]
+2026-10-19T16:58:36.2548067Z tests/unit_test/fun_cosyvoice3/test_flow_cuda_graph.py::test_capture_populates_graphs_and_replays_eager_equivalent PASSED [ 14%]
+2026-10-19T16:58:36.2566240Z tests/unit_test/fun_cosyvoice3/test_model_runner.py::test_cosyvoice3_runner_reads_cuda_token_ids_through_pinned_staging PASSED [ 14%]
+2026-10-19T16:58:36.4105530Z tests/unit_test/fun_cosyvoice3/test_model_runner.py::test_cosyvoice3_seeded_ras_redraw_of_a_row_subset_matches_the_full_draw PASSED [ 15%]
+2026-10-19T16:58:36.4663708Z tests/unit_test/fun_cosyvoice3/test_model_runner.py::test_cosyvoice3_speech_head_returns_float32_logits PASSED [ 15%]
+2026-10-19T16:58:36.6587853Z tests/unit_test/fun_cosyvoice3/test_model_runner.py::test_cosyvoice3_precompile_leaves_the_first_penalized_samples_nothing_to_compile PASSED [ 15%]
+2026-10-19T16:58:36.6650152Z tests/unit_test/fun_cosyvoice3/test_model_runner.py::test_cosyvoice3_load_hook_loads_flashinfer_sampling_only_for_its_backend[pytorch] PASSED [ 15%]
+2026-10-19T16:58:36.6788821Z tests/unit_test/fun_cosyvoice3/test_model_runner.py::test_cosyvoice3_load_hook_loads_flashinfer_sampling_only_for_its_backend[flashinfer] PASSED [ 15%]
+2026-10-19T16:58:36.6824653Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_the_ragged_read_matches_the_padded_read[4-1] PASSED [ 15%]
+2026-10-19T16:58:36.6853642Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_the_ragged_read_matches_the_padded_read[None-1] PASSED [ 15%]
+2026-10-19T16:58:36.6881835Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_the_ragged_read_matches_the_padded_read[None-4] PASSED [ 15%]
+2026-10-19T16:58:36.6985684Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-31-16] PASSED [ 16%]
+2026-10-19T16:58:36.7060320Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-31-32] PASSED [ 16%]
+2026-10-19T16:58:36.7191810Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-31-64] PASSED [ 16%]
+2026-10-19T16:58:36.7230660Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-95-16] PASSED [ 16%]
+2026-10-19T16:58:36.7285372Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-95-32] PASSED [ 16%]
+2026-10-19T16:58:36.7382107Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-95-64] PASSED [ 16%]
+2026-10-19T16:58:36.7424100Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-1000-16] PASSED [ 16%]
+2026-10-19T16:58:36.7479780Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-1000-32] PASSED [ 16%]
+2026-10-19T16:58:36.7588972Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype0-1000-64] PASSED [ 17%]
+2026-10-19T16:58:36.7634816Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-31-16] PASSED [ 17%]
+2026-10-19T16:58:36.7699276Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-31-32] PASSED [ 17%]
+2026-10-19T16:58:36.7808486Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-31-64] PASSED [ 17%]
+2026-10-19T16:58:36.7844767Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-95-16] PASSED [ 17%]
+2026-10-19T16:58:36.7898780Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-95-32] PASSED [ 17%]
+2026-10-19T16:58:36.7988637Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-95-64] PASSED [ 17%]
+2026-10-19T16:58:36.8026935Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-1000-16] PASSED [ 17%]
+2026-10-19T16:58:36.8083677Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-1000-32] PASSED [ 18%]
+2026-10-19T16:58:36.8186657Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_group_conv_mish_is_as_close_to_float64_as_the_module[dtype1-1000-64] PASSED [ 18%]
+2026-10-19T16:58:36.8237556Z tests/unit_test/fun_cosyvoice3/test_packed_dit.py::test_the_fused_position_embedding_is_as_close_to_float64_as_the_module PASSED [ 18%]
+2026-10-19T16:58:36.9451368Z tests/unit_test/fun_cosyvoice3/test_prefix_cache_gpu.py::test_prefix_hops_are_bit_identical_to_whole_history_hops[totals0] PASSED [ 18%]
+2026-10-19T16:58:37.0675786Z tests/unit_test/fun_cosyvoice3/test_prefix_cache_gpu.py::test_prefix_hops_are_bit_identical_to_whole_history_hops[totals1] PASSED [ 18%]
+2026-10-19T16:58:39.9252724Z tests/unit_test/fun_cosyvoice3/test_prefix_cache_gpu.py::test_compiled_prefix_hops_follow_each_row_across_batches PASSED [ 18%]
+2026-10-19T16:58:39.9270161Z tests/unit_test/fun_cosyvoice3/test_prefix_cache_gpu.py::test_grow_rows_takes_nothing_on_a_shortfall PASSED [ 18%]
+2026-10-19T16:58:43.2051652Z tests/unit_test/fun_cosyvoice3/test_prefix_cache_gpu.py::test_prefix_graph_replays_equal_the_eager_solve[eager] PASSED [ 18%]
+2026-10-19T16:58:49.8589853Z tests/unit_test/fun_cosyvoice3/test_prefix_cache_gpu.py::test_prefix_graph_replays_equal_the_eager_solve[compiled] PASSED [ 19%]
+2026-10-19T16:58:51.6037372Z tests/unit_test/fun_cosyvoice3/test_prefix_cache_gpu.py::test_whole_history_graph_replays_equal_the_eager_solve[eager] PASSED [ 19%]
+2026-10-19T16:58:53.9651909Z tests/unit_test/fun_cosyvoice3/test_prefix_cache_gpu.py::test_whole_history_graph_replays_equal_the_eager_solve[compiled] PASSED [ 19%]
+2026-10-19T16:58:53.9692321Z tests/unit_test/fun_cosyvoice3/test_request_builders.py::test_cuda_preprocessing_builds_prompt_rows_without_a_host_wait PASSED [ 19%]
+2026-10-19T16:58:54.4755147Z tests/unit_test/fun_cosyvoice3/test_request_builders.py::test_cuda_prompt_rows_are_read_only_after_preprocessing_writes_them PASSED [ 19%]
+2026-10-19T16:58:54.9814079Z tests/unit_test/fun_cosyvoice3/test_request_builders.py::test_cuda_prompt_rows_stay_allocated_until_the_ar_stream_reads_them PASSED [ 19%]
+2026-10-19T16:58:55.8712049Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_hift_step_matches_the_whole_history_chain PASSED [ 19%]
+2026-10-19T16:58:56.4192585Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_hift_step_window_is_bit_identical_to_the_whole_history_call[False] PASSED [ 19%]
+2026-10-19T16:58:56.9382048Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_hift_step_window_is_bit_identical_to_the_whole_history_call[True] PASSED [ 20%]
+2026-10-19T16:58:57.6792966Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_hift_step_final_is_bit_identical_beside_finals_of_other_widths PASSED [ 20%]
+2026-10-19T16:58:58.1480043Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_vocoder_hift_snake_is_bit_identical_to_cosyvoice PASSED [ 20%]
+2026-10-19T16:58:58.5668576Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_vocoder_leaves_hift_unpatched_off_nvidia PASSED [ 20%]
+2026-10-19T16:58:59.0463275Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_vocoder_spectra_match_cosyvoice_without_a_host_wait PASSED [ 20%]
+2026-10-19T16:59:01.2082273Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_hift_decode_replay_equals_each_rows_own_decode PASSED [ 20%]
+2026-10-19T16:59:03.3563352Z tests/unit_test/fun_cosyvoice3/test_vocoder.py::test_hift_step_through_the_decode_graphs_equals_the_eager_step PASSED [ 20%]
+2026-10-19T16:59:03.3594305Z tests/unit_test/higgs_tts/test_async_decode_runner.py::test_async_real_pinned_path_matches_sync PASSED [ 20%]
+2026-10-19T16:59:03.3630057Z tests/unit_test/higgs_tts/test_batched_step.py::test_reset_row_compiles_once_and_respects_last_codes_stride PASSED [ 21%]
+2026-10-19T16:59:03.6023407Z tests/unit_test/higgs_tts/test_batched_step.py::test_batched_matches_per_row_delay_window PASSED [ 21%]
+2026-10-19T16:59:03.6251021Z tests/unit_test/higgs_tts/test_batched_step.py::test_batched_matches_per_row_eoc_winddown PASSED [ 21%]
+2026-10-19T16:59:03.6280150Z tests/unit_test/higgs_tts/test_batched_step.py::test_batched_done_row_returns_stop_and_freezes_state PASSED [ 21%]
+2026-10-19T16:59:03.6463311Z tests/unit_test/higgs_tts/test_batched_step.py::test_batched_matches_per_row_mixed_phases PASSED [ 21%]
+2026-10-19T16:59:03.6495890Z tests/unit_test/higgs_tts/test_batched_step.py::test_batched_step_mixed_top_k_per_row_filter PASSED [ 21%]
+2026-10-19T16:59:03.6606089Z tests/unit_test/higgs_tts/test_batched_step.py::test_batched_greedy_top_k_one_is_argmax PASSED [ 21%]
+2026-10-19T16:59:03.6630798Z tests/unit_test/higgs_tts/test_seeded_sampling.py::test_same_seed_same_step_is_reproducible PASSED [ 22%]
+2026-10-19T16:59:03.6657493Z tests/unit_test/higgs_tts/test_seeded_sampling.py::test_different_seed_differs PASSED [ 22%]
+2026-10-19T16:59:03.6684922Z tests/unit_test/higgs_tts/test_seeded_sampling.py::test_position_decorrelates_steps PASSED [ 22%]
+2026-10-19T16:59:03.8491602Z tests/unit_test/higgs_tts/test_seeded_sampling.py::test_per_row_seed_isolation PASSED [ 22%]
+2026-10-19T16:59:03.9907438Z tests/unit_test/higgs_tts/test_seeded_sampling.py::test_seeded_sampler_preserves_probability_distribution PASSED [ 22%]
+2026-10-19T16:59:34.9390120Z tests/unit_test/llada2_uni/test_cfg.py::test_attention_matches_dense_across_padding_boundary[0] PASSED [ 22%]
+2026-10-19T16:59:34.9529585Z tests/unit_test/llada2_uni/test_cfg.py::test_attention_matches_dense_across_padding_boundary[4] PASSED [ 22%]
+2026-10-19T17:00:10.2392772Z tests/unit_test/llada2_uni/test_image_decoder.py::test_sglang_backend_matches_diffusers PASSED [ 22%]
+2026-10-19T17:00:10.3671429Z tests/unit_test/ming3_audio/test_talker.py::test_cuda_graph_matches_eager_across_requests PASSED [ 23%]
+2026-10-19T17:00:10.3936238Z tests/unit_test/ming3_audio/test_talker.py::test_speech_stop_preserves_minimum_context[False] PASSED [ 23%]
+2026-10-19T17:00:10.4209187Z tests/unit_test/ming3_audio/test_talker.py::test_speech_stop_preserves_minimum_context[True] PASSED [ 23%]
+2026-10-19T17:00:10.4232072Z tests/unit_test/ming_omni/test_talker_voice_validation.py::test_generate_emits_final_true_when_stop_token_fires PASSED [ 23%]
+2026-10-19T17:00:10.4249327Z tests/unit_test/ming_omni/test_talker_voice_validation.py::test_generate_emits_final_true_when_duration_cap_hits PASSED [ 23%]
+2026-10-19T17:00:10.4474367Z tests/unit_test/ming_tts/test_audio_decode.py::test_eager_streaming_runner_decodes_on_the_platform_accelerator PASSED [ 23%]
+2026-10-19T17:00:10.4515047Z tests/unit_test/ming_tts/test_sglang_model.py::test_ming_tts_tail_graph_replay_matches_eager_on_the_platform_accelerator PASSED [ 23%]
+2026-10-19T17:00:13.9603709Z tests/unit_test/minicpm_o/test_code2wav.py::test_native_vocoder_with_checkpoint PASSED [ 23%]
+2026-10-19T17:00:17.4346221Z tests/unit_test/minicpm_o/test_code2wav.py::test_native_vocoder_batch_matches_single_request_shapes PASSED [ 24%]
+2026-10-19T17:00:21.2122983Z tests/unit_test/minicpm_o/test_code2wav.py::test_mixed_reference_batch_matches_single_row_mels[False-0.001] PASSED [ 24%]
+2026-10-19T17:00:24.8820838Z tests/unit_test/minicpm_o/test_code2wav.py::test_mixed_reference_batch_matches_single_row_mels[True-0.02] PASSED [ 24%]
+2026-10-19T17:00:36.9019526Z tests/unit_test/minicpm_o/test_code2wav.py::test_compiled_flow_serves_new_batches_without_recompiling PASSED [ 24%]
+2026-10-19T17:00:37.0835974Z tests/unit_test/minicpm_o/test_code2wav.py::test_compiled_flow_matches_eager PASSED [ 24%]
+2026-10-19T17:00:39.9643645Z tests/unit_test/minicpm_o/test_code2wav.py::test_compiled_hift_matches_eager PASSED [ 24%]
+2026-10-19T17:00:39.9839135Z tests/unit_test/minicpm_o/test_dit.py::test_channels_last_causal_conv_matches_channel_first[dtype0-9] PASSED [ 24%]
+2026-10-19T17:00:39.9957908Z tests/unit_test/minicpm_o/test_dit.py::test_channels_last_causal_conv_matches_channel_first[dtype0-16] PASSED [ 24%]
+2026-10-19T17:00:40.0092831Z tests/unit_test/minicpm_o/test_dit.py::test_channels_last_causal_conv_matches_channel_first[dtype0-33] PASSED [ 25%]
+2026-10-19T17:00:40.0255926Z tests/unit_test/minicpm_o/test_dit.py::test_channels_last_causal_conv_matches_channel_first[dtype1-9] PASSED [ 25%]
+2026-10-19T17:00:40.0365251Z tests/unit_test/minicpm_o/test_dit.py::test_channels_last_causal_conv_matches_channel_first[dtype1-16] PASSED [ 25%]
+2026-10-19T17:00:40.0491749Z tests/unit_test/minicpm_o/test_dit.py::test_channels_last_causal_conv_matches_channel_first[dtype1-33] PASSED [ 25%]
+2026-10-19T17:00:40.0548514Z tests/unit_test/minicpm_o/test_dit.py::test_streaming_attention_keeps_its_key_value_history_in_the_flow_dtype[dtype0] PASSED [ 25%]
+2026-10-19T17:00:40.0582014Z tests/unit_test/minicpm_o/test_dit.py::test_streaming_attention_keeps_its_key_value_history_in_the_flow_dtype[dtype1] PASSED [ 25%]
+2026-10-19T17:00:40.2419382Z tests/unit_test/minicpm_o/test_fixed_packed_graph.py::test_packed_graph_replays_changed_layout_and_falls_back[False-dtype0] PASSED [ 25%]
+2026-10-19T17:00:40.3767559Z tests/unit_test/minicpm_o/test_fixed_packed_graph.py::test_packed_graph_replays_changed_layout_and_falls_back[False-dtype1] PASSED [ 25%]
+2026-10-19T17:00:40.5067089Z tests/unit_test/minicpm_o/test_fixed_packed_graph.py::test_packed_graph_replays_changed_layout_and_falls_back[False-dtype2] PASSED [ 26%]
+2026-10-19T17:00:40.6496249Z tests/unit_test/minicpm_o/test_fixed_packed_graph.py::test_packed_graph_replays_changed_layout_and_falls_back[True-dtype0] PASSED [ 26%]
+2026-10-19T17:00:40.7879693Z tests/unit_test/minicpm_o/test_fixed_packed_graph.py::test_packed_graph_replays_changed_layout_and_falls_back[True-dtype1] PASSED [ 26%]
+2026-10-19T17:00:40.9216010Z tests/unit_test/minicpm_o/test_fixed_packed_graph.py::test_packed_graph_replays_changed_layout_and_falls_back[True-dtype2] PASSED [ 26%]
+2026-10-19T17:00:40.9823255Z tests/unit_test/minicpm_o/test_flow_execution.py::test_flow_graph_replays_changed_inputs_and_falls_back[1-False] PASSED [ 26%]
+2026-10-19T17:00:41.8298451Z tests/unit_test/minicpm_o/test_flow_execution.py::test_flow_graph_replays_changed_inputs_and_falls_back[1-True] PASSED [ 26%]
+2026-10-19T17:00:41.8932228Z tests/unit_test/minicpm_o/test_flow_execution.py::test_flow_graph_replays_changed_inputs_and_falls_back[2-True] PASSED [ 26%]
+2026-10-19T17:00:42.0962451Z tests/unit_test/minicpm_o/test_flow_ragged.py::test_ragged_chunks_match_each_stream_alone[lengths0-is_last_chunk0-warmup_chunks0-False-cuda] PASSED [ 26%]
+2026-10-19T17:00:42.2186776Z tests/unit_test/minicpm_o/test_flow_ragged.py::test_ragged_chunks_match_each_stream_alone[lengths0-is_last_chunk0-warmup_chunks0-True-cuda] PASSED [ 27%]
+2026-10-19T17:00:42.3529205Z tests/unit_test/minicpm_o/test_flow_ragged.py::test_ragged_chunks_match_each_stream_alone[lengths1-is_last_chunk1-warmup_chunks1-False-cuda] PASSED [ 27%]
+2026-10-19T17:00:42.4779400Z tests/unit_test/minicpm_o/test_flow_ragged.py::test_ragged_chunks_match_each_stream_alone[lengths1-is_last_chunk1-warmup_chunks1-True-cuda] PASSED [ 27%]
+2026-10-19T17:00:42.5818853Z tests/unit_test/minicpm_o/test_flow_ragged.py::test_ragged_chunks_match_each_stream_alone[lengths2-is_last_chunk2-warmup_chunks2-False-cuda] PASSED [ 27%]
+2026-10-19T17:00:42.6800500Z tests/unit_test/minicpm_o/test_flow_ragged.py::test_ragged_chunks_match_each_stream_alone[lengths2-is_last_chunk2-warmup_chunks2-True-cuda] PASSED [ 27%]
+2026-10-19T17:00:42.7370223Z tests/unit_test/minicpm_o/test_flow_ragged.py::test_a_chunk_after_a_short_one_in_chunk_graphs_matches_the_plain_flow PASSED [ 27%]
+2026-10-19T17:00:43.1615925Z tests/unit_test/minicpm_o/test_talker_model_runner.py::test_seeded_requests_draw_eager_tokens_when_batch_members_change[filtered] PASSED [ 27%]
+2026-10-19T17:00:43.3105405Z tests/unit_test/minicpm_o/test_talker_model_runner.py::test_seeded_requests_draw_eager_tokens_when_batch_members_change[unfiltered] PASSED [ 27%]
+2026-10-19T17:00:43.3313384Z tests/unit_test/minicpm_o/test_talker_model_runner.py::test_seeded_requests_draw_eager_tokens_when_batch_members_change[greedy] PASSED [ 28%]
+2026-10-19T17:00:43.3543694Z tests/unit_test/minicpm_o/test_talker_model_runner.py::test_seeded_requests_draw_eager_tokens_when_batch_members_change[mixed] PASSED [ 28%]
+2026-10-19T17:00:43.4733720Z tests/unit_test/minimax_music3/test_core.py::test_sample_topk_seeded_is_invariant_to_batch_composition PASSED [ 28%]
+2026-10-19T17:00:43.5890321Z tests/unit_test/minimax_music3/test_core.py::test_sample_topk_seeded_advances_with_the_draw_position PASSED [ 28%]
+2026-10-19T17:00:43.5942760Z tests/unit_test/minimax_music3/test_core.py::test_native_sdpa_matches_reference_without_diffusion_server_args PASSED [ 28%]
+2026-10-19T17:00:43.6030186Z tests/unit_test/minimax_music3/test_core.py::test_rvq_cuda_graph_replays_per_bucket_and_clones_outputs PASSED [ 28%]
+2026-10-19T17:00:43.6088391Z tests/unit_test/minimax_music3/test_core.py::test_rvq_cuda_graph_declines_a_batch_larger_than_every_bucket PASSED [ 28%]
+2026-10-19T17:00:43.6164403Z tests/unit_test/minimax_music3/test_core.py::test_cache_dit_block_adapter_runs_hidden_only_pattern PASSED [ 29%]
+2026-10-19T17:00:44.1203250Z tests/unit_test/model_runner/test_install_sampling_seeds.py::test_installs_cuda_seeds_without_a_host_wait PASSED [ 29%]
+2026-10-19T17:00:44.1310553Z tests/unit_test/model_runner/test_install_sampling_seeds.py::test_seeded_rows_draw_the_pytorch_backend_tokens_in_any_order PASSED [ 29%]
+2026-10-19T17:00:44.1372634Z tests/unit_test/model_runner/test_install_sampling_seeds.py::test_unseeded_rows_draw_with_flashinfer_keeping_top_k_ties PASSED [ 29%]
+2026-10-19T17:00:44.1452632Z tests/unit_test/model_runner/test_install_sampling_seeds.py::test_seeded_rows_return_the_pytorch_backend_sampling_mask PASSED [ 29%]
+2026-10-19T17:00:44.1522328Z tests/unit_test/model_runner/test_install_sampling_seeds.py::test_min_p_batches_keep_the_pytorch_backend_support_on_every_row PASSED [ 29%]
+2026-10-19T17:00:44.1546091Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_capture_uses_thread_local_error_mode PASSED [ 29%]
+2026-10-19T17:00:45.7301848Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_some_graphs_captured PASSED [ 29%]
+2026-10-19T17:00:45.7431855Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[1] PASSED [ 30%]
+2026-10-19T17:00:45.7637540Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[2] PASSED [ 30%]
+2026-10-19T17:00:45.8042100Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[3] PASSED [ 30%]
+2026-10-19T17:00:45.8381806Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[4] PASSED [ 30%]
+2026-10-19T17:00:45.9022204Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[5] PASSED [ 30%]
+2026-10-19T17:00:45.9663407Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[8] PASSED [ 30%]
+2026-10-19T17:00:46.0895022Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[12] PASSED [ 30%]
+2026-10-19T17:00:46.2115123Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[16] PASSED [ 30%]
+2026-10-19T17:00:46.5107224Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[20] PASSED [ 31%]
+2026-10-19T17:00:46.7513968Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_graph_bit_identical_to_eager[32] PASSED [ 31%]
+2026-10-19T17:00:46.8750320Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_over_largest_bucket_falls_back_to_eager PASSED [ 31%]
+2026-10-19T17:00:46.8769374Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_vram_guard_skips_capture PASSED [ 31%]
+2026-10-19T17:00:46.9004486Z tests/unit_test/moss_transcribe_diarize/test_encoder_cuda_graph.py::test_capture_failure_falls_back_to_eager PASSED [ 31%]
+2026-10-19T17:00:46.9078968Z tests/unit_test/moss_tts/test_audio_tokenizer.py::test_query_chunked_sdpa_matches_dense_reference_cuda PASSED [ 31%]
+2026-10-19T17:00:46.9113774Z tests/unit_test/moss_tts/test_audio_tokenizer.py::test_auto_backend_runs_query_chunked_sdpa_for_cuda_float32 PASSED [ 31%]
+2026-10-19T17:00:46.9131572Z tests/unit_test/moss_tts/test_audio_tokenizer.py::test_local_causal_attention_keeps_packed_flash_cuda PASSED [ 31%]
+2026-10-19T17:00:46.9170862Z tests/unit_test/moss_tts/test_audio_tokenizer.py::test_sglang_packed_flash_matches_sdpa_reference_cuda PASSED [ 32%]
+2026-10-19T17:00:46.9249282Z tests/unit_test/moss_tts/test_audio_tokenizer.py::test_sglang_local_packed_flash_matches_sdpa_reference_cuda PASSED [ 32%]
+2026-10-19T17:00:46.9298267Z tests/unit_test/moss_tts/test_audio_tokenizer.py::test_exact_packed_rope_matches_reference_cuda[dtype0] PASSED [ 32%]
+2026-10-19T17:00:46.9333422Z tests/unit_test/moss_tts/test_audio_tokenizer.py::test_exact_packed_rope_matches_reference_cuda[dtype1] PASSED [ 32%]
+2026-10-19T17:00:47.1128266Z tests/unit_test/moss_tts/test_pipeline.py::test_moss_text_control_sampler_preserves_full_vocab_seed_columns PASSED [ 32%]
+2026-10-19T17:00:47.1183418Z tests/unit_test/moss_tts/test_reference_encoding.py::test_reference_encoding_uses_dedicated_cuda_stream[False] PASSED [ 32%]
+2026-10-19T17:00:47.1228603Z tests/unit_test/moss_tts/test_reference_encoding.py::test_reference_encoding_uses_dedicated_cuda_stream[True] PASSED [ 32%]
+2026-10-19T17:00:47.1302090Z tests/unit_test/moss_tts/test_sampling_cuda_graph.py::test_fixed_shape_sampling_matches_current_compacted_eager PASSED [ 32%]
+2026-10-19T17:00:48.2668947Z tests/unit_test/moss_tts/test_sampling_cuda_graph.py::test_sampling_cuda_graph_replay_matches_fixed_shape_eager PASSED [ 33%]
+2026-10-19T17:00:48.4042446Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_seeded_gumbel_argmax_matches_production_shape[random] PASSED [ 33%]
+2026-10-19T17:00:48.4062673Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_seeded_gumbel_argmax_matches_production_shape[tied] PASSED [ 33%]
+2026-10-19T17:00:48.4102330Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_seeded_gumbel_argmax_matches_uint32_max_hash PASSED [ 33%]
+2026-10-19T17:00:48.4122960Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_token_id_sampler_matches_sglang_at_the_uint32_max_hash PASSED [ 33%]
+2026-10-19T17:00:48.4139767Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_seeded_gumbel_argmax_rejects_strided_output PASSED [ 33%]
+2026-10-19T17:00:48.4623967Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1025-t1.7-p0.8-k25-random] PASSED [ 33%]
+2026-10-19T17:00:48.5075798Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1025-t1.7-p0.8-k25-tied] PASSED [ 33%]
+2026-10-19T17:00:48.5525915Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1025-t1.0-p0.9-k64-tied] PASSED [ 34%]
+2026-10-19T17:00:48.5964579Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1025-t1.2-p0.5-k1-random] PASSED [ 34%]
+2026-10-19T17:00:48.6400355Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1025-t1.7-p0.001-k25-random] PASSED [ 34%]
+2026-10-19T17:00:48.6839395Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1025-t1.7-p0.999-k25-random] PASSED [ 34%]
+2026-10-19T17:00:48.7273928Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1025-t0.0-p0.8-k25-random] PASSED [ 34%]
+2026-10-19T17:00:48.7698014Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1024-t1.7-p0.8-k25-random] PASSED [ 34%]
+2026-10-19T17:00:48.8120812Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1024-t1.7-p0.8-k25-tied] PASSED [ 34%]
+2026-10-19T17:00:48.8542418Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1024-t1.0-p0.9-k64-tied] PASSED [ 34%]
+2026-10-19T17:00:48.8952299Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1024-t1.2-p0.5-k1-random] PASSED [ 35%]
+2026-10-19T17:00:48.9361785Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v1024-t0.0-p0.8-k25-random] PASSED [ 35%]
+2026-10-19T17:00:48.9729880Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v2-t1.0-p1.0-k50-random] PASSED [ 35%]
+2026-10-19T17:00:49.0087721Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_matches_branchless[v2-t1.3-p0.7-k0-random] PASSED [ 35%]
+2026-10-19T17:00:49.0111674Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_mixed_rows_and_greedy_fallback PASSED [ 35%]
+2026-10-19T17:00:49.0127719Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_rejects_large_vocab PASSED [ 35%]
+2026-10-19T17:00:49.0253867Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_nucleus_knife_edges PASSED [ 35%]
+2026-10-19T17:00:49.0287886Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_signed_zero_and_nonfinite PASSED [ 36%]
+2026-10-19T17:00:49.0310862Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_hash_endpoint PASSED [ 36%]
+2026-10-19T17:00:49.0337490Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_input_hardening PASSED [ 36%]
+2026-10-19T17:00:49.0360109Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_masked_lane_hash_endpoint PASSED [ 36%]
+2026-10-19T17:00:49.0394898Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_signed_zero_orderings_and_nonfinite PASSED [ 36%]
+2026-10-19T17:00:49.0410205Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_rejects_complex_top_k PASSED [ 36%]
+2026-10-19T17:00:49.0630709Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_signed_zero_nucleus_boundary PASSED [ 36%]
+2026-10-19T17:00:49.0654895Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_nan_rows_match_baseline[one_nan-greedy] PASSED [ 36%]
+2026-10-19T17:00:49.0679468Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_nan_rows_match_baseline[one_nan-sampled] PASSED [ 37%]
+2026-10-19T17:00:49.0703950Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_nan_rows_match_baseline[all_nan-greedy] PASSED [ 37%]
+2026-10-19T17:00:49.0728339Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_nan_rows_match_baseline[all_nan-sampled] PASSED [ 37%]
+2026-10-19T17:00:49.0753348Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_nan_rows_match_baseline[nan_with_inf-greedy] PASSED [ 37%]
+2026-10-19T17:00:49.0778028Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_sample_seeded_fused_nan_rows_match_baseline[nan_with_inf-sampled] PASSED [ 37%]
+2026-10-19T17:00:49.0972614Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_tied_two_token_head_agrees_across_sampling_paths PASSED [ 37%]
+2026-10-19T17:00:49.3523619Z tests/unit_test/moss_tts/test_sampling_kernels.py::test_moss_precompile_leaves_the_eager_samples_nothing_to_compile PASSED [ 37%]
+2026-10-19T17:00:49.3604067Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape0-dtype0] PASSED [ 37%]
+2026-10-19T17:00:49.3647554Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape0-dtype1] PASSED [ 38%]
+2026-10-19T17:00:49.3691440Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape0-dtype2] PASSED [ 38%]
+2026-10-19T17:00:49.3734572Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape1-dtype0] PASSED [ 38%]
+2026-10-19T17:00:49.3779038Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape1-dtype1] PASSED [ 38%]
+2026-10-19T17:00:49.3822783Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape1-dtype2] PASSED [ 38%]
+2026-10-19T17:00:49.3866382Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape2-dtype0] PASSED [ 38%]
+2026-10-19T17:00:49.3908819Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape2-dtype1] PASSED [ 38%]
+2026-10-19T17:00:49.3952431Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape2-dtype2] PASSED [ 38%]
+2026-10-19T17:00:49.3994433Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape3-dtype0] PASSED [ 39%]
+2026-10-19T17:00:49.4038074Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape3-dtype1] PASSED [ 39%]
+2026-10-19T17:00:49.4079810Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape3-dtype2] PASSED [ 39%]
+2026-10-19T17:00:49.4123184Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape4-dtype0] PASSED [ 39%]
+2026-10-19T17:00:49.4165033Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape4-dtype1] PASSED [ 39%]
+2026-10-19T17:00:49.4208183Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape4-dtype2] PASSED [ 39%]
+2026-10-19T17:00:49.4263085Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape5-dtype0] PASSED [ 39%]
+2026-10-19T17:00:49.4309348Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape5-dtype1] PASSED [ 39%]
+2026-10-19T17:00:49.4365228Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape5-dtype2] PASSED [ 40%]
+2026-10-19T17:00:49.4409342Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape6-dtype0] PASSED [ 40%]
+2026-10-19T17:00:49.4452592Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape6-dtype1] PASSED [ 40%]
+2026-10-19T17:00:49.4497070Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_matches_chronological_reference[shape6-dtype2] PASSED [ 40%]
+2026-10-19T17:00:49.4591208Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_graph_replays_dynamic_slots_and_valid_rows PASSED [ 40%]
+2026-10-19T17:00:49.4638451Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_preserves_inactive_nan_and_signed_zero_bytes PASSED [ 40%]
+2026-10-19T17:00:49.4657144Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_rejects_unsupported_metadata_or_writable_layout[slots] PASSED [ 40%]
+2026-10-19T17:00:49.4675083Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_rejects_unsupported_metadata_or_writable_layout[valid] PASSED [ 40%]
+2026-10-19T17:00:49.4693354Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_rejects_unsupported_metadata_or_writable_layout[offsets] PASSED [ 41%]
+2026-10-19T17:00:49.4711495Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_rejects_unsupported_metadata_or_writable_layout[positions] PASSED [ 41%]
+2026-10-19T17:00:49.4729784Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_rejects_unsupported_metadata_or_writable_layout[broadcast_cache] PASSED [ 41%]
+2026-10-19T17:00:49.4746747Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_grad_and_missing_triton_use_fallback PASSED [ 41%]
+2026-10-19T17:00:49.4947728Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_indexed_attention_fusion_and_fallback_match_torch[17-False] PASSED [ 41%]
+2026-10-19T17:00:49.5022434Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_indexed_attention_fusion_and_fallback_match_torch[17-True] PASSED [ 41%]
+2026-10-19T17:00:49.5103184Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_indexed_attention_fusion_and_fallback_match_torch[None-False] PASSED [ 41%]
+2026-10-19T17:00:49.5129114Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_indexed_attention_commits_only_after_output_projection PASSED [ 41%]
+2026-10-19T17:00:49.6209180Z tests/unit_test/moss_tts/test_vocoder_kernels.py::test_streaming_kv_fullgraph_tracks_cache_mutations PASSED [ 42%]
+2026-10-19T17:00:49.6421518Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[1-8-dtype0] PASSED [ 42%]
+2026-10-19T17:00:49.6628121Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[1-8-dtype1] PASSED [ 42%]
+2026-10-19T17:00:49.6827744Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[1-8-dtype2] PASSED [ 42%]
+2026-10-19T17:00:49.7074253Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[3-80-dtype0] PASSED [ 42%]
+2026-10-19T17:00:49.7351394Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[3-80-dtype1] PASSED [ 42%]
+2026-10-19T17:00:49.7626607Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[3-80-dtype2] PASSED [ 42%]
+2026-10-19T17:00:49.7869991Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[16-80-dtype0] PASSED [ 43%]
+2026-10-19T17:00:49.8124635Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[16-80-dtype1] PASSED [ 43%]
+2026-10-19T17:00:49.8377561Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_matches_eager[16-80-dtype2] PASSED [ 43%]
+2026-10-19T17:00:49.8555024Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_transformer_fused_rotary_graph_replay PASSED [ 43%]
+2026-10-19T17:00:50.0432713Z tests/unit_test/moss_tts_local/test_pipeline.py::test_decode_frame_graphed_matches_branchless_eager PASSED [ 43%]
+2026-10-19T17:00:50.1765320Z tests/unit_test/moss_tts_local/test_pipeline.py::test_branchless_sampler_matches_eager_sampler PASSED [ 43%]
+2026-10-19T17:01:07.5370371Z tests/unit_test/moss_tts_local/test_pipeline.py::test_local_full_prefill_graph_replay_matches_eager PASSED [ 43%]
+2026-10-19T17:01:07.5390177Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape0-dtype0] PASSED [ 43%]
+2026-10-19T17:01:07.5407177Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape0-dtype1] PASSED [ 44%]
+2026-10-19T17:01:07.5449101Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape1-dtype0] PASSED [ 44%]
+2026-10-19T17:01:07.5478270Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape1-dtype1] PASSED [ 44%]
+2026-10-19T17:01:07.5497382Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape2-dtype0] PASSED [ 44%]
+2026-10-19T17:01:07.5516016Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape2-dtype1] PASSED [ 44%]
+2026-10-19T17:01:07.5535252Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape3-dtype0] PASSED [ 44%]
+2026-10-19T17:01:07.5554640Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape3-dtype1] PASSED [ 44%]
+2026-10-19T17:01:07.5576620Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape4-dtype0] PASSED [ 44%]
+2026-10-19T17:01:07.5596137Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape4-dtype1] PASSED [ 45%]
+2026-10-19T17:01:07.5623545Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape5-dtype0] PASSED [ 45%]
+2026-10-19T17:01:07.5649874Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[False-shape5-dtype1] PASSED [ 45%]
+2026-10-19T17:01:07.5667315Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape0-dtype0] PASSED [ 45%]
+2026-10-19T17:01:07.5684501Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape0-dtype1] PASSED [ 45%]
+2026-10-19T17:01:07.5703124Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape1-dtype0] PASSED [ 45%]
+2026-10-19T17:01:07.5721820Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape1-dtype1] PASSED [ 45%]
+2026-10-19T17:01:07.5741638Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape2-dtype0] PASSED [ 45%]
+2026-10-19T17:01:07.5759487Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape2-dtype1] PASSED [ 46%]
+2026-10-19T17:01:07.5778350Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape3-dtype0] PASSED [ 46%]
+2026-10-19T17:01:07.5797743Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape3-dtype1] PASSED [ 46%]
+2026-10-19T17:01:07.5816973Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape4-dtype0] PASSED [ 46%]
+2026-10-19T17:01:07.5835880Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape4-dtype1] PASSED [ 46%]
+2026-10-19T17:01:07.5863146Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape5-dtype0] PASSED [ 46%]
+2026-10-19T17:01:07.5888379Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_matches_python_reference[True-shape5-dtype1] PASSED [ 46%]
+2026-10-19T17:01:07.5928131Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_row_builder_tail_matches_python_reference[False-dtype0] PASSED [ 46%]
+2026-10-19T17:01:07.5957859Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_row_builder_tail_matches_python_reference[False-dtype1] PASSED [ 47%]
+2026-10-19T17:01:07.5978754Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_row_builder_tail_matches_python_reference[True-dtype0] PASSED [ 47%]
+2026-10-19T17:01:07.5999368Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_row_builder_tail_matches_python_reference[True-dtype1] PASSED [ 47%]
+2026-10-19T17:01:07.6047392Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_graph_replays_new_rows_and_eos PASSED [ 47%]
+2026-10-19T17:01:07.6077528Z tests/unit_test/moss_tts_local/test_radix_hash.py::test_cuda_graph_replays_row_builder PASSED [ 47%]
+2026-10-19T17:01:07.6488240Z tests/unit_test/moss_tts_local/test_s0_gate.py::test_s0_graph_replay_is_deterministic PASSED [ 47%]
+2026-10-19T17:01:07.6514141Z tests/unit_test/moss_tts_local/test_state_pool.py::test_collect_frame_stages_host_token_ids PASSED [ 47%]
+2026-10-19T17:01:16.8233194Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_indexed_streaming_matches_sequential_precision_and_cache_order PASSED [ 47%]
+2026-10-19T17:01:16.8258873Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_cuda_graph_capture_uses_thread_local_error_mode PASSED [ 48%]
+2026-10-19T17:01:17.0731100Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[1-1-4] PASSED [ 48%]
+2026-10-19T17:01:17.3294597Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[1-3-4] PASSED [ 48%]
+2026-10-19T17:01:17.5930040Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[1-8-4] PASSED [ 48%]
+2026-10-19T17:01:17.8523055Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[5-1-17] PASSED [ 48%]
+2026-10-19T17:01:18.1149565Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[5-3-17] PASSED [ 48%]
+2026-10-19T17:01:18.3858122Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[5-8-17] PASSED [ 48%]
+2026-10-19T17:01:18.6510125Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[25-1-87] PASSED [ 48%]
+2026-10-19T17:01:18.9465257Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[25-3-87] PASSED [ 49%]
+2026-10-19T17:01:19.2901495Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[25-8-87] PASSED [ 49%]
+2026-10-19T17:01:19.6277649Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[100-1-350] PASSED [ 49%]
+2026-10-19T17:01:20.2455406Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[100-3-350] PASSED [ 49%]
+2026-10-19T17:01:21.2939707Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[100-8-350] PASSED [ 49%]
+2026-10-19T17:01:22.2489285Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[5-1-75] PASSED [ 49%]
+2026-10-19T17:01:22.4583216Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_streaming_pcm_bit_identical[25-1-75] PASSED [ 49%]
+2026-10-19T17:01:22.8049963Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_graph_tracks_eager_with_changing_batches_and_slot_reuse PASSED [ 50%]
+2026-10-19T17:01:23.1213151Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_replay_failure_disables_runner_and_serves_eager_bit_identical PASSED [ 50%]
+2026-10-19T17:01:23.1252409Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_vram_guard_skips_capture_and_falls_back_to_eager PASSED [ 50%]
+2026-10-19T17:01:23.1409712Z tests/unit_test/moss_tts_local/test_vocoder_cuda_graph.py::test_capture_failure_falls_back_to_eager PASSED [ 50%]
+2026-10-19T17:01:23.1559263Z tests/unit_test/nemotron_voicechat/test_duplex_ar.py::test_sampler_replay_uses_new_hidden_states_and_randomness PASSED [ 50%]
+2026-10-19T17:01:23.1593837Z tests/unit_test/nemotron_voicechat/test_duplex_hooks.py::test_codec_replay_matches_eager_for_changing_codes PASSED [ 50%]
+2026-10-19T17:01:24.5804749Z tests/unit_test/personaplex/test_code2wav_batch.py::test_graph_replay_matches_eager_decode_through_the_scheduler PASSED [ 50%]
+2026-10-19T17:01:28.5087037Z tests/unit_test/personaplex/test_code2wav_stream.py::test_batched_graph_replay_matches_eager_decode_across_slot_reuse PASSED [ 50%]
+2026-10-19T17:01:29.9796553Z tests/unit_test/personaplex/test_mimi_streaming.py::test_selectively_loaded_codec_matches_full_codec[cuda-encode] PASSED [ 51%]
+2026-10-19T17:01:30.6543357Z tests/unit_test/personaplex/test_mimi_streaming.py::test_selectively_loaded_codec_matches_full_codec[cuda-decode] PASSED [ 51%]
+2026-10-19T17:01:31.4289846Z tests/unit_test/personaplex/test_mimi_streaming.py::test_selectively_loaded_codec_matches_full_codec[cuda-both] PASSED [ 51%]
+2026-10-19T17:01:31.4311116Z tests/unit_test/pipeline/test_async_decode.py::test_host_staging_pingpong PASSED [ 51%]
+2026-10-19T17:01:31.4331012Z tests/unit_test/pipeline/test_async_decode.py::test_default_launch_resolve_pinned_snapshot_pingpong PASSED [ 51%]
+2026-10-19T17:01:31.4349543Z tests/unit_test/pipeline/test_async_decode.py::test_default_launch_staging_grows_then_slices_to_smaller_batch PASSED [ 51%]
+2026-10-19T17:01:31.4367403Z tests/unit_test/pipeline/test_comm_router.py::test_comm_router_uses_cuda_ipc_for_mixed_gpu_payloads PASSED [ 51%]
+2026-10-19T17:01:31.4383788Z tests/unit_test/pipeline/test_comm_router.py::test_comm_router_uses_shm_for_cuda_payloads_to_cpu_targets PASSED [ 51%]
+2026-10-19T17:01:31.4400715Z tests/unit_test/pipeline/test_comm_router.py::test_comm_router_uses_cuda_ipc_for_cuda_stream_chunks_only PASSED [ 52%]
+2026-10-19T17:01:31.4865062Z tests/unit_test/pipeline/test_gpu_memory.py::test_device_info_reports_real_memory_on_this_accelerator PASSED [ 52%]
+2026-10-19T17:01:31.4884139Z tests/unit_test/pipeline/test_scheduler.py::test_start_runs_the_loop_on_the_top_priority_stream_only_when_asked[False] PASSED [ 52%]
+2026-10-19T17:01:31.4902917Z tests/unit_test/pipeline/test_scheduler.py::test_start_runs_the_loop_on_the_top_priority_stream_only_when_asked[True] PASSED [ 52%]
+2026-10-19T17:01:31.4928551Z tests/unit_test/pipeline/test_stage.py::test_cuda_payload_round_trip_preserves_cpu_tensor_devices PASSED [ 52%]
+2026-10-19T17:01:31.4949341Z tests/unit_test/pipeline/test_stage.py::test_stage_sends_same_gpu_stream_chunk_as_direct_cuda_ipc PASSED [ 52%]
+2026-10-19T17:01:31.4975787Z tests/unit_test/pipeline/test_stage.py::test_direct_cuda_ipc_payload_preserves_inline_cpu_tensors PASSED [ 52%]
+2026-10-19T17:01:31.5000027Z tests/unit_test/pipeline/test_stage.py::test_stage_routes_audio_cuda_payload_over_relay_when_direct_is_disabled PASSED [ 52%]
+2026-10-19T17:01:31.5022785Z tests/unit_test/pipeline/test_stage.py::test_unrelated_stage_still_uses_direct_ipc_for_small_cuda_payload PASSED [ 53%]
+2026-10-19T17:01:31.5061142Z tests/unit_test/pipeline/test_stage.py::test_small_cuda_payload_survives_the_relay_route_bitwise PASSED [ 53%]
+2026-10-19T17:01:31.5154427Z tests/unit_test/platforms/test_device_graph.py::test_captures_in_either_mode_leave_later_captures_working[model] PASSED [ 53%]
+2026-10-19T17:01:31.5181320Z tests/unit_test/platforms/test_device_graph.py::test_captures_in_either_mode_leave_later_captures_working[engine] PASSED [ 53%]
+2026-10-19T17:01:31.5314165Z tests/unit_test/preprocessing/test_cache_key.py::test_prompt_row_cache_keys_match_on_cpu_and_cuda PASSED [ 53%]
+2026-10-19T17:01:31.6072390Z tests/unit_test/qwen3_asr/test_encoder_cuda_graph.py::test_graph_matches_eager_tower PASSED [ 53%]
+2026-10-19T17:01:31.6148234Z tests/unit_test/qwen3_asr/test_encoder_service.py::test_the_device_cache_is_really_reclaimed_after_an_oom PASSED [ 53%]
+2026-10-19T17:01:31.6186200Z tests/unit_test/qwen3_asr/test_metadata_glue.py::test_metadata_graph_refreshes_live_inputs_after_capture PASSED [ 53%]
+2026-10-19T17:01:31.6241623Z tests/unit_test/qwen3_asr/test_metadata_glue.py::test_metadata_capture_and_replay_with_concurrent_cuda_work PASSED [ 54%]
+2026-10-19T17:01:31.6263902Z tests/unit_test/qwen3_asr/test_sglang_model.py::test_get_audio_feature_normalizes_cpu_masks_for_cuda_features PASSED [ 54%]
+2026-10-19T17:01:31.6288130Z tests/unit_test/qwen3_omni/test_audio_encoder_batch_dedup.py::test_audio_encoder_cache_owns_cuda_output_before_replay PASSED [ 54%]
+2026-10-19T17:01:31.6386523Z tests/unit_test/qwen3_omni/test_audio_feature_packing.py::test_accelerator_pack_matches_cpu_reference PASSED [ 54%]
+2026-10-19T17:01:31.6408438Z tests/unit_test/qwen3_omni/test_audio_feature_packing.py::test_accelerator_fallback_gather_matches_cpu_reference PASSED [ 54%]
+2026-10-19T17:01:31.6446316Z tests/unit_test/qwen3_omni/test_audio_layer_graph.py::test_packed_attention_matches_fp32_sdpa_per_segment_and_head PASSED [ 54%]
+2026-10-19T17:01:31.6523258Z tests/unit_test/qwen3_omni/test_audio_layer_graph.py::test_packed_layer_stack_matches_segmented_sdpa PASSED [ 54%]
+2026-10-19T17:01:31.6726604Z tests/unit_test/qwen3_omni/test_audio_layer_graph.py::test_capture_all_records_a_graph_for_every_bucket PASSED [ 54%]
+2026-10-19T17:01:31.6973389Z tests/unit_test/qwen3_omni/test_audio_layer_graph.py::test_replay_matches_the_uncaptured_packed_stack_across_bucket_boundaries PASSED [ 55%]
+2026-10-19T17:01:31.7442257Z tests/unit_test/qwen3_omni/test_code2wav.py::test_channels_last_code2wav_matches_the_hf_forward[1-7] PASSED [ 55%]
+2026-10-19T17:01:31.7891790Z tests/unit_test/qwen3_omni/test_code2wav.py::test_channels_last_code2wav_matches_the_hf_forward[3-10] PASSED [ 55%]
+2026-10-19T17:01:31.8279421Z tests/unit_test/qwen3_omni/test_code2wav.py::test_channels_last_code2wav_runs_every_snake_on_the_fused_kernel PASSED [ 55%]
+2026-10-19T17:01:32.0996704Z tests/unit_test/qwen3_omni/test_code2wav.py::test_fused_code2wav_transformer_error_to_fp32_is_below_the_hf_error[3-dtype0] PASSED [ 55%]
+2026-10-19T17:01:32.3635548Z tests/unit_test/qwen3_omni/test_code2wav.py::test_fused_code2wav_transformer_error_to_fp32_is_below_the_hf_error[3-dtype1] PASSED [ 55%]
+2026-10-19T17:01:32.4989649Z tests/unit_test/qwen3_omni/test_code2wav.py::test_fused_code2wav_transformer_error_to_fp32_is_below_the_hf_error[9-dtype0] PASSED [ 55%]
+2026-10-19T17:01:32.6345765Z tests/unit_test/qwen3_omni/test_code2wav.py::test_fused_code2wav_transformer_error_to_fp32_is_below_the_hf_error[9-dtype1] PASSED [ 55%]
+2026-10-19T17:01:32.8163059Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_decodes_error_to_fp32_is_the_fused_forward_error[parts0-True] PASSED [ 56%]
+2026-10-19T17:01:32.9265439Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_decodes_error_to_fp32_is_the_fused_forward_error[parts0-False] PASSED [ 56%]
+2026-10-19T17:01:33.1989076Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_decodes_error_to_fp32_is_the_fused_forward_error[parts1-True] PASSED [ 56%]
+2026-10-19T17:01:33.4552633Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_decodes_error_to_fp32_is_the_fused_forward_error[parts1-False] PASSED [ 56%]
+2026-10-19T17:01:33.5687098Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_decodes_error_to_fp32_is_the_fused_forward_error[parts2-True] PASSED [ 56%]
+2026-10-19T17:01:33.6686346Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_decodes_error_to_fp32_is_the_fused_forward_error[parts2-False] PASSED [ 56%]
+2026-10-19T17:01:33.8603165Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_decodes_rotate_frames_past_the_code2wav_config_positions PASSED [ 56%]
+2026-10-19T17:01:33.9626816Z tests/unit_test/qwen3_omni/test_code2wav.py::test_a_reused_slot_decodes_a_new_stream_as_a_fresh_pool PASSED [ 56%]
+2026-10-19T17:01:34.0354497Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_decode_rows_at_different_positions_keep_their_own_streams PASSED [ 57%]
+2026-10-19T17:01:34.1280737Z tests/unit_test/qwen3_omni/test_code2wav.py::test_scheduler_decodes_streams_from_their_slots[False] PASSED [ 57%]
+2026-10-19T17:01:35.3246417Z tests/unit_test/qwen3_omni/test_code2wav.py::test_scheduler_decodes_streams_from_their_slots[True] PASSED [ 57%]
+2026-10-19T17:01:35.3665345Z tests/unit_test/qwen3_omni/test_code2wav.py::test_a_stream_without_a_free_slot_decodes_with_left_context PASSED [ 57%]
+2026-10-19T17:01:35.3816203Z tests/unit_test/qwen3_omni/test_code2wav.py::test_a_stream_takes_its_slot_with_its_first_codes_and_abort_returns_it PASSED [ 57%]
+2026-10-19T17:01:35.4190463Z tests/unit_test/qwen3_omni/test_code2wav.py::test_a_stream_ending_before_its_first_window_decodes_without_slot_state PASSED [ 57%]
+2026-10-19T17:01:35.4600006Z tests/unit_test/qwen3_omni/test_code2wav.py::test_streams_decoded_in_one_replay_keep_their_own_slots[False] PASSED [ 57%]
+2026-10-19T17:01:36.3980355Z tests/unit_test/qwen3_omni/test_code2wav.py::test_streams_decoded_in_one_replay_keep_their_own_slots[True] PASSED [ 58%]
+2026-10-19T17:01:36.4148814Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_graphs_and_capture_slots_stop_at_the_codec_slot_count[False] PASSED [ 58%]
+2026-10-19T17:01:36.4316159Z tests/unit_test/qwen3_omni/test_code2wav.py::test_slot_graphs_and_capture_slots_stop_at_the_codec_slot_count[True] PASSED [ 58%]
+2026-10-19T17:01:36.4349344Z tests/unit_test/qwen3_omni/test_code2wav_cuda_graph.py::test_real_cuda_invalid_capture_preserves_current_stream PASSED [ 58%]
+2026-10-19T17:01:37.2803819Z tests/unit_test/qwen3_omni/test_code2wav_cuda_graph.py::test_real_cuda_shared_pool_replays_batch_sizes_with_eager_parity PASSED [ 58%]
+2026-10-19T17:01:38.9651237Z tests/unit_test/qwen3_omni/test_code2wav_cuda_graph.py::test_real_cuda_output_overlap_pipeline_matches_sync_bitwise PASSED [ 58%]
+2026-10-19T17:01:38.9691728Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_real_pinned_event_bitwise[20-expected_types0-eager] PASSED [ 58%]
+2026-10-19T17:01:40.6588427Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_real_pinned_event_bitwise[20-expected_types0-cuda_graph] PASSED [ 58%]
+2026-10-19T17:01:40.6632404Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_real_pinned_event_bitwise[21-expected_types1-eager] PASSED [ 59%]
+2026-10-19T17:01:42.4005234Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_real_pinned_event_bitwise[21-expected_types1-cuda_graph] PASSED [ 59%]
+2026-10-19T17:01:42.4052578Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_real_pinned_event_bitwise[30-expected_types2-eager] PASSED [ 59%]
+2026-10-19T17:01:44.1386225Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_real_pinned_event_bitwise[30-expected_types2-cuda_graph] PASSED [ 59%]
+2026-10-19T17:01:44.1436724Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_real_pinned_event_bitwise[31-expected_types3-eager] PASSED [ 59%]
+2026-10-19T17:01:45.8857021Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_real_pinned_event_bitwise[31-expected_types3-cuda_graph] PASSED [ 59%]
+2026-10-19T17:01:48.9218278Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_query_is_false_until_inflight_copy_drains PASSED [ 59%]
+2026-10-19T17:01:49.9371510Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_abort_midstream_neither_blocks_nor_reuses_inflight_slot[eager] PASSED [ 59%]
+2026-10-19T17:02:13.5215611Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_abort_midstream_neither_blocks_nor_reuses_inflight_slot[cuda_graph] PASSED [ 60%]
+2026-10-19T17:02:14.5323021Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_abort_holds_chunks_while_a_queued_window_reads_them PASSED [ 60%]
+2026-10-19T17:02:18.7742913Z tests/unit_test/qwen3_omni/test_code2wav_overlap.py::test_overlap_gpu_slot_on_other_device_than_process_current PASSED [ 60%]
+2026-10-19T17:02:18.7784526Z tests/unit_test/qwen3_omni/test_code2wav_snake_beta.py::test_hf_snake_uses_shared_kernel PASSED [ 60%]
+2026-10-19T17:02:19.2802599Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_layer_tracks_the_reference_like_the_plain_path[1] PASSED [ 60%]
+2026-10-19T17:02:19.5881240Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_layer_tracks_the_reference_like_the_plain_path[3] PASSED [ 60%]
+2026-10-19T17:02:19.8971771Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_layer_tracks_the_reference_like_the_plain_path[12] PASSED [ 60%]
+2026-10-19T17:02:20.2165512Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_layer_tracks_the_reference_like_the_plain_path[32] PASSED [ 60%]
+2026-10-19T17:02:20.5216963Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_layer_tracks_the_reference_like_the_plain_path[64] PASSED [ 61%]
+2026-10-19T17:02:20.7792369Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_layer_is_deterministic_and_batch_invariant PASSED [ 61%]
+2026-10-19T17:02:21.2824390Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_a_pass_runs_fused_up_to_the_fused_rows_and_plain_above PASSED [ 61%]
+2026-10-19T17:02:21.5164502Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_opening_pair_matches_two_single_token_passes PASSED [ 61%]
+2026-10-19T17:02:21.7492726Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_layer_replays_from_a_cuda_graph PASSED [ 61%]
+2026-10-19T17:02:21.9731782Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_resolver_keeps_the_plain_path_for_a_quantized_projection PASSED [ 61%]
+2026-10-19T17:02:22.2155679Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_split_launches_leave_the_tile_counters_at_zero PASSED [ 61%]
+2026-10-19T17:02:22.4520810Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_rows_beyond_the_batch_are_not_written PASSED [ 61%]
+2026-10-19T17:02:22.6791789Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_forward_writes_only_the_positions_slot_of_every_layer PASSED [ 62%]
+2026-10-19T17:02:22.9072074Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_resolver_keeps_the_plain_path_for_a_partitioned_projection PASSED [ 62%]
+2026-10-19T17:02:23.1336124Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_deterministic_inference_keeps_the_plain_path PASSED [ 62%]
+2026-10-19T17:02:23.1566119Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_add_rmsnorm_rounded_matches_add_then_rmsnorm_bit_for_bit[1] PASSED [ 62%]
+2026-10-19T17:02:23.1790566Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_add_rmsnorm_rounded_matches_add_then_rmsnorm_bit_for_bit[3] PASSED [ 62%]
+2026-10-19T17:02:23.2017440Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_add_rmsnorm_rounded_matches_add_then_rmsnorm_bit_for_bit[12] PASSED [ 62%]
+2026-10-19T17:02:23.2243151Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_add_rmsnorm_rounded_matches_add_then_rmsnorm_bit_for_bit[32] PASSED [ 62%]
+2026-10-19T17:02:23.2284967Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_codebook_step_matches_argmax_gather_and_add PASSED [ 62%]
+2026-10-19T17:02:23.6858547Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_captured_predictor_step_replays_fresh_inputs_as_the_torch_codebook_ops_do PASSED [ 63%]
+2026-10-19T17:02:24.1676389Z tests/unit_test/qwen3_omni/test_predictor_kernels.py::test_fused_layers_match_without_programmatic_dependent_launch PASSED [ 63%]
+2026-10-19T17:02:24.1715141Z tests/unit_test/qwen3_omni/test_sglang_thinker.py::test_thinker_load_hook_loads_flashinfer_sampling_only_for_its_backend[pytorch] PASSED [ 63%]
+2026-10-19T17:02:24.1925343Z tests/unit_test/qwen3_omni/test_sglang_thinker.py::test_thinker_load_hook_loads_flashinfer_sampling_only_for_its_backend[flashinfer] PASSED [ 63%]
+2026-10-19T17:02:24.3713259Z tests/unit_test/qwen3_omni/test_sglang_thinker.py::test_no_token_count_up_to_the_ceiling_compiles_a_fused_moe_kernel_after_precompile PASSED [ 63%]
+2026-10-19T17:02:24.3749303Z tests/unit_test/qwen3_omni/test_talker.py::test_qwen_predictor_decode_graph_uses_configured_batch_buckets PASSED [ 63%]
+2026-10-19T17:02:24.3813129Z tests/unit_test/qwen3_omni/test_talker.py::test_qwen_predictor_decode_graph_matches_eager PASSED [ 63%]
+2026-10-19T17:02:24.3904283Z tests/unit_test/qwen3_omni/test_talker.py::test_qwen_predictor_decode_graph_covers_real_incremental_step PASSED [ 63%]
+2026-10-19T17:02:24.4163326Z tests/unit_test/qwen3_omni/test_talker.py::test_qwen_predictor_decode_graph_uses_tensor_device_when_current_device_differs PASSED [ 64%]
+2026-10-19T17:02:24.4196303Z tests/unit_test/qwen3_omni/test_talker.py::test_talker_prepare_decode_buffers_cuda_matches_fresh_rebuild PASSED [ 64%]
+2026-10-19T17:02:24.5240818Z tests/unit_test/qwen3_omni/test_talker.py::test_talker_precompile_leaves_the_first_prefill_samples_nothing_to_compile PASSED [ 64%]
+2026-10-19T17:02:24.5286442Z tests/unit_test/qwen3_omni/test_talker_attention.py::test_qwen_predictor_direct_attention_gqa_matches_materialized_kv[cuda-bf16] PASSED [ 64%]
+2026-10-19T17:02:24.5334352Z tests/unit_test/qwen3_omni/test_talker_attention.py::test_qwen_predictor_cached_attention_gqa_matches_materialized_kv[cuda-bf16] PASSED [ 64%]
+2026-10-19T17:02:24.5806596Z tests/unit_test/qwen3_omni/test_talker_attention.py::test_rope_store_writes_the_cache_the_copy_path_writes[cuda-1] PASSED [ 64%]
+2026-10-19T17:02:24.6254151Z tests/unit_test/qwen3_omni/test_talker_attention.py::test_rope_store_writes_the_cache_the_copy_path_writes[cuda-16] PASSED [ 64%]
+2026-10-19T17:02:24.6649139Z tests/unit_test/qwen3_omni/test_talker_attention.py::test_rope_store_writes_the_cache_the_copy_path_writes[torch-1] PASSED [ 65%]
+2026-10-19T17:02:24.7036584Z tests/unit_test/qwen3_omni/test_talker_attention.py::test_rope_store_writes_the_cache_the_copy_path_writes[torch-16] PASSED [ 65%]
+2026-10-19T17:02:24.7053872Z tests/unit_test/qwen3_omni/test_talker_token_readback.py::test_stage_token_ids_cuda_matches_reference PASSED [ 65%]
+2026-10-19T17:02:24.7065141Z tests/unit_test/qwen3_omni/test_thinker_fused_rope.py::test_install_succeeds_on_xpu SKIPPED [ 65%]
+2026-10-19T17:02:24.7075992Z tests/unit_test/qwen3_omni/test_thinker_fused_rope.py::test_the_kernel_matches_an_unfused_reference SKIPPED [ 65%]
+2026-10-19T17:02:25.2156509Z tests/unit_test/qwen3_tts/test_decode_step_staging.py::test_staged_ids_resolve_while_the_predictor_is_still_running PASSED [ 65%]
+2026-10-19T17:02:25.2176152Z tests/unit_test/qwen3_tts/test_decode_step_staging.py::test_staged_ids_keep_the_sampled_values_when_later_stream_work_overwrites_them PASSED [ 65%]
+2026-10-19T17:02:25.2333190Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_codec_arena_index_ring_survives_queued_copies PASSED [ 65%]
+2026-10-19T17:02:26.1964224Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_incremental_codec_cuda_graph_matches_eager_state[cold-1-1] PASSED [ 66%]
+2026-10-19T17:02:27.1211502Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_incremental_codec_cuda_graph_matches_eager_state[warm-2-2] PASSED [ 66%]
+2026-10-19T17:02:28.0528853Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_incremental_codec_cuda_graph_matches_eager_state[warm-3-4] PASSED [ 66%]
+2026-10-19T17:02:28.9184538Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_incremental_codec_cuda_graph_alternates_shared_pool_keys PASSED [ 66%]
+2026-10-19T17:02:30.6604550Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_incremental_codec_cuda_graph_runners_alternate_in_one_pool PASSED [ 66%]
+2026-10-19T17:02:31.5106125Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_arena_bound_graph_replays_match_eager_and_advance_the_arena PASSED [ 66%]
+2026-10-19T17:02:31.5471099Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_cuda_decoder_runs_channels_last_and_leaves_the_shared_weights PASSED [ 66%]
+2026-10-19T17:02:31.5723382Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_decoder_keeps_the_channels_first_path_off_the_cuda_platform PASSED [ 66%]
+2026-10-19T17:02:32.5522640Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_windowed_replays_match_one_eager_decode_and_its_arena_state PASSED [ 67%]
+2026-10-19T17:02:33.4854900Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_tail_graph_replays_match_eager_tail_decodes_and_reuse_their_buffers PASSED [ 67%]
+2026-10-19T17:02:33.4901745Z tests/unit_test/qwen3_tts/test_incremental_codec.py::test_tail_graph_runner_keeps_only_widths_that_hold_a_tail PASSED [ 67%]
+2026-10-19T17:02:33.4935030Z tests/unit_test/qwen3_tts/test_incremental_codec_cuda_graph.py::test_incremental_codec_warmup_traces_a_compiled_shape_on_its_own_tensors PASSED [ 67%]
+2026-10-19T17:02:33.4956007Z tests/unit_test/qwen3_tts/test_incremental_codec_cuda_graph.py::test_incremental_codec_launch_uses_graph_state_and_waveform PASSED [ 67%]
+2026-10-19T17:02:33.4979434Z tests/unit_test/qwen3_tts/test_incremental_codec_cuda_graph.py::test_incremental_codec_launch_falls_back_to_eager_on_graph_miss PASSED [ 67%]
+2026-10-19T17:02:33.5047508Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_talker_text_rope_stores_kv_only_on_the_cuda_kernel[cuda] PASSED [ 67%]
+2026-10-19T17:02:33.5098152Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_talker_text_rope_stores_kv_only_on_the_cuda_kernel[torch] PASSED [ 67%]
+2026-10-19T17:02:33.5145136Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_reference_code_batcher_encodes_on_dedicated_cuda_stream PASSED [ 68%]
+2026-10-19T17:02:33.5165312Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_ingest_records_readiness_for_a_device_chunk_without_an_event PASSED [ 68%]
+2026-10-19T17:02:33.7207295Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_worker_plan_reads_a_device_chunk_after_the_producer_wrote_it PASSED [ 68%]
+2026-10-19T17:02:34.7132159Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_handle_retains_exact_decode_input_until_resolve PASSED [ 68%]
+2026-10-19T17:02:34.8677760Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_pageable_fallback_synchronizes_stream_for_empty_delta_on_cuda PASSED [ 68%]
+2026-10-19T17:02:34.9714696Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_decode_input_stays_correct_under_allocator_pressure PASSED [ 68%]
+2026-10-19T17:02:34.9740560Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_decode_slot_reuses_event_on_cuda PASSED [ 68%]
+2026-10-19T17:02:34.9770330Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_pending_decode_resolves_from_its_own_event_on_cuda PASSED [ 68%]
+2026-10-19T17:02:34.9787165Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_result_adapter_leaves_device_codes_on_the_device PASSED [ 69%]
+2026-10-19T17:02:35.4865735Z tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_prepare_decode_buffers_lands_each_restage_behind_a_busy_stream PASSED [ 69%]
+2026-10-19T17:02:35.7595122Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_greedy_prediction_reads_no_seed_state PASSED [ 69%]
+2026-10-19T17:02:35.7777266Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-1] PASSED [ 69%]
+2026-10-19T17:02:35.7908182Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-2] PASSED [ 69%]
+2026-10-19T17:02:35.8033829Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-4] PASSED [ 69%]
+2026-10-19T17:02:35.8192204Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-8] PASSED [ 69%]
+2026-10-19T17:02:35.8322564Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-16] PASSED [ 69%]
+2026-10-19T17:02:35.8462380Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-topp-1] PASSED [ 70%]
+2026-10-19T17:02:35.8600508Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-topp-2] PASSED [ 70%]
+2026-10-19T17:02:35.8737737Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-topp-4] PASSED [ 70%]
+2026-10-19T17:02:35.8876681Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-topp-8] PASSED [ 70%]
+2026-10-19T17:02:35.9013767Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[topk-topp-16] PASSED [ 70%]
+2026-10-19T17:02:35.9166990Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[fullsort-1] PASSED [ 70%]
+2026-10-19T17:02:35.9300931Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[fullsort-2] PASSED [ 70%]
+2026-10-19T17:02:35.9443607Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[fullsort-4] PASSED [ 70%]
+2026-10-19T17:02:35.9585802Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[fullsort-8] PASSED [ 71%]
+2026-10-19T17:02:35.9737881Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_sampled[fullsort-16] PASSED [ 71%]
+2026-10-19T17:02:35.9845544Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_argmax[1] PASSED [ 71%]
+2026-10-19T17:02:35.9946010Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_argmax[2] PASSED [ 71%]
+2026-10-19T17:02:36.0047493Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_argmax[4] PASSED [ 71%]
+2026-10-19T17:02:36.0151705Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_argmax[8] PASSED [ 71%]
+2026-10-19T17:02:36.0251683Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_argmax[16] PASSED [ 71%]
+2026-10-19T17:02:36.0450631Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_missing_embedding_buffer_uses_original_graph_path PASSED [ 72%]
+2026-10-19T17:02:36.0752275Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_projected_tables_graph_matches_eager_and_the_unfused_gather[1] PASSED [ 72%]
+2026-10-19T17:02:36.1041991Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_projected_tables_graph_matches_eager_and_the_unfused_gather[4] PASSED [ 72%]
+2026-10-19T17:02:36.1333000Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_projected_tables_graph_matches_eager_and_the_unfused_gather[16] PASSED [ 72%]
+2026-10-19T17:02:36.1410280Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_projected_tables_decode_the_codes_the_projection_decodes[1] PASSED [ 72%]
+2026-10-19T17:02:36.1488471Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_projected_tables_decode_the_codes_the_projection_decodes[16] PASSED [ 72%]
+2026-10-19T17:02:36.2212908Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_projected_tables_hold_each_codebook_projection_at_checkpoint_width PASSED [ 72%]
+2026-10-19T17:02:36.2277595Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_eager_predictor_leaves_the_talker_hidden_untouched_for_an_identity_projection PASSED [ 72%]
+2026-10-19T17:02:36.2337703Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_eager_predictor_in_place_residual_norms_match_the_out_of_place_form[1-1] PASSED [ 73%]
+2026-10-19T17:02:36.2431842Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_eager_predictor_in_place_residual_norms_match_the_out_of_place_form[3-2] PASSED [ 73%]
+2026-10-19T17:02:36.2530770Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_eager_predictor_in_place_residual_norms_match_the_out_of_place_form[3-16] PASSED [ 73%]
+2026-10-19T17:02:36.2589380Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_eager_predictor_adds_each_residual_inside_the_norm_that_follows PASSED [ 73%]
+2026-10-19T17:02:36.2644311Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_eager_predictor_output_survives_the_next_token PASSED [ 73%]
+2026-10-19T17:02:36.2732824Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_the_pair_pass_matches_two_one_token_passes[1] PASSED [ 73%]
+2026-10-19T17:02:36.2820415Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_the_pair_pass_matches_two_one_token_passes[3] PASSED [ 73%]
+2026-10-19T17:02:36.2907171Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_the_pair_pass_matches_two_one_token_passes[16] PASSED [ 73%]
+2026-10-19T17:02:36.4299221Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_eager_predictor_accepts_a_strided_input_and_leaves_its_neighbours PASSED [ 74%]
+2026-10-19T17:02:36.4414561Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_bit_identity_argmax_none_positions PASSED [ 74%]
+2026-10-19T17:02:36.4555288Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_padded_bucket_bit_identity PASSED [ 74%]
+2026-10-19T17:02:36.4723372Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_mixed_padded_bucket_bit_identity_and_reuse PASSED [ 74%]
+2026-10-19T17:02:36.4898528Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_multi_step_replay_bit_identity PASSED [ 74%]
+2026-10-19T17:02:36.5025959Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_mixed_sampled_argmax_rows_use_graph_bit_identity PASSED [ 74%]
+2026-10-19T17:02:36.5062778Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_mixed_sampled_argmax_rows_preserve_argmax_tie_break PASSED [ 74%]
+2026-10-19T17:02:36.5219773Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_mixed_sampling_masks_reuse_one_graph PASSED [ 74%]
+2026-10-19T17:02:36.5400552Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_all_sampled_and_mixed_batches_capture_separate_graphs PASSED [ 75%]
+2026-10-19T17:02:36.5475464Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_kill_switch_disables_graph_path PASSED [ 75%]
+2026-10-19T17:02:36.5579380Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_capture_failure_disables_key_and_falls_back PASSED [ 75%]
+2026-10-19T17:02:36.5638943Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_capture_failure_restores_live_sub_state PASSED [ 75%]
+2026-10-19T17:02:36.5750344Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_no_host_readback_on_graph_dispatch_and_replay PASSED [ 75%]
+2026-10-19T17:02:36.5813631Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_no_host_readback_in_eager_chain PASSED [ 75%]
+2026-10-19T17:02:36.5964390Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_key_shared_across_request_top_k_values PASSED [ 75%]
+2026-10-19T17:02:36.6090589Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_row_top_k_below_bucket_width_bit_identity PASSED [ 75%]
+2026-10-19T17:02:36.6281881Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_replay_tracks_per_step_sampling_params PASSED [ 76%]
+2026-10-19T17:02:36.6517828Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_global_disable_after_max_capture_failures PASSED [ 76%]
+2026-10-19T17:02:36.6625447Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_capture_failure_resets_cuda_graph PASSED [ 76%]
+2026-10-19T17:02:36.6891224Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_widened_top_k_masked_ranks_never_sampled PASSED [ 76%]
+2026-10-19T17:02:36.7046314Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_keys_share_memory_pool PASSED [ 76%]
+2026-10-19T17:02:36.7284209Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_key_cache_capacity_fallback_without_eviction PASSED [ 76%]
+2026-10-19T17:02:36.7605764Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_top_p_removed_ranks_never_sampled PASSED [ 76%]
+2026-10-19T17:02:36.7679450Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_server_disable_cuda_graph_gates_predictor PASSED [ 76%]
+2026-10-19T17:02:36.7810073Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_failed_capture_restores_the_current_stream PASSED [ 77%]
+2026-10-19T17:02:36.8590401Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_startup_capture_builds_the_ladder_for_both_sampled_signatures PASSED [ 77%]
+2026-10-19T17:02:37.1927674Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_startup_set_stays_outside_the_lazy_capture_budget PASSED [ 77%]
+2026-10-19T17:02:37.1968761Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_startup_capture_failure_raises_and_restores_state PASSED [ 77%]
+2026-10-19T17:02:37.2079392Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_graph_object_holds_no_reference_to_the_talker PASSED [ 77%]
+2026-10-19T17:02:37.2210444Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_sglang_gemm_overrides_keep_the_eager_gemm_on_both_paths[batch-invariant] PASSED [ 77%]
+2026-10-19T17:02:37.2340091Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_sglang_gemm_overrides_keep_the_eager_gemm_on_both_paths[optimized-backend] PASSED [ 77%]
+2026-10-19T17:02:37.2686032Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_rope_store_writes_the_cache_the_copy_path_writes[cuda-1] PASSED [ 77%]
+2026-10-19T17:02:37.3023226Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_rope_store_writes_the_cache_the_copy_path_writes[cuda-16] PASSED [ 78%]
+2026-10-19T17:02:37.3331727Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_rope_store_writes_the_cache_the_copy_path_writes[torch-1] PASSED [ 78%]
+2026-10-19T17:02:37.3640735Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_rope_store_writes_the_cache_the_copy_path_writes[torch-16] PASSED [ 78%]
+2026-10-19T17:02:37.3814968Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_rope_store_writes_the_pair_where_the_copy_path_writes[cuda-1] PASSED [ 78%]
+2026-10-19T17:02:37.3991477Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_rope_store_writes_the_pair_where_the_copy_path_writes[cuda-16] PASSED [ 78%]
+2026-10-19T17:02:37.4169970Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_rope_store_writes_the_pair_where_the_copy_path_writes[torch-1] PASSED [ 78%]
+2026-10-19T17:02:37.4346791Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_rope_store_writes_the_pair_where_the_copy_path_writes[torch-16] PASSED [ 78%]
+2026-10-19T17:02:37.8994622Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_fused_predictor_layers_are_as_close_to_fp32_as_the_plain_layers[1] PASSED [ 79%]
+2026-10-19T17:02:38.2169424Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_fused_predictor_layers_are_as_close_to_fp32_as_the_plain_layers[5] PASSED [ 79%]
+2026-10-19T17:02:38.5347766Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_fused_predictor_layers_are_as_close_to_fp32_as_the_plain_layers[64] PASSED [ 79%]
+2026-10-19T17:02:38.5367528Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_rejects_unsafe_input_without_writes[dtype] PASSED [ 79%]
+2026-10-19T17:02:38.5385180Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_rejects_unsafe_input_without_writes[layout] PASSED [ 79%]
+2026-10-19T17:02:38.5402862Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_rejects_unsafe_input_without_writes[overlap] PASSED [ 79%]
+2026-10-19T17:02:38.5423786Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_matches_bf16_reference[1-8-0] PASSED [ 79%]
+2026-10-19T17:02:38.5443909Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_matches_bf16_reference[4-8-0] PASSED [ 79%]
+2026-10-19T17:02:38.5478709Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_matches_bf16_reference[8-2048-0] PASSED [ 80%]
+2026-10-19T17:02:38.5508843Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_matches_bf16_reference[1-8-4] PASSED [ 80%]
+2026-10-19T17:02:38.5543702Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_matches_bf16_reference[8-2048-1024] PASSED [ 80%]
+2026-10-19T17:02:38.5561326Z tests/unit_test/qwen3_tts/test_predictor_kernels.py::test_gather_codec_embedding_and_add_rejects_an_overlapping_projection PASSED [ 80%]
+2026-10-19T17:02:38.6105228Z tests/unit_test/qwen3_tts/test_reference_encoder_cuda_graph.py::test_reference_encoder_graph_replays_match_eager_and_miss_above_the_largest_bucket PASSED [ 80%]
+2026-10-19T17:02:38.6413472Z tests/unit_test/qwen3_tts/test_reference_encoder_cuda_graph.py::test_reference_code_batcher_replays_captured_buckets_and_encodes_the_rest PASSED [ 80%]
+2026-10-19T17:02:38.6908217Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_matches_sglang_multinomial[1-1] PASSED [ 80%]
+2026-10-19T17:02:38.8236848Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_matches_sglang_multinomial[3-2] PASSED [ 80%]
+2026-10-19T17:02:38.8269127Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_matches_sglang_multinomial[7-30] PASSED [ 81%]
+2026-10-19T17:02:38.8297936Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_matches_sglang_multinomial[16-64] PASSED [ 81%]
+2026-10-19T17:02:38.9392586Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_matches_sglang_at_the_uint32_max_hash PASSED [ 81%]
+2026-10-19T17:02:38.9424076Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_matches_reference_at_hash_endpoints[hash-zero] PASSED [ 81%]
+2026-10-19T17:02:38.9445351Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_matches_reference_at_hash_endpoints[hash-uint32-max] PASSED [ 81%]
+2026-10-19T17:02:38.9465684Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_matches_reference_at_hash_endpoints[seed-zero-pos-endpoint] PASSED [ 81%]
+2026-10-19T17:02:38.9531285Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_at_uint32_max_hash PASSED [ 81%]
+2026-10-19T17:02:38.9545793Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_seeded_small_k_sampler_falls_back_for_cpu PASSED [ 81%]
+2026-10-19T17:02:38.9617056Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[1-4-1.0] PASSED [ 82%]
+2026-10-19T17:02:38.9668861Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[4-16-0.8] PASSED [ 82%]
+2026-10-19T17:02:38.9727669Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[4-32-1.0] PASSED [ 82%]
+2026-10-19T17:02:38.9779972Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[8-32-0.95] PASSED [ 82%]
+2026-10-19T17:02:38.9805162Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[4-50-1.0] PASSED [ 82%]
+2026-10-19T17:02:38.9840300Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[8-64-0.8] PASSED [ 82%]
+2026-10-19T17:02:38.9895932Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[4-128-0.95] PASSED [ 82%]
+2026-10-19T17:02:38.9947514Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[4-256-0.5] PASSED [ 82%]
+2026-10-19T17:02:39.0000864Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[8-512-0.8] PASSED [ 83%]
+2026-10-19T17:02:39.0053867Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference[1-1024-0.95] PASSED [ 83%]
+2026-10-19T17:02:39.0234235Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[4] PASSED [ 83%]
+2026-10-19T17:02:39.0431361Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[8] PASSED [ 83%]
+2026-10-19T17:02:39.0629825Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[16] PASSED [ 83%]
+2026-10-19T17:02:39.0803283Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[32] PASSED [ 83%]
+2026-10-19T17:02:39.0973945Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[50] PASSED [ 83%]
+2026-10-19T17:02:39.1146558Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[64] PASSED [ 83%]
+2026-10-19T17:02:39.1337055Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[128] PASSED [ 84%]
+2026-10-19T17:02:39.1524409Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[256] PASSED [ 84%]
+2026-10-19T17:02:39.1715101Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[512] PASSED [ 84%]
+2026-10-19T17:02:39.1923111Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_equal_logits[1024] PASSED [ 84%]
+2026-10-19T17:02:39.2017721Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.5-4] PASSED [ 84%]
+2026-10-19T17:02:39.2082129Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.5-32] PASSED [ 84%]
+2026-10-19T17:02:39.2146895Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.5-50] PASSED [ 84%]
+2026-10-19T17:02:39.2211629Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.5-128] PASSED [ 84%]
+2026-10-19T17:02:39.2276143Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.5-1024] PASSED [ 85%]
+2026-10-19T17:02:39.2339767Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.8-4] PASSED [ 85%]
+2026-10-19T17:02:39.2406932Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.8-32] PASSED [ 85%]
+2026-10-19T17:02:39.2471320Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.8-50] PASSED [ 85%]
+2026-10-19T17:02:39.2536061Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.8-128] PASSED [ 85%]
+2026-10-19T17:02:39.2599140Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.8-1024] PASSED [ 85%]
+2026-10-19T17:02:39.2662211Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.95-4] PASSED [ 85%]
+2026-10-19T17:02:39.2725330Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.95-32] PASSED [ 86%]
+2026-10-19T17:02:39.2789720Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.95-50] PASSED [ 86%]
+2026-10-19T17:02:39.2855635Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.95-128] PASSED [ 86%]
+2026-10-19T17:02:39.2918477Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[0.95-1024] PASSED [ 86%]
+2026-10-19T17:02:39.2975629Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[1.0-4] PASSED [ 86%]
+2026-10-19T17:02:39.3032452Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[1.0-32] PASSED [ 86%]
+2026-10-19T17:02:39.3094642Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[1.0-50] PASSED [ 86%]
+2026-10-19T17:02:39.3153209Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[1.0-128] PASSED [ 86%]
+2026-10-19T17:02:39.3210313Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_threshold_ties[1.0-1024] PASSED [ 87%]
+2026-10-19T17:02:39.3399822Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_signed_zero_order[32-alternating] PASSED [ 87%]
+2026-10-19T17:02:39.3570363Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_signed_zero_order[50-alternating] PASSED [ 87%]
+2026-10-19T17:02:39.3739508Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_signed_zero_order[1024-alternating] PASSED [ 87%]
+2026-10-19T17:02:39.3911254Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_matches_reference_for_signed_zero_order[32-leading] PASSED [ 87%]
+2026-10-19T17:02:39.3950042Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_captures_without_reference_top_k[32] PASSED [ 87%]
+2026-10-19T17:02:39.3984558Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_captures_without_reference_top_k[50] PASSED [ 87%]
+2026-10-19T17:02:39.4018869Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_capture_falls_back_without_triton_gather PASSED [ 87%]
+2026-10-19T17:02:39.4064057Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_keeps_the_single_kernel_off_sm90[50] PASSED [ 88%]
+2026-10-19T17:02:39.4109459Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_keeps_the_single_kernel_off_sm90[128] PASSED [ 88%]
+2026-10-19T17:02:39.4125295Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_falls_back_for_unproven_shapes PASSED [ 88%]
+2026-10-19T17:02:39.4140788Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_falls_back_for_unsupported_cuda_inputs PASSED [ 88%]
+2026-10-19T17:02:39.4156689Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_fused_raw_logit_sampler_falls_back_without_triton_gather PASSED [ 88%]
+2026-10-19T17:02:39.4181225Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_talker_returns_fp32_logits_from_a_bf16_codec_head PASSED [ 88%]
+2026-10-19T17:02:39.7411312Z tests/unit_test/qwen3_tts/test_sampling_kernels.py::test_talker_precompile_leaves_the_first_prefill_samples_nothing_to_compile PASSED [ 88%]
+2026-10-19T17:02:39.8768050Z tests/unit_test/qwen3_tts/test_speaker_encoder_cuda_graph.py::test_runner_replays_captured_buckets_and_encodes_the_rest PASSED [ 88%]
+2026-10-19T17:02:39.8980389Z tests/unit_test/qwen3_tts/test_speaker_encoder_cuda_graph.py::test_a_failed_capture_leaves_no_graphs_and_the_runner_eager[warmup_of_the_second_bucket] PASSED [ 89%]
+2026-10-19T17:02:39.9194905Z tests/unit_test/qwen3_tts/test_speaker_encoder_cuda_graph.py::test_a_failed_capture_leaves_no_graphs_and_the_runner_eager[inside_the_capture_of_the_second_bucket] PASSED [ 89%]
+2026-10-19T17:02:46.2187902Z tests/unit_test/relay/test_cuda_ipc_relay.py::test_cuda_ipc_same_gpu_round_trip PASSED [ 89%]
+2026-10-19T17:02:53.6003541Z tests/unit_test/relay/test_cuda_ipc_relay.py::test_cuda_ipc_paged_multi_buffer_round_trip_with_storage_offsets PASSED [ 89%]
+2026-10-19T17:02:59.7434344Z tests/unit_test/relay/test_cuda_ipc_relay.py::test_cuda_ipc_cross_gpu_round_trip PASSED [ 89%]
+2026-10-19T17:03:00.1143820Z tests/unit_test/sampling/test_sampler_compile.py::test_compiled_forms_serve_views_and_standalone_tensors_at_every_batch_size PASSED [ 89%]
+2026-10-19T17:03:00.1160013Z tests/unit_test/sampling/test_sampler_compile.py::test_flashinfer_form_loads_the_sampling_module[False] PASSED [ 89%]
+2026-10-19T17:03:00.1267656Z tests/unit_test/sampling/test_sampler_compile.py::test_flashinfer_form_loads_the_sampling_module[True] PASSED [ 89%]
+2026-10-19T17:03:00.1286635Z tests/unit_test/scheduling/test_stage_cache.py::test_pinned_cache_stores_device_tensors_in_page_locked_memory PASSED [ 90%]
+2026-10-19T17:03:00.1301546Z tests/unit_test/scheduling/test_stage_cache.py::test_pinned_cache_reuses_already_pinned_host_tensor PASSED [ 90%]
+2026-10-19T17:03:00.1326249Z tests/unit_test/scheduling/test_stage_cache.py::test_pinned_cache_falls_back_to_pageable_on_alloc_failure PASSED [ 90%]
+2026-10-19T17:03:00.1409069Z tests/unit_test/test_stage_device_contract.py::test_gpu_stage_factories_forward_gpu_id_into_device_spec_resolution[minimax_music3-default-minimax_music3_ar] PASSED [ 90%]
+2026-10-19T17:03:00.1428520Z tests/unit_test/test_stage_device_contract.py::test_gpu_stage_factories_forward_gpu_id_into_device_spec_resolution[minimax_music3-default-dit_dav] PASSED [ 90%]
+2026-10-19T17:03:00.1447573Z tests/unit_test/test_stage_device_contract.py::test_gpu_stage_factories_forward_gpu_id_into_device_spec_resolution[minimax_music3-single-gpu-minimax_music3_ar] PASSED [ 90%]
+2026-10-19T17:03:00.1466020Z tests/unit_test/test_stage_device_contract.py::test_gpu_stage_factories_forward_gpu_id_into_device_spec_resolution[minimax_music3-single-gpu-dit_dav] PASSED [ 90%]
+2026-10-19T17:03:00.1485032Z tests/unit_test/test_stage_device_contract.py::test_gpu_stage_factories_forward_gpu_id_into_device_spec_resolution[minimax_music3-dual-gpu-minimax_music3_ar] PASSED [ 90%]
+2026-10-19T17:03:00.1503985Z tests/unit_test/test_stage_device_contract.py::test_gpu_stage_factories_forward_gpu_id_into_device_spec_resolution[minimax_music3-dual-gpu-dit_dav] PASSED [ 91%]
+2026-10-19T17:03:00.1534754Z tests/unit_test/test_stage_device_contract.py::test_gpu_stage_factories_forward_gpu_id_into_device_spec_resolution[zonos2-default-tts_engine] PASSED [ 91%]
+2026-10-19T17:03:00.1542260Z tests/unit_test/test_stage_device_contract.py::test_gpu_stage_factories_forward_gpu_id_into_device_spec_resolution[zonos2-multi_gpu-tts_engine] PASSED [ 91%]
+2026-10-19T17:03:00.1558386Z tests/unit_test/test_stage_device_contract.py::test_engine_factories_bind_the_placed_gpu[minimax_music3] PASSED [ 91%]
+2026-10-19T17:03:00.1575066Z tests/unit_test/test_stage_device_contract.py::test_engine_factories_bind_the_placed_gpu[zonos2] PASSED [ 91%]
+2026-10-19T17:03:00.1613022Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[1-1-1] PASSED [ 91%]
+2026-10-19T17:03:00.1640862Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[1-1-5] PASSED [ 91%]
+2026-10-19T17:03:00.1668032Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[1-1-16] PASSED [ 91%]
+2026-10-19T17:03:00.1696014Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[3-1-1] PASSED [ 92%]
+2026-10-19T17:03:00.1723458Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[3-1-5] PASSED [ 92%]
+2026-10-19T17:03:00.1750780Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[3-1-16] PASSED [ 92%]
+2026-10-19T17:03:00.1777855Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[9-1-1] PASSED [ 92%]
+2026-10-19T17:03:00.1805749Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[9-1-5] PASSED [ 92%]
+2026-10-19T17:03:00.1833083Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[9-1-16] PASSED [ 92%]
+2026-10-19T17:03:00.1861278Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[1-2-1] PASSED [ 92%]
+2026-10-19T17:03:00.1888861Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[1-2-5] PASSED [ 93%]
+2026-10-19T17:03:00.1916593Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[1-2-16] PASSED [ 93%]
+2026-10-19T17:03:00.1946023Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[3-2-1] PASSED [ 93%]
+2026-10-19T17:03:00.1974774Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[3-2-5] PASSED [ 93%]
+2026-10-19T17:03:00.2002764Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv1d_matches_the_causal_conv1d[3-2-16] PASSED [ 93%]
+2026-10-19T17:03:00.2036878Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv_transpose1d_matches_the_conv_transpose1d[2-0-0-True] PASSED [ 93%]
+2026-10-19T17:03:00.2064463Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv_transpose1d_matches_the_conv_transpose1d[2-0-0-False] PASSED [ 93%]
+2026-10-19T17:03:00.2091984Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv_transpose1d_matches_the_conv_transpose1d[4-1-1-True] PASSED [ 93%]
+2026-10-19T17:03:00.2119585Z tests/unit_test/utils/test_channels_last_conv.py::test_channels_last_conv_transpose1d_matches_the_conv_transpose1d[4-1-1-False] PASSED [ 94%]
+2026-10-19T17:03:00.7200379Z tests/unit_test/utils/test_cuda_staging.py::test_pinned_transfer_slot_real_cuda_query_tracks_async_copy PASSED [ 94%]
+2026-10-19T17:03:01.2290406Z tests/unit_test/utils/test_cuda_staging.py::test_pinned_transfer_slot_real_cuda_guards_slot_on_other_device PASSED [ 94%]
+2026-10-19T17:03:07.4923125Z tests/unit_test/utils/test_ipc_weights_cuda.py::test_weight_share_stage_bootstrap_supports_direct_cuda_ipc PASSED [ 94%]
+2026-10-19T17:03:13.7857091Z tests/unit_test/utils/test_ipc_weights_cuda.py::test_cross_process_alias_observes_leader_mutation PASSED [ 94%]
+2026-10-19T17:03:19.9429477Z tests/unit_test/utils/test_ipc_weights_cuda.py::test_cross_process_private_scratch_stays_isolated PASSED [ 94%]
+2026-10-19T17:03:26.1496758Z tests/unit_test/utils/test_ipc_weights_cuda.py::test_cross_process_shared_scratch_shows_the_hazard PASSED [ 94%]
+2026-10-19T17:03:26.1534372Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-1-96-33] PASSED [ 94%]
+2026-10-19T17:03:26.1560608Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-2-192-96] PASSED [ 95%]
+2026-10-19T17:03:26.1586239Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-1-384-192] PASSED [ 95%]
+2026-10-19T17:03:26.1614643Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-1-768-257] PASSED [ 95%]
+2026-10-19T17:03:26.1647105Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-1-96-65536] PASSED [ 95%]
+2026-10-19T17:03:26.1678643Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-1-96-122880] PASSED [ 95%]
+2026-10-19T17:03:26.1705266Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-4-1536-1] PASSED [ 95%]
+2026-10-19T17:03:26.1730155Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-8-384-64] PASSED [ 95%]
+2026-10-19T17:03:26.1765280Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-16-96-37845] PASSED [ 95%]
+2026-10-19T17:03:26.1791132Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-32-96-64] PASSED [ 96%]
+2026-10-19T17:03:26.1816980Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[False-2-4-33] PASSED [ 96%]
+2026-10-19T17:03:26.1843341Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-1-96-33] PASSED [ 96%]
+2026-10-19T17:03:26.1869444Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-2-192-96] PASSED [ 96%]
+2026-10-19T17:03:26.1895593Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-1-384-192] PASSED [ 96%]
+2026-10-19T17:03:26.1921285Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-1-768-257] PASSED [ 96%]
+2026-10-19T17:03:26.1947748Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-1-96-65536] PASSED [ 96%]
+2026-10-19T17:03:26.1974054Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-1-96-122880] PASSED [ 96%]
+2026-10-19T17:03:26.1999683Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-4-1536-1] PASSED [ 97%]
+2026-10-19T17:03:26.2025809Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-8-384-64] PASSED [ 97%]
+2026-10-19T17:03:26.2059782Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-16-96-37845] PASSED [ 97%]
+2026-10-19T17:03:26.2085414Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-32-96-64] PASSED [ 97%]
+2026-10-19T17:03:26.2110864Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_cuda_parity_uses_kernel[True-2-4-33] PASSED [ 97%]
+2026-10-19T17:03:26.2130805Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_uses_the_module_epsilon PASSED [ 97%]
+2026-10-19T17:03:26.2150981Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_cuda_falls_back_outside_envelope[dtype] PASSED [ 97%]
+2026-10-19T17:03:26.2171252Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_cuda_falls_back_outside_envelope[layout] PASSED [ 97%]
+2026-10-19T17:03:26.2190988Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_cuda_falls_back_outside_envelope[empty] PASSED [ 98%]
+2026-10-19T17:03:26.2228293Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_cuda_falls_back_outside_envelope[length] PASSED [ 98%]
+2026-10-19T17:03:26.2254179Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_bf16_encodings_and_denormals[False] PASSED [ 98%]
+2026-10-19T17:03:26.2278171Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_bf16_encodings_and_denormals[True] PASSED [ 98%]
+2026-10-19T17:03:26.2465115Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_prewarm_covers_new_shapes_and_capture PASSED [ 98%]
+2026-10-19T17:03:26.2870333Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_survives_a_fullgraph_compile PASSED [ 98%]
+2026-10-19T17:03:26.2905171Z tests/unit_test/utils/test_snake_beta.py::test_shared_snake_graph_reads_current_inputs_and_parameters PASSED [ 98%]
+2026-10-19T17:03:26.2934996Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_matches_eager_on_this_host[False] PASSED [ 98%]
+2026-10-19T17:03:26.2965597Z tests/unit_test/utils/test_snake_beta.py::test_fused_snake_beta_matches_eager_on_this_host[True] PASSED [ 99%]
+2026-10-19T17:03:26.4205724Z tests/unit_test/voxtral_tts/test_pipeline.py::test_voxtral_codec_graphs_refresh_mixed_windows_and_keep_delivered_audio PASSED [ 99%]
+2026-10-19T17:03:26.4640790Z tests/unit_test/voxtral_tts/test_pipeline.py::test_voxtral_acoustic_graphs_refresh_inputs_and_advance_rng PASSED [ 99%]
+2026-10-19T17:03:26.4682489Z tests/unit_test/whisper_asr/test_encoder_service.py::test_cuda_cache_entries_are_pinned_and_match_device_result PASSED [ 99%]
+2026-10-19T17:03:26.4711511Z tests/unit_test/whisper_asr/test_encoder_service.py::test_cuda_hit_attaches_device_tensor_from_pinned_entry PASSED [ 99%]
+2026-10-19T17:03:26.4740556Z tests/unit_test/whisper_asr/test_encoder_service.py::test_pin_host_memory_flag_disables_pinning PASSED [ 99%]
+2026-10-19T17:03:26.4770391Z tests/unit_test/whisper_asr/test_encoder_service.py::test_pinned_allocation_failure_falls_back_to_pageable PASSED [ 99%]
+2026-10-19T17:03:28.2736020Z tests/unit_test/whisper_asr/test_encoder_service.py::test_prewarm_covers_cache_capacity PASSED [100%]
+2026-10-19T17:03:28.2736435Z 
+2026-10-19T17:03:28.2736553Z =============================== warnings summary ===============================
+2026-10-19T17:03:28.2736825Z <frozen importlib._bootstrap>:488
+2026-10-19T17:03:28.2737215Z   <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+2026-10-19T17:03:28.2737501Z 
+2026-10-19T17:03:28.2737583Z <frozen importlib._bootstrap>:488
+2026-10-19T17:03:28.2738072Z   <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+2026-10-19T17:03:28.2738469Z 
+2026-10-19T17:03:28.2738642Z ../../../opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:365: 14 warnings
+2026-10-19T17:03:28.2739242Z   /opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+2026-10-19T17:03:28.2739736Z     warnings.warn(
+2026-10-19T17:03:28.2739831Z 
+2026-10-19T17:03:28.2739967Z ../../../opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1488
+2026-10-19T17:03:28.2740287Z ../../../opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1488
+2026-10-19T17:03:28.2740597Z ../../../opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1488
+2026-10-19T17:03:28.2740903Z ../../../opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1488
+2026-10-19T17:03:28.2741210Z ../../../opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1488
+2026-10-19T17:03:28.2741513Z ../../../opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1488
+2026-10-19T17:03:28.2742046Z   /opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+2026-10-19T17:03:28.2742517Z     warnings.warn(
+2026-10-19T17:03:28.2742613Z 
+2026-10-19T17:03:28.2742873Z <frozen abc>:106
+2026-10-19T17:03:28.2743249Z   <frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+2026-10-19T17:03:28.2743697Z 
+2026-10-19T17:03:28.2743829Z ../../../opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1640
+2026-10-19T17:03:28.2744339Z   /opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1640: DeprecationWarning: `torch.jit.interface` is deprecated. Please use `torch.compile` instead.
+2026-10-19T17:03:28.2744784Z     warnings.warn(
+2026-10-19T17:03:28.2744871Z 
+2026-10-19T17:03:28.2745009Z ../../../opt/sglang/lib/python3.12/site-packages/starlette/testclient.py:53
+2026-10-19T17:03:28.2745586Z   /opt/sglang/lib/python3.12/site-packages/starlette/testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+2026-10-19T17:03:28.2746336Z     _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+2026-10-19T17:03:28.2746621Z 
+2026-10-19T17:03:28.2746940Z tests/unit_test/fishaudio_drama3/test_first_frame_graphs.py::test_a_failed_capture_names_its_request_count_and_the_switch
+2026-10-19T17:03:28.2747552Z tests/unit_test/qwen3_tts/test_predictor_cuda_graph.py::test_capture_failure_resets_cuda_graph
+2026-10-19T17:03:28.2748795Z   /opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:169: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:210.)
+2026-10-19T17:03:28.2749850Z     super().capture_end()
+2026-10-19T17:03:28.2750001Z 
+2026-10-19T17:03:28.2750325Z tests/unit_test/fishaudio_drama3/test_vocoder.py::test_the_channels_last_decoder_decodes_like_the_codec[float32]
+2026-10-19T17:03:28.2751076Z tests/unit_test/fishaudio_drama3/test_vocoder.py::test_the_channels_last_decoder_decodes_like_the_codec[float16]
+2026-10-19T17:03:28.2751781Z tests/unit_test/fishaudio_s2_pro/test_vocoder.py::test_a_codec_decode_can_be_captured_in_a_cuda_graph
+2026-10-19T17:03:28.2752810Z   /opt/sglang/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+2026-10-19T17:03:28.2753473Z     WeightNorm.apply(module, name, dim)
+2026-10-19T17:03:28.2753633Z 
+2026-10-19T17:03:28.2753921Z tests/unit_test/fun_cosyvoice3/test_request_builders.py::test_cuda_preprocessing_builds_prompt_rows_without_a_host_wait
+2026-10-19T17:03:28.2755004Z   /opt/sglang/lib/python3.12/site-packages/torch/cuda/__init__.py:1333: UserWarning: Synchronization debug mode is a prototype feature and does not yet detect all synchronizing operations (Triggered internally at /__w/pytorch/pytorch/torch/csrc/cuda/Module.cpp:1028.)
+2026-10-19T17:03:28.2755852Z     torch._C._cuda_set_sync_debug_mode(debug_mode)
+2026-10-19T17:03:28.2756033Z 
+2026-10-19T17:03:28.2756240Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-10-19T17:03:28.2756712Z == 771 passed, 15 skipped, 9260 deselected, 31 warnings in 390.62s (0:06:30) ===
+2026-10-19T17:03:29.6658553Z sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+2026-10-19T17:03:30.8150097Z [rank0]:[W1019 17:03:30.850425125 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+2026-10-19T17:03:33.0821645Z [rank0]:[W1019 17:03:33.117609665 CudaIPCTypes.cpp:16] Producer process has been terminated before all shared CUDA tensors released. See Note [Sharing CUDA tensors]
+2026-10-19T17:03:33.6329694Z ##[endgroup]
+2026-10-19T17:03:33.6518987Z Post job cleanup.
+2026-10-19T17:03:33.6525341Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker exec  1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7 sh -c "cat /etc/*release | grep ^ID"
+2026-10-19T17:03:34.0403264Z [command]/usr/bin/git version
+2026-10-19T17:03:34.0433613Z git version 2.43.0
+2026-10-19T17:03:34.0456982Z Temporarily overriding HOME='/__w/_temp/60d3413d-d528-4bd7-9c3b-e75411e14461' before making global git config changes
+2026-10-19T17:03:34.0457517Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-19T17:03:34.0460594Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang-omni/sglang-omni
+2026-10-19T17:03:34.0492640Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-19T17:03:34.0517825Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-19T17:03:34.0727811Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-19T17:03:34.0746590Z http.https://github.com/.extraheader
+2026-10-19T17:03:34.0753338Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-19T17:03:34.0778608Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-19T17:03:34.0983857Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-19T17:03:34.1007720Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-19T17:03:34.1393345Z Stop and remove container: 9e2827d2df0442308e29e358b64747b0_hongcccsglangomnisha256ebe4239e29a764ee3a2806385c061c5fd438a26f01458e503d3822dcba5790df_847e79
+2026-10-19T17:03:34.1398103Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker rm --force 1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7
+2026-10-19T17:03:35.0324971Z 1013441623c0e66e68f9cc9a81b39c6899ea9bdd4f971032db5c1907b66fe9f7
+2026-10-19T17:03:35.0352854Z Remove container network: github_network_5d5afd9a25c34630bc7fc315fe53abef
+2026-10-19T17:03:35.0356124Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker network rm github_network_5d5afd9a25c34630bc7fc315fe53abef
+2026-10-19T17:03:35.1488759Z e0f9f26285cc22525aa27fb613515d54cc718eeb06c70b7dae638697d66daac1
+2026-10-19T17:03:35.1559667Z Cleaning up orphan processes
+2026-10-19T17:03:35.5646740Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

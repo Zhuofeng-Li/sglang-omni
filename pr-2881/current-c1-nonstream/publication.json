@@ -1,0 +1,9 @@
+{
+  "head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "published_at_utc": "2026-10-19T17:09:14.432513+00:00",
+  "mode": "nonstream",
+  "concurrency": 1,
+  "geometric_change_percent": -0.0747284940281312,
+  "note": "See rendered/pr-2881-metrics.json for exact language metrics; the body displays -0.07%. Remaining blocks pending."
+}

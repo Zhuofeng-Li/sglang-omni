@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-10-19T17:09:38.662770+00:00",
+  "pr_head": "e98bcf05e6d27d877cfb134900900ca6fad5d76a",
+  "tested_merge_head": "f3636fa",
+  "merge_base": "a1939b97af92a5b8b944df74375ba766736e79ad",
+  "run": 39288752772,
+  "attempt": 1,
+  "job": 118185861874,
+  "passed": 769,
+  "skipped": 15,
+  "deselected": 9315,
+  "automatic_stage_attempts": 2,
+  "initial_failure": "tests/unit_test/cli/test_serve_exit.py::test_fast_exit_removes_the_cuda_ipc_reference_file",
+  "initial_failure_detail": "Shared-memory cleanup assertion found 22 torch_<sender_pid> files. Full stage passed on workflow automatic retry. Root cause not established; this test uses a stand-alone CUDA IPC sender and exit_without_teardown, without launching the ASR pipeline.",
+  "status": "passed_after_automatic_retry",
+  "log": "current-accelerator-ci.log"
+}
