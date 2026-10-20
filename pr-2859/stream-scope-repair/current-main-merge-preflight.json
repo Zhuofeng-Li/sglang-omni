@@ -1,0 +1,28 @@
+{
+  "at_utc": "2026-10-20T01:35:10.837922+00:00",
+  "pr": 2859,
+  "head": "27216ebd18056a57406510b8588e351683d03d00",
+  "base": "1240a6993c8073593aa0ad074859ccee2797adff",
+  "merge_tree_exit": 0,
+  "merge_tree": "66c1334bb401357369326870639d9fb0624f0205\n",
+  "stderr": "",
+  "files": [
+    "sglang_omni/models/moss_tts/attention.py",
+    "sglang_omni/models/moss_tts/channel_embedding.py",
+    "sglang_omni/models/moss_tts/config.py",
+    "sglang_omni/models/moss_tts/engine_builder.py",
+    "sglang_omni/models/moss_tts/model_runner.py",
+    "sglang_omni/models/moss_tts/request_builders.py",
+    "sglang_omni/models/moss_tts/sampler.py",
+    "sglang_omni/models/moss_tts/sampling_cuda_graph.py",
+    "sglang_omni/models/moss_tts/sglang_model.py",
+    "sglang_omni/models/moss_tts/stages.py",
+    "sglang_omni/models/moss_tts/vocoder.py",
+    "sglang_omni/models/moss_tts/vocoder_graphs.py",
+    "tests/unit_test/moss_tts/test_input_embeddings.py",
+    "tests/unit_test/moss_tts/test_pipeline.py",
+    "tests/unit_test/moss_tts/test_sampling_cuda_graph.py",
+    "tests/unit_test/moss_tts/test_vocoder.py"
+  ],
+  "no_doc_dirs": true
+}

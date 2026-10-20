@@ -1,0 +1,22 @@
+{
+  "at_utc": "2026-10-20T01:37:45.247272+00:00",
+  "head": "27216ebd18056a57406510b8588e351683d03d00",
+  "regression_gpu": {
+    "passed": 375,
+    "exit": 0
+  },
+  "regression_cuda_hidden": {
+    "passed": 278,
+    "skipped": 97,
+    "exit": 0
+  },
+  "precommit_all_files_exit": 0,
+  "ci": {
+    "run": 39354395866,
+    "url": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866",
+    "status": "in_progress"
+  },
+  "paired_final_source": "running; no completed-performance claim",
+  "old_measurements_source": "757c09eb272079b6c08f88bcaa393ffe3845029a",
+  "writer_thread": "01a156ee-d485-7de1-a764-a757d1e635ea"
+}
