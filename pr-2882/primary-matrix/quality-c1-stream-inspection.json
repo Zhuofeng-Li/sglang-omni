@@ -1,0 +1,28 @@
+{
+  "at_utc": "2026-10-20T00:20:14.808671+00:00",
+  "scope": "2882 c1 streaming only, seeds42/43, EN1088/ZH2020",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "language_seed_comparisons": 4,
+  "paired_samples": 6216,
+  "changed_normalized_transcripts": 1,
+  "changed_point": {
+    "language": "en",
+    "seed": 43
+  },
+  "WER_directions": {
+    "improved": 0,
+    "worsened": 0,
+    "equal": 1
+  },
+  "inspected_change": {
+    "id": "common_voice_en_20806032-common_voice_en_20806033",
+    "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+    "main": "also the town is pursuing increased tourism based on its ancient sireer culture",
+    "pr": "also the town is pursuing increased tourism based on its ancient siree culture",
+    "main_wer": 0.07692307692307693,
+    "pr_wer": 0.07692307692307693
+  },
+  "inspection": "A single culture-name spelling variant (reference serer, main sireer, PR siree); full sentences otherwise agree. No empty changed hypothesis. No output-equivalence or numerical-cause claim. Remaining primary blocks and review repeats remain separate.",
+  "raw_export_sha256": "b80f6a07e1d7d9c85f4b03238a3091f329424963b9dd18c4cb585d927279e00e"
+}

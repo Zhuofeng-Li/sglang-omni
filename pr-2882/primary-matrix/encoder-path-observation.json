@@ -1,0 +1,35 @@
+{
+  "at_utc": "2026-10-20T00:08:38.348813+00:00",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "source_review": "get_audio_feature calls planned_audio_feature first; plans reject unsupported/failed graph buckets before planned convolution, and return through existing general route on rejection. Routing, one-fallback and BF16 parity tests retained.",
+  "observed_primary_encoder_initialization": [
+    {
+      "cohort": "pr2882-c1-nonstream-pr-seed42",
+      "result_sha256": "9127af062288121592ff7710f7139e27647b4aaf477f79b194b6a43c698d2e65",
+      "encoder_successful_capture_events": 6,
+      "capture_callers": {
+        "/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2882/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+      }
+    },
+    {
+      "cohort": "pr2882-c1-nonstream-pr-seed43",
+      "result_sha256": "422b6025d73f206f45c14b5758d65234879dec78ec80260799ce51996545bcfe",
+      "encoder_successful_capture_events": 6,
+      "capture_callers": {
+        "/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/engine_builder.py:setup_model_resources;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/sglang_model.py:init_encoder_graphs;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture_all;/qualification/source/pr-2882/sglang_omni/models/qwen3_asr/encoder_cuda_graph.py:capture;/usr/lib/python3.12/contextlib.py:__exit__;/qualification/source/pr-2882/sglang_omni/platforms/device_graph.py:capture;/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:__exit__": 6
+      }
+    }
+  ],
+  "scope_limit": "Actual encoder graph initialization observed. Per-request host-plan hit/replay counts were not instrumented in timed runs and are not inferred from capture counts. No runtime modifications or reruns.",
+  "default_pre_LM_route": {
+    "engine_builder_default": "enable_pre_lm_encoder=True; enable_encoder_cuda_graph=True",
+    "service_encode_batch": "Calls model.get_audio_feature(items) directly, before the language-model multimodal embedding routine; completes with PRECOMPUTED_EMBEDDING items.",
+    "model_path": "get_audio_feature tries planned_audio_feature before the general eager/graph route.",
+    "source_sha256": {
+      "engine_builder.py": "230939c7a1eff4b9d81c77a25ee28937f62fa5c5b80d4010800347fd3581b4ab",
+      "encoder_service.py": "72edd1cd0f32dcd90e2541c037cab734afd76024e259c5e3a2e7fa0b747ac083",
+      "sglang_model.py": "bb9878c668be8628fc6ea26c6244f5cd434520527971bb3cca87c651d6740da2"
+    },
+    "separate_general_mm_route": "Installed SGLang moves audio features to device in its general multimodal embedding route. The default pre-LM service bypasses that transfer. This does not prove per-request host-plan hit counts."
+  }
+}

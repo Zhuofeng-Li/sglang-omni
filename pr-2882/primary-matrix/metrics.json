@@ -71,6 +71,76 @@
           ]
         }
       }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 1,
+      "language": "en",
+      "arms": {
+        "main": {
+          "req_s": 24.744472693293172,
+          "mean_latency_ms": 40.26054211509986,
+          "p95_ms": "49.29/49.40",
+          "wer_percent": "1.2258/1.2258",
+          "first_text_mean_ms": "11.70/12.00",
+          "first_text_p95_ms": "12.80/13.60",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2882-c1-stream-main-seed42/result.json",
+            "evidence/results/pr2882-c1-stream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 24.84373686988884,
+          "mean_latency_ms": 40.09649884959371,
+          "p95_ms": "49.27/49.55",
+          "wer_percent": "1.2258/1.2258",
+          "first_text_mean_ms": "11.50/11.40",
+          "first_text_p95_ms": "13.20/13.20",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2882-c1-stream-pr-seed42/result.json",
+            "evidence/results/pr2882-c1-stream-pr-seed43/result.json"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 1,
+      "language": "zh",
+      "arms": {
+        "main": {
+          "req_s": 26.946996821817077,
+          "mean_latency_ms": 36.96308912764682,
+          "p95_ms": "47.14/46.81",
+          "wer_percent": "0.5933/0.5933",
+          "first_text_mean_ms": "11.80/11.90",
+          "first_text_p95_ms": "13.00/13.20",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2882-c1-stream-main-seed42/result.json",
+            "evidence/results/pr2882-c1-stream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 27.66830446247299,
+          "mean_latency_ms": 36.004532295069424,
+          "p95_ms": "45.17/46.62",
+          "wer_percent": "0.5933/0.5933",
+          "first_text_mean_ms": "11.00/11.30",
+          "first_text_p95_ms": "11.80/12.60",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2882-c1-stream-pr-seed42/result.json",
+            "evidence/results/pr2882-c1-stream-pr-seed43/result.json"
+          ]
+        }
+      }
     }
   ],
   "costs": [
@@ -92,6 +162,36 @@
         },
         "pr": {
           "startup_s": "74.58/76.08",
+          "peak_gib": "70.79/70.79",
+          "successful_captures": [
+            1468,
+            1468
+          ],
+          "live_captures": [
+            1468,
+            1468
+          ]
+        }
+      }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 1,
+      "arms": {
+        "main": {
+          "startup_s": "75.60/76.73",
+          "peak_gib": "70.80/70.79",
+          "successful_captures": [
+            1468,
+            1468
+          ],
+          "live_captures": [
+            1468,
+            1468
+          ]
+        },
+        "pr": {
+          "startup_s": "76.16/75.66",
           "peak_gib": "70.79/70.79",
           "successful_captures": [
             1468,

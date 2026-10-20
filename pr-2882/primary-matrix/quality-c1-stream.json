@@ -1,0 +1,61 @@
+{
+  "at_utc": "2026-10-20T00:19:42.441798+00:00",
+  "scope": "2882 c1 stream primary only; other blocks and review repeats remain pending",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "comparisons": [
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "seed": 42,
+      "language": "en",
+      "attempted": 1088,
+      "changed": 0,
+      "corpus_wer_main": 0.012257869249394673,
+      "corpus_wer_pr": 0.012257869249394673,
+      "changes": []
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "seed": 42,
+      "language": "zh",
+      "attempted": 2020,
+      "changed": 0,
+      "corpus_wer_main": 0.005933473179502547,
+      "corpus_wer_pr": 0.005933473179502547,
+      "changes": []
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "seed": 43,
+      "language": "en",
+      "attempted": 1088,
+      "changed": 1,
+      "corpus_wer_main": 0.012257869249394673,
+      "corpus_wer_pr": 0.012257869249394673,
+      "changes": [
+        {
+          "id": "common_voice_en_20806032-common_voice_en_20806033",
+          "reference": "also the town is pursuing increased tourism based on its ancient serer culture",
+          "main": "also the town is pursuing increased tourism based on its ancient sireer culture",
+          "pr": "also the town is pursuing increased tourism based on its ancient siree culture",
+          "main_wer": 0.07692307692307693,
+          "pr_wer": 0.07692307692307693
+        }
+      ]
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "seed": 43,
+      "language": "zh",
+      "attempted": 2020,
+      "changed": 0,
+      "corpus_wer_main": 0.005933473179502547,
+      "corpus_wer_pr": 0.005933473179502547,
+      "changes": []
+    }
+  ]
+}

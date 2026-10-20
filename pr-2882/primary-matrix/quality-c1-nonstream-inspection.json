@@ -1,0 +1,11 @@
+{
+  "at_utc": "2026-10-20T00:14:33.622151+00:00",
+  "scope": "2882 c1 nonstream, seeds42/43,EN1088/ZH2020; remaining primary blocks and review repeats separate",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "language_seed_comparisons": 4,
+  "paired_samples": 6216,
+  "changed_normalized_transcripts": 0,
+  "finding": "All normalized hypotheses agree within this block. This is agreement on this finite paired sample, not general output equivalence or proof of any numerical cause.",
+  "raw_export_sha256": "196237d0de8930391521a88d22b6166d4e9b43fd4b7ff2541bc502688d9ff339"
+}
