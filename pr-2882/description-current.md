@@ -10,7 +10,7 @@
 
 ## Paired comparison on current main
 
-Measured **2026-10-19 UTC**. **1 of eight final-head primary ABBA blocks are verified:** c1 nonstream. Unverified cells remain Pending. Observed upstream main is `1240a6993c8073593aa0ad074859ccee2797adff`; the paired baseline stays frozen at `2d5de98cd92b17df7974ac2ef4192b4a99263845`. These independent frozen-head comparisons do not measure the combined merged series.
+Measured **2026-10-19 through 2026-10-20 UTC**. **2 of eight final-head primary ABBA blocks are verified:** c1 nonstream, c1 stream. Unverified cells remain Pending. Observed upstream main is `1240a6993c8073593aa0ad074859ccee2797adff`; the paired baseline stays frozen at `2d5de98cd92b17df7974ac2ef4192b4a99263845`. These independent frozen-head comparisons do not measure the combined merged series.
 
 Model `Qwen/Qwen3-ASR-1.7B@7278e1e70fe206f11671096ffdd38061171dd6e5`, BF16; dataset `zhaochenyang20/seed-tts-eval-arrow@27f4c1adee83b5b29b7c4b375f6b976324bda308`. Original Radix H100 80GB (`GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1`), Torch 2.13.0+cu130, SGLang 0.5.21, Transformers 5.12.1. Every fresh service fully warms and scores both splits. YAML uses `Qwen3ASRPipelineConfig`, ASR GPU0, BF16, `pre_lm_cache_size_bytes=1`, `mm_embedding_cache_size_bytes=0`, `disable_radix_cache=true`, and `random_seed=42|43`; greedy decoding, no client token override, fresh per-cohort Inductor, Triton, CUDA, Torch extensions and FlashInfer workspace directories; the package/image and default SGLang JIT cache are retained across cohorts (see `cache-protocol.json`). Exact YAML, source/asset identities and costs are under `primary-matrix/` at the evidence link.
 
@@ -40,7 +40,7 @@ Detailed metrics (main → PR; slash-separated values retain seed42/43):
 
 | Concurrency | EN/ZH geometric throughput change |
 | ---: | ---: |
-| 1 | Pending |
+| 1 | +1.53% |
 | 16 | Pending |
 | 32 | Pending |
 | 64 | Pending |
@@ -49,11 +49,18 @@ Detailed metrics (main → PR; slash-separated values retain seed42/43):
 
 | c / split | req/s | Mean response ms | P95 response ms | First-text mean ms | First-text P95 ms | WER % | Failed/attempted |
 | --- | ---: | ---: | --- | --- | --- | --- | --- |
-| Pending | — | — | — | — | — | — | — |
+| 1 / EN | 24.744 → 24.844 | 40.26 → 40.10 | 49.29/49.40 → 49.27/49.55 | 11.70/12.00 → 11.50/11.40 | 12.80/13.60 → 13.20/13.20 | 1.2258/1.2258 → 1.2258/1.2258 | 0/2176 → 0/2176 |
+| 1 / ZH | 26.947 → 27.668 | 36.96 → 36.00 | 47.14/46.81 → 45.17/46.62 | 11.80/11.90 → 11.00/11.30 | 13.00/13.20 → 11.80/12.60 | 0.5933/0.5933 → 0.5933/0.5933 | 0/4040 → 0/4040 |
 
 Per-seed quality and latency changes are retained in the detailed tables. No outliers are removed. The completed subset does not establish output equivalence or completion of the remaining matrix/transcript checks.
 
 **Observed tradeoffs in completed blocks:** C1 non-streaming geometric throughput change is +1.37%. Corpus WER is identical at both seeds/languages, with zero failures. Seed42 response p95 increases slightly: EN 49.24→49.34 ms and ZH 46.11→46.27 ms; both seed43 p95 values improve. Mean startup decreases about 0.42 s and maximum sampled device memory is 70.80→70.79 GiB; successful/live capture events remain 1468 per service. This single completed block does not establish a stable benefit across the remaining workloads or output equivalence.
+
+C1 non-streaming transcript inspection: all 6,216 paired normalized hypotheses agree across both seeds/languages. This finite-sample agreement is specific to the completed block; remaining primary blocks and review repeats are separate. The checked comparisons are archived in `primary-matrix/quality-c1-nonstream.json`.
+
+C1 streaming geometric throughput change is +1.53%, with identical corpus WER at both seeds/languages and zero failures. EN first-text p95 at seed42 increases 12.80→13.20 ms, while seed43 improves 13.60→13.20 ms; EN response p95 at seed43 rises 49.40→49.55 ms. ZH response and first-text p95 improve at both seeds. Mean startup decreases about 0.26 s, maximum sampled device memory is 70.80→70.79 GiB, and capture events remain 1468 per service. This small measured gain does not establish a stable benefit across workloads.
+
+C1 streaming transcript inspection found one changed normalized hypothesis among 6,216 pairs: at EN seed43, reference `serer` is transcribed as `sireer` on main and `siree` on PR, with equal per-sample WER. All other paired hypotheses agree in this block. This equal-WER text difference is retained in `primary-matrix/quality-c1-stream.json`; output equivalence is not claimed.
 
 ## Costs
 
@@ -64,10 +71,11 @@ Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capt
 | Mode / c | Startup s | Peak GiB | Successful captures | Live captures after scoring | Capture delta |
 | --- | --- | --- | --- | --- | --- |
 | nonstream / 1 | 75.72/75.77 → 74.58/76.08 | 70.80/70.79 → 70.79/70.79 | 1468/1468 → 1468/1468 | 1468/1468 → 1468/1468 | 0/0 |
+| stream / 1 | 75.60/76.73 → 76.16/75.66 | 70.80/70.79 → 70.79/70.79 | 1468/1468 → 1468/1468 | 1468/1468 → 1468/1468 | 0/0 |
 
 ## Tests
 
-- Final-head primary backfill: **1/8 blocks verified**, 8/64 language/cohort cells: c1 nonstream. Review-specific ablations/repeats and transcript checks are tracked separately from primary coverage. This PR has already merged; post-merge qualification is continuing. These independent comparisons do not replace final merged-series validation or tradeoff assessment.
+- Final-head primary backfill: **2/8 blocks verified**, 16/64 language/cohort cells: c1 nonstream, c1 stream. Review-specific ablations/repeats and transcript checks are tracked separately from primary coverage. This PR has already merged; post-merge qualification is continuing. These independent comparisons do not replace final merged-series validation or tradeoff assessment.
 - **Reviewer approval obtained for current head** `2cad1780`: db-ol approved on 2026-10-19T22:21:47Z, noting the explicit-override/fallback scope and passed CI. The post-merge final-source comparison on the changed baseline remains pending; historical measurements retain their actual source/base in the linked archive.
 - Review-fix source: **136 CPU tests and 3 accelerator tests passed** on the assigned H100; logs and source identities are in the evidence link.
 - `pre-commit run --all-files`: passed. Complete diff versus the frozen main contains no `doc/` or `docs/` changes.
