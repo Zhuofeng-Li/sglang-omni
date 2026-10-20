@@ -6,11 +6,13 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Literal
 
+from sglang_omni.models.whisper_asr.config import WhisperASRFactoryArgs
+
 
 def create_sglang_whisper_asr_executor(
     model_path: str,
     *,
-    encoder_attention_backend: Literal["auto", "sdpa", "fa4"],
+    encoder_attention_backend: Literal["auto", "sdpa", "fa4"] | None = None,
     device: str | None = None,
     gpu_id: int | None = None,
     dtype: str = "float16",
@@ -42,6 +44,10 @@ def create_sglang_whisper_asr_executor(
 ):
     from sglang_omni.models.whisper_asr.engine_builder import WhisperASREngineBuilder
 
+    if encoder_attention_backend is None:
+        encoder_attention_backend = WhisperASRFactoryArgs().encoder_attention_backend
+    else:
+        pass
     return WhisperASREngineBuilder(
         encoder_attention_backend=encoder_attention_backend,
         max_running_requests=max_running_requests,

@@ -335,9 +335,9 @@ def test_whisper_asr_config_uses_single_batched_stage() -> None:
     )
 
 
-@pytest.mark.parametrize("encoder_attention_backend", ["auto", "sdpa", "fa4"])
+@pytest.mark.parametrize("encoder_attention_backend", [None, "auto", "sdpa", "fa4"])
 def test_whisper_asr_threads_explicit_cuda_graph_bs(
-    monkeypatch: pytest.MonkeyPatch, encoder_attention_backend: str
+    monkeypatch: pytest.MonkeyPatch, encoder_attention_backend: str | None
 ) -> None:
     build_kwargs: dict[str, object] = {}
     scheduler_kwargs: dict[str, object] = {}
@@ -456,19 +456,22 @@ def test_whisper_asr_threads_explicit_cuda_graph_bs(
     )
 
     factory = WhisperASRFactoryArgs(
-        encoder_attention_backend=encoder_attention_backend,
+        encoder_attention_backend=encoder_attention_backend or "auto",
         enable_pre_lm_encoder=False,
         enable_async_decode=False,
         async_decode_min_batch_size=4,
     )
+    factory_kwargs = factory.model_dump(exclude_none=True)
+    if encoder_attention_backend is None:
+        factory_kwargs.pop("encoder_attention_backend")
     whisper_asr_stages.create_sglang_whisper_asr_executor(
         "dummy",
-        **factory.model_dump(exclude_none=True),
+        **factory_kwargs,
         server_args_overrides={"json_model_override_args": '{"test_setting": 7}'},
     )
 
     assert json.loads(build_kwargs["json_model_override_args"]) == {
-        "encoder_attention_backend": encoder_attention_backend,
+        "encoder_attention_backend": encoder_attention_backend or "auto",
         "test_setting": 7,
     }
     assert build_kwargs["cuda_graph_max_bs"] == 64
