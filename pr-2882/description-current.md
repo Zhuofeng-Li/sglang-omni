@@ -10,7 +10,7 @@
 
 ## Paired comparison on current main
 
-Measured **2026-10-19 through 2026-10-20 UTC**. **2 of eight final-head primary ABBA blocks are verified:** c1 nonstream, c1 stream. Unverified cells remain Pending. Observed upstream main is `1240a6993c8073593aa0ad074859ccee2797adff`; the paired baseline stays frozen at `2d5de98cd92b17df7974ac2ef4192b4a99263845`. These independent frozen-head comparisons do not measure the combined merged series.
+Measured **2026-10-19 through 2026-10-20 UTC**. **3 of eight final-head primary ABBA blocks are verified:** c1 nonstream, c1 stream, c16 nonstream. Unverified cells remain Pending. Observed upstream main is `1240a6993c8073593aa0ad074859ccee2797adff`; the paired baseline stays frozen at `2d5de98cd92b17df7974ac2ef4192b4a99263845`. These independent frozen-head comparisons do not measure the combined merged series.
 
 Model `Qwen/Qwen3-ASR-1.7B@7278e1e70fe206f11671096ffdd38061171dd6e5`, BF16; dataset `zhaochenyang20/seed-tts-eval-arrow@27f4c1adee83b5b29b7c4b375f6b976324bda308`. Original Radix H100 80GB (`GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1`), Torch 2.13.0+cu130, SGLang 0.5.21, Transformers 5.12.1. Every fresh service fully warms and scores both splits. YAML uses `Qwen3ASRPipelineConfig`, ASR GPU0, BF16, `pre_lm_cache_size_bytes=1`, `mm_embedding_cache_size_bytes=0`, `disable_radix_cache=true`, and `random_seed=42|43`; greedy decoding, no client token override, fresh per-cohort Inductor, Triton, CUDA, Torch extensions and FlashInfer workspace directories; the package/image and default SGLang JIT cache are retained across cohorts (see `cache-protocol.json`). Exact YAML, source/asset identities and costs are under `primary-matrix/` at the evidence link.
 
@@ -25,7 +25,7 @@ H100 80GB, SeedTTS EN (1088) / ZH (2020), seeds 42/43; each block runs main(42) 
 | Concurrency | EN/ZH geometric throughput change |
 | ---: | ---: |
 | 1 | +1.37% |
-| 16 | Pending |
+| 16 | -0.52% |
 | 32 | Pending |
 | 64 | Pending |
 
@@ -35,6 +35,8 @@ Detailed metrics (main → PR; slash-separated values retain seed42/43):
 | --- | ---: | ---: | --- | --- | --- | --- | --- |
 | 1 / EN | 24.584 → 24.854 | 40.53 → 40.09 | 49.24/49.61 → 49.34/48.79 | N/A → N/A | N/A → N/A | 1.2258/1.2258 → 1.2258/1.2258 | 0/2176 → 0/2176 |
 | 1 / ZH | 27.266 → 27.712 | 36.53 → 35.95 | 46.11/46.72 → 46.27/45.24 | N/A → N/A | N/A → N/A | 0.5933/0.5933 → 0.5933/0.5933 | 0/4040 → 0/4040 |
+| 16 / EN | 149.267 → 147.654 | 106.39 → 107.65 | 138.76/140.55 → 141.96/142.46 | N/A → N/A | N/A → N/A | 1.2031/1.2107 → 1.2031/1.2031 | 0/2176 → 0/2176 |
+| 16 / ZH | 155.648 → 155.718 | 102.20 → 102.07 | 138.03/138.85 → 138.65/138.32 | N/A → N/A | N/A → N/A | 0.5904/0.6023 → 0.5993/0.5993 | 0/4040 → 0/4040 |
 
 ### Streaming
 
@@ -62,6 +64,10 @@ C1 streaming geometric throughput change is +1.53%, with identical corpus WER at
 
 C1 streaming transcript inspection found one changed normalized hypothesis among 6,216 pairs: at EN seed43, reference `serer` is transcribed as `sireer` on main and `siree` on PR, with equal per-sample WER. All other paired hypotheses agree in this block. This equal-WER text difference is retained in `primary-matrix/quality-c1-stream.json`; output equivalence is not claimed.
 
+C16 non-streaming geometric throughput change is **−0.52%**: EN 149.267→147.654 req/s, ZH 155.648→155.718. EN response p95 worsens at both seeds, 138.76/140.55→141.96/142.46 ms; ZH seed42 also worsens 138.03→138.65 ms (seed43 improves). ZH corpus WER worsens at seed42, 0.5904→0.5993%, and improves at seed43, 0.6023→0.5993%; EN seed43 improves and seed42 is unchanged. Mean startup increases about **4.52 s**; maximum sampled memory is 71.60→71.42 GiB, captures remain 1468, and all requests succeed. This negative throughput point and its latency/quality/startup costs are retained.
+
+C16 non-streaming transcript inspection covers all 6,216 pairs: 9 changed hypotheses, with 3 WER improvements, 3 regressions and 3 equal-WER changes; all 8 distinct reference/main/PR triples were inspected. Differences involve proper names, homophones and an erhua insertion; there are no empty hypotheses. Full changed text is archived in `primary-matrix/quality-c16-nonstream.json`. These observations do not establish a numerical cause or output equivalence.
+
 ## Costs
 
 Startup is server launch to health-ready, including model/graph initialization and excluding downloads/workload warmup. These are starts under the disclosed partial cache isolation, not universally cold JIT starts. Device memory is sampled every0.5s. Only verified blocks are tabulated; other costs remain Pending.
@@ -71,11 +77,12 @@ Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capt
 | Mode / c | Startup s | Peak GiB | Successful captures | Live captures after scoring | Capture delta |
 | --- | --- | --- | --- | --- | --- |
 | nonstream / 1 | 75.72/75.77 → 74.58/76.08 | 70.80/70.79 → 70.79/70.79 | 1468/1468 → 1468/1468 | 1468/1468 → 1468/1468 | 0/0 |
+| nonstream / 16 | 77.09/78.59 → 82.11/82.60 | 71.60/71.58 → 71.27/71.42 | 1468/1468 → 1468/1468 | 1468/1468 → 1468/1468 | 0/0 |
 | stream / 1 | 75.60/76.73 → 76.16/75.66 | 70.80/70.79 → 70.79/70.79 | 1468/1468 → 1468/1468 | 1468/1468 → 1468/1468 | 0/0 |
 
 ## Tests
 
-- Final-head primary backfill: **2/8 blocks verified**, 16/64 language/cohort cells: c1 nonstream, c1 stream. Review-specific ablations/repeats and transcript checks are tracked separately from primary coverage. This PR has already merged; post-merge qualification is continuing. These independent comparisons do not replace final merged-series validation or tradeoff assessment.
+- Final-head primary backfill: **3/8 blocks verified**, 24/64 language/cohort cells: c1 nonstream, c1 stream, c16 nonstream. Review-specific ablations/repeats and transcript checks are tracked separately from primary coverage. This PR has already merged; post-merge qualification is continuing. These independent comparisons do not replace final merged-series validation or tradeoff assessment.
 - **Reviewer approval obtained for current head** `2cad1780`: db-ol approved on 2026-10-19T22:21:47Z, noting the explicit-override/fallback scope and passed CI. The post-merge final-source comparison on the changed baseline remains pending; historical measurements retain their actual source/base in the linked archive.
 - Review-fix source: **136 CPU tests and 3 accelerator tests passed** on the assigned H100; logs and source identities are in the evidence link.
 - `pre-commit run --all-files`: passed. Complete diff versus the frozen main contains no `doc/` or `docs/` changes.
