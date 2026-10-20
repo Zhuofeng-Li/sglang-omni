@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-20T00:51:17.999367+00:00",
+  "scope": "2882 c32 streaming primary ABBA only; remaining primary blocks/review repeats separate",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "paired_samples": 6216,
+  "changed_comparisons": 20,
+  "distinct_triples_inspected": 16,
+  "WER_directions": {
+    "improved": 10,
+    "equal": 4,
+    "worsened": 6
+  },
+  "empty_normalized_hypotheses": 0,
+  "inspection": "All 16 distinct triples inspected: English plural restoration and proper-name spelling variants; Chinese name/homophone and erhua changes. 奔/泵 and 玩/玩儿 changes include opposite directions at different sample/seed points; changes include improvements, regressions and equal-WER variants. No numerical cause, general output equivalence or truncation guarantee is inferred.",
+  "raw_export_sha256": "fac223ffd662f68b701ab2ee402c1f3eba8f019e1010a78203fe5e9d208bfa79"
+}
