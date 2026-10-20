@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-20T00:44:59.280437+00:00",
+  "scope": "2882 c32 nonstream primary ABBA only; other primary blocks/review repeats separate",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "paired_samples": 6216,
+  "changed_comparisons": 15,
+  "distinct_triples_inspected": 11,
+  "WER_directions": {
+    "worsened": 8,
+    "improved": 5,
+    "equal": 2
+  },
+  "empty_normalized_hypotheses": 0,
+  "inspection": "All 11 distinct triples inspected: English plural loss and proper-name spelling changes, Chinese names/homophones, and erhua insertions/deletions. 莫儿→默尔 repeats as a regression; 搅/脚 changes include opposite directions at different sample/seed points. No numerical cause, general output equivalence or truncation guarantee is inferred.",
+  "raw_export_sha256": "acc51bbb90fdd7eb4ee5beae6141b544d1f52a1b4bf22b23030e556f904ca66c"
+}

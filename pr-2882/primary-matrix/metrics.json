@@ -143,6 +143,76 @@
       }
     },
     {
+      "mode": "nonstream",
+      "concurrency": 32,
+      "language": "en",
+      "arms": {
+        "main": {
+          "req_s": 226.76199271501747,
+          "mean_latency_ms": 139.0373021709178,
+          "p95_ms": "181.47/178.47",
+          "wer_percent": "1.2031/1.2031",
+          "first_text_mean_ms": "N/A",
+          "first_text_p95_ms": "N/A",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2882-c32-nonstream-main-seed42/result.json",
+            "evidence/results/pr2882-c32-nonstream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 225.03427197044877,
+          "mean_latency_ms": 140.04950937862094,
+          "p95_ms": "180.73/192.88",
+          "wer_percent": "1.2107/1.2107",
+          "first_text_mean_ms": "N/A",
+          "first_text_p95_ms": "N/A",
+          "failed": 0,
+          "attempted": 2176,
+          "evidence": [
+            "evidence/results/pr2882-c32-nonstream-pr-seed42/result.json",
+            "evidence/results/pr2882-c32-nonstream-pr-seed43/result.json"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "nonstream",
+      "concurrency": 32,
+      "language": "zh",
+      "arms": {
+        "main": {
+          "req_s": 244.04722329951403,
+          "mean_latency_ms": 130.2211846034204,
+          "p95_ms": "169.75/171.92",
+          "wer_percent": "0.6023/0.6143",
+          "first_text_mean_ms": "N/A",
+          "first_text_p95_ms": "N/A",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2882-c32-nonstream-main-seed42/result.json",
+            "evidence/results/pr2882-c32-nonstream-main-seed43/result.json"
+          ]
+        },
+        "pr": {
+          "req_s": 241.95516466013407,
+          "mean_latency_ms": 131.43579468838777,
+          "p95_ms": "174.00/175.26",
+          "wer_percent": "0.6083/0.6113",
+          "first_text_mean_ms": "N/A",
+          "first_text_p95_ms": "N/A",
+          "failed": 0,
+          "attempted": 4040,
+          "evidence": [
+            "evidence/results/pr2882-c32-nonstream-pr-seed42/result.json",
+            "evidence/results/pr2882-c32-nonstream-pr-seed43/result.json"
+          ]
+        }
+      }
+    },
+    {
       "mode": "stream",
       "concurrency": 1,
       "language": "en",
@@ -333,6 +403,36 @@
         "pr": {
           "startup_s": "82.11/82.60",
           "peak_gib": "71.27/71.42",
+          "successful_captures": [
+            1468,
+            1468
+          ],
+          "live_captures": [
+            1468,
+            1468
+          ]
+        }
+      }
+    },
+    {
+      "mode": "nonstream",
+      "concurrency": 32,
+      "arms": {
+        "main": {
+          "startup_s": "77.74/78.61",
+          "peak_gib": "71.46/71.61",
+          "successful_captures": [
+            1468,
+            1468
+          ],
+          "live_captures": [
+            1468,
+            1468
+          ]
+        },
+        "pr": {
+          "startup_s": "77.60/78.26",
+          "peak_gib": "71.46/71.60",
           "successful_captures": [
             1468,
             1468
