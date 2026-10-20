@@ -1,0 +1,67 @@
+{
+  "at_utc": "2026-10-20T01:07:45.850817+00:00",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "scope": "Complete2882primarymatrix only; fixed-seedreviewrepetitions/components are separate pending checks",
+  "paired_samples": 49728,
+  "language_seed_concurrency_mode_comparisons": 32,
+  "changed_comparisons": 83,
+  "distinct_triples_inspected": 30,
+  "WER_directions": {
+    "equal": 19,
+    "worsened": 25,
+    "improved": 39
+  },
+  "empty_changed_hypotheses": 0,
+  "block_evidence": [
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "raw_export_sha256": "196237d0de8930391521a88d22b6166d4e9b43fd4b7ff2541bc502688d9ff339",
+      "inspection_sha256": "26f646640b710f890476118f9a3fd9e6d02904f1aafcd64cbd0c7d642e9b1617"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "raw_export_sha256": "b80f6a07e1d7d9c85f4b03238a3091f329424963b9dd18c4cb585d927279e00e",
+      "inspection_sha256": "32565b7fe261f6866ccf7b9c1f24ddfd52c61ad825b1c84754a7db72f44266d9"
+    },
+    {
+      "concurrency": 16,
+      "mode": "nonstream",
+      "raw_export_sha256": "e31160f9bf7827eb88b0df2e2e9106a63c3ddaf25be8eb0dd6054da61d6171c2",
+      "inspection_sha256": "248807cfdd24527a8abb6915b7ce392401dcf79fb82d8a4cf88cfdcd47ad101f"
+    },
+    {
+      "concurrency": 16,
+      "mode": "stream",
+      "raw_export_sha256": "d63ee4f5bf1f5975d029dda6e9188217af128c664a57709ba626a1155f03e898",
+      "inspection_sha256": "40dfcd2976f8f5ac12d056347e9117e532973f3f8374f52b98b9b63f950decfc"
+    },
+    {
+      "concurrency": 32,
+      "mode": "nonstream",
+      "raw_export_sha256": "acc51bbb90fdd7eb4ee5beae6141b544d1f52a1b4bf22b23030e556f904ca66c",
+      "inspection_sha256": "326e7b5feecc48e04cee490e88c2992125ecf0c9ba2a3674921cfe63ab0a2ebd"
+    },
+    {
+      "concurrency": 32,
+      "mode": "stream",
+      "raw_export_sha256": "fac223ffd662f68b701ab2ee402c1f3eba8f019e1010a78203fe5e9d208bfa79",
+      "inspection_sha256": "b88e787e2536284c6f3cb293ab89972c49910b1002a287345a44c178b09d2449"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "raw_export_sha256": "068734075315baa91aff9b796ec533f81b5875c42782243ed3b65dd68a1e3932",
+      "inspection_sha256": "6d993a3222fca18697ae01723a3364a7bb0a5ee29a82979868613de9a4091853"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "raw_export_sha256": "e29d212e021957f9b74506226221a4fcdf50b8a1227572278a8bb5d309527c90",
+      "inspection_sha256": "d2cee121890024b34334a9e7f84fd760f5d9554dbf1681381bed8f40692a1a5a"
+    }
+  ],
+  "inspection": "Every distinct triple is covered by the completed block-specific inspections. Differences are localized proper-name, homophone, plural and erhua changes, including reverse directions across points. No numerical cause, general output equivalence or absence-of-truncation claim."
+}

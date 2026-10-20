@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-20T01:03:12.630598+00:00",
+  "scope": "2882 c64 nonstream primary ABBA only; other primary blocks/review repeats separate",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "paired_samples": 6216,
+  "changed_comparisons": 13,
+  "distinct_triples_inspected": 12,
+  "WER_directions": {
+    "equal": 4,
+    "improved": 5,
+    "worsened": 4
+  },
+  "empty_normalized_hypotheses": 0,
+  "inspection": "All 12 distinct triples inspected: English proper-name and tern/turn changes, Chinese name/homophone substitutions. Tern/turn, Mike name spelling and 奔/泵 change in opposite directions at different sample/seed points. No numerical cause, general output equivalence or truncation guarantee is inferred.",
+  "raw_export_sha256": "068734075315baa91aff9b796ec533f81b5875c42782243ed3b65dd68a1e3932"
+}

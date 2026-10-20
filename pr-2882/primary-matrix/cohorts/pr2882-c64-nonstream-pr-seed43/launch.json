@@ -1,0 +1,41 @@
+{
+  "command": [
+    "/opt/sglang/bin/python",
+    "-m",
+    "sglang_omni.cli",
+    "serve",
+    "--config",
+    "/qualification/results/pr2882-c64-nonstream-pr-seed43/config.yaml",
+    "--model-name",
+    "Qwen/Qwen3-ASR-1.7B",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "40509",
+    "--skip-server-warmup"
+  ],
+  "source": "/qualification/source/pr-2882",
+  "config": {
+    "config_cls": "Qwen3ASRPipelineConfig",
+    "model_path": "/qualification/assets/model",
+    "stages": {
+      "asr": {
+        "gpu": 0,
+        "factory": {
+          "dtype": "bfloat16",
+          "pre_lm_cache_size_bytes": 1,
+          "mm_embedding_cache_size_bytes": 0
+        },
+        "engine": {
+          "disable_radix_cache": true,
+          "random_seed": 43
+        }
+      }
+    }
+  },
+  "seed": 43,
+  "mode": "nonstream",
+  "concurrency": 64,
+  "arm": "pr",
+  "environment_overrides": {}
+}

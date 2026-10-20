@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-20T01:07:45.827641+00:00",
+  "scope": "2882 c64 streaming primary ABBA only; review-repeat comparisons are separate",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "paired_samples": 6216,
+  "changed_comparisons": 16,
+  "distinct_triples_inspected": 13,
+  "WER_directions": {
+    "equal": 2,
+    "worsened": 1,
+    "improved": 13
+  },
+  "empty_normalized_hypotheses": 0,
+  "inspection": "All 13 distinct triples inspected: English proper-name and tern/turn changes, Chinese names/homophones, and erhua deletions. One tern→turn regression and two equal-WER name-spelling variants remain; other changed hypotheses improve per-sample WER. No numerical cause, general output equivalence or truncation guarantee is inferred.",
+  "raw_export_sha256": "e29d212e021957f9b74506226221a4fcdf50b8a1227572278a8bb5d309527c90"
+}
