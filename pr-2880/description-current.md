@@ -1,6 +1,6 @@
 ## Changes
 
-**Merged:** db-ol merged the reviewed head `67e28de8` as `cba9d418ad242077831982a32f3c55e3509a8826` on 2026-10-19T22:17:05Z. The standalone final-head measurements still running below are post-merge qualification on the frozen control; they do not represent the combined merged series. Final series validation remains required after the remaining Qwen PR #2881 lands.
+**Merged:** db-ol merged the reviewed head `67e28de8` as `cba9d418ad242077831982a32f3c55e3509a8826` on 2026-10-19T22:17:05Z. The completed standalone final-head primary measurements below are post-merge qualification on the frozen control; they do not represent the combined merged series. Final series validation remains required after the remaining Qwen PR #2881 lands.
 
 - Preserve the full LM prefill limit when a CUDA graph override only changes decode; explicit prefill values still win.
 - Distinguish omitted decode buckets from operator-supplied buckets, including a sparse list equal to the shared default ladder.
@@ -10,7 +10,7 @@
 
 ## Paired comparison on current main
 
-Measured **2026-10-19 UTC**. **8 of eight final-head primary ABBA blocks are verified:** c1 nonstream, c1 stream, c16 nonstream, c16 stream, c32 nonstream, c32 stream, c64 nonstream, c64 stream. Unverified cells remain Pending. Observed upstream main is `1240a6993c8073593aa0ad074859ccee2797adff`; the paired baseline stays frozen at `2d5de98cd92b17df7974ac2ef4192b4a99263845`. These independent frozen-head comparisons do not measure the combined merged series.
+Measured **2026-10-19 UTC**. **8 of eight final-head primary ABBA blocks are verified:** c1 nonstream, c1 stream, c16 nonstream, c16 stream, c32 nonstream, c32 stream, c64 nonstream, c64 stream. All primary cells are verified; review-specific and final merged-series checks are tracked separately. Observed upstream main is `1240a6993c8073593aa0ad074859ccee2797adff`; the paired baseline stays frozen at `2d5de98cd92b17df7974ac2ef4192b4a99263845`. These independent frozen-head comparisons do not measure the combined merged series.
 
 Model `Qwen/Qwen3-ASR-1.7B@7278e1e70fe206f11671096ffdd38061171dd6e5`, BF16; dataset `zhaochenyang20/seed-tts-eval-arrow@27f4c1adee83b5b29b7c4b375f6b976324bda308`. Original Radix H100 80GB (`GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1`), Torch 2.13.0+cu130, SGLang 0.5.21, Transformers 5.12.1. Every fresh service fully warms and scores both splits. YAML uses `Qwen3ASRPipelineConfig`, ASR GPU0, BF16, `pre_lm_cache_size_bytes=1`, `mm_embedding_cache_size_bytes=0`, `disable_radix_cache=true`, and `random_seed=42|43`; greedy decoding, no client token override, fresh per-cohort Inductor, Triton, CUDA, Torch extensions and FlashInfer workspace directories; the package/image and default SGLang JIT cache are retained across cohorts (see `cache-protocol.json`). Exact YAML, source/asset identities and costs are under `primary-matrix/` at the evidence link.
 
@@ -64,7 +64,7 @@ Detailed metrics (main → PR; slash-separated values retain seed42/43):
 | 64 / EN | 289.732 → 294.177 | 215.67 → 208.83 | 286.36/316.21 → 273.59/273.45 | 92.00/93.50 → 93.20/88.70 | 175.40/180.10 → 172.30/149.00 | 1.2107/1.2107 → 1.2182/1.2182 | 0/2176 → 0/2176 |
 | 64 / ZH | 300.499 → 315.298 | 209.19 → 200.21 | 278.26/281.68 → 267.82/266.51 | 91.10/94.50 → 88.30/91.10 | 134.20/130.40 → 127.60/128.70 | 0.6113/0.6113 → 0.6263/0.6233 | 0/4040 → 0/4040 |
 
-Per-seed quality and latency changes are retained in the detailed tables. No outliers are removed. The completed subset does not establish output equivalence or completion of the remaining matrix/transcript checks.
+Per-seed quality and latency changes are retained in the detailed tables. No outliers are removed. The complete primary matrix does not establish output equivalence or completion of the separately tracked review-specific and final merged-series checks.
 
 **Observed tradeoffs in completed blocks:** C16 non-streaming throughput change is close to zero (+0.32%). ZH corpus WER improves at seed42 (0.5933→0.5844%) and worsens at seed43 (0.5874→0.6023%); EN response p95 at seed43 increases140.10→143.46ms, and ZH137.57→138.22ms. Mean startup increases about0.48s; maximum sampled memory is71.45→71.74GiB. These seed-level regressions and costs are retained, without claiming stable benefit or output equivalence.
 
@@ -82,7 +82,7 @@ Primary transcript audit is complete: 70 changed normalized transcripts across 4
 
 ## Costs
 
-Startup is server launch to health-ready, including model/graph initialization and excluding downloads/workload warmup. These are starts under the disclosed partial cache isolation, not universally cold JIT starts. Device memory is sampled every0.5s. Only verified blocks are tabulated; other costs remain Pending.
+Startup is server launch to health-ready, including model/graph initialization and excluding downloads/workload warmup. These are starts under the disclosed partial cache isolation, not universally cold JIT starts. Device memory is sampled every0.5s. All primary-block costs are tabulated; review-specific costs are tracked separately.
 
 Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capture calls (seed42/43; main → PR). Capture calls include segmented prefill captures; they are not unique shape counts. No pooled quantiles or inferred unmeasured costs.
 
@@ -100,7 +100,7 @@ Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capt
 ## Tests
 
 - Final-head primary backfill: **8/8 blocks verified**, 64/64 language/cohort cells: c1 nonstream, c1 stream, c16 nonstream, c16 stream, c32 nonstream, c32 stream, c64 nonstream, c64 stream. Review-specific ablations/repeats and transcript checks are tracked separately from primary coverage. This PR has already merged; post-merge qualification is continuing. These independent comparisons do not replace final merged-series validation or tradeoff assessment.
-- **Reviewer approval obtained for current head** `67e28de8`: db-ol approved on 2026-10-19T22:17:01Z, noting the explicit-override/fallback scope and passed CI. The post-merge final-source comparison on the changed baseline remains incomplete; the old measured source/base is kept explicit above.
+- **Reviewer approval obtained for current head** `67e28de8`: db-ol approved on 2026-10-19T22:17:01Z, noting the explicit-override/fallback scope and passed CI. The post-merge final-source primary comparison is complete; review-specific and final merged-series qualification remain pending; historical measurements retain their actual source/base in the linked archive.
 - Review-fix source: **137 CPU tests and 5 accelerator tests passed** on the assigned H100; logs and source identities are in the evidence link.
 - Final review-fix head `67e28de8` **FlashInfer smoke passed in both modes** on the original Radix H100 (2026-10-19): c32, seed42, eager frozen-main reference versus FULL candidate, metadata glue disabled in all four services, EN8/ZH8 each (**64 scored requests, 0 failures**). Each FULL cohort recorded **50 successful prefill capture stacks containing both the prefill runner and FULL backend**, with FlashInfer startup-log evidence. This is small-sample backend-path coverage, not a throughput or quality claim; the full EN/ZH two-seed backend comparison and final-head primary matrix remain pending. Audit, YAML, costs and capture evidence are under `flashinfer-smoke-20261019/` at the evidence link below.
 - `pre-commit run --all-files`: passed. Complete diff versus the frozen main contains no `doc/` or `docs/` changes.
