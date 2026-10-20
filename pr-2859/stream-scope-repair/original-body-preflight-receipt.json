@@ -1,0 +1,11 @@
+{
+  "at_utc": "2026-10-20T00:56:53.873764+00:00",
+  "PR": 2859,
+  "url": "https://github.com/sgl-project/sglang-omni/pull/2859",
+  "published_head": "1894fa88fa8b09392b0aa0625eec34aae3e95edd",
+  "initial_body_verified": true,
+  "body_before_sha256": "1f89cf8840bea47edbd6e30d68a57cd686889bee4a5c3494ce53b604c538fd5b",
+  "body_after_sha256": "904a65d4f4fdee8edfcbae43448193052086a589808b667949ef180e819c96a5",
+  "archive_commit": "afc7f9b",
+  "scope": "Only the simulated-merge preflight sentence was refreshed; performance tables, source identities, defaults and pending validation remain intact. No code/head/label changes."
+}
