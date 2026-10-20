@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-20T00:36:35.654517+00:00",
+  "scope": "2882 c16 streaming primary ABBA only; other primary blocks and review repeats are separate",
+  "main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "candidate": "2cad178053585b41d486c1584796d58b205541a0",
+  "paired_samples": 6216,
+  "changed_comparisons": 9,
+  "distinct_triples_inspected": 7,
+  "WER_directions": {
+    "equal": 3,
+    "worsened": 3,
+    "improved": 3
+  },
+  "empty_normalized_hypotheses": 0,
+  "inspection": "All 7 distinct triples inspected: a Serer name-spelling variant, Chinese name/homophone substitutions, and an erhua deletion. 赢家/银加 and 搅/脚 substitutions include opposite directions at different sample/seed points. No numerical cause, general output equivalence or truncation guarantee is inferred.",
+  "raw_export_sha256": "d63ee4f5bf1f5975d029dda6e9188217af128c664a57709ba626a1155f03e898"
+}
