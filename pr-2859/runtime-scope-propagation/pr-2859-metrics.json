@@ -1,0 +1,266 @@
+{
+  "candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+  "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "metrics": [
+    {
+      "mode": "nonstream",
+      "concurrency": 1,
+      "throughput_change_percent": 10.057142857142875,
+      "arms": {
+        "main": {
+          "req_s": 1.3125,
+          "mean_latency_s": "0.764/0.759",
+          "p95_latency_s": "0.958/0.953",
+          "first_audio_mean_s": "N/A",
+          "first_audio_p95_s": "N/A",
+          "wer_percent": "2.1268/1.5239",
+          "sim_score_x100": "68.8625/68.9369",
+          "failed": 0,
+          "attempted": 2176,
+          "startup_s": "115.11/112.10",
+          "peak_gib": "66.86/66.86",
+          "captures": [
+            152,
+            152
+          ],
+          "finish_reason_observed": [
+            0,
+            0
+          ],
+          "max_token_hits": [
+            0,
+            0
+          ],
+          "evidence": [
+            "pr2859-c1-nonstream-main-seed42",
+            "pr2859-c1-nonstream-main-seed43"
+          ]
+        },
+        "pr": {
+          "req_s": 1.4445000000000001,
+          "mean_latency_s": "0.692/0.692",
+          "p95_latency_s": "0.875/0.874",
+          "first_audio_mean_s": "N/A",
+          "first_audio_p95_s": "N/A",
+          "wer_percent": "2.1268/1.5323",
+          "sim_score_x100": "68.8625/68.9369",
+          "failed": 0,
+          "attempted": 2176,
+          "startup_s": "153.14/153.14",
+          "peak_gib": "70.42/70.42",
+          "captures": [
+            19236,
+            19236
+          ],
+          "finish_reason_observed": [
+            0,
+            0
+          ],
+          "max_token_hits": [
+            0,
+            0
+          ],
+          "evidence": [
+            "pr2859-c1-nonstream-pr-seed42",
+            "pr2859-c1-nonstream-pr-seed43"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "nonstream",
+      "concurrency": 64,
+      "throughput_change_percent": 58.909586761579,
+      "arms": {
+        "main": {
+          "req_s": 21.634,
+          "mean_latency_s": "2.902/2.880",
+          "p95_latency_s": "3.694/3.663",
+          "first_audio_mean_s": "N/A",
+          "first_audio_p95_s": "N/A",
+          "wer_percent": "2.1100/1.5490",
+          "sim_score_x100": "69.0730/68.9154",
+          "failed": 0,
+          "attempted": 2176,
+          "startup_s": "116.11/118.11",
+          "peak_gib": "67.24/67.38",
+          "captures": [
+            152,
+            152
+          ],
+          "finish_reason_observed": [
+            0,
+            0
+          ],
+          "max_token_hits": [
+            0,
+            0
+          ],
+          "evidence": [
+            "pr2859-c64-nonstream-main-seed42",
+            "pr2859-c64-nonstream-main-seed43"
+          ]
+        },
+        "pr": {
+          "req_s": 34.3785,
+          "mean_latency_s": "1.823/1.805",
+          "p95_latency_s": "2.316/2.272",
+          "first_audio_mean_s": "N/A",
+          "first_audio_p95_s": "N/A",
+          "wer_percent": "2.2356/1.4988",
+          "sim_score_x100": "69.0655/68.8165",
+          "failed": 0,
+          "attempted": 2176,
+          "startup_s": "160.15/161.13",
+          "peak_gib": "71.10/71.07",
+          "captures": [
+            19236,
+            19236
+          ],
+          "finish_reason_observed": [
+            0,
+            0
+          ],
+          "max_token_hits": [
+            0,
+            0
+          ],
+          "evidence": [
+            "pr2859-c64-nonstream-pr-seed42",
+            "pr2859-c64-nonstream-pr-seed43"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 1,
+      "throughput_change_percent": 6.552819698173162,
+      "arms": {
+        "main": {
+          "req_s": 1.259,
+          "mean_latency_s": "0.787/0.801",
+          "p95_latency_s": "0.987/1.008",
+          "first_audio_mean_s": "0.3402/0.3468",
+          "first_audio_p95_s": "0.3608/0.3756",
+          "wer_percent": "2.1351/1.4988",
+          "sim_score_x100": "68.8625/68.9310",
+          "failed": 0,
+          "attempted": 2176,
+          "startup_s": "113.10/117.11",
+          "peak_gib": "66.73/66.73",
+          "captures": [
+            152,
+            152
+          ],
+          "finish_reason_observed": [
+            0,
+            0
+          ],
+          "max_token_hits": [
+            0,
+            0
+          ],
+          "evidence": [
+            "pr2859-c1-stream-main-seed42",
+            "pr2859-c1-stream-main-seed43"
+          ]
+        },
+        "pr": {
+          "req_s": 1.3415,
+          "mean_latency_s": "0.741/0.750",
+          "p95_latency_s": "0.933/0.945",
+          "first_audio_mean_s": "0.3215/0.3269",
+          "first_audio_p95_s": "0.3447/0.3533",
+          "wer_percent": "2.1351/1.4988",
+          "sim_score_x100": "68.8625/68.9310",
+          "failed": 0,
+          "attempted": 2176,
+          "startup_s": "152.14/162.15",
+          "peak_gib": "70.42/70.42",
+          "captures": [
+            19236,
+            19236
+          ],
+          "finish_reason_observed": [
+            0,
+            0
+          ],
+          "max_token_hits": [
+            0,
+            0
+          ],
+          "evidence": [
+            "pr2859-c1-stream-pr-seed42",
+            "pr2859-c1-stream-pr-seed43"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "stream",
+      "concurrency": 64,
+      "throughput_change_percent": 32.80356214248572,
+      "arms": {
+        "main": {
+          "req_s": 15.384,
+          "mean_latency_s": "4.078/4.077",
+          "p95_latency_s": "5.215/5.220",
+          "first_audio_mean_s": "2.1480/2.1394",
+          "first_audio_p95_s": "2.5306/2.4988",
+          "wer_percent": "2.2356/1.5490",
+          "sim_score_x100": "69.0733/68.9383",
+          "failed": 0,
+          "attempted": 2176,
+          "startup_s": "115.11/115.11",
+          "peak_gib": "67.28/67.36",
+          "captures": [
+            152,
+            152
+          ],
+          "finish_reason_observed": [
+            0,
+            0
+          ],
+          "max_token_hits": [
+            0,
+            0
+          ],
+          "evidence": [
+            "pr2859-c64-stream-main-seed42",
+            "pr2859-c64-stream-main-seed43"
+          ]
+        },
+        "pr": {
+          "req_s": 20.430500000000002,
+          "mean_latency_s": "3.037/3.078",
+          "p95_latency_s": "4.058/3.968",
+          "first_audio_mean_s": "1.7849/1.8120",
+          "first_audio_p95_s": "2.6251/2.4501",
+          "wer_percent": "2.2021/1.4569",
+          "sim_score_x100": "69.0767/68.8243",
+          "failed": 0,
+          "attempted": 2176,
+          "startup_s": "155.15/157.14",
+          "peak_gib": "71.21/70.86",
+          "captures": [
+            19236,
+            19236
+          ],
+          "finish_reason_observed": [
+            0,
+            0
+          ],
+          "max_token_hits": [
+            0,
+            0
+          ],
+          "evidence": [
+            "pr2859-c64-stream-pr-seed42",
+            "pr2859-c64-stream-pr-seed43"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "name": "pr2859-c1-nonstream-main-seed42",
+    "actual_candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "provenance": "reused_unchanged_c1",
+    "source": "/qualification/moss-stream-scope-27216ebd/source/main",
+    "started_at": 1792459523.2900033,
+    "finished_at": 1792460499.2035515
+  },
+  {
+    "name": "pr2859-c1-nonstream-pr-seed42",
+    "actual_candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "provenance": "reused_unchanged_c1",
+    "source": "/qualification/moss-stream-scope-27216ebd/source/pr-2859",
+    "started_at": 1792460499.220513,
+    "finished_at": 1792461433.7607179
+  },
+  {
+    "name": "pr2859-c1-nonstream-pr-seed43",
+    "actual_candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "provenance": "reused_unchanged_c1",
+    "source": "/qualification/moss-stream-scope-27216ebd/source/pr-2859",
+    "started_at": 1792461433.7992847,
+    "finished_at": 1792462367.9449553
+  },
+  {
+    "name": "pr2859-c1-nonstream-main-seed43",
+    "actual_candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "provenance": "reused_unchanged_c1",
+    "source": "/qualification/moss-stream-scope-27216ebd/source/main",
+    "started_at": 1792462367.9621627,
+    "finished_at": 1792463334.2518358
+  },
+  {
+    "name": "pr2859-c1-stream-main-seed42",
+    "actual_candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "provenance": "reused_unchanged_c1",
+    "source": "/qualification/moss-stream-scope-27216ebd/source/main",
+    "started_at": 1792463334.2868528,
+    "finished_at": 1792464333.028255
+  },
+  {
+    "name": "pr2859-c1-stream-pr-seed42",
+    "actual_candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "provenance": "reused_unchanged_c1",
+    "source": "/qualification/moss-stream-scope-27216ebd/source/pr-2859",
+    "started_at": 1792464333.043205,
+    "finished_at": 1792465319.9788895
+  },
+  {
+    "name": "pr2859-c1-stream-pr-seed43",
+    "actual_candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "provenance": "reused_unchanged_c1",
+    "source": "/qualification/moss-stream-scope-27216ebd/source/pr-2859",
+    "started_at": 1792465319.9977462,
+    "finished_at": 1792466327.3594935
+  },
+  {
+    "name": "pr2859-c1-stream-main-seed43",
+    "actual_candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "provenance": "reused_unchanged_c1",
+    "source": "/qualification/moss-stream-scope-27216ebd/source/main",
+    "started_at": 1792466327.3991134,
+    "finished_at": 1792467345.9554756
+  },
+  {
+    "name": "pr2859-c64-nonstream-main-seed42",
+    "actual_candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "namespace": "moss-runtime-scope-2c7610e9",
+    "provenance": "fresh_current_head_c64",
+    "source": "/qualification/moss-runtime-scope-2c7610e9/source/main",
+    "started_at": 1792471420.066702,
+    "finished_at": 1792471608.1797414
+  },
+  {
+    "name": "pr2859-c64-nonstream-pr-seed42",
+    "actual_candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "namespace": "moss-runtime-scope-2c7610e9",
+    "provenance": "fresh_current_head_c64",
+    "source": "/qualification/moss-runtime-scope-2c7610e9/source/pr-2859",
+    "started_at": 1792471608.1952858,
+    "finished_at": 1792471822.343713
+  },
+  {
+    "name": "pr2859-c64-nonstream-pr-seed43",
+    "actual_candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "namespace": "moss-runtime-scope-2c7610e9",
+    "provenance": "fresh_current_head_c64",
+    "source": "/qualification/moss-runtime-scope-2c7610e9/source/pr-2859",
+    "started_at": 1792471822.3583815,
+    "finished_at": 1792472040.0227602
+  },
+  {
+    "name": "pr2859-c64-nonstream-main-seed43",
+    "actual_candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "namespace": "moss-runtime-scope-2c7610e9",
+    "provenance": "fresh_current_head_c64",
+    "source": "/qualification/moss-runtime-scope-2c7610e9/source/main",
+    "started_at": 1792472040.0797534,
+    "finished_at": 1792472230.1518054
+  },
+  {
+    "name": "pr2859-c64-stream-main-seed42",
+    "actual_candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "namespace": "moss-runtime-scope-2c7610e9",
+    "provenance": "fresh_current_head_c64",
+    "source": "/qualification/moss-runtime-scope-2c7610e9/source/main",
+    "started_at": 1792470543.3434637,
+    "finished_at": 1792470750.6269374
+  },
+  {
+    "name": "pr2859-c64-stream-pr-seed42",
+    "actual_candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "namespace": "moss-runtime-scope-2c7610e9",
+    "provenance": "fresh_current_head_c64",
+    "source": "/qualification/moss-runtime-scope-2c7610e9/source/pr-2859",
+    "started_at": 1792470750.6445007,
+    "finished_at": 1792470979.7635384
+  },
+  {
+    "name": "pr2859-c64-stream-pr-seed43",
+    "actual_candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "namespace": "moss-runtime-scope-2c7610e9",
+    "provenance": "fresh_current_head_c64",
+    "source": "/qualification/moss-runtime-scope-2c7610e9/source/pr-2859",
+    "started_at": 1792470979.802824,
+    "finished_at": 1792471213.0230618
+  },
+  {
+    "name": "pr2859-c64-stream-main-seed43",
+    "actual_candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "namespace": "moss-runtime-scope-2c7610e9",
+    "provenance": "fresh_current_head_c64",
+    "source": "/qualification/moss-runtime-scope-2c7610e9/source/main",
+    "started_at": 1792471213.0629215,
+    "finished_at": 1792471420.0287247
+  }
+]

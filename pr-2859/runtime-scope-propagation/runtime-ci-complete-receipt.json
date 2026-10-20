@@ -1,0 +1,13 @@
+{
+  "id": 39369526393,
+  "head_sha": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+  "head_branch": "codex/moss-claude-runtime-eaef",
+  "status": "completed",
+  "conclusion": "success",
+  "event": "pull_request",
+  "run_attempt": 1,
+  "created_at": "2026-10-20T04:25:49Z",
+  "updated_at": "2026-10-20T05:06:00Z",
+  "html_url": "https://github.com/sgl-project/sglang-omni/actions/runs/39369526393",
+  "recorded_at_utc": "2026-10-20T05:07:46.054366+00:00"
+}

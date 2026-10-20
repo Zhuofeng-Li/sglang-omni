@@ -1,0 +1,713 @@
+2026-10-20 04:23:12,364 sglang_omni.platforms.musa WARNING Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-20 04:23:12,673 sglang.srt.configs.linear_attn_model_registry INFO Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-20 04:23:12,885 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python -m sglang_omni.cli serve --model-path /qualification/moss-runtime-scope-2c7610e9/assets/moss --port 21972 --host localhost --config /qualification/moss-runtime-scope-2c7610e9/moss-results/pr2859-c64-stream-main-seed42/config.yaml --tts_engine.engine.max_running_requests 64 --tts_engine.engine.cuda_graph_max_bs 64
+2026-10-20 04:23:12,886 benchmarks.benchmarker.utils INFO Waiting for service at http://localhost:21972 ...
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/benchmarks/benchmarker/utils.py", line 156, in wait_healthy
+    wait_for_service(
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/benchmarks/benchmarker/utils.py", line 415, in wait_for_service
+    raise RuntimeError(f"Server exited with code {exit_code}.\n{log_text}")
+RuntimeError: Server exited with code 1.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-20 04:23:23,952 [INFO] sglang_omni.pipeline.mp_runner: CPU thread fallback plan: budget=128 processes=2 fallback_threads_per_process=64 fallback_overcommitted=false allocations={'pipeline': {'fallback_threads': 64, 'cpus': 64, 'stages': ['preprocessing', 'tts_engine']}, 'vocoder': {'fallback_threads': 64, 'cpus': 64, 'stages': ['vocoder']}}
+2026-10-20 04:23:23,952 [INFO] sglang_omni.pipeline.mp_runner: Coordinator stream backlog cap: max_total_backlog_bytes=1073741824
+2026-10-20 04:23:24,053 [INFO] sglang_omni.pipeline.control_plane: Coordinator control plane started
+2026-10-20 04:23:24,053 [INFO] sglang_omni.pipeline.coordinator: Coordinator started
+2026-10-20 04:23:24,054 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=pipeline OMP_NUM_THREADS=8 source=environment_or_policy fallback_threads=64
+2026-10-20 04:23:24,055 [INFO] sglang_omni.pipeline.stage_workers: StageGroup pipeline: spawned 1 process(es) (pids=[52052])
+2026-10-20 04:23:24,055 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=vocoder OMP_NUM_THREADS=8 source=environment_or_policy fallback_threads=64
+2026-10-20 04:23:24,056 [INFO] sglang_omni.pipeline.stage_workers: StageGroup vocoder: spawned 1 process(es) (pids=[52053])
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-20 04:23:34,478 [INFO] stage_workers.vocoder: Set current device to 0 for stage vocoder
+2026-10-20 04:23:34,478 [INFO] stage_workers.vocoder: Building scheduler for vocoder (tp_rank=0/1) ...
+2026-10-20 04:23:34,479 [INFO] stage_workers.pipeline: Set current device to 0 for stage preprocessing
+2026-10-20 04:23:34,480 [INFO] stage_workers.pipeline: Building scheduler for preprocessing (tp_rank=0/1) ...
+2026-10-20 04:23:34,597 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-20 04:23:34,597 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-20 04:23:40,891 [INFO] stage_workers.vocoder: Acquired GPU startup lock for stage vocoder: /tmp/sglang_omni_gpu_0_startup.lock
+2026-10-20 04:23:40,892 [INFO] sglang_omni.models.moss_tts.stages: Loading MOSS-TTS processor from /qualification/moss-runtime-scope-2c7610e9/assets/moss without codec
+2026-10-20 04:23:40,893 [ERROR] stage_workers.vocoder: Stage process vocoder failed
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
+    hf_hub_download(
+  File "/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 87, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 135, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 102, in load_moss_processor
+    processor_cls = load_moss_processor_class(model_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/hf_loading.py", line 289, in load_moss_processor_class
+    processor_config_path = cached_file(checkpoint, "processor_config.json")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
+    raise OSError(f"{e}") from e
+OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 646, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 759, in run_process
+    construct_stage(
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 913, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 1201, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 1188, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 278, in create_vocoder_executor
+    processor = load_moss_processor(model_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 128, in load_moss_processor
+    raise RuntimeError(_MOSS_TTS_INSTALL_HINT) from exc
+RuntimeError: MOSS-TTS support requires the upstream custom Transformers code. Launch with trust_remote_code=True and make sure the checkpoint can load OpenMOSS-Team/MOSS-Audio-Tokenizer.
+
+2026-10-20 04:23:40,914 [INFO] stage_workers.pipeline: Acquired GPU startup lock for stage preprocessing: /tmp/sglang_omni_gpu_0_startup.lock
+2026-10-20 04:23:40,914 [INFO] sglang_omni.models.moss_tts.stages: Loading MOSS-TTS processor from /qualification/moss-runtime-scope-2c7610e9/assets/moss without codec
+2026-10-20 04:23:40,915 [ERROR] stage_workers.pipeline: Stage process pipeline failed
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
+    hf_hub_download(
+  File "/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 87, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 135, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 102, in load_moss_processor
+    processor_cls = load_moss_processor_class(model_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/hf_loading.py", line 289, in load_moss_processor_class
+    processor_config_path = cached_file(checkpoint, "processor_config.json")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
+    raise OSError(f"{e}") from e
+OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 646, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 759, in run_process
+    construct_stage(
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 913, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 1201, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 1188, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 183, in create_preprocessing_executor
+    processor = load_moss_processor(model_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 128, in load_moss_processor
+    raise RuntimeError(_MOSS_TTS_INSTALL_HINT) from exc
+RuntimeError: MOSS-TTS support requires the upstream custom Transformers code. Launch with trust_remote_code=True and make sure the checkpoint can load OpenMOSS-Team/MOSS-Audio-Tokenizer.
+
+2026-10-20 04:23:41,226 [WARNING] stage_workers.vocoder: Reclaiming GPU memory after stage process vocoder exit after failure on gpu_ids=[0]
+2026-10-20 04:23:41,243 [WARNING] stage_workers.pipeline: Reclaiming GPU memory after stage process pipeline exit after failure on gpu_ids=[0]
+2026-10-20 04:23:41,552 [WARNING] stage_workers.vocoder: GPU memory reclaim complete after stage process vocoder exit after failure on gpu_ids=[0]
+2026-10-20 04:23:41,560 [WARNING] stage_workers.pipeline: GPU memory reclaim complete after stage process pipeline exit after failure on gpu_ids=[0]
+2026-10-20 04:23:44,068 [INFO] sglang_omni.pipeline.coordinator: Coordinator completion loop cancelled
+2026-10-20 04:23:44,068 [INFO] sglang_omni.pipeline.coordinator: Coordinator stopped
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/cli/serve │
+│ .py:525 in serve                                                             │
+│                                                                              │
+│   522 │   else:                                                              │
+│   523 │   │   pass                                                           │
+│   524 │                                                                      │
+│ ❱ 525 │   launch_server(                                                     │
+│   526 │   │   merged_config,                                                 │
+│   527 │   │   host=host,                                                     │
+│   528 │   │   port=port,                                                     │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/cli/serve │
+│ .py:37 in launch_server                                                      │
+│                                                                              │
+│    34 def launch_server(*args: object, **kwargs: object) -> NoReturn:        │
+│    35 │   from sglang_omni.serve.launcher import launch_server as            │
+│       _launch_server                                                         │
+│    36 │                                                                      │
+│ ❱  37 │   _launch_server(*args, **kwargs)                                    │
+│    38 │   # note (Richard Wang): the launcher has stopped the pipeline and   │
+│       joined                                                                 │
+│    39 │   # every stage by now. Tearing down the modules and objects the CLI │
+│    40 │   # imported took about a second more, and the server's stop waited  │
+│       for it.                                                                │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/serve/lau │
+│ ncher.py:920 in launch_server                                                │
+│                                                                              │
+│   917 │   │   │   signal.signal(signal.SIGTERM, previous_handler)            │
+│   918 │                                                                      │
+│   919 │   try:                                                               │
+│ ❱ 920 │   │   asyncio.run(run_server_with_sigterm_cleanup())                 │
+│   921 │   except asyncio.CancelledError:                                     │
+│   922 │   │   if sigterm_received and not cleanup_failed:                    │
+│   923 │   │   │   signal.raise_signal(signal.SIGTERM)                        │
+│                                                                              │
+│ /usr/lib/python3.12/asyncio/runners.py:194 in run                            │
+│                                                                              │
+│   191 │   │   │   "asyncio.run() cannot be called from a running event       │
+│       loop")                                                                 │
+│   192 │                                                                      │
+│   193 │   with Runner(debug=debug, loop_factory=loop_factory) as runner:     │
+│ ❱ 194 │   │   return runner.run(main)                                        │
+│   195                                                                        │
+│   196                                                                        │
+│   197 def _cancel_all_tasks(loop):                                           │
+│                                                                              │
+│ /usr/lib/python3.12/asyncio/runners.py:118 in run                            │
+│                                                                              │
+│   115 │   │                                                                  │
+│   116 │   │   self._interrupt_count = 0                                      │
+│   117 │   │   try:                                                           │
+│ ❱ 118 │   │   │   return self._loop.run_until_complete(task)                 │
+│   119 │   │   except exceptions.CancelledError:                              │
+│   120 │   │   │   if self._interrupt_count > 0:                              │
+│   121 │   │   │   │   uncancel = getattr(task, "uncancel", None)             │
+│                                                                              │
+│ /usr/lib/python3.12/asyncio/base_events.py:687 in run_until_complete         │
+│                                                                              │
+│    684 │   │   if not future.done():                                         │
+│    685 │   │   │   raise RuntimeError('Event loop stopped before Future      │
+│        completed.')                                                          │
+│    686 │   │                                                                 │
+│ ❱  687 │   │   return future.result()                                        │
+│    688 │                                                                     │
+│    689 │   def stop(self):                                                   │
+│    690 │   │   """Stop running the event loop.                               │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/serve/lau │
+│ ncher.py:911 in run_server_with_sigterm_cleanup                              │
+│                                                                              │
+│   908 │   │                                                                  │
+│   909 │   │   signal.signal(signal.SIGTERM, handle_sigterm)                  │
+│   910 │   │   try:                                                           │
+│ ❱ 911 │   │   │   await server_run                                           │
+│   912 │   │   except asyncio.CancelledError as cancelled:                    │
+│   913 │   │   │   # note (Richard Wang): Python 3.10 drops the cause outside │
+│       asyncio.run                                                            │
+│   914 │   │   │   cleanup_failed = cancelled.__cause__ is not None           │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/serve/lau │
+│ ncher.py:626 in run_server                                                   │
+│                                                                              │
+│   623 │                                                                      │
+│   624 │   mp_runner = MultiProcessPipelineRunner(pipeline_config)            │
+│   625 │   startup_timeout =                                                  │
+│       float(os.environ.get("SGLANG_OMNI_STARTUP_TIMEOUT", "600"))            │
+│ ❱ 626 │   await mp_runner.start(timeout=startup_timeout)                     │
+│   627 │   coordinator = mp_runner.coordinator                                │
+│   628 │                                                                      │
+│   629 │   # Plans are resolved once inside ``mp_runner.start()`` (which      │
+│       applies                                                                │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/ │
+│ mp_runner.py:857 in start                                                    │
+│                                                                              │
+│    854 │   │   │   │   │   │   │   process_env_overrides=env_by_process,     │
+│    855 │   │   │   │   │   │   )                                             │
+│    856 │   │   │   │                                                         │
+│ ❱  857 │   │   │   │   await self.wait_wave_ready(wave, ready_groups,        │
+│        timeout)                                                              │
+│    858 │   │   │   │                                                         │
+│    859 │   │   │   │   for group in wave:                                    │
+│    860 │   │   │   │   │   if group.any_dead():                              │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/ │
+│ mp_runner.py:950 in wait_wave_ready                                          │
+│                                                                              │
+│    947 │   │   │   │   )                                                     │
+│    948 │   │   │   │   for task in done:                                     │
+│    949 │   │   │   │   │   ready_groups.append(waits.pop(task))              │
+│ ❱  950 │   │   │   │   │   task.result()                                     │
+│    951 │   │   │   │   for group in ready_groups:                            │
+│    952 │   │   │   │   │   if group.any_dead():                              │
+│    953 │   │   │   │   │   │   raise RuntimeError(                           │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/ │
+│ stage_workers.py:489 in wait_ready                                           │
+│                                                                              │
+│    486 │   │   │   │   │   │   pass                                          │
+│    487 │   │   │   │   │   else:                                             │
+│    488 │   │   │   │   │   │   details = f"\nStartup failure                 │
+│        detail:\n{traceback_text}"                                            │
+│ ❱  489 │   │   │   │   │   raise RuntimeError(                               │
+│    490 │   │   │   │   │   │   f"Process {process_label} died during startup │
+│        "                                                                     │
+│    491 │   │   │   │   │   │   f"(exit code {proc.exitcode}){details}"       │
+│    492 │   │   │   │   │   )                                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+RuntimeError: Process vocoder died during startup (exit code 1)
+Startup failure detail:
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", 
+line 437, in cached_files
+    hf_hub_download(
+  File 
+"/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py",
+line 87, in _inner_fn
+    validate_repo_id(arg_value)
+  File 
+"/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py",
+line 135, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 
+'repo_name' or 'namespace/repo_name': 
+'/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` 
+argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_
+tts/stages.py", line 102, in load_moss_processor
+    processor_cls = load_moss_processor_class(model_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_
+tts/hf_loading.py", line 289, in load_moss_processor_class
+    processor_config_path = cached_file(checkpoint, "processor_config.json")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", 
+line 293, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], 
+**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", 
+line 488, in cached_files
+    raise OSError(f"{e}") from e
+OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': 
+'/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` 
+argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 646, in stage_process_main
+    run_process(spec, ready_event, log)
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 759, in run_process
+    construct_stage(
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 913, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 1201, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 1188, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_
+tts/stages.py", line 278, in create_vocoder_executor
+    processor = load_moss_processor(model_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_
+tts/stages.py", line 128, in load_moss_processor
+    raise RuntimeError(_MOSS_TTS_INSTALL_HINT) from exc
+RuntimeError: MOSS-TTS support requires the upstream custom Transformers code. 
+Launch with trust_remote_code=True and make sure the checkpoint can load 
+OpenMOSS-Team/MOSS-Audio-Tokenizer.
+
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/control/pinned_tts_benchmark.py", line 15, in <module>
+    runpy.run_module("benchmarks.eval.benchmark_tts_seedtts", run_name="__main__")
+  File "<frozen runpy>", line 229, in run_module
+  File "<frozen runpy>", line 88, in _run_code
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/benchmarks/eval/benchmark_tts_seedtts.py", line 1280, in <module>
+    main()
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/benchmarks/eval/benchmark_tts_seedtts.py", line 1253, in main
+    with managed_omni_server(
+  File "/usr/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/benchmarks/benchmarker/utils.py", line 309, in managed_omni_server
+    proc = start_server_from_cmd(cmd, log_file, port, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/benchmarks/benchmarker/utils.py", line 246, in start_server_from_cmd
+    wait_healthy(
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/benchmarks/benchmarker/utils.py", line 175, in wait_healthy
+    raise RuntimeError(message) from exc
+RuntimeError: Server exited with code 1.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-20 04:23:23,952 [INFO] sglang_omni.pipeline.mp_runner: CPU thread fallback plan: budget=128 processes=2 fallback_threads_per_process=64 fallback_overcommitted=false allocations={'pipeline': {'fallback_threads': 64, 'cpus': 64, 'stages': ['preprocessing', 'tts_engine']}, 'vocoder': {'fallback_threads': 64, 'cpus': 64, 'stages': ['vocoder']}}
+2026-10-20 04:23:23,952 [INFO] sglang_omni.pipeline.mp_runner: Coordinator stream backlog cap: max_total_backlog_bytes=1073741824
+2026-10-20 04:23:24,053 [INFO] sglang_omni.pipeline.control_plane: Coordinator control plane started
+2026-10-20 04:23:24,053 [INFO] sglang_omni.pipeline.coordinator: Coordinator started
+2026-10-20 04:23:24,054 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=pipeline OMP_NUM_THREADS=8 source=environment_or_policy fallback_threads=64
+2026-10-20 04:23:24,055 [INFO] sglang_omni.pipeline.stage_workers: StageGroup pipeline: spawned 1 process(es) (pids=[52052])
+2026-10-20 04:23:24,055 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=vocoder OMP_NUM_THREADS=8 source=environment_or_policy fallback_threads=64
+2026-10-20 04:23:24,056 [INFO] sglang_omni.pipeline.stage_workers: StageGroup vocoder: spawned 1 process(es) (pids=[52053])
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-20 04:23:34,478 [INFO] stage_workers.vocoder: Set current device to 0 for stage vocoder
+2026-10-20 04:23:34,478 [INFO] stage_workers.vocoder: Building scheduler for vocoder (tp_rank=0/1) ...
+2026-10-20 04:23:34,479 [INFO] stage_workers.pipeline: Set current device to 0 for stage preprocessing
+2026-10-20 04:23:34,480 [INFO] stage_workers.pipeline: Building scheduler for preprocessing (tp_rank=0/1) ...
+2026-10-20 04:23:34,597 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-20 04:23:34,597 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-20 04:23:40,891 [INFO] stage_workers.vocoder: Acquired GPU startup lock for stage vocoder: /tmp/sglang_omni_gpu_0_startup.lock
+2026-10-20 04:23:40,892 [INFO] sglang_omni.models.moss_tts.stages: Loading MOSS-TTS processor from /qualification/moss-runtime-scope-2c7610e9/assets/moss without codec
+2026-10-20 04:23:40,893 [ERROR] stage_workers.vocoder: Stage process vocoder failed
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
+    hf_hub_download(
+  File "/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 87, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 135, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 102, in load_moss_processor
+    processor_cls = load_moss_processor_class(model_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/hf_loading.py", line 289, in load_moss_processor_class
+    processor_config_path = cached_file(checkpoint, "processor_config.json")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
+    raise OSError(f"{e}") from e
+OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 646, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 759, in run_process
+    construct_stage(
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 913, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 1201, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 1188, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 278, in create_vocoder_executor
+    processor = load_moss_processor(model_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 128, in load_moss_processor
+    raise RuntimeError(_MOSS_TTS_INSTALL_HINT) from exc
+RuntimeError: MOSS-TTS support requires the upstream custom Transformers code. Launch with trust_remote_code=True and make sure the checkpoint can load OpenMOSS-Team/MOSS-Audio-Tokenizer.
+
+2026-10-20 04:23:40,914 [INFO] stage_workers.pipeline: Acquired GPU startup lock for stage preprocessing: /tmp/sglang_omni_gpu_0_startup.lock
+2026-10-20 04:23:40,914 [INFO] sglang_omni.models.moss_tts.stages: Loading MOSS-TTS processor from /qualification/moss-runtime-scope-2c7610e9/assets/moss without codec
+2026-10-20 04:23:40,915 [ERROR] stage_workers.pipeline: Stage process pipeline failed
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
+    hf_hub_download(
+  File "/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 87, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 135, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 102, in load_moss_processor
+    processor_cls = load_moss_processor_class(model_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/hf_loading.py", line 289, in load_moss_processor_class
+    processor_config_path = cached_file(checkpoint, "processor_config.json")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
+    raise OSError(f"{e}") from e
+OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 646, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 759, in run_process
+    construct_stage(
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 913, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 1201, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/stage_workers.py", line 1188, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 183, in create_preprocessing_executor
+    processor = load_moss_processor(model_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_tts/stages.py", line 128, in load_moss_processor
+    raise RuntimeError(_MOSS_TTS_INSTALL_HINT) from exc
+RuntimeError: MOSS-TTS support requires the upstream custom Transformers code. Launch with trust_remote_code=True and make sure the checkpoint can load OpenMOSS-Team/MOSS-Audio-Tokenizer.
+
+2026-10-20 04:23:41,226 [WARNING] stage_workers.vocoder: Reclaiming GPU memory after stage process vocoder exit after failure on gpu_ids=[0]
+2026-10-20 04:23:41,243 [WARNING] stage_workers.pipeline: Reclaiming GPU memory after stage process pipeline exit after failure on gpu_ids=[0]
+2026-10-20 04:23:41,552 [WARNING] stage_workers.vocoder: GPU memory reclaim complete after stage process vocoder exit after failure on gpu_ids=[0]
+2026-10-20 04:23:41,560 [WARNING] stage_workers.pipeline: GPU memory reclaim complete after stage process pipeline exit after failure on gpu_ids=[0]
+2026-10-20 04:23:44,068 [INFO] sglang_omni.pipeline.coordinator: Coordinator completion loop cancelled
+2026-10-20 04:23:44,068 [INFO] sglang_omni.pipeline.coordinator: Coordinator stopped
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/cli/serve │
+│ .py:525 in serve                                                             │
+│                                                                              │
+│   522 │   else:                                                              │
+│   523 │   │   pass                                                           │
+│   524 │                                                                      │
+│ ❱ 525 │   launch_server(                                                     │
+│   526 │   │   merged_config,                                                 │
+│   527 │   │   host=host,                                                     │
+│   528 │   │   port=port,                                                     │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/cli/serve │
+│ .py:37 in launch_server                                                      │
+│                                                                              │
+│    34 def launch_server(*args: object, **kwargs: object) -> NoReturn:        │
+│    35 │   from sglang_omni.serve.launcher import launch_server as            │
+│       _launch_server                                                         │
+│    36 │                                                                      │
+│ ❱  37 │   _launch_server(*args, **kwargs)                                    │
+│    38 │   # note (Richard Wang): the launcher has stopped the pipeline and   │
+│       joined                                                                 │
+│    39 │   # every stage by now. Tearing down the modules and objects the CLI │
+│    40 │   # imported took about a second more, and the server's stop waited  │
+│       for it.                                                                │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/serve/lau │
+│ ncher.py:920 in launch_server                                                │
+│                                                                              │
+│   917 │   │   │   signal.signal(signal.SIGTERM, previous_handler)            │
+│   918 │                                                                      │
+│   919 │   try:                                                               │
+│ ❱ 920 │   │   asyncio.run(run_server_with_sigterm_cleanup())                 │
+│   921 │   except asyncio.CancelledError:                                     │
+│   922 │   │   if sigterm_received and not cleanup_failed:                    │
+│   923 │   │   │   signal.raise_signal(signal.SIGTERM)                        │
+│                                                                              │
+│ /usr/lib/python3.12/asyncio/runners.py:194 in run                            │
+│                                                                              │
+│   191 │   │   │   "asyncio.run() cannot be called from a running event       │
+│       loop")                                                                 │
+│   192 │                                                                      │
+│   193 │   with Runner(debug=debug, loop_factory=loop_factory) as runner:     │
+│ ❱ 194 │   │   return runner.run(main)                                        │
+│   195                                                                        │
+│   196                                                                        │
+│   197 def _cancel_all_tasks(loop):                                           │
+│                                                                              │
+│ /usr/lib/python3.12/asyncio/runners.py:118 in run                            │
+│                                                                              │
+│   115 │   │                                                                  │
+│   116 │   │   self._interrupt_count = 0                                      │
+│   117 │   │   try:                                                           │
+│ ❱ 118 │   │   │   return self._loop.run_until_complete(task)                 │
+│   119 │   │   except exceptions.CancelledError:                              │
+│   120 │   │   │   if self._interrupt_count > 0:                              │
+│   121 │   │   │   │   uncancel = getattr(task, "uncancel", None)             │
+│                                                                              │
+│ /usr/lib/python3.12/asyncio/base_events.py:687 in run_until_complete         │
+│                                                                              │
+│    684 │   │   if not future.done():                                         │
+│    685 │   │   │   raise RuntimeError('Event loop stopped before Future      │
+│        completed.')                                                          │
+│    686 │   │                                                                 │
+│ ❱  687 │   │   return future.result()                                        │
+│    688 │                                                                     │
+│    689 │   def stop(self):                                                   │
+│    690 │   │   """Stop running the event loop.                               │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/serve/lau │
+│ ncher.py:911 in run_server_with_sigterm_cleanup                              │
+│                                                                              │
+│   908 │   │                                                                  │
+│   909 │   │   signal.signal(signal.SIGTERM, handle_sigterm)                  │
+│   910 │   │   try:                                                           │
+│ ❱ 911 │   │   │   await server_run                                           │
+│   912 │   │   except asyncio.CancelledError as cancelled:                    │
+│   913 │   │   │   # note (Richard Wang): Python 3.10 drops the cause outside │
+│       asyncio.run                                                            │
+│   914 │   │   │   cleanup_failed = cancelled.__cause__ is not None           │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/serve/lau │
+│ ncher.py:626 in run_server                                                   │
+│                                                                              │
+│   623 │                                                                      │
+│   624 │   mp_runner = MultiProcessPipelineRunner(pipeline_config)            │
+│   625 │   startup_timeout =                                                  │
+│       float(os.environ.get("SGLANG_OMNI_STARTUP_TIMEOUT", "600"))            │
+│ ❱ 626 │   await mp_runner.start(timeout=startup_timeout)                     │
+│   627 │   coordinator = mp_runner.coordinator                                │
+│   628 │                                                                      │
+│   629 │   # Plans are resolved once inside ``mp_runner.start()`` (which      │
+│       applies                                                                │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/ │
+│ mp_runner.py:857 in start                                                    │
+│                                                                              │
+│    854 │   │   │   │   │   │   │   process_env_overrides=env_by_process,     │
+│    855 │   │   │   │   │   │   )                                             │
+│    856 │   │   │   │                                                         │
+│ ❱  857 │   │   │   │   await self.wait_wave_ready(wave, ready_groups,        │
+│        timeout)                                                              │
+│    858 │   │   │   │                                                         │
+│    859 │   │   │   │   for group in wave:                                    │
+│    860 │   │   │   │   │   if group.any_dead():                              │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/ │
+│ mp_runner.py:950 in wait_wave_ready                                          │
+│                                                                              │
+│    947 │   │   │   │   )                                                     │
+│    948 │   │   │   │   for task in done:                                     │
+│    949 │   │   │   │   │   ready_groups.append(waits.pop(task))              │
+│ ❱  950 │   │   │   │   │   task.result()                                     │
+│    951 │   │   │   │   for group in ready_groups:                            │
+│    952 │   │   │   │   │   if group.any_dead():                              │
+│    953 │   │   │   │   │   │   raise RuntimeError(                           │
+│                                                                              │
+│ /qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/ │
+│ stage_workers.py:489 in wait_ready                                           │
+│                                                                              │
+│    486 │   │   │   │   │   │   pass                                          │
+│    487 │   │   │   │   │   else:                                             │
+│    488 │   │   │   │   │   │   details = f"\nStartup failure                 │
+│        detail:\n{traceback_text}"                                            │
+│ ❱  489 │   │   │   │   │   raise RuntimeError(                               │
+│    490 │   │   │   │   │   │   f"Process {process_label} died during startup │
+│        "                                                                     │
+│    491 │   │   │   │   │   │   f"(exit code {proc.exitcode}){details}"       │
+│    492 │   │   │   │   │   )                                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+RuntimeError: Process vocoder died during startup (exit code 1)
+Startup failure detail:
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", 
+line 437, in cached_files
+    hf_hub_download(
+  File 
+"/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py",
+line 87, in _inner_fn
+    validate_repo_id(arg_value)
+  File 
+"/opt/sglang/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py",
+line 135, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 
+'repo_name' or 'namespace/repo_name': 
+'/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` 
+argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_
+tts/stages.py", line 102, in load_moss_processor
+    processor_cls = load_moss_processor_class(model_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_
+tts/hf_loading.py", line 289, in load_moss_processor_class
+    processor_config_path = cached_file(checkpoint, "processor_config.json")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", 
+line 293, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], 
+**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/transformers/utils/hub.py", 
+line 488, in cached_files
+    raise OSError(f"{e}") from e
+OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': 
+'/qualification/moss-runtime-scope-2c7610e9/assets/moss'. Use `repo_type` 
+argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 646, in stage_process_main
+    run_process(spec, ready_event, log)
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 759, in run_process
+    construct_stage(
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 913, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 1201, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/pipeline/sta
+ge_workers.py", line 1188, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_
+tts/stages.py", line 278, in create_vocoder_executor
+    processor = load_moss_processor(model_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/qualification/moss-runtime-scope-2c7610e9/source/main/sglang_omni/models/moss_
+tts/stages.py", line 128, in load_moss_processor
+    raise RuntimeError(_MOSS_TTS_INSTALL_HINT) from exc
+RuntimeError: MOSS-TTS support requires the upstream custom Transformers code. 
+Launch with trust_remote_code=True and make sure the checkpoint can load 
+OpenMOSS-Team/MOSS-Audio-Tokenizer.
+
+

@@ -1,0 +1,25 @@
+{
+  "test_summary": "666 passed, 14 warnings in 23.57s",
+  "command": [
+    "/opt/sglang/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit_test/moss_tts",
+    "tests/unit_test/scheduling/test_streaming_vocoder.py",
+    "tests/unit_test/pipeline/test_async_decode.py",
+    "tests/unit_test/pipeline/test_coordinator.py",
+    "tests/unit_test/pipeline/test_scheduler.py",
+    "tests/unit_test/scheduling/test_session.py",
+    "tests/unit_test/scheduling/test_session_batch.py"
+  ],
+  "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+  "exit_code": 0,
+  "status": "complete",
+  "at": 1792472802.0190148,
+  "pid": 64479,
+  "candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+  "upstream": "5789a87384ed69ca6ae1270d3cde24a83de17501",
+  "synthetic_merge_tree": "e1c733dc6775cc8638c9abd6fda74a063206db6d",
+  "source_digest": "ac515915e3243f42b18c1fee2c68bcc6805fdc53f54ba624347d8c3d588c639f"
+}

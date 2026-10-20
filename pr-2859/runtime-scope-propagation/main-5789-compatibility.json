@@ -1,0 +1,47 @@
+{
+  "status": "verified",
+  "at_utc": "2026-10-20T05:07:46.058260+00:00",
+  "measured_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
+  "previously_assessed_main": "1240a6993c8073593aa0ad074859ccee2797adff",
+  "observed_main": "5789a87384ed69ca6ae1270d3cde24a83de17501",
+  "candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+  "synthetic_merge_tree": "e1c733dc6775cc8638c9abd6fda74a063206db6d",
+  "ordinary_MOSS_path_assessment": {
+    "moss_model_code_and_config": "unchanged by upstream commits a9da6da3/5789a873",
+    "model_runner_base": "TYPE_CHECKING-only PersonaPlex batch annotation",
+    "scheduler": "New complete_without_generation method defaults to None and MOSS does not override it; build/stream session branches remain inactive when active_session_unit is None. Embedding clearing moves after close_completed_request; ordinary request cleanup detaches same request data and no session history is committed. No changed sampling, admission, batch policy or GPU kernels for ordinary MOSS.",
+    "vocoder": "Metadata scan returns None for every ordinary payload, preserving order into the superclass. Session maps empty, emitted audio payload uses the original stream_payload method. New dict lookups/no-op session cleanup are common overhead; no graph/pacing/control or model state is invoked.",
+    "stage_runtime": "Session preempt/forward conditions false. Fixed MOSS routes resolve to the same next stages; get_next is merely hoisted before unchanged ordinary ownership branch.",
+    "coordinator": "SessionGraphRunner adds only session methods, inherits the same ordinary submission/completion. Graph/pacer tasks start through open_session/open_graph which benchmark never calls. Counts admission field defaults true for all ordinary requests; no bypass operations in benchmark.",
+    "config": "MOSS has empty session_nodes, session_graph returns None. Ordinary API does not create SessionOperation metadata.",
+    "ar_session_and_request_data": "All changed bridge methods require a SessionUnit/operation; new projected-prefill helper is not called by MOSS."
+  },
+  "decision": "Reuse frozen-main paired performance evidence with exact original identity: upstream changes introduce guarded Session functionality without changing ordinary MOSS generation/stream semantics. Validate a clean current-main synthetic merge with full MOSS and affected shared regressions before merge. Do not claim measured throughput at5789.",
+  "known_scope_limit": "Performance timings are reused on actual frozen2d5; new shared Session guards add small unmeasured common Python overhead at5789. No claim of throughput measured at5789. Integration tests establish compatibility, not a new timing result.",
+  "test_summary": "666 passed, 14 warnings in 23.57s",
+  "integration": {
+    "test_summary": "666 passed, 14 warnings in 23.57s",
+    "command": [
+      "/opt/sglang/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/unit_test/moss_tts",
+      "tests/unit_test/scheduling/test_streaming_vocoder.py",
+      "tests/unit_test/pipeline/test_async_decode.py",
+      "tests/unit_test/pipeline/test_coordinator.py",
+      "tests/unit_test/pipeline/test_scheduler.py",
+      "tests/unit_test/scheduling/test_session.py",
+      "tests/unit_test/scheduling/test_session_batch.py"
+    ],
+    "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+    "exit_code": 0,
+    "status": "complete",
+    "at": 1792472802.0190148,
+    "pid": 64479,
+    "candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+    "upstream": "5789a87384ed69ca6ae1270d3cde24a83de17501",
+    "synthetic_merge_tree": "e1c733dc6775cc8638c9abd6fda74a063206db6d",
+    "source_digest": "ac515915e3243f42b18c1fee2c68bcc6805fdc53f54ba624347d8c3d588c639f"
+  }
+}

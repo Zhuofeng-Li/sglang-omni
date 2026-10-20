@@ -1,0 +1,20 @@
+diff --git a/sglang_omni/model_runner/base.py b/sglang_omni/model_runner/base.py
+index f7c6c1e5..1b99f29c 100644
+--- a/sglang_omni/model_runner/base.py
++++ b/sglang_omni/model_runner/base.py
+@@ -45,6 +45,7 @@ if TYPE_CHECKING:
+     from sglang.srt.sampling.sampling_batch_info import SamplingBatchInfo
+ 
+     from sglang_omni.models.dots_tts.model_runner import DotsFlowLaunchBuf
++    from sglang_omni.models.personaplex.model_runner import PersonaPlexFrameBatch
+     from sglang_omni.scheduling.sglang_backend.output_processor import (
+         SGLangOutputProcessor,
+     )
+@@ -60,6 +61,7 @@ if TYPE_CHECKING:
+             torch.cuda.Event | torch.xpu.Event,
+         ]
+         | DotsFlowLaunchBuf
++        | PersonaPlexFrameBatch
+         | None
+     )
+ else:

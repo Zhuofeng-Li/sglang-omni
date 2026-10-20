@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "name": "wavlm_large_finetune.pth",
+      "size_bytes": 1301926579,
+      "sha256": "51f07e3b94d9e0262a6a675ef5a087be3dd09e8c62e9d886827f44f82fe7f94b",
+      "hf_metadata": [
+        "508f5410742122c7fb0d94e288152debd92cf629",
+        "51f07e3b94d9e0262a6a675ef5a087be3dd09e8c62e9d886827f44f82fe7f94b",
+        "1792443068.5929875"
+      ]
+    },
+    {
+      "name": "wavlm_large.pt",
+      "size_bytes": 1261965425,
+      "sha256": "6fb4b3c3e6aa567f0a997b30855859cb81528ee8078802af439f7b2da0bf100f",
+      "hf_metadata": [
+        "8cad0b370e7e35f8d56951d95d2be036ea85510c",
+        "6fb4b3c3e6aa567f0a997b30855859cb81528ee8078802af439f7b2da0bf100f",
+        "1792443065.4293818"
+      ]
+    }
+  ],
+  "s3prl_version": "0.4.18",
+  "cache": "/qualification/moss-runtime-scope-2c7610e9/cache/sim",
+  "verified_unchanged_after_all_scores": true,
+  "verified_at": 1792472707.895804
+}

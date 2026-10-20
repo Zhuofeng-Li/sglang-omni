@@ -1,0 +1,10 @@
+{
+  "protocol_sha256": "3dbe40888a312483324692fd15e4c7510c7ad88d496725aa866c4edc14c31539",
+  "new_generation_WER_SIM_cohorts": 8,
+  "reused_c1_cohorts": 8,
+  "status": "complete",
+  "at": 1792472708.2136445,
+  "pid": 52208,
+  "candidate": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+  "source_digest_sha256": "0c8e855266003f066723259d0cc853f428854b24b1950b55964780340125bcd9"
+}

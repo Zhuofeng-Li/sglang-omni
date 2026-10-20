@@ -1,0 +1,12 @@
+diff --git a/sglang_omni/pipeline/stage_workers.py b/sglang_omni/pipeline/stage_workers.py
+index 02a922d1..c2e6f9f8 100644
+--- a/sglang_omni/pipeline/stage_workers.py
++++ b/sglang_omni/pipeline/stage_workers.py
+@@ -1114,7 +1114,6 @@ def construct_stage(
+         stage.stream_queue = StreamQueue()
+     else:
+         pass
+-
+     return stage
+ 
+ 
