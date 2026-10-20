@@ -1,0 +1,46 @@
+{
+  "old_full_audit": {
+    "required": true,
+    "status": "verified",
+    "candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "blocks": [
+      {
+        "concurrency": 1,
+        "mode": "nonstream",
+        "status": "verified"
+      },
+      {
+        "concurrency": 1,
+        "mode": "stream",
+        "status": "verified"
+      },
+      {
+        "concurrency": 64,
+        "mode": "nonstream",
+        "status": "verified"
+      },
+      {
+        "concurrency": 64,
+        "mode": "stream",
+        "status": "verified"
+      }
+    ],
+    "generation_WER_SIM_cohorts": 16,
+    "note": "Coverage only; throughput, latency, quality and continuity tradeoffs still require evaluation."
+  },
+  "reuse": {
+    "candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "namespace": "moss-stream-scope-27216ebd",
+    "cases": 8,
+    "modes": [
+      "nonstream",
+      "stream"
+    ],
+    "date_UTC": "2026-10-20",
+    "date_America_Chicago": "2026-10-19",
+    "evidence_commit": "db9197e79d43ab522728f5c1cde576c649fccf2d",
+    "reason": "Only factory attribute propagation changed. Scheduler checks len(batch.reqs)>=async_decode_min_batch_size=2 before lookahead_eligible. Both warmup and timed c1 dispatch use semaphore concurrency1, so the changed policy is unreachable. Model, samplers, graphs, config, dependencies and capture setup are unchanged. Preserve original per-cohort source paths and timestamps; do not relabel as newly measured2c7610."
+  },
+  "new_head": "2c7610e9d236feb285522df1590e0ef6d0800ed7",
+  "new_c64_cases": "Pending; same H100 two-seed ABBA both modes, exact source frozen and full quality/costs required"
+}

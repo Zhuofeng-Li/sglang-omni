@@ -1,0 +1,21 @@
+{
+  "at_utc": "2026-10-20T04:17:21.999443+00:00",
+  "pr": "https://github.com/sgl-project/sglang-omni/pull/2859",
+  "current_head": "27216ebd18056a57406510b8588e351683d03d00",
+  "current_head_result": "c64stream main15.5515 -> PR14.9100 req/s (-4.13%); first audio2.1427 ->3.3443s; generation complete; old-head quality finishing",
+  "root_cause": "MossTtsEngineBuilder.setup_model set async_decode_mode on the low-level SGLModelRunner. The scheduler uses a separately constructed MossTTSModelRunner from make_model_runner, whose scope stayed all.",
+  "repair_worktree": "/scratch/user/zhuofengli_tamu.edu/tasks/omni-review-fixes/runs/20261019/pr-2859-runtime-scope-fix",
+  "repair_branch": "codex/moss-runtime-scope-propagation",
+  "fix": "Move configured scope propagation into make_model_runner on the actual MOSS runtime runner. Keep backbone graph setup intact.",
+  "regression": "The existing two-mode builder test now constructs the real runtime adapter and checks streaming eligibility; before fix 1failed1passed, afterfix CUDA-hidden full suite278passed97skipped.",
+  "precommit_session_id": 77653,
+  "assignment": "01M5ACTE5B2N5F7YH47QH6DS91",
+  "release_watcher": "Stopped PID1896402 because GPU is still required for repair validation; do not release until all associated repair runs finish.",
+  "next": [
+    "Finish full pre-commit, stage and commit final two-file fix, verify complete PR diff has no doc/docs.",
+    "After immutable27216 quality finishes and evidence is saved, run full375GPU regression on the corrected final source and publish the fix to original PR head.",
+    "Reuse the fully scored c1 two-mode ABBA blocks from27216 with actual source/date: scheduler lookahead requires batch>=2; both warmup and measurement use semaphore concurrency1; the propagation-only change cannot enter the changed path. Record proof and unchanged captures/startup path.",
+    "Backfill only affected c64 both modes: 8fullEN1088 generations, seeds42/43 ABBA, exact same H100/config/CPU policy; full WER/SIM and costs with unchanged scorer weights.",
+    "Register new protocol/namespace and add off-node sync/export, audit true reused/remeasured identities, update original body and reviewer reply with complete final results, verify latest CI/review and authorized merge conditions."
+  ]
+}

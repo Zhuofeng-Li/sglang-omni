@@ -1,0 +1,16 @@
+{
+  "at_epoch": 1792470539.781615,
+  "failure": "Host-absolute symlinks were invalid under the container bind mount; service failed before warmup/timed requests",
+  "old_links": {
+    "assets": "/data/zhuofeng-li/home/omni-review-20261019/assets",
+    "cache/sim": "/data/zhuofeng-li/home/omni-review-20261019/cache/sim",
+    "control/telemetry": "/data/zhuofeng-li/home/omni-review-20261019/control/telemetry"
+  },
+  "relative_links": {
+    "assets": "../assets",
+    "cache/sim": "../../cache/sim",
+    "control/telemetry": "../../control/telemetry"
+  },
+  "failed_cache_archived": "/data/zhuofeng-li/home/omni-review-20261019/moss-runtime-scope-2c7610e9/failed-cache/pr2859-c64-stream-main-seed42-1792470539",
+  "retry": "same frozen source and commands, new empty per-case compile cache"
+}
