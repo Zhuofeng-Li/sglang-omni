@@ -1,0 +1,9 @@
+{
+  "head": "27216ebd18056a57406510b8588e351683d03d00",
+  "job": 118412545316,
+  "conclusion": "skipped",
+  "condition": "always() && !cancelled() && startsWith(inputs.tts_ci_model, 'qwen3-tts')",
+  "actual_model": "moss",
+  "source": ".github/workflows/test-tts-ci.yaml",
+  "dedicated_Delay_first_audio": "covered by pending paired c1/c64 streaming validation"
+}

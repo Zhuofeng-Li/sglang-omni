@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "speaker_similarity_mean": 69.05503499157288,
+    "total_samples": 1088,
+    "evaluated": 1088,
+    "skipped": 0
+  },
+  "config": {
+    "model": "/qualification/moss-stream-scope-27216ebd/assets/moss",
+    "meta": "zhaochenyang20/seed-tts-eval-arrow",
+    "device": "cuda:0",
+    "max_samples": null,
+    "similarity_checkpoint": "/qualification/cache/sim/wavlm_large_finetune.pth"
+  },
+  "sample_count": 1088,
+  "sample_order_sha256": "6fc14adbf65ee18507a2679a1f2d5a6d8f1b7edfd0b756f4ff0edc5a47feebed",
+  "failures": []
+}

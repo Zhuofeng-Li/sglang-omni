@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "status": "verified",
+  "candidate": "27216ebd18056a57406510b8588e351683d03d00",
+  "blocks": [
+    {
+      "concurrency": 1,
+      "mode": "nonstream",
+      "status": "verified"
+    },
+    {
+      "concurrency": 1,
+      "mode": "stream",
+      "status": "verified"
+    },
+    {
+      "concurrency": 64,
+      "mode": "nonstream",
+      "status": "verified"
+    },
+    {
+      "concurrency": 64,
+      "mode": "stream",
+      "status": "verified"
+    }
+  ],
+  "generation_WER_SIM_cohorts": 16,
+  "note": "Coverage only; throughput, latency, quality and continuity tradeoffs still require evaluation."
+}

@@ -1,0 +1,306 @@
+{
+  "head": "27216ebd18056a57406510b8588e351683d03d00",
+  "updated_at": "2026-10-20T02:18:51Z",
+  "checks": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:36:54Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395842/job/118405743360",
+      "name": "cpu-ci-changes",
+      "startedAt": "2026-10-20T01:36:46Z",
+      "status": "COMPLETED",
+      "workflowName": "CPU CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:36:52Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354394273/job/118405739672",
+      "name": "cancel",
+      "startedAt": "2026-10-20T01:36:46Z",
+      "status": "COMPLETED",
+      "workflowName": "Cancel PR Workflow Runs"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:37:36Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395841/job/118405743226",
+      "name": "build-docs",
+      "startedAt": "2026-10-20T01:36:47Z",
+      "status": "COMPLETED",
+      "workflowName": "Docs Check"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:39:06Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395729/job/118405743116",
+      "name": "lint",
+      "startedAt": "2026-10-20T01:36:47Z",
+      "status": "COMPLETED",
+      "workflowName": "Lint"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:39:12Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118405743745",
+      "name": "omni-ci-gate",
+      "startedAt": "2026-10-20T01:36:46Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:37:03Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395893/job/118405743750",
+      "name": "build / preprocess",
+      "startedAt": "2026-10-20T01:36:47Z",
+      "status": "COMPLETED",
+      "workflowName": "Release Docker Images Nightly (NPU)"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:39:54Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395887/job/118405743320",
+      "name": "quality",
+      "startedAt": "2026-10-20T01:36:47Z",
+      "status": "COMPLETED",
+      "workflowName": "Rust Router"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:36:52Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395645/job/118405742343",
+      "name": "test-layout",
+      "startedAt": "2026-10-20T01:36:46Z",
+      "status": "COMPLETED",
+      "workflowName": "Test Layout"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:36:55Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395651/job/118405742591",
+      "name": "xpu-ci-changes",
+      "startedAt": "2026-10-20T01:36:46Z",
+      "status": "COMPLETED",
+      "workflowName": "XPU CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:39:21Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395842/job/118405795032",
+      "name": "cpu-ci-gate",
+      "startedAt": "2026-10-20T01:36:57Z",
+      "status": "COMPLETED",
+      "workflowName": "CPU CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:36:53Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395729/job/118405742993",
+      "name": "playback-test",
+      "startedAt": "2026-10-20T01:36:46Z",
+      "status": "COMPLETED",
+      "workflowName": "Lint"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:41:14Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118406453860",
+      "name": "setup - omni venv",
+      "startedAt": "2026-10-20T01:39:14Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:48:37Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395893/job/118405836852",
+      "name": "build / build_and_publish_arm64 (a3, 9.0.0)",
+      "startedAt": "2026-10-20T01:37:08Z",
+      "status": "COMPLETED",
+      "workflowName": "Release Docker Images Nightly (NPU)"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:39:12Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395651/job/118405797487",
+      "name": "xpu-ci-gate",
+      "startedAt": "2026-10-20T01:36:58Z",
+      "status": "COMPLETED",
+      "workflowName": "XPU CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:48:32Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395893/job/118405836849",
+      "name": "build / build_and_publish_arm64 (910b, 9.0.0)",
+      "startedAt": "2026-10-20T01:37:08Z",
+      "status": "COMPLETED",
+      "workflowName": "Release Docker Images Nightly (NPU)"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:39:22Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395842/job/118406498783",
+      "name": "cpu-ci (unit_test/cpu)",
+      "startedAt": "2026-10-20T01:39:22Z",
+      "status": "COMPLETED",
+      "workflowName": "CPU CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:39:12Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395651/job/118406453628",
+      "name": "xpu-ci (device_layer)",
+      "startedAt": "2026-10-20T01:39:12Z",
+      "status": "COMPLETED",
+      "workflowName": "XPU CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:49:00Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118407058804",
+      "name": "PR Test / unit-test-a",
+      "startedAt": "2026-10-20T01:41:17Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:49:15Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118407058725",
+      "name": "PR Test / unit-test-b",
+      "startedAt": "2026-10-20T01:41:23Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:39:27Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395842/job/118406498220",
+      "name": "CPU CI Status",
+      "startedAt": "2026-10-20T01:39:24Z",
+      "status": "COMPLETED",
+      "workflowName": "CPU CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:49:51Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118407058758",
+      "name": "PR Test / unit-test-accelerator",
+      "startedAt": "2026-10-20T01:41:17Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:49:51Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118409487291",
+      "name": "ASR CI",
+      "startedAt": "2026-10-20T01:49:52Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T01:55:30Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118409486908",
+      "name": "TTS CI / stage 1 - non-streaming",
+      "startedAt": "2026-10-20T01:49:54Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T02:00:28Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118411106622",
+      "name": "TTS CI / stage 2 - streaming",
+      "startedAt": "2026-10-20T01:55:38Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T02:00:28Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118412545316",
+      "name": "TTS CI / stage latency - streaming first audio",
+      "startedAt": "2026-10-20T02:00:29Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T02:01:30Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118412543932",
+      "name": "TTS CI / stage 3 - consistency",
+      "startedAt": "2026-10-20T02:00:30Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T02:13:39Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118412856067",
+      "name": "TTS CI / stage 4 - serving stress",
+      "startedAt": "2026-10-20T02:01:33Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T02:13:40Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118416444111",
+      "name": "MPS CI",
+      "startedAt": "2026-10-20T02:13:40Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T02:13:40Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118416445049",
+      "name": "Omni model CI ()",
+      "startedAt": "2026-10-20T02:13:40Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-20T02:13:40Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/sgl-project/sglang-omni/actions/runs/39354395866/job/118416445218",
+      "name": "cleanup - reclaim ephemeral run home",
+      "startedAt": "2026-10-20T02:13:40Z",
+      "status": "COMPLETED",
+      "workflowName": "Omni CI"
+    }
+  ]
+}
