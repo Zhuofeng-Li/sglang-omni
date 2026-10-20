@@ -26,6 +26,7 @@ from sglang_omni.models.moss_tts.sampling_cuda_graph import (
     MossTTSDelaySamplingCudaGraphRunner,
 )
 from sglang_omni.models.moss_tts.sglang_model import MossTTSDelaySGLangModel
+from sglang_omni.proto.request import OmniRequest, StagePayload
 
 INT64_MAX = torch.iinfo(torch.int64).max
 MOSS_DELAY_N_VQ = 32
@@ -110,32 +111,62 @@ def test_model_runner_rejects_greedy_sampling_graph_batch() -> None:
 @pytest.mark.parametrize("async_decode_mode", ["all", "nonstream"])
 def test_engine_builder_uses_backbone_capture_buckets(
     async_decode_mode: Literal["all", "nonstream"],
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    """Factory scope must reach the runtime runner that admits streaming lookahead."""
     calls = []
+    model = SimpleNamespace(
+        config=make_config(),
+        sampling_graph_available=lambda batch_size: True,
+        is_sampling_cuda_graph_compatible=MossTTSDelaySGLangModel.is_sampling_cuda_graph_compatible,
+        init_sampling_graphs=lambda batch_sizes, disable_padding: calls.append(
+            (batch_sizes, disable_padding)
+        ),
+    )
+    model_worker = SimpleNamespace(
+        gpu_id=0,
+        model_runner=SimpleNamespace(
+            model=model,
+            decode_cuda_graph_runner=SimpleNamespace(
+                capture_bs=(1, 2, 4), disable_padding=True
+            ),
+        ),
+    )
     builder = MossTtsEngineBuilder(async_decode_mode=async_decode_mode)
     builder.setup_model(
-        model_worker=SimpleNamespace(
-            model_runner=SimpleNamespace(
-                decode_cuda_graph_runner=SimpleNamespace(
-                    capture_bs=(1, 2, 4), disable_padding=True
-                )
-            )
-        ),
+        model_worker=model_worker,
         checkpoint_dir="checkpoint",
         device="cuda:0",
         gpu_id=0,
         server_args=SimpleNamespace(),
     )
-    model = SimpleNamespace(
-        init_sampling_graphs=lambda batch_sizes, disable_padding: calls.append(
-            (batch_sizes, disable_padding)
-        )
-    )
-
     builder.post_cuda_graph_setup(model, SimpleNamespace())
 
     assert calls == [([1, 2, 4], True)]
-    assert builder.model_runner.async_decode_mode == async_decode_mode
+    monkeypatch.setattr(
+        "sglang_omni.model_runner.base.current_platform.get_device",
+        lambda gpu_id: torch.device("cpu"),
+    )
+    runtime_runner = builder.make_model_runner(model_worker, SimpleNamespace())
+    assert runtime_runner.async_decode_mode == async_decode_mode
+    requests = []
+    for index in range(2):
+        request_data = sampling_data(profile="default")
+        request_data.is_audio = True
+        request_data.output_rows = []
+        request_data.audio_end_step = None
+        request_data.audio_end_scanned_rows = 0
+        request_data.generation_steps = 0
+        request_data.sampling_steps = 0
+        request_data.stage_payload = StagePayload(
+            request_id=f"streaming-{index}",
+            request=OmniRequest(inputs={}, params={"stream": True}),
+            data=None,
+        )
+        requests.append(SimpleNamespace(omni_data=request_data))
+    assert runtime_runner.lookahead_eligible(SimpleNamespace(reqs=requests)) is (
+        async_decode_mode == "all"
+    )
 
 
 def test_model_runner_routes_supported_audio_batch_to_sampling_graph() -> None:

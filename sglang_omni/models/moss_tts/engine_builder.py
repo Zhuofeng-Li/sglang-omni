@@ -103,10 +103,6 @@ class MossTtsEngineBuilder(TtsEngineBuilder[MossTTSSGLangRequestData]):
     ) -> None:
         del checkpoint_dir, device, gpu_id, server_args
         self.model_runner = model_worker.model_runner
-        if self.async_decode_mode is not None:
-            self.model_runner.async_decode_mode = self.async_decode_mode
-        else:
-            pass
 
     def post_cuda_graph_setup(
         self, model: MossTTSDelaySGLangModel, server_args: object
@@ -127,7 +123,12 @@ class MossTtsEngineBuilder(TtsEngineBuilder[MossTTSSGLangRequestData]):
             "sglang_omni.models.moss_tts.model_runner"
         )
 
-        return model_runner_mod.MossTTSModelRunner(model_worker, output_proc)
+        model_runner = model_runner_mod.MossTTSModelRunner(model_worker, output_proc)
+        if self.async_decode_mode is not None:
+            model_runner.async_decode_mode = self.async_decode_mode
+        else:
+            pass
+        return model_runner
 
     def make_adapters(self, model: MossTTSDelaySGLangModel | None) -> tuple[
         Callable[[StagePayload], MossTTSSGLangRequestData],
