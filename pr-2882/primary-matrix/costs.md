@@ -3,4 +3,5 @@ Per-cohort startup-to-ready, sampled peak device memory and successful CUDA capt
 | Mode / c | Startup s | Peak GiB | Successful captures | Live captures after scoring | Capture delta |
 | --- | --- | --- | --- | --- | --- |
 | nonstream / 1 | 75.72/75.77 → 74.58/76.08 | 70.80/70.79 → 70.79/70.79 | 1468/1468 → 1468/1468 | 1468/1468 → 1468/1468 | 0/0 |
+| nonstream / 16 | 77.09/78.59 → 82.11/82.60 | 71.60/71.58 → 71.27/71.42 | 1468/1468 → 1468/1468 | 1468/1468 → 1468/1468 | 0/0 |
 | stream / 1 | 75.60/76.73 → 76.16/75.66 | 70.80/70.79 → 70.79/70.79 | 1468/1468 → 1468/1468 | 1468/1468 → 1468/1468 | 0/0 |
