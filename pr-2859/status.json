@@ -1,12 +1,12 @@
 {
-  "observed_at_utc": "2026-10-19T21:10:37.016325+00:00",
+  "observed_at_utc": "2026-10-20T00:55:01.945915+00:00",
   "frozen_main": "2d5de98cd92b17df7974ac2ef4192b4a99263845",
   "candidate_head": "757c09eb272079b6c08f88bcaa393ffe3845029a",
-  "performance_readiness": "pending final-source paired measurements and review validation",
+  "performance_readiness": "Pending repair27216ebd full GPU regression, paired generation/WER/SIM and tradeoff assessment, then publication/current-head CI and independent review.",
   "correctness": "All16primarygeneration/WER/SIMcohorts independentlyverified, all4ABBAblockssource/GPU/config/order checks passed. Currentresultsandallregressionsare ininitialPRbody. Notmerge-ready:streamregressiondiagnosisandpublicationCI/reviewgatespending.",
   "gpu": "single NVIDIA H100 80GB HBM3",
   "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
-  "scope": "Qwen full c1/c16/c32/c64 EN+ZH both modes; MOSS requested c1/c64 EN both modes, matched 0.60 AR budget",
+  "scope": "User-requested MOSS EN1088 c1/c64, both modes, seeds42/43 ABBA and matched0.60 AR budget; c16 retains its original historical identity.",
   "pair_order": [
     [
       "main",
@@ -26,11 +26,11 @@
     ]
   ],
   "prior_results": "See archived description for original measurement dates and source identities; these are not final-head qualification.",
-  "older_review_requests": "C32 component/backend ablations, same-seed repeats and saved transcript differences are separately queued; they do not count as independent PR/main gains.",
+  "older_review_requests": "Separate batch Qwen c32 component/backend ablations, fixed-seed repeats and transcript checks precede this queued MOSS qualification; they are not MOSS performance evidence.",
   "generation_complete": 16,
   "generation_expected": 16,
-  "current_phase": "Async decode component isolation running",
-  "scorer_preparation": "Verified S3PRL0.4.18 wheel staged; installation/import validation deferred to quality stage. Scorer hashes/HF metadata will be recorded before all quality passes.",
+  "current_phase": "Final-source streaming-scope repair GPU qualification queued after existing Qwen consumers",
+  "scorer_preparation": "Completed for measured757c09eb: all16primary WER/SIM passes verified with pinned scorer hashes. New-source27216ebd scoring remains pending.",
   "precommit": {
     "candidate": "757c09eb272079b6c08f88bcaa393ffe3845029a",
     "result": "passed all applicable hooks, exit0, worktree unchanged",
@@ -39,18 +39,52 @@
     "measured_candidate_unchanged": true
   },
   "current_main_compatibility": {
+    "candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "actual_main": "1240a6993c8073593aa0ad074859ccee2797adff",
+    "observed_at_utc": "2026-10-20T00:53:06.099479+00:00",
+    "synthetic_merge": "clean",
+    "synthetic_tree": "66c1334bb401357369326870639d9fb0624f0205",
+    "full_PR_file_count": 16,
+    "full_PR_files_no_doc_dirs": true,
+    "runtime_on_latest_main": "Not established by this read-only merge preflight; integration CI and final-source qualification remain pending.",
+    "receipt": "stream-scope-repair/2859-stream-scope-current-main-preflight.json"
+  },
+  "validation_updated_at_utc": "2026-10-19T20:13:16.665476+00:00",
+  "original_pr_body_update": "All16requested757primary results/costs, complete4caseisolation and pending272repair CPU/GPU scope are in the initial PR description; the external archive supports that body.",
+  "scorer_identity": "scorer-identity.json",
+  "WER_verified": 16,
+  "SIM": "Complete:1088evaluated0skipsineverycohort; scorerweightsverifiedstable",
+  "moss_stream_ablation": "Complete and independently audited:4 same757c09eb-candidate async-on/off c64-stream cohorts, full generation/WER/SIM. Component-isolation results are not new27216ebd validation or main/PR gains.",
+  "ablation_preflight": "../protocol/moss-stream-ablation-preflight.json",
+  "SIM_verified": 16,
+  "historical_main_compatibility_observation": {
     "main": "b3c936ee3f30f888cc5a755e9f042d1c6532d33e",
     "synthetic_merge": "clean",
     "full_pr_files_no_doc_dirs": true,
     "runtime_on_latest_main": "not yet validated; paired measurements still use frozen2d5de98",
     "receipt": "current-main-merge-preflight.json"
   },
-  "validation_updated_at_utc": "2026-10-19T20:13:16.665476+00:00",
-  "original_pr_body_update": "Key c1 and c64 non-streaming results/costs now in the initial PR2859 description; external archive is supporting evidence only.",
-  "scorer_identity": "scorer-identity.json",
-  "WER_verified": 16,
-  "SIM": "Complete:1088evaluated0skipsineverycohort; scorerweightsverifiedstable",
-  "moss_stream_ablation": "Running4samecandidateasync-on/offcases afterprimaryquality; originalQwenmatrix/reviewcoveragepreserved.",
-  "ablation_preflight": "../protocol/moss-stream-ablation-preflight.json",
-  "SIM_verified": 16
+  "published_PR_head": "1894fa88fa8b09392b0aa0625eec34aae3e95edd",
+  "candidate_head_is_published": false,
+  "prepared_stream_scope_repair": {
+    "candidate": "27216ebd18056a57406510b8588e351683d03d00",
+    "published": false,
+    "CUDA_hidden_regression": {
+      "passed": 278,
+      "skipped": 97,
+      "exit_code": 0
+    },
+    "GPU_regression": {
+      "status": "queued",
+      "required_passed": 375
+    },
+    "paired_generation_WER_SIM": {
+      "status": "queued",
+      "expected_cohorts": 16,
+      "scope": "c1/c64 EN1088, both modes,seeds42/43 ABBA",
+      "base": "2d5de98cd92b17df7974ac2ef4192b4a99263845"
+    },
+    "source_runtime_changed_by_this_refresh": false
+  },
+  "ablation_verification": "async-decode-isolation/moss-ablation-verification.json"
 }
