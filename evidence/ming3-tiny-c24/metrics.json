@@ -1,0 +1,310 @@
+{
+  "order": [
+    "A42",
+    "B42",
+    "B43",
+    "A43"
+  ],
+  "records": {
+    "A42": {
+      "seed": 42,
+      "metrics": {
+        "latency_mean_s": 2.775,
+        "latency_median_s": 2.47,
+        "latency_p95_s": 3.989,
+        "latency_p99_s": 13.554,
+        "rtf_mean": 0.6972,
+        "rtf_median": 0.6854,
+        "rtf_p95": 0.8245,
+        "rtf_p99": 1.0511,
+        "throughput_qps": 5.721,
+        "audio_throughput_s_per_s": 22.996,
+        "wer_corpus": 0.022691116134974463
+      },
+      "audio": {
+        "duration_min_s": 1.12,
+        "duration_max_s": 20.0,
+        "duration_mean_s": 4.019558823529412,
+        "sample_rates": [
+          44100
+        ],
+        "formats": [
+          [
+            1,
+            "PCM_16"
+          ]
+        ]
+      },
+      "coverage": {
+        "tts": 1088,
+        "wavs": 1088,
+        "asr": 1088,
+        "failed": 0,
+        "skipped": 0,
+        "tts_warmup": 16,
+        "asr_warmup": 64
+      },
+      "similarity": 0.8147642741267405,
+      "costs": {
+        "startup_to_ready_seconds": 112.11500000953674,
+        "peak_device_gib": 109.2626953125,
+        "successful_pytorch_captures": 19
+      },
+      "capture_callers": {
+        "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py": 12,
+        "/results/ming-rep-0/candidate/sglang_omni/models/ming3_tts/sglang_model.py": 7
+      }
+    },
+    "B42": {
+      "seed": 42,
+      "metrics": {
+        "latency_mean_s": 1.461,
+        "latency_median_s": 1.438,
+        "latency_p95_s": 2.141,
+        "latency_p99_s": 2.645,
+        "rtf_mean": 0.4105,
+        "rtf_median": 0.4012,
+        "rtf_p95": 0.4916,
+        "rtf_p99": 0.7265,
+        "throughput_qps": 10.886,
+        "audio_throughput_s_per_s": 39.044,
+        "wer_corpus": 0.01121996148371431
+      },
+      "audio": {
+        "duration_min_s": 1.28,
+        "duration_max_s": 7.36,
+        "duration_mean_s": 3.586617647058824,
+        "sample_rates": [
+          44100
+        ],
+        "formats": [
+          [
+            1,
+            "PCM_16"
+          ]
+        ]
+      },
+      "coverage": {
+        "tts": 1088,
+        "wavs": 1088,
+        "asr": 1088,
+        "failed": 0,
+        "skipped": 0,
+        "tts_warmup": 16,
+        "asr_warmup": 64
+      },
+      "similarity": 0.8239027162575546,
+      "costs": {
+        "startup_to_ready_seconds": 174.17700004577637,
+        "peak_device_gib": 108.8232421875,
+        "successful_pytorch_captures": 280
+      },
+      "capture_callers": {
+        "/results/ming-rep-0/candidate/sglang_omni/models/ming3_tts/vocoder_graph.py": 250,
+        "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py": 12,
+        "/results/ming-rep-0/candidate/sglang_omni/models/ming3_tts/sglang_model.py": 18
+      }
+    },
+    "B43": {
+      "seed": 43,
+      "metrics": {
+        "latency_mean_s": 1.453,
+        "latency_median_s": 1.401,
+        "latency_p95_s": 2.193,
+        "latency_p99_s": 2.593,
+        "rtf_mean": 0.4055,
+        "rtf_median": 0.3963,
+        "rtf_p95": 0.5044,
+        "rtf_p99": 0.691,
+        "throughput_qps": 10.97,
+        "audio_throughput_s_per_s": 39.624,
+        "wer_corpus": 0.01105249937201708
+      },
+      "audio": {
+        "duration_min_s": 1.2,
+        "duration_max_s": 7.2,
+        "duration_mean_s": 3.6119852941176473,
+        "sample_rates": [
+          44100
+        ],
+        "formats": [
+          [
+            1,
+            "PCM_16"
+          ]
+        ]
+      },
+      "coverage": {
+        "tts": 1088,
+        "wavs": 1088,
+        "asr": 1088,
+        "failed": 0,
+        "skipped": 0,
+        "tts_warmup": 16,
+        "asr_warmup": 64
+      },
+      "similarity": 0.824522742179825,
+      "costs": {
+        "startup_to_ready_seconds": 174.19799995422363,
+        "peak_device_gib": 109.2275390625,
+        "successful_pytorch_captures": 280
+      },
+      "capture_callers": {
+        "/results/ming-rep-1/candidate/sglang_omni/models/ming3_tts/vocoder_graph.py": 250,
+        "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py": 12,
+        "/results/ming-rep-1/candidate/sglang_omni/models/ming3_tts/sglang_model.py": 18
+      }
+    },
+    "A43": {
+      "seed": 43,
+      "metrics": {
+        "latency_mean_s": 2.809,
+        "latency_median_s": 2.448,
+        "latency_p95_s": 3.918,
+        "latency_p99_s": 13.633,
+        "rtf_mean": 0.6961,
+        "rtf_median": 0.6854,
+        "rtf_p95": 0.7966,
+        "rtf_p99": 1.0816,
+        "throughput_qps": 5.665,
+        "audio_throughput_s_per_s": 23.074,
+        "wer_corpus": 0.020346646571213264
+      },
+      "audio": {
+        "duration_min_s": 1.2,
+        "duration_max_s": 20.0,
+        "duration_mean_s": 4.073235294117647,
+        "sample_rates": [
+          44100
+        ],
+        "formats": [
+          [
+            1,
+            "PCM_16"
+          ]
+        ]
+      },
+      "coverage": {
+        "tts": 1088,
+        "wavs": 1088,
+        "asr": 1088,
+        "failed": 0,
+        "skipped": 0,
+        "tts_warmup": 16,
+        "asr_warmup": 64
+      },
+      "similarity": 0.8140714705771055,
+      "costs": {
+        "startup_to_ready_seconds": 108.11400008201599,
+        "peak_device_gib": 108.1982421875,
+        "successful_pytorch_captures": 19
+      },
+      "capture_callers": {
+        "/opt/sglang/lib/python3.12/site-packages/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py": 12,
+        "/results/ming-rep-1/candidate/sglang_omni/models/ming3_tts/sglang_model.py": 7
+      }
+    }
+  },
+  "means": {
+    "A": {
+      "latency_mean_s": 2.792,
+      "latency_median_s": 2.459,
+      "latency_p95_s": 3.9535,
+      "latency_p99_s": 13.593499999999999,
+      "rtf_mean": 0.69665,
+      "rtf_median": 0.6854,
+      "rtf_p95": 0.81055,
+      "rtf_p99": 1.06635,
+      "throughput_qps": 5.693,
+      "audio_throughput_s_per_s": 23.035,
+      "wer_corpus": 0.021518881353093863,
+      "audio_duration_mean_s": 4.04639705882353,
+      "speaker_similarity": 0.814417872351923,
+      "p95_range": [
+        3.918,
+        3.989
+      ],
+      "costs": {
+        "startup_to_ready_seconds": 110.11450004577637,
+        "peak_device_gib": 109.2626953125,
+        "successful_pytorch_captures": 19
+      },
+      "cost_ranges": {
+        "startup_to_ready_seconds": [
+          108.11400008201599,
+          112.11500000953674
+        ],
+        "peak_device_gib": [
+          108.1982421875,
+          109.2626953125
+        ],
+        "successful_pytorch_captures": [
+          19,
+          19
+        ]
+      }
+    },
+    "B": {
+      "latency_mean_s": 1.457,
+      "latency_median_s": 1.4195,
+      "latency_p95_s": 2.167,
+      "latency_p99_s": 2.6189999999999998,
+      "rtf_mean": 0.40800000000000003,
+      "rtf_median": 0.39875,
+      "rtf_p95": 0.498,
+      "rtf_p99": 0.70875,
+      "throughput_qps": 10.928,
+      "audio_throughput_s_per_s": 39.334,
+      "wer_corpus": 0.011136230427865695,
+      "audio_duration_mean_s": 3.5993014705882356,
+      "speaker_similarity": 0.8242127292186898,
+      "p95_range": [
+        2.141,
+        2.193
+      ],
+      "costs": {
+        "startup_to_ready_seconds": 174.1875,
+        "peak_device_gib": 109.2275390625,
+        "successful_pytorch_captures": 280
+      },
+      "cost_ranges": {
+        "startup_to_ready_seconds": [
+          174.17700004577637,
+          174.19799995422363
+        ],
+        "peak_device_gib": [
+          108.8232421875,
+          109.2275390625
+        ],
+        "successful_pytorch_captures": [
+          280,
+          280
+        ]
+      }
+    }
+  },
+  "percentile_reporting": "per-seed p95 range, not an average or pooled percentile",
+  "complete": true,
+  "cost_aggregation": "startup arithmetic mean; peak device memory and successful captures maximum across seeds; per-seed ranges retained",
+  "throughput_change_percent": 91.95503249604779,
+  "audio_throughput_change_percent": 70.75754286954637,
+  "audio_duration_change_percent": -11.049226799440316,
+  "candidate_wer_pass": true,
+  "paired_guards": {
+    "latency_mean_s": true,
+    "latency_median_s": true,
+    "latency_p95_s": true,
+    "latency_p99_s": true,
+    "rtf_mean": true,
+    "rtf_median": true,
+    "rtf_p95": true,
+    "rtf_p99": true,
+    "throughput_qps": true,
+    "audio_throughput_s_per_s": true,
+    "wer_corpus": true
+  },
+  "paired_qualification_passed": true,
+  "qualification_scope": "Original English Tiny non-streaming c16 two-seed ABBA only",
+  "overall_publication_ready": false,
+  "full_matrix_status": "Frozen32-arm matrix complete; publication pending final-runtime GPU tests and cold-tail causal diagnosis/fix/affected final-head qualification. See complete-matrix-summary.json."
+}

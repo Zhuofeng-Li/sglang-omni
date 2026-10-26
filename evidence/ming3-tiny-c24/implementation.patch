@@ -1,0 +1,1696 @@
+diff --git a/sglang_omni/models/ming3_tts/model_runner.py b/sglang_omni/models/ming3_tts/model_runner.py
+index d9444dc..d9d3f34 100644
+--- a/sglang_omni/models/ming3_tts/model_runner.py
++++ b/sglang_omni/models/ming3_tts/model_runner.py
+@@ -40,6 +40,9 @@ class Ming3TTSRequestData(SGLangARRequestData):
+     zero_speaker: bool = False
+     prompt_latents: torch.Tensor | None = None
+     latent_position: int = -1
++    sampling_temperature_tensor: torch.Tensor | None = None
++    initial_noise_buffer: torch.Tensor | None = None
++    solver_noise_buffer: torch.Tensor | None = None
+ 
+ 
+ @dataclass(frozen=True, kw_only=True)
+@@ -62,6 +65,9 @@ class Ming3TTSModelRunner(ModelRunner):
+     ) -> None:
+         super().__init__(tp_worker, output_processor)
+         self.stop_policy: StopPolicy = stop_policy
++        self.stop_permissions: torch.Tensor = torch.tensor(
++            [False, True], device=self.device
++        )
+         if acoustic_graph_max_batch_size is not None:
+             self.model.capture_acoustic_graphs(acoustic_graph_max_batch_size)
+         else:
+@@ -158,12 +164,29 @@ class Ming3TTSModelRunner(ModelRunner):
+             request.data for request in requests
+         ]
+         latent_dim = request_states[0].latent_history.shape[-1]
++        for request_state in request_states:
++            if request_state.sampling_temperature_tensor is None:
++                request_state.sampling_temperature_tensor = torch.tensor(
++                    request_state.sampling_temperature, device=self.device
++                )
++            else:
++                pass
++            if request_state.initial_noise_buffer is None:
++                request_state.initial_noise_buffer = torch.empty(
++                    (1, latent_dim, 1), device=self.device
++                )
++                request_state.solver_noise_buffer = torch.empty(
++                    (FLOW_STEPS - 1, 1, 1, latent_dim), device=self.device
++                )
++            else:
++                pass
+         initial_noise = torch.cat(
+             [
+                 torch.randn(
+                     (1, latent_dim, 1),
+                     generator=request_state.noise_generator,
+                     device=self.device,
++                    out=request_state.initial_noise_buffer,
+                 )
+                 for request_state in request_states
+             ]
+@@ -174,6 +197,7 @@ class Ming3TTSModelRunner(ModelRunner):
+                     (FLOW_STEPS - 1, 1, 1, latent_dim),
+                     generator=request_state.noise_generator,
+                     device=self.device,
++                    out=request_state.solver_noise_buffer,
+                 )
+                 for request_state in request_states
+             ],
+@@ -187,23 +211,29 @@ class Ming3TTSModelRunner(ModelRunner):
+                 ),
+                 initial_noise=initial_noise,
+                 solver_noise=solver_noise,
+-                temperatures=torch.tensor(
++                temperatures=torch.stack(
+                     [
+-                        request_state.sampling_temperature
++                        request_state.sampling_temperature_tensor
+                         for request_state in request_states
+                     ],
+-                    device=self.device,
+                 ),
+             )
+         )
+-        generated_latent_counts = torch.tensor(
+-            [request_state.generation_steps + 1 for request_state in request_states],
+-            device=self.device,
+-        )
+         stop_policy = self.stop_policy
++        can_stop = torch.stack(
++            [
++                self.stop_permissions[
++                    int(
++                        request_state.generation_steps + 1
++                        >= stop_policy.minimum_decode_steps
++                    )
++                ]
++                for request_state in request_states
++            ]
++        )
+         is_stopped = (
+             acoustic_step.stop_probabilities > stop_policy.stop_probability_threshold
+-        ) & (generated_latent_counts >= stop_policy.minimum_decode_steps)
++        ) & can_stop
+         result.next_token_ids = torch.where(
+             is_stopped, stop_policy.audio_end_token_id, stop_policy.audio_patch_token_id
+         )
+diff --git a/sglang_omni/models/ming3_tts/sglang_model.py b/sglang_omni/models/ming3_tts/sglang_model.py
+index 0b533a4..45062a2 100644
+--- a/sglang_omni/models/ming3_tts/sglang_model.py
++++ b/sglang_omni/models/ming3_tts/sglang_model.py
+@@ -22,6 +22,18 @@ from transformers import Qwen2Config
+ from sglang_omni.modules.ming_audio.flow.aggregator import Aggregator
+ from sglang_omni.modules.ming_audio.flow.cfm import get_epss_timesteps
+ from sglang_omni.modules.ming_audio.flow.flow_loss import FlowLoss
++from sglang_omni.modules.ming_audio.flow.modules import Attention, RMSNorm
++from sglang_omni.modules.ming_audio.flow.normalization import (
++    HAS_TRITON,
++    NormalizationDispatch,
++    normalization_affine,
++    normalize_native_rms,
++    square_float32,
++)
++from sglang_omni.modules.ming_audio.flow.rotary import (
++    SharedRotaryTransform,
++    apply_shared_rotary,
++)
+ 
+ BACKBONE_WEIGHT_PREFIX = "model."
+ VOCODER_WEIGHT_PREFIX = "audio."
+@@ -30,6 +42,7 @@ FLOW_STEPS = 10
+ GUIDANCE_SCALE = 2.0
+ SOLVER_NOISE_SCALE = 0.25
+ ACOUSTIC_GRAPH_WARMUP_STEPS = 2
++ACOUSTIC_GRAPH_BATCH_STRIDE = 4
+ 
+ 
+ class Ming3TTSConfig(BailingHybridConfig):
+@@ -158,6 +171,12 @@ class AcousticGraph:
+     graph: torch.cuda.CUDAGraph
+     inputs: AcousticInputs
+     outputs: AcousticStep
++    sampling_scales: torch.Tensor
++    projection_stream: torch.cuda.Stream | None = None
++    timestep_embeddings: tuple[torch.Tensor, ...] | None = None
++    packed_projections: tuple[tuple[torch.Tensor, torch.Tensor | None], ...] = ()
++    normalization_dispatch: NormalizationDispatch | None = None
++    rotary_dispatch: SharedRotaryTransform | None = None
+ 
+ 
+ class SpeechHeadModel:
+@@ -214,41 +233,134 @@ class SpeechHeadModel:
+ 
+     @torch.no_grad()
+     def capture_acoustic_graphs(self, max_batch_size: int) -> None:
+-        """Capture power-of-two batch buckets up to max_batch_size in one memory pool."""
++        """Capture closely spaced batch buckets in one memory pool."""
+         device = self.stop_head.weight.device
+         latent_dim = int(self.config.tts_config["latent_dim"])
+         memory_pool = torch.cuda.graph_pool_handle()
+-        powers_of_two = [
+-            1 << exponent for exponent in range(max_batch_size.bit_length())
+-        ]
+-        bucket_batch_sizes = {size for size in powers_of_two if size < max_batch_size}
+-        for batch_size in sorted(bucket_batch_sizes | {max_batch_size}, reverse=True):
+-            inputs = AcousticInputs(
+-                hidden_states=torch.zeros(
+-                    (batch_size, self.config.hidden_size),
+-                    device=device,
+-                    dtype=self.stop_head.weight.dtype,
+-                ),
+-                latent_history=torch.zeros((batch_size, 1, latent_dim), device=device),
+-                initial_noise=torch.zeros((batch_size, latent_dim, 1), device=device),
+-                solver_noise=torch.zeros(
+-                    (FLOW_STEPS - 1, batch_size, 1, latent_dim), device=device
++        bucket_batch_sizes = {
++            size
++            for size in (
++                1,
++                2,
++                *range(
++                    ACOUSTIC_GRAPH_BATCH_STRIDE,
++                    max_batch_size,
++                    ACOUSTIC_GRAPH_BATCH_STRIDE,
+                 ),
+-                temperatures=torch.zeros(batch_size, device=device),
+-            )
+-            sampling_scales = self.build_sampling_scales(batch_size)
+-            stream = torch.cuda.Stream(device=device)
+-            stream.wait_stream(torch.cuda.current_stream(device))
+-            with torch.cuda.stream(stream):
+-                for _ in range(ACOUSTIC_GRAPH_WARMUP_STEPS):
+-                    self.compute_acoustic_step(inputs, sampling_scales)
+-            torch.cuda.current_stream(device).wait_stream(stream)
+-            graph = torch.cuda.CUDAGraph()
+-            with torch.cuda.graph(graph, pool=memory_pool, stream=stream):
+-                outputs = self.compute_acoustic_step(inputs, sampling_scales)
+-            self.acoustic_graphs[batch_size] = AcousticGraph(
+-                graph=graph, inputs=inputs, outputs=outputs
+             )
++            if size < max_batch_size
++        }
++        attention_layers = [
++            layer
++            for head in (self.flowloss, self.linear_proj_audio)
++            for layer in head.modules()
++            if isinstance(layer, Attention)
++        ]
++        normalization_layers = [
++            layer
++            for head in (self.flowloss, self.linear_proj_audio)
++            for layer in head.modules()
++            if isinstance(layer, RMSNorm)
++        ]
++        normalization_dispatch = NormalizationDispatch(
++            square_float32=torch.compile(square_float32, fullgraph=True, dynamic=True),
++            affine=torch.compile(
++                normalization_affine,
++                fullgraph=True,
++                dynamic=True,
++                options={"emulate_precision_casts": True},
++            ),
++            normalize_contiguous=(
++                normalize_native_rms
++                if HAS_TRITON
++                and torch.__version__.split("+")[0] == "2.14.1"
++                and torch.version.hip is None
++                else None
++            ),
++        )
++        rotary_dispatch = torch.compile(
++            apply_shared_rotary,
++            fullgraph=True,
++            dynamic=True,
++            options={"emulate_precision_casts": True},
++        )
++        projection_stream = torch.cuda.Stream(device=device)
++        for layer in attention_layers:
++            layer.projection_stream = projection_stream
++            layer.rotary_dispatch = rotary_dispatch
++        for layer in normalization_layers:
++            layer.normalization_dispatch = normalization_dispatch
++        packed_projections: list[tuple[torch.Tensor, torch.Tensor | None]] = []
++        try:
++            for layer in attention_layers:
++                if layer.to_qkv is None:
++                    packed_weight = torch.cat(
++                        [layer.to_q.weight, layer.to_k.weight, layer.to_v.weight]
++                    )
++                    if layer.to_q.bias is None:
++                        packed_bias = None
++                    else:
++                        packed_bias = torch.cat(
++                            [layer.to_q.bias, layer.to_k.bias, layer.to_v.bias]
++                        )
++                    layer.packed_projection = (packed_weight, packed_bias)
++                    packed_projections.append(layer.packed_projection)
++                else:
++                    pass
++            for batch_size in sorted(
++                bucket_batch_sizes | {max_batch_size}, reverse=True
++            ):
++                inputs = AcousticInputs(
++                    hidden_states=torch.zeros(
++                        (batch_size, self.config.hidden_size),
++                        device=device,
++                        dtype=self.stop_head.weight.dtype,
++                    ),
++                    latent_history=torch.zeros(
++                        (batch_size, 1, latent_dim), device=device
++                    ),
++                    initial_noise=torch.zeros(
++                        (batch_size, latent_dim, 1), device=device
++                    ),
++                    solver_noise=torch.zeros(
++                        (FLOW_STEPS - 1, batch_size, 1, latent_dim), device=device
++                    ),
++                    temperatures=torch.zeros(batch_size, device=device),
++                )
++                sampling_scales = self.build_sampling_scales(batch_size)
++                with torch.autocast(device_type=device.type, dtype=torch.bfloat16):
++                    timestep_embeddings = self.flowloss.cfm.build_timestep_embeddings(
++                        self.flow_timesteps, batch_size
++                    )
++                self.flowloss.cfm.timestep_embeddings = timestep_embeddings
++                stream = torch.cuda.Stream(device=device)
++                stream.wait_stream(torch.cuda.current_stream(device))
++                with torch.cuda.stream(stream):
++                    for _ in range(ACOUSTIC_GRAPH_WARMUP_STEPS):
++                        self.compute_acoustic_step(inputs, sampling_scales)
++                torch.cuda.current_stream(device).wait_stream(stream)
++                graph = torch.cuda.CUDAGraph()
++                with torch.cuda.graph(graph, pool=memory_pool, stream=stream):
++                    outputs = self.compute_acoustic_step(inputs, sampling_scales)
++                self.acoustic_graphs[batch_size] = AcousticGraph(
++                    graph=graph,
++                    inputs=inputs,
++                    outputs=outputs,
++                    sampling_scales=sampling_scales,
++                    projection_stream=projection_stream,
++                    timestep_embeddings=timestep_embeddings,
++                    packed_projections=tuple(packed_projections),
++                    normalization_dispatch=normalization_dispatch,
++                    rotary_dispatch=rotary_dispatch,
++                )
++        finally:
++            self.flowloss.cfm.timestep_embeddings = None
++            for layer in attention_layers:
++                layer.projection_stream = None
++                layer.packed_projection = None
++                layer.rotary_dispatch = None
++            for layer in normalization_layers:
++                layer.normalization_dispatch = None
+ 
+     @torch.no_grad()
+     def sample_acoustic_step(self, inputs: AcousticInputs) -> AcousticStep:
+diff --git a/sglang_omni/models/ming3_tts/stages.py b/sglang_omni/models/ming3_tts/stages.py
+index 08be778..edd5f70 100644
+--- a/sglang_omni/models/ming3_tts/stages.py
++++ b/sglang_omni/models/ming3_tts/stages.py
+@@ -41,6 +41,7 @@ from sglang_omni.models.ming3_tts.sglang_model import (
+     Ming3TTSConfig,
+     Ming3TTSModel,
+ )
++from sglang_omni.models.ming3_tts.vocoder_graph import VocoderGraphRunner
+ from sglang_omni.modules.ming_audio.vae.configuration_audio_vae import AudioVAEconfig
+ from sglang_omni.modules.ming_audio.vae.modeling_audio_vae import AudioVAE
+ from sglang_omni.proto.request import StagePayload
+@@ -67,6 +68,7 @@ SPEAKER_ENCODER_FILE = "campplus.onnx"
+ SPEAKER_SAMPLE_RATE = 16000
+ SPEAKER_MEL_BINS = 80
+ SPEAKER_ENCODER_THREADS = 2
++SPEAKER_PREPROCESSING_WORKERS = 4
+ 
+ 
+ class SpeechConfig(BaseModel):
+@@ -320,7 +322,7 @@ def create_preprocessing_executor(model_path: str) -> SimpleScheduler:
+             )
+         return payload
+ 
+-    return SimpleScheduler(preprocess)
++    return SimpleScheduler(preprocess, max_concurrency=SPEAKER_PREPROCESSING_WORKERS)
+ 
+ 
+ def create_tts_engine_executor(
+@@ -516,11 +518,21 @@ def create_vocoder_executor(
+     resolved_device = resolve_concrete_device(device, gpu_id)
+     checkpoint = Path(resolve_checkpoint(model_path))
+     vae, sample_rate = load_audio_vae(checkpoint, resolved_device)
++    configuration = load_checkpoint_config(checkpoint)
++    if resolved_device.type == "cuda" and not is_dense_checkpoint(configuration):
++        speech_config = SpeechConfig.model_validate(configuration["tts_config"])
++        graph_runner = VocoderGraphRunner(vae, speech_config.maximum_decode_steps)
++    else:
++        graph_runner = None
+ 
+     @torch.inference_mode()
+     def decode(payload: StagePayload) -> StagePayload:
+         latents = payload.data["latents"].to(resolved_device, dtype=torch.bfloat16)
+-        waveform, _, _ = vae.decode(latents.reshape(1, -1, latents.shape[-1]))
++        latents = latents.reshape(1, -1, latents.shape[-1])
++        if graph_runner is None:
++            waveform, _, _ = vae.decode(latents)
++        else:
++            waveform = graph_runner.decode(latents)
+         usage = payload.data["usage"]
+         payload.data = audio_waveform_payload(
+             waveform.float().cpu(),
+diff --git a/sglang_omni/models/ming3_tts/vocoder_graph.py b/sglang_omni/models/ming3_tts/vocoder_graph.py
+new file mode 100644
+index 0000000..14061a6
+--- /dev/null
++++ b/sglang_omni/models/ming3_tts/vocoder_graph.py
+@@ -0,0 +1,113 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Exact-length CUDA graphs for non-streaming Ming vocoding."""
++
++from __future__ import annotations
++
++from dataclasses import dataclass
++from types import MethodType
++
++import torch
++from transformers.models.qwen2.modeling_qwen2 import Qwen2RMSNorm
++
++from sglang_omni.modules.ming_audio.flow.normalization import (
++    HAS_TRITON,
++    NATIVE_REDUCTION_VECTOR_WIDTH,
++    VOCODER_RMS_CHANNEL_COUNT,
++    normalize_native_strided_rms,
++)
++from sglang_omni.modules.ming_audio.vae.modeling_audio_vae import AudioVAE
++
++VOCODER_GRAPH_WARMUP_STEPS = 2
++
++
++def normalize_vocoder_channels(
++    layer: Qwen2RMSNorm, hidden_states: torch.Tensor
++) -> torch.Tensor:
++    if (
++        not torch.is_grad_enabled()
++        and hidden_states.device.type == "cuda"
++        and hidden_states.dtype in (torch.bfloat16, torch.float16)
++        and hidden_states.dtype == layer.weight.dtype
++        and hidden_states.ndim == 3
++        and hidden_states.shape[0] == 1
++        and hidden_states.shape[1] > 0
++        and hidden_states.shape[1] % NATIVE_REDUCTION_VECTOR_WIDTH == 0
++        and hidden_states.shape[2] == VOCODER_RMS_CHANNEL_COUNT
++        and hidden_states.stride(1) == 1
++        and hidden_states.stride(2) == hidden_states.shape[1]
++        and layer.weight.shape == (VOCODER_RMS_CHANNEL_COUNT,)
++        and layer.weight.is_contiguous()
++    ):
++        return normalize_native_strided_rms(
++            hidden_states, layer.weight, layer.variance_epsilon
++        )
++    else:
++        return Qwen2RMSNorm.forward(layer, hidden_states)
++
++
++@dataclass(kw_only=True)
++class CapturedVocoder:
++    graph: torch.cuda.CUDAGraph
++    latents: torch.Tensor
++    waveform: torch.Tensor
++
++
++class VocoderGraphRunner:
++    """Own graph storage and clone results before another length reuses the pool."""
++
++    def __init__(self, vae: AudioVAE, maximum_decode_steps: int) -> None:
++        self.vae: AudioVAE = vae
++        self.graphs: dict[int, CapturedVocoder] = {}
++        self.capture(maximum_decode_steps)
++
++    @torch.inference_mode()
++    def capture(self, maximum_decode_steps: int) -> None:
++        memory_pool = torch.cuda.graph_pool_handle()
++        stream = torch.cuda.Stream(device=self.vae.device)
++        normalization_layers: list[Qwen2RMSNorm] = []
++        try:
++            # note (Codex): The fused reduction follows the native CUDA tree in this PyTorch version.
++            if (
++                HAS_TRITON
++                and torch.__version__.split("+")[0] == "2.14.1"
++                and torch.version.hip is None
++            ):
++                for layer in self.vae.decoder.modules():
++                    if type(layer) is Qwen2RMSNorm and "forward" not in layer.__dict__:
++                        layer.forward = MethodType(normalize_vocoder_channels, layer)
++                        normalization_layers.append(layer)
++                    else:
++                        pass
++            else:
++                pass
++            for latent_steps in range(maximum_decode_steps, 0, -1):
++                latents = torch.zeros(
++                    (1, latent_steps, self.vae.decoder.latent_dim),
++                    device=self.vae.device,
++                    dtype=self.vae.dtype,
++                )
++                stream.wait_stream(torch.cuda.current_stream(self.vae.device))
++                with torch.cuda.stream(stream):
++                    for _ in range(VOCODER_GRAPH_WARMUP_STEPS):
++                        self.vae.decode(latents)
++                torch.cuda.current_stream(self.vae.device).wait_stream(stream)
++                graph = torch.cuda.CUDAGraph()
++                with torch.cuda.graph(graph, pool=memory_pool, stream=stream):
++                    waveform, _, _ = self.vae.decode(latents)
++                self.graphs[latent_steps] = CapturedVocoder(
++                    graph=graph, latents=latents, waveform=waveform
++                )
++        finally:
++            for layer in normalization_layers:
++                layer.__dict__.pop("forward")
++
++    @torch.inference_mode()
++    def decode(self, latents: torch.Tensor) -> torch.Tensor:
++        captured = self.graphs.get(latents.shape[1])
++        if captured is None:
++            waveform, _, _ = self.vae.decode(latents)
++            return waveform
++        else:
++            captured.latents.copy_(latents)
++            captured.graph.replay()
++            return captured.waveform.clone()
+diff --git a/sglang_omni/modules/ming_audio/flow/dit.py b/sglang_omni/modules/ming_audio/flow/dit.py
+index ca3a588..9467841 100644
+--- a/sglang_omni/modules/ming_audio/flow/dit.py
++++ b/sglang_omni/modules/ming_audio/flow/dit.py
+@@ -10,14 +10,29 @@
+ # --------------------------------------------------------
+ 
+ import math
++from dataclasses import dataclass
+ 
+ import torch
+ import torch.nn as nn
+ from torch.utils.checkpoint import checkpoint
+ 
+-from .execution import TalkerExecutionConfig
+-from .modules import DiTBlock, FinalLayer, RMSNorm
+-from .rotary import build_rotary_embedding, get_rotary_inputs, validate_rotary_config
++from sglang_omni.modules.ming_audio.flow.execution import TalkerExecutionConfig
++from sglang_omni.modules.ming_audio.flow.modules import DiTBlock, FinalLayer, RMSNorm
++from sglang_omni.modules.ming_audio.flow.rotary import (
++    RotaryInputs,
++    SharedRotaryInputs,
++    build_rotary_embedding,
++    get_rotary_inputs,
++    validate_rotary_config,
++)
++
++
++@dataclass(frozen=True)
++class PreparedConditioning:
++    latent_history: torch.Tensor
++    embedding: torch.Tensor
++    rotary: RotaryInputs | SharedRotaryInputs
++
+ 
+ #################################################################################
+ #               Embedding Layers for Timesteps and Class Labels                 #
+@@ -200,7 +215,32 @@ class DiT(nn.Module):
+         nn.init.constant_(self.final_layer.linear.weight, 0)
+         nn.init.constant_(self.final_layer.linear.bias, 0)
+ 
+-    def forward(self, x, t, c, latent_history, spk_emb=None):
++    def prepare_conditioning(
++        self, c: torch.Tensor, latent_history: torch.Tensor, patch_size: int
++    ) -> PreparedConditioning:
++        conditioning = torch.cat([c, torch.zeros_like(c)], dim=0)
++        history = torch.cat([latent_history, latent_history], dim=0)
++        return PreparedConditioning(
++            latent_history=history,
++            embedding=self.c_embedder(conditioning, self.training),
++            rotary=get_rotary_inputs(
++                self.rotary_embed,
++                conditioning.shape[0],
++                conditioning.shape[1] + history.shape[1] + patch_size,
++            ),
++        )
++
++    def forward(
++        self,
++        x,
++        t,
++        c,
++        latent_history,
++        spk_emb=None,
++        *,
++        prepared: PreparedConditioning | None = None,
++        timestep_embedding: torch.Tensor | None = None,
++    ):
+         """
+         Forward pass of DiT.
+         x: (N, C, H, W) tensor of spatial inputs (images or latent representations of images)
+@@ -209,15 +249,24 @@ class DiT(nn.Module):
+         """
+         x = torch.cat([latent_history, x], dim=1)
+         x = self.x_embedder(x)
+-        t = self.t_embedder(t).unsqueeze(1)  # (N, D)
+-        c = self.c_embedder(c, self.training)  # (N, 1, 896) -> (N, 1, D)
++        if timestep_embedding is None:
++            t = self.t_embedder(t).unsqueeze(1)  # (N, D)
++        else:
++            t = timestep_embedding
++        if prepared is None:
++            c = self.c_embedder(c, self.training)  # (N, 1, 896) -> (N, 1, D)
++        else:
++            c = prepared.embedding
+         y = t + c
+         if spk_emb is None:
+             assert self.spk_embedder is None
+             x = torch.cat([y, x], dim=1)  # # (N, 1 + patch_size *2, D)
+         else:
+             x = torch.cat([self.spk_embedder(spk_emb), y, x], dim=1)
+-        rope = get_rotary_inputs(self.rotary_embed, x.shape[0], x.shape[1])
++        if prepared is None:
++            rope = get_rotary_inputs(self.rotary_embed, x.shape[0], x.shape[1])
++        else:
++            rope = prepared.rotary
+ 
+         if self.grad_checkpointing:
+             for block in self.blocks:
+@@ -230,15 +279,28 @@ class DiT(nn.Module):
+         # x = self.unpatchify(x)                   # (N, out_channels, H, W)
+         return x
+ 
+-    def forward_with_cfg(self, x, t, c, latent_history, spk_emb=None):
++    def forward_with_cfg(
++        self,
++        x,
++        t,
++        c,
++        latent_history,
++        spk_emb=None,
++        *,
++        prepared: PreparedConditioning | None = None,
++        timestep_embedding: torch.Tensor | None = None,
++    ):
+         """
+         Forward pass of DiT, but also batches the unconditional forward pass for classifier-free guidance.
+         """
+         x = torch.cat([x, x], dim=0)
+-        latent_history = torch.cat([latent_history, latent_history], dim=0)
+-        fake_latent = torch.zeros_like(c)
+-        c = torch.cat([c, fake_latent], dim=0)
+-        if t.ndim == 0:
++        if prepared is None:
++            latent_history = torch.cat([latent_history, latent_history], dim=0)
++            fake_latent = torch.zeros_like(c)
++            c = torch.cat([c, fake_latent], dim=0)
++        else:
++            latent_history = prepared.latent_history
++        if t.ndim == 0 and timestep_embedding is None:
+             t = t.repeat(x.shape[0])
+         else:
+             pass
+@@ -246,5 +308,16 @@ class DiT(nn.Module):
+             spk_emb = torch.cat([spk_emb, spk_emb], dim=0)
+         else:
+             pass
+-        model_out = self.forward(x, t, c, latent_history, spk_emb)
++        if prepared is None and timestep_embedding is None:
++            model_out = self.forward(x, t, c, latent_history, spk_emb)
++        else:
++            model_out = self.forward(
++                x,
++                t,
++                c,
++                latent_history,
++                spk_emb,
++                prepared=prepared,
++                timestep_embedding=timestep_embedding,
++            )
+         return model_out[:, -x.shape[1] :, :]
+diff --git a/sglang_omni/modules/ming_audio/flow/flow_loss.py b/sglang_omni/modules/ming_audio/flow/flow_loss.py
+index 8ffaa87..97af6a6 100644
+--- a/sglang_omni/modules/ming_audio/flow/flow_loss.py
++++ b/sglang_omni/modules/ming_audio/flow/flow_loss.py
+@@ -11,6 +11,19 @@ from torch import nn
+ from sglang_omni.modules.ming_audio.flow.cfm import get_epss_timesteps
+ from sglang_omni.modules.ming_audio.flow.dit import DiT
+ 
++SWAY_SAMPLING_COEFFICIENT = -1.0
++
++
++def transform_sampling_timesteps(
++    timesteps: torch.Tensor, coefficient: float | None
++) -> torch.Tensor:
++    if coefficient is not None:
++        return timesteps + coefficient * (
++            torch.cos(torch.pi / 2 * timesteps) - 1 + timesteps
++        )
++    else:
++        return timesteps
++
+ 
+ def build_cfm_timesteps(
+     *,
+@@ -68,11 +81,13 @@ class Solver:
+         y0: torch.Tensor,
+         sigma: float | torch.Tensor = 0.25,
+         temperature: float | torch.Tensor = 1.5,
++        timestep_embeddings: tuple[torch.Tensor, ...] | None = None,
+     ) -> None:
+         self.func = func
+         self.y0 = y0
+         self.sigma = sigma
+         self.temperature = temperature
++        self.timestep_embeddings = timestep_embeddings
+ 
+     def integrate(
+         self,
+@@ -86,7 +101,12 @@ class Solver:
+         sampled = y0
+         for step, (t0, t1) in enumerate(zip(t[:-1], t[1:])):
+             dt = t1 - t0
+-            f0 = self.func(t0, y0)
++            if self.timestep_embeddings is None:
++                f0 = self.func(t0, y0)
++            else:
++                f0 = self.func(
++                    t0, y0, timestep_embedding=self.timestep_embeddings[step]
++                )
+             y1 = y0 + dt * f0
+             sampled = y1
+ 
+@@ -104,6 +124,20 @@ class CFM(nn.Module):
+     def __init__(self, model: nn.Module) -> None:
+         super().__init__()
+         self.model = model
++        self.timestep_embeddings: tuple[torch.Tensor, ...] | None = None
++
++    def build_timestep_embeddings(
++        self,
++        timesteps: torch.Tensor,
++        batch_size: int,
++        sway_sampling_coef: float | None = SWAY_SAMPLING_COEFFICIENT,
++    ) -> tuple[torch.Tensor, ...]:
++        assert isinstance(self.model, DiT)
++        transformed = transform_sampling_timesteps(timesteps, sway_sampling_coef)
++        return tuple(
++            self.model.t_embedder(timestep.repeat(batch_size * 2)).unsqueeze(1)
++            for timestep in transformed[:-1]
++        )
+ 
+     @property
+     def device(self):
+@@ -146,7 +180,7 @@ class CFM(nn.Module):
+         timesteps: torch.Tensor,
+         sde_random: torch.Tensor,
+         cfg_scale: float = 1.0,
+-        sway_sampling_coef: float | None = -1.0,
++        sway_sampling_coef: float | None = SWAY_SAMPLING_COEFFICIENT,
+         sigma: float | torch.Tensor = 0.25,
+         temperature: float | torch.Tensor = 1.5,
+     ) -> torch.Tensor:
+@@ -160,7 +194,13 @@ class CFM(nn.Module):
+             sigma=sigma,
+             temperature=temperature,
+         )
+-        solver = Solver(fn, y0, sigma=sigma_tensor, temperature=temperature_tensor)
++        solver = Solver(
++            fn,
++            y0,
++            sigma=sigma_tensor,
++            temperature=temperature_tensor,
++            timestep_embeddings=self.timestep_embeddings,
++        )
+         return solver.integrate(t, sde_random=sde_random)
+ 
+     def prepare_sampling(
+@@ -194,23 +234,44 @@ class CFM(nn.Module):
+             device=noise.device,
+             dtype=noise.dtype,
+         )
+-
+-        def fn(t, x):
+-            pred_cfg = self.model.forward_with_cfg(
+-                x=x,
+-                t=t,
+-                c=c,
+-                latent_history=latent_history,
++        if (
++            isinstance(self.model, DiT)
++            and not self.model.training
++            and not torch.is_grad_enabled()
++        ):
++            prepared = self.model.prepare_conditioning(
++                c, latent_history, noise.shape[-1]
+             )
++        else:
++            prepared = None
++
++        def fn(
++            t: torch.Tensor,
++            x: torch.Tensor,
++            *,
++            timestep_embedding: torch.Tensor | None = None,
++        ) -> torch.Tensor:
++            if prepared is None and timestep_embedding is None:
++                pred_cfg = self.model.forward_with_cfg(
++                    x=x,
++                    t=t,
++                    c=c,
++                    latent_history=latent_history,
++                )
++            else:
++                pred_cfg = self.model.forward_with_cfg(
++                    x=x,
++                    t=t,
++                    c=c,
++                    latent_history=latent_history,
++                    prepared=prepared,
++                    timestep_embedding=timestep_embedding,
++                )
+             pred, null_pred = torch.chunk(pred_cfg, 2, dim=0)
+             return pred + (pred - null_pred) * cfg_tensor
+ 
+         y0 = noise.transpose(1, 2)
+-        t = timesteps
+-        if sway_sampling_coef is not None:
+-            t = t + sway_sampling_coef * (torch.cos(torch.pi / 2 * t) - 1 + t)
+-        else:
+-            pass
++        t = transform_sampling_timesteps(timesteps, sway_sampling_coef)
+ 
+         return fn, y0, t, sigma_tensor, temperature_tensor
+ 
+diff --git a/sglang_omni/modules/ming_audio/flow/modules.py b/sglang_omni/modules/ming_audio/flow/modules.py
+index 6c6c7da..754149b 100644
+--- a/sglang_omni/modules/ming_audio/flow/modules.py
++++ b/sglang_omni/modules/ming_audio/flow/modules.py
+@@ -2,8 +2,21 @@ import torch
+ import torch.nn.functional as F
+ from torch import nn
+ 
+-from .execution import NormLayerFactory, QKVProjectionConstructor
+-from .rotary import RotaryInputs, apply_rotary_embedding
++from sglang_omni.modules.ming_audio.flow.execution import (
++    NormLayerFactory,
++    QKVProjectionConstructor,
++)
++from sglang_omni.modules.ming_audio.flow.normalization import (
++    NATIVE_RMS_CHANNEL_COUNT,
++    NormalizationDispatch,
++)
++from sglang_omni.modules.ming_audio.flow.rotary import (
++    RotaryInputs,
++    SharedRotaryInputs,
++    SharedRotaryTransform,
++    apply_rotary_embedding,
++    apply_shared_rotary,
++)
+ 
+ _FLASH_ATTN_IMPORT_ERROR: Exception | None = None
+ flash_attn_func = None
+@@ -43,6 +56,7 @@ class RMSNorm(nn.Module):
+         self.eps = eps
+         self.weight = nn.Parameter(torch.ones(dim))
+         self.native_rms_norm = float(torch.__version__[:3]) >= 2.4
++        self.normalization_dispatch: NormalizationDispatch | None = None
+ 
+     def forward(self, x):
+         if self.native_rms_norm:
+@@ -53,13 +67,53 @@ class RMSNorm(nn.Module):
+             x = F.rms_norm(
+                 x, normalized_shape=(x.shape[-1],), weight=self.weight, eps=self.eps
+             )
++        elif (
++            self.normalization_dispatch is not None
++            and not torch.is_grad_enabled()
++            and x.dtype in [torch.float16, torch.bfloat16]
++            and self.weight.dtype in [torch.float16, torch.bfloat16]
++        ):
++            if (
++                self.normalization_dispatch.normalize_contiguous is not None
++                and x.is_cuda
++                and x.numel() > 0
++                and x.shape[-1] == NATIVE_RMS_CHANNEL_COUNT
++                and x.dtype == self.weight.dtype
++                and x.is_contiguous()
++                and self.weight.is_contiguous()
++            ):
++                x = self.normalization_dispatch.normalize_contiguous(
++                    x, self.weight, self.eps
++                )
++            else:
++                variance = self.normalization_dispatch.square_float32(x).mean(
++                    -1, keepdim=True
++                )
++                x = self.normalization_dispatch.affine(
++                    x, variance, self.weight, self.eps
++                )
+         else:
+             variance = x.to(torch.float32).pow(2).mean(-1, keepdim=True)
+-            x = x * torch.rsqrt(variance + self.eps)
+-            if self.weight.dtype in [torch.float16, torch.bfloat16]:
+-                x = x.to(self.weight.dtype)
++            inverse_root_mean_square = torch.rsqrt(variance + self.eps)
++            if (
++                self.weight.dtype
++                in [
++                    torch.float16,
++                    torch.bfloat16,
++                ]
++                and not torch.is_grad_enabled()
++            ):
++                x = torch.mul(
++                    x,
++                    inverse_root_mean_square,
++                    out=torch.empty_like(x, dtype=self.weight.dtype),
++                )
+             else:
+-                pass
++                x = x * inverse_root_mean_square
++                if self.weight.dtype in [torch.float16, torch.bfloat16]:
++                    x = x.to(self.weight.dtype)
++                else:
++                    pass
+             x = x * self.weight
+ 
+         return x
+@@ -143,46 +197,120 @@ class Attention(nn.Module):
+         self.pe_attn_head = pe_attn_head
+         self.attn_backend = attn_backend
+         self.attn_mask_enabled = attn_mask_enabled
++        self.projection_stream: torch.cuda.Stream | None = None
++        self.packed_projection: tuple[torch.Tensor, torch.Tensor | None] | None = None
++        self.rotary_dispatch: SharedRotaryTransform | None = None
++
++    def normalize_rotary(
++        self,
++        projected: torch.Tensor,
++        normalization: nn.Module | None,
++        rope: SharedRotaryInputs,
++        scale: float | torch.Tensor,
++    ) -> torch.Tensor:
++        projected = projected.view(
++            projected.shape[0], -1, self.heads, self.inner_dim // self.heads
++        ).transpose(1, 2)
++        if normalization is not None:
++            projected = normalization(projected)
++        else:
++            pass
++        return apply_shared_rotary(
++            projected, rope.cosine, rope.sine, scale, materialize_output=False
++        )
+ 
+     def forward(
+         self,
+         x: torch.Tensor,  # noised input x
+         mask: torch.Tensor | None = None,
+         rope: (
+-            RotaryInputs | tuple[torch.Tensor, float | torch.Tensor | None] | None
++            RotaryInputs
++            | SharedRotaryInputs
++            | tuple[torch.Tensor, float | torch.Tensor | None]
++            | None
+         ) = None,  # rotary position embedding for x
+     ) -> torch.Tensor:
+ 
+         batch_size = x.shape[0]
+ 
+-        # `sample` projections
+-        if self.to_qkv is None:
+-            query = self.to_q(x)
+-            key = self.to_k(x)
+-            value = self.to_v(x)
+-        else:
+-            query, key, value = self.to_qkv(x).chunk(3, dim=-1)
+-
+-        # attention
+-        inner_dim = key.shape[-1]
+-        head_dim = inner_dim // self.heads
+-        query = query.view(batch_size, -1, self.heads, head_dim).transpose(1, 2)
+-        key = key.view(batch_size, -1, self.heads, head_dim).transpose(1, 2)
+-        value = value.view(batch_size, -1, self.heads, head_dim).transpose(1, 2)
+-
+-        # qk norm
+-        if self.q_norm is not None:
+-            query = self.q_norm(query)
+-        else:
+-            pass
+-        if self.k_norm is not None:
+-            key = self.k_norm(key)
++        if (
++            self.projection_stream is not None
++            and self.to_qkv is None
++            and isinstance(rope, SharedRotaryInputs)
++            and self.pe_attn_head is None
++        ):
++            head_dim = self.inner_dim // self.heads
++            if self.packed_projection is None:
++                projections = None
++            else:
++                projection_values = F.linear(x, *self.packed_projection)
++                projections = projection_values.chunk(3, dim=-1)
++            if (
++                projections is not None
++                and self.q_norm is None
++                and self.k_norm is None
++                and isinstance(rope.query_scale, float)
++                and isinstance(rope.key_scale, float)
++                and rope.query_scale == rope.key_scale
++            ):
++                query_key = projection_values[..., : self.inner_dim * 2]
++                query_key = query_key.view(
++                    batch_size, -1, self.heads * 2, head_dim
++                ).transpose(1, 2)
++                if self.rotary_dispatch is None:
++                    rotary_transform = apply_shared_rotary
++                else:
++                    rotary_transform = self.rotary_dispatch
++                query_key = rotary_transform(
++                    query_key,
++                    rope.cosine,
++                    rope.sine,
++                    rope.query_scale,
++                    materialize_output=False,
++                )
++                query, key = query_key.chunk(2, dim=1)
++                value = projections[2].view(batch_size, -1, self.heads, head_dim)
++                value = value.transpose(1, 2)
++            else:
++                current_stream = torch.cuda.current_stream(x.device)
++                self.projection_stream.wait_stream(current_stream)
++                with torch.cuda.stream(self.projection_stream):
++                    key = self.to_k(x) if projections is None else projections[1]
++                    key = self.normalize_rotary(key, self.k_norm, rope, rope.key_scale)
++                value = self.to_v(x) if projections is None else projections[2]
++                value = value.view(batch_size, -1, self.heads, head_dim)
++                value = value.transpose(1, 2)
++                query = self.to_q(x) if projections is None else projections[0]
++                query = self.normalize_rotary(
++                    query, self.q_norm, rope, rope.query_scale
++                )
++                current_stream.wait_stream(self.projection_stream)
+         else:
+-            pass
++            if self.to_qkv is None:
++                query = self.to_q(x)
++                key = self.to_k(x)
++                value = self.to_v(x)
++            else:
++                query, key, value = self.to_qkv(x).chunk(3, dim=-1)
+ 
+-        query, key = apply_rotary_embedding(
+-            query, key, rope, pe_attn_head=self.pe_attn_head
+-        )
++            inner_dim = key.shape[-1]
++            head_dim = inner_dim // self.heads
++            query = query.view(batch_size, -1, self.heads, head_dim).transpose(1, 2)
++            key = key.view(batch_size, -1, self.heads, head_dim).transpose(1, 2)
++            value = value.view(batch_size, -1, self.heads, head_dim).transpose(1, 2)
++
++            if self.q_norm is not None:
++                query = self.q_norm(query)
++            else:
++                pass
++            if self.k_norm is not None:
++                key = self.k_norm(key)
++            else:
++                pass
++
++            query, key = apply_rotary_embedding(
++                query, key, rope, pe_attn_head=self.pe_attn_head
++            )
+ 
+         if self.attn_backend == "torch":
+             # mask. e.g. inference got a batch with different target durations, mask out the padding
+diff --git a/sglang_omni/modules/ming_audio/flow/normalization.py b/sglang_omni/modules/ming_audio/flow/normalization.py
+new file mode 100644
+index 0000000..22292fe
+--- /dev/null
++++ b/sglang_omni/modules/ming_audio/flow/normalization.py
+@@ -0,0 +1,288 @@
++"""Pointwise normalization dispatch with native intermediate rounding."""
++
++from __future__ import annotations
++
++from dataclasses import dataclass
++from typing import Protocol
++
++import torch
++
++try:
++    import triton
++    import triton.language as tl
++except ImportError:
++    triton = None
++    tl = None
++    HAS_TRITON = False
++else:
++    HAS_TRITON = True
++
++NATIVE_RMS_CHANNEL_COUNT = 1024
++NATIVE_REDUCTION_MAX_THREADS = 512
++NATIVE_REDUCTION_WARP_WIDTH = 32
++NATIVE_REDUCTION_VECTOR_WIDTH = 4
++RMS_KERNEL_WARP_COUNT = 4
++VOCODER_RMS_CHANNEL_COUNT = 896
++VOCODER_RMS_ROW_TILE = 4
++
++
++class TensorSquare(Protocol):
++    def __call__(self, hidden_states: torch.Tensor, /) -> torch.Tensor: ...
++
++
++class NormalizationAffine(Protocol):
++    def __call__(
++        self,
++        hidden_states: torch.Tensor,
++        variance: torch.Tensor,
++        weight: torch.Tensor,
++        epsilon: float,
++        /,
++    ) -> torch.Tensor: ...
++
++
++class RowNormalization(Protocol):
++    def __call__(
++        self,
++        hidden_states: torch.Tensor,
++        weight: torch.Tensor,
++        epsilon: float,
++        /,
++    ) -> torch.Tensor: ...
++
++
++@dataclass(frozen=True, kw_only=True)
++class NormalizationDispatch:
++    square_float32: TensorSquare
++    affine: NormalizationAffine
++    normalize_contiguous: RowNormalization | None = None
++
++
++def square_float32(hidden_states: torch.Tensor) -> torch.Tensor:
++    return hidden_states.to(torch.float32).pow(2)
++
++
++def normalization_affine(
++    hidden_states: torch.Tensor,
++    variance: torch.Tensor,
++    weight: torch.Tensor,
++    epsilon: float,
++) -> torch.Tensor:
++    return (hidden_states * torch.rsqrt(variance + epsilon)).to(weight.dtype) * weight
++
++
++if HAS_TRITON:
++
++    @triton.jit
++    def native_order_rms_kernel(
++        hidden_states: tl.tensor,
++        weight: tl.tensor,
++        output: tl.tensor,
++        epsilon: tl.constexpr,
++        channel_count: tl.constexpr,
++        reduction_lane_count: tl.constexpr,
++        warp_width: tl.constexpr,
++        vector_width: tl.constexpr,
++    ) -> None:
++        row_index = tl.program_id(0)
++        lane_indexes = tl.arange(0, reduction_lane_count)
++        first_sum = tl.full((reduction_lane_count,), 0, tl.float32)
++        second_sum = tl.full((reduction_lane_count,), 0, tl.float32)
++        third_sum = tl.full((reduction_lane_count,), 0, tl.float32)
++        fourth_sum = tl.full((reduction_lane_count,), 0, tl.float32)
++        # note (Codex): Preserve the native four-accumulator FP32 mean and descending warp tree.
++        for group_index in tl.static_range(
++            channel_count // (vector_width * reduction_lane_count)
++        ):
++            offsets = (
++                row_index * channel_count
++                + lane_indexes * vector_width
++                + group_index * vector_width * reduction_lane_count
++            )
++            first_value = tl.load(hidden_states + offsets).to(tl.float32)
++            second_value = tl.load(hidden_states + offsets + 1).to(tl.float32)
++            third_value = tl.load(hidden_states + offsets + 2).to(tl.float32)
++            fourth_value = tl.load(hidden_states + offsets + 3).to(tl.float32)
++            first_sum = first_sum + first_value * first_value
++            second_sum = second_sum + second_value * second_value
++            third_sum = third_sum + third_value * third_value
++            fourth_sum = fourth_sum + fourth_value * fourth_value
++        partial_sums = ((first_sum + second_sum) + third_sum) + fourth_sum
++        for shift in tl.static_range(
++            0, tl.constexpr((reduction_lane_count // warp_width).bit_length() - 1)
++        ):
++            offset = reduction_lane_count // (2 << shift)
++            other_sums = tl.gather(partial_sums, lane_indexes ^ offset, axis=0)
++            partial_sums = partial_sums + other_sums
++        squared_sum = tl.sum(
++            tl.where(lane_indexes < warp_width, partial_sums, 0.0), axis=0
++        )
++        variance = squared_sum * (1.0 / channel_count)
++        inverse_root_mean_square = tl.rsqrt(variance + epsilon)
++        channel_indexes = tl.arange(0, channel_count)
++        values = tl.load(
++            hidden_states + row_index * channel_count + channel_indexes
++        ).to(tl.float32)
++        weights = tl.load(weight + channel_indexes)
++        normalized = (
++            (values * inverse_root_mean_square).to(weights.dtype).to(tl.float32)
++        )
++        result = normalized * weights.to(tl.float32)
++        tl.store(output + row_index * channel_count + channel_indexes, result)
++
++else:
++    pass
++
++
++def normalize_native_rms(
++    hidden_states: torch.Tensor, weight: torch.Tensor, epsilon: float
++) -> torch.Tensor:
++    row_count = hidden_states.numel() // NATIVE_RMS_CHANNEL_COUNT
++    block_row_count = min(
++        1 << (row_count.bit_length() - 1),
++        NATIVE_REDUCTION_MAX_THREADS // NATIVE_REDUCTION_WARP_WIDTH,
++    )
++    reduction_lane_count = min(
++        NATIVE_RMS_CHANNEL_COUNT // NATIVE_REDUCTION_VECTOR_WIDTH,
++        NATIVE_REDUCTION_MAX_THREADS // block_row_count,
++    )
++    output = torch.empty_like(hidden_states)
++    native_order_rms_kernel[(row_count,)](
++        hidden_states,
++        weight,
++        output,
++        epsilon,
++        NATIVE_RMS_CHANNEL_COUNT,
++        reduction_lane_count,
++        NATIVE_REDUCTION_WARP_WIDTH,
++        NATIVE_REDUCTION_VECTOR_WIDTH,
++        num_warps=RMS_KERNEL_WARP_COUNT,
++        enable_fp_fusion=False,
++    )
++    return output
++
++
++if HAS_TRITON:
++
++    @triton.jit
++    def native_strided_rms_kernel(
++        hidden_states: tl.tensor,
++        weight: tl.tensor,
++        output: tl.tensor,
++        row_count: tl.tensor,
++        epsilon: tl.constexpr,
++        channel_count: tl.constexpr,
++        reduction_lane_count: tl.constexpr,
++        channel_block_size: tl.constexpr,
++        row_tile_size: tl.constexpr,
++        vector_width: tl.constexpr,
++    ) -> None:
++        row_indexes = (
++            tl.program_id(0) * row_tile_size + tl.arange(0, row_tile_size)[None, :]
++        )
++        lane_indexes = tl.arange(0, reduction_lane_count)[:, None]
++        first_sum = tl.full((reduction_lane_count, row_tile_size), 0, tl.float32)
++        second_sum = tl.full((reduction_lane_count, row_tile_size), 0, tl.float32)
++        third_sum = tl.full((reduction_lane_count, row_tile_size), 0, tl.float32)
++        fourth_sum = tl.full((reduction_lane_count, row_tile_size), 0, tl.float32)
++        # note (Codex): Native strided means vectorize rows and reduce channels in four sequential accumulators.
++        for group_index in tl.static_range(
++            tl.cdiv(channel_count, vector_width * reduction_lane_count)
++        ):
++            first_channels = (
++                lane_indexes + group_index * vector_width * reduction_lane_count
++            )
++            second_channels = first_channels + reduction_lane_count
++            third_channels = second_channels + reduction_lane_count
++            fourth_channels = third_channels + reduction_lane_count
++            first_value = tl.load(
++                hidden_states + row_indexes + first_channels * row_count,
++                mask=(first_channels < channel_count) & (row_indexes < row_count),
++                other=0,
++            ).to(tl.float32)
++            second_value = tl.load(
++                hidden_states + row_indexes + second_channels * row_count,
++                mask=(second_channels < channel_count) & (row_indexes < row_count),
++                other=0,
++            ).to(tl.float32)
++            third_value = tl.load(
++                hidden_states + row_indexes + third_channels * row_count,
++                mask=(third_channels < channel_count) & (row_indexes < row_count),
++                other=0,
++            ).to(tl.float32)
++            fourth_value = tl.load(
++                hidden_states + row_indexes + fourth_channels * row_count,
++                mask=(fourth_channels < channel_count) & (row_indexes < row_count),
++                other=0,
++            ).to(tl.float32)
++            first_sum = first_sum + first_value * first_value
++            second_sum = second_sum + second_value * second_value
++            third_sum = third_sum + third_value * third_value
++            fourth_sum = fourth_sum + fourth_value * fourth_value
++        partial_sums = ((first_sum + second_sum) + third_sum) + fourth_sum
++        # note (Codex): Spell out every descending level because a tiled tl.sum can choose a different FP32 tree.
++        for shift in tl.static_range(
++            0, tl.constexpr(reduction_lane_count.bit_length() - 1)
++        ):
++            offset = reduction_lane_count // (2 << shift)
++            other_sums = tl.gather(
++                partial_sums,
++                tl.broadcast_to(
++                    lane_indexes ^ offset, (reduction_lane_count, row_tile_size)
++                ),
++                axis=0,
++            )
++            partial_sums = partial_sums + other_sums
++        squared_sum = tl.sum(tl.where(lane_indexes == 0, partial_sums, 0.0), axis=0)
++        variance = squared_sum * (1.0 / channel_count)
++        inverse_root_mean_square = tl.rsqrt(variance + epsilon)
++        channel_indexes = tl.arange(0, channel_block_size)[:, None]
++        offsets = row_indexes + channel_indexes * row_count
++        valid_values = (channel_indexes < channel_count) & (row_indexes < row_count)
++        values = tl.load(hidden_states + offsets, mask=valid_values, other=0).to(
++            tl.float32
++        )
++        weights = tl.load(
++            weight + channel_indexes, mask=channel_indexes < channel_count, other=0
++        )
++        normalized = (
++            (values * inverse_root_mean_square[None, :])
++            .to(weights.dtype)
++            .to(tl.float32)
++        )
++        result = weights.to(tl.float32) * normalized
++        tl.store(output + offsets, result, mask=valid_values)
++
++else:
++    pass
++
++
++def normalize_native_strided_rms(
++    hidden_states: torch.Tensor, weight: torch.Tensor, epsilon: float
++) -> torch.Tensor:
++    row_count = hidden_states.shape[1]
++    block_column_count = min(
++        1 << ((row_count // NATIVE_REDUCTION_VECTOR_WIDTH).bit_length() - 1),
++        NATIVE_REDUCTION_WARP_WIDTH,
++    )
++    reduction_lane_count = (
++        NATIVE_REDUCTION_MAX_THREADS
++        // NATIVE_REDUCTION_VECTOR_WIDTH
++        // block_column_count
++    )
++    output = torch.empty_like(hidden_states)
++    native_strided_rms_kernel[(triton.cdiv(row_count, VOCODER_RMS_ROW_TILE),)](
++        hidden_states,
++        weight,
++        output,
++        row_count,
++        epsilon,
++        VOCODER_RMS_CHANNEL_COUNT,
++        reduction_lane_count,
++        triton.next_power_of_2(VOCODER_RMS_CHANNEL_COUNT),
++        VOCODER_RMS_ROW_TILE,
++        NATIVE_REDUCTION_VECTOR_WIDTH,
++        num_warps=RMS_KERNEL_WARP_COUNT,
++        enable_fp_fusion=False,
++    )
++    return output
+diff --git a/sglang_omni/modules/ming_audio/flow/rotary.py b/sglang_omni/modules/ming_audio/flow/rotary.py
+index 0c70769..fb46ef4 100644
+--- a/sglang_omni/modules/ming_audio/flow/rotary.py
++++ b/sglang_omni/modules/ming_audio/flow/rotary.py
+@@ -7,7 +7,11 @@ from typing import Protocol
+ 
+ import torch
+ from typing_extensions import Self
+-from x_transformers.x_transformers import RotaryEmbedding, apply_rotary_pos_emb
++from x_transformers.x_transformers import (
++    RotaryEmbedding,
++    apply_rotary_pos_emb,
++    rotate_half,
++)
+ 
+ from sglang_omni.platforms.interface import JointRopeInplaceKernel
+ 
+@@ -16,6 +20,18 @@ class TensorTransform(Protocol):
+     def __call__(self, tensor: torch.Tensor, /) -> torch.Tensor: ...
+ 
+ 
++class SharedRotaryTransform(Protocol):
++    def __call__(
++        self,
++        tensor: torch.Tensor,
++        cosine: torch.Tensor,
++        sine: torch.Tensor,
++        scale: float | torch.Tensor,
++        *,
++        materialize_output: bool = True,
++    ) -> torch.Tensor: ...
++
++
+ @dataclass(frozen=True)
+ class RotaryInputs:
+     cos_sin_cache: torch.Tensor
+@@ -23,6 +39,14 @@ class RotaryInputs:
+     kernel: JointRopeInplaceKernel
+ 
+ 
++@dataclass(frozen=True)
++class SharedRotaryInputs:
++    cosine: torch.Tensor
++    sine: torch.Tensor
++    query_scale: float | torch.Tensor
++    key_scale: float | torch.Tensor
++
++
+ def validate_rotary_config(
+     kernel: JointRopeInplaceKernel | None,
+     *,
+@@ -113,23 +137,87 @@ def build_rotary_embedding(
+ 
+ def get_rotary_inputs(
+     rotary: RotaryEmbedding, batch_size: int, seq_len: int
+-) -> RotaryInputs | tuple[torch.Tensor, float | torch.Tensor]:
++) -> RotaryInputs | SharedRotaryInputs:
+     if isinstance(rotary, CachedRotaryEmbedding):
+         return rotary.for_batch(batch_size)
+     else:
+         pass
+-    return rotary.forward_from_seq_len(seq_len)
++    frequencies, scale = rotary.forward_from_seq_len(seq_len)
++    key_scale = scale**-1.0
++    with torch.autocast(device_type=frequencies.device.type, enabled=False):
++        return SharedRotaryInputs(
++            cosine=frequencies.cos(),
++            sine=frequencies.sin(),
++            query_scale=scale,
++            key_scale=key_scale,
++        )
++
++
++def apply_shared_rotary(
++    tensor: torch.Tensor,
++    cosine: torch.Tensor,
++    sine: torch.Tensor,
++    scale: float | torch.Tensor,
++    *,
++    materialize_output: bool = True,
++) -> torch.Tensor:
++    """Reuse trigonometry while preserving native operation order and dtype."""
++    with torch.autocast(device_type=tensor.device.type, enabled=False):
++        rotation_dimensions = cosine.shape[-1]
++        sequence_length = tensor.shape[-2]
++        cosine = cosine[:, -sequence_length:, :]
++        sine = sine[:, -sequence_length:, :]
++        if isinstance(scale, torch.Tensor):
++            scale = scale[:, -sequence_length:, :]
++        else:
++            pass
++        if tensor.ndim == 4 and cosine.ndim == 3:
++            cosine = cosine.unsqueeze(1)
++            sine = sine.unsqueeze(1)
++            if isinstance(scale, torch.Tensor):
++                scale = scale.unsqueeze(1)
++            else:
++                pass
++        else:
++            pass
++        rotated = tensor[..., :rotation_dimensions]
++        unchanged = tensor[..., rotation_dimensions:]
++        if isinstance(scale, float) and scale == 1.0:
++            rotated = (rotated * cosine) + (rotate_half(rotated) * sine)
++        else:
++            rotated = (rotated * cosine * scale) + (rotate_half(rotated) * sine * scale)
++        if materialize_output or rotation_dimensions != tensor.shape[-1]:
++            rotated = torch.cat((rotated, unchanged), dim=-1)
++        else:
++            pass
++        return rotated.to(tensor.dtype)
+ 
+ 
+ def apply_rotary_embedding(
+     query: torch.Tensor,
+     key: torch.Tensor,
+-    rope: RotaryInputs | tuple[torch.Tensor, float | torch.Tensor | None] | None,
++    rope: (
++        RotaryInputs
++        | SharedRotaryInputs
++        | tuple[torch.Tensor, float | torch.Tensor | None]
++        | None
++    ),
+     *,
+     pe_attn_head: int | None = None,
+ ) -> tuple[torch.Tensor, torch.Tensor]:
+     if isinstance(rope, RotaryInputs):
+         apply_rotary_inplace(query, key, rope)
++    elif isinstance(rope, SharedRotaryInputs):
++        if pe_attn_head is None:
++            query = apply_shared_rotary(query, rope.cosine, rope.sine, rope.query_scale)
++            key = apply_shared_rotary(key, rope.cosine, rope.sine, rope.key_scale)
++        else:
++            query[:, :pe_attn_head, :, :] = apply_shared_rotary(
++                query[:, :pe_attn_head, :, :], rope.cosine, rope.sine, rope.query_scale
++            )
++            key[:, :pe_attn_head, :, :] = apply_shared_rotary(
++                key[:, :pe_attn_head, :, :], rope.cosine, rope.sine, rope.key_scale
++            )
+     elif rope is not None:
+         freqs, xpos_scale = rope
+         q_xpos_scale, k_xpos_scale = (
+diff --git a/sglang_omni/modules/ming_audio/vae/istft.py b/sglang_omni/modules/ming_audio/vae/istft.py
+index 3ac1f9e..2880564 100644
+--- a/sglang_omni/modules/ming_audio/vae/istft.py
++++ b/sglang_omni/modules/ming_audio/vae/istft.py
+@@ -164,7 +164,12 @@ class ISTFT(nn.Module):
+         window_envelope = window_envelope.squeeze()
+ 
+         # Normalize
+-        assert (window_envelope > 1e-11).all()
++        if not streaming and window_envelope.device.type == "cuda":
++            torch._assert_async(  # noqa: leading-underscore - PyTorch CUDA assertion API.
++                (window_envelope > 1e-11).all()
++            )
++        else:
++            assert (window_envelope > 1e-11).all()
+         y = y / window_envelope
+ 
+         return y, audio_buffer, window_buffer
+diff --git a/tests/unit_test/ming3_tts/test_acoustic_normalization.py b/tests/unit_test/ming3_tts/test_acoustic_normalization.py
+new file mode 100644
+index 0000000..5bb0e54
+--- /dev/null
++++ b/tests/unit_test/ming3_tts/test_acoustic_normalization.py
+@@ -0,0 +1,114 @@
++"""Graph normalization preserves native rounding and eager gradients."""
++
++import importlib.util
++import sys
++from pathlib import Path
++
++import pytest
++import torch
++
++from sglang_omni.modules.ming_audio.flow.modules import RMSNorm
++from sglang_omni.modules.ming_audio.flow.normalization import (
++    NormalizationDispatch,
++    normalization_affine,
++    normalize_native_rms,
++    normalize_native_strided_rms,
++    square_float32,
++)
++
++
++def test_normalization_import_without_triton_keeps_eager_path(
++    monkeypatch: pytest.MonkeyPatch,
++) -> None:
++    """CPU-only installations must not need Triton to import shared acoustic code."""
++    module_path = (
++        Path(__file__).resolve().parents[3]
++        / "sglang_omni/modules/ming_audio/flow/normalization.py"
++    )
++    spec = importlib.util.spec_from_file_location(
++        "ming_normalization_without_triton", module_path
++    )
++    module = importlib.util.module_from_spec(spec)
++    monkeypatch.setitem(sys.modules, spec.name, module)
++    monkeypatch.setitem(sys.modules, "triton", None)
++    spec.loader.exec_module(module)
++    assert module.HAS_TRITON is False
++    hidden_states = torch.tensor([[1.0, 2.0]])
++    torch.testing.assert_close(
++        module.square_float32(hidden_states), hidden_states.square()
++    )
++
++
++@pytest.mark.parametrize("dtype", [torch.float16, torch.bfloat16, torch.float32])
++def test_eager_normalization_preserves_outputs_and_gradients(
++    dtype: torch.dtype,
++) -> None:
++    torch.manual_seed(42)
++    layer = RMSNorm(32, eps=1e-6).to(dtype=dtype)
++    layer.native_rms_norm = False
++    layer.normalization_dispatch = NormalizationDispatch(
++        square_float32=square_float32,
++        affine=normalization_affine,
++        normalize_contiguous=normalize_native_rms,
++    )
++    hidden_states = torch.randn(3, 32, dtype=dtype, requires_grad=True)
++    reference_input = hidden_states.detach().clone().requires_grad_()
++    reference_weight = layer.weight.detach().clone().requires_grad_()
++    variance = reference_input.float().pow(2).mean(-1, keepdim=True)
++    expected = (reference_input * torch.rsqrt(variance + layer.eps)).to(dtype)
++    expected = expected * reference_weight
++    actual = layer(hidden_states)
++    torch.testing.assert_close(actual, expected, rtol=0, atol=0)
++    actual.sum().backward()
++    expected.sum().backward()
++    torch.testing.assert_close(hidden_states.grad, reference_input.grad, rtol=0, atol=0)
++    torch.testing.assert_close(layer.weight.grad, reference_weight.grad, rtol=0, atol=0)
++
++
++@pytest.mark.accelerator
++@pytest.mark.parametrize("dtype", [torch.float16, torch.bfloat16])
++@pytest.mark.parametrize("rows", [1, 3, 16, 33, 64])
++@pytest.mark.parametrize("strided", [False, True])
++def test_graph_normalization_matches_native_reduction_and_owns_output(
++    dtype: torch.dtype, rows: int, strided: bool
++) -> None:
++    if not torch.cuda.is_available() or torch.__version__.split("+")[0] != "2.14.1":
++        pytest.skip("Native reduction kernels target CUDA PyTorch 2.14.1")
++    else:
++        pass
++    if strided and rows % 4:
++        pytest.skip("Vocoder graph dispatch requires complete four-row tiles")
++    else:
++        pass
++    torch.manual_seed(43)
++    if strided:
++        width = 896
++        hidden_states = torch.randn(1, width, rows, device="cuda", dtype=dtype)
++        hidden_states = hidden_states.transpose(1, 2)
++        normalize = normalize_native_strided_rms
++    else:
++        width = 1024
++        hidden_states = torch.randn(rows, width, device="cuda", dtype=dtype)
++        normalize = normalize_native_rms
++    weight = torch.randn(width, device="cuda", dtype=dtype)
++    expected = normalization_affine(
++        hidden_states,
++        hidden_states.float().pow(2).mean(-1, keepdim=True),
++        weight,
++        1e-6,
++    )
++    stream = torch.cuda.Stream()
++    stream.wait_stream(torch.cuda.current_stream())
++    with torch.inference_mode(), torch.cuda.stream(stream):
++        normalize(hidden_states, weight, 1e-6)
++        normalize(hidden_states, weight, 1e-6)
++    torch.cuda.current_stream().wait_stream(stream)
++    graph = torch.cuda.CUDAGraph()
++    with torch.inference_mode(), torch.cuda.graph(graph, stream=stream):
++        actual = normalize(hidden_states, weight, 1e-6)
++    graph.replay()
++    torch.testing.assert_close(actual, expected, rtol=0, atol=0)
++    retained = actual.clone()
++    hidden_states.mul_(2)
++    graph.replay()
++    torch.testing.assert_close(retained, expected, rtol=0, atol=0)
+diff --git a/tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py b/tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py
+index 5815926..f776978 100644
+--- a/tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py
++++ b/tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py
+@@ -1,10 +1,15 @@
+ # SPDX-License-Identifier: Apache-2.0
+ """Pipeline registration and backbone configuration contracts."""
+ 
++import pytest
++import torch
++
+ from sglang_omni.models.ming3_tts.config import Ming3TTSPipelineConfig
+ from sglang_omni.models.ming3_tts.sglang_model import Ming3TTSConfig
++from sglang_omni.models.ming3_tts.vocoder_graph import VocoderGraphRunner
+ from sglang_omni.models.model_capabilities import get_model_capabilities
+ from sglang_omni.models.registry import PIPELINE_CONFIG_REGISTRY
++from sglang_omni.modules.ming_audio.vae.modeling_audio_vae import AudioVAE
+ 
+ CHECKPOINT_ARCHITECTURE = "LingV3TTSForConditionalGeneration"
+ HIDDEN_SIZE = 64
+@@ -45,3 +50,38 @@ def test_backbone_config_flattens_llm_config_and_keeps_speech_sections() -> None
+     assert config.tts_config == {"latent_dim": 4}
+     assert config.flow_config == {"depth": 1}
+     assert config.aggregator_config == {"depth": 1}
++
++
++class LinearVocoderDecoder(torch.nn.Linear):
++    def __init__(self) -> None:
++        super().__init__(4, 1, bias=False, device="cuda")
++        self.latent_dim = 4
++        with torch.no_grad():
++            self.weight.fill_(1)
++
++
++class LinearAudioVAE(AudioVAE):
++    """Use a small decoder to exercise real graph storage without checkpoints."""
++
++    def __init__(self) -> None:
++        torch.nn.Module.__init__(self)
++        self.decoder = LinearVocoderDecoder()
++
++    def decode(self, latents: torch.Tensor) -> tuple[torch.Tensor, None, None]:
++        return self.decoder(latents).squeeze(-1), None, None
++
++
++@pytest.mark.accelerator
++def test_vocoder_replay_owns_results_and_falls_back_for_uncaptured_lengths() -> None:
++    if not torch.cuda.is_available():
++        pytest.skip("CUDA graphs require a CUDA device")
++    else:
++        pass
++    runner = VocoderGraphRunner(LinearAudioVAE(), maximum_decode_steps=2)
++    retained = runner.decode(torch.ones(1, 2, 4, device="cuda"))
++    subsequent = runner.decode(torch.zeros(1, 2, 4, device="cuda"))
++    torch.testing.assert_close(retained, torch.full((1, 2), 4.0, device="cuda"))
++    torch.testing.assert_close(subsequent, torch.zeros(1, 2, device="cuda"))
++    fallback = runner.decode(torch.ones(1, 3, 4, device="cuda"))
++    runner.decode(torch.zeros(1, 1, 4, device="cuda"))
++    torch.testing.assert_close(fallback, torch.full((1, 3), 4.0, device="cuda"))
+diff --git a/tests/unit_test/ming3_tts/test_shared_rotary.py b/tests/unit_test/ming3_tts/test_shared_rotary.py
+new file mode 100644
+index 0000000..45075a7
+--- /dev/null
++++ b/tests/unit_test/ming3_tts/test_shared_rotary.py
+@@ -0,0 +1,30 @@
++"""Packed rotation retains partial-head values and independent output storage."""
++
++import pytest
++import torch
++from x_transformers.x_transformers import apply_rotary_pos_emb
++
++from sglang_omni.modules.ming_audio.flow.rotary import apply_shared_rotary
++
++
++@pytest.mark.parametrize("rotation_width", [8, 16])
++@pytest.mark.parametrize("scale", [1.0, 0.5])
++def test_shared_rotary_matches_native_and_preserves_input(
++    rotation_width: int, scale: float
++) -> None:
++    torch.manual_seed(42)
++    hidden_states = torch.randn(2, 4, 3, 16)
++    before = hidden_states.clone()
++    frequencies = torch.randn(2, 3, rotation_width)
++    expected = apply_rotary_pos_emb(t=hidden_states, freqs=frequencies, scale=scale)
++    actual = apply_shared_rotary(
++        hidden_states,
++        frequencies.cos(),
++        frequencies.sin(),
++        scale,
++        materialize_output=False,
++    )
++    torch.testing.assert_close(actual, expected, rtol=0, atol=0)
++    torch.testing.assert_close(hidden_states, before, rtol=0, atol=0)
++    actual.zero_()
++    torch.testing.assert_close(hidden_states, before, rtol=0, atol=0)

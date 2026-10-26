@@ -1,0 +1,108 @@
+{
+  "status": "single_candidate_smoke_complete_not_paired_qualification",
+  "base": "58c4ebbd4a63f6bd1452346675b4d7e017b88c24",
+  "head": "faa6286e1e1551ab1a45200ff6bfa84da2c327a0",
+  "model": "inclusionAI/Ming-3.0-tts-tiny",
+  "model_revision": "7bd9446a8d47e462362261a0150258da6d458318",
+  "hardware": "One NVIDIA H200143771MiB",
+  "protocol": {
+    "language": "en",
+    "rows": 1088,
+    "client_concurrency": 64,
+    "seed": 42,
+    "client_warmup": 16,
+    "max_running_requests": 64,
+    "cuda_graph_max_bs": 64,
+    "cpu_quota": 16,
+    "memory_cap_gib": 128,
+    "dataset_revision": "27f4c1adee83b5b29b7c4b375f6b976324bda308"
+  },
+  "coverage": {
+    "tts": 1088,
+    "wav": 1088,
+    "asr": 1088,
+    "failed": 0,
+    "skipped": 0
+  },
+  "metrics": {
+    "total_requests": 1088,
+    "completed_requests": 1088,
+    "failed_requests": 0,
+    "max_token_hits": 0,
+    "finish_reason_observed": 0,
+    "client_slot_waits": 1024,
+    "latency_mean_s": 3.368,
+    "latency_median_s": 3.324,
+    "latency_p95_s": 5.07,
+    "latency_p99_s": 6.206,
+    "audio_duration_mean_s": 3.58,
+    "rtf_mean": 0.9494,
+    "rtf_median": 0.9241,
+    "rtf_p95": 1.2518,
+    "rtf_p99": 1.3492,
+    "throughput_qps": 18.687,
+    "output_throughput": 836.1,
+    "output_tokens_mean": 45.0,
+    "output_tokens_total": 48683,
+    "prompt_tokens_mean": 46.0,
+    "prompt_tokens_total": 50203,
+    "audio_throughput_s_per_s": 66.892
+  },
+  "word_wer": {
+    "wer_corpus": 0.012475927321443524,
+    "errors": 149,
+    "denominator": 11943,
+    "counts": {
+      "substitutions": 116,
+      "deletions": 18,
+      "insertions": 15,
+      "hits": 11809
+    }
+  },
+  "speaker_similarity": 0.8233985095832717,
+  "costs": {
+    "startup_seconds": 250.239000082016,
+    "client_warmup_seconds": 8.25,
+    "peak_tts_memory_mib": 113693.0,
+    "nvml_tts_samples": 291,
+    "tts_graph_captures": 280,
+    "kda_startup_warmup_seconds": 76.17
+  },
+  "cold_path": {
+    "formal_new_kernel_counts": {
+      "_causal_conv1d_fwd_kernel": 1,
+      "_small_copy_kernel": 10,
+      "fused_moe_kernel": 7,
+      "_fused_replay_state_indices_kernel": 3,
+      "write_req_to_token_pool_triton": 1
+    },
+    "formal_new_kda_kernel_count": 0,
+    "first64_latency_mean_seconds": 4.2749453125,
+    "remaining1024_latency_mean_seconds": 3.31123896484375
+  },
+  "long_output": {
+    "twenty_second_outputs": 0,
+    "max_audio_duration_seconds": 7.04,
+    "client_max_token_hits": 0,
+    "policy": "No request dropped or replaced; client token cap is not the native generation limit."
+  },
+  "contention": {
+    "windows": 23,
+    "errors": 0,
+    "peak_foreign_cores": 0.7659305860327595,
+    "mean_foreign_cores": 0.27076548272343937
+  },
+  "validation": {
+    "gpu_suite_passed": 215,
+    "unsupported_shape_skips": 6,
+    "full_pre_commit": "passed",
+    "cpu_only_import_main": "passed",
+    "cpu_only_import_repair": "passed"
+  },
+  "publication_ready": false,
+  "limitations": [
+    "One full-data candidate run, not a current-main paired gain.",
+    "Final two-seed ABBA EN/ZH c1/c16/c32/c64 matrix still required on the actual publication head.",
+    "Open PR3136 partially overlaps this independent Tiny trajectory; publication scope/dependency unresolved."
+  ]
+}

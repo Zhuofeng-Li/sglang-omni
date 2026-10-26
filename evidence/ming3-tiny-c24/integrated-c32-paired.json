@@ -1,0 +1,550 @@
+{
+  "measured_base": "58c4ebbd4a63f6bd1452346675b4d7e017b88c24",
+  "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+  "dependency_control": "bf78520803786acb5f602af795f13d6abbe0284e",
+  "scope": "Complete EN/ZH c32 ABBA clean-main versus integrated bundle including unmerged prerequisite; no independent component claim",
+  "publication_ready": false,
+  "bilingual_geometric_qps_change_percent": 114.31809195174823,
+  "cells": {
+    "en-c32": {
+      "status": "complete",
+      "records": {
+        "A42": {
+          "seed": 42,
+          "metrics": {
+            "total_requests": 1088,
+            "completed_requests": 1088,
+            "failed_requests": 0,
+            "max_token_hits": 0,
+            "finish_reason_observed": 0,
+            "client_slot_waits": 1056,
+            "latency_mean_s": 3.945,
+            "latency_median_s": 3.577,
+            "latency_p95_s": 5.681,
+            "latency_p99_s": 19.649,
+            "audio_duration_mean_s": 3.9305882352941173,
+            "rtf_mean": 1.0109,
+            "rtf_median": 0.9983,
+            "rtf_p95": 1.1827,
+            "rtf_p99": 1.3295,
+            "throughput_qps": 8.033,
+            "output_throughput": 394.7,
+            "output_tokens_mean": 49.0,
+            "output_tokens_total": 53456,
+            "prompt_tokens_mean": 46.0,
+            "prompt_tokens_total": 50203,
+            "audio_throughput_s_per_s": 31.574,
+            "authoritative_error_rate": 0.018672025454240977,
+            "speaker_similarity": 0.815888806944713
+          },
+          "costs": {
+            "startup_seconds": 108.09299993515015,
+            "peak_tts_memory_mib": 110697.0,
+            "tts_graph_captures": 19,
+            "nvml_tts_samples": 295
+          },
+          "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+          "source_sha256": "0e933eefb25be22982fe410105c130e51e52829087ece106356e359ed1ae6eda",
+          "verified_receipt_sha256": "fca1dbb376cb6032f2db501957e37ca5025d3bf3373517b76cf57fde27947d94"
+        },
+        "B42": {
+          "seed": 42,
+          "metrics": {
+            "total_requests": 1088,
+            "completed_requests": 1088,
+            "failed_requests": 0,
+            "max_token_hits": 0,
+            "finish_reason_observed": 0,
+            "client_slot_waits": 1056,
+            "latency_mean_s": 1.821,
+            "latency_median_s": 1.774,
+            "latency_p95_s": 2.707,
+            "latency_p99_s": 4.116,
+            "audio_duration_mean_s": 3.582941176470588,
+            "rtf_mean": 0.5135,
+            "rtf_median": 0.4967,
+            "rtf_p95": 0.6091,
+            "rtf_p99": 1.0648,
+            "throughput_qps": 17.393,
+            "output_throughput": 779.0,
+            "output_tokens_mean": 45.0,
+            "output_tokens_total": 48728,
+            "prompt_tokens_mean": 46.0,
+            "prompt_tokens_total": 50203,
+            "audio_throughput_s_per_s": 62.317,
+            "authoritative_error_rate": 0.011554885707108766,
+            "speaker_similarity": 0.8237711908843588
+          },
+          "costs": {
+            "startup_seconds": 252.27999997138977,
+            "peak_tts_memory_mib": 114177.0,
+            "tts_graph_captures": 284,
+            "nvml_tts_samples": 313
+          },
+          "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+          "source_sha256": "563ab2b7113809f106d587e6a8ebfad670bdefe9453a9829c26fb5fad0286746",
+          "verified_receipt_sha256": "3e02252c9ab32e8715918a31a731c54874a1ad2aa2a9ef3024caa780cbafb2a3"
+        },
+        "B43": {
+          "seed": 43,
+          "metrics": {
+            "total_requests": 1088,
+            "completed_requests": 1088,
+            "failed_requests": 0,
+            "max_token_hits": 0,
+            "finish_reason_observed": 0,
+            "client_slot_waits": 1056,
+            "latency_mean_s": 1.843,
+            "latency_median_s": 1.802,
+            "latency_p95_s": 2.797,
+            "latency_p99_s": 3.571,
+            "audio_duration_mean_s": 3.6028676470588237,
+            "rtf_mean": 0.5167,
+            "rtf_median": 0.4972,
+            "rtf_p95": 0.7011,
+            "rtf_p99": 0.9421,
+            "throughput_qps": 17.192,
+            "output_throughput": 774.3,
+            "output_tokens_mean": 45.0,
+            "output_tokens_total": 48999,
+            "prompt_tokens_mean": 46.0,
+            "prompt_tokens_total": 50203,
+            "audio_throughput_s_per_s": 61.942,
+            "authoritative_error_rate": 0.011136230427865695,
+            "speaker_similarity": 0.8245950540089432
+          },
+          "costs": {
+            "startup_seconds": 258.22300004959106,
+            "peak_tts_memory_mib": 114175.0,
+            "tts_graph_captures": 284,
+            "nvml_tts_samples": 322
+          },
+          "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+          "source_sha256": "965ce50d6d16e9198ac77b7d6fbfd7d85ca114b193554134ec8ff1b5d5313ce1",
+          "verified_receipt_sha256": "334319248ead7b3898698ea8814a06f656fa89c045eb1445f0e8c472e2611438"
+        },
+        "A43": {
+          "seed": 43,
+          "metrics": {
+            "total_requests": 1088,
+            "completed_requests": 1088,
+            "failed_requests": 0,
+            "max_token_hits": 0,
+            "finish_reason_observed": 0,
+            "client_slot_waits": 1056,
+            "latency_mean_s": 4.028,
+            "latency_median_s": 3.526,
+            "latency_p95_s": 5.682,
+            "latency_p99_s": 19.657,
+            "audio_duration_mean_s": 4.07735294117647,
+            "rtf_mean": 0.9961,
+            "rtf_median": 0.9829,
+            "rtf_p95": 1.1761,
+            "rtf_p99": 1.3545,
+            "throughput_qps": 7.868,
+            "output_throughput": 401.0,
+            "output_tokens_mean": 51.0,
+            "output_tokens_total": 55452,
+            "prompt_tokens_mean": 46.0,
+            "prompt_tokens_total": 50203,
+            "audio_throughput_s_per_s": 32.082,
+            "authoritative_error_rate": 0.020597839738759106,
+            "speaker_similarity": 0.8147729027345229
+          },
+          "costs": {
+            "startup_seconds": 108.11400008201599,
+            "peak_tts_memory_mib": 111895.0,
+            "tts_graph_captures": 19,
+            "nvml_tts_samples": 288
+          },
+          "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+          "source_sha256": "0fcad83fe170f0cbf4bf53106c92f38aa1b1d209e81276039937e17ee2ddcd31",
+          "verified_receipt_sha256": "d79cfe06d3893db5259edab96fc62fe1dac6f5cb4210af47fd01cf2e84502d22"
+        }
+      },
+      "missing": [],
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "words",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 7.9505,
+            "latency_mean_s": 3.9864999999999995,
+            "rtf_mean": 1.0034999999999998,
+            "audio_throughput_s_per_s": 31.828000000000003,
+            "audio_duration_mean_s": 4.003970588235294,
+            "authoritative_error_rate": 0.01963493259650004,
+            "speaker_similarity": 0.8153308548396179
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              3.526,
+              3.577
+            ],
+            "latency_p95_s": [
+              5.681,
+              5.682
+            ],
+            "latency_p99_s": [
+              19.649,
+              19.657
+            ],
+            "rtf_median": [
+              0.9829,
+              0.9983
+            ],
+            "rtf_p95": [
+              1.1761,
+              1.1827
+            ],
+            "rtf_p99": [
+              1.3295,
+              1.3545
+            ]
+          },
+          "costs": {
+            "startup_seconds_mean": 108.10350000858307,
+            "peak_tts_memory_mib_max": 111895.0,
+            "graph_captures_by_seed": {
+              "42": 19,
+              "43": 19
+            }
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 17.2925,
+            "latency_mean_s": 1.8319999999999999,
+            "rtf_mean": 0.5151,
+            "audio_throughput_s_per_s": 62.1295,
+            "audio_duration_mean_s": 3.5929044117647058,
+            "authoritative_error_rate": 0.01134555806748723,
+            "speaker_similarity": 0.8241831224466509
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              1.774,
+              1.802
+            ],
+            "latency_p95_s": [
+              2.707,
+              2.797
+            ],
+            "latency_p99_s": [
+              3.571,
+              4.116
+            ],
+            "rtf_median": [
+              0.4967,
+              0.4972
+            ],
+            "rtf_p95": [
+              0.6091,
+              0.7011
+            ],
+            "rtf_p99": [
+              0.9421,
+              1.0648
+            ]
+          },
+          "costs": {
+            "startup_seconds_mean": 255.25150001049042,
+            "peak_tts_memory_mib_max": 114177.0,
+            "graph_captures_by_seed": {
+              "42": 284,
+              "43": 284
+            }
+          }
+        }
+      },
+      "qps_change_percent": 117.5020438966103,
+      "cost_deltas": {
+        "startup_seconds": 147.14800000190735,
+        "peak_tts_memory_mib": 2282.0,
+        "graph_captures_by_seed": {
+          "42": 265,
+          "43": 265
+        }
+      },
+      "tail_increases_by_seed": {
+        "42": [],
+        "43": []
+      }
+    },
+    "zh-c32": {
+      "status": "complete",
+      "records": {
+        "A42": {
+          "seed": 42,
+          "metrics": {
+            "total_requests": 2020,
+            "completed_requests": 2020,
+            "failed_requests": 0,
+            "max_token_hits": 0,
+            "finish_reason_observed": 0,
+            "client_slot_waits": 1988,
+            "latency_mean_s": 4.93,
+            "latency_median_s": 4.414,
+            "latency_p95_s": 6.586,
+            "latency_p99_s": 16.417,
+            "audio_duration_mean_s": 6.060831683168318,
+            "rtf_mean": 0.8154,
+            "rtf_median": 0.8132,
+            "rtf_p95": 0.895,
+            "rtf_p99": 1.0071,
+            "throughput_qps": 6.463,
+            "output_throughput": 489.6,
+            "output_tokens_mean": 76.0,
+            "output_tokens_total": 153036,
+            "prompt_tokens_mean": 47.0,
+            "prompt_tokens_total": 94411,
+            "audio_throughput_s_per_s": 39.168,
+            "authoritative_error_rate": 0.04038707235129892,
+            "speaker_similarity": 0.8259605064803716
+          },
+          "costs": {
+            "startup_seconds": 114.125,
+            "peak_tts_memory_mib": 110695.0,
+            "tts_graph_captures": 19,
+            "nvml_tts_samples": 456
+          },
+          "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+          "source_sha256": "21ce0b39efe5c557c37e7ec8079e35acd2270be600db71b88382bbb99936d3b0",
+          "verified_receipt_sha256": "84ec759c02d6db13f7beabb10c50d36f471190b3f1f40197b55dad1d09b6ecee"
+        },
+        "B42": {
+          "seed": 42,
+          "metrics": {
+            "total_requests": 2020,
+            "completed_requests": 2020,
+            "failed_requests": 0,
+            "max_token_hits": 0,
+            "finish_reason_observed": 0,
+            "client_slot_waits": 1988,
+            "latency_mean_s": 2.334,
+            "latency_median_s": 2.274,
+            "latency_p95_s": 3.117,
+            "latency_p99_s": 3.743,
+            "audio_duration_mean_s": 5.559881188118811,
+            "rtf_mean": 0.4207,
+            "rtf_median": 0.4164,
+            "rtf_p95": 0.4836,
+            "rtf_p99": 0.5481,
+            "throughput_qps": 13.648,
+            "output_throughput": 948.5,
+            "output_tokens_mean": 69.0,
+            "output_tokens_total": 140387,
+            "prompt_tokens_mean": 47.0,
+            "prompt_tokens_total": 94411,
+            "audio_throughput_s_per_s": 75.881,
+            "authoritative_error_rate": 0.02302086783703213,
+            "speaker_similarity": 0.837397430261763
+          },
+          "costs": {
+            "startup_seconds": 282.2660000324249,
+            "peak_tts_memory_mib": 114191.0,
+            "tts_graph_captures": 284,
+            "nvml_tts_samples": 408
+          },
+          "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+          "source_sha256": "bcebfd2d2ccb8c202a76bda4628112171710a5aca99ae4b0ae991e2672b7d892",
+          "verified_receipt_sha256": "6646a04c48f04b2ffed166b11533c02f8798d7da3055301e767fc16300e0bee4"
+        },
+        "B43": {
+          "seed": 43,
+          "metrics": {
+            "total_requests": 2020,
+            "completed_requests": 2020,
+            "failed_requests": 0,
+            "max_token_hits": 0,
+            "finish_reason_observed": 0,
+            "client_slot_waits": 1988,
+            "latency_mean_s": 2.334,
+            "latency_median_s": 2.288,
+            "latency_p95_s": 3.1,
+            "latency_p99_s": 3.502,
+            "audio_duration_mean_s": 5.585029702970297,
+            "rtf_mean": 0.4187,
+            "rtf_median": 0.4156,
+            "rtf_p95": 0.4821,
+            "rtf_p99": 0.5292,
+            "throughput_qps": 13.645,
+            "output_throughput": 952.6,
+            "output_tokens_mean": 70.0,
+            "output_tokens_total": 141022,
+            "prompt_tokens_mean": 47.0,
+            "prompt_tokens_total": 94411,
+            "audio_throughput_s_per_s": 76.205,
+            "authoritative_error_rate": 0.01996876922348933,
+            "speaker_similarity": 0.8416986364391771
+          },
+          "costs": {
+            "startup_seconds": 253.2260000705719,
+            "peak_tts_memory_mib": 111877.0,
+            "tts_graph_captures": 284,
+            "nvml_tts_samples": 398
+          },
+          "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+          "source_sha256": "1076a936de5b6fb27a53e05d5329fb5b76515115bf684d65f32490502cd4b092",
+          "verified_receipt_sha256": "7eab42af416247c205a68a045b8a79180a319d42081397008bb0649217f5270f"
+        },
+        "A43": {
+          "seed": 43,
+          "metrics": {
+            "total_requests": 2020,
+            "completed_requests": 2020,
+            "failed_requests": 0,
+            "max_token_hits": 0,
+            "finish_reason_observed": 0,
+            "client_slot_waits": 1988,
+            "latency_mean_s": 4.931,
+            "latency_median_s": 4.464,
+            "latency_p95_s": 6.66,
+            "latency_p99_s": 16.459,
+            "audio_duration_mean_s": 6.056079207920792,
+            "rtf_mean": 0.8157,
+            "rtf_median": 0.8165,
+            "rtf_p95": 0.8875,
+            "rtf_p99": 0.9558,
+            "throughput_qps": 6.461,
+            "output_throughput": 489.1,
+            "output_tokens_mean": 76.0,
+            "output_tokens_total": 152916,
+            "prompt_tokens_mean": 47.0,
+            "prompt_tokens_total": 94411,
+            "audio_throughput_s_per_s": 39.127,
+            "authoritative_error_rate": 0.040978564330667676,
+            "speaker_similarity": 0.8295715459797642
+          },
+          "costs": {
+            "startup_seconds": 109.11199998855591,
+            "peak_tts_memory_mib": 111899.0,
+            "tts_graph_captures": 19,
+            "nvml_tts_samples": 467
+          },
+          "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+          "source_sha256": "e010b70b3acba8a44da3f94e6694e09c435eacd4b62537011530b6380b5e30c7",
+          "verified_receipt_sha256": "35d6bfdd65b1117f1e7dac1c34eda12f379d31ecd706b40e98f0b5d7f4522290"
+        }
+      },
+      "missing": [],
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "characters",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 6.462,
+            "latency_mean_s": 4.9305,
+            "rtf_mean": 0.81555,
+            "audio_throughput_s_per_s": 39.1475,
+            "audio_duration_mean_s": 6.0584554455445545,
+            "authoritative_error_rate": 0.04068281834098329,
+            "speaker_similarity": 0.8277660262300679
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              4.414,
+              4.464
+            ],
+            "latency_p95_s": [
+              6.586,
+              6.66
+            ],
+            "latency_p99_s": [
+              16.417,
+              16.459
+            ],
+            "rtf_median": [
+              0.8132,
+              0.8165
+            ],
+            "rtf_p95": [
+              0.8875,
+              0.895
+            ],
+            "rtf_p99": [
+              0.9558,
+              1.0071
+            ]
+          },
+          "costs": {
+            "startup_seconds_mean": 111.61849999427795,
+            "peak_tts_memory_mib_max": 111899.0,
+            "graph_captures_by_seed": {
+              "42": 19,
+              "43": 19
+            }
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 13.6465,
+            "latency_mean_s": 2.334,
+            "rtf_mean": 0.4197,
+            "audio_throughput_s_per_s": 76.043,
+            "audio_duration_mean_s": 5.572455445544554,
+            "authoritative_error_rate": 0.02149481853026073,
+            "speaker_similarity": 0.8395480333504701
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              2.274,
+              2.288
+            ],
+            "latency_p95_s": [
+              3.1,
+              3.117
+            ],
+            "latency_p99_s": [
+              3.502,
+              3.743
+            ],
+            "rtf_median": [
+              0.4156,
+              0.4164
+            ],
+            "rtf_p95": [
+              0.4821,
+              0.4836
+            ],
+            "rtf_p99": [
+              0.5292,
+              0.5481
+            ]
+          },
+          "costs": {
+            "startup_seconds_mean": 267.7460000514984,
+            "peak_tts_memory_mib_max": 114191.0,
+            "graph_captures_by_seed": {
+              "42": 284,
+              "43": 284
+            }
+          }
+        }
+      },
+      "qps_change_percent": 111.18074899411945,
+      "cost_deltas": {
+        "startup_seconds": 156.12750005722046,
+        "peak_tts_memory_mib": 2292.0,
+        "graph_captures_by_seed": {
+          "42": 265,
+          "43": 265
+        }
+      },
+      "tail_increases_by_seed": {
+        "42": [],
+        "43": []
+      }
+    }
+  }
+}

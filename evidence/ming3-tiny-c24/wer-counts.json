@@ -1,0 +1,26 @@
+{
+  "A42": {
+    "samples": 1088,
+    "errors": 271,
+    "reference_words": 11943,
+    "wer_corpus": 0.022691116134974463
+  },
+  "B42": {
+    "samples": 1088,
+    "errors": 134,
+    "reference_words": 11943,
+    "wer_corpus": 0.01121996148371431
+  },
+  "B43": {
+    "samples": 1088,
+    "errors": 132,
+    "reference_words": 11943,
+    "wer_corpus": 0.01105249937201708
+  },
+  "A43": {
+    "samples": 1088,
+    "errors": 243,
+    "reference_words": 11943,
+    "wer_corpus": 0.020346646571213264
+  }
+}

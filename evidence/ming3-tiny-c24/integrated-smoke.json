@@ -1,0 +1,83 @@
+{
+  "scope": "Candidate-only integrated Tiny non-streaming EN1088 c64 seed42; not a paired performance claim or final publication qualification",
+  "measured_main": "58c4ebbd4a63f6bd1452346675b4d7e017b88c24",
+  "candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+  "dependency_pr": "https://github.com/sgl-project/sglang-omni/pull/3136",
+  "coverage": {
+    "tts": 1088,
+    "wav": 1088,
+    "asr": 1088,
+    "failed": 0,
+    "skipped": 0
+  },
+  "performance": {
+    "total_requests": 1088,
+    "completed_requests": 1088,
+    "failed_requests": 0,
+    "max_token_hits": 0,
+    "finish_reason_observed": 0,
+    "client_slot_waits": 1024,
+    "latency_mean_s": 2.734,
+    "latency_median_s": 2.673,
+    "latency_p95_s": 4.275,
+    "latency_p99_s": 5.407,
+    "audio_duration_mean_s": 3.578,
+    "rtf_mean": 0.7721,
+    "rtf_median": 0.7353,
+    "rtf_p95": 1.1924,
+    "rtf_p99": 1.3358,
+    "throughput_qps": 23.066,
+    "output_throughput": 1031.7,
+    "output_tokens_mean": 45.0,
+    "output_tokens_total": 48666,
+    "prompt_tokens_mean": 46.0,
+    "prompt_tokens_total": 50203,
+    "audio_throughput_s_per_s": 82.539
+  },
+  "word_wer": {
+    "wer_corpus": 0.012141003098049066,
+    "errors": 145,
+    "denominator": 11943,
+    "counts": {
+      "substitutions": 109,
+      "deletions": 20,
+      "insertions": 16,
+      "hits": 11814
+    }
+  },
+  "camplus_cosine": 0.8225649428992149,
+  "costs": {
+    "startup_seconds": 252.23499989509583,
+    "client_warmup_seconds": 8.197999954223633,
+    "peak_tts_memory_mib": 114295.0,
+    "nvml_tts_samples": 287,
+    "tts_graph_captures": 284,
+    "kda_startup_warmup_seconds": 76.45
+  },
+  "long_output": {
+    "twenty_second_outputs": 0,
+    "max_audio_duration_seconds": 7.04,
+    "client_max_token_hits": 0,
+    "policy": "No request dropped or replaced; client token cap is not the native generation limit."
+  },
+  "cold_path": {
+    "formal_new_kernel_counts": {
+      "_causal_conv1d_fwd_kernel": 1,
+      "_small_copy_kernel": 4,
+      "fused_moe_kernel": 8,
+      "_fused_replay_state_indices_kernel": 3,
+      "write_req_to_token_pool_triton": 1,
+      "chunk_gated_delta_rule_fwd_kernel_h_blockdim64": 1
+    },
+    "expensive_kda_intra_inter_variants": 0,
+    "shared_kda_state_variants": 1,
+    "limitation": "The expensive KDA intra/inter autotune kernels did not recompile in formal requests, but one shared KDA state kernel variant did. The earlier formal_new_kda_kernel_count field only counted names containing kda; it is not exhaustive KDA-callgraph coverage. Retain this cold-path cost and all requests. This single smoke does not qualify paired benefit."
+  },
+  "contention": {
+    "windows": 22,
+    "errors": 0,
+    "peak_foreign_cores": 0.4676478447265321,
+    "mean_foreign_cores": 0.13832679930788125
+  },
+  "publication_ready": false
+}

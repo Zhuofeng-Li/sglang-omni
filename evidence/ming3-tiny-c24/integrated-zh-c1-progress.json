@@ -1,0 +1,153 @@
+{
+  "checked_at": "2026-10-26T06:23:11.000385+00:00",
+  "measured_main": "58c4ebbd4a63f6bd1452346675b4d7e017b88c24",
+  "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+  "verified_arms": 30,
+  "expected_arms": 32,
+  "cell_complete": false,
+  "remaining": [
+    "zh-c1-B43",
+    "zh-c1-A43"
+  ],
+  "claim_scope": "Incomplete two-seed ABBA cell; no cell or bilingual gain. Candidate includes unmerged prerequisite3136. InvalidA42attempt1 remains archived and excluded; A42 here is complete replacementattempt2.",
+  "arms": [
+    {
+      "verified_epoch": 1792993020.9691365,
+      "arm": "zh-c1-A42",
+      "coverage": {
+        "tts": 2020,
+        "wav": 2020,
+        "asr": 2020,
+        "failed": 0,
+        "skipped": 0
+      },
+      "metrics": {
+        "total_requests": 2020,
+        "completed_requests": 2020,
+        "failed_requests": 0,
+        "max_token_hits": 0,
+        "finish_reason_observed": 0,
+        "client_slot_waits": 2019,
+        "latency_mean_s": 1.858,
+        "latency_median_s": 1.802,
+        "latency_p95_s": 2.435,
+        "latency_p99_s": 2.842,
+        "audio_duration_mean_s": 5.584,
+        "rtf_mean": 0.3334,
+        "rtf_median": 0.3326,
+        "rtf_p95": 0.3414,
+        "rtf_p99": 0.356,
+        "throughput_qps": 0.538,
+        "output_throughput": 37.6,
+        "output_tokens_mean": 70.0,
+        "output_tokens_total": 140996,
+        "prompt_tokens_mean": 47.0,
+        "prompt_tokens_total": 94411,
+        "audio_throughput_s_per_s": 3.004
+      },
+      "wer": {
+        "wer_corpus": 0.022192779065915866,
+        "errors": 938,
+        "denominator": 42266,
+        "counts": {
+          "substitutions": 864,
+          "deletions": 19,
+          "insertions": 55,
+          "hits": 41383
+        }
+      },
+      "error_unit": "characters",
+      "similarity": 0.8381820258527699,
+      "audio_duration_mean_s": 5.5840000000000005,
+      "costs": {
+        "startup_seconds": 108.12100005149841,
+        "peak_tts_memory_mib": 112263.0,
+        "tts_graph_captures": 19,
+        "nvml_tts_samples": 3817
+      },
+      "saved_files": {
+        "result.json": "cecbdda7dbc9ed38c21d8192de5e29834e5112e7033e0c1d5c75aafb6b2b6803",
+        "config.json": "047f76ff599f43c28dd7445f90bae6d8bf03e5bda057343e70711daab27ae71d",
+        "command.json": "3954ee7a0951da8a66103ecc236ddfc2fac11d74451f4b9c661d1398c2291178",
+        "container-command.json": "bf738aaaa3578da6f61b76311d896184646209b67eb70879c4b0a59817bd6e02",
+        "dataset.json": "ecd6a66377983eb7e876febd60a78474a9b0a418cf8223a7b2f398d46529fb7f",
+        "cost-events.json": "be38ba4ce8c199ab9fc73b17be09cb3db9c34c0813b9f4d0a766f2282752af37",
+        "wer-counts.json": "e984f4723e7643e0e64498c1ab896780c081cde39cd109b22d8872ecfddfdb2d",
+        "speaker-similarity.json": "a04fd83f93fd0eda273388750a8ae97116b5422f174c839e18fc209b067bfd20",
+        "native-graphs.jsonl": "dce880ef56eeddfdd595156d55c6d8b6f68d7101c2cb4c580f41d82da1f4d076",
+        "native-memory.json": "d7e66369b2d7bd326bb9730d18ca6b27dc1be5b70d1b469b22df16102425f16c",
+        "native-cleanup-adapter.json": "da1ccb5a8d666d36405a1e9896160a797cdea07c7a38548b00e8b6dee871952b",
+        "authoritative-cleanup-adapter.json": "aed3d31a2c0efbf88e7f292a15963f64d3dc45bc7030aef08663d1c0b64887b5"
+      }
+    },
+    {
+      "verified_epoch": 1792995711.1228013,
+      "arm": "zh-c1-B42",
+      "coverage": {
+        "tts": 2020,
+        "wav": 2020,
+        "asr": 2020,
+        "failed": 0,
+        "skipped": 0
+      },
+      "metrics": {
+        "total_requests": 2020,
+        "completed_requests": 2020,
+        "failed_requests": 0,
+        "max_token_hits": 0,
+        "finish_reason_observed": 0,
+        "client_slot_waits": 2019,
+        "latency_mean_s": 0.819,
+        "latency_median_s": 0.798,
+        "latency_p95_s": 1.063,
+        "latency_p99_s": 1.252,
+        "audio_duration_mean_s": 5.584,
+        "rtf_mean": 0.147,
+        "rtf_median": 0.1462,
+        "rtf_p95": 0.1577,
+        "rtf_p99": 0.1635,
+        "throughput_qps": 1.221,
+        "output_throughput": 85.2,
+        "output_tokens_mean": 70.0,
+        "output_tokens_total": 140996,
+        "prompt_tokens_mean": 47.0,
+        "prompt_tokens_total": 94411,
+        "audio_throughput_s_per_s": 6.818
+      },
+      "wer": {
+        "wer_corpus": 0.022169119386741116,
+        "errors": 937,
+        "denominator": 42266,
+        "counts": {
+          "substitutions": 864,
+          "deletions": 19,
+          "insertions": 54,
+          "hits": 41383
+        }
+      },
+      "error_unit": "characters",
+      "similarity": 0.8381820258527699,
+      "audio_duration_mean_s": 5.5840000000000005,
+      "costs": {
+        "startup_seconds": 254.29099988937378,
+        "peak_tts_memory_mib": 111747.0,
+        "tts_graph_captures": 284,
+        "nvml_tts_samples": 1845
+      },
+      "saved_files": {
+        "result.json": "a6f0bc185186dc6c1dd4117682852c849c7894f3ec851492bc94420f35196c49",
+        "config.json": "09873a1fe1ba29b48d45485f5c6cd7e6e1fb6f362df253c82840b4defc4918cf",
+        "command.json": "3954ee7a0951da8a66103ecc236ddfc2fac11d74451f4b9c661d1398c2291178",
+        "container-command.json": "79e5d56486b430dce8cdbbe88d24931d352431e89cb669e0c82cbe339578a5e3",
+        "dataset.json": "ecd6a66377983eb7e876febd60a78474a9b0a418cf8223a7b2f398d46529fb7f",
+        "cost-events.json": "9d152348a98d1a6d0935ebda99419af0e3b2850091f421abc941d4310a68e0cd",
+        "wer-counts.json": "7a9cb1bec6af022fb8730daf6a2a85b145622ff121c19f79344940f11f2b0f81",
+        "speaker-similarity.json": "a04fd83f93fd0eda273388750a8ae97116b5422f174c839e18fc209b067bfd20",
+        "native-graphs.jsonl": "f06e207caca94633a46a9b35f8cbac04a5af0d1c458ebe8c378787cc0aea32d3",
+        "native-memory.json": "993c2b85c9e9fe70042e8296f5d877b69d76032c304587d56e237052d8b8c106",
+        "native-cleanup-adapter.json": "f158793406e688f053a0dcf2bbfa3f7cdc5e972ca948a02dbb448e85bc128332",
+        "authoritative-cleanup-adapter.json": "6be54ce56a941732c8173251d416b9b612c4f5ee31d17c5bcc346b36ee8920a1"
+      }
+    }
+  ]
+}

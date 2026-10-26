@@ -1,0 +1,100 @@
+{
+  "checked_epoch": 1792993097.9050882,
+  "as_of_verified_arms": 29,
+  "measured_main": "58c4ebbd4a63f6bd1452346675b4d7e017b88c24",
+  "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+  "arm": "zh-c1-A42",
+  "invalid_attempts": [
+    {
+      "attempt": 1,
+      "reason": "Frozen evaluator external CPU contention guard exceeded",
+      "completed_generation_before_cancellation": 1026,
+      "peak_foreign_cores": 7.166680690707211,
+      "contention_sampler_errors": 0,
+      "returncode": 1,
+      "failure_json_sha256": "a418d32056a3e021780cfd54031c95cd44dbd790f1459c7035fe9255b78e556e",
+      "retained_separately": true,
+      "included_in_qualified_metrics": false
+    }
+  ],
+  "replacement": {
+    "attempt": 2,
+    "status": "independently_verified_off_node",
+    "coverage": {
+      "tts": 2020,
+      "wav": 2020,
+      "asr": 2020,
+      "failed": 0,
+      "skipped": 0
+    },
+    "metrics": {
+      "total_requests": 2020,
+      "completed_requests": 2020,
+      "failed_requests": 0,
+      "max_token_hits": 0,
+      "finish_reason_observed": 0,
+      "client_slot_waits": 2019,
+      "latency_mean_s": 1.858,
+      "latency_median_s": 1.802,
+      "latency_p95_s": 2.435,
+      "latency_p99_s": 2.842,
+      "audio_duration_mean_s": 5.584,
+      "rtf_mean": 0.3334,
+      "rtf_median": 0.3326,
+      "rtf_p95": 0.3414,
+      "rtf_p99": 0.356,
+      "throughput_qps": 0.538,
+      "output_throughput": 37.6,
+      "output_tokens_mean": 70.0,
+      "output_tokens_total": 140996,
+      "prompt_tokens_mean": 47.0,
+      "prompt_tokens_total": 94411,
+      "audio_throughput_s_per_s": 3.004
+    },
+    "error_unit": "characters",
+    "wer": {
+      "wer_corpus": 0.022192779065915866,
+      "errors": 938,
+      "denominator": 42266,
+      "counts": {
+        "substitutions": 864,
+        "deletions": 19,
+        "insertions": 55,
+        "hits": 41383
+      }
+    },
+    "similarity": 0.8381820258527699,
+    "costs": {
+      "startup_seconds": 108.12100005149841,
+      "peak_tts_memory_mib": 112263.0,
+      "tts_graph_captures": 19,
+      "nvml_tts_samples": 3817
+    },
+    "contention": {
+      "windows": 149,
+      "errors": 0,
+      "peak_foreign_cores": 1.180950385398975,
+      "mean_foreign_cores": 0.25516560919403347
+    },
+    "saved_file_hashes": {
+      "result.json": "cecbdda7dbc9ed38c21d8192de5e29834e5112e7033e0c1d5c75aafb6b2b6803",
+      "config.json": "047f76ff599f43c28dd7445f90bae6d8bf03e5bda057343e70711daab27ae71d",
+      "command.json": "3954ee7a0951da8a66103ecc236ddfc2fac11d74451f4b9c661d1398c2291178",
+      "container-command.json": "bf738aaaa3578da6f61b76311d896184646209b67eb70879c4b0a59817bd6e02",
+      "dataset.json": "ecd6a66377983eb7e876febd60a78474a9b0a418cf8223a7b2f398d46529fb7f",
+      "cost-events.json": "be38ba4ce8c199ab9fc73b17be09cb3db9c34c0813b9f4d0a766f2282752af37",
+      "wer-counts.json": "e984f4723e7643e0e64498c1ab896780c081cde39cd109b22d8872ecfddfdb2d",
+      "speaker-similarity.json": "a04fd83f93fd0eda273388750a8ae97116b5422f174c839e18fc209b067bfd20",
+      "native-graphs.jsonl": "dce880ef56eeddfdd595156d55c6d8b6f68d7101c2cb4c580f41d82da1f4d076",
+      "native-memory.json": "d7e66369b2d7bd326bb9730d18ca6b27dc1be5b70d1b469b22df16102425f16c",
+      "native-cleanup-adapter.json": "da1ccb5a8d666d36405a1e9896160a797cdea07c7a38548b00e8b6dee871952b",
+      "authoritative-cleanup-adapter.json": "aed3d31a2c0efbf88e7f292a15963f64d3dc45bc7030aef08663d1c0b64887b5"
+    },
+    "matching_original_config_and_commands_verified": true
+  },
+  "source_settings_cpu_gpu_scoring_unchanged": true,
+  "original_controller_restarted": false,
+  "replacement_reran_all_2020_requests": true,
+  "no_incomplete_attempt_spliced_into_valid_arm": true,
+  "scope": "Infrastructure recovery evidence for one completed clean-main control; not a complete paired ZH1 block or performance gain claim."
+}

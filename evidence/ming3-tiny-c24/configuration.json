@@ -1,0 +1,104 @@
+{
+  "date_utc": "2026-10-23T17:33:34.590026+00:00",
+  "observed_main": "01c037531225b0731577d7e6ef2b20227543a2c4",
+  "measured_main": "0ee9d47dffe16a5b1cc8d1dcbfbb04769884107f",
+  "measured_candidate": "97f47d2c45286b09adf87ea6acf0054a9b2325de",
+  "final_candidate": "bdfca67f9931a10218835f556815d1834b9fbfd4",
+  "final_change_after_measurement": "one additional regression test; no runtime changes",
+  "origin_c24_source_sha256": "121afe93415ced1458824afd9caed210762f5aed4158bd33713973519269dec2",
+  "model": {
+    "repo": "inclusionAI/Ming-3.0-tts-tiny",
+    "revision": "7bd9446a8d47e462362261a0150258da6d458318"
+  },
+  "asr": {
+    "repo": "Qwen/Qwen3-ASR-1.7B",
+    "revision": "7278e1e70fe206f11671096ffdd38061171dd6e5"
+  },
+  "dataset": {
+    "repo": "zhaochenyang20/seed-tts-eval-arrow",
+    "revision": "27f4c1adee83b5b29b7c4b375f6b976324bda308",
+    "split": "en",
+    "rows": 1088
+  },
+  "gpu": {
+    "model": "NVIDIA H200",
+    "count": 1,
+    "memory_mib": 143771,
+    "driver": "595.71.05"
+  },
+  "software": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "torch": "2.14.1+cu130",
+    "cuda": "13.0",
+    "packages": {
+      "sglang": "0.5.22",
+      "triton": "3.8.0",
+      "transformers": "5.19.0",
+      "x-transformers": "2.31.8",
+      "onnxruntime-gpu": "1.31.0"
+    }
+  },
+  "cpu": {
+    "quota": 16,
+    "affinity": [
+      27,
+      65,
+      74,
+      99,
+      100,
+      107,
+      176,
+      208,
+      23,
+      171,
+      146,
+      180,
+      89,
+      63,
+      202,
+      147
+    ],
+    "memory_gib": 128
+  },
+  "workload": {
+    "mode": "nonstream",
+    "client_concurrency": 16,
+    "engine_max_running_requests": 64,
+    "cuda_graph_max_bs": 64,
+    "tts_warmup": 16,
+    "asr_warmup": 64,
+    "asr_concurrency": 32,
+    "client_max_new_tokens": 2048,
+    "seeds": [
+      42,
+      43
+    ],
+    "order": [
+      "A42",
+      "B42",
+      "B43",
+      "A43"
+    ],
+    "cache": "fresh service and private compilation/dataset cache for each arm; pinned weights already present"
+  },
+  "quality": "Fixed native and authoritative ASR passes. Supplemental CAM++ cosine speaker similarity uses the pinned Tiny campplus.onnx and native 16 kHz fbank for every generated/reference pair.",
+  "operator_observation": "Symmetric successful PyTorch CUDA capture counter and 1 s NVML memory sampling. Cleanup waits for an exited server port to become bindable; original input, timing and scoring code unchanged. FIN_WAIT2 release observed after 13.852 s.",
+  "tests": {
+    "measured_runtime_suite": "207 passed, 6 unsupported-shape skips",
+    "final_vocoder_module": "4 passed; one new graph ownership/fallback case",
+    "full_pre_commit": "passed",
+    "frozen_evaluator_files": 19
+  },
+  "runtime_file_sha256": {
+    "sglang_omni/models/ming3_tts/model_runner.py": "5da3e7af28fcd9534dff6da9c9d139701152a143e5a0ebd5586f0d2d7fcc6419",
+    "sglang_omni/models/ming3_tts/sglang_model.py": "cfa65f0aae7881e61bf229b34f77275f0c1f021a1d57b32e4ca32e6d9d7d2558",
+    "sglang_omni/models/ming3_tts/stages.py": "1e0f48bbb0f0dc2dba9e05f2bac05f65e945d6799382a976aca3e37aacc77063",
+    "sglang_omni/models/ming3_tts/vocoder_graph.py": "bcf79bd6b69b26bf365c41c13dc20d8108693ccb1c93ec3e05138149a2cf4fe6",
+    "sglang_omni/modules/ming_audio/flow/dit.py": "fff7dfa79aa305af92214b4e8efd5148a3b854ea23840bb10473961d32a1ad65",
+    "sglang_omni/modules/ming_audio/flow/flow_loss.py": "c552e731638dd2e48fa1752d8f27053a8f58d165dddcd531ea5abdc9bd227f03",
+    "sglang_omni/modules/ming_audio/flow/modules.py": "171e85b194d560dd7f56898ea0ce5d5c7b9058e1200031501a407e7769876277",
+    "sglang_omni/modules/ming_audio/flow/normalization.py": "98012397b315ed60ade0a3d8d1705f8bf5bffc3e12707b2ab9e5154ca0afa0e5",
+    "sglang_omni/modules/ming_audio/flow/rotary.py": "661f158406da9247add3f4cb91180c6bb80cacc36506119757785462c9d464a8",
+    "sglang_omni/modules/ming_audio/vae/istft.py": "39c8666510c3795f9d8c472521a18528717750462da602b45eeb5ca20bda0f61"
+  }
+}

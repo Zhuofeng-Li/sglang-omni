@@ -1,0 +1,18 @@
+{
+  "review_head": "99c78ed53d860cb2296cf2517809fd15ddf500ad",
+  "dependency": "6da60ea9669435bfdef692ccab70421eab356585",
+  "selected_main": "58c4ebbd4a63f6bd1452346675b4d7e017b88c24",
+  "tested_integration": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+  "merged_tree": "3b57222d8a32767a22e949c5c961bf12e8045dc4",
+  "tested_tree": "3b57222d8a32767a22e949c5c961bf12e8045dc4",
+  "complete_tree_equal": true,
+  "conflict_resolution": {
+    "sglang_omni/models/qwen3_omni/components/audio_layer_graph.py": "Keep selected upstream main exactly, as in original measured integration; this is outside Tiny increment."
+  },
+  "method": "git merge-tree plus isolated temporary index; no tracked checkout edits",
+  "merge_endpoint_policy": "Land Tiny on upstream main after prerequisite/base resolution; do not merge into or modify the unrelated Dense branch under current scope.",
+  "publication_ready": false,
+  "patch_sha256": "be963da81b2ef5cbbcd31610034b1044925dee3509b5198dc8c4c618d48dc925",
+  "files_changed": 19,
+  "no_doc_changes_vs_dependency": true
+}

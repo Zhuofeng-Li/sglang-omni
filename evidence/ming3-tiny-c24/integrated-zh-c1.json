@@ -1,0 +1,270 @@
+{
+  "status": "complete",
+  "records": {
+    "A42": {
+      "seed": 42,
+      "metrics": {
+        "total_requests": 2020,
+        "completed_requests": 2020,
+        "failed_requests": 0,
+        "max_token_hits": 0,
+        "finish_reason_observed": 0,
+        "client_slot_waits": 2019,
+        "latency_mean_s": 1.858,
+        "latency_median_s": 1.802,
+        "latency_p95_s": 2.435,
+        "latency_p99_s": 2.842,
+        "audio_duration_mean_s": 5.5840000000000005,
+        "rtf_mean": 0.3334,
+        "rtf_median": 0.3326,
+        "rtf_p95": 0.3414,
+        "rtf_p99": 0.356,
+        "throughput_qps": 0.538,
+        "output_throughput": 37.6,
+        "output_tokens_mean": 70.0,
+        "output_tokens_total": 140996,
+        "prompt_tokens_mean": 47.0,
+        "prompt_tokens_total": 94411,
+        "audio_throughput_s_per_s": 3.004,
+        "authoritative_error_rate": 0.022192779065915866,
+        "speaker_similarity": 0.8381820258527699
+      },
+      "costs": {
+        "startup_seconds": 108.12100005149841,
+        "peak_tts_memory_mib": 112263.0,
+        "tts_graph_captures": 19,
+        "nvml_tts_samples": 3817
+      },
+      "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+      "source_sha256": "cecbdda7dbc9ed38c21d8192de5e29834e5112e7033e0c1d5c75aafb6b2b6803",
+      "verified_receipt_sha256": "62968a780609fc852ef2190c123d7b241fa3a00ac4ec081bd612dacd2eca50e3"
+    },
+    "B42": {
+      "seed": 42,
+      "metrics": {
+        "total_requests": 2020,
+        "completed_requests": 2020,
+        "failed_requests": 0,
+        "max_token_hits": 0,
+        "finish_reason_observed": 0,
+        "client_slot_waits": 2019,
+        "latency_mean_s": 0.819,
+        "latency_median_s": 0.798,
+        "latency_p95_s": 1.063,
+        "latency_p99_s": 1.252,
+        "audio_duration_mean_s": 5.5840000000000005,
+        "rtf_mean": 0.147,
+        "rtf_median": 0.1462,
+        "rtf_p95": 0.1577,
+        "rtf_p99": 0.1635,
+        "throughput_qps": 1.221,
+        "output_throughput": 85.2,
+        "output_tokens_mean": 70.0,
+        "output_tokens_total": 140996,
+        "prompt_tokens_mean": 47.0,
+        "prompt_tokens_total": 94411,
+        "audio_throughput_s_per_s": 6.818,
+        "authoritative_error_rate": 0.022169119386741116,
+        "speaker_similarity": 0.8381820258527699
+      },
+      "costs": {
+        "startup_seconds": 254.29099988937378,
+        "peak_tts_memory_mib": 111747.0,
+        "tts_graph_captures": 284,
+        "nvml_tts_samples": 1845
+      },
+      "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+      "source_sha256": "a6f0bc185186dc6c1dd4117682852c849c7894f3ec851492bc94420f35196c49",
+      "verified_receipt_sha256": "688416911a120d2d1b743846ca2988b169922aea8a2f7b83e3549d347eda8048"
+    },
+    "B43": {
+      "seed": 43,
+      "metrics": {
+        "total_requests": 2020,
+        "completed_requests": 2020,
+        "failed_requests": 0,
+        "max_token_hits": 0,
+        "finish_reason_observed": 0,
+        "client_slot_waits": 2019,
+        "latency_mean_s": 0.821,
+        "latency_median_s": 0.803,
+        "latency_p95_s": 1.071,
+        "latency_p99_s": 1.193,
+        "audio_duration_mean_s": 5.588633663366337,
+        "rtf_mean": 0.1472,
+        "rtf_median": 0.146,
+        "rtf_p95": 0.1569,
+        "rtf_p99": 0.1627,
+        "throughput_qps": 1.218,
+        "output_throughput": 85.1,
+        "output_tokens_mean": 70.0,
+        "output_tokens_total": 141113,
+        "prompt_tokens_mean": 47.0,
+        "prompt_tokens_total": 94411,
+        "audio_throughput_s_per_s": 6.808,
+        "authoritative_error_rate": 0.01985047082761558,
+        "speaker_similarity": 0.8415581407154551
+      },
+      "costs": {
+        "startup_seconds": 259.2559998035431,
+        "peak_tts_memory_mib": 111767.0,
+        "tts_graph_captures": 284,
+        "nvml_tts_samples": 1847
+      },
+      "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+      "source_sha256": "174809064bccbc77933249ab6620c406a1a67ebe67021208ef7e342cd2158390",
+      "verified_receipt_sha256": "17bc84cafab9f2cc19cae76d5f94b79912c07435b433594c05a96f4ceed672dc"
+    },
+    "A43": {
+      "seed": 43,
+      "metrics": {
+        "total_requests": 2020,
+        "completed_requests": 2020,
+        "failed_requests": 0,
+        "max_token_hits": 0,
+        "finish_reason_observed": 0,
+        "client_slot_waits": 2019,
+        "latency_mean_s": 1.865,
+        "latency_median_s": 1.836,
+        "latency_p95_s": 2.426,
+        "latency_p99_s": 2.763,
+        "audio_duration_mean_s": 5.588633663366337,
+        "rtf_mean": 0.3343,
+        "rtf_median": 0.3335,
+        "rtf_p95": 0.3419,
+        "rtf_p99": 0.3548,
+        "throughput_qps": 0.536,
+        "output_throughput": 37.4,
+        "output_tokens_mean": 70.0,
+        "output_tokens_total": 141113,
+        "prompt_tokens_mean": 47.0,
+        "prompt_tokens_total": 94411,
+        "audio_throughput_s_per_s": 2.996,
+        "authoritative_error_rate": 0.01992144986513983,
+        "speaker_similarity": 0.8415581407154551
+      },
+      "costs": {
+        "startup_seconds": 108.11399984359741,
+        "peak_tts_memory_mib": 111065.0,
+        "tts_graph_captures": 19,
+        "nvml_tts_samples": 3755
+      },
+      "measured_candidate": "6b871400ce1a71444049cc4a3e9d0c10bc2803d6",
+      "source_sha256": "894f3e49891274e3ed79bd6a2771d097c0cf78938edddd3a25350452343c2b12",
+      "verified_receipt_sha256": "2b52b186252ad707f127076d7f5be296efd82b2042dfd001a44946be7e369fba"
+    }
+  },
+  "missing": [],
+  "order": [
+    "A42",
+    "B42",
+    "B43",
+    "A43"
+  ],
+  "error_unit": "characters",
+  "aggregates": {
+    "main": {
+      "means": {
+        "throughput_qps": 0.537,
+        "latency_mean_s": 1.8615,
+        "rtf_mean": 0.33385,
+        "audio_throughput_s_per_s": 3.0,
+        "audio_duration_mean_s": 5.586316831683169,
+        "authoritative_error_rate": 0.021057114465527847,
+        "speaker_similarity": 0.8398700832841125
+      },
+      "per_seed_percentile_ranges": {
+        "latency_median_s": [
+          1.802,
+          1.836
+        ],
+        "latency_p95_s": [
+          2.426,
+          2.435
+        ],
+        "latency_p99_s": [
+          2.763,
+          2.842
+        ],
+        "rtf_median": [
+          0.3326,
+          0.3335
+        ],
+        "rtf_p95": [
+          0.3414,
+          0.3419
+        ],
+        "rtf_p99": [
+          0.3548,
+          0.356
+        ]
+      },
+      "costs": {
+        "startup_seconds_mean": 108.11749994754791,
+        "peak_tts_memory_mib_max": 112263.0,
+        "graph_captures_by_seed": {
+          "42": 19,
+          "43": 19
+        }
+      }
+    },
+    "pr": {
+      "means": {
+        "throughput_qps": 1.2195,
+        "latency_mean_s": 0.82,
+        "rtf_mean": 0.1471,
+        "audio_throughput_s_per_s": 6.813,
+        "audio_duration_mean_s": 5.586316831683169,
+        "authoritative_error_rate": 0.021009795107178347,
+        "speaker_similarity": 0.8398700832841125
+      },
+      "per_seed_percentile_ranges": {
+        "latency_median_s": [
+          0.798,
+          0.803
+        ],
+        "latency_p95_s": [
+          1.063,
+          1.071
+        ],
+        "latency_p99_s": [
+          1.193,
+          1.252
+        ],
+        "rtf_median": [
+          0.146,
+          0.1462
+        ],
+        "rtf_p95": [
+          0.1569,
+          0.1577
+        ],
+        "rtf_p99": [
+          0.1627,
+          0.1635
+        ]
+      },
+      "costs": {
+        "startup_seconds_mean": 256.77349984645844,
+        "peak_tts_memory_mib_max": 111767.0,
+        "graph_captures_by_seed": {
+          "42": 284,
+          "43": 284
+        }
+      }
+    }
+  },
+  "qps_change_percent": 127.09497206703908,
+  "cost_deltas": {
+    "startup_seconds": 148.65599989891052,
+    "peak_tts_memory_mib": -496.0,
+    "graph_captures_by_seed": {
+      "42": 265,
+      "43": 265
+    }
+  },
+  "tail_increases_by_seed": {
+    "42": [],
+    "43": []
+  }
+}

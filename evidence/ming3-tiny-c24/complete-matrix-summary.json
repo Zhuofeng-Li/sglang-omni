@@ -1,0 +1,907 @@
+{
+  "prepared_epoch": 1792886606.67379,
+  "frozen_candidate": "bdfca67f9931a10218835f556815d1834b9fbfd4",
+  "measured_base": "0ee9d47dffe16a5b1cc8d1dcbfbb04769884107f",
+  "original_en_c16_candidate": "97f47d2c45286b09adf87ea6acf0054a9b2325de",
+  "valid_arms": 32,
+  "matrix_complete": true,
+  "publication_ready": false,
+  "method": "Arithmetic means of matched-seed scalar metrics; per-seed percentile ranges only, never averaged percentiles. EN words and ZH characters remain separate. Invalid attempts excluded as whole arms and preserved separately.",
+  "bilingual_geometric_qps_change_percent": {
+    "1": 125.60731888991263,
+    "16": 86.76116975945764,
+    "32": 125.02363470186211,
+    "64": 43.12065737454842
+  },
+  "cells": {
+    "en-c1": {
+      "status": "complete",
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "words",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 0.791,
+            "latency_mean_s": 1.2645,
+            "rtf_mean": 0.3543,
+            "audio_throughput_s_per_s": 2.8465,
+            "audio_duration_mean_s": 3.6000735294117647,
+            "authoritative_error_rate": 0.015364648748220716,
+            "speaker_similarity": 0.8242583861574531
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              1.243,
+              1.25
+            ],
+            "latency_p95_s": [
+              1.785,
+              1.81
+            ],
+            "latency_p99_s": [
+              2.079,
+              2.141
+            ],
+            "rtf_median": [
+              0.3501,
+              0.3511
+            ],
+            "rtf_p95": [
+              0.3776,
+              0.38
+            ],
+            "rtf_p99": [
+              0.4109,
+              0.4233
+            ]
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 1.7610000000000001,
+            "latency_mean_s": 0.568,
+            "rtf_mean": 0.16025,
+            "audio_throughput_s_per_s": 6.3385,
+            "audio_duration_mean_s": 3.6000735294117647,
+            "authoritative_error_rate": 0.015406514276145023,
+            "speaker_similarity": 0.8242583861574531
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              0.562,
+              0.562
+            ],
+            "latency_p95_s": [
+              0.78,
+              0.793
+            ],
+            "latency_p99_s": [
+              0.895,
+              0.905
+            ],
+            "rtf_median": [
+              0.1578,
+              0.158
+            ],
+            "rtf_p95": [
+              0.1811,
+              0.1815
+            ],
+            "rtf_p99": [
+              0.1981,
+              0.2003
+            ]
+          }
+        }
+      },
+      "qps_change_percent": 122.62958280657395,
+      "tail_increases_by_seed": {
+        "42": [],
+        "43": []
+      }
+    },
+    "en-c16": {
+      "status": "complete",
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "words",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 5.693,
+            "latency_mean_s": 2.792,
+            "rtf_mean": 0.69665,
+            "audio_throughput_s_per_s": 23.035,
+            "audio_duration_mean_s": 4.04639705882353,
+            "authoritative_error_rate": 0.021518881353093863,
+            "speaker_similarity": 0.814417872351923
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              2.448,
+              2.47
+            ],
+            "latency_p95_s": [
+              3.918,
+              3.989
+            ],
+            "latency_p99_s": [
+              13.554,
+              13.633
+            ],
+            "rtf_median": [
+              0.6854,
+              0.6854
+            ],
+            "rtf_p95": [
+              0.7966,
+              0.8245
+            ],
+            "rtf_p99": [
+              1.0511,
+              1.0816
+            ]
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 10.928,
+            "latency_mean_s": 1.457,
+            "rtf_mean": 0.40800000000000003,
+            "audio_throughput_s_per_s": 39.334,
+            "audio_duration_mean_s": 3.5993014705882356,
+            "authoritative_error_rate": 0.011136230427865695,
+            "speaker_similarity": 0.8242127292186898
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              1.401,
+              1.438
+            ],
+            "latency_p95_s": [
+              2.141,
+              2.193
+            ],
+            "latency_p99_s": [
+              2.593,
+              2.645
+            ],
+            "rtf_median": [
+              0.3963,
+              0.4012
+            ],
+            "rtf_p95": [
+              0.4916,
+              0.5044
+            ],
+            "rtf_p99": [
+              0.691,
+              0.7265
+            ]
+          }
+        }
+      },
+      "qps_change_percent": 91.95503249604779,
+      "tail_increases_by_seed": {
+        "42": [],
+        "43": []
+      }
+    },
+    "en-c32": {
+      "status": "complete",
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "words",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 4.606999999999999,
+            "latency_mean_s": 6.8759999999999994,
+            "rtf_mean": 1.8847999999999998,
+            "audio_throughput_s_per_s": 19.2245,
+            "audio_duration_mean_s": 4.173345588235295,
+            "authoritative_error_rate": 0.029305869547014987,
+            "speaker_similarity": 0.8105484523522832
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              6.434,
+              6.559
+            ],
+            "latency_p95_s": [
+              8.425,
+              8.57
+            ],
+            "latency_p99_s": [
+              17.337,
+              17.36
+            ],
+            "rtf_median": [
+              1.7839,
+              1.8237
+            ],
+            "rtf_p95": [
+              2.7467,
+              2.8607
+            ],
+            "rtf_p99": [
+              3.3589,
+              3.6233
+            ]
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 14.322,
+            "latency_mean_s": 2.186,
+            "rtf_mean": 0.6117,
+            "audio_throughput_s_per_s": 51.5975,
+            "audio_duration_mean_s": 3.6028676470588232,
+            "authoritative_error_rate": 0.01105249937201708,
+            "speaker_similarity": 0.8239149629850598
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              2.135,
+              2.137
+            ],
+            "latency_p95_s": [
+              3.301,
+              3.331
+            ],
+            "latency_p99_s": [
+              4.267,
+              4.41
+            ],
+            "rtf_median": [
+              0.5967,
+              0.5985
+            ],
+            "rtf_p95": [
+              0.7207,
+              0.7868
+            ],
+            "rtf_p99": [
+              1.0636,
+              1.0667
+            ]
+          }
+        }
+      },
+      "qps_change_percent": 210.87475580638161,
+      "tail_increases_by_seed": {
+        "42": [],
+        "43": []
+      }
+    },
+    "en-c64": {
+      "status": "complete",
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "words",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 10.2975,
+            "latency_mean_s": 6.069,
+            "rtf_mean": 1.5261,
+            "audio_throughput_s_per_s": 41.466499999999996,
+            "audio_duration_mean_s": 4.0268749999999995,
+            "authoritative_error_rate": 0.027589382902118396,
+            "speaker_similarity": 0.8107803555527319
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              5.347,
+              5.373
+            ],
+            "latency_p95_s": [
+              8.628,
+              8.672
+            ],
+            "latency_p99_s": [
+              29.634,
+              29.727
+            ],
+            "rtf_median": [
+              1.4913,
+              1.4986
+            ],
+            "rtf_p95": [
+              1.8724,
+              2.0404
+            ],
+            "rtf_p99": [
+              2.2119,
+              2.3545
+            ]
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 13.9055,
+            "latency_mean_s": 4.542999999999999,
+            "rtf_mean": 1.32195,
+            "audio_throughput_s_per_s": 50.093,
+            "audio_duration_mean_s": 3.6025367647058824,
+            "authoritative_error_rate": 0.019593067068575734,
+            "speaker_similarity": 0.8237163363955915
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              3.371,
+              3.423
+            ],
+            "latency_p95_s": [
+              20.855,
+              21.724
+            ],
+            "latency_p99_s": [
+              24.39,
+              24.551
+            ],
+            "rtf_median": [
+              0.9425,
+              0.9447
+            ],
+            "rtf_p95": [
+              4.9884,
+              5.0953
+            ],
+            "rtf_p99": [
+              8.6199,
+              9.0657
+            ]
+          }
+        }
+      },
+      "qps_change_percent": 35.037630492838076,
+      "tail_increases_by_seed": {
+        "42": [
+          "latency_p95_s",
+          "rtf_p95",
+          "rtf_p99"
+        ],
+        "43": [
+          "latency_p95_s",
+          "rtf_p95",
+          "rtf_p99"
+        ]
+      }
+    },
+    "zh-c1": {
+      "status": "complete",
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "characters",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 0.5345,
+            "latency_mean_s": 1.8705,
+            "rtf_mean": 0.33545,
+            "audio_throughput_s_per_s": 2.986,
+            "audio_duration_mean_s": 5.586316831683169,
+            "authoritative_error_rate": 0.020808687834192967,
+            "speaker_similarity": 0.8398700832841125
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              1.81,
+              1.841
+            ],
+            "latency_p95_s": [
+              2.436,
+              2.451
+            ],
+            "latency_p99_s": [
+              2.773,
+              2.862
+            ],
+            "rtf_median": [
+              0.3346,
+              0.335
+            ],
+            "rtf_p95": [
+              0.3424,
+              0.3424
+            ],
+            "rtf_p99": [
+              0.3512,
+              0.3562
+            ]
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 1.222,
+            "latency_mean_s": 0.818,
+            "rtf_mean": 0.1469,
+            "audio_throughput_s_per_s": 6.8285,
+            "audio_duration_mean_s": 5.586316831683169,
+            "authoritative_error_rate": 0.020915156390479344,
+            "speaker_similarity": 0.8398700832841125
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              0.794,
+              0.805
+            ],
+            "latency_p95_s": [
+              1.054,
+              1.054
+            ],
+            "latency_p99_s": [
+              1.187,
+              1.218
+            ],
+            "rtf_median": [
+              0.1464,
+              0.1465
+            ],
+            "rtf_p95": [
+              0.153,
+              0.1535
+            ],
+            "rtf_p99": [
+              0.1644,
+              0.1644
+            ]
+          }
+        }
+      },
+      "qps_change_percent": 128.6248830682881,
+      "tail_increases_by_seed": {
+        "42": [],
+        "43": []
+      }
+    },
+    "zh-c16": {
+      "status": "complete",
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "characters",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 4.654999999999999,
+            "latency_mean_s": 3.4299999999999997,
+            "rtf_mean": 0.59815,
+            "audio_throughput_s_per_s": 26.747500000000002,
+            "audio_duration_mean_s": 5.746574257425743,
+            "authoritative_error_rate": 0.025091089764822792,
+            "speaker_similarity": 0.8371860743463408
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              3.228,
+              3.328
+            ],
+            "latency_p95_s": [
+              4.548,
+              4.574
+            ],
+            "latency_p99_s": [
+              5.35,
+              11.739
+            ],
+            "rtf_median": [
+              0.5926,
+              0.601
+            ],
+            "rtf_p95": [
+              0.6447,
+              0.6504
+            ],
+            "rtf_p99": [
+              0.6776,
+              0.6864
+            ]
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 8.4585,
+            "latency_mean_s": 1.8864999999999998,
+            "rtf_mean": 0.3397,
+            "audio_throughput_s_per_s": 47.072,
+            "audio_duration_mean_s": 5.564950495049505,
+            "authoritative_error_rate": 0.021033454786353097,
+            "speaker_similarity": 0.8398962918668986
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              1.836,
+              1.854
+            ],
+            "latency_p95_s": [
+              2.489,
+              2.525
+            ],
+            "latency_p99_s": [
+              2.911,
+              2.949
+            ],
+            "rtf_median": [
+              0.3369,
+              0.3381
+            ],
+            "rtf_p95": [
+              0.377,
+              0.3836
+            ],
+            "rtf_p99": [
+              0.4336,
+              0.4646
+            ]
+          }
+        }
+      },
+      "qps_change_percent": 81.70784103114934,
+      "tail_increases_by_seed": {
+        "42": [],
+        "43": []
+      }
+    },
+    "zh-c32": {
+      "status": "complete",
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "characters",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 6.428,
+            "latency_mean_s": 4.9565,
+            "rtf_mean": 0.8191999999999999,
+            "audio_throughput_s_per_s": 38.9935,
+            "audio_duration_mean_s": 6.066455445544555,
+            "authoritative_error_rate": 0.04262291203331283,
+            "speaker_similarity": 0.8276515839244516
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              4.431,
+              4.499
+            ],
+            "latency_p95_s": [
+              6.696,
+              6.701
+            ],
+            "latency_p99_s": [
+              16.497,
+              16.542
+            ],
+            "rtf_median": [
+              0.8127,
+              0.8191
+            ],
+            "rtf_p95": [
+              0.8968,
+              0.9111
+            ],
+            "rtf_p99": [
+              0.9793,
+              0.9954
+            ]
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 10.469999999999999,
+            "latency_mean_s": 3.044,
+            "rtf_mean": 0.54805,
+            "audio_throughput_s_per_s": 58.3745,
+            "audio_duration_mean_s": 5.575267326732673,
+            "authoritative_error_rate": 0.021234562059338477,
+            "speaker_similarity": 0.8394169247497132
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              2.682,
+              2.693
+            ],
+            "latency_p95_s": [
+              3.731,
+              3.733
+            ],
+            "latency_p99_s": [
+              21.988,
+              22.07
+            ],
+            "rtf_median": [
+              0.4893,
+              0.4919
+            ],
+            "rtf_p95": [
+              0.5486,
+              0.5553
+            ],
+            "rtf_p99": [
+              3.6965,
+              3.8715
+            ]
+          }
+        }
+      },
+      "qps_change_percent": 62.88114499066582,
+      "tail_increases_by_seed": {
+        "42": [
+          "latency_p99_s",
+          "rtf_p99"
+        ],
+        "43": [
+          "latency_p99_s",
+          "rtf_p99"
+        ]
+      }
+    },
+    "zh-c64": {
+      "status": "complete",
+      "order": [
+        "A42",
+        "B42",
+        "B43",
+        "A43"
+      ],
+      "error_unit": "characters",
+      "aggregates": {
+        "main": {
+          "means": {
+            "throughput_qps": 8.474,
+            "latency_mean_s": 7.504,
+            "rtf_mean": 1.23885,
+            "audio_throughput_s_per_s": 51.4275,
+            "audio_duration_mean_s": 6.068950495049505,
+            "authoritative_error_rate": 0.04108503288695405,
+            "speaker_similarity": 0.8278537714469194
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              6.707,
+              6.786
+            ],
+            "latency_p95_s": [
+              9.774,
+              9.979
+            ],
+            "latency_p99_s": [
+              25.071,
+              25.553
+            ],
+            "rtf_median": [
+              1.2289,
+              1.2585
+            ],
+            "rtf_p95": [
+              1.3533,
+              1.3919
+            ],
+            "rtf_p99": [
+              1.4927,
+              1.5114
+            ]
+          }
+        },
+        "pr": {
+          "means": {
+            "throughput_qps": 12.854,
+            "latency_mean_s": 4.947,
+            "rtf_mean": 0.8924,
+            "audio_throughput_s_per_s": 71.6475,
+            "audio_duration_mean_s": 5.574138613861386,
+            "authoritative_error_rate": 0.02102162494676572,
+            "speaker_similarity": 0.8398495211533391
+          },
+          "per_seed_percentile_ranges": {
+            "latency_median_s": [
+              4.232,
+              4.307
+            ],
+            "latency_p95_s": [
+              6.198,
+              6.48
+            ],
+            "latency_p99_s": [
+              24.712,
+              24.874
+            ],
+            "rtf_median": [
+              0.7725,
+              0.7912
+            ],
+            "rtf_p95": [
+              0.8613,
+              0.8812
+            ],
+            "rtf_p99": [
+              4.6066,
+              4.7165
+            ]
+          }
+        }
+      },
+      "qps_change_percent": 51.687514751003064,
+      "tail_increases_by_seed": {
+        "42": [
+          "rtf_p99"
+        ],
+        "43": [
+          "rtf_p99"
+        ]
+      }
+    }
+  },
+  "costs": {
+    "en-c1": {
+      "main": {
+        "startup_s_mean": 108.119500041008,
+        "peak_device_gib_max": 109.1435546875,
+        "captures_max": 19
+      },
+      "pr": {
+        "startup_s_mean": 174.67700004577637,
+        "peak_device_gib_max": 108.7158203125,
+        "captures_max": 280
+      },
+      "delta": {
+        "startup_s_mean": 66.55750000476837,
+        "peak_device_gib_max": -0.427734375,
+        "captures_max": 261
+      }
+    },
+    "en-c16": {
+      "main": {
+        "startup_s_mean": 110.11450004577637,
+        "peak_device_gib_max": 109.2626953125,
+        "captures_max": 19
+      },
+      "pr": {
+        "startup_s_mean": 174.1875,
+        "peak_device_gib_max": 109.2275390625,
+        "captures_max": 280
+      },
+      "delta": {
+        "startup_s_mean": 64.07299995422363,
+        "peak_device_gib_max": -0.03515625,
+        "captures_max": 261
+      }
+    },
+    "en-c32": {
+      "main": {
+        "startup_s_mean": 107.62250006198883,
+        "peak_device_gib_max": 109.2587890625,
+        "captures_max": 19
+      },
+      "pr": {
+        "startup_s_mean": 182.19400000572205,
+        "peak_device_gib_max": 111.0849609375,
+        "captures_max": 280
+      },
+      "delta": {
+        "startup_s_mean": 74.57149994373322,
+        "peak_device_gib_max": 1.826171875,
+        "captures_max": 261
+      }
+    },
+    "en-c64": {
+      "main": {
+        "startup_s_mean": 110.62100005149841,
+        "peak_device_gib_max": 109.2978515625,
+        "captures_max": 19
+      },
+      "pr": {
+        "startup_s_mean": 173.692999958992,
+        "peak_device_gib_max": 111.2724609375,
+        "captures_max": 280
+      },
+      "delta": {
+        "startup_s_mean": 63.07199990749359,
+        "peak_device_gib_max": 1.974609375,
+        "captures_max": 261
+      }
+    },
+    "zh-c1": {
+      "main": {
+        "startup_s_mean": 109.61600005626678,
+        "peak_device_gib_max": 107.9775390625,
+        "captures_max": 19
+      },
+      "pr": {
+        "startup_s_mean": 174.176500082016,
+        "peak_device_gib_max": 109.2314453125,
+        "captures_max": 280
+      },
+      "delta": {
+        "startup_s_mean": 64.5605000257492,
+        "peak_device_gib_max": 1.25390625,
+        "captures_max": 261
+      }
+    },
+    "zh-c16": {
+      "main": {
+        "startup_s_mean": 108.1085000038147,
+        "peak_device_gib_max": 109.7529296875,
+        "captures_max": 19
+      },
+      "pr": {
+        "startup_s_mean": 175.6835000514984,
+        "peak_device_gib_max": 108.8251953125,
+        "captures_max": 280
+      },
+      "delta": {
+        "startup_s_mean": 67.57500004768372,
+        "peak_device_gib_max": -0.927734375,
+        "captures_max": 261
+      }
+    },
+    "zh-c32": {
+      "main": {
+        "startup_s_mean": 109.6194999217987,
+        "peak_device_gib_max": 108.1044921875,
+        "captures_max": 19
+      },
+      "pr": {
+        "startup_s_mean": 177.18450009822845,
+        "peak_device_gib_max": 111.2490234375,
+        "captures_max": 280
+      },
+      "delta": {
+        "startup_s_mean": 67.56500017642975,
+        "peak_device_gib_max": 3.14453125,
+        "captures_max": 261
+      }
+    },
+    "zh-c64": {
+      "main": {
+        "startup_s_mean": 108.1194999217987,
+        "peak_device_gib_max": 108.1279296875,
+        "captures_max": 19
+      },
+      "pr": {
+        "startup_s_mean": 173.1875,
+        "peak_device_gib_max": 111.2724609375,
+        "captures_max": 280
+      },
+      "delta": {
+        "startup_s_mean": 65.0680000782013,
+        "peak_device_gib_max": 3.14453125,
+        "captures_max": 261
+      }
+    }
+  },
+  "remaining": [
+    "Final rebuilt-runtime GPU regression suites (SSO renewal/live ownership required)",
+    "Causal cold-tail diagnosis/fix and affected final-head paired qualification",
+    "Fresh duplicate/CI label audit and upstream PR publication/follow-through"
+  ]
+}
