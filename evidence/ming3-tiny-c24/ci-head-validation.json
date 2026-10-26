@@ -1,0 +1,46 @@
+{
+  "observed_epoch": 1793023422.1435056,
+  "pr": 3217,
+  "head": "99c78ed53d860cb2296cf2517809fd15ddf500ad",
+  "run_id": 40333279462,
+  "run_url": "https://github.com/sgl-project/sglang-omni/actions/runs/40333279462",
+  "event": "workflow_dispatch",
+  "ci_labels": "run-unit-test-ci-only",
+  "preflight": {
+    "unit_test": true,
+    "tts": false,
+    "asr": false,
+    "mps": false,
+    "omni": false,
+    "model_preset": null
+  },
+  "conclusion": "success",
+  "cleanup": "success",
+  "jobs": {
+    "cpu_a": {
+      "job": 121609130764,
+      "passed": 4270,
+      "skipped": 61,
+      "deselected": 6415,
+      "seconds": 618.22
+    },
+    "cpu_b": {
+      "job": 121609130533,
+      "passed": 5200,
+      "skipped": 38,
+      "deselected": 5508,
+      "seconds": 801.18
+    },
+    "accelerator": {
+      "job": 121609130703,
+      "passed": 1006,
+      "skipped": 28,
+      "deselected": 9712,
+      "seconds": 524.4
+    }
+  },
+  "coverage_limits": "Not an end-to-end model preset or finalmain integration. Target32-arm qualification is separately linked.6 Tiny strided normalization skips retain eager fallback; other suite skips remain reported, not passes. DraftPRgate still blocks PR-triggeredGPUCI.",
+  "automatic_checks": "Lint/docs/Rust/testlayout/playback/NPU950+A3 passed.",
+  "pr_base": "codex/ming3-0.5b-nonstream-trajectory",
+  "merge_endpoint": "main only, after dependency and final integration/readiness checks"
+}

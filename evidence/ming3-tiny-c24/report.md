@@ -84,3 +84,7 @@ ZH1/B42 attempt1 passed independent off-node verification of all2020 TTS/WAV/nat
 ## Complete integrated matrix (2026-10-26 UTC)
 
 [Complete sanitized paired matrix](integrated-complete-matrix.json) includes all32 verified arms,49,728 qualified requests, source/result hashes and costs. Bilingual throughput changes at c1/c16/c32/c64 are +124.62%/+111.39%/+114.32%/+115.08%. These are combined candidate results including unmerged prerequisite3136, not the independent benefit of the19-file Tiny increment. All recorded latency/RTF tails improve in both seeds; ZH16 seed43 SIM decreases0.000711 and remains disclosed. Full ZH1 records are in [ZH1 paired evidence](integrated-zh-c1.json). All32 raw receipt hashes were rechecked off-node and the exact Radix assignment was released; no live consumers remained. Draft publication and current-main/dependency/CI checks are separate gates.
+
+## Exact review-head CI (2026-10-26 UTC)
+
+[Sanitized head CI receipt](ci-head-validation.json) records manual workflow40333279462 on99c78ed53d860cb2296cf2517809fd15ddf500ad: CPU A4270 passed/61 skipped, CPU B5200 passed/38 skipped, accelerator1006 passed/28 skipped. The requested unit-only preflight and exact source were verified, and environment cleanup succeeded. Automatic lint/docs/Rust/testlayout/playback and bothNPUimagebuilds passed. These results do not clear the draftPRgate or validate finalmain integration; prerequisite3136 remains unmerged.
