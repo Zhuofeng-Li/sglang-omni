@@ -1,0 +1,53 @@
+{
+  "3189": {
+    "run": 40448255161,
+    "head": "c864715c205d995835b48e26ca1d10cffff9350c",
+    "tested_merge": "85322c03d66f1cc5b6146ce77c8192b6a1f21565",
+    "results": [
+      {
+        "job": "PR Test / unit-test-accelerator",
+        "id": 122009368252,
+        "passed": 1127,
+        "skipped": 28,
+        "summary": "2026-10-27T05:17:34.8526039Z = 1127 passed, 28 skipped, 10296 deselected, 83 warnings in 495.36s (0:08:15) ==",
+        "checkout": "2026-10-27T05:08:22.9486653Z HEAD is now at 85322c0 Merge c864715c205d995835b48e26ca1d10cffff9350c into 3f8593f4cae19fe1c71e929a854bdc03b2c185e6"
+      },
+      {
+        "job": "PR Test / unit-test-b",
+        "id": 122009368266,
+        "passed": 5302,
+        "skipped": 35,
+        "summary": "2026-10-27T05:10:50.0300081Z == 5302 passed, 35 skipped, 6114 deselected, 81 warnings in 814.81s (0:13:34) ==",
+        "checkout": "2026-10-27T04:56:13.1189591Z HEAD is now at 85322c0 Merge c864715c205d995835b48e26ca1d10cffff9350c into 3f8593f4cae19fe1c71e929a854bdc03b2c185e6"
+      },
+      {
+        "job": "PR Test / unit-test-a",
+        "id": 122009368432,
+        "passed": 4729,
+        "skipped": 87,
+        "summary": "2026-10-27T05:26:04.7931004Z == 4729 passed, 87 skipped, 6635 deselected, 59 warnings in 829.98s (0:13:49) ==",
+        "checkout": "2026-10-27T05:11:12.6471852Z HEAD is now at 85322c0 Merge c864715c205d995835b48e26ca1d10cffff9350c into 3f8593f4cae19fe1c71e929a854bdc03b2c185e6"
+      }
+    ]
+  },
+  "3190": {
+    "run": 40448260785,
+    "head": "0ef18ce8952e027650d82d4292785e9687dface8",
+    "tested_merge": "999f365c598e7c950afbf696a668644af0c39bb6",
+    "counts": {
+      "cpu_a": {
+        "passed": 4730,
+        "skipped": 87
+      },
+      "cpu_b": {
+        "passed": 5302,
+        "skipped": 35
+      },
+      "accelerator": {
+        "passed": 1127,
+        "skipped": 28
+      }
+    }
+  },
+  "scope": "Unit-only CI at dependency merges. Model stages were not selected; Ming3-specific end-to-end checks are separately recorded. Final-main integration must be checked after dependencies merge."
+}

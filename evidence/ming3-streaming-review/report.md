@@ -108,3 +108,7 @@ PRs: [3189](https://github.com/sgl-project/sglang-omni/pull/3189), [3190](https:
 ## Current non-streaming prerequisite
 
 The [current-main prerequisite qualification](../ming3-nonstream-current-main/report.md) keeps complete paired cells, costs, source IDs and per-request evidence separate from these latency measurements. It also records the bitwise ASR WAV-preparation check for subsequent main commit `71bce692`.
+
+## Final feature CI
+
+Both final feature heads passed their unit-only workflows: [Tiny run40448255161](https://github.com/sgl-project/sglang-omni/actions/runs/40448255161), head `c864715c` tested at dependency merge `85322c03` (CPU A 4,729/87 skipped, CPU B 5,302/35, accelerator 1,127/28); [dense run40448260785](https://github.com/sgl-project/sglang-omni/actions/runs/40448260785), head `0ef18ce8` tested at dependency merge `999f365c` (CPU A 4,730/87, CPU B 5,302/35, accelerator 1,127/28). See `final-feature-ci.json` for exact revisions. These are dependency-branch checks, not final-main integration. The Ming3 graph/cache-dispatch accelerator test passed.
