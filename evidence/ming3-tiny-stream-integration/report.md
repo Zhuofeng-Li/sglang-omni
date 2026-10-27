@@ -13,3 +13,7 @@ The smoke command uses mem-fraction-static0.6, max-running/graph-batch32, seed42
 The first asset-download attempt inherited the image's offline setting and failed before downloading. The corrected download-only environment sets the offline variables to0; the completed unit suite was retained. All65 downloaded files were checked against the pinned revision and their Hub Git/LFS hashes. No model weights or raw audio are copied here; the output hashes, sample counts, transcripts and source/version manifests are retained.
 
 This functional result does not establish independent Tiny performance benefits. Tiny acoustic/preprocessing changes affect streaming as well as non-streaming; both modes need current-main paired performance/quality/cost qualification. [Earlier Tiny bundle evidence](https://github.com/Zhuofeng-Li/sglang-omni/blob/codex/ming3-tiny-c24-evidence/evidence/ming3-tiny-c24/report.md) retains its original source revisions and is not an independent result for this head.
+
+## Publication and dependency order
+
+The original four PRs are now linked in native [stack #3254](https://github.com/sgl-project/sglang-omni/stack/3254): #3136 → #3189 → #3190 → #3217. All heads and draft states were preserved while the stack metadata was aligned. #3217 is still Draft, with current-main performance validation pending for both modes. The [new exact-head manual CI](https://github.com/sgl-project/sglang-omni/actions/runs/40466048020) verified unit-only preflight at `8d0f5d4`; unit results are pending.

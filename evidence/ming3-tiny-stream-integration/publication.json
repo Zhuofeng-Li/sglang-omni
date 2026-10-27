@@ -1,0 +1,41 @@
+{
+  "stack_url": "https://github.com/sgl-project/sglang-omni/stack/3254",
+  "order": [
+    3136,
+    3189,
+    3190,
+    3217
+  ],
+  "heads": {
+    "3136": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+    "3189": "c864715c205d995835b48e26ca1d10cffff9350c",
+    "3190": "0ef18ce8952e027650d82d4292785e9687dface8",
+    "3217": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9"
+  },
+  "base_refs": {
+    "3136": "main",
+    "3189": "codex/ming3-0.5b-nonstream-trajectory",
+    "3190": "codex/ming3-tiny-streaming",
+    "3217": "codex/ming3-05b-streaming"
+  },
+  "drafts": {
+    "3136": false,
+    "3189": false,
+    "3190": false,
+    "3217": true
+  },
+  "same_heads_after_link": true,
+  "manual_ci_run": 40466048020,
+  "preflight": {
+    "run": 40466048020,
+    "head": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9",
+    "checks": {
+      "head": true,
+      "unit": true,
+      "no_asr": true,
+      "no_tts": true,
+      "no_mps": true,
+      "no_omni": true
+    }
+  }
+}
