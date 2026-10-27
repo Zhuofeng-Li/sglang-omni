@@ -1,5 +1,7 @@
 # Current-main Ming3 streaming validation
 
+Latest cookbook-only heads: Tiny `c864715c`, dense `0ef18ce8`. The cookbook now explicitly requires `response_format="pcm"` with `stream=true`; runtime files match the metadata-only predecessors.
+
 Subsequent metadata-only heads are Tiny `6dc90443` and dense `17aba451`. They change only the static streaming capability declaration used by the startup log. The 20 CPU model-capability tests and both architecture aliases pass; measured synthesis/scheduler/tensor paths remain unchanged. All timing and HTTP records retain their original measured commits.
 
 Base: `0fe60cf6c102caf982430e1764243c6e5c749d76`; measured integration: `348f6973d4878ed77a9c6c60d072c91addaf15d8`.

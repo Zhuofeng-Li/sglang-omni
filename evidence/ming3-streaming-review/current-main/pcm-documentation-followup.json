@@ -1,0 +1,20 @@
+{
+  "updated_utc": "2026-10-27T04:10:26.574469+00:00",
+  "changes": [
+    {
+      "pr": 3189,
+      "old": "6dc90443d1388e71c600285261749fee170bf034",
+      "head": "c864715c205d995835b48e26ca1d10cffff9350c"
+    },
+    {
+      "pr": 3190,
+      "old": "17aba451eb98197c581ef2e72a1464b3753af634",
+      "head": "0ef18ce8952e027650d82d4292785e9687dface8"
+    }
+  ],
+  "changed_paths": [
+    "docs/cookbook/ming3_tts.md"
+  ],
+  "scope": "Document stream=true requires response_format=pcm. Runtime files are identical to the metadata-only predecessors.",
+  "validation": "Changed-file pre-commit passed; prior runtime and capability tests retained with their original source identities."
+}
