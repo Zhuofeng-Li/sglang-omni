@@ -1,0 +1,417 @@
+{
+  "summary": {
+    "speaker_similarity_mean": 66.19168899536133,
+    "total_samples": 50,
+    "evaluated": 50,
+    "skipped": 0
+  },
+  "config": {
+    "model": "bosonai/higgs-tts-3-4b",
+    "meta": "zhaochenyang20/seed-tts-eval-arrow",
+    "device": "cuda:0",
+    "max_samples": 50,
+    "similarity_checkpoint": "/github/home/seedtts-wavlm-sim/wavlm_large_finetune.pth"
+  },
+  "per_sample": [
+    {
+      "id": "common_voice_en_10119832-common_voice_en_10119840",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_10119832.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_10119832-common_voice_en_10119840.wav",
+      "speaker_similarity": 71.9437484741211,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_10119832-common_voice_en_10119847",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_10119832.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_10119832-common_voice_en_10119847.wav",
+      "speaker_similarity": 76.49156951904297,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_103675-common_voice_en_103676",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_103675.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_103675-common_voice_en_103676.wav",
+      "speaker_similarity": 57.561920166015625,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_103675-common_voice_en_103677",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_103675.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_103675-common_voice_en_103677.wav",
+      "speaker_similarity": 56.39931106567383,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_10933823-common_voice_en_10933822",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_10933823.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_10933823-common_voice_en_10933822.wav",
+      "speaker_similarity": 63.71380615234375,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_10933823-common_voice_en_10933825",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_10933823.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_10933823-common_voice_en_10933825.wav",
+      "speaker_similarity": 63.66322708129883,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_120405-common_voice_en_120402",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_120405.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_120405-common_voice_en_120402.wav",
+      "speaker_similarity": 73.35832214355469,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_120405-common_voice_en_120406",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_120405.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_120405-common_voice_en_120406.wav",
+      "speaker_similarity": 63.84187316894531,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_1205005-common_voice_en_1205007",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_1205005.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_1205005-common_voice_en_1205007.wav",
+      "speaker_similarity": 68.33807373046875,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_1205005-common_voice_en_1205008",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_1205005.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_1205005-common_voice_en_1205008.wav",
+      "speaker_similarity": 61.50566482543945,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_123125-common_voice_en_123126",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_123125.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_123125-common_voice_en_123126.wav",
+      "speaker_similarity": 76.6947021484375,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_123125-common_voice_en_123127",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_123125.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_123125-common_voice_en_123127.wav",
+      "speaker_similarity": 72.11674499511719,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_125386-common_voice_en_125388",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_125386.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_125386-common_voice_en_125388.wav",
+      "speaker_similarity": 72.23008728027344,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_125386-common_voice_en_125389",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_125386.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_125386-common_voice_en_125389.wav",
+      "speaker_similarity": 61.55903244018555,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_137148-common_voice_en_137152",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_137148.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_137148-common_voice_en_137152.wav",
+      "speaker_similarity": 60.64632034301758,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_13900-common_voice_en_13901",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_13900.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_13900-common_voice_en_13901.wav",
+      "speaker_similarity": 60.86510467529297,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_1416089-common_voice_en_1416090",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_1416089.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_1416089-common_voice_en_1416090.wav",
+      "speaker_similarity": 74.8663101196289,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_1416089-common_voice_en_1416093",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_1416089.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_1416089-common_voice_en_1416093.wav",
+      "speaker_similarity": 68.55097198486328,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_15265-common_voice_en_15266",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_15265.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_15265-common_voice_en_15266.wav",
+      "speaker_similarity": 66.52828216552734,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_15265-common_voice_en_15268",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_15265.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_15265-common_voice_en_15268.wav",
+      "speaker_similarity": 74.18634033203125,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_153872-common_voice_en_153873",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_153872.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_153872-common_voice_en_153873.wav",
+      "speaker_similarity": 54.5826416015625,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_153872-common_voice_en_153874",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_153872.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_153872-common_voice_en_153874.wav",
+      "speaker_similarity": 59.879756927490234,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_155313-common_voice_en_155315",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_155313.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_155313-common_voice_en_155315.wav",
+      "speaker_similarity": 64.60344696044922,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_15734837-common_voice_en_15734838",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_15734837.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_15734837-common_voice_en_15734838.wav",
+      "speaker_similarity": 47.90887451171875,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_15735839-common_voice_en_15735837",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_15735839.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_15735839-common_voice_en_15735837.wav",
+      "speaker_similarity": 51.475341796875,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_15903802-common_voice_en_15903807",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_15903802.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_15903802-common_voice_en_15903807.wav",
+      "speaker_similarity": 71.50858306884766,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_15903802-common_voice_en_15903815",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_15903802.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_15903802-common_voice_en_15903815.wav",
+      "speaker_similarity": 75.773681640625,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_16666041-common_voice_en_16666040",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_16666041.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_16666041-common_voice_en_16666040.wav",
+      "speaker_similarity": 73.89408111572266,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_167249-common_voice_en_167246",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_167249.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_167249-common_voice_en_167246.wav",
+      "speaker_similarity": 60.732398986816406,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_167249-common_voice_en_167247",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_167249.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_167249-common_voice_en_167247.wav",
+      "speaker_similarity": 56.590389251708984,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17147545-common_voice_en_17147546",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17147545.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17147545-common_voice_en_17147546.wav",
+      "speaker_similarity": 76.94385528564453,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17161-common_voice_en_17159",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17161.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17161-common_voice_en_17159.wav",
+      "speaker_similarity": 70.1330795288086,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17161-common_voice_en_17160",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17161.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17161-common_voice_en_17160.wav",
+      "speaker_similarity": 66.52152252197266,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17249419-common_voice_en_17249428",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17249419.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17249419-common_voice_en_17249428.wav",
+      "speaker_similarity": 63.42982482910156,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17255102-common_voice_en_17255101",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17255102.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17255102-common_voice_en_17255101.wav",
+      "speaker_similarity": 59.12770462036133,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17256676-common_voice_en_17256678",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17256676.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17256676-common_voice_en_17256678.wav",
+      "speaker_similarity": 80.48271179199219,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17259121-common_voice_en_17259122",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17259121.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17259121-common_voice_en_17259122.wav",
+      "speaker_similarity": 77.98157501220703,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17263752-common_voice_en_17263750",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17263752.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17263752-common_voice_en_17263750.wav",
+      "speaker_similarity": 70.32233428955078,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17263752-common_voice_en_17263755",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17263752.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17263752-common_voice_en_17263755.wav",
+      "speaker_similarity": 68.62601470947266,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17263780-common_voice_en_17263781",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17263780.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17263780-common_voice_en_17263781.wav",
+      "speaker_similarity": 62.03473663330078,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17263780-common_voice_en_17263782",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17263780.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17263780-common_voice_en_17263782.wav",
+      "speaker_similarity": 58.306175231933594,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17267923-common_voice_en_17267922",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17267923.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17267923-common_voice_en_17267922.wav",
+      "speaker_similarity": 60.609554290771484,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17268075-common_voice_en_17268076",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17268075.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17268075-common_voice_en_17268076.wav",
+      "speaker_similarity": 66.18408966064453,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17271507-common_voice_en_17271509",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17271507.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17271507-common_voice_en_17271509.wav",
+      "speaker_similarity": 64.73043823242188,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17271507-common_voice_en_17271510",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17271507.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17271507-common_voice_en_17271510.wav",
+      "speaker_similarity": 57.86266326904297,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17274522-common_voice_en_17274523",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17274522.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17274522-common_voice_en_17274523.wav",
+      "speaker_similarity": 82.7188491821289,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17274522-common_voice_en_17274525",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17274522.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17274522-common_voice_en_17274525.wav",
+      "speaker_similarity": 77.3239974975586,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17274533-common_voice_en_17274531",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17274533.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17274533-common_voice_en_17274531.wav",
+      "speaker_similarity": 63.87626647949219,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17275818-common_voice_en_17275816",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17275818.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17275818-common_voice_en_17275816.wav",
+      "speaker_similarity": 62.631935119628906,
+      "is_success": true,
+      "error": null
+    },
+    {
+      "id": "common_voice_en_17275818-common_voice_en_17275817",
+      "ref_audio": "/tmp/seedtts_en_h2ouz7s_/prompt-wavs/common_voice_en_17275818.wav",
+      "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/canonical/audio/common_voice_en_17275818-common_voice_en_17275817.wav",
+      "speaker_similarity": 57.72651290893555,
+      "is_success": true,
+      "error": null
+    }
+  ]
+}

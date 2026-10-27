@@ -1,0 +1,66 @@
+[
+  {
+    "sample_id": "common_voice_en_10119832-common_voice_en_10119840",
+    "target_text": "Get the trust fund to the bank early.",
+    "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/overlap-canary/audio/common_voice_en_10119832-common_voice_en_10119840.wav",
+    "is_success": true,
+    "latency_s": 0.5537,
+    "audio_duration_s": 2.52
+  },
+  {
+    "sample_id": "common_voice_en_10119832-common_voice_en_10119847",
+    "target_text": "The stained glass offered a hypnotic atmosphere.",
+    "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/overlap-canary/audio/common_voice_en_10119832-common_voice_en_10119847.wav",
+    "is_success": true,
+    "latency_s": 0.6512,
+    "audio_duration_s": 3.08
+  },
+  {
+    "sample_id": "common_voice_en_103675-common_voice_en_103676",
+    "target_text": "One by one, the campfires were extinguished, and the oasis fell as quiet as the desert.",
+    "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/overlap-canary/audio/common_voice_en_103675-common_voice_en_103676.wav",
+    "is_success": true,
+    "latency_s": 1.2151,
+    "audio_duration_s": 6.44
+  },
+  {
+    "sample_id": "common_voice_en_103675-common_voice_en_103677",
+    "target_text": "The boy knew the desert sensed his fear.",
+    "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/overlap-canary/audio/common_voice_en_103675-common_voice_en_103677.wav",
+    "is_success": true,
+    "latency_s": 0.5735,
+    "audio_duration_s": 2.64
+  },
+  {
+    "sample_id": "common_voice_en_10933823-common_voice_en_10933822",
+    "target_text": "When it comes to the crunch, our company will become insolvent.",
+    "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/overlap-canary/audio/common_voice_en_10933823-common_voice_en_10933822.wav",
+    "is_success": true,
+    "latency_s": 0.8255,
+    "audio_duration_s": 4.08
+  },
+  {
+    "sample_id": "common_voice_en_10933823-common_voice_en_10933825",
+    "target_text": "The primary coil has fifty turns.",
+    "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/overlap-canary/audio/common_voice_en_10933823-common_voice_en_10933825.wav",
+    "is_success": true,
+    "latency_s": 0.6466,
+    "audio_duration_s": 3.04
+  },
+  {
+    "sample_id": "common_voice_en_120405-common_voice_en_120402",
+    "target_text": "I'm never more aware of a room's acoustics than when I'm trying to enjoy a snack I have no intention of sharing.",
+    "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/overlap-canary/audio/common_voice_en_120405-common_voice_en_120402.wav",
+    "is_success": true,
+    "latency_s": 1.603,
+    "audio_duration_s": 9.88
+  },
+  {
+    "sample_id": "common_voice_en_120405-common_voice_en_120406",
+    "target_text": "The only shadow was that of the few scattered pine trees.",
+    "wav_path": "/data/omni-ci/pr-3136/tts-stage-results/mps-nonstream/run-40588559793/attempt-1/overlap-canary/audio/common_voice_en_120405-common_voice_en_120406.wav",
+    "is_success": true,
+    "latency_s": 0.9969,
+    "audio_duration_s": 5.08
+  }
+]

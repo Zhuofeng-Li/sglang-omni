@@ -1,0 +1,60 @@
+[2026-10-27 22:30:15.841 Other   967] Startup
+[2026-10-27 22:30:15.841 Other   967] Connecting to control daemon on socket: /data/omni-ci/pr-3136/tts-mps-state/gpu-0/run-40588559793-1/mps/pipe/control
+[2026-10-27 22:30:15.841 Other   967] Initializing server process
+[2026-10-27 22:30:15.886 Server   967] Creating server context on device 0 (NVIDIA H100 80GB HBM3)
+[2026-10-27 22:30:15.960 Server   967] Created anonymous shared memory region mps.shm.0.967
+[2026-10-27 22:30:15.960 Server   967] CUDA MPS Server for Linux/Unix. Binary version: 13000
+[2026-10-27 22:30:15.960 Server   967] Display Driver version: 580
+[2026-10-27 22:30:15.961 Server   967] Active Threads Percentage set to 100.0
+[2026-10-27 22:30:15.961 Server   967] Server Priority set to 0
+[2026-10-27 22:30:15.961 Server   967] Server has started
+[2026-10-27 22:30:15.961 Server   967] Received new client request for {PID: -1333654781, Context ID: 0}
+[2026-10-27 22:30:15.961 Server   967] Client {PID: 945, Context ID: 0} connected
+[2026-10-27 22:30:15.961 Server   967] Creating worker thread for client {PID: 945, Context ID: 0}
+[2026-10-27 22:30:23.249 Server   967] Received new client request for {PID: 945, Context ID: 0}
+[2026-10-27 22:30:23.249 Server   967] Client {PID: 998, Context ID: 0} connected
+[2026-10-27 22:30:23.249 Server   967] Received new client request for {PID: 998, Context ID: 0}
+[2026-10-27 22:30:23.249 Server   967] Creating worker thread for client {PID: 998, Context ID: 0}
+[2026-10-27 22:30:23.249 Server   967] Client {PID: 997, Context ID: 0} connected
+[2026-10-27 22:30:23.249 Server   967] Creating worker thread for client {PID: 997, Context ID: 0}
+[2026-10-27 22:30:28.271 Server   967] Received new client request for {PID: 997, Context ID: 0}
+[2026-10-27 22:30:28.328 Server   967] Client {PID: 998, Context ID: 1} connected
+[2026-10-27 22:30:28.328 Server   967] Received new client request for {PID: 998, Context ID: 1}
+[2026-10-27 22:30:28.328 Server   967] Creating worker thread for client {PID: 998, Context ID: 1}
+[2026-10-27 22:30:28.328 Server   967] Device NVIDIA H100 80GB HBM3 (uuid GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1) is associated
+[2026-10-27 22:30:28.328 Server   967] Client {PID: 997, Context ID: 1} connected
+[2026-10-27 22:30:28.328 Server   967] Status of client {PID: 998, Context ID: 1} is ACTIVE
+[2026-10-27 22:30:28.328 Server   967] Creating worker thread for client {PID: 997, Context ID: 1}
+[2026-10-27 22:30:28.328 Server   967] Device NVIDIA H100 80GB HBM3 (uuid GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1) is associated
+[2026-10-27 22:30:28.328 Server   967] Status of client {PID: 997, Context ID: 1} is ACTIVE
+[2026-10-27 22:30:52.524 Server   967] Received new client request for {PID: 997, Context ID: 1}
+[2026-10-27 22:30:52.524 Server   967] Client {PID: 1116, Context ID: 0} connected
+[2026-10-27 22:30:52.524 Server   967] Creating worker thread for client {PID: 1116, Context ID: 0}
+[2026-10-27 22:30:58.462 Server   967] Received new client request for {PID: 1116, Context ID: 0}
+[2026-10-27 22:30:58.462 Server   967] Client {PID: 1173, Context ID: 0} connected
+[2026-10-27 22:30:58.462 Server   967] Creating worker thread for client {PID: 1173, Context ID: 0}
+[2026-10-27 22:31:03.920 Server   967] Received new client request for {PID: 1173, Context ID: 0}
+[2026-10-27 22:31:03.920 Server   967] Client {PID: 1249, Context ID: 0} connected
+[2026-10-27 22:31:03.920 Server   967] Creating worker thread for client {PID: 1249, Context ID: 0}
+[2026-10-27 22:31:10.913 Server   967] Received new client request for {PID: 1249, Context ID: 0}
+[2026-10-27 22:31:10.913 Server   967] Client {PID: 1299, Context ID: 0} connected
+[2026-10-27 22:31:10.913 Server   967] Received new client request for {PID: 1299, Context ID: 0}
+[2026-10-27 22:31:10.913 Server   967] Creating worker thread for client {PID: 1299, Context ID: 0}
+[2026-10-27 22:31:10.913 Server   967] Client {PID: 1298, Context ID: 0} connected
+[2026-10-27 22:31:10.913 Server   967] Creating worker thread for client {PID: 1298, Context ID: 0}
+[2026-10-27 22:31:15.908 Server   967] Received new client request for {PID: 1298, Context ID: 0}
+[2026-10-27 22:31:15.908 Server   967] Client {PID: 1298, Context ID: 1} connected
+[2026-10-27 22:31:15.908 Server   967] Creating worker thread for client {PID: 1298, Context ID: 1}
+[2026-10-27 22:31:15.908 Server   967] Device NVIDIA H100 80GB HBM3 (uuid GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1) is associated
+[2026-10-27 22:31:15.908 Server   967] Status of client {PID: 1298, Context ID: 1} is ACTIVE
+[2026-10-27 22:31:15.942 Server   967] Received new client request for {PID: 1298, Context ID: 1}
+[2026-10-27 22:31:15.942 Server   967] Client {PID: 1299, Context ID: 1} connected
+[2026-10-27 22:31:15.942 Server   967] Creating worker thread for client {PID: 1299, Context ID: 1}
+[2026-10-27 22:31:15.942 Server   967] Device NVIDIA H100 80GB HBM3 (uuid GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1) is associated
+[2026-10-27 22:31:15.942 Server   967] Status of client {PID: 1299, Context ID: 1} is ACTIVE
+[2026-10-27 22:31:33.581 Server   967] Received new client request for {PID: 1299, Context ID: 1}
+[2026-10-27 22:31:33.581 Server   967] Client {PID: 1415, Context ID: 0} connected
+[2026-10-27 22:31:33.582 Server   967] Creating worker thread for client {PID: 1415, Context ID: 0}
+[2026-10-27 22:31:39.407 Server   967] Received new client request for {PID: 1415, Context ID: 0}
+[2026-10-27 22:31:39.407 Server   967] Client {PID: 1471, Context ID: 0} connected
+[2026-10-27 22:31:39.407 Server   967] Creating worker thread for client {PID: 1471, Context ID: 0}

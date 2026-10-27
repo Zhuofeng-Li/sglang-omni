@@ -1,0 +1,13 @@
+run_id=run-40588559793-1
+gpu_id=0
+gpu_uuid=GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1
+numa_node=1
+config=/__w/sglang-omni/sglang-omni/examples/mps_dp/configs/higgs_h100_dp3.yaml
+model_path=from_config
+model_name=from_config
+n=2
+mem_fraction_static_cli_override=none
+base_port=45997
+core_blocks=32-43 44-47,96-103
+max_total_tokens=100000
+weight_share=0

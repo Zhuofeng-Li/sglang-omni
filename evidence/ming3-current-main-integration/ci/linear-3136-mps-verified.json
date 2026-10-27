@@ -1,0 +1,13 @@
+{
+  "run": 40588559793,
+  "head": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+  "selected_model": "higgs",
+  "canonical_requests": 1088,
+  "wer_corpus_percent": 0.8624298752407268,
+  "similarity_sample_count": 50,
+  "similarity_mean": 66.19168899536133,
+  "utmos_mean": 4.1688,
+  "overlap_pass": true,
+  "cleanup_pass": true,
+  "artifact_sha256": "be935fcd4598cb068cff43013b1bb1d2a94421697fb04174f9aea4b2fefd8490"
+}

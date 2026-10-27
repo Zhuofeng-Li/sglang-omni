@@ -1,0 +1,740 @@
+{
+  "cleanup": {
+    "checks": {
+      "gpu_baseline_available": true,
+      "launch_down_succeeded": true,
+      "mps_state_removed": true,
+      "no_new_gpu_clients": true,
+      "ports_released": true,
+      "tracked_processes_exited": true
+    },
+    "live_pids": [],
+    "new_gpu_clients": [],
+    "occupied_ports": [],
+    "post_gpu_clients": [],
+    "status": "pass"
+  },
+  "correctness": {
+    "canonical_requests": 1088,
+    "failures": [],
+    "overlap": {
+      "aggregate_overlap_ns": 1132855962,
+      "canary_wall_time_s": 1.6111662409966812,
+      "clock": "CLOCK_MONOTONIC",
+      "matched_overlap_count": 2,
+      "matches": [
+        {
+          "overlap_ns": 614949337,
+          "replica_0_request_id": "speech-0537da2e-ab85-49d8-8074-90b25415a784",
+          "replica_1_request_id": "speech-a6091fcc-3cd6-4556-98e0-ca8b0872005a"
+        },
+        {
+          "overlap_ns": 517906625,
+          "replica_0_request_id": "speech-360a0870-e746-44cd-8028-47ff27dba10e",
+          "replica_1_request_id": "speech-3536ea76-177f-4902-932a-e966f06f72e0"
+        }
+      ],
+      "maximum_overlap_ns": 614949337,
+      "measurement_uncertainty_ns": 1000000,
+      "per_replica_successes": {
+        "0": 4,
+        "1": 4
+      },
+      "request_counts": {
+        "completed_requests": 8,
+        "failed_requests": 0,
+        "total_requests": 8
+      },
+      "schema_version": 1,
+      "status": "pass"
+    },
+    "similarity": {
+      "evaluated": 50,
+      "skipped": 0,
+      "speaker_similarity_mean": 66.19168899536133,
+      "total_samples": 50
+    },
+    "status": "pass",
+    "utmos": {
+      "evaluated": 1088,
+      "skipped": 0,
+      "total_samples": 1088,
+      "utmos_mean": 4.1688,
+      "utmos_median": 4.2627,
+      "utmos_p5": 3.5225,
+      "utmos_p95": 4.475
+    },
+    "wer": {
+      "audio_duration_mean_s": 4.190919117647059,
+      "evaluated": 1088,
+      "lang": "en",
+      "latency_mean_s": 0.9586112132352942,
+      "latency_median_s": 0.94585,
+      "latency_p95_s": 1.3886099999999997,
+      "n_above_50_pct_wer": 0,
+      "pct_above_50_pct_wer": 0.0,
+      "rtf_mean": 0.23081078574337527,
+      "skipped": 0,
+      "total_samples": 1088,
+      "wer_below_50_corpus": 0.008624298752407267,
+      "wer_below_50_per_sample_mean": 0.008467581744236155,
+      "wer_corpus": 0.008624298752407267,
+      "wer_per_sample_max": 0.42857142857142855,
+      "wer_per_sample_mean": 0.008467581744236155,
+      "wer_per_sample_median": 0.0,
+      "wer_per_sample_p95": 0.08108974358974272,
+      "wer_per_sample_std": 0.03259251261379666
+    }
+  },
+  "evaluator": {
+    "duration_s": 83.24582163093146,
+    "model": "Qwen/Qwen3-ASR-1.7B",
+    "status": "pass"
+  },
+  "exact_sha": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+  "run_attempt": "1",
+  "run_id": "run-40588559793-1",
+  "runtime": {
+    "active_gpu_clients": [
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 967,
+        "process_name": "nvidia-cuda-mps-server"
+      },
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 998,
+        "process_name": "/data/omni-ci/pr-3136/omni/bin/python"
+      },
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 997,
+        "process_name": "/data/omni-ci/pr-3136/omni/bin/python"
+      },
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 1299,
+        "process_name": "/data/omni-ci/pr-3136/omni/bin/python"
+      },
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 1298,
+        "process_name": "/data/omni-ci/pr-3136/omni/bin/python"
+      }
+    ],
+    "baseline_gpu_clients": [],
+    "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+    "overlap": {
+      "aggregate_overlap_ns": 1132855962,
+      "canary_wall_time_s": 1.6111662409966812,
+      "clock": "CLOCK_MONOTONIC",
+      "matched_overlap_count": 2,
+      "matches": [
+        {
+          "overlap_ns": 614949337,
+          "replica_0_request_id": "speech-0537da2e-ab85-49d8-8074-90b25415a784",
+          "replica_1_request_id": "speech-a6091fcc-3cd6-4556-98e0-ca8b0872005a"
+        },
+        {
+          "overlap_ns": 517906625,
+          "replica_0_request_id": "speech-360a0870-e746-44cd-8028-47ff27dba10e",
+          "replica_1_request_id": "speech-3536ea76-177f-4902-932a-e966f06f72e0"
+        }
+      ],
+      "maximum_overlap_ns": 614949337,
+      "measurement_uncertainty_ns": 1000000,
+      "per_replica_successes": {
+        "0": 4,
+        "1": 4
+      },
+      "request_counts": {
+        "completed_requests": 8,
+        "failed_requests": 0,
+        "total_requests": 8
+      },
+      "schema_version": 1,
+      "status": "pass"
+    },
+    "performance": {
+      "checks": {
+        "latency_mean_s": {
+          "direction": "maximum",
+          "observed": 0.959,
+          "pass": true,
+          "reference": 0.981,
+          "threshold": 1.22625,
+          "unit": "s"
+        },
+        "output_tok_per_req_s": {
+          "direction": "minimum",
+          "observed": 121.7,
+          "pass": true,
+          "reference": 120.9,
+          "threshold": 90.67500000000001,
+          "unit": "tok/req-s"
+        },
+        "rtf_mean": {
+          "direction": "maximum",
+          "observed": 0.2308,
+          "pass": true,
+          "reference": 0.2322,
+          "threshold": 0.29025,
+          "unit": ""
+        },
+        "throughput_qps": {
+          "direction": "minimum",
+          "observed": 16.583,
+          "pass": true,
+          "reference": 16.22,
+          "threshold": 12.165,
+          "unit": "req/s"
+        }
+      },
+      "concurrency": 16,
+      "failed_checks": [],
+      "model": "higgs",
+      "status": "pass",
+      "uncalibrated": []
+    },
+    "replicas": [
+      {
+        "index": 0,
+        "max_total_tokens": 100000,
+        "pgid": 945,
+        "pid": 945,
+        "port": 45997
+      },
+      {
+        "index": 1,
+        "max_total_tokens": 100000,
+        "pgid": 1249,
+        "pid": 1249,
+        "port": 45998
+      }
+    ],
+    "router_diagnostics": {
+      "admission": [
+        {
+          "class": "global",
+          "in_flight": 0,
+          "limit": 256
+        },
+        {
+          "class": "generation_http",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "speech_http",
+          "in_flight": 0,
+          "limit": 256
+        },
+        {
+          "class": "speech_batch",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "transcription_http",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "speech_websocket",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "realtime_websocket",
+          "in_flight": 0,
+          "limit": 0
+        }
+      ],
+      "lifecycle": "serving",
+      "ready": true,
+      "resources": {
+        "buffered_request_bytes": {
+          "in_use": 0,
+          "limit": 268435456
+        },
+        "classification_slots": {
+          "in_use": 0,
+          "limit": 32
+        },
+        "listener_slots": {
+          "in_use": 2,
+          "limit": 1024
+        },
+        "websocket_sessions_registered": 0
+      },
+      "workers": [
+        {
+          "active_requests": 0,
+          "capacity": [],
+          "dispatches": [
+            {
+              "class": "generation_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_http",
+              "requests": 547
+            },
+            {
+              "class": "speech_batch",
+              "requests": 0
+            },
+            {
+              "class": "transcription_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_websocket",
+              "requests": 0
+            },
+            {
+              "class": "realtime_websocket",
+              "requests": 0
+            },
+            {
+              "class": "voice_control",
+              "requests": 0
+            }
+          ],
+          "health": "healthy",
+          "probe": {
+            "checked_at_unix_ms": 1793140374975,
+            "consecutive_failures": 0,
+            "consecutive_successes": 15,
+            "http_failures": 0,
+            "outcome": "success",
+            "status": 200,
+            "successes": 15,
+            "transport_failures": 0
+          },
+          "registration_ordinal": 0,
+          "routable": true,
+          "voice_owner": false,
+          "worker_id": "tts-1"
+        },
+        {
+          "active_requests": 0,
+          "capacity": [],
+          "dispatches": [
+            {
+              "class": "generation_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_http",
+              "requests": 550
+            },
+            {
+              "class": "speech_batch",
+              "requests": 0
+            },
+            {
+              "class": "transcription_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_websocket",
+              "requests": 0
+            },
+            {
+              "class": "realtime_websocket",
+              "requests": 0
+            },
+            {
+              "class": "voice_control",
+              "requests": 0
+            }
+          ],
+          "health": "healthy",
+          "probe": {
+            "checked_at_unix_ms": 1793140374975,
+            "consecutive_failures": 0,
+            "consecutive_successes": 15,
+            "http_failures": 0,
+            "outcome": "success",
+            "status": 200,
+            "successes": 15,
+            "transport_failures": 0
+          },
+          "registration_ordinal": 1,
+          "routable": true,
+          "voice_owner": false,
+          "worker_id": "tts-2"
+        }
+      ]
+    },
+    "router_worker_delta": {
+      "admission": [
+        {
+          "class": "global",
+          "in_flight": 0,
+          "limit": 256
+        },
+        {
+          "class": "generation_http",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "speech_http",
+          "in_flight": 0,
+          "limit": 256
+        },
+        {
+          "class": "speech_batch",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "transcription_http",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "speech_websocket",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "realtime_websocket",
+          "in_flight": 0,
+          "limit": 0
+        }
+      ],
+      "lifecycle": "serving",
+      "ready": true,
+      "resources": {
+        "buffered_request_bytes": {
+          "in_use": 0,
+          "limit": 268435456
+        },
+        "classification_slots": {
+          "in_use": 0,
+          "limit": 32
+        },
+        "listener_slots": {
+          "in_use": 2,
+          "limit": 1024
+        },
+        "websocket_sessions_registered": 0
+      },
+      "workers": [
+        {
+          "active_requests": 0,
+          "capacity": [],
+          "dispatches": [
+            {
+              "class": "generation_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_http",
+              "requests": 543
+            },
+            {
+              "class": "speech_batch",
+              "requests": 0
+            },
+            {
+              "class": "transcription_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_websocket",
+              "requests": 0
+            },
+            {
+              "class": "realtime_websocket",
+              "requests": 0
+            },
+            {
+              "class": "voice_control",
+              "requests": 0
+            }
+          ],
+          "health": "healthy",
+          "probe": {
+            "checked_at_unix_ms": 1793140374975,
+            "consecutive_failures": 0,
+            "consecutive_successes": 15,
+            "http_failures": 0,
+            "outcome": "success",
+            "status": 200,
+            "successes": 15,
+            "transport_failures": 0
+          },
+          "registration_ordinal": 0,
+          "routable": true,
+          "routed_requests": 543,
+          "routed_requests_by_class": {
+            "generation_http": 0,
+            "realtime_websocket": 0,
+            "speech_batch": 0,
+            "speech_http": 543,
+            "speech_websocket": 0,
+            "transcription_http": 0,
+            "voice_control": 0
+          },
+          "voice_owner": false,
+          "worker_id": "tts-1"
+        },
+        {
+          "active_requests": 0,
+          "capacity": [],
+          "dispatches": [
+            {
+              "class": "generation_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_http",
+              "requests": 546
+            },
+            {
+              "class": "speech_batch",
+              "requests": 0
+            },
+            {
+              "class": "transcription_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_websocket",
+              "requests": 0
+            },
+            {
+              "class": "realtime_websocket",
+              "requests": 0
+            },
+            {
+              "class": "voice_control",
+              "requests": 0
+            }
+          ],
+          "health": "healthy",
+          "probe": {
+            "checked_at_unix_ms": 1793140374975,
+            "consecutive_failures": 0,
+            "consecutive_successes": 15,
+            "http_failures": 0,
+            "outcome": "success",
+            "status": 200,
+            "successes": 15,
+            "transport_failures": 0
+          },
+          "registration_ordinal": 1,
+          "routable": true,
+          "routed_requests": 546,
+          "routed_requests_by_class": {
+            "generation_http": 0,
+            "realtime_websocket": 0,
+            "speech_batch": 0,
+            "speech_http": 546,
+            "speech_websocket": 0,
+            "transcription_http": 0,
+            "voice_control": 0
+          },
+          "voice_owner": false,
+          "worker_id": "tts-2"
+        }
+      ]
+    },
+    "router_workers_before": {
+      "admission": [
+        {
+          "class": "global",
+          "in_flight": 0,
+          "limit": 256
+        },
+        {
+          "class": "generation_http",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "speech_http",
+          "in_flight": 0,
+          "limit": 256
+        },
+        {
+          "class": "speech_batch",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "transcription_http",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "speech_websocket",
+          "in_flight": 0,
+          "limit": 0
+        },
+        {
+          "class": "realtime_websocket",
+          "in_flight": 0,
+          "limit": 0
+        }
+      ],
+      "lifecycle": "serving",
+      "ready": true,
+      "resources": {
+        "buffered_request_bytes": {
+          "in_use": 0,
+          "limit": 268435456
+        },
+        "classification_slots": {
+          "in_use": 0,
+          "limit": 32
+        },
+        "listener_slots": {
+          "in_use": 2,
+          "limit": 1024
+        },
+        "websocket_sessions_registered": 0
+      },
+      "workers": [
+        {
+          "active_requests": 0,
+          "capacity": [],
+          "dispatches": [
+            {
+              "class": "generation_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_batch",
+              "requests": 0
+            },
+            {
+              "class": "transcription_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_websocket",
+              "requests": 0
+            },
+            {
+              "class": "realtime_websocket",
+              "requests": 0
+            },
+            {
+              "class": "voice_control",
+              "requests": 0
+            }
+          ],
+          "health": "healthy",
+          "probe": {
+            "checked_at_unix_ms": 1793140309976,
+            "consecutive_failures": 0,
+            "consecutive_successes": 2,
+            "http_failures": 0,
+            "outcome": "success",
+            "status": 200,
+            "successes": 2,
+            "transport_failures": 0
+          },
+          "registration_ordinal": 0,
+          "routable": true,
+          "voice_owner": false,
+          "worker_id": "tts-1"
+        },
+        {
+          "active_requests": 0,
+          "capacity": [],
+          "dispatches": [
+            {
+              "class": "generation_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_batch",
+              "requests": 0
+            },
+            {
+              "class": "transcription_http",
+              "requests": 0
+            },
+            {
+              "class": "speech_websocket",
+              "requests": 0
+            },
+            {
+              "class": "realtime_websocket",
+              "requests": 0
+            },
+            {
+              "class": "voice_control",
+              "requests": 0
+            }
+          ],
+          "health": "healthy",
+          "probe": {
+            "checked_at_unix_ms": 1793140309976,
+            "consecutive_failures": 0,
+            "consecutive_successes": 2,
+            "http_failures": 0,
+            "outcome": "success",
+            "status": 200,
+            "successes": 2,
+            "transport_failures": 0
+          },
+          "registration_ordinal": 1,
+          "routable": true,
+          "voice_owner": false,
+          "worker_id": "tts-2"
+        }
+      ]
+    },
+    "status": "pass",
+    "visible_mps_clients": [
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 967,
+        "process_name": "nvidia-cuda-mps-server"
+      },
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 998,
+        "process_name": "/data/omni-ci/pr-3136/omni/bin/python"
+      },
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 997,
+        "process_name": "/data/omni-ci/pr-3136/omni/bin/python"
+      },
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 1299,
+        "process_name": "/data/omni-ci/pr-3136/omni/bin/python"
+      },
+      {
+        "gpu_uuid": "GPU-e9f60c1d-8856-043c-42cd-47a942a4d8f1",
+        "pid": 1298,
+        "process_name": "/data/omni-ci/pr-3136/omni/bin/python"
+      }
+    ],
+    "weight_share": false
+  },
+  "schema_version": 1,
+  "selected_model": "higgs",
+  "timing": {
+    "generation_and_cleanup_s": 194.25496082706377,
+    "total_s": 320.08642336004414
+  },
+  "topology": "mps_dp2_independent_weights"
+}
