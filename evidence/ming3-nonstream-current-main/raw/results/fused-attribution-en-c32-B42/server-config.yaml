@@ -1,0 +1,6 @@
+config_cls: Ming3TTSPipelineConfig
+model_path: inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0
+stages:
+  tts_engine:
+    factory:
+      enable_fused_flow_head: false

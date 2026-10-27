@@ -1,0 +1,14 @@
+{
+  "measured_attempts": 141104,
+  "failed": 0,
+  "corrected_wer_delta_pp": [
+    -0.046052080716737706,
+    0.03349242233944578
+  ],
+  "corrected_sim_delta": [
+    -4.936238367325707e-05,
+    0.0007787757854471611
+  ],
+  "fused_off_throughput_delta_pct": -56.571662208896235,
+  "fused_native_output_tokens_extra_pct": 0.8163995555471759
+}

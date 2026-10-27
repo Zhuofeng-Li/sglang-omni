@@ -87,11 +87,16 @@
     "cache-attribution-zh-c32-A42",
     "cache-attribution-zh-c32-B42",
     "cache-attribution-zh-c32-B43",
-    "cache-attribution-zh-c32-A43"
+    "cache-attribution-zh-c32-A43",
+    "fused-attribution-en-c32-A42",
+    "fused-attribution-en-c32-B42",
+    "fused-attribution-en-c32-B43",
+    "fused-attribution-en-c32-A43"
   ],
   "started_utc": "2026-10-27T03:30:07.444361+00:00",
-  "stage": "running",
-  "updated_utc": "2026-10-27T20:53:49.579564+00:00",
+  "stage": "complete",
+  "updated_utc": "2026-10-27T21:21:57.963267+00:00",
   "expected_arms": 92,
-  "active": "fused-attribution-en-c32-A42"
+  "active": "fused-attribution-en-c32-A43",
+  "finished_utc": "2026-10-27T21:21:57.963260+00:00"
 }

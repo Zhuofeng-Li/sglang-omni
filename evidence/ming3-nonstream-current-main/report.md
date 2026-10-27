@@ -1,6 +1,6 @@
 # Ming3 non-streaming current-main qualification
 
-Audited arms: 88/92; updated 2026-10-27T20:55:19.270083+00:00. Only complete ABBA cells are aggregated.
+Audited arms: 92/92; updated 2026-10-27T21:25:28.633890+00:00. Only complete ABBA cells are aggregated.
 
 Actual control `0fe60cf6c102caf982430e1764243c6e5c749d76`; candidate `3f8593f4cae19fe1c71e929a854bdc03b2c185e6`; corrected control `0d6a414e5e15c996900620d263143c89e0dd8acd`. `current-corrected-control.patch` reproduces that control from the actual main commit by retaining only the captured sampling-scale tensor. One H200, full SeedTTS EN/ZH, seeds42/43, A42/B42/B43/A43 per cell. Source receipts, exact commands/YAMLs, per-request results, per-sample SIM and WAV hashes are retained below `raw/`.
 
@@ -10,7 +10,7 @@ Subsequent main `71bce692` wraps ASR WAV preparation with the existing audio loa
 
 Subsequent main `e8050949` sets the FlashInfer architecture before stage processes launch. For the assigned H200/H100 (SM90), the pinned FlashInfer automatic target and explicit `9.0a` both resolve to `(9, "0a")`; SGLang already sets `9.0a`. This architecture-selection audit executes the installed class AST with mocked device capability, without importing Torch or launching CUDA work. It does not claim a new performance measurement on that main revision; see `main-e805-arch-equivalence.json` and its probe.
 
-Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect config discovery, other-model/session paths, model registration, NPU router classification and the standalone GPU diagnostics CLI, with no identified Ming tensor-math edit. The benchmark server uses an explicit config file, while preparation still resolves defaults from the model path; equivalence of later-main preparation is not claimed. The registry eagerly imports models, so possible additional import-time startup overhead is not measured in these frozen-source cost rows. Source IDs and measurement dates are retained; final-main integration remains required. See `main-after-source-audit.json`.
+Later main changes through `6087f786b3a9dd2d53dee5f321737cecda88dd12` affect config discovery, other-model/session paths, model registration, NPU router classification and the standalone GPU diagnostics CLI, with no identified Ming tensor-math edit. The benchmark server uses an explicit config file, while preparation still resolves defaults from the model path; equivalence of later-main preparation is not claimed. The registry eagerly imports models, so possible additional import-time startup overhead is not measured in these frozen-source cost rows. Source IDs and measurement dates are retained; final-main integration remains required. See `main-after-source-audit.json`.
 
 ## upstream
 
@@ -57,9 +57,9 @@ Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect con
 | Concurrency | EN/ZH geometric throughput change |
 | --- | --- |
 | 1 | +13.21% |
-| 16 | Pending |
+| 16 | N/A (not planned) |
 | 32 | -21.52% |
-| 64 | Pending |
+| 64 | N/A (not planned) |
 
 | Split | Concurrency | req/s A → B | Response mean / p95 range (ms), A → B | First packet | Mean audio seconds, A → B | WER (%), A → B | SIM, A → B | Failed / attempted, A → B |
 | --- | ---: | --- | --- | --- | --- | --- | --- | --- |
@@ -72,10 +72,10 @@ Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect con
 
 | Concurrency | EN/ZH geometric throughput change |
 | --- | --- |
-| 1 | Pending |
-| 16 | Pending |
+| 1 | N/A (not planned) |
+| 16 | N/A (not planned) |
 | 32 | -21.67% |
-| 64 | Pending |
+| 64 | N/A (not planned) |
 
 | Split | Concurrency | req/s A → B | Response mean / p95 range (ms), A → B | First packet | Mean audio seconds, A → B | WER (%), A → B | SIM, A → B | Failed / attempted, A → B |
 | --- | ---: | --- | --- | --- | --- | --- | --- | --- |
@@ -86,14 +86,14 @@ Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect con
 
 | Concurrency | EN/ZH geometric throughput change |
 | --- | --- |
-| 1 | Pending |
-| 16 | Pending |
-| 32 | Pending |
-| 64 | Pending |
+| 1 | N/A (not planned) |
+| 16 | N/A (not planned) |
+| 32 | N/A (not planned) |
+| 64 | N/A (not planned) |
 
 | Split | Concurrency | req/s A → B | Response mean / p95 range (ms), A → B | First packet | Mean audio seconds, A → B | WER (%), A → B | SIM, A → B | Failed / attempted, A → B |
 | --- | ---: | --- | --- | --- | --- | --- | --- | --- |
-| EN | 32 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
+| EN | 32 | 58.699 → 25.492 | 494.5 / 691.0–706.0 → 1225.0 / 1711.0–1740.0 | N/A | 3.936 → 3.904 | 1.0383 → 1.0048 | 0.77692 → 0.77658 | 0/2176 → 0/2176 |
 
 ## Per-seed adverse quality changes
 
@@ -132,6 +132,8 @@ Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect con
 | mps-attribution/zh-c32 | 43 | +0.01420 | +0.0004469 |
 | cache-attribution/en-c32 | 42 | +0.05024 | +0.0007502 |
 | cache-attribution/zh-c32 | 42 | +0.00237 | +0.0000772 |
+| fused-attribution/en-c32 | 42 | +0.01675 | +0.0003662 |
+| fused-attribution/en-c32 | 43 | -0.08373 | -0.0010381 |
 
 ## Costs and output lengths
 
@@ -159,5 +161,10 @@ Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect con
 | mps-attribution/zh-c32 | 123.14 → 134.14 | 109.81 → 109.72 | [430] → [430] | 262812 → 262660 |
 | cache-attribution/en-c32 | 122.13 → 125.66 | 109.83 → 109.74 | [430] → [430] | 106157 → 106294 |
 | cache-attribution/zh-c32 | 120.63 → 143.65 | 109.77 → 109.75 | [430] → [430] | 262617 → 262820 |
+| fused-attribution/en-c32 | 123.14 → 123.64 | 109.84 → 109.99 | [430] → [430] | 107065 → 106198 |
 
 A is clean/corrected main for the first two comparisons, and native candidate for ablations. B is the candidate for the first two comparisons, and MPS off/cache off/fused flow off for the respective ablation. A partial matrix does not establish merge readiness.
+
+## Final measurement assessment
+
+All 92 arms (23 complete ABBA cells) are audited: 141,104 measured requests, zero failures. Corrected-control mean WER deltas range from -0.0461 to +0.0335 percentage points, and SIM deltas range from -0.000049 to +0.000779. No quality non-inferiority threshold was predeclared. Fused-flow native output-token totals are 0.82% above the disabled arm; the duration and quality deltas are retained. Final-main integration, performance merit review, and required approval remain separate conditions.

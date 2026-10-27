@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T20:55:19.270083+00:00",
-  "completed_arms": 88,
+  "updated_utc": "2026-10-27T21:25:28.633890+00:00",
+  "completed_arms": 92,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -974,13 +974,48 @@
       }
     },
     "fused-attribution/en-c32": {
-      "status": "pending",
-      "missing": [
-        "fused-attribution-en-c32-A42",
-        "fused-attribution-en-c32-B42",
-        "fused-attribution-en-c32-B43",
-        "fused-attribution-en-c32-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 58.699,
+        "latency_mean_s": 0.4945,
+        "audio_duration_mean_s": 3.936,
+        "audio_throughput_s_per_s": 231.017,
+        "latency_p95_range_s": [
+          0.691,
+          0.706
+        ],
+        "wer": 0.010382650925228167,
+        "sim": 0.776917058892329,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 107065,
+        "startup_s": 123.14400005340576,
+        "peak_tts_device_gib": 109.8369140625,
+        "captures": [
+          430
+        ]
+      },
+      "B": {
+        "throughput_qps": 25.491999999999997,
+        "latency_mean_s": 1.225,
+        "audio_duration_mean_s": 3.9044999999999996,
+        "audio_throughput_s_per_s": 99.52199999999999,
+        "latency_p95_range_s": [
+          1.711,
+          1.74
+        ],
+        "wer": 0.010047726701833709,
+        "sim": 0.7765811269226319,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 106198,
+        "startup_s": 123.63650000095367,
+        "peak_tts_device_gib": 109.9873046875,
+        "captures": [
+          430
+        ]
+      }
     }
   },
   "geometric_throughput_change_percent": {
@@ -1213,6 +1248,18 @@
       "seed": 42,
       "wer_delta": 2.3659679174749954e-05,
       "sim_delta": 7.717025161968483e-05
+    },
+    {
+      "cell": "fused-attribution/en-c32",
+      "seed": 42,
+      "wer_delta": 0.00016746211169722976,
+      "sim_delta": 0.00036619937814330594
+    },
+    {
+      "cell": "fused-attribution/en-c32",
+      "seed": 43,
+      "wer_delta": -0.0008373105584861436,
+      "sim_delta": -0.0010380633175373077
     }
   ]
 }
