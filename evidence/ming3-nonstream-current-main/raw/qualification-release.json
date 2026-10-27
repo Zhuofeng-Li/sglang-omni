@@ -2,7 +2,7 @@
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate_commit": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
   "assignment": "01M5XFE1DE8PVBQWTSDP2JDYRY",
-  "lease_expires_epoch": 1793136371,
+  "lease_expires_epoch": 1793143571,
   "gpu_uuid": "GPU-4ac09667-48f7-6a03-b930-8338f78d441e",
   "archives": {},
   "released_utc": "2026-10-27T03:30:06.739587+00:00",
@@ -67,6 +67,25 @@
       "old": 1793107571,
       "new": 1793136371,
       "operator_receipt": "h200-extension.json"
+    },
+    {
+      "utc": "2026-10-27T19:55:12.389279+00:00",
+      "assignment": "01M5XFE1DE8PVBQWTSDP2JDYRY",
+      "before_expires": 1793136371,
+      "after_expires": 1793143571,
+      "result": {
+        "assignment_id": "01M5XFE1DE8PVBQWTSDP2JDYRY",
+        "original_expires_at": "2026-10-27T01:26:11.630850+00:00",
+        "new_expires_at": "2026-10-27T23:26:11+00:00",
+        "extensions_used": 2,
+        "extensions_remaining": 18,
+        "outbid": false,
+        "prebookings_cancelled": 0,
+        "credits_deducted": 2,
+        "balance_available": 99294,
+        "idempotent_replay": false
+      },
+      "balance_after": 99294
     }
   ]
 }

@@ -79,11 +79,15 @@
     "mps-attribution-zh-c32-A42",
     "mps-attribution-zh-c32-B42",
     "mps-attribution-zh-c32-B43",
-    "mps-attribution-zh-c32-A43"
+    "mps-attribution-zh-c32-A43",
+    "cache-attribution-en-c32-A42",
+    "cache-attribution-en-c32-B42",
+    "cache-attribution-en-c32-B43",
+    "cache-attribution-en-c32-A43"
   ],
   "started_utc": "2026-10-27T03:30:07.444361+00:00",
   "stage": "running",
-  "updated_utc": "2026-10-27T19:48:30.770248+00:00",
+  "updated_utc": "2026-10-27T20:15:18.196281+00:00",
   "expected_arms": 92,
-  "active": "cache-attribution-en-c32-A42"
+  "active": "cache-attribution-zh-c32-A42"
 }

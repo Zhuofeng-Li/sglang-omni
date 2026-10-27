@@ -65,7 +65,7 @@
     },
     {
       "commit": "e9c058462d104451aa5144b12b001b0709a94a55",
-      "scope": "Automatic model-path config discovery explicitly disables remote code. Measured services use explicit --config YAML and ConfigManager.from_file, bypassing the modified discovery function. No serving math/metrics change; final integration should cover model-path discovery too."
+      "scope": "Automatic model-path discovery explicitly disables remote code. The benchmark server uses --config/from_file, while run_arm preparation still calls ConfigManager.from_model_path to derive defaults. No inference math change; equivalence of later-main discovery/preparation is not claimed. Final integration must check model-path discovery."
     }
   ],
   "limitation": "No subsequent-main timings are claimed. Frozen-source cost rows retain the measured version; final-main integration and affected startup verification remain required."

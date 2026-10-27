@@ -1,6 +1,6 @@
 # Ming3 non-streaming current-main qualification
 
-Audited arms: 80/92; updated 2026-10-27T19:53:09.888784+00:00. Only complete ABBA cells are aggregated.
+Audited arms: 84/92; updated 2026-10-27T20:18:00.019346+00:00. Only complete ABBA cells are aggregated.
 
 Actual control `0fe60cf6c102caf982430e1764243c6e5c749d76`; candidate `3f8593f4cae19fe1c71e929a854bdc03b2c185e6`; corrected control `0d6a414e5e15c996900620d263143c89e0dd8acd`. `current-corrected-control.patch` reproduces that control from the actual main commit by retaining only the captured sampling-scale tensor. One H200, full SeedTTS EN/ZH, seeds42/43, A42/B42/B43/A43 per cell. Source receipts, exact commands/YAMLs, per-request results, per-sample SIM and WAV hashes are retained below `raw/`.
 
@@ -10,7 +10,7 @@ Subsequent main `71bce692` wraps ASR WAV preparation with the existing audio loa
 
 Subsequent main `e8050949` sets the FlashInfer architecture before stage processes launch. For the assigned H200/H100 (SM90), the pinned FlashInfer automatic target and explicit `9.0a` both resolve to `(9, "0a")`; SGLang already sets `9.0a`. This architecture-selection audit executes the installed class AST with mocked device capability, without importing Torch or launching CUDA work. It does not claim a new performance measurement on that main revision; see `main-e805-arch-equivalence.json` and its probe.
 
-Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect other-model/session paths, model registration, NPU router classification and the standalone GPU diagnostics CLI, with no identified Ming tensor-math edit. The registry eagerly imports models, so possible additional import-time startup overhead is not measured in these frozen-source cost rows. Source IDs and measurement dates are retained; final-main integration remains required. See `main-after-source-audit.json`.
+Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect config discovery, other-model/session paths, model registration, NPU router classification and the standalone GPU diagnostics CLI, with no identified Ming tensor-math edit. The benchmark server uses an explicit config file, while preparation still resolves defaults from the model path; equivalence of later-main preparation is not claimed. The registry eagerly imports models, so possible additional import-time startup overhead is not measured in these frozen-source cost rows. Source IDs and measurement dates are retained; final-main integration remains required. See `main-after-source-audit.json`.
 
 ## upstream
 
@@ -79,7 +79,7 @@ Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect oth
 
 | Split | Concurrency | req/s A → B | Response mean / p95 range (ms), A → B | First packet | Mean audio seconds, A → B | WER (%), A → B | SIM, A → B | Failed / attempted, A → B |
 | --- | ---: | --- | --- | --- | --- | --- | --- | --- |
-| EN | 32 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
+| EN | 32 | 62.522 → 46.029 | 497.0 / 708.0–709.0 → 682.5 / 861.0–871.0 | N/A | 3.903 → 3.907 | 0.9713 → 0.9838 | 0.77713 → 0.77766 | 0/2176 → 0/2176 |
 | ZH | 32 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
 
 ## fused-attribution
@@ -130,6 +130,7 @@ Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect oth
 | mps-attribution/zh-c1 | 42 | +0.00473 | +0.0000000 |
 | mps-attribution/zh-c32 | 42 | +0.00237 | +0.0001538 |
 | mps-attribution/zh-c32 | 43 | +0.01420 | +0.0004469 |
+| cache-attribution/en-c32 | 42 | +0.05024 | +0.0007502 |
 
 ## Costs and output lengths
 
@@ -155,5 +156,6 @@ Later main changes through `e9c058462d104451aa5144b12b001b0709a94a55` affect oth
 | mps-attribution/en-c32 | 124.14 → 120.62 | 108.98 → 109.77 | [430] → [430] | 106179 → 106124 |
 | mps-attribution/zh-c1 | 121.12 → 125.12 | 108.34 → 109.14 | [430] → [430] | 262704 → 262704 |
 | mps-attribution/zh-c32 | 123.14 → 134.14 | 109.81 → 109.72 | [430] → [430] | 262812 → 262660 |
+| cache-attribution/en-c32 | 122.13 → 125.66 | 109.83 → 109.74 | [430] → [430] | 106157 → 106294 |
 
 A is clean/corrected main for the first two comparisons, and native candidate for ablations. B is the candidate for the first two comparisons, and MPS off/cache off/fused flow off for the respective ablation. A partial matrix does not establish merge readiness.
