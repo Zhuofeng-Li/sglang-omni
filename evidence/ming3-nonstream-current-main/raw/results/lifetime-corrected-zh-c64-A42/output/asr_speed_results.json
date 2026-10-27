@@ -1,0 +1,17 @@
+{
+  "total_samples": 2020,
+  "evaluated": 2020,
+  "skipped": 0,
+  "asr_latency_mean_s": 0.18259556091524254,
+  "asr_latency_median_s": 0.17354278860148042,
+  "asr_latency_p95_s": 0.25449694014387203,
+  "asr_latency_p99_s": 0.5372263433784197,
+  "asr_total_time_s": 11.59949155896902,
+  "asr_latency_sum_s": 368.84303304878995,
+  "asr_throughput_samples_per_s": 174.1455640301824,
+  "asr_rtf_mean": 0.035535272139822056,
+  "asr_rtf_median": 0.03350936455661411,
+  "asr_audio_processed_s": 10544.24,
+  "asr_model": "Qwen/Qwen3-ASR-1.7B",
+  "asr_concurrency": 32
+}

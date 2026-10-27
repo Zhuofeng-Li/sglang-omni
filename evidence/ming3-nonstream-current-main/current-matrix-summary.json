@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T16:08:30.279719+00:00",
-  "completed_arms": 60,
+  "updated_utc": "2026-10-27T16:48:38.886625+00:00",
+  "completed_arms": 64,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -666,13 +666,48 @@
       }
     },
     "lifetime-corrected/zh-c64": {
-      "status": "pending",
-      "missing": [
-        "lifetime-corrected-zh-c64-A42",
-        "lifetime-corrected-zh-c64-B42",
-        "lifetime-corrected-zh-c64-B43",
-        "lifetime-corrected-zh-c64-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 13.751999999999999,
+        "latency_mean_s": 4.6205,
+        "audio_duration_mean_s": 5.2010000000000005,
+        "audio_throughput_s_per_s": 71.521,
+        "latency_p95_range_s": [
+          6.251,
+          6.386
+        ],
+        "wer": 0.006494581933468982,
+        "sim": 0.7800253361168474,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 262647,
+        "startup_s": 81.07750010490417,
+        "peak_tts_device_gib": 108.3798828125,
+        "captures": [
+          19
+        ]
+      },
+      "B": {
+        "throughput_qps": 55.7705,
+        "latency_mean_s": 1.137,
+        "audio_duration_mean_s": 5.201499999999999,
+        "audio_throughput_s_per_s": 290.09000000000003,
+        "latency_p95_range_s": [
+          1.478,
+          1.488
+        ],
+        "wer": 0.0065892206501679835,
+        "sim": 0.7801293011275259,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 262677,
+        "startup_s": 125.63149988651276,
+        "peak_tts_device_gib": 109.7822265625,
+        "captures": [
+          430
+        ]
+      }
     },
     "mps-attribution/en-c1": {
       "status": "pending",
@@ -755,7 +790,7 @@
       "1": 214.07692089284498,
       "16": 348.22795001345384,
       "32": 418.142211358857,
-      "64": null
+      "64": 321.256532711703
     },
     "mps-attribution": {
       "1": null,
@@ -914,6 +949,18 @@
       "seed": 43,
       "wer_delta": 4.7319358349500774e-05,
       "sim_delta": 0.0001355607910912271
+    },
+    {
+      "cell": "lifetime-corrected/zh-c64",
+      "seed": 42,
+      "wer_delta": 4.7319358349500774e-05,
+      "sim_delta": 8.606897427299032e-05
+    },
+    {
+      "cell": "lifetime-corrected/zh-c64",
+      "seed": 43,
+      "wer_delta": 0.00014195807504850232,
+      "sim_delta": 0.0001218610470837822
     }
   ]
 }
