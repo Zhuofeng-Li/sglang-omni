@@ -2,10 +2,12 @@
   "measured_commit": "251f02b467fe06269cb2d3d8c1063565d7c3de82",
   "measured_tree": "3e68505e3a2c26ae6e88e8360007bc0d3896d5d7",
   "runtime_equivalent_dense_revision": "8ca2534388574830fbfb3b692feee6851c57e0f2",
-  "dense_current_head": "cf50d5a405cced0fb47709ce3abdacaf8cc5b049",
-  "tiny_current_head": "f24ba6fabe01e76d1d711b0dfb1bb2689e23fdf8",
   "head_delta": "cookbook only relative to prior published runtime revisions",
   "blocks_complete": 32,
   "blocks_expected": 32,
-  "quality_stage": "complete"
+  "quality_stage": "complete",
+  "record_scope": "Original latency measurements before the current-main follow-up",
+  "current_followup_report": "current-main/report.md",
+  "dense_head_at_original_publication": "cf50d5a405cced0fb47709ce3abdacaf8cc5b049",
+  "tiny_head_at_original_publication": "f24ba6fabe01e76d1d711b0dfb1bb2689e23fdf8"
 }
