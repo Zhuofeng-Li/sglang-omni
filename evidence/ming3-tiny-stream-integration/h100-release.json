@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-27T07:14:27.709683+00:00",
+  "assignment": "01M5W7M9EJYACXJ5D8BNMPC46X",
+  "machine": "host-85-234-79-221",
+  "result": {
+    "assignment_id": "01M5W7M9EJYACXJ5D8BNMPC46X",
+    "machine_id": "host-85-234-79-221",
+    "ok": true
+  },
+  "released_verified": true,
+  "reason": "All historical92 and Tiny functional integration complete, offnode results verified; no other consumer"
+}

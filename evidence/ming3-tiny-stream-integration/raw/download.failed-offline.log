@@ -1,0 +1,3 @@
+[90mHint: The `hf-cli` skill is not installed. Run `hf skills add -g` to teach your AI agents how to use the `hf` CLI.[0m
+Error: Cannot reach https://huggingface.co/api/models/inclusionAI/Ming-3.0-tts-tiny/tree/7bd9446a8d47e462362261a0150258da6d458318?recursive=true&expand=false: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.
+Hint: set HF_DEBUG=1 as environment variable for full traceback.

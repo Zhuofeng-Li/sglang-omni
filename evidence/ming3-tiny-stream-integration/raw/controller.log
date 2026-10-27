@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/data/zhuofeng-li/home/ming3-tiny-stream-integration-20261027/run.py", line 58, in <module>
+    run('download', ['podman', 'run', '--rm', '--network=host',
+  File "/data/zhuofeng-li/home/ming3-tiny-stream-integration-20261027/run.py", line 35, in run
+    raise RuntimeError(f'{name}: exit {result.returncode}')
+RuntimeError: download: exit 1

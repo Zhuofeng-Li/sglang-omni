@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-27T07:03:39.417698+00:00",
+  "prior_matrix": "complete92/92",
+  "gpu": "GPU-7cea2752-34c7-f9c2-cd45-79163c61c398, NVIDIA H100 80GB HBM3, 0 MiB, 81559 MiB",
+  "processes": "",
+  "containers": "",
+  "disk": "usage(total=22950952108032, used=341934571520, free=21456814653440)",
+  "image_id": "afb9f5ee0a17c70fe47598fa4802c6f1926bdd39c23fe1d35c8b14f701da0c23",
+  "root": "/data/zhuofeng-li/home/ming3-tiny-stream-integration-20261027",
+  "assignment": "01M5W7M9EJYACXJ5D8BNMPC46X",
+  "source": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9"
+}

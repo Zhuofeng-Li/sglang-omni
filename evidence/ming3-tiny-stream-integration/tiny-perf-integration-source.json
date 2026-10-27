@@ -1,0 +1,13 @@
+{
+  "source": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9",
+  "tree": "d77180c51f3ad2d638dddc72e6c16841a1bcc1c1",
+  "archive": "/scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/tiny-perf-integration-8d0f5d4.tar.gz",
+  "sha256": "fa9fc330e81a16b57bfdd4b8cac49e0dd964e29f65fba261e3b19002c46e34f9",
+  "bytes": 48548063,
+  "state": "Prepared locally only; no GPU job launched, no branch pushed",
+  "cpu": "398 passed,36 skipped; full precommit passed",
+  "gpu_pending": [
+    "parametrized Tiny/Dense full-graph versus streaming-cache routing",
+    "Tiny real-weight stream/full HTTP smoke and output metadata"
+  ]
+}
