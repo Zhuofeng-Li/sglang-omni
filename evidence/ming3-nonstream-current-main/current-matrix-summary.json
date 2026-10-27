@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T17:33:21.153577+00:00",
-  "completed_arms": 68,
+  "updated_utc": "2026-10-27T18:01:20.755183+00:00",
+  "completed_arms": 72,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -754,13 +754,48 @@
       }
     },
     "mps-attribution/en-c32": {
-      "status": "pending",
-      "missing": [
-        "mps-attribution-en-c32-A42",
-        "mps-attribution-en-c32-B42",
-        "mps-attribution-en-c32-B43",
-        "mps-attribution-en-c32-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 63.397000000000006,
+        "latency_mean_s": 0.494,
+        "audio_duration_mean_s": 3.9035,
+        "audio_throughput_s_per_s": 247.48649999999998,
+        "latency_p95_range_s": [
+          0.685,
+          0.703
+        ],
+        "wer": 0.00975466800636356,
+        "sim": 0.7767894350622288,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 106179,
+        "startup_s": 124.13599991798401,
+        "peak_tts_device_gib": 108.9833984375,
+        "captures": [
+          430
+        ]
+      },
+      "B": {
+        "throughput_qps": 48.903499999999994,
+        "latency_mean_s": 0.637,
+        "audio_duration_mean_s": 3.9015000000000004,
+        "audio_throughput_s_per_s": 190.7975,
+        "latency_p95_range_s": [
+          0.897,
+          0.902
+        ],
+        "wer": 0.009963995645985095,
+        "sim": 0.7765146449673921,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 106124,
+        "startup_s": 120.625,
+        "peak_tts_device_gib": 109.7744140625,
+        "captures": [
+          430
+        ]
+      }
     },
     "mps-attribution/zh-c1": {
       "status": "pending",
@@ -996,6 +1031,18 @@
       "seed": 43,
       "wer_delta": 0.00014195807504850232,
       "sim_delta": 0.0001218610470837822
+    },
+    {
+      "cell": "mps-attribution/en-c32",
+      "seed": 42,
+      "wer_delta": 8.373105584861401e-05,
+      "sim_delta": -0.0003226511728237069
+    },
+    {
+      "cell": "mps-attribution/en-c32",
+      "seed": 43,
+      "wer_delta": 0.00033492422339445604,
+      "sim_delta": -0.00022692901684961964
     }
   ]
 }

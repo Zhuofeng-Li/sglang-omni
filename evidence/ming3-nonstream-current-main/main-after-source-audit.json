@@ -1,7 +1,7 @@
 {
   "actual_measurement_base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "actual_candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "later_main_audited_through": "6e1a217974743f7f858537169d835c42f9f0d5b9",
+  "later_main_audited_through": "00052c28747e2b2edfe571e1d3b9da4c6209da94",
   "findings": [
     {
       "commit": "e8050949b382a8ae87492840574c17d722aba8f7",
@@ -54,6 +54,14 @@
     {
       "commit": "6e1a217974743f7f858537169d835c42f9f0d5b9",
       "scope": "Multiple-choice benchmark scoring changes; TTS finish_reason_from_server moved unchanged into benchmark data module. No TTS metrics, request protocol, or Ming serving math change. Other-model CI reference constants updated."
+    },
+    {
+      "commit": "39113da3ec2ed39d4bfa370e35b06ea3edd96757",
+      "scope": "MOSS-TD #3071 merged independently upstream. Shared scheduler parameterizes the existing positive admission-wait constant, preserving it by default; only MOSS opts into zero. Ming call sites do not set this field, so new guards remain true and wait time is unchanged. Model-specific kernels/feature changes do not enter Ming paths; import-startup caveat retained."
+    },
+    {
+      "commit": "00052c28747e2b2edfe571e1d3b9da4c6209da94",
+      "scope": "README news and serving overview only; no code changes."
     }
   ],
   "limitation": "No subsequent-main timings are claimed. Frozen-source cost rows retain the measured version; final-main integration and affected startup verification remain required."

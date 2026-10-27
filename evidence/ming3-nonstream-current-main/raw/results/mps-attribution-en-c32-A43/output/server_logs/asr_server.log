@@ -1,0 +1,1455 @@
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section', 'interleaved'}
+2026-10-27 17:53:23,389 [INFO] sglang.utils: thinker_config is None. Initializing Qwen3-ASR thinker with default values
+2026-10-27 17:53:23,680 [INFO] sglang_omni.pipeline.mp_runner: CPU thread fallback plan: budget=224 processes=1 fallback_threads_per_process=224 fallback_overcommitted=false allocations={'asr': {'fallback_threads': 112, 'cpus': 112, 'stages': ['asr']}}
+2026-10-27 17:53:23,680 [INFO] sglang_omni.pipeline.mp_runner: Coordinator stream backlog cap: max_total_backlog_bytes=1073741824
+2026-10-27 17:53:23,781 [INFO] sglang_omni.pipeline.control_plane: Coordinator control plane started
+2026-10-27 17:53:23,781 [INFO] sglang_omni.pipeline.coordinator: Coordinator started
+2026-10-27 17:53:23,783 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=asr OMP_NUM_THREADS=112 source=cpu_plan_fallback fallback_threads=112
+2026-10-27 17:53:23,784 [INFO] sglang_omni.pipeline.stage_workers: StageGroup asr: spawned 1 process(es) (pids=[3260])
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-27 17:53:34,112 [INFO] stage_workers.asr: Warmed CUDA IPC on cuda:0 before constructing stages
+2026-10-27 17:53:34,112 [INFO] stage_workers.asr: Set current device to 0 for stage asr
+2026-10-27 17:53:34,112 [INFO] stage_workers.asr: Building scheduler for asr (tp_rank=0/1) ...
+2026-10-27 17:53:34,431 [INFO] stage_workers.asr: Acquired GPU startup lock for stage asr: /results/cache/tmp/sglang_omni_gpu_0_startup.lock
+2026-10-27 17:53:34,498 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved', 'interleaved'}
+2026-10-27 17:53:39,445 [INFO] sglang.utils: thinker_config is None. Initializing Qwen3-ASR thinker with default values
+2026-10-27 17:53:39,668 [WARNING] sglang.srt.arg_groups.cuda_graph_hook: cuda_graph_config[prefill].backend='full' is experimental. Use breakable for production workloads.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved', 'interleaved'}
+2026-10-27 17:53:39,687 [INFO] sglang.utils: thinker_config is None. Initializing Qwen3-ASR thinker with default values
+[transformers] The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-10-27 17:53:39,694 [INFO] sglang.srt.arg_groups.overrides: Attention backend not specified. Use fa3 backend by default.
+2026-10-27 17:53:39,699 [INFO] sglang_omni.models.qwen3_asr.mrope_fast_path: [qwen3-asr] fast mrope decode path applied
+2026-10-27 17:53:39,699 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR runtime profile: dtype=auto attention_backend=None mm_attention_backend=None cuda_graph=True cuda_graph_bs=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64] torch_compile=True max_running_requests=64 kv_sizing=mem_fraction_static=None
+2026-10-27 17:53:39,713 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR memory checkpoint=pre_model_load gpu=0 process_gpu_memory=0.00GiB
+2026-10-27 17:53:39,866 [INFO] sglang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=0, sm=90, architecture=hopper, attention_backend=fa3, decode_attention_backend=fa3, prefill_attention_backend=fa3, sampling_backend=pytorch
+2026-10-27 17:53:39,868 [INFO] sglang_omni.platforms.cuda: Configured SGLang backend policy: arch=Qwen3ASRForConditionalGeneration effective_quantization=None server_quantization=None moe_runner_backend=auto fp8_gemm_backend=auto
+2026-10-27 17:53:39,872 [INFO] sglang.srt.distributed.bootstrap: Init parallel begin.
+2026-10-27 17:53:39,950 [INFO] sglang.srt.distributed.bootstrap: Init parallel ends. elapsed=0.08 s
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1643: FutureWarning: `torch.jit.interface` is deprecated. Please use `torch.compile` instead.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+2026-10-27 17:53:48,015 [INFO] sglang.srt.distributed.bootstrap: Memory baseline taken. mem usage=0.00 GB
+2026-10-27 17:53:48,032 [INFO] sglang.srt.model_executor.model_runner: Load weight begin. avail mem=139.13 GB
+2026-10-27 17:53:48,083 [INFO] sglang.srt.utils.common: Multimodal attention backend not set. Use fa3.
+2026-10-27 17:53:48,083 [INFO] sglang.srt.utils.common: Using fa3 as multimodal attention backend.
+2026-10-27 17:53:48,196 [INFO] sglang.srt.model_loader.weight_utils: Found local HF snapshot for Qwen/Qwen3-ASR-1.7B at /opt/rsi-assets/huggingface/hub/models--Qwen--Qwen3-ASR-1.7B/snapshots/7278e1e70fe206f11671096ffdd38061171dd6e5; skipping download.
+Multi-thread loading shards:   0% Completed | 0/2 [00:00<?, ?it/s]Multi-thread loading shards:  50% Completed | 1/2 [00:00<00:00,  1.44it/s]Multi-thread loading shards: 100% Completed | 2/2 [00:00<00:00,  2.44it/s]Multi-thread loading shards: 100% Completed | 2/2 [00:00<00:00,  2.21it/s]
+2026-10-27 17:53:49,145 [INFO] sglang.srt.model_executor.model_runner: Load weight end. elapsed=1.11 s, type=Qwen3ASRForConditionalGeneration, avail mem=135.22 GB, mem usage=3.91 GB.
+2026-10-27 17:53:49,714 [INFO] sglang.srt.mem_cache.kv_cache_configurator: Reserving 0.10 GB of the KV budget for post-sizing multimodal allocations (feature-transport pools + embedding cache).
+2026-10-27 17:53:50,066 [INFO] sglang.srt.mem_cache.memory_pool: KV Cache is allocated. dtype: torch.bfloat16, #tokens: 1172542, K size: 62.62 GB, V size: 62.62 GB
+2026-10-27 17:53:50,066 [INFO] sglang.srt.mem_cache.kv_cache_configurator: Memory pool end. avail mem=9.86 GB
+2026-10-27 17:53:50,162 [INFO] sglang_omni.models.qwen3_asr.metadata_glue: [qwen3-asr] metadata glue graph captures in thread-local mode
+2026-10-27 17:53:50,736 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR memory checkpoint=post_static_allocation gpu=0 process_gpu_memory=0.00GiB
+2026-10-27 17:53:50,759 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target prefill CUDA graph begin. backend=full, num_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048, 2304, 2560, 2816, 3072, 3328, 3584, 3840, 4096], avail mem=9.69 GB
+  0%|          | 0/50 [00:00<?, ?it/s]Capturing prefill shape (num_tokens=4096 avail_mem=9.68 GB):   0%|          | 0/50 [00:00<?, ?it/s]Capturing prefill shape (num_tokens=4096 avail_mem=9.68 GB):   2%|▏         | 1/50 [00:06<05:35,  6.84s/it]Capturing prefill shape (num_tokens=3840 avail_mem=9.34 GB):   2%|▏         | 1/50 [00:06<05:35,  6.84s/it]Capturing prefill shape (num_tokens=3840 avail_mem=9.34 GB):   4%|▍         | 2/50 [00:06<02:18,  2.89s/it]Capturing prefill shape (num_tokens=3584 avail_mem=9.31 GB):   4%|▍         | 2/50 [00:06<02:18,  2.89s/it]Capturing prefill shape (num_tokens=3328 avail_mem=9.32 GB):   4%|▍         | 2/50 [00:07<02:18,  2.89s/it]Capturing prefill shape (num_tokens=3328 avail_mem=9.32 GB):   8%|▊         | 4/50 [00:07<00:51,  1.12s/it]Capturing prefill shape (num_tokens=3072 avail_mem=9.31 GB):   8%|▊         | 4/50 [00:07<00:51,  1.12s/it]Capturing prefill shape (num_tokens=3072 avail_mem=9.31 GB):  10%|█         | 5/50 [00:07<00:36,  1.23it/s]Capturing prefill shape (num_tokens=2816 avail_mem=9.32 GB):  10%|█         | 5/50 [00:07<00:36,  1.23it/s]Capturing prefill shape (num_tokens=2816 avail_mem=9.32 GB):  12%|█▏        | 6/50 [00:07<00:29,  1.49it/s]Capturing prefill shape (num_tokens=2560 avail_mem=9.31 GB):  12%|█▏        | 6/50 [00:07<00:29,  1.49it/s]Capturing prefill shape (num_tokens=2304 avail_mem=9.32 GB):  12%|█▏        | 6/50 [00:07<00:29,  1.49it/s]Capturing prefill shape (num_tokens=2304 avail_mem=9.32 GB):  16%|█▌        | 8/50 [00:07<00:16,  2.59it/s]Capturing prefill shape (num_tokens=2048 avail_mem=9.31 GB):  16%|█▌        | 8/50 [00:07<00:16,  2.59it/s]Capturing prefill shape (num_tokens=1792 avail_mem=9.31 GB):  16%|█▌        | 8/50 [00:07<00:16,  2.59it/s]Capturing prefill shape (num_tokens=1792 avail_mem=9.31 GB):  20%|██        | 10/50 [00:07<00:10,  3.95it/s]Capturing prefill shape (num_tokens=1536 avail_mem=9.31 GB):  20%|██        | 10/50 [00:07<00:10,  3.95it/s]Capturing prefill shape (num_tokens=1280 avail_mem=9.31 GB):  20%|██        | 10/50 [00:07<00:10,  3.95it/s]Capturing prefill shape (num_tokens=1280 avail_mem=9.31 GB):  24%|██▍       | 12/50 [00:07<00:06,  5.47it/s]Capturing prefill shape (num_tokens=1024 avail_mem=9.31 GB):  24%|██▍       | 12/50 [00:07<00:06,  5.47it/s]Capturing prefill shape (num_tokens=960 avail_mem=9.32 GB):  24%|██▍       | 12/50 [00:07<00:06,  5.47it/s] Capturing prefill shape (num_tokens=960 avail_mem=9.32 GB):  28%|██▊       | 14/50 [00:08<00:05,  7.17it/s]Capturing prefill shape (num_tokens=896 avail_mem=9.32 GB):  28%|██▊       | 14/50 [00:08<00:05,  7.17it/s]Capturing prefill shape (num_tokens=832 avail_mem=9.32 GB):  28%|██▊       | 14/50 [00:08<00:05,  7.17it/s]Capturing prefill shape (num_tokens=832 avail_mem=9.32 GB):  32%|███▏      | 16/50 [00:09<00:08,  3.78it/s]Capturing prefill shape (num_tokens=768 avail_mem=9.32 GB):  32%|███▏      | 16/50 [00:09<00:08,  3.78it/s]Capturing prefill shape (num_tokens=704 avail_mem=9.32 GB):  32%|███▏      | 16/50 [00:10<00:08,  3.78it/s]Capturing prefill shape (num_tokens=704 avail_mem=9.32 GB):  36%|███▌      | 18/50 [00:11<00:16,  1.89it/s]Capturing prefill shape (num_tokens=640 avail_mem=9.32 GB):  36%|███▌      | 18/50 [00:11<00:16,  1.89it/s]Capturing prefill shape (num_tokens=640 avail_mem=9.32 GB):  38%|███▊      | 19/50 [00:11<00:16,  1.93it/s]Capturing prefill shape (num_tokens=576 avail_mem=9.31 GB):  38%|███▊      | 19/50 [00:11<00:16,  1.93it/s]Capturing prefill shape (num_tokens=512 avail_mem=9.31 GB):  38%|███▊      | 19/50 [00:11<00:16,  1.93it/s]Capturing prefill shape (num_tokens=512 avail_mem=9.31 GB):  42%|████▏     | 21/50 [00:11<00:10,  2.77it/s]Capturing prefill shape (num_tokens=480 avail_mem=9.31 GB):  42%|████▏     | 21/50 [00:11<00:10,  2.77it/s]Capturing prefill shape (num_tokens=448 avail_mem=9.31 GB):  42%|████▏     | 21/50 [00:11<00:10,  2.77it/s]Capturing prefill shape (num_tokens=448 avail_mem=9.31 GB):  46%|████▌     | 23/50 [00:12<00:07,  3.62it/s]Capturing prefill shape (num_tokens=416 avail_mem=9.31 GB):  46%|████▌     | 23/50 [00:12<00:07,  3.62it/s]Capturing prefill shape (num_tokens=384 avail_mem=9.31 GB):  46%|████▌     | 23/50 [00:12<00:07,  3.62it/s]Capturing prefill shape (num_tokens=384 avail_mem=9.31 GB):  50%|█████     | 25/50 [00:12<00:05,  4.32it/s]Capturing prefill shape (num_tokens=352 avail_mem=9.31 GB):  50%|█████     | 25/50 [00:12<00:05,  4.32it/s]Capturing prefill shape (num_tokens=320 avail_mem=9.31 GB):  50%|█████     | 25/50 [00:12<00:05,  4.32it/s]Capturing prefill shape (num_tokens=320 avail_mem=9.31 GB):  54%|█████▍    | 27/50 [00:12<00:04,  5.68it/s]Capturing prefill shape (num_tokens=288 avail_mem=9.30 GB):  54%|█████▍    | 27/50 [00:12<00:04,  5.68it/s]Capturing prefill shape (num_tokens=256 avail_mem=9.30 GB):  54%|█████▍    | 27/50 [00:12<00:04,  5.68it/s]Capturing prefill shape (num_tokens=256 avail_mem=9.30 GB):  58%|█████▊    | 29/50 [00:12<00:03,  6.93it/s]Capturing prefill shape (num_tokens=240 avail_mem=9.30 GB):  58%|█████▊    | 29/50 [00:12<00:03,  6.93it/s]Capturing prefill shape (num_tokens=224 avail_mem=9.30 GB):  58%|█████▊    | 29/50 [00:12<00:03,  6.93it/s]Capturing prefill shape (num_tokens=224 avail_mem=9.30 GB):  62%|██████▏   | 31/50 [00:12<00:02,  8.18it/s]Capturing prefill shape (num_tokens=208 avail_mem=9.29 GB):  62%|██████▏   | 31/50 [00:12<00:02,  8.18it/s]Capturing prefill shape (num_tokens=192 avail_mem=9.29 GB):  62%|██████▏   | 31/50 [00:12<00:02,  8.18it/s]Capturing prefill shape (num_tokens=192 avail_mem=9.29 GB):  66%|██████▌   | 33/50 [00:12<00:01,  9.71it/s]Capturing prefill shape (num_tokens=176 avail_mem=9.29 GB):  66%|██████▌   | 33/50 [00:12<00:01,  9.71it/s]Capturing prefill shape (num_tokens=160 avail_mem=9.29 GB):  66%|██████▌   | 33/50 [00:12<00:01,  9.71it/s]Capturing prefill shape (num_tokens=160 avail_mem=9.29 GB):  70%|███████   | 35/50 [00:13<00:02,  6.21it/s]Capturing prefill shape (num_tokens=144 avail_mem=9.29 GB):  70%|███████   | 35/50 [00:13<00:02,  6.21it/s]Capturing prefill shape (num_tokens=128 avail_mem=9.29 GB):  70%|███████   | 35/50 [00:13<00:02,  6.21it/s]Capturing prefill shape (num_tokens=128 avail_mem=9.29 GB):  74%|███████▍  | 37/50 [00:13<00:01,  6.95it/s]Capturing prefill shape (num_tokens=112 avail_mem=9.29 GB):  74%|███████▍  | 37/50 [00:13<00:01,  6.95it/s]Capturing prefill shape (num_tokens=96 avail_mem=9.29 GB):  74%|███████▍  | 37/50 [00:13<00:01,  6.95it/s] Capturing prefill shape (num_tokens=96 avail_mem=9.29 GB):  78%|███████▊  | 39/50 [00:14<00:01,  5.89it/s]Capturing prefill shape (num_tokens=80 avail_mem=9.29 GB):  78%|███████▊  | 39/50 [00:14<00:01,  5.89it/s]Capturing prefill shape (num_tokens=80 avail_mem=9.29 GB):  80%|████████  | 40/50 [00:15<00:03,  3.08it/s]Capturing prefill shape (num_tokens=64 avail_mem=9.29 GB):  80%|████████  | 40/50 [00:15<00:03,  3.08it/s]Capturing prefill shape (num_tokens=64 avail_mem=9.29 GB):  82%|████████▏ | 41/50 [00:15<00:03,  2.92it/s]Capturing prefill shape (num_tokens=48 avail_mem=9.28 GB):  82%|████████▏ | 41/50 [00:15<00:03,  2.92it/s]Capturing prefill shape (num_tokens=32 avail_mem=9.28 GB):  82%|████████▏ | 41/50 [00:15<00:03,  2.92it/s]Capturing prefill shape (num_tokens=32 avail_mem=9.28 GB):  86%|████████▌ | 43/50 [00:15<00:01,  4.11it/s]Capturing prefill shape (num_tokens=28 avail_mem=9.28 GB):  86%|████████▌ | 43/50 [00:15<00:01,  4.11it/s]Capturing prefill shape (num_tokens=24 avail_mem=9.28 GB):  86%|████████▌ | 43/50 [00:15<00:01,  4.11it/s]Capturing prefill shape (num_tokens=24 avail_mem=9.28 GB):  90%|█████████ | 45/50 [00:15<00:00,  5.02it/s]Capturing prefill shape (num_tokens=20 avail_mem=9.28 GB):  90%|█████████ | 45/50 [00:15<00:00,  5.02it/s]Capturing prefill shape (num_tokens=16 avail_mem=9.28 GB):  90%|█████████ | 45/50 [00:16<00:00,  5.02it/s]Capturing prefill shape (num_tokens=16 avail_mem=9.28 GB):  94%|█████████▍| 47/50 [00:16<00:00,  6.51it/s]Capturing prefill shape (num_tokens=12 avail_mem=9.27 GB):  94%|█████████▍| 47/50 [00:16<00:00,  6.51it/s]Capturing prefill shape (num_tokens=8 avail_mem=9.27 GB):  94%|█████████▍| 47/50 [00:16<00:00,  6.51it/s] Capturing prefill shape (num_tokens=8 avail_mem=9.27 GB):  98%|█████████▊| 49/50 [00:16<00:00,  8.14it/s]Capturing prefill shape (num_tokens=4 avail_mem=9.27 GB):  98%|█████████▊| 49/50 [00:16<00:00,  8.14it/s]Capturing prefill shape (num_tokens=4 avail_mem=9.27 GB): 100%|██████████| 50/50 [00:16<00:00,  3.07it/s]
+2026-10-27 17:54:08,025 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target prefill CUDA graph end. elapsed=17.27 s, mem usage=0.42 GB, avail mem=9.27 GB.
+2026-10-27 17:54:08,026 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target decode CUDA graph begin. backend=full, num_tokens_per_req=1, avail mem=9.27 GB
+  0%|          | 0/64 [00:00<?, ?it/s]Capturing batches (bs=64 avail_mem=9.27 GB):   0%|          | 0/64 [00:00<?, ?it/s]Capturing batches (bs=64 avail_mem=9.27 GB):   2%|▏         | 1/64 [00:00<00:36,  1.71it/s]Capturing batches (bs=63 avail_mem=9.27 GB):   2%|▏         | 1/64 [00:00<00:36,  1.71it/s]Capturing batches (bs=63 avail_mem=9.27 GB):   3%|▎         | 2/64 [00:00<00:19,  3.25it/s]Capturing batches (bs=62 avail_mem=9.26 GB):   3%|▎         | 2/64 [00:00<00:19,  3.25it/s]Capturing batches (bs=61 avail_mem=9.26 GB):   3%|▎         | 2/64 [00:00<00:19,  3.25it/s]Capturing batches (bs=60 avail_mem=9.26 GB):   3%|▎         | 2/64 [00:00<00:19,  3.25it/s]Capturing batches (bs=60 avail_mem=9.26 GB):   8%|▊         | 5/64 [00:00<00:07,  7.69it/s]Capturing batches (bs=59 avail_mem=9.26 GB):   8%|▊         | 5/64 [00:00<00:07,  7.69it/s]Capturing batches (bs=58 avail_mem=9.26 GB):   8%|▊         | 5/64 [00:01<00:07,  7.69it/s]Capturing batches (bs=58 avail_mem=9.26 GB):  11%|█         | 7/64 [00:01<00:06,  8.88it/s]Capturing batches (bs=57 avail_mem=9.26 GB):  11%|█         | 7/64 [00:01<00:06,  8.88it/s]Capturing batches (bs=56 avail_mem=9.26 GB):  11%|█         | 7/64 [00:01<00:06,  8.88it/s]Capturing batches (bs=56 avail_mem=9.26 GB):  14%|█▍        | 9/64 [00:01<00:05,  9.83it/s]Capturing batches (bs=55 avail_mem=9.26 GB):  14%|█▍        | 9/64 [00:01<00:05,  9.83it/s]Capturing batches (bs=54 avail_mem=9.25 GB):  14%|█▍        | 9/64 [00:01<00:05,  9.83it/s]Capturing batches (bs=53 avail_mem=9.25 GB):  14%|█▍        | 9/64 [00:01<00:05,  9.83it/s]Capturing batches (bs=53 avail_mem=9.25 GB):  19%|█▉        | 12/64 [00:01<00:04, 11.63it/s]Capturing batches (bs=52 avail_mem=9.25 GB):  19%|█▉        | 12/64 [00:01<00:04, 11.63it/s]Capturing batches (bs=51 avail_mem=9.25 GB):  19%|█▉        | 12/64 [00:01<00:04, 11.63it/s]Capturing batches (bs=50 avail_mem=9.25 GB):  19%|█▉        | 12/64 [00:01<00:04, 11.63it/s]Capturing batches (bs=50 avail_mem=9.25 GB):  23%|██▎       | 15/64 [00:01<00:05,  9.38it/s]Capturing batches (bs=49 avail_mem=9.25 GB):  23%|██▎       | 15/64 [00:01<00:05,  9.38it/s]Capturing batches (bs=48 avail_mem=9.25 GB):  23%|██▎       | 15/64 [00:01<00:05,  9.38it/s]Capturing batches (bs=48 avail_mem=9.25 GB):  27%|██▋       | 17/64 [00:02<00:06,  7.46it/s]Capturing batches (bs=47 avail_mem=9.25 GB):  27%|██▋       | 17/64 [00:02<00:06,  7.46it/s]Capturing batches (bs=47 avail_mem=9.25 GB):  28%|██▊       | 18/64 [00:02<00:07,  5.89it/s]Capturing batches (bs=46 avail_mem=9.25 GB):  28%|██▊       | 18/64 [00:02<00:07,  5.89it/s]Capturing batches (bs=46 avail_mem=9.25 GB):  30%|██▉       | 19/64 [00:03<00:10,  4.41it/s]Capturing batches (bs=45 avail_mem=9.24 GB):  30%|██▉       | 19/64 [00:03<00:10,  4.41it/s]Capturing batches (bs=45 avail_mem=9.24 GB):  31%|███▏      | 20/64 [00:04<00:18,  2.38it/s]Capturing batches (bs=44 avail_mem=9.24 GB):  31%|███▏      | 20/64 [00:04<00:18,  2.38it/s]Capturing batches (bs=44 avail_mem=9.24 GB):  33%|███▎      | 21/64 [00:04<00:18,  2.33it/s]Capturing batches (bs=43 avail_mem=9.24 GB):  33%|███▎      | 21/64 [00:04<00:18,  2.33it/s]Capturing batches (bs=42 avail_mem=9.24 GB):  33%|███▎      | 21/64 [00:04<00:18,  2.33it/s]Capturing batches (bs=42 avail_mem=9.24 GB):  36%|███▌      | 23/64 [00:04<00:11,  3.47it/s]Capturing batches (bs=41 avail_mem=9.24 GB):  36%|███▌      | 23/64 [00:04<00:11,  3.47it/s]Capturing batches (bs=40 avail_mem=9.24 GB):  36%|███▌      | 23/64 [00:04<00:11,  3.47it/s]Capturing batches (bs=40 avail_mem=9.24 GB):  39%|███▉      | 25/64 [00:04<00:08,  4.82it/s]Capturing batches (bs=39 avail_mem=9.24 GB):  39%|███▉      | 25/64 [00:04<00:08,  4.82it/s]Capturing batches (bs=38 avail_mem=9.23 GB):  39%|███▉      | 25/64 [00:05<00:08,  4.82it/s]Capturing batches (bs=38 avail_mem=9.23 GB):  42%|████▏     | 27/64 [00:05<00:06,  6.15it/s]Capturing batches (bs=37 avail_mem=9.23 GB):  42%|████▏     | 27/64 [00:05<00:06,  6.15it/s]Capturing batches (bs=36 avail_mem=9.23 GB):  42%|████▏     | 27/64 [00:05<00:06,  6.15it/s]Capturing batches (bs=35 avail_mem=9.23 GB):  42%|████▏     | 27/64 [00:05<00:06,  6.15it/s]Capturing batches (bs=35 avail_mem=9.23 GB):  47%|████▋     | 30/64 [00:05<00:03,  8.84it/s]Capturing batches (bs=34 avail_mem=9.23 GB):  47%|████▋     | 30/64 [00:05<00:03,  8.84it/s]Capturing batches (bs=33 avail_mem=9.23 GB):  47%|████▋     | 30/64 [00:05<00:03,  8.84it/s]Capturing batches (bs=32 avail_mem=9.23 GB):  47%|████▋     | 30/64 [00:05<00:03,  8.84it/s]Capturing batches (bs=32 avail_mem=9.23 GB):  52%|█████▏    | 33/64 [00:05<00:02, 11.38it/s]Capturing batches (bs=31 avail_mem=9.23 GB):  52%|█████▏    | 33/64 [00:05<00:02, 11.38it/s]Capturing batches (bs=30 avail_mem=9.22 GB):  52%|█████▏    | 33/64 [00:05<00:02, 11.38it/s]Capturing batches (bs=29 avail_mem=9.22 GB):  52%|█████▏    | 33/64 [00:05<00:02, 11.38it/s]Capturing batches (bs=29 avail_mem=9.22 GB):  56%|█████▋    | 36/64 [00:05<00:02, 12.23it/s]Capturing batches (bs=28 avail_mem=9.22 GB):  56%|█████▋    | 36/64 [00:05<00:02, 12.23it/s]Capturing batches (bs=27 avail_mem=9.22 GB):  56%|█████▋    | 36/64 [00:05<00:02, 12.23it/s]Capturing batches (bs=26 avail_mem=9.22 GB):  56%|█████▋    | 36/64 [00:05<00:02, 12.23it/s]Capturing batches (bs=26 avail_mem=9.22 GB):  61%|██████    | 39/64 [00:05<00:01, 12.75it/s]Capturing batches (bs=25 avail_mem=9.22 GB):  61%|██████    | 39/64 [00:05<00:01, 12.75it/s]Capturing batches (bs=24 avail_mem=9.22 GB):  61%|██████    | 39/64 [00:06<00:01, 12.75it/s]Capturing batches (bs=24 avail_mem=9.22 GB):  64%|██████▍   | 41/64 [00:06<00:03,  6.36it/s]Capturing batches (bs=23 avail_mem=9.22 GB):  64%|██████▍   | 41/64 [00:06<00:03,  6.36it/s]Capturing batches (bs=22 avail_mem=9.21 GB):  64%|██████▍   | 41/64 [00:06<00:03,  6.36it/s]Capturing batches (bs=21 avail_mem=9.21 GB):  64%|██████▍   | 41/64 [00:06<00:03,  6.36it/s]Capturing batches (bs=21 avail_mem=9.21 GB):  69%|██████▉   | 44/64 [00:07<00:04,  4.67it/s]Capturing batches (bs=20 avail_mem=9.21 GB):  69%|██████▉   | 44/64 [00:07<00:04,  4.67it/s]Capturing batches (bs=20 avail_mem=9.21 GB):  70%|███████   | 45/64 [00:08<00:05,  3.42it/s]Capturing batches (bs=19 avail_mem=9.21 GB):  70%|███████   | 45/64 [00:08<00:05,  3.42it/s]Capturing batches (bs=19 avail_mem=9.21 GB):  72%|███████▏  | 46/64 [00:08<00:05,  3.17it/s]Capturing batches (bs=18 avail_mem=9.21 GB):  72%|███████▏  | 46/64 [00:08<00:05,  3.17it/s]Capturing batches (bs=18 avail_mem=9.21 GB):  73%|███████▎  | 47/64 [00:09<00:06,  2.83it/s]Capturing batches (bs=17 avail_mem=9.21 GB):  73%|███████▎  | 47/64 [00:09<00:06,  2.83it/s]Capturing batches (bs=17 avail_mem=9.21 GB):  75%|███████▌  | 48/64 [00:10<00:07,  2.13it/s]Capturing batches (bs=16 avail_mem=9.21 GB):  75%|███████▌  | 48/64 [00:10<00:07,  2.13it/s]Capturing batches (bs=15 avail_mem=9.19 GB):  75%|███████▌  | 48/64 [00:10<00:07,  2.13it/s]Capturing batches (bs=15 avail_mem=9.19 GB):  78%|███████▊  | 50/64 [00:10<00:04,  3.11it/s]Capturing batches (bs=14 avail_mem=9.19 GB):  78%|███████▊  | 50/64 [00:10<00:04,  3.11it/s]Capturing batches (bs=13 avail_mem=9.18 GB):  78%|███████▊  | 50/64 [00:10<00:04,  3.11it/s]Capturing batches (bs=12 avail_mem=8.69 GB):  78%|███████▊  | 50/64 [00:10<00:04,  3.11it/s]Capturing batches (bs=12 avail_mem=8.69 GB):  83%|████████▎ | 53/64 [00:10<00:02,  5.05it/s]Capturing batches (bs=11 avail_mem=8.69 GB):  83%|████████▎ | 53/64 [00:10<00:02,  5.05it/s]Capturing batches (bs=10 avail_mem=8.69 GB):  83%|████████▎ | 53/64 [00:10<00:02,  5.05it/s]Capturing batches (bs=10 avail_mem=8.69 GB):  86%|████████▌ | 55/64 [00:10<00:01,  4.93it/s]Capturing batches (bs=9 avail_mem=9.20 GB):  86%|████████▌ | 55/64 [00:10<00:01,  4.93it/s] Capturing batches (bs=8 avail_mem=9.20 GB):  86%|████████▌ | 55/64 [00:10<00:01,  4.93it/s]Capturing batches (bs=7 avail_mem=9.20 GB):  86%|████████▌ | 55/64 [00:11<00:01,  4.93it/s]Capturing batches (bs=7 avail_mem=9.20 GB):  91%|█████████ | 58/64 [00:11<00:00,  7.05it/s]Capturing batches (bs=6 avail_mem=9.19 GB):  91%|█████████ | 58/64 [00:11<00:00,  7.05it/s]Capturing batches (bs=5 avail_mem=9.19 GB):  91%|█████████ | 58/64 [00:11<00:00,  7.05it/s]Capturing batches (bs=4 avail_mem=9.19 GB):  91%|█████████ | 58/64 [00:11<00:00,  7.05it/s]Capturing batches (bs=4 avail_mem=9.19 GB):  95%|█████████▌| 61/64 [00:11<00:00,  9.34it/s]Capturing batches (bs=3 avail_mem=9.19 GB):  95%|█████████▌| 61/64 [00:11<00:00,  9.34it/s]Capturing batches (bs=2 avail_mem=9.19 GB):  95%|█████████▌| 61/64 [00:11<00:00,  9.34it/s]Autotune Choices Stats:
+{"num_choices": 20, "num_triton_choices": 19, "best_kernel": "mm", "best_time": 0.011711999773979187, "best_triton_pos": 1, "best_triton_time": 0.012191999703645706, "best_triton_kernel": "triton_mm_8", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4"}
+AUTOTUNE mm(2x2048, 2048x4096)
+strides: [2048, 1], [1, 2048]
+dtypes: torch.bfloat16, torch.bfloat16
+  mm 0.0117 ms 100.0% 
+  triton_mm_8 0.0122 ms 96.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_4 0.0123 ms 95.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2
+  triton_mm_12 0.0142 ms 82.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4
+  triton_mm_17 0.0144 ms 81.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_16 0.0156 ms 75.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_1 0.0196 ms 59.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=2
+  triton_mm_7 0.0196 ms 59.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_3 0.0197 ms 59.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2
+  triton_mm_2 0.0204 ms 57.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+SingleProcess AUTOTUNE benchmarking takes 0.2733 seconds and 0.3946 seconds precompiling for 20 choices
+Autotune Choices Stats:
+{"num_choices": 20, "num_triton_choices": 19, "best_kernel": "triton_mm_23", "best_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2", "best_time": 0.01017600018531084, "best_triton_pos": 0}
+AUTOTUNE mm(2x2048, 2048x2048)
+strides: [2048, 1], [1, 2048]
+dtypes: torch.bfloat16, torch.bfloat16
+  triton_mm_23 0.0102 ms 100.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2
+  triton_mm_27 0.0108 ms 94.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_31 0.0132 ms 76.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4
+  triton_mm_36 0.0135 ms 75.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_35 0.0142 ms 71.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  mm 0.0165 ms 61.5% 
+  triton_mm_22 0.0172 ms 59.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2
+  triton_mm_21 0.0181 ms 56.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_20 0.0182 ms 55.9% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=2
+  triton_mm_26 0.0183 ms 55.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+SingleProcess AUTOTUNE benchmarking takes 0.2151 seconds and 0.4767 seconds precompiling for 20 choices
+Capturing batches (bs=2 avail_mem=9.19 GB):  95%|█████████▌| 61/64 [00:22<00:00,  9.34it/s]Autotune Choices Stats:
+{"num_choices": 20, "num_triton_choices": 19, "best_kernel": "triton_mm_50", "best_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4", "best_time": 0.021888000890612602, "best_triton_pos": 0}
+AUTOTUNE mm(2x2048, 2048x12288)
+strides: [2048, 1], [1, 2048]
+dtypes: torch.bfloat16, torch.bfloat16
+  triton_mm_50 0.0219 ms 100.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4
+  triton_mm_55 0.0219 ms 100.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_42 0.0220 ms 99.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2
+  triton_mm_46 0.0222 ms 98.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  mm 0.0226 ms 97.0% 
+  triton_mm_54 0.0230 ms 95.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_56 0.0273 ms 80.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=256, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_45 0.0287 ms 76.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_40 0.0301 ms 72.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_39 0.0304 ms 71.9% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=2
+SingleProcess AUTOTUNE benchmarking takes 0.2321 seconds and 0.2205 seconds precompiling for 20 choices
+Autotune Choices Stats:
+{"num_choices": 20, "num_triton_choices": 19, "best_kernel": "mm", "best_time": 0.016224000602960587, "best_triton_pos": 1, "best_triton_time": 0.020608000457286835, "best_triton_kernel": "triton_mm_61", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2"}
+AUTOTUNE mm(2x6144, 6144x2048)
+strides: [6144, 1], [1, 6144]
+dtypes: torch.bfloat16, torch.bfloat16
+  mm 0.0162 ms 100.0% 
+  triton_mm_61 0.0206 ms 78.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2
+  triton_mm_65 0.0219 ms 74.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_69 0.0289 ms 56.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4
+  triton_mm_74 0.0303 ms 53.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_73 0.0338 ms 48.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_60 0.0430 ms 37.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2
+  triton_mm_58 0.0461 ms 35.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=2
+  triton_mm_59 0.0464 ms 35.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_64 0.0468 ms 34.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+SingleProcess AUTOTUNE benchmarking takes 0.3023 seconds and 0.0002 seconds precompiling for 20 choices
+Autotune Choices Stats:
+{"num_choices": 20, "num_triton_choices": 19, "best_kernel": "triton_mm_84", "best_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4", "best_time": 0.15263999998569489, "best_triton_pos": 0}
+AUTOTUNE mm(2x2048, 2048x151936)
+strides: [2048, 1], [1, 2048]
+dtypes: torch.bfloat16, torch.bfloat16
+  triton_mm_84 0.1526 ms 100.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_93 0.1556 ms 98.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_88 0.1560 ms 97.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4
+  triton_mm_92 0.1596 ms 95.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_80 0.1617 ms 94.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=2
+  mm 0.1621 ms 94.2% 
+  triton_mm_83 0.1622 ms 94.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_94 0.1665 ms 91.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=256, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_87 0.1687 ms 90.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=16, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_77 0.1700 ms 89.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=16, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=2
+SingleProcess AUTOTUNE benchmarking takes 0.5824 seconds and 0.3635 seconds precompiling for 20 choices
+Capturing batches (bs=2 avail_mem=9.19 GB):  98%|█████████▊| 63/64 [00:36<00:03,  3.30s/it]Capturing batches (bs=1 avail_mem=9.19 GB):  98%|█████████▊| 63/64 [00:36<00:03,  3.30s/it]Capturing batches (bs=1 avail_mem=9.19 GB): 100%|██████████| 64/64 [00:59<00:00,  6.33s/it]Capturing batches (bs=1 avail_mem=9.19 GB): 100%|██████████| 64/64 [00:59<00:00,  1.08it/s]
+2026-10-27 17:55:08,798 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target decode CUDA graph end. bs=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64], elapsed=60.77 s, mem usage=0.08 GB, avail mem=9.19 GB.
+2026-10-27 17:55:08,803 [INFO] sglang_omni.utils.cuda_graph_batch_validator: prefill CUDA graphs attested: backend=full buckets=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048, 2304, 2560, 2816, 3072, 3328, 3584, 3840, 4096]
+2026-10-27 17:55:08,821 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR memory checkpoint=post_cuda_graph_capture gpu=0 process_gpu_memory=0.00GiB
+2026-10-27 17:55:08,887 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=128 windows=10 out=(1, 128, 2048)
+2026-10-27 17:55:08,926 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=256 windows=11 out=(1, 256, 2048)
+2026-10-27 17:55:08,964 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=512 windows=13 out=(1, 512, 2048)
+2026-10-27 17:55:09,009 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=1024 windows=18 out=(1, 1024, 2048)
+2026-10-27 17:55:09,066 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=2048 windows=28 out=(1, 2048, 2048)
+2026-10-27 17:55:09,116 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=3159 windows=39 out=(1, 3159, 2048)
+2026-10-27 17:55:09,133 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR memory checkpoint=post_encoder_graph_capture gpu=0 process_gpu_memory=0.00GiB
+2026-10-27 17:55:09,178 [INFO] sglang_omni.pipeline.control_plane: Stage asr control plane started
+2026-10-27 17:55:09,179 [INFO] sglang_omni.pipeline.stage.runtime: Scheduler thread for stage asr set cuda device to 0
+2026-10-27 17:55:09,180 [INFO] sglang_omni.pipeline.stage.runtime: Stage asr started
+2026-10-27 17:55:09,180 [INFO] stage_workers.asr: Process asr ready with stages=['asr']
+2026-10-27 17:55:09,181 [INFO] sglang_omni.pipeline.stage_workers: Process asr ready
+2026-10-27 17:55:09,181 [INFO] sglang_omni.pipeline.coordinator: Coordinator registered stage: asr at ipc:///tmp/sglang_omni/qwen-qwen3-asr-1-7b-o6mhd400/stage_asr.sock
+2026-10-27 17:55:09,181 [INFO] sglang_omni.pipeline.mp_runner: MultiProcessPipelineRunner started: 1 stage(s), 1 process(es)
+2026-10-27 17:55:09,181 [INFO] sglang_omni.serve.launcher: Resolved placement/topology plan: placement={'topology': 'Qwen3ASRPipelineConfig', 'pipeline': 'Qwen/Qwen3-ASR-1.7B', 'process_groups': {'asr': {'stages': ['asr'], 'gpu': 0}}, 'tp_process_groups': {}, 'stage_runtime': {'asr': {'gpu': 0, 'total_gpu_memory_fraction': None, 'kv_cache_bytes': None, 'total_reserve_bytes': None, 'mem_fraction_static': None}}, 'gpus': {0: {'hardware': {'device_id': 0, 'name': 'NVIDIA H200', 'total_memory': '140.40GiB'}, 'stages': ['asr'], 'total_gpu_memory_fraction': 0.0, 'missing_fraction_stages': ['asr'], 'total_kv_cache_bytes': 0, 'total_reserve_bytes': 0}}}
+2026-10-27 17:55:09,181 [INFO] sglang_omni.serve.launcher: Pipeline 'Qwen/Qwen3-ASR-1.7B' started (1 GPU(s))
+INFO:     Started server process [3092]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)
+2026-10-27 17:55:09,376 [INFO] sglang_omni.serve.launcher: Frozen API startup object graph (647318 objects)
+INFO:     127.0.0.1:50660 - "GET /health HTTP/1.1" 200 OK
+2026-10-27 17:55:09,600 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 1 batches, 1 items (avg 1.00 items/batch, last batch: 1), cache: {'hits': 0, 'misses': 1, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0, 'batches': 1, 'items': 1, 'queue_depth': 0, 'queue_wait_avg_s': 0.0001217150129377842, 'queue_wait_max_s': 0.0001217150129377842, 'encoder_time_s': 0.12920987186953425, 'cache_entries': 1, 'cache_bytes': 110592, 'cache_evictions': 0}
+2026-10-27 17:55:09,957 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 17, #new-token: 765, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 15, #pending-token: 0, cuda graph: True, input throughput (token/s): 980.36
+2026-10-27 17:55:10,113 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 15, #new-token: 15, #cached-token: 660, token usage: 0.00, #running-req: 17, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 96.14
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:10,467 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 16, #new-token: 16, #cached-token: 704, token usage: 0.00, #running-req: 0, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 45.20
+2026-10-27 17:55:10,476 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 16, #new-token: 16, #cached-token: 704, token usage: 0.00, #running-req: 16, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1919.07
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:10,788 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 44, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: False, input throughput (token/s): 3.20
+2026-10-27 17:55:10,808 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 31, #new-token: 2065, #cached-token: 0, token usage: 0.00, #running-req: 1, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 102618.03
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,207 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 870, #cached-token: 0, token usage: 0.00, #running-req: 8, #queue-req: 10, #pending-token: 0, cuda graph: True, input throughput (token/s): 2176.73
+2026-10-27 17:55:11,228 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 664, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 33106.49
+2026-10-27 17:55:11,231 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 26, #token: 1957, token usage: 0.00, cuda graph: True, gen throughput (token/s): 491.09, #queue-req: 4
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,281 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 6, #new-token: 337, #cached-token: 0, token usage: 0.00, #running-req: 26, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 6287.29
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,377 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 8, #new-token: 520, #cached-token: 0, token usage: 0.00, #running-req: 8, #queue-req: 5, #pending-token: 0, cuda graph: True, input throughput (token/s): 5444.21
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,424 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 17, #new-token: 1145, #cached-token: 0, token usage: 0.00, #running-req: 8, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 24360.92
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,478 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 525, #cached-token: 0, token usage: 0.00, #running-req: 17, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 9688.50
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,523 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 12, #token: 1449, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2687.06, #queue-req: 0
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,536 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 593, #cached-token: 0, token usage: 0.00, #running-req: 17, #queue-req: 5, #pending-token: 0, cuda graph: True, input throughput (token/s): 10188.22
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,585 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 700, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 14429.23
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,611 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 51 batches, 126 items (avg 2.47 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 128, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.20496894409937888, 'batches': 51, 'items': 126, 'queue_depth': 2, 'queue_wait_avg_s': 0.010382334345079486, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 0.6936128889210522, 'cache_entries': 126, 'cache_bytes': 23416832, 'cache_evictions': 0}
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,641 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 562, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 9977.00
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,709 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 799, #cached-token: 0, token usage: 0.00, #running-req: 8, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 11717.01
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,753 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 795, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 18263.96
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,781 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 16, #token: 1170, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2518.97, #queue-req: 8
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,807 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 655, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 12141.31
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,861 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 762, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 14076.04
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,919 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 1034, #cached-token: 0, token usage: 0.00, #running-req: 11, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 17611.32
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:11,965 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 7, #new-token: 547, #cached-token: 0, token usage: 0.00, #running-req: 19, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 11950.93
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,019 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 833, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 15582.05
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,036 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 101 batches, 214 items (avg 2.12 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 217, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.132, 'batches': 101, 'items': 214, 'queue_depth': 3, 'queue_wait_avg_s': 0.007534622946954289, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 1.0733742893207818, 'cache_entries': 214, 'cache_bytes': 41373696, 'cache_evictions': 0}
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,063 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 14, #token: 1892, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2517.38, #queue-req: 0
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,072 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 866, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 16364.47
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,140 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 681, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 9898.38
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,190 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 881, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 17753.98
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,242 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 748, #cached-token: 0, token usage: 0.00, #running-req: 17, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 14258.11
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,301 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 750, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 12858.75
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,320 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 19, #token: 1369, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2909.58, #queue-req: 7
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,362 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 702, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 11496.12
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,423 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 987, #cached-token: 0, token usage: 0.00, #running-req: 10, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 16139.60
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,475 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 851, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 16229.83
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,487 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 151 batches, 307 items (avg 2.03 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 307, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.09705882352941177, 'batches': 151, 'items': 307, 'queue_depth': 0, 'queue_wait_avg_s': 0.006518535636037782, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 1.4734561301302165, 'cache_entries': 307, 'cache_bytes': 61341696, 'cache_evictions': 0}
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,535 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 819, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 13715.79
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,577 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 13, #token: 1700, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2631.11, #queue-req: 0
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,587 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 815, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 15735.67
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,645 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 713, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 12368.74
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,700 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 900, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 16359.29
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,759 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 632, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 5, #pending-token: 0, cuda graph: True, input throughput (token/s): 10712.63
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,814 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 919, #cached-token: 0, token usage: 0.00, #running-req: 11, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 16629.91
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,840 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 16, #token: 1167, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2572.88, #queue-req: 12
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,865 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 905, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 17840.74
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,920 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 627, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 11337.39
+2026-10-27 17:55:12,924 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 201 batches, 397 items (avg 1.98 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 399, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0763888888888889, 'batches': 201, 'items': 397, 'queue_depth': 2, 'queue_wait_avg_s': 0.005955838290997956, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 1.862755307694897, 'cache_entries': 397, 'cache_bytes': 80015360, 'cache_evictions': 0}
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:12,980 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 816, #cached-token: 0, token usage: 0.00, #running-req: 11, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 13485.75
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,031 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 1080, #cached-token: 0, token usage: 0.00, #running-req: 11, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 21473.71
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,170 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 736, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 7, #pending-token: 0, cuda graph: True, input throughput (token/s): 5297.93
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,177 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 19, #token: 1541, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2132.91, #queue-req: 8
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,232 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 749, #cached-token: 0, token usage: 0.00, #running-req: 10, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 12001.37
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,289 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 899, #cached-token: 0, token usage: 0.00, #running-req: 11, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 15660.37
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,340 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 784, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 15467.33
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,403 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 698, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 11028.81
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,426 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 14, #token: 999, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2682.40, #queue-req: 9
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,448 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 902, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 20148.83
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,469 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 251 batches, 493 items (avg 1.96 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 494, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.06261859582542695, 'batches': 251, 'items': 493, 'queue_depth': 1, 'queue_wait_avg_s': 0.005536160429913181, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 2.280567286303267, 'cache_entries': 493, 'cache_bytes': 101208064, 'cache_evictions': 0}
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,491 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 759, #cached-token: 0, token usage: 0.00, #running-req: 17, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 17512.43
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,554 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 756, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 12096.76
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,610 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 679, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 5, #pending-token: 0, cuda graph: True, input throughput (token/s): 12179.79
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,666 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 734, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 13001.56
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,691 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 17, #token: 1266, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2739.47, #queue-req: 9
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,719 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 986, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 18666.96
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,774 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 672, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 12251.64
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,824 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 841, #cached-token: 0, token usage: 0.00, #running-req: 17, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 16655.04
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,873 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 736, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 14981.18
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,926 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 301 batches, 586 items (avg 1.95 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 588, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.05314009661835749, 'batches': 301, 'items': 586, 'queue_depth': 2, 'queue_wait_avg_s': 0.0052762810850465105, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 2.6783030116930604, 'cache_entries': 586, 'cache_bytes': 121397248, 'cache_evictions': 0}
+2026-10-27 17:55:13,930 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 826, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 14680.77
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,951 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 18, #token: 1305, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2899.73, #queue-req: 8
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:13,986 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 791, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 13996.05
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,046 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 890, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 14960.25
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,094 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 654, #cached-token: 0, token usage: 0.00, #running-req: 19, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 13629.58
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,159 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 761, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 11669.21
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,211 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 825, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 15746.72
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,231 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 19, #token: 1478, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2579.27, #queue-req: 8
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,262 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 902, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 17889.33
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,317 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 653, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 11884.48
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,332 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 351 batches, 672 items (avg 1.91 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 672, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.04680851063829787, 'batches': 351, 'items': 672, 'queue_depth': 0, 'queue_wait_avg_s': 0.0050424242259136266, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 3.053708603605628, 'cache_entries': 672, 'cache_bytes': 139300864, 'cache_evictions': 0}
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,379 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 808, #cached-token: 0, token usage: 0.00, #running-req: 9, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 12968.73
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,422 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 4, #new-token: 267, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 12, #pending-token: 0, cuda graph: True, input throughput (token/s): 6198.47
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,449 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 16, #new-token: 1141, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 42449.81
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,472 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 19, #token: 1419, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2906.94, #queue-req: 4
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,507 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 5, #new-token: 350, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 6082.26
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,571 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 15, #new-token: 1063, #cached-token: 0, token usage: 0.00, #running-req: 9, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 16485.46
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,624 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 965, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 18293.17
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,678 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 8, #new-token: 568, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 10420.64
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,739 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 986, #cached-token: 0, token usage: 0.00, #running-req: 10, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 16147.64
+2026-10-27 17:55:14,744 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 23, #token: 1684, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2562.23, #queue-req: 6
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,791 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 401 batches, 762 items (avg 1.90 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 764, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.04140526976160602, 'batches': 401, 'items': 762, 'queue_depth': 2, 'queue_wait_avg_s': 0.004944394349323444, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 3.4397079094778746, 'cache_entries': 762, 'cache_bytes': 158846976, 'cache_evictions': 0}
+2026-10-27 17:55:14,795 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 706, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 12791.66
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,843 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 849, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 17371.45
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,897 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 838, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 15581.60
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,955 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 666, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 11420.22
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:14,984 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 13, #token: 746, token usage: 0.00, cuda graph: True, gen throughput (token/s): 3012.64, #queue-req: 10
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,015 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 956, #cached-token: 0, token usage: 0.00, #running-req: 10, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 15971.25
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,064 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 880, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 18173.53
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,122 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 650, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 5, #pending-token: 0, cuda graph: True, input throughput (token/s): 11133.68
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,183 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 13, #new-token: 918, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 15038.05
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,204 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 451 batches, 850 items (avg 1.88 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 850, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03737259343148358, 'batches': 451, 'items': 850, 'queue_depth': 0, 'queue_wait_avg_s': 0.004775102197959581, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 3.7988928460981697, 'cache_entries': 850, 'cache_bytes': 177639424, 'cache_evictions': 0}
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,233 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 742, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 14777.12
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,245 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 19, #token: 1434, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2772.81, #queue-req: 8
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,297 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 723, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 11295.40
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,347 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 1016, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 20604.37
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,407 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 10, #new-token: 682, #cached-token: 0, token usage: 0.00, #running-req: 14, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 11337.18
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,457 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 688, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 13704.68
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,512 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 732, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 13298.87
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,520 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 19, #token: 1309, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2481.55, #queue-req: 8
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,567 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 762, #cached-token: 0, token usage: 0.00, #running-req: 11, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 13979.25
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,615 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 846, #cached-token: 0, token usage: 0.00, #running-req: 16, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 17538.77
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,636 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 501 batches, 939 items (avg 1.87 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 940, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03391572456320658, 'batches': 501, 'items': 939, 'queue_depth': 1, 'queue_wait_avg_s': 0.0046543360113030395, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 4.171644805930555, 'cache_entries': 939, 'cache_bytes': 195805184, 'cache_evictions': 0}
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,676 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 623, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 10107.28
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,733 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 15, #new-token: 904, #cached-token: 0, token usage: 0.00, #running-req: 10, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 15886.81
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,769 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 10, #token: 691, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2771.88, #queue-req: 8
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,796 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 612, #cached-token: 0, token usage: 0.00, #running-req: 10, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 9799.83
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,848 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 16, #new-token: 1058, #cached-token: 0, token usage: 0.00, #running-req: 9, #queue-req: 2, #pending-token: 0, cuda graph: True, input throughput (token/s): 20306.20
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,891 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 616, #cached-token: 0, token usage: 0.00, #running-req: 18, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 14201.56
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:15,956 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 566, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 4, #pending-token: 0, cuda graph: True, input throughput (token/s): 8705.25
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,019 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 15, #new-token: 940, #cached-token: 0, token usage: 0.00, #running-req: 8, #queue-req: 6, #pending-token: 0, cuda graph: True, input throughput (token/s): 14966.10
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,028 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 20, #token: 1454, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2581.45, #queue-req: 10
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,081 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 865, #cached-token: 0, token usage: 0.00, #running-req: 13, #queue-req: 1, #pending-token: 0, cuda graph: True, input throughput (token/s): 14022.97
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,106 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 551 batches, 1039 items (avg 1.89 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 1042, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.030697674418604652, 'batches': 551, 'items': 1039, 'queue_depth': 3, 'queue_wait_avg_s': 0.004631452471926751, 'queue_wait_max_s': 0.06836876086890697, 'encoder_time_s': 4.571757466765121, 'cache_entries': 1039, 'cache_bytes': 214544384, 'cache_evictions': 0}
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,130 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 15, #new-token: 932, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 18807.61
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,189 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 9, #new-token: 588, #cached-token: 0, token usage: 0.00, #running-req: 18, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 10015.18
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,252 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 11, #new-token: 740, #cached-token: 0, token usage: 0.00, #running-req: 15, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 11818.17
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,276 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 16, #token: 1141, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2952.82, #queue-req: 10
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,317 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 12, #new-token: 846, #cached-token: 0, token usage: 0.00, #running-req: 10, #queue-req: 3, #pending-token: 0, cuda graph: True, input throughput (token/s): 13014.54
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50830 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50866 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50760 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50736 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 17:55:16,358 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 14, #new-token: 966, #cached-token: 0, token usage: 0.00, #running-req: 12, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 23382.93
+INFO:     127.0.0.1:50814 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50764 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50724 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50698 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50746 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50842 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50716 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50766 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50798 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50784 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50852 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50900 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50758 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50902 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50870 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50918 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3092]
+2026-10-27 17:55:17,825 [INFO] sglang_omni.serve.launcher: Shutting down pipeline …
+2026-10-27 17:55:17,826 [INFO] sglang_omni.pipeline.coordinator: Sent shutdown to stage: asr
+2026-10-27 17:55:18,096 [INFO] sglang_omni.pipeline.coordinator: Coordinator completion loop cancelled
+2026-10-27 17:55:18,096 [INFO] sglang_omni.pipeline.coordinator: Coordinator stopped
+2026-10-27 17:55:18,096 [INFO] sglang_omni.serve.launcher: Pipeline stopped.
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
