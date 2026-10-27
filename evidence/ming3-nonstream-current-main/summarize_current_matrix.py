@@ -96,6 +96,8 @@ for key, identities in groups.items():
             cell[arm] = {
                 'throughput_qps': statistics.mean(row['speed']['throughput_qps'] for row in paired),
                 'latency_mean_s': statistics.mean(row['speed']['latency_mean_s'] for row in paired),
+                'audio_duration_mean_s': statistics.mean(row['speed']['audio_duration_mean_s'] for row in paired),
+                'audio_throughput_s_per_s': statistics.mean(row['speed']['audio_throughput_s_per_s'] for row in paired),
                 'latency_p95_range_s': [min(row['speed']['latency_p95_s'] for row in paired), max(row['speed']['latency_p95_s'] for row in paired)],
                 'wer': statistics.mean(row['wer']['wer_corpus'] for row in paired),
                 'sim': statistics.mean(row['speaker_sim']['mean'] for row in paired),

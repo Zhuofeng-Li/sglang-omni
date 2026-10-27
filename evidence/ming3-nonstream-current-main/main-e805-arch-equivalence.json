@@ -1,0 +1,22 @@
+{
+  "source_path": "/opt/sglang/lib/python3.12/site-packages/flashinfer/compilation_context.py",
+  "sha256": "fe5cc925654f06193f821fe61df523a7f86d29f2b51f395bb710ce5d4efae5cf",
+  "visible_capability": [
+    9,
+    0
+  ],
+  "automatic_targets": [
+    [
+      9,
+      "0a"
+    ]
+  ],
+  "explicit_9_0a_targets": [
+    [
+      9,
+      "0a"
+    ]
+  ],
+  "equal": true,
+  "method": "Execute exact installed CompilationContext AST with mocked capability; no Torch import, CUDA allocation or JIT."
+}
