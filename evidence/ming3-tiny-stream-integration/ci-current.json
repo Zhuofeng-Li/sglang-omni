@@ -30,6 +30,7 @@
       "routing_cases": []
     }
   ],
-  "workflow_cleanup": "queued",
-  "scope": "Exact-head manual unit-only; final-main integration and performance remain pending"
+  "workflow_cleanup": "success",
+  "scope": "Exact-head manual unit-only; final-main integration and performance remain pending",
+  "workflow_conclusion": "success"
 }
