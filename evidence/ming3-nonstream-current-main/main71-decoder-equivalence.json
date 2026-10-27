@@ -1,0 +1,55 @@
+{
+  "phase": "verified",
+  "arm": "upstream-en-c1-A42",
+  "result": {
+    "main_change": "71bce692cea4a5b694e1f6de69900181d5abc138",
+    "torch": "2.14.1+cu130",
+    "torchaudio": "2.11.0+cu130",
+    "torchcodec_ready": true,
+    "cuda_initialized": false,
+    "equal_tensor_and_pcm16_bytes": true,
+    "cases": [
+      {
+        "id": "common_voice_en_10119832-common_voice_en_10119840",
+        "samples_16k": 39680,
+        "pcm16_wav_sha256": "f4b232a2f2300f278cbd8cbe4485181178a471d70202b1c390263648c87e3fca"
+      },
+      {
+        "id": "common_voice_en_10119832-common_voice_en_10119847",
+        "samples_16k": 48640,
+        "pcm16_wav_sha256": "4f3b35a48fa15c739b5a7faed8e326342b5cdd16bf60a7b8366b7bfd3eea0750"
+      },
+      {
+        "id": "common_voice_en_103675-common_voice_en_103676",
+        "samples_16k": 92160,
+        "pcm16_wav_sha256": "76c07c325b200ba979472eb07fa5d83c1dc2684f793c5b7632c40186fc1c25c9"
+      },
+      {
+        "id": "common_voice_en_103675-common_voice_en_103677",
+        "samples_16k": 46080,
+        "pcm16_wav_sha256": "681c953d16544a6d057356c1e09ab666f577d1b9cfe70a0bcd595d2701e01b64"
+      },
+      {
+        "id": "common_voice_en_93674-common_voice_en_93675",
+        "samples_16k": 55040,
+        "pcm16_wav_sha256": "5214803a12ddb6b26ee869f1c2ac76fe3610ec1971115f9a47c58142428fa666"
+      },
+      {
+        "id": "common_voice_en_9559-common_voice_en_9560",
+        "samples_16k": 70400,
+        "pcm16_wav_sha256": "71b6c45374e21cbfbd77f6db48535ee3eb4e453b410c81e410aad0ea336e3ad4"
+      },
+      {
+        "id": "common_voice_en_9559-common_voice_en_9562",
+        "samples_16k": 46080,
+        "pcm16_wav_sha256": "717738b7777d004b0bae8b6ddd2cdc11940b618a15613a90750739c96dd64501"
+      },
+      {
+        "id": "common_voice_en_96260-common_voice_en_96263",
+        "samples_16k": 46080,
+        "pcm16_wav_sha256": "17ac6d1676f8fe49f7ea6df26748a5d95eab99a4a9cb984c33576183e763894c"
+      }
+    ]
+  },
+  "recorded_utc": "2026-10-27T04:19:29.470729+00:00"
+}

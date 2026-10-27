@@ -6,6 +6,8 @@ Actual control `0fe60cf6c102caf982430e1764243c6e5c749d76`; candidate `3f8593f4ca
 
 Protocol and metric definitions are in the original PR body and the archived release manifest. Each arm uses a fresh service and private compilation/reference caches; no CPU quota or affinity override. WER and CAM++ scores cover every request. Means are arithmetic seed means; p95 is the range of seed percentiles. The overview uses the geometric mean of matched EN/ZH throughput ratios. One-second GPU-memory sampling covers the TTS service window, excluding the later ASR scorer. The external graph observer is identical across arms.
 
+Subsequent main `71bce692` wraps ASR WAV preparation with the existing audio loader. In this pinned image TorchCodec is available: eight real generated WAVs produced identical tensors and PCM16 bytes before and after that wrapper, with no CUDA context initialized by the probe. The fallback path is not exercised by these measurements. Actual benchmark source IDs above are retained; see `main71-decoder-equivalence.json` and its probe.
+
 ## upstream
 
 | Concurrency | EN/ZH geometric throughput change |
