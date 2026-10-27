@@ -104,3 +104,7 @@ Stage: complete. benchmarks.tasks.asr.normalize_text; ZH character based. This i
 Integrated H200 Ming3/Ming-TTS suites: 227 passed. Prerequisite H200 Ming3/Ming-TTS suites: 211 passed. Tiny performance stack: 236 passed, 6 unsupported strided-normalization cases skipped. These counts do not include MPS or CPU-locality directories. Integrated all-file pre-commit passed. Initial test failures (missing import, missing argument, CPU fallback) were repaired before any benchmark block; no failed-source measurements were relabeled.
 
 PRs: [3189](https://github.com/sgl-project/sglang-omni/pull/3189), [3190](https://github.com/sgl-project/sglang-omni/pull/3190); prerequisite [3136](https://github.com/sgl-project/sglang-omni/pull/3136). Historical PR descriptions are archived separately with their original model/source versions.
+
+## Current non-streaming prerequisite
+
+The [current-main prerequisite qualification](../ming3-nonstream-current-main/report.md) keeps complete paired cells, costs, source IDs and per-request evidence separate from these latency measurements. It also records the bitwise ASR WAV-preparation check for subsequent main commit `71bce692`.
