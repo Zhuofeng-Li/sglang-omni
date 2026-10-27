@@ -1,0 +1,17 @@
+{
+  "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+  "stream_commit": "348f6973d4878ed77a9c6c60d072c91addaf15d8",
+  "completed_blocks": 16,
+  "attempted": 2048,
+  "failed": 0,
+  "stream_requests": 1024,
+  "underrun_na": 0,
+  "same_ordered_request_ids": true,
+  "http_smokes": {
+    "smoke-dense": 14,
+    "smoke-tiny": 14
+  },
+  "paired_asr_cases": 8,
+  "all_paired_normalized_transcripts_match": true,
+  "archive_sha256": "a5bd965bce4a9f60b70023a6c475513ffddf34a27612961e3e04e57356451be3"
+}

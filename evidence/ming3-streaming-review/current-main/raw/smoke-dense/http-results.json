@@ -1,0 +1,719 @@
+{
+  "model": "/opt/rsi-assets/huggingface/hub/models--inclusionAI--Ming-3.0-tts-0.5B/snapshots/8d66b70a00f05ad183fa8a863b4ce609fc83cbc0",
+  "arm": "candidate",
+  "cases": [
+    {
+      "case": "en-reference0-offline",
+      "status": 200,
+      "chunks": 3,
+      "samples": 81144,
+      "chunk_bytes": [
+        65119,
+        33185,
+        63984
+      ],
+      "chunk_times_seconds": [
+        6.367120105074719,
+        6.367248696042225,
+        6.367439995985478
+      ],
+      "response_seconds": 6.368208954110742,
+      "sha256": "4080acf947fd724c1fe9a79c80e3e98a27f5743f183fc27f3c111be6b137ceb4",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:13:57 GMT",
+        "server": "uvicorn",
+        "content-disposition": "attachment; filename=\"speech.pcm\"",
+        "x-request-id": "speech-fe91769f-d610-4854-aba4-4f11c271627b",
+        "x-finish-reason": "stop",
+        "x-prompt-tokens": "41",
+        "x-completion-tokens": "23",
+        "x-sglang-omni-input-tokens": "41",
+        "x-sglang-omni-output-tokens": "23",
+        "x-sglang-omni-total-tokens": "64",
+        "content-length": "162288",
+        "content-type": "audio/pcm",
+        "vary": "Origin"
+      }
+    },
+    {
+      "case": "en-reference0-stream",
+      "status": 200,
+      "chunks": 3,
+      "samples": 81144,
+      "chunk_bytes": [
+        53802,
+        65529,
+        42957
+      ],
+      "chunk_times_seconds": [
+        0.9490065749268979,
+        0.9701246349141002,
+        0.9701858528424054
+      ],
+      "response_seconds": 0.9707352698314935,
+      "sha256": "afa8adcf1dd4b66df3c40104269b61fb19bc353a625b2546dbe6d2968bc53752",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:03 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-a9bb3e7e-f11f-4fb3-a17d-3315a0befb44",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-a9bb3e7e-f11f-4fb3-a17d-3315a0befb44",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-a9bb3e7e-f11f-4fb3-a17d-3315a0befb44",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 41,
+          "completion_tokens": 23,
+          "total_tokens": 64,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "en-reference1-offline",
+      "status": 200,
+      "chunks": 5,
+      "samples": 109368,
+      "chunk_bytes": [
+        65116,
+        367,
+        65536,
+        65536,
+        22181
+      ],
+      "chunk_times_seconds": [
+        0.6048468230292201,
+        0.6049247139599174,
+        0.6050844739656895,
+        0.6051464029587805,
+        0.6051888270303607
+      ],
+      "response_seconds": 0.6056225318461657,
+      "sha256": "151fb51986950385b0fcdd8e6f1c2ad78c41b4671840affda07c9ef64553f282",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:04 GMT",
+        "server": "uvicorn",
+        "content-disposition": "attachment; filename=\"speech.pcm\"",
+        "x-request-id": "speech-79452bf5-ff29-4ba1-a28e-9dfbd88857a6",
+        "x-finish-reason": "stop",
+        "x-prompt-tokens": "114",
+        "x-completion-tokens": "31",
+        "x-sglang-omni-input-tokens": "114",
+        "x-sglang-omni-output-tokens": "31",
+        "x-sglang-omni-total-tokens": "145",
+        "content-length": "218736",
+        "content-type": "audio/pcm",
+        "vary": "Origin"
+      }
+    },
+    {
+      "case": "en-reference1-stream",
+      "status": 200,
+      "chunks": 4,
+      "samples": 109368,
+      "chunk_bytes": [
+        53802,
+        56448,
+        65529,
+        42957
+      ],
+      "chunk_times_seconds": [
+        0.1399506931193173,
+        0.1916684969328344,
+        0.22950597293674946,
+        0.2295616609044373
+      ],
+      "response_seconds": 0.23023980692960322,
+      "sha256": "eae420e55e99a95d1c8765baae90416dbab9e45e4234187683d919f824ee16ca",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:05 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-e2f12520-7076-45fa-b2ec-de7767adc51d",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-e2f12520-7076-45fa-b2ec-de7767adc51d",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-e2f12520-7076-45fa-b2ec-de7767adc51d",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 114,
+          "completion_tokens": 31,
+          "total_tokens": 145,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "zh-reference0-offline",
+      "status": 200,
+      "chunks": 6,
+      "samples": 172872,
+      "chunk_bytes": [
+        65536,
+        65536,
+        65536,
+        65536,
+        65536,
+        18064
+      ],
+      "chunk_times_seconds": [
+        0.22926325304433703,
+        0.22932882816530764,
+        0.2293783260975033,
+        0.22942068194970489,
+        0.22952772700227797,
+        0.22957648010924459
+      ],
+      "response_seconds": 0.23003163607791066,
+      "sha256": "9290148ce79cc716e9c26e26ff0151c75badb03475fb7e1ed49ca2059fa5fb2f",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:05 GMT",
+        "server": "uvicorn",
+        "content-disposition": "attachment; filename=\"speech.pcm\"",
+        "x-request-id": "speech-8bf21925-6915-4c65-b0e3-173cf24773a9",
+        "x-finish-reason": "stop",
+        "x-prompt-tokens": "49",
+        "x-completion-tokens": "49",
+        "x-sglang-omni-input-tokens": "49",
+        "x-sglang-omni-output-tokens": "49",
+        "x-sglang-omni-total-tokens": "98",
+        "content-length": "345744",
+        "content-type": "audio/pcm",
+        "vary": "Origin"
+      }
+    },
+    {
+      "case": "zh-reference0-stream",
+      "status": 200,
+      "chunks": 7,
+      "samples": 172872,
+      "chunk_bytes": [
+        53802,
+        56448,
+        56448,
+        56448,
+        56448,
+        65529,
+        621
+      ],
+      "chunk_times_seconds": [
+        0.1311387070454657,
+        0.18051878502592444,
+        0.23040506895631552,
+        0.2806203530635685,
+        0.3284196760505438,
+        0.34866376710124314,
+        0.34872622112743556
+      ],
+      "response_seconds": 0.3492642061319202,
+      "sha256": "7b59bf6c764f41d5e17abe8b052a41531d78cdc319f2ba81bdcd97bb5cb3461d",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:05 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-df3ef5d8-38b0-4bb1-9e40-148d4455af8d",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-df3ef5d8-38b0-4bb1-9e40-148d4455af8d",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-df3ef5d8-38b0-4bb1-9e40-148d4455af8d",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 49,
+          "completion_tokens": 49,
+          "total_tokens": 98,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "zh-reference1-offline",
+      "status": 200,
+      "chunks": 9,
+      "samples": 285768,
+      "chunk_bytes": [
+        65536,
+        65536,
+        65536,
+        65536,
+        65536,
+        65536,
+        65536,
+        65536,
+        47248
+      ],
+      "chunk_times_seconds": [
+        0.502724182093516,
+        0.5027890149503946,
+        0.5028378509450704,
+        0.5028789748903364,
+        0.5031134870368987,
+        0.5031682699918747,
+        0.5032145830336958,
+        0.503255499061197,
+        0.5033616479486227
+      ],
+      "response_seconds": 0.5039986278861761,
+      "sha256": "2e1fdfacd17394118bfbc3d9c2aadc313060e89bc049394e6eb8d75eb1c409c5",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:05 GMT",
+        "server": "uvicorn",
+        "content-disposition": "attachment; filename=\"speech.pcm\"",
+        "x-request-id": "speech-b7cbfc32-bcf2-487f-9c1d-aa67841b2f40",
+        "x-finish-reason": "stop",
+        "x-prompt-tokens": "128",
+        "x-completion-tokens": "81",
+        "x-sglang-omni-input-tokens": "128",
+        "x-sglang-omni-output-tokens": "81",
+        "x-sglang-omni-total-tokens": "209",
+        "content-length": "571536",
+        "content-type": "audio/pcm",
+        "vary": "Origin"
+      }
+    },
+    {
+      "case": "zh-reference1-stream",
+      "status": 200,
+      "chunks": 11,
+      "samples": 285768,
+      "chunk_bytes": [
+        53802,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        65529,
+        621
+      ],
+      "chunk_times_seconds": [
+        0.1410783000756055,
+        0.1904212071094662,
+        0.2409021311905235,
+        0.29107704013586044,
+        0.3413311380427331,
+        0.3915891710203141,
+        0.4414659070316702,
+        0.4922851640731096,
+        0.5418215040117502,
+        0.5610678500961512,
+        0.5611205310560763
+      ],
+      "response_seconds": 0.5618836330249906,
+      "sha256": "b35421da1d5f8305e1f393a883158dfd7e6d38a35d294637497aba6ef12e30d0",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:06 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-7ad06e60-0b68-4c24-9fe2-f58571af83a0",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-7ad06e60-0b68-4c24-9fe2-f58571af83a0",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-7ad06e60-0b68-4c24-9fe2-f58571af83a0",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 128,
+          "completion_tokens": 81,
+          "total_tokens": 209,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "concurrent-0-en",
+      "status": 200,
+      "chunks": 5,
+      "samples": 134064,
+      "chunk_bytes": [
+        53802,
+        56448,
+        56448,
+        65529,
+        35901
+      ],
+      "chunk_times_seconds": [
+        0.2631850289180875,
+        0.3231127029284835,
+        0.38389080483466387,
+        0.44664506893604994,
+        0.44669829681515694
+      ],
+      "response_seconds": 0.44725883891806006,
+      "sha256": "91618970901bb9b1acdf9992392d404f1bc675ac8fe19601e90836fdb22f5c79",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:07 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-25a01518-b3b5-405b-a628-ba4116d97c25",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-25a01518-b3b5-405b-a628-ba4116d97c25",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-25a01518-b3b5-405b-a628-ba4116d97c25",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 114,
+          "completion_tokens": 38,
+          "total_tokens": 152,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "concurrent-2-en",
+      "status": 200,
+      "chunks": 5,
+      "samples": 134064,
+      "chunk_bytes": [
+        53802,
+        56448,
+        56448,
+        65529,
+        35901
+      ],
+      "chunk_times_seconds": [
+        0.28259214712306857,
+        0.342245850013569,
+        0.42151713208295405,
+        0.5395960269961506,
+        0.5396664631552994
+      ],
+      "response_seconds": 0.5401752269826829,
+      "sha256": "124f37a0dff43560b6fffbbc2265901140aff2d7665a4344cecf1eafb2d24680",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:07 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-ff3f60d9-b910-4a4b-b6e7-88512700d0c5",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-ff3f60d9-b910-4a4b-b6e7-88512700d0c5",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-ff3f60d9-b910-4a4b-b6e7-88512700d0c5",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 114,
+          "completion_tokens": 38,
+          "total_tokens": 152,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "concurrent-1-zh",
+      "status": 200,
+      "chunks": 12,
+      "samples": 313992,
+      "chunk_bytes": [
+        53802,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        65529,
+        621
+      ],
+      "chunk_times_seconds": [
+        0.2855513598769903,
+        0.3452929670456797,
+        0.405682876938954,
+        0.5664348569698632,
+        0.6254535040352494,
+        0.676460606046021,
+        0.73615936585702,
+        0.7879422758705914,
+        0.8393905288539827,
+        0.8974539700429887,
+        0.9353891159407794,
+        0.9354327288456261
+      ],
+      "response_seconds": 0.9362126919440925,
+      "sha256": "e10bf84b9ff8784d35acf87368e74387b1d2afd0cc4840c398dcbabba3a40a9c",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:07 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-450c71d1-8927-4adb-8917-2acf04f5f914",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-450c71d1-8927-4adb-8917-2acf04f5f914",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-450c71d1-8927-4adb-8917-2acf04f5f914",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 134,
+          "completion_tokens": 89,
+          "total_tokens": 223,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "concurrent-3-zh",
+      "status": 200,
+      "chunks": 12,
+      "samples": 313992,
+      "chunk_bytes": [
+        53802,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        56448,
+        65529,
+        621
+      ],
+      "chunk_times_seconds": [
+        0.2797247029375285,
+        0.339636166812852,
+        0.4189146098215133,
+        0.5822619439568371,
+        0.6198026689235121,
+        0.6917879548855126,
+        0.7304954659193754,
+        0.7822929448448122,
+        0.8547092808876187,
+        0.9104858709033579,
+        0.9489911268465221,
+        0.9490567748434842
+      ],
+      "response_seconds": 0.9497902488801628,
+      "sha256": "e10bf84b9ff8784d35acf87368e74387b1d2afd0cc4840c398dcbabba3a40a9c",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:07 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-d8fd70da-2a75-49b1-824b-78e0c973348c",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-d8fd70da-2a75-49b1-824b-78e0c973348c",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-d8fd70da-2a75-49b1-824b-78e0c973348c",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 134,
+          "completion_tokens": 89,
+          "total_tokens": 223,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "after-disconnect",
+      "status": 200,
+      "chunks": 5,
+      "samples": 116424,
+      "chunk_bytes": [
+        53802,
+        56448,
+        56448,
+        65529,
+        621
+      ],
+      "chunk_times_seconds": [
+        0.13309290702454746,
+        0.18281076406128705,
+        0.23070153291337192,
+        0.24997593904845417,
+        0.25001676194369793
+      ],
+      "response_seconds": 0.2504485980607569,
+      "sha256": "1427d0de6059204e56893937cdc6e973a7be6cd008567ae6f1faa1c561ec51a1",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:08 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-79b7f118-05ba-4a5e-8196-0a4a4735b161",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-79b7f118-05ba-4a5e-8196-0a4a4735b161",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-79b7f118-05ba-4a5e-8196-0a4a4735b161",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 41,
+          "completion_tokens": 33,
+          "total_tokens": 74,
+          "engine_time_s": null
+        }
+      }
+    },
+    {
+      "case": "one-latent-length-stop",
+      "status": 200,
+      "chunks": 1,
+      "samples": 3528,
+      "chunk_bytes": [
+        7056
+      ],
+      "chunk_times_seconds": [
+        0.03407041705213487
+      ],
+      "response_seconds": 0.034346562111750245,
+      "sha256": "95189f25ab298d292bb3069af67cf31ceb2ce19694244bb3279e300240341c1a",
+      "headers": {
+        "date": "Tue, 27 Oct 2026 03:14:08 GMT",
+        "server": "uvicorn",
+        "x-request-id": "speech-8d672db5-a993-4b69-b117-4611b84ab125",
+        "x-sample-rate": "44100",
+        "x-channels": "1",
+        "x-bit-depth": "16",
+        "x-sglang-omni-speech-id": "speech-8d672db5-a993-4b69-b117-4611b84ab125",
+        "content-type": "audio/pcm",
+        "vary": "Origin",
+        "transfer-encoding": "chunked"
+      },
+      "outcome_status": 200,
+      "outcome": {
+        "request_id": "speech-8d672db5-a993-4b69-b117-4611b84ab125",
+        "finish_reason": "length",
+        "usage": {
+          "prompt_tokens": 41,
+          "completion_tokens": 1,
+          "total_tokens": 42,
+          "engine_time_s": null
+        }
+      }
+    }
+  ],
+  "started": 1793070715.5226438,
+  "gpu": "NVIDIA H200",
+  "gpu_uuid": "4ac09667-48f7-6a03-b930-8338f78d441e",
+  "versions": {
+    "torch": "2.14.1",
+    "transformers": "5.19.0",
+    "sglang": "0.5.22",
+    "diffusers": "0.37.0"
+  },
+  "source_import": "/workspace/sglang-omni/sglang_omni/__init__.py",
+  "server_command": [
+    "/opt/sglang/bin/python3",
+    "-m",
+    "sglang_omni.cli",
+    "serve",
+    "--model-path",
+    "/opt/rsi-assets/huggingface/hub/models--inclusionAI--Ming-3.0-tts-0.5B/snapshots/8d66b70a00f05ad183fa8a863b4ce609fc83cbc0",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18881",
+    "--mem-fraction-static",
+    "0.6",
+    "--tts_engine.engine.max_running_requests",
+    "32",
+    "--tts_engine.engine.cuda_graph_max_bs",
+    "32"
+  ],
+  "server_pid": 577,
+  "startup_seconds": 122.02512693405151,
+  "comparisons": [
+    {
+      "case": "en-reference0",
+      "offline_samples": 81144,
+      "stream_samples": 81144,
+      "pcm_max_absolute_delta": 1028,
+      "pcm_mean_absolute_delta": 32.275929212264614,
+      "correlation": 0.9997047068733367
+    },
+    {
+      "case": "en-reference1",
+      "offline_samples": 109368,
+      "stream_samples": 109368,
+      "pcm_max_absolute_delta": 11552,
+      "pcm_mean_absolute_delta": 82.1230615902275,
+      "correlation": 0.9786043510684024
+    },
+    {
+      "case": "zh-reference0",
+      "offline_samples": 172872,
+      "stream_samples": 172872,
+      "pcm_max_absolute_delta": 1856,
+      "pcm_mean_absolute_delta": 80.05453167661622,
+      "correlation": 0.9997107107542256
+    },
+    {
+      "case": "zh-reference1",
+      "offline_samples": 285768,
+      "stream_samples": 285768,
+      "pcm_max_absolute_delta": 910,
+      "pcm_mean_absolute_delta": 23.764966686262984,
+      "correlation": 0.9997540643569747
+    }
+  ],
+  "sse": {
+    "audio_chunks": 3,
+    "terminal": {
+      "type": "speech.audio.done",
+      "usage": {
+        "input_tokens": 114,
+        "output_tokens": 31,
+        "total_tokens": 145
+      },
+      "finish_reason": "stop"
+    }
+  },
+  "disconnect_after_first_chunk": true,
+  "stage": "complete",
+  "server_exit": 0
+}

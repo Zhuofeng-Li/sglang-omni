@@ -1,0 +1,19 @@
+{
+  "stage": "passed",
+  "completed": [
+    {
+      "name": "candidate",
+      "commit": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6"
+    },
+    {
+      "name": "stream",
+      "commit": "348f6973d4878ed77a9c6c60d072c91addaf15d8"
+    },
+    {
+      "name": "tiny-perf",
+      "commit": "ea0958cb4199f7752427c6974e3c3527d96d80f3"
+    }
+  ],
+  "updated_utc": "2026-10-27T03:11:23.706608+00:00",
+  "active": "tiny-perf"
+}

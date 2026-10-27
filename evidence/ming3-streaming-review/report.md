@@ -1,8 +1,10 @@
 # Ming3 streaming review evidence
 
+**Current-main follow-up:** the [fresh 0.5B measurement and both-model integration checks](current-main/report.md) use main `0fe60cf6` and integration `348f6973`. The tables below remain the original measurements; Tiny timings retain that original source.
+
 Measurement blocks: **32/32**. All requested latency blocks are complete.
 
-Measured integration: `251f02b467fe06269cb2d3d8c1063565d7c3de82`, tree `3e68505e3a2c26ae6e88e8360007bc0d3896d5d7`. The final dense head `8ca2534388574830fbfb3b692feee6851c57e0f2` has the identical tree. Tiny revision `5c955911` differs only in the companion dense enablement guard and its test. Current heads `f24ba6fa` (Tiny) and `cf50d5a4` (dense) add cookbook-only clarification; runtime file blobs remain unchanged.
+Measured integration: `251f02b467fe06269cb2d3d8c1063565d7c3de82`, tree `3e68505e3a2c26ae6e88e8360007bc0d3896d5d7`. The final dense head `8ca2534388574830fbfb3b692feee6851c57e0f2` has the identical tree. Tiny revision `5c955911` differs only in the companion dense enablement guard and its test. Then-published heads `f24ba6fa` (Tiny) and `cf50d5a4` (dense) add cookbook-only clarification; runtime file blobs remain unchanged.
 
 One H200. Automatic pipeline configuration; server max running requests and graph batch 32. Dense MPS auto, Tiny MPS off. No CPU quota or affinity override. First 128 EN and 128 ZH samples of SeedTTS `27f4c1adee83b5b29b7c4b375f6b976324bda308`. All timed requests use reference audio/text conditioning. Per language/concurrency: nonstream42, stream42, stream43, nonstream43. Warmup equals concurrency. One service per model spans its 16 blocks; compilation and speaker caches persist. Dense prompt-latent caching is seed-keyed: stream42 can reuse nonstream42, while stream43 first introduces seed43. Tiny still encodes reference prompts in its engine. These are measurements of this replay protocol, not cold-reference latency or a cache-normalized A/B estimate.
 

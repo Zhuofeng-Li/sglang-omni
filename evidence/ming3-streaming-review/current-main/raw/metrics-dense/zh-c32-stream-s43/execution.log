@@ -1,0 +1,92 @@
+2026-10-27 03:27:28,642 datasets INFO JAX version 0.4.38 available.
+2026-10-27 03:27:28,749 benchmarks.dataset.seedtts INFO Loading zhaochenyang20/seed-tts-eval-arrow split=zh revision=27f4c1adee83b5b29b7c4b375f6b976324bda308 from HuggingFace ...
+Using the latest cached version of the dataset since zhaochenyang20/seed-tts-eval-arrow couldn't be found on the Hugging Face Hub (offline mode is enabled).
+2026-10-27 03:27:28,749 datasets.load WARNING Using the latest cached version of the dataset since zhaochenyang20/seed-tts-eval-arrow couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /opt/rsi-assets/huggingface/datasets/zhaochenyang20___seed-tts-eval-arrow/default/0.0.0/27f4c1adee83b5b29b7c4b375f6b976324bda308 (last modified on Mon Oct 26 14:25:07 2026).
+2026-10-27 03:27:28,750 datasets.packaged_modules.cache.cache WARNING Found the latest cached dataset configuration 'default' at /opt/rsi-assets/huggingface/datasets/zhaochenyang20___seed-tts-eval-arrow/default/0.0.0/27f4c1adee83b5b29b7c4b375f6b976324bda308 (last modified on Mon Oct 26 14:25:07 2026).
+2026-10-27 03:27:28,810 benchmarks.dataset.seedtts INFO Staging audio to /tmp/seedtts_zh_4a83qbly
+2026-10-27 03:27:28,851 benchmarks.dataset.seedtts INFO Loaded 128 samples (64 unique audio files) from zhaochenyang20/seed-tts-eval-arrow/zh
+2026-10-27 03:27:28,852 __main__ INFO Prepared 128 requests (offset 0)
+2026-10-27 03:27:28,853 benchmarks.benchmarker.runner INFO Warmup (32 requests)...
+2026-10-27 03:27:30,723 benchmarks.benchmarker.runner INFO   warmup 1/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 2/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 3/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 4/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 5/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 6/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 7/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 8/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 9/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 10/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 11/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 12/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 13/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 14/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 15/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 16/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 17/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 18/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 19/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 20/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 21/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 22/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 23/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 24/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 25/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 26/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 27/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 28/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 29/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 30/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 31/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO   warmup 32/32: ok
+2026-10-27 03:27:30,724 benchmarks.benchmarker.runner INFO Benchmarking 128 requests (max_concurrency=32)...
+  0%|          | 0/128 [00:00<?, ?it/s]  1%|          | 1/128 [00:01<02:11,  1.03s/it]  4%|▍         | 5/128 [00:01<00:22,  5.40it/s]  7%|▋         | 9/128 [00:01<00:12,  9.76it/s]  9%|▉         | 12/128 [00:01<00:09, 12.08it/s] 12%|█▎        | 16/128 [00:01<00:06, 16.40it/s] 15%|█▍        | 19/128 [00:01<00:05, 18.72it/s] 17%|█▋        | 22/128 [00:01<00:05, 19.80it/s] 20%|█▉        | 25/128 [00:01<00:04, 21.73it/s] 22%|██▏       | 28/128 [00:02<00:04, 23.50it/s] 24%|██▍       | 31/128 [00:02<00:04, 23.07it/s] 27%|██▋       | 34/128 [00:02<00:07, 11.89it/s] 28%|██▊       | 36/128 [00:02<00:08, 10.90it/s] 30%|██▉       | 38/128 [00:03<00:07, 12.00it/s] 31%|███▏      | 40/128 [00:03<00:07, 11.35it/s] 33%|███▎      | 42/128 [00:03<00:08,  9.86it/s] 34%|███▍      | 44/128 [00:03<00:07, 11.19it/s] 38%|███▊      | 48/128 [00:03<00:05, 14.61it/s] 39%|███▉      | 50/128 [00:04<00:05, 13.33it/s] 41%|████      | 52/128 [00:04<00:05, 14.08it/s] 42%|████▏     | 54/128 [00:04<00:05, 14.00it/s] 45%|████▍     | 57/128 [00:04<00:04, 15.20it/s] 46%|████▌     | 59/128 [00:04<00:04, 14.83it/s] 48%|████▊     | 62/128 [00:04<00:03, 17.28it/s] 51%|█████     | 65/128 [00:04<00:04, 15.68it/s] 52%|█████▏    | 67/128 [00:05<00:04, 14.30it/s] 54%|█████▍    | 69/128 [00:05<00:04, 14.15it/s] 55%|█████▌    | 71/128 [00:05<00:03, 14.67it/s] 57%|█████▋    | 73/128 [00:05<00:04, 12.62it/s] 59%|█████▊    | 75/128 [00:05<00:04, 12.06it/s] 60%|██████    | 77/128 [00:05<00:04, 12.67it/s] 62%|██████▏   | 79/128 [00:06<00:03, 12.63it/s] 63%|██████▎   | 81/128 [00:06<00:03, 12.49it/s] 65%|██████▍   | 83/128 [00:06<00:03, 12.97it/s] 66%|██████▋   | 85/128 [00:06<00:03, 11.29it/s] 68%|██████▊   | 87/128 [00:06<00:03, 12.05it/s] 70%|██████▉   | 89/128 [00:06<00:03, 12.60it/s] 71%|███████   | 91/128 [00:07<00:02, 13.55it/s] 73%|███████▎  | 94/128 [00:07<00:02, 16.54it/s] 75%|███████▌  | 96/128 [00:07<00:01, 17.35it/s] 77%|███████▋  | 98/128 [00:07<00:02, 13.76it/s] 78%|███████▊  | 100/128 [00:07<00:02, 13.24it/s] 80%|████████  | 103/128 [00:07<00:01, 15.04it/s] 82%|████████▏ | 105/128 [00:07<00:01, 13.73it/s] 84%|████████▎ | 107/128 [00:08<00:01, 13.53it/s] 86%|████████▌ | 110/128 [00:08<00:01, 14.23it/s] 88%|████████▊ | 113/128 [00:08<00:00, 15.15it/s] 91%|█████████ | 116/128 [00:08<00:00, 14.38it/s] 92%|█████████▏| 118/128 [00:08<00:00, 15.01it/s] 94%|█████████▍| 120/128 [00:08<00:00, 14.97it/s] 96%|█████████▌| 123/128 [00:09<00:00, 17.65it/s] 98%|█████████▊| 126/128 [00:09<00:00, 19.76it/s]100%|██████████| 128/128 [00:09<00:00, 13.84it/s]
+2026-10-27 03:27:39,986 benchmarks.benchmarker.utils INFO Results saved to /results/zh-c32-stream-s43/speed_results.json
+2026-10-27 03:27:39,986 benchmarks.tasks.tts INFO Results saved to /results/zh-c32-stream-s43
+2026-10-27 03:27:39,987 benchmarks.tasks.tts INFO Generated audio metadata saved to /results/zh-c32-stream-s43/generated.json
+
+============================================================
+                   Speed Benchmark Result                   
+============================================================
+  Model:                         /opt/rsi-assets/huggingface/hub/models--inclusionAI--Ming-3.0-tts-0.5B/snapshots/8d66b70a00f05ad183fa8a863b4ce609fc83cbc0
+  Concurrency:                   32
+  Completed requests:            128
+  Failed requests:               0
+  Max token hits:                0
+  Finish reasons observed:       128
+------------------------------------------------------------
+  Latency mean (s):              2.104
+  Latency median (s):            2.202
+  Latency p95 (s):               2.598
+  Latency p99 (s):               2.617
+  RTF mean:                      0.4161
+  RTF median:                    0.4275
+  RTF p95:                       0.5446
+  RTF p99:                       0.6045
+  Audio duration mean (s):       5.114
+  Audio throughput (s/s):        70.759
+  TTFC mean (s):                 1.3533
+  TTFC median (s):               1.6622
+  TTFC p95 (s):                  1.9783
+  TTFC p99 (s):                  2.0039
+  ITL mean (s):                  0.1162
+  ITL p95 (s):                   0.2379
+  ITL p99 (s):                   0.3058
+  Max underrun mean (s):         0.0
+  Max underrun p95 (s):          0.0
+  Max underrun p99 (s):          0.0
+  C50 (%):                       100.0
+  C100 (%):                      100.0
+  C200 (%):                      100.0
+  Continuity requests:           128
+  Continuity N/A (1 chunk):      0
+  Audio chunks mean:             7.45
+  First audio payload bytes:     53802.0
+  Output throughput (tok/s):     884.5
+  Output tokens (mean):          64
+  Output tokens (total):         8183
+  Prompt tokens (mean):          126
+  Prompt tokens (total):         16192
+  Throughput (req/s):            13.835
+============================================================
