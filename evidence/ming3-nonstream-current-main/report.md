@@ -1,6 +1,6 @@
 # Ming3 non-streaming current-main qualification
 
-Audited arms: 48/92; updated 2026-10-27T12:41:42.217216+00:00. Only complete ABBA cells are aggregated.
+Audited arms: 52/92; updated 2026-10-27T14:44:04.479171+00:00. Only complete ABBA cells are aggregated.
 
 Actual control `0fe60cf6c102caf982430e1764243c6e5c749d76`; candidate `3f8593f4cae19fe1c71e929a854bdc03b2c185e6`; corrected control `0d6a414e5e15c996900620d263143c89e0dd8acd`. `current-corrected-control.patch` reproduces that control from the actual main commit by retaining only the captured sampling-scale tensor. One H200, full SeedTTS EN/ZH, seeds42/43, A42/B42/B43/A43 per cell. Source receipts, exact commands/YAMLs, per-request results, per-sample SIM and WAV hashes are retained below `raw/`.
 
@@ -10,7 +10,7 @@ Subsequent main `71bce692` wraps ASR WAV preparation with the existing audio loa
 
 Subsequent main `e8050949` sets the FlashInfer architecture before stage processes launch. For the assigned H200/H100 (SM90), the pinned FlashInfer automatic target and explicit `9.0a` both resolve to `(9, "0a")`; SGLang already sets `9.0a`. This architecture-selection audit executes the installed class AST with mocked device capability, without importing Torch or launching CUDA work. It does not claim a new performance measurement on that main revision; see `main-e805-arch-equivalence.json` and its probe.
 
-Later main changes through `6d8d70b988a63f623d424daa8e2b1a03dc5ec499` affect other-model/session paths, model registration, NPU router classification and the standalone GPU diagnostics CLI, with no identified Ming tensor-math edit. The registry eagerly imports models, so possible additional import-time startup overhead is not measured in these frozen-source cost rows. Source IDs and measurement dates are retained; final-main integration remains required. See `main-after-source-audit.json`.
+Later main changes through `a57209f8ac8ddff66c43e4c650310922114f522b` affect other-model/session paths, model registration, NPU router classification and the standalone GPU diagnostics CLI, with no identified Ming tensor-math edit. The registry eagerly imports models, so possible additional import-time startup overhead is not measured in these frozen-source cost rows. Source IDs and measurement dates are retained; final-main integration remains required. See `main-after-source-audit.json`.
 
 ## upstream
 
@@ -36,7 +36,7 @@ Later main changes through `6d8d70b988a63f623d424daa8e2b1a03dc5ec499` affect oth
 
 | Concurrency | EN/ZH geometric throughput change |
 | --- | --- |
-| 1 | Pending |
+| 1 | +214.08% |
 | 16 | Pending |
 | 32 | Pending |
 | 64 | Pending |
@@ -47,7 +47,7 @@ Later main changes through `6d8d70b988a63f623d424daa8e2b1a03dc5ec499` affect oth
 | EN | 16 | 9.011 → 41.906 | 1766.0 / 2561.0–2606.0 → 378.5 / 523.0–527.0 | N/A | 3.904 → 3.905 | 1.0006 → 1.0341 | 0.77653 → 0.77699 | 0/2176 → 0/2176 |
 | EN | 32 | 11.832 → 63.200 | 2679.5 / 3968.0–4042.0 → 496.0 / 710.0–721.0 | N/A | 3.901 → 3.901 | 1.0090 → 1.0173 | 0.77657 → 0.77705 | 0/2176 → 0/2176 |
 | EN | 64 | 13.612 → 59.563 | 4632.0 / 7199.0–7645.0 → 1054.5 / 1524.0–1534.0 | N/A | 3.902 → 3.904 | 0.9880 → 0.9420 | 0.77667 → 0.77744 | 0/2176 → 0/2176 |
-| ZH | 1 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
+| ZH | 1 | 0.980 → 3.101 | 1020.5 / 1293.0–1297.0 → 322.5 / 417.0–423.0 | N/A | 5.202 → 5.202 | 0.6364 → 0.6601 | 0.77992 → 0.78032 | 0/4040 → 0/4040 |
 | ZH | 16 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
 | ZH | 32 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
 | ZH | 64 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
@@ -119,6 +119,8 @@ Later main changes through `6d8d70b988a63f623d424daa8e2b1a03dc5ec499` affect oth
 | lifetime-corrected/en-c1 | 43 | -0.03349 | -0.0003052 |
 | lifetime-corrected/en-c16 | 42 | +0.01675 | +0.0008897 |
 | lifetime-corrected/en-c16 | 43 | +0.05024 | +0.0000297 |
+| lifetime-corrected/zh-c1 | 42 | +0.01893 | +0.0001424 |
+| lifetime-corrected/zh-c1 | 43 | +0.02839 | +0.0006569 |
 
 ## Costs and output lengths
 
@@ -136,5 +138,6 @@ Later main changes through `6d8d70b988a63f623d424daa8e2b1a03dc5ec499` affect oth
 | lifetime-corrected/en-c1 | 79.59 → 123.62 | 107.94 → 109.19 | [19] → [430] | 106087 → 106192 |
 | lifetime-corrected/en-c16 | 85.62 → 123.14 | 108.69 → 109.73 | [19] → [430] | 106182 → 106211 |
 | lifetime-corrected/en-c64 | 80.58 → 124.14 | 107.61 → 109.78 | [19] → [430] | 106147 → 106167 |
+| lifetime-corrected/zh-c1 | 79.59 → 126.63 | 109.16 → 109.71 | [19] → [430] | 262696 → 262704 |
 
 A is clean/corrected main for the first two comparisons, and native candidate for ablations. B is the candidate for the first two comparisons, and MPS off/cache off/fused flow off for the respective ablation. A partial matrix does not establish merge readiness.
