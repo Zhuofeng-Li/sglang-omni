@@ -1,0 +1,47 @@
+{
+  "variant": "dense",
+  "started": 1793067363.8526924,
+  "completed": [
+    "en-c1-nonstream-s42",
+    "en-c1-stream-s42"
+  ],
+  "stage": "benchmark",
+  "gpu": "NVIDIA H200",
+  "gpu_uuid": "4ac09667-48f7-6a03-b930-8338f78d441e",
+  "source_commit": "251f02b467fe06269cb2d3d8c1063565d7c3de82",
+  "versions": {
+    "torch": "2.14.1",
+    "transformers": "5.19.0",
+    "sglang": "0.5.22"
+  },
+  "model_path": "/opt/rsi-assets/huggingface/hub/models--inclusionAI--Ming-3.0-tts-0.5B/snapshots/8d66b70a00f05ad183fa8a863b4ce609fc83cbc0",
+  "max_samples": 128,
+  "seeds": [
+    42,
+    43
+  ],
+  "concurrencies": [
+    1,
+    32
+  ],
+  "source_import": "/workspace/sglang-omni/sglang_omni/__init__.py",
+  "server_command": [
+    "/opt/sglang/bin/python3",
+    "-m",
+    "sglang_omni.cli",
+    "serve",
+    "--model-path",
+    "/opt/rsi-assets/huggingface/hub/models--inclusionAI--Ming-3.0-tts-0.5B/snapshots/8d66b70a00f05ad183fa8a863b4ce609fc83cbc0",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18881",
+    "--tts_engine.engine.max_running_requests",
+    "32",
+    "--tts_engine.engine.cuda_graph_max_bs",
+    "32"
+  ],
+  "updated": 1793067572.5359688,
+  "startup_s": 120.33312392234802,
+  "active": "en-c1-stream-s43"
+}

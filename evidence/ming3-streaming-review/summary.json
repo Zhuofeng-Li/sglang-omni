@@ -1,0 +1,149 @@
+{
+  "metrics-dense/en-c1-nonstream-s42": {
+    "attempted": 128,
+    "failed": 0,
+    "native_summary": {
+      "total_requests": 128,
+      "completed_requests": 128,
+      "failed_requests": 0,
+      "max_token_hits": 0,
+      "finish_reason_observed": 128,
+      "client_slot_waits": 127,
+      "latency_mean_s": 0.245,
+      "latency_median_s": 0.243,
+      "latency_p95_s": 0.365,
+      "latency_p99_s": 0.423,
+      "audio_duration_mean_s": 3.535,
+      "rtf_mean": 0.0713,
+      "rtf_median": 0.0708,
+      "rtf_p95": 0.0948,
+      "rtf_p99": 0.1021,
+      "throughput_qps": 4.076,
+      "output_throughput": 180.1,
+      "output_tokens_mean": 44.0,
+      "output_tokens_total": 5656,
+      "prompt_tokens_mean": 128.0,
+      "prompt_tokens_total": 16386,
+      "audio_throughput_s_per_s": 14.409
+    },
+    "latency_s": {
+      "count": 128,
+      "mean": 0.2451578125,
+      "p95": 0.364745,
+      "max": 0.4998
+    },
+    "audio_ttfp_s": {
+      "count": 0,
+      "mean": null,
+      "p95": null,
+      "max": null
+    },
+    "audio_duration_s": {
+      "count": 128,
+      "mean": 3.535,
+      "p95": 5.703999999999998,
+      "max": 7.6
+    },
+    "max_playback_underrun_s": {
+      "count": 0,
+      "mean": null,
+      "p95": null,
+      "max": null
+    },
+    "continuity_scored": 0,
+    "continuity_na": 128,
+    "positive_underrun": 0,
+    "total_completion_tokens": 5656,
+    "continuity_percent": {
+      "50": null,
+      "100": null,
+      "200": null
+    },
+    "finish_reasons": {
+      "stop": 128
+    }
+  },
+  "metrics-dense/en-c1-stream-s42": {
+    "attempted": 128,
+    "failed": 0,
+    "native_summary": {
+      "total_requests": 128,
+      "completed_requests": 128,
+      "failed_requests": 0,
+      "max_token_hits": 0,
+      "finish_reason_observed": 128,
+      "client_slot_waits": 127,
+      "latency_mean_s": 0.309,
+      "latency_median_s": 0.304,
+      "latency_p95_s": 0.477,
+      "latency_p99_s": 0.51,
+      "audio_duration_mean_s": 3.535,
+      "rtf_mean": 0.0883,
+      "rtf_median": 0.0872,
+      "rtf_p95": 0.0976,
+      "rtf_p99": 0.1089,
+      "throughput_qps": 3.239,
+      "output_throughput": 143.1,
+      "output_tokens_mean": 44.0,
+      "output_tokens_total": 5656,
+      "prompt_tokens_mean": 128.0,
+      "prompt_tokens_total": 16386,
+      "audio_throughput_s_per_s": 11.449,
+      "audio_ttfp_mean_s": 0.1336,
+      "audio_ttfp_median_s": 0.1336,
+      "audio_ttfp_p95_s": 0.1356,
+      "audio_ttfp_p99_s": 0.1362,
+      "inter_chunk_mean_s": 0.0439,
+      "inter_chunk_p95_s": 0.0507,
+      "inter_chunk_p99_s": 0.0511,
+      "audio_chunks_mean": 4.98,
+      "audio_chunks_p95": 8.0,
+      "first_audio_payload_bytes_mean": 53802.0,
+      "first_audio_payload_bytes_p95": 53802.0,
+      "playback_continuity_requests": 128,
+      "playback_continuity_na_requests": 0,
+      "max_playback_underrun_mean_s": 0.0,
+      "max_playback_underrun_p95_s": 0.0,
+      "max_playback_underrun_p99_s": 0.0,
+      "c50": 100.0,
+      "c100": 100.0,
+      "c200": 100.0
+    },
+    "latency_s": {
+      "count": 128,
+      "mean": 0.308609375,
+      "p95": 0.4774049999999999,
+      "max": 0.626
+    },
+    "audio_ttfp_s": {
+      "count": 128,
+      "mean": 0.1336484375,
+      "p95": 0.1356,
+      "max": 0.1406
+    },
+    "audio_duration_s": {
+      "count": 128,
+      "mean": 3.535,
+      "p95": 5.703999999999998,
+      "max": 7.6
+    },
+    "max_playback_underrun_s": {
+      "count": 128,
+      "mean": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "continuity_scored": 128,
+    "continuity_na": 0,
+    "positive_underrun": 0,
+    "total_completion_tokens": 5656,
+    "continuity_percent": {
+      "50": 100.0,
+      "100": 100.0,
+      "200": 100.0
+    },
+    "finish_reasons": {
+      "stop": 128
+    }
+  }
+}
