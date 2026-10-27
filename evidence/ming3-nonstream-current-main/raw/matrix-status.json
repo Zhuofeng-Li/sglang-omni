@@ -55,11 +55,15 @@
     "lifetime-corrected-zh-c16-A42",
     "lifetime-corrected-zh-c16-B42",
     "lifetime-corrected-zh-c16-B43",
-    "lifetime-corrected-zh-c16-A43"
+    "lifetime-corrected-zh-c16-A43",
+    "lifetime-corrected-zh-c32-A42",
+    "lifetime-corrected-zh-c32-B42",
+    "lifetime-corrected-zh-c32-B43",
+    "lifetime-corrected-zh-c32-A43"
   ],
   "started_utc": "2026-10-27T03:30:07.444361+00:00",
   "stage": "running",
-  "updated_utc": "2026-10-27T15:26:46.307654+00:00",
+  "updated_utc": "2026-10-27T16:07:24.995881+00:00",
   "expected_arms": 92,
-  "active": "lifetime-corrected-zh-c32-A42"
+  "active": "lifetime-corrected-zh-c64-A42"
 }

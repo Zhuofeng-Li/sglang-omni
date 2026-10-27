@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T15:28:06.641411+00:00",
-  "completed_arms": 56,
+  "updated_utc": "2026-10-27T16:08:30.279719+00:00",
+  "completed_arms": 60,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -622,13 +622,48 @@
       }
     },
     "lifetime-corrected/zh-c32": {
-      "status": "pending",
-      "missing": [
-        "lifetime-corrected-zh-c32-A42",
-        "lifetime-corrected-zh-c32-B42",
-        "lifetime-corrected-zh-c32-B43",
-        "lifetime-corrected-zh-c32-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 11.208,
+        "latency_mean_s": 2.8425000000000002,
+        "audio_duration_mean_s": 5.199999999999999,
+        "audio_throughput_s_per_s": 58.2785,
+        "latency_p95_range_s": [
+          3.76,
+          3.795
+        ],
+        "wer": 0.006612880329342734,
+        "sim": 0.7798580006502642,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 262591,
+        "startup_s": 78.59049999713898,
+        "peak_tts_device_gib": 108.7451171875,
+        "captures": [
+          19
+        ]
+      },
+      "B": {
+        "throughput_qps": 56.334,
+        "latency_mean_s": 0.5609999999999999,
+        "audio_duration_mean_s": 5.199999999999999,
+        "audio_throughput_s_per_s": 292.9305,
+        "latency_p95_range_s": [
+          0.719,
+          0.721
+        ],
+        "wer": 0.006447262575119482,
+        "sim": 0.7800901048770637,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 262594,
+        "startup_s": 120.130499958992,
+        "peak_tts_device_gib": 109.7685546875,
+        "captures": [
+          430
+        ]
+      }
     },
     "lifetime-corrected/zh-c64": {
       "status": "pending",
@@ -719,7 +754,7 @@
     "lifetime-corrected": {
       "1": 214.07692089284498,
       "16": 348.22795001345384,
-      "32": null,
+      "32": 418.142211358857,
       "64": null
     },
     "mps-attribution": {
