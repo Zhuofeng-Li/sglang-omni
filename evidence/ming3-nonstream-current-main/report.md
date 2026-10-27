@@ -1,6 +1,6 @@
 # Ming3 non-streaming current-main qualification
 
-Audited arms: 8/92; updated 2026-10-27T05:05:31.594219+00:00. Only complete ABBA cells are aggregated.
+Audited arms: 16/92; updated 2026-10-27T06:09:24.803204+00:00. Only complete ABBA cells are aggregated.
 
 Actual control `0fe60cf6c102caf982430e1764243c6e5c749d76`; candidate `3f8593f4cae19fe1c71e929a854bdc03b2c185e6`; corrected control `0d6a414e5e15c996900620d263143c89e0dd8acd`. One H200, full SeedTTS EN/ZH, seeds42/43, A42/B42/B43/A43 per cell. Source receipts, exact commands/YAMLs, per-request results, per-sample SIM and WAV hashes are retained below `raw/`.
 
@@ -22,9 +22,9 @@ Subsequent main `e8050949` sets the FlashInfer architecture before stage process
 | Split | Concurrency | req/s A → B | Response mean / p95 range (ms), A → B | First packet | Mean audio seconds, A → B | WER (%), A → B | SIM, A → B | Failed / attempted, A → B |
 | --- | ---: | --- | --- | --- | --- | --- | --- | --- |
 | EN | 1 | 1.239 → 3.842 | 807.0 / 1085.0–1118.0 → 260.0 / 362.0–366.0 | N/A | 3.901 → 3.904 | 1.0090 → 0.9922 | 0.77661 → 0.77656 | 0/2176 → 0/2176 |
-| EN | 16 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
+| EN | 16 | 8.925 → 41.895 | 1780.0 / 2673.0–2682.0 → 377.0 / 522.0–527.0 | N/A | 3.946 → 3.901 | 1.1304 → 1.0048 | 0.77886 → 0.77726 | 0/2176 → 0/2176 |
 | EN | 32 | 11.630 → 61.270 | 2720.5 / 4111.0–4180.0 → 508.5 / 709.0–725.0 | N/A | 3.945 → 3.903 | 1.0173 → 0.9880 | 0.77855 → 0.77686 | 0/2176 → 0/2176 |
-| EN | 64 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
+| EN | 64 | 13.440 → 56.835 | 4685.5 / 7554.0–7848.0 → 1107.5 / 1604.0–1669.0 | N/A | 3.957 → 3.904 | 1.0592 → 0.9797 | 0.77853 → 0.77693 | 0/2176 → 0/2176 |
 | ZH | 1 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
 | ZH | 16 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
 | ZH | 32 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
@@ -101,6 +101,10 @@ Subsequent main `e8050949` sets the FlashInfer architecture before stage process
 | upstream/en-c32 | 43 | -0.00837 | -0.0019417 |
 | upstream/en-c1 | 42 | +0.00837 | +0.0002065 |
 | upstream/en-c1 | 43 | -0.04187 | -0.0003052 |
+| upstream/en-c16 | 42 | -0.20933 | -0.0014849 |
+| upstream/en-c16 | 43 | -0.04187 | -0.0016999 |
+| upstream/en-c64 | 42 | -0.14234 | -0.0017516 |
+| upstream/en-c64 | 43 | -0.01675 | -0.0014430 |
 
 ## Costs and output lengths
 
@@ -108,5 +112,7 @@ Subsequent main `e8050949` sets the FlashInfer architecture before stage process
 | --- | --- | --- | --- | --- |
 | upstream/en-c32 | 80.09 → 124.15 | 108.76 → 109.83 | [19] → [430] | 107287 → 106172 |
 | upstream/en-c1 | 82.10 → 125.65 | 108.64 → 109.19 | [19] → [430] | 106087 → 106192 |
+| upstream/en-c16 | 80.60 → 124.15 | 108.70 → 109.74 | [19] → [430] | 107354 → 106129 |
+| upstream/en-c64 | 81.10 → 125.15 | 107.56 → 109.79 | [19] → [430] | 107632 → 106169 |
 
 A is clean/corrected main for the first two comparisons, and native candidate for ablations. B is the candidate for the first two comparisons, and MPS off/cache off/fused flow off for the respective ablation. A partial matrix does not establish merge readiness.
