@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T14:44:04.479171+00:00",
-  "completed_arms": 52,
+  "updated_utc": "2026-10-27T15:28:06.641411+00:00",
+  "completed_arms": 56,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -578,13 +578,48 @@
       }
     },
     "lifetime-corrected/zh-c16": {
-      "status": "pending",
-      "missing": [
-        "lifetime-corrected-zh-c16-A42",
-        "lifetime-corrected-zh-c16-B42",
-        "lifetime-corrected-zh-c16-B43",
-        "lifetime-corrected-zh-c16-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 8.214500000000001,
+        "latency_mean_s": 1.943,
+        "audio_duration_mean_s": 5.201499999999999,
+        "audio_throughput_s_per_s": 42.727000000000004,
+        "latency_p95_range_s": [
+          2.535,
+          2.55
+        ],
+        "wer": 0.006518241612643732,
+        "sim": 0.7800647015545037,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 262674,
+        "startup_s": 78.57849991321564,
+        "peak_tts_device_gib": 109.2119140625,
+        "captures": [
+          19
+        ]
+      },
+      "B": {
+        "throughput_qps": 35.4895,
+        "latency_mean_s": 0.448,
+        "audio_duration_mean_s": 5.2010000000000005,
+        "audio_throughput_s_per_s": 184.5775,
+        "latency_p95_range_s": [
+          0.567,
+          0.592
+        ],
+        "wer": 0.0065892206501679835,
+        "sim": 0.7801183345958148,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 262649,
+        "startup_s": 123.12450015544891,
+        "peak_tts_device_gib": 109.7353515625,
+        "captures": [
+          430
+        ]
+      }
     },
     "lifetime-corrected/zh-c32": {
       "status": "pending",
@@ -683,7 +718,7 @@
     },
     "lifetime-corrected": {
       "1": 214.07692089284498,
-      "16": null,
+      "16": 348.22795001345384,
       "32": null,
       "64": null
     },
@@ -832,6 +867,18 @@
       "seed": 43,
       "wer_delta": 0.00028391615009700465,
       "sim_delta": 0.000656872014007881
+    },
+    {
+      "cell": "lifetime-corrected/zh-c16",
+      "seed": 42,
+      "wer_delta": 9.463871669900155e-05,
+      "sim_delta": -2.8294708469100982e-05
+    },
+    {
+      "cell": "lifetime-corrected/zh-c16",
+      "seed": 43,
+      "wer_delta": 4.7319358349500774e-05,
+      "sim_delta": 0.0001355607910912271
     }
   ]
 }
