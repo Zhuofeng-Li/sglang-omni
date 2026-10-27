@@ -3,6 +3,6 @@ mps_server 967
   client 997 -> UNMATCHED
   client 1298 -> UNMATCHED
   client 1299 -> UNMATCHED
-replica 0 (port 45997): attached clients: 997 998 
-replica 1 (port 45998): attached clients: 1298 1299 
+replica 0 (port 45997): attached clients: 997 998
+replica 1 (port 45998): attached clients: 1298 1299
 RESULT: PASS
