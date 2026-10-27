@@ -1,0 +1,14 @@
+{
+  "utc": "2026-10-27T21:24:59.556529+00:00",
+  "source_tree": "4c02de011867bef32cbec1b93f0929a219947fec",
+  "source_blobs_verified": 3431,
+  "files": {
+    "source.tar.gz": "937da9da3fbed6015af4e8a6b2c492b77679928f63b651c884a5f862cd39f953",
+    "source-manifest.json": "a132c1d4a9f9d9964b8cd4a48fee3ff4ad23f82e56889b7c69b413e88f224993",
+    "run.py": "d590c0572c605eb9977f8adb5c2723a2f36dcd0af91d8d8d9d1c09dd828ab024",
+    "validate_http.py": "c809756a0ad1b5e063e77c03190eb3269d3d9c621e13e3d3da550685c89d2ad7",
+    "validate_quality.py": "08be0f185b8393b3f8873af60fbc63c1a874993fbc88f3576853cafe3ff9e80a",
+    "observer.py": "f72ef6990df6a593a199b79e4d58162222be182c36932d9f3df2a28d331bfc22"
+  },
+  "lease_expires_epoch": 1793143571
+}

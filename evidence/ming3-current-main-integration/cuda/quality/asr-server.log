@@ -1,0 +1,224 @@
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved', 'interleaved'}
+2026-10-27 21:34:58,333 [INFO] sglang.utils: thinker_config is None. Initializing Qwen3-ASR thinker with default values
+2026-10-27 21:34:58,642 [INFO] sglang_omni.utils.gpu_compat: Applied GPU compatibility env override: FLASHINFER_CUDA_ARCH_LIST=9.0a
+2026-10-27 21:34:58,656 [INFO] sglang_omni.pipeline.mp_runner: CPU thread fallback plan: budget=224 processes=1 fallback_threads_per_process=224 fallback_overcommitted=false allocations={'asr': {'fallback_threads': 112, 'cpus': 112, 'stages': ['asr']}}
+2026-10-27 21:34:58,656 [INFO] sglang_omni.pipeline.mp_runner: Coordinator stream backlog cap: max_total_backlog_bytes=1073741824
+2026-10-27 21:34:58,757 [INFO] sglang_omni.pipeline.control_plane: Coordinator control plane started
+2026-10-27 21:34:58,757 [INFO] sglang_omni.pipeline.coordinator: Coordinator started
+2026-10-27 21:34:58,759 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=asr OMP_NUM_THREADS=112 source=cpu_plan_fallback fallback_threads=112
+2026-10-27 21:34:58,761 [INFO] sglang_omni.pipeline.stage_workers: StageGroup asr: spawned 1 process(es) (pids=[784])
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-27 21:35:09,299 [INFO] stage_workers.asr: Warmed CUDA IPC on cuda:0 before constructing stages
+2026-10-27 21:35:09,299 [INFO] stage_workers.asr: Set current device to 0 for stage asr
+2026-10-27 21:35:09,299 [INFO] stage_workers.asr: Building scheduler for asr (tp_rank=0/1) ...
+2026-10-27 21:35:09,620 [INFO] stage_workers.asr: Acquired GPU startup lock for stage asr: /tmp/sglang_omni_gpu_0_startup.lock
+2026-10-27 21:35:09,688 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'interleaved', 'mrope_interleaved'}
+2026-10-27 21:35:14,712 [INFO] sglang.utils: thinker_config is None. Initializing Qwen3-ASR thinker with default values
+2026-10-27 21:35:14,919 [WARNING] sglang.srt.arg_groups.cuda_graph_hook: cuda_graph_config[prefill].backend='full' is experimental. Use breakable for production workloads.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'interleaved', 'mrope_interleaved'}
+2026-10-27 21:35:14,947 [INFO] sglang.utils: thinker_config is None. Initializing Qwen3-ASR thinker with default values
+[transformers] The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-10-27 21:35:14,953 [INFO] sglang.srt.arg_groups.overrides: Attention backend not specified. Use fa3 backend by default.
+2026-10-27 21:35:14,957 [INFO] sglang_omni.models.qwen3_asr.mrope_fast_path: [qwen3-asr] fast mrope decode path applied
+2026-10-27 21:35:14,958 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR runtime profile: dtype=auto attention_backend=None mm_attention_backend=None cuda_graph=True cuda_graph_bs=[1, 2, 3, 4, 5, 6, 7, 8] torch_compile=False max_running_requests=8 kv_sizing=mem_fraction_static=0.5
+2026-10-27 21:35:14,973 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR memory checkpoint=pre_model_load gpu=0 process_gpu_memory=0.00GiB
+2026-10-27 21:35:15,130 [INFO] sglang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=0, sm=90, architecture=hopper, attention_backend=fa3, decode_attention_backend=fa3, prefill_attention_backend=fa3, sampling_backend=pytorch
+2026-10-27 21:35:15,131 [INFO] sglang_omni.platforms.cuda: Configured SGLang backend policy: arch=Qwen3ASRForConditionalGeneration effective_quantization=None server_quantization=None moe_runner_backend=auto fp8_gemm_backend=auto
+2026-10-27 21:35:15,135 [INFO] sglang.srt.distributed.bootstrap: Init parallel begin.
+2026-10-27 21:35:15,209 [INFO] sglang.srt.distributed.bootstrap: Init parallel ends. elapsed=0.07 s
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1643: FutureWarning: `torch.jit.interface` is deprecated. Please use `torch.compile` instead.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+2026-10-27 21:35:23,855 [INFO] sglang.srt.distributed.bootstrap: Memory baseline taken. mem usage=0.00 GB
+2026-10-27 21:35:23,862 [INFO] sglang.srt.model_executor.model_runner: Load weight begin. avail mem=139.13 GB
+2026-10-27 21:35:23,913 [INFO] sglang.srt.utils.common: Multimodal attention backend not set. Use fa3.
+2026-10-27 21:35:23,913 [INFO] sglang.srt.utils.common: Using fa3 as multimodal attention backend.
+
+Multi-thread loading shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Multi-thread loading shards:  50% Completed | 1/2 [00:00<00:00,  1.44it/s]
+Multi-thread loading shards: 100% Completed | 2/2 [00:00<00:00,  2.44it/s]
+Multi-thread loading shards: 100% Completed | 2/2 [00:00<00:00,  2.21it/s]
+2026-10-27 21:35:25,065 [INFO] sglang.srt.model_executor.model_runner: Load weight end. elapsed=1.20 s, type=Qwen3ASRForConditionalGeneration, avail mem=135.22 GB, mem usage=3.91 GB.
+2026-10-27 21:35:25,576 [INFO] sglang.srt.mem_cache.kv_cache_configurator: Reserving 0.10 GB of the KV budget for post-sizing multimodal allocations (feature-transport pools + embedding cache).
+2026-10-27 21:35:25,599 [INFO] sglang.srt.mem_cache.memory_pool: KV Cache is allocated. dtype: torch.bfloat16, #tokens: 613472, K size: 32.76 GB, V size: 32.76 GB
+2026-10-27 21:35:25,600 [INFO] sglang.srt.mem_cache.kv_cache_configurator: Memory pool end. avail mem=69.60 GB
+2026-10-27 21:35:25,696 [INFO] sglang_omni.models.qwen3_asr.metadata_glue: [qwen3-asr] metadata glue graph captures in thread-local mode
+2026-10-27 21:35:25,713 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR memory checkpoint=post_static_allocation gpu=0 process_gpu_memory=0.00GiB
+2026-10-27 21:35:25,716 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target prefill CUDA graph begin. backend=full, num_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048, 2304, 2560, 2816, 3072, 3328, 3584, 3840, 4096], avail mem=69.46 GB
+
+  0%|          | 0/50 [00:00<?, ?it/s]
+Capturing prefill shape (num_tokens=4096 avail_mem=69.45 GB):   0%|          | 0/50 [00:00<?, ?it/s]
+Capturing prefill shape (num_tokens=4096 avail_mem=69.45 GB):   2%|▏         | 1/50 [00:14<11:47, 14.45s/it]
+Capturing prefill shape (num_tokens=3840 avail_mem=69.14 GB):   2%|▏         | 1/50 [00:14<11:47, 14.45s/it]
+Capturing prefill shape (num_tokens=3584 avail_mem=69.13 GB):   2%|▏         | 1/50 [00:14<11:47, 14.45s/it]
+Capturing prefill shape (num_tokens=3584 avail_mem=69.13 GB):   6%|▌         | 3/50 [00:14<02:58,  3.80s/it]
+Capturing prefill shape (num_tokens=3328 avail_mem=69.14 GB):   6%|▌         | 3/50 [00:14<02:58,  3.80s/it]
+Capturing prefill shape (num_tokens=3072 avail_mem=69.13 GB):   6%|▌         | 3/50 [00:14<02:58,  3.80s/it]
+Capturing prefill shape (num_tokens=3072 avail_mem=69.13 GB):  10%|█         | 5/50 [00:14<01:24,  1.88s/it]
+Capturing prefill shape (num_tokens=2816 avail_mem=69.13 GB):  10%|█         | 5/50 [00:14<01:24,  1.88s/it]
+Capturing prefill shape (num_tokens=2560 avail_mem=69.13 GB):  10%|█         | 5/50 [00:14<01:24,  1.88s/it]
+Capturing prefill shape (num_tokens=2560 avail_mem=69.13 GB):  14%|█▍        | 7/50 [00:14<00:47,  1.11s/it]
+Capturing prefill shape (num_tokens=2304 avail_mem=69.14 GB):  14%|█▍        | 7/50 [00:14<00:47,  1.11s/it]
+Capturing prefill shape (num_tokens=2048 avail_mem=69.13 GB):  14%|█▍        | 7/50 [00:14<00:47,  1.11s/it]
+Capturing prefill shape (num_tokens=2048 avail_mem=69.13 GB):  18%|█▊        | 9/50 [00:14<00:29,  1.40it/s]
+Capturing prefill shape (num_tokens=1792 avail_mem=69.13 GB):  18%|█▊        | 9/50 [00:14<00:29,  1.40it/s]
+Capturing prefill shape (num_tokens=1536 avail_mem=69.13 GB):  18%|█▊        | 9/50 [00:15<00:29,  1.40it/s]
+Capturing prefill shape (num_tokens=1536 avail_mem=69.13 GB):  22%|██▏       | 11/50 [00:15<00:18,  2.07it/s]
+Capturing prefill shape (num_tokens=1280 avail_mem=69.12 GB):  22%|██▏       | 11/50 [00:15<00:18,  2.07it/s]
+Capturing prefill shape (num_tokens=1024 avail_mem=69.14 GB):  22%|██▏       | 11/50 [00:15<00:18,  2.07it/s]
+Capturing prefill shape (num_tokens=1024 avail_mem=69.14 GB):  26%|██▌       | 13/50 [00:15<00:12,  2.94it/s]
+Capturing prefill shape (num_tokens=960 avail_mem=69.12 GB):  26%|██▌       | 13/50 [00:15<00:12,  2.94it/s]
+Capturing prefill shape (num_tokens=896 avail_mem=69.14 GB):  26%|██▌       | 13/50 [00:15<00:12,  2.94it/s]
+Capturing prefill shape (num_tokens=896 avail_mem=69.14 GB):  30%|███       | 15/50 [00:15<00:08,  4.01it/s]
+Capturing prefill shape (num_tokens=832 avail_mem=69.14 GB):  30%|███       | 15/50 [00:15<00:08,  4.01it/s]
+Capturing prefill shape (num_tokens=768 avail_mem=69.14 GB):  30%|███       | 15/50 [00:15<00:08,  4.01it/s]
+Capturing prefill shape (num_tokens=768 avail_mem=69.14 GB):  34%|███▍      | 17/50 [00:15<00:06,  5.27it/s]
+Capturing prefill shape (num_tokens=704 avail_mem=69.14 GB):  34%|███▍      | 17/50 [00:15<00:06,  5.27it/s]
+Capturing prefill shape (num_tokens=640 avail_mem=69.14 GB):  34%|███▍      | 17/50 [00:15<00:06,  5.27it/s]
+Capturing prefill shape (num_tokens=640 avail_mem=69.14 GB):  38%|███▊      | 19/50 [00:15<00:04,  6.76it/s]
+Capturing prefill shape (num_tokens=576 avail_mem=69.13 GB):  38%|███▊      | 19/50 [00:15<00:04,  6.76it/s]
+Capturing prefill shape (num_tokens=512 avail_mem=69.13 GB):  38%|███▊      | 19/50 [00:15<00:04,  6.76it/s]
+Capturing prefill shape (num_tokens=512 avail_mem=69.13 GB):  42%|████▏     | 21/50 [00:15<00:03,  8.37it/s]
+Capturing prefill shape (num_tokens=480 avail_mem=69.13 GB):  42%|████▏     | 21/50 [00:15<00:03,  8.37it/s]
+Capturing prefill shape (num_tokens=448 avail_mem=69.11 GB):  42%|████▏     | 21/50 [00:15<00:03,  8.37it/s]
+Capturing prefill shape (num_tokens=448 avail_mem=69.11 GB):  46%|████▌     | 23/50 [00:15<00:02,  9.97it/s]
+Capturing prefill shape (num_tokens=416 avail_mem=69.11 GB):  46%|████▌     | 23/50 [00:15<00:02,  9.97it/s]
+Capturing prefill shape (num_tokens=384 avail_mem=69.11 GB):  46%|████▌     | 23/50 [00:15<00:02,  9.97it/s]
+Capturing prefill shape (num_tokens=384 avail_mem=69.11 GB):  50%|█████     | 25/50 [00:15<00:02, 11.50it/s]
+Capturing prefill shape (num_tokens=352 avail_mem=69.13 GB):  50%|█████     | 25/50 [00:15<00:02, 11.50it/s]
+Capturing prefill shape (num_tokens=320 avail_mem=69.13 GB):  50%|█████     | 25/50 [00:15<00:02, 11.50it/s]
+Capturing prefill shape (num_tokens=320 avail_mem=69.13 GB):  54%|█████▍    | 27/50 [00:15<00:01, 12.83it/s]
+Capturing prefill shape (num_tokens=288 avail_mem=69.12 GB):  54%|█████▍    | 27/50 [00:15<00:01, 12.83it/s]
+Capturing prefill shape (num_tokens=256 avail_mem=69.12 GB):  54%|█████▍    | 27/50 [00:16<00:01, 12.83it/s]
+Capturing prefill shape (num_tokens=256 avail_mem=69.12 GB):  58%|█████▊    | 29/50 [00:16<00:01, 13.95it/s]
+Capturing prefill shape (num_tokens=240 avail_mem=69.12 GB):  58%|█████▊    | 29/50 [00:16<00:01, 13.95it/s]
+Capturing prefill shape (num_tokens=224 avail_mem=69.12 GB):  58%|█████▊    | 29/50 [00:16<00:01, 13.95it/s]
+Capturing prefill shape (num_tokens=224 avail_mem=69.12 GB):  62%|██████▏   | 31/50 [00:16<00:01, 14.95it/s]
+Capturing prefill shape (num_tokens=208 avail_mem=69.11 GB):  62%|██████▏   | 31/50 [00:16<00:01, 14.95it/s]
+Capturing prefill shape (num_tokens=192 avail_mem=69.11 GB):  62%|██████▏   | 31/50 [00:16<00:01, 14.95it/s]
+Capturing prefill shape (num_tokens=192 avail_mem=69.11 GB):  66%|██████▌   | 33/50 [00:16<00:01, 15.44it/s]
+Capturing prefill shape (num_tokens=176 avail_mem=69.11 GB):  66%|██████▌   | 33/50 [00:16<00:01, 15.44it/s]
+Capturing prefill shape (num_tokens=160 avail_mem=69.11 GB):  66%|██████▌   | 33/50 [00:16<00:01, 15.44it/s]
+Capturing prefill shape (num_tokens=160 avail_mem=69.11 GB):  70%|███████   | 35/50 [00:16<00:00, 16.21it/s]
+Capturing prefill shape (num_tokens=144 avail_mem=69.11 GB):  70%|███████   | 35/50 [00:16<00:00, 16.21it/s]
+Capturing prefill shape (num_tokens=128 avail_mem=69.11 GB):  70%|███████   | 35/50 [00:16<00:00, 16.21it/s]
+Capturing prefill shape (num_tokens=128 avail_mem=69.11 GB):  74%|███████▍  | 37/50 [00:16<00:00, 16.35it/s]
+Capturing prefill shape (num_tokens=112 avail_mem=69.11 GB):  74%|███████▍  | 37/50 [00:16<00:00, 16.35it/s]
+Capturing prefill shape (num_tokens=96 avail_mem=69.11 GB):  74%|███████▍  | 37/50 [00:16<00:00, 16.35it/s]
+Capturing prefill shape (num_tokens=96 avail_mem=69.11 GB):  78%|███████▊  | 39/50 [00:16<00:00, 16.52it/s]
+Capturing prefill shape (num_tokens=80 avail_mem=69.10 GB):  78%|███████▊  | 39/50 [00:16<00:00, 16.52it/s]
+Capturing prefill shape (num_tokens=64 avail_mem=69.10 GB):  78%|███████▊  | 39/50 [00:16<00:00, 16.52it/s]
+Capturing prefill shape (num_tokens=64 avail_mem=69.10 GB):  82%|████████▏ | 41/50 [00:16<00:00, 16.84it/s]
+Capturing prefill shape (num_tokens=48 avail_mem=69.10 GB):  82%|████████▏ | 41/50 [00:16<00:00, 16.84it/s]
+Capturing prefill shape (num_tokens=32 avail_mem=69.10 GB):  82%|████████▏ | 41/50 [00:16<00:00, 16.84it/s]
+Capturing prefill shape (num_tokens=32 avail_mem=69.10 GB):  86%|████████▌ | 43/50 [00:16<00:00, 16.69it/s]
+Capturing prefill shape (num_tokens=28 avail_mem=69.10 GB):  86%|████████▌ | 43/50 [00:16<00:00, 16.69it/s]
+Capturing prefill shape (num_tokens=24 avail_mem=69.10 GB):  86%|████████▌ | 43/50 [00:16<00:00, 16.69it/s]
+Capturing prefill shape (num_tokens=24 avail_mem=69.10 GB):  90%|█████████ | 45/50 [00:17<00:00, 16.99it/s]
+Capturing prefill shape (num_tokens=20 avail_mem=69.10 GB):  90%|█████████ | 45/50 [00:17<00:00, 16.99it/s]
+Capturing prefill shape (num_tokens=16 avail_mem=69.10 GB):  90%|█████████ | 45/50 [00:17<00:00, 16.99it/s]
+Capturing prefill shape (num_tokens=16 avail_mem=69.10 GB):  94%|█████████▍| 47/50 [00:17<00:00, 17.29it/s]
+Capturing prefill shape (num_tokens=12 avail_mem=69.09 GB):  94%|█████████▍| 47/50 [00:17<00:00, 17.29it/s]
+Capturing prefill shape (num_tokens=8 avail_mem=69.09 GB):  94%|█████████▍| 47/50 [00:17<00:00, 17.29it/s]
+Capturing prefill shape (num_tokens=8 avail_mem=69.09 GB):  98%|█████████▊| 49/50 [00:17<00:00, 17.56it/s]
+Capturing prefill shape (num_tokens=4 avail_mem=69.09 GB):  98%|█████████▊| 49/50 [00:17<00:00, 17.56it/s]
+Capturing prefill shape (num_tokens=4 avail_mem=69.09 GB): 100%|██████████| 50/50 [00:17<00:00,  2.89it/s]
+2026-10-27 21:35:43,999 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target prefill CUDA graph end. elapsed=18.28 s, mem usage=0.37 GB, avail mem=69.09 GB.
+2026-10-27 21:35:44,000 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target decode CUDA graph begin. backend=full, num_tokens_per_req=1, avail mem=69.09 GB
+
+  0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=8 avail_mem=69.09 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=8 avail_mem=69.09 GB):  12%|█▎        | 1/8 [00:00<00:04,  1.61it/s]
+Capturing batches (bs=7 avail_mem=69.09 GB):  12%|█▎        | 1/8 [00:00<00:04,  1.61it/s]
+Capturing batches (bs=6 avail_mem=69.09 GB):  12%|█▎        | 1/8 [00:00<00:04,  1.61it/s]
+Capturing batches (bs=5 avail_mem=69.09 GB):  12%|█▎        | 1/8 [00:00<00:04,  1.61it/s]
+Capturing batches (bs=5 avail_mem=69.09 GB):  50%|█████     | 4/8 [00:00<00:00,  6.47it/s]
+Capturing batches (bs=4 avail_mem=69.08 GB):  50%|█████     | 4/8 [00:00<00:00,  6.47it/s]
+Capturing batches (bs=3 avail_mem=69.08 GB):  50%|█████     | 4/8 [00:00<00:00,  6.47it/s]
+Capturing batches (bs=2 avail_mem=69.08 GB):  50%|█████     | 4/8 [00:00<00:00,  6.47it/s]
+Capturing batches (bs=2 avail_mem=69.08 GB):  88%|████████▊ | 7/8 [00:00<00:00, 10.50it/s]
+Capturing batches (bs=1 avail_mem=69.08 GB):  88%|████████▊ | 7/8 [00:00<00:00, 10.50it/s]
+Capturing batches (bs=1 avail_mem=69.08 GB): 100%|██████████| 8/8 [00:00<00:00,  8.08it/s]
+2026-10-27 21:35:45,929 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target decode CUDA graph end. bs=[1, 2, 3, 4, 5, 6, 7, 8], elapsed=1.93 s, mem usage=0.01 GB, avail mem=69.08 GB.
+2026-10-27 21:35:45,934 [INFO] sglang_omni.utils.cuda_graph_batch_validator: prefill CUDA graphs attested: backend=full buckets=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048, 2304, 2560, 2816, 3072, 3328, 3584, 3840, 4096]
+2026-10-27 21:35:45,951 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR memory checkpoint=post_cuda_graph_capture gpu=0 process_gpu_memory=0.00GiB
+2026-10-27 21:35:46,009 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=128 windows=10 out=(1, 128, 2048)
+2026-10-27 21:35:46,040 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=256 windows=11 out=(1, 256, 2048)
+2026-10-27 21:35:46,072 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=512 windows=13 out=(1, 512, 2048)
+2026-10-27 21:35:46,105 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=1024 windows=18 out=(1, 1024, 2048)
+2026-10-27 21:35:46,132 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=2048 windows=28 out=(1, 2048, 2048)
+2026-10-27 21:35:46,168 [INFO] sglang_omni.models.qwen3_asr.encoder_cuda_graph: [qwen3-asr] captured encoder layer-stack graph bucket=3159 windows=39 out=(1, 3159, 2048)
+2026-10-27 21:35:46,185 [INFO] sglang_omni.models.qwen3_asr.engine_builder: Qwen3-ASR memory checkpoint=post_encoder_graph_capture gpu=0 process_gpu_memory=0.00GiB
+2026-10-27 21:35:46,230 [INFO] sglang_omni.pipeline.control_plane: Stage asr control plane started
+2026-10-27 21:35:46,231 [INFO] sglang_omni.pipeline.stage.runtime: Scheduler thread for stage asr set cuda device to 0
+2026-10-27 21:35:46,232 [INFO] sglang_omni.pipeline.stage.runtime: Stage asr started
+2026-10-27 21:35:46,232 [INFO] stage_workers.asr: Process asr ready with stages=['asr']
+2026-10-27 21:35:46,232 [INFO] sglang_omni.pipeline.stage_workers: Process asr ready
+2026-10-27 21:35:46,233 [INFO] sglang_omni.pipeline.coordinator: Coordinator registered stage: asr at ipc:///tmp/sglang_omni/opt-rsi-assets-huggingface-hub-models-qwen-qwen3-asr-1-7b-sna-7kzg73ir/stage_asr.sock
+2026-10-27 21:35:46,233 [INFO] sglang_omni.pipeline.mp_runner: MultiProcessPipelineRunner started: 1 stage(s), 1 process(es)
+2026-10-27 21:35:46,233 [INFO] sglang_omni.serve.launcher: Resolved placement/topology plan: placement={'topology': 'Qwen3ASRPipelineConfig', 'pipeline': '/opt/rsi-assets/huggingface/hub/models--Qwen--Qwen3-ASR-1.7B/snapshots/7278e1e70fe206f11671096ffdd38061171dd6e5', 'process_groups': {'asr': {'stages': ['asr'], 'gpu': 0}}, 'tp_process_groups': {}, 'stage_runtime': {'asr': {'gpu': 0, 'total_gpu_memory_fraction': None, 'kv_cache_bytes': None, 'total_reserve_bytes': None, 'mem_fraction_static': 0.5}}, 'gpus': {0: {'hardware': {'device_id': 0, 'name': 'NVIDIA H200', 'total_memory': '140.40GiB'}, 'stages': ['asr'], 'total_gpu_memory_fraction': 0.0, 'missing_fraction_stages': ['asr'], 'total_kv_cache_bytes': 0, 'total_reserve_bytes': 0}}}
+2026-10-27 21:35:46,233 [INFO] sglang_omni.serve.launcher: Pipeline '/opt/rsi-assets/huggingface/hub/models--Qwen--Qwen3-ASR-1.7B/snapshots/7278e1e70fe206f11671096ffdd38061171dd6e5' started (1 GPU(s))
+INFO:     Started server process [642]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18882 (Press CTRL+C to quit)
+2026-10-27 21:35:46,442 [INFO] sglang_omni.serve.launcher: Frozen API startup object graph (646983 objects)
+INFO:     127.0.0.1:47888 - "GET /health HTTP/1.1" 200 OK
+2026-10-27 21:35:46,759 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 1 batches, 1 items (avg 1.00 items/batch, last batch: 1), cache: {'hits': 0, 'misses': 1, 'merged': 0, 'failed': 0, 'cache_hit_rate': 0.0, 'batches': 1, 'items': 1, 'queue_depth': 0, 'queue_wait_avg_s': 5.486886948347092e-05, 'queue_wait_max_s': 5.486886948347092e-05, 'encoder_time_s': 0.14300069212913513, 'cache_entries': 1, 'cache_bytes': 98304, 'cache_evictions': 0}
+2026-10-27 21:35:52,857 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 42, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 6.34
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:53,583 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 42, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 57.91
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:53,625 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 50, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1178.93
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:53,656 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 50, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1612.39
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:53,695 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 69, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1752.12
+2026-10-27 21:35:53,703 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 74, token usage: 0.00, cuda graph: True, gen throughput (token/s): 5.35, #queue-req: 0
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:53,916 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 69, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 313.24
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:53,977 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 102, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1667.46
+2026-10-27 21:35:53,995 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 113, token usage: 0.00, cuda graph: True, gen throughput (token/s): 136.63, #queue-req: 0
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,028 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 102, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 2000.41
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,128 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 278, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 2765.38
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,180 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 278, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 5411.78
+2026-10-27 21:35:54,193 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 286, token usage: 0.00, cuda graph: True, gen throughput (token/s): 202.47, #queue-req: 0
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,216 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 47, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1303.88
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,246 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 47, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1550.75
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,294 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 200, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 4127.11
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,359 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 200, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 3112.12
+2026-10-27 21:35:54,360 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 202, token usage: 0.00, cuda graph: True, gen throughput (token/s): 238.87, #queue-req: 0
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,416 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 97, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1696.41
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+2026-10-27 21:35:54,465 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 97, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 1987.56
+2026-10-27 21:35:54,474 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 103, token usage: 0.00, cuda graph: True, gen throughput (token/s): 352.38, #queue-req: 0
+INFO:     127.0.0.1:47888 - "POST /v1/audio/transcriptions HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [642]
+2026-10-27 21:35:54,681 [INFO] sglang_omni.serve.launcher: Shutting down pipeline …
+2026-10-27 21:35:54,681 [INFO] sglang_omni.pipeline.coordinator: Sent shutdown to stage: asr
+2026-10-27 21:35:54,802 [INFO] sglang_omni.pipeline.coordinator: Coordinator completion loop cancelled
+2026-10-27 21:35:54,802 [INFO] sglang_omni.pipeline.coordinator: Coordinator stopped
+2026-10-27 21:35:54,802 [INFO] sglang_omni.serve.launcher: Pipeline stopped.
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

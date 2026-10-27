@@ -1,0 +1,226 @@
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-27 21:32:32,871 [INFO] sglang_omni.utils.gpu_compat: Applied GPU compatibility env override: FLASHINFER_CUDA_ARCH_LIST=9.0a
+2026-10-27 21:32:32,886 [INFO] sglang_omni.pipeline.mp_runner: CPU thread fallback plan: budget=224 processes=3 fallback_threads_per_process=74 fallback_overcommitted=false allocations={'preprocessing': {'fallback_threads': 74, 'cpus': 112, 'stages': ['preprocessing']}, 'tts_engine': {'fallback_threads': 74, 'cpus': 112, 'stages': ['tts_engine']}, 'vocoder': {'fallback_threads': 74, 'cpus': 112, 'stages': ['vocoder']}}
+2026-10-27 21:32:32,886 [INFO] sglang_omni.pipeline.mp_runner: Coordinator stream backlog cap: max_total_backlog_bytes=1073741824
+2026-10-27 21:32:32,987 [INFO] sglang_omni.pipeline.control_plane: Coordinator control plane started
+2026-10-27 21:32:32,987 [INFO] sglang_omni.pipeline.coordinator: Coordinator started
+2026-10-27 21:32:33,021 [INFO] sglang_omni.mps.runtime: MPS daemon ready on physical GPU GPU-4ac09667-48f7-6a03-b930-8338f78d441e (logical GPUs [0], pipe dir /tmp/sglang-omni-mps-root/GPU-4ac09667-48f7-6a03-b930-8338f78d441e/pipe)
+2026-10-27 21:32:33,021 [INFO] sglang_omni.mps.runtime: MPS summary: mode=auto {'GPU-4ac09667-48f7-6a03-b930-8338f78d441e': {'logical_gpus': [0], 'daemon_pid': 723, 'clients': ['preprocessing', 'tts_engine', 'vocoder']}}
+2026-10-27 21:32:33,023 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=preprocessing OMP_NUM_THREADS=74 source=cpu_plan_fallback fallback_threads=74
+2026-10-27 21:32:33,024 [INFO] sglang_omni.pipeline.stage_workers: StageGroup preprocessing: spawned 1 process(es) (pids=[728])
+2026-10-27 21:32:33,025 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=tts_engine OMP_NUM_THREADS=74 source=cpu_plan_fallback fallback_threads=74
+2026-10-27 21:32:33,025 [INFO] sglang_omni.pipeline.stage_workers: StageGroup tts_engine: spawned 1 process(es) (pids=[729])
+2026-10-27 21:32:33,026 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=vocoder OMP_NUM_THREADS=74 source=cpu_plan_fallback fallback_threads=74
+2026-10-27 21:32:33,026 [INFO] sglang_omni.pipeline.stage_workers: StageGroup vocoder: spawned 1 process(es) (pids=[730])
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-27 21:32:43,572 [INFO] stage_workers.preprocessing: TP stage preprocessing rank 0 sees CUDA_VISIBLE_DEVICES=GPU-4ac09667-48f7-6a03-b930-8338f78d441e (local gpu_id=0)
+2026-10-27 21:32:43,573 [INFO] stage_workers.vocoder: TP stage vocoder rank 0 sees CUDA_VISIBLE_DEVICES=GPU-4ac09667-48f7-6a03-b930-8338f78d441e (local gpu_id=0)
+2026-10-27 21:32:43,575 [INFO] stage_workers.tts_engine: TP stage tts_engine rank 0 sees CUDA_VISIBLE_DEVICES=GPU-4ac09667-48f7-6a03-b930-8338f78d441e (local gpu_id=0)
+2026-10-27 21:32:43,933 [INFO] stage_workers.preprocessing: Warmed CUDA IPC on cuda:0 before constructing stages
+2026-10-27 21:32:43,933 [INFO] stage_workers.preprocessing: Set current device to 0 for stage preprocessing
+2026-10-27 21:32:43,933 [INFO] stage_workers.preprocessing: Building scheduler for preprocessing (tp_rank=0/1) ...
+2026-10-27 21:32:43,950 [INFO] stage_workers.vocoder: Warmed CUDA IPC on cuda:0 before constructing stages
+2026-10-27 21:32:43,950 [INFO] stage_workers.vocoder: Set current device to 0 for stage vocoder
+2026-10-27 21:32:43,950 [INFO] stage_workers.vocoder: Building scheduler for vocoder (tp_rank=0/1) ...
+2026-10-27 21:32:43,994 [INFO] stage_workers.tts_engine: Warmed CUDA IPC on cuda:0 before constructing stages
+2026-10-27 21:32:43,994 [INFO] stage_workers.tts_engine: Set current device to 0 for stage tts_engine
+2026-10-27 21:32:43,994 [INFO] stage_workers.tts_engine: Building scheduler for tts_engine (tp_rank=0/1) ...
+2026-10-27 21:32:44,036 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-27 21:32:44,038 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-27 21:32:44,098 [INFO] sglang.srt.configs.linear_attn_model_registry: Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1643: FutureWarning: `torch.jit.interface` is deprecated. Please use `torch.compile` instead.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1643: FutureWarning: `torch.jit.interface` is deprecated. Please use `torch.compile` instead.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/opt/sglang/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+2026-10-27 21:32:53,307 [INFO] stage_workers.vocoder: Acquired GPU startup lock for stage vocoder: /tmp/sglang_omni_gpu_GPU-4ac09667-48f7-6a03-b930-8338f78d441e_startup.lock
+
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]
+Fetching 18 files: 100%|██████████| 18/18 [00:00<00:00, 1856.80it/s]
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 0), got 151643. This may result in unexpected behavior.
+[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 0), got 151645. This may result in unexpected behavior.
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.
+2026-10-27 21:33:35,058 [INFO] sglang_omni.models.ming3_tts.vocoder: Ming 3 TTS vocoder graph setup: 384 graphs, 33.884s, 5505024 shared buffer bytes
+2026-10-27 21:33:35,306 [INFO] sglang_omni.modules.ming_audio.audio_decode: ming_tts_audio_vae_state stage=audio_decode capacity=32 max_step_latents=8 state_device_bytes=50400512 state_field_bytes={'upsample_pending': 458752, 'upsample_pending_lengths': 256, 'upsample_left_anchor': 57344, 'qwen_keys': 24772608, 'qwen_values': 24772608, 'qwen_positions': 256, 'istft_audio_overlap': 338688}
+2026-10-27 21:33:35,310 [INFO] sglang_omni.modules.ming_audio.audio_decode: ming_tts_audio_vae_runner stage=audio_decode streaming_backend=eager streaming_cuda_graph_required=False streaming_graph_ready=True static_device_input_bytes=33088 pinned_host_io_bytes=7460800
+2026-10-27 21:33:35,310 [INFO] stage_workers.tts_engine: Acquired GPU startup lock for stage tts_engine: /tmp/sglang_omni_gpu_GPU-4ac09667-48f7-6a03-b930-8338f78d441e_startup.lock
+
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]2026-10-27 21:33:35,313 [INFO] sglang_omni.pipeline.control_plane: Stage vocoder control plane started
+2026-10-27 21:33:35,314 [INFO] sglang_omni.pipeline.stage.runtime: Scheduler thread for stage vocoder set cuda device to 0
+2026-10-27 21:33:35,315 [INFO] sglang_omni.pipeline.stage.runtime: Stage vocoder started
+2026-10-27 21:33:35,315 [INFO] stage_workers.vocoder: Process vocoder ready with stages=['vocoder']
+2026-10-27 21:33:35,315 [INFO] sglang_omni.pipeline.stage_workers: Process vocoder ready
+
+Fetching 18 files: 100%|██████████| 18/18 [00:00<00:00, 1791.67it/s]
+2026-10-27 21:33:35,336 [WARNING] sglang.srt.arg_groups.cuda_graph_hook: cuda_graph_config[prefill].backend='full' is experimental. Use breakable for production workloads.
+2026-10-27 21:33:35,353 [INFO] sglang.srt.arg_groups.overrides: Attention backend not specified. Use fa3 backend by default.
+2026-10-27 21:33:35,388 [INFO] sglang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=0, sm=90, architecture=hopper, attention_backend=fa3, decode_attention_backend=fa3, prefill_attention_backend=fa3, sampling_backend=flashinfer
+2026-10-27 21:33:35,388 [INFO] sglang_omni.platforms.cuda: Configured SGLang backend policy: arch=None effective_quantization=None server_quantization=None moe_runner_backend=auto fp8_gemm_backend=auto
+2026-10-27 21:33:35,393 [INFO] sglang.srt.distributed.bootstrap: Init parallel begin.
+2026-10-27 21:33:35,452 [INFO] sglang.srt.distributed.bootstrap: Init parallel ends. elapsed=0.06 s
+2026-10-27 21:33:38,063 [INFO] sglang.srt.distributed.bootstrap: Memory baseline taken. mem usage=0.00 GB
+2026-10-27 21:33:38,070 [INFO] sglang.srt.model_executor.model_runner: Load weight begin. avail mem=135.60 GB
+
+Multi-thread loading shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Multi-thread loading shards: 100% Completed | 1/1 [00:00<00:00,  3.06it/s]
+Multi-thread loading shards: 100% Completed | 1/1 [00:00<00:00,  3.06it/s]
+2026-10-27 21:33:38,593 [INFO] sglang.srt.model_executor.model_runner: Load weight end. elapsed=0.52 s, type=Ming3DenseTTSModel, avail mem=134.20 GB, mem usage=1.40 GB.
+2026-10-27 21:33:39,118 [INFO] sglang.srt.mem_cache.memory_pool: KV Cache is allocated. dtype: torch.bfloat16, #tokens: 6984932, K size: 39.97 GB, V size: 39.97 GB
+2026-10-27 21:33:39,119 [INFO] sglang.srt.mem_cache.kv_cache_configurator: Memory pool end. avail mem=54.18 GB
+2026-10-27 21:33:39,217 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target prefill CUDA graph begin. backend=full, num_tokens=[64, 96, 128, 160, 192, 224, 256, 288, 320, 384, 448, 512], avail mem=53.77 GB
+
+  0%|          | 0/12 [00:00<?, ?it/s]
+Capturing prefill shape (num_tokens=512 avail_mem=53.77 GB):   0%|          | 0/12 [00:00<?, ?it/s]
+Capturing prefill shape (num_tokens=512 avail_mem=53.77 GB):   8%|▊         | 1/12 [00:21<03:53, 21.19s/it]
+Capturing prefill shape (num_tokens=448 avail_mem=53.69 GB):   8%|▊         | 1/12 [00:21<03:53, 21.19s/it]
+Capturing prefill shape (num_tokens=384 avail_mem=53.68 GB):   8%|▊         | 1/12 [00:21<03:53, 21.19s/it]
+Capturing prefill shape (num_tokens=384 avail_mem=53.68 GB):  25%|██▌       | 3/12 [00:21<00:49,  5.53s/it]
+Capturing prefill shape (num_tokens=320 avail_mem=53.68 GB):  25%|██▌       | 3/12 [00:21<00:49,  5.53s/it]
+Capturing prefill shape (num_tokens=288 avail_mem=53.68 GB):  25%|██▌       | 3/12 [00:21<00:49,  5.53s/it]
+Capturing prefill shape (num_tokens=288 avail_mem=53.68 GB):  42%|████▏     | 5/12 [00:21<00:19,  2.72s/it]
+Capturing prefill shape (num_tokens=256 avail_mem=53.68 GB):  42%|████▏     | 5/12 [00:21<00:19,  2.72s/it]
+Capturing prefill shape (num_tokens=224 avail_mem=53.68 GB):  42%|████▏     | 5/12 [00:21<00:19,  2.72s/it]
+Capturing prefill shape (num_tokens=224 avail_mem=53.68 GB):  58%|█████▊    | 7/12 [00:21<00:07,  1.59s/it]
+Capturing prefill shape (num_tokens=192 avail_mem=53.68 GB):  58%|█████▊    | 7/12 [00:21<00:07,  1.59s/it]
+Capturing prefill shape (num_tokens=160 avail_mem=53.68 GB):  58%|█████▊    | 7/12 [00:21<00:07,  1.59s/it]
+Capturing prefill shape (num_tokens=160 avail_mem=53.68 GB):  75%|███████▌  | 9/12 [00:21<00:03,  1.01s/it]
+Capturing prefill shape (num_tokens=128 avail_mem=53.68 GB):  75%|███████▌  | 9/12 [00:21<00:03,  1.01s/it]
+Capturing prefill shape (num_tokens=96 avail_mem=53.67 GB):  75%|███████▌  | 9/12 [00:21<00:03,  1.01s/it]
+Capturing prefill shape (num_tokens=96 avail_mem=53.67 GB):  92%|█████████▏| 11/12 [00:21<00:00,  1.48it/s]
+Capturing prefill shape (num_tokens=64 avail_mem=53.67 GB):  92%|█████████▏| 11/12 [00:21<00:00,  1.48it/s]
+Capturing prefill shape (num_tokens=64 avail_mem=53.67 GB): 100%|██████████| 12/12 [00:21<00:00,  1.82s/it]
+2026-10-27 21:34:01,969 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target prefill CUDA graph end. elapsed=22.75 s, mem usage=0.10 GB, avail mem=53.67 GB.
+2026-10-27 21:34:01,969 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target decode CUDA graph begin. backend=full, num_tokens_per_req=1, avail mem=53.67 GB
+
+  0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=32 avail_mem=53.67 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=32 avail_mem=53.67 GB):  12%|█▎        | 1/8 [00:00<00:04,  1.72it/s]
+Capturing batches (bs=24 avail_mem=53.67 GB):  12%|█▎        | 1/8 [00:00<00:04,  1.72it/s]
+Capturing batches (bs=24 avail_mem=53.67 GB):  25%|██▌       | 2/8 [00:00<00:01,  3.29it/s]
+Capturing batches (bs=16 avail_mem=53.67 GB):  25%|██▌       | 2/8 [00:00<00:01,  3.29it/s]
+Capturing batches (bs=12 avail_mem=53.67 GB):  25%|██▌       | 2/8 [00:00<00:01,  3.29it/s]
+Capturing batches (bs=12 avail_mem=53.67 GB):  50%|█████     | 4/8 [00:00<00:00,  6.41it/s]
+Capturing batches (bs=8 avail_mem=53.67 GB):  50%|█████     | 4/8 [00:00<00:00,  6.41it/s]
+Capturing batches (bs=4 avail_mem=53.67 GB):  50%|█████     | 4/8 [00:00<00:00,  6.41it/s]
+Capturing batches (bs=2 avail_mem=53.67 GB):  50%|█████     | 4/8 [00:00<00:00,  6.41it/s]
+Capturing batches (bs=2 avail_mem=53.67 GB):  88%|████████▊ | 7/8 [00:00<00:00, 10.66it/s]
+Capturing batches (bs=1 avail_mem=53.67 GB):  88%|████████▊ | 7/8 [00:00<00:00, 10.66it/s]
+Capturing batches (bs=1 avail_mem=53.67 GB): 100%|██████████| 8/8 [00:01<00:00,  7.52it/s]
+2026-10-27 21:34:03,961 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Capture target decode CUDA graph end. bs=[1, 2, 4, 8, 12, 16, 24, 32], elapsed=1.99 s, mem usage=0.01 GB, avail mem=53.67 GB.
+2026-10-27 21:34:03,969 [INFO] sglang.srt.mem_cache.unified_radix_cache: Init Unified Radix Cache. Components: (<ComponentType.FULL: 0>,). Tree Core: RustUnifiedTreeCore
+2026-10-27 21:34:04,546 [INFO] sglang_omni.models.ming3_tts.sglang_model: Ming 3 TTS acoustic flow head: fused
+2026-10-27 21:34:12,637 [INFO] stage_workers.preprocessing: Acquired GPU startup lock for stage preprocessing: /tmp/sglang_omni_gpu_GPU-4ac09667-48f7-6a03-b930-8338f78d441e_startup.lock
+
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]2026-10-27 21:34:12,639 [INFO] sglang_omni.pipeline.control_plane: Stage tts_engine control plane started
+2026-10-27 21:34:12,640 [INFO] sglang_omni.pipeline.stage.runtime: Scheduler thread for stage tts_engine set cuda device to 0
+2026-10-27 21:34:12,641 [INFO] sglang_omni.pipeline.stage.runtime: Stage tts_engine started
+2026-10-27 21:34:12,641 [INFO] stage_workers.tts_engine: Process tts_engine ready with stages=['tts_engine']
+2026-10-27 21:34:12,641 [INFO] sglang_omni.pipeline.stage_workers: Process tts_engine ready
+
+Fetching 18 files: 100%|██████████| 18/18 [00:00<00:00, 1891.98it/s]
+[transformers] You are using a model of type `dense` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 0), got 151643. This may result in unexpected behavior.
+[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 0), got 151645. This may result in unexpected behavior.
+2026-10-27 21:34:21,600 [INFO] sglang_omni.pipeline.control_plane: Stage preprocessing control plane started
+2026-10-27 21:34:21,601 [INFO] sglang_omni.pipeline.stage.runtime: Scheduler thread for stage preprocessing set cuda device to 0
+2026-10-27 21:34:21,602 [INFO] sglang_omni.pipeline.stage.runtime: Stage preprocessing started
+2026-10-27 21:34:21,602 [INFO] stage_workers.preprocessing: Process preprocessing ready with stages=['preprocessing']
+2026-10-27 21:34:21,603 [INFO] sglang_omni.pipeline.stage_workers: Process preprocessing ready
+2026-10-27 21:34:21,621 [INFO] sglang_omni.pipeline.coordinator: Coordinator registered stage: preprocessing at ipc:///tmp/sglang_omni/inclusionai-ming-3-0-tts-0-5b-8d66b70a00f05ad183fa8-vpzidedq/stage_preprocessing.sock
+2026-10-27 21:34:21,621 [INFO] sglang_omni.pipeline.coordinator: Coordinator registered stage: tts_engine at ipc:///tmp/sglang_omni/inclusionai-ming-3-0-tts-0-5b-8d66b70a00f05ad183fa8-vpzidedq/stage_tts_engine.sock
+2026-10-27 21:34:21,621 [INFO] sglang_omni.pipeline.coordinator: Coordinator registered stage: vocoder at ipc:///tmp/sglang_omni/inclusionai-ming-3-0-tts-0-5b-8d66b70a00f05ad183fa8-vpzidedq/stage_vocoder.sock
+2026-10-27 21:34:21,621 [INFO] sglang_omni.pipeline.mp_runner: MultiProcessPipelineRunner started: 3 stage(s), 3 process(es)
+2026-10-27 21:34:21,621 [INFO] sglang_omni.serve.launcher: Resolved placement/topology plan: placement={'topology': 'Ming3TTSPipelineConfig', 'pipeline': 'inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0', 'process_groups': {'preprocessing': {'stages': ['preprocessing'], 'gpu': 0}, 'tts_engine': {'stages': ['tts_engine'], 'gpu': 0}, 'vocoder': {'stages': ['vocoder'], 'gpu': 0}}, 'tp_process_groups': {}, 'stage_runtime': {'preprocessing': {'gpu': 0, 'total_gpu_memory_fraction': None, 'kv_cache_bytes': None, 'total_reserve_bytes': None, 'mem_fraction_static': None}, 'tts_engine': {'gpu': 0, 'total_gpu_memory_fraction': None, 'kv_cache_bytes': None, 'total_reserve_bytes': None, 'mem_fraction_static': 0.6}, 'vocoder': {'gpu': 0, 'total_gpu_memory_fraction': None, 'kv_cache_bytes': None, 'total_reserve_bytes': None, 'mem_fraction_static': None}}, 'gpus': {0: {'hardware': {'device_id': 0, 'name': 'NVIDIA H200', 'total_memory': '140.40GiB'}, 'stages': ['preprocessing', 'tts_engine', 'vocoder'], 'total_gpu_memory_fraction': 0.0, 'missing_fraction_stages': ['preprocessing', 'tts_engine', 'vocoder'], 'total_kv_cache_bytes': 0, 'total_reserve_bytes': 0}}}
+2026-10-27 21:34:21,621 [INFO] sglang_omni.serve.launcher: Model capabilities: {"architecture": "LingV3TTSForConditionalGeneration", "batch_vocoder": false, "breakable_prefill_cuda_graph": false, "cuda_graph": true, "full_prefill_cuda_graph": false, "reference_audio": true, "streaming_vocoder": true, "torch_compile": false}
+2026-10-27 21:34:21,621 [INFO] sglang_omni.serve.launcher: Pipeline 'inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0' started (1 GPU(s))
+INFO:     Started server process [578]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18881 (Press CTRL+C to quit)
+2026-10-27 21:34:21,814 [INFO] sglang_omni.serve.launcher: Frozen API startup object graph (647968 objects)
+INFO:     127.0.0.1:33012 - "GET /health HTTP/1.1" 200 OK
+2026-10-27 21:34:22,419 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 41, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 4.19
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:28,437 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 41, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 6.81
+2026-10-27 21:34:28,538 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 60, token usage: 0.00, cuda graph: True, gen throughput (token/s): 2.52, #queue-req: 0
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33028 - "GET /v1/audio/speech/speech-f6cbe99f-2049-436a-a6d2-6b51ebaac293 HTTP/1.1" 200 OK
+2026-10-27 21:34:29,557 [INFO] sglang_omni.scheduling.reference_encoder: Ming 3 TTS speaker cache reference encode stats: {'hits': 0, 'misses': 1, 'merged': 0, 'entries': 1, 'bytes': 768, 'evictions': 0, 'failed': 0, 'uncacheable': 0, 'batches': 0, 'batched_items': 0}
+2026-10-27 21:34:29,771 [INFO] sglang_omni.scheduling.reference_encoder: Ming 3 TTS prompt latent cache reference encode stats: {'hits': 0, 'misses': 1, 'merged': 0, 'entries': 1, 'bytes': 94080, 'evictions': 0, 'failed': 0, 'uncacheable': 0, 'batches': 0, 'batched_items': 0}
+2026-10-27 21:34:29,785 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 114, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 84.58
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:29,946 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 114, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 706.50
+2026-10-27 21:34:29,984 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 121, token usage: 0.00, cuda graph: True, gen throughput (token/s): 27.68, #queue-req: 0
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33028 - "GET /v1/audio/speech/speech-f630038b-64f2-4ee4-afcf-03bb8903cb2c HTTP/1.1" 200 OK
+2026-10-27 21:34:30,177 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 49, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 212.29
+2026-10-27 21:34:30,246 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 66, token usage: 0.00, cuda graph: True, gen throughput (token/s): 152.49, #queue-req: 0
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:30,407 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 49, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 213.02
+2026-10-27 21:34:30,455 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 58, token usage: 0.00, cuda graph: True, gen throughput (token/s): 191.23, #queue-req: 0
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:30,707 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 0, token usage: 0.00, cuda graph: True, gen throughput (token/s): 158.48, #queue-req: 0
+INFO:     127.0.0.1:33028 - "GET /v1/audio/speech/speech-3a6fc986-d441-4b1e-a383-447025dc406b HTTP/1.1" 200 OK
+2026-10-27 21:34:30,895 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 262.37
+2026-10-27 21:34:31,066 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 169, token usage: 0.00, cuda graph: True, gen throughput (token/s): 111.66, #queue-req: 0
+2026-10-27 21:34:31,237 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 0, token usage: 0.00, cuda graph: True, gen throughput (token/s): 233.81, #queue-req: 0
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:31,279 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 333.59
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:31,528 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 169, token usage: 0.00, cuda graph: True, gen throughput (token/s): 137.33, #queue-req: 0
+2026-10-27 21:34:31,782 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 0, token usage: 0.00, cuda graph: True, gen throughput (token/s): 157.71, #queue-req: 0
+INFO:     127.0.0.1:33028 - "GET /v1/audio/speech/speech-fb2dc562-7936-4a28-80f1-684b8f6d2849 HTTP/1.1" 200 OK
+2026-10-27 21:34:31,851 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 114, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 199.23
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:32,091 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 114, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 475.37
+2026-10-27 21:34:32,195 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 3, #new-token: 382, #cached-token: 0, token usage: 0.00, #running-req: 1, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 3660.89
+2026-10-27 21:34:32,357 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 4, #token: 538, token usage: 0.00, cuda graph: True, gen throughput (token/s): 116.53, #queue-req: 0
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34988 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35004 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35008 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33028 - "GET /v1/audio/speech/speech-6c569ccf-5cbb-4d23-9ff9-047fbefb6060 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33028 - "GET /v1/audio/speech/speech-81bde6f1-1c4e-4790-a7d2-384a55c24e8a HTTP/1.1" 200 OK
+2026-10-27 21:34:32,760 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 2, #token: 368, token usage: 0.00, cuda graph: True, gen throughput (token/s): 332.20, #queue-req: 0
+INFO:     127.0.0.1:33028 - "GET /v1/audio/speech/speech-3beae71c-8a30-4569-9969-a1407334b734 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33028 - "GET /v1/audio/speech/speech-a100873e-f1b7-4a9f-b04d-774f646b4c53 HTTP/1.1" 200 OK
+2026-10-27 21:34:33,105 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 138, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 151.67
+2026-10-27 21:34:33,115 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 140, token usage: 0.00, cuda graph: True, gen throughput (token/s): 222.70, #queue-req: 0
+INFO:     127.0.0.1:33028 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:33,229 [INFO] sglang_omni.pipeline.coordinator: Coordinator aborted req=speech-8db6d5b4-07f2-49e9-846a-36b18e699ba1
+2026-10-27 21:34:33,239 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 41, #cached-token: 0, token usage: 0.00, #running-req: 1, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 304.89
+INFO:     127.0.0.1:34988 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-27 21:34:33,371 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #token: 63, token usage: 0.00, cuda graph: True, gen throughput (token/s): 156.28, #queue-req: 0
+INFO:     127.0.0.1:34988 - "GET /v1/audio/speech/speech-b71aabab-5e97-4ed2-9b24-0de05fe33138 HTTP/1.1" 200 OK
+2026-10-27 21:34:33,491 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 41, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, cuda graph: True, input throughput (token/s): 162.70
+INFO:     127.0.0.1:34988 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34988 - "GET /v1/audio/speech/speech-ca731fc3-d92f-47fb-a0d0-8702775ef1e0 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [578]
+2026-10-27 21:34:33,670 [INFO] sglang_omni.serve.launcher: Shutting down pipeline …
+2026-10-27 21:34:33,671 [INFO] sglang_omni.pipeline.coordinator: Sent shutdown to stage: preprocessing
+2026-10-27 21:34:33,671 [INFO] sglang_omni.pipeline.coordinator: Sent shutdown to stage: tts_engine
+2026-10-27 21:34:33,671 [INFO] sglang_omni.pipeline.coordinator: Sent shutdown to stage: vocoder
+2026-10-27 21:34:34,394 [INFO] sglang_omni.pipeline.coordinator: Coordinator completion loop cancelled
+2026-10-27 21:34:34,395 [INFO] sglang_omni.pipeline.coordinator: Coordinator stopped
+2026-10-27 21:34:34,395 [INFO] sglang_omni.serve.launcher: Pipeline stopped.
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

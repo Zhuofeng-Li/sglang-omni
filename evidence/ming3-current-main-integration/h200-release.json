@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-27T21:38:37.403018+00:00",
+  "assignment": "01M5XFE1DE8PVBQWTSDP2JDYRY",
+  "machine": "node-radixark-16-0001",
+  "result": "{\n  \"assignment_id\": \"01M5XFE1DE8PVBQWTSDP2JDYRY\",\n  \"machine_id\": \"node-radixark-16-0001\",\n  \"ok\": true\n}\n",
+  "verified_absent": true,
+  "cleanup": {
+    "containers": "",
+    "gpu_processes": ""
+  },
+  "all_measurements_and_integration_complete": true
+}

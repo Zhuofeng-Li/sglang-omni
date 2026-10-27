@@ -1,0 +1,122 @@
+{
+  "audited_utc": "2026-10-27T21:37:44.751101+00:00",
+  "tree": "4c02de011867bef32cbec1b93f0929a219947fec",
+  "series_head": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9",
+  "main": "e9c058462d104451aa5144b12b001b0709a94a55",
+  "gpu_uuid": "GPU-4ac09667-48f7-6a03-b930-8338f78d441e",
+  "image_id": "afb9f5ee0a17c70fe47598fa4802c6f1926bdd39c23fe1d35c8b14f701da0c23",
+  "unit": {
+    "passed": 644,
+    "skipped": 6,
+    "failed": 0
+  },
+  "smokes": {
+    "tiny": {
+      "cases": 14,
+      "comparisons": [
+        {
+          "case": "en-reference0",
+          "offline_samples": 882000,
+          "stream_samples": 882000,
+          "pcm_max_absolute_delta": 21946,
+          "pcm_mean_absolute_delta": 75.28551360544218,
+          "correlation": 0.9982081288667864
+        },
+        {
+          "case": "en-reference1",
+          "offline_samples": 98784,
+          "stream_samples": 98784,
+          "pcm_max_absolute_delta": 3215,
+          "pcm_mean_absolute_delta": 48.322744574020085,
+          "correlation": 0.9994953820811877
+        },
+        {
+          "case": "zh-reference0",
+          "offline_samples": 617400,
+          "stream_samples": 617400,
+          "pcm_max_absolute_delta": 10733,
+          "pcm_mean_absolute_delta": 68.43277129899579,
+          "correlation": 0.998628975103508
+        },
+        {
+          "case": "zh-reference1",
+          "offline_samples": 268128,
+          "stream_samples": 268128,
+          "pcm_max_absolute_delta": 850,
+          "pcm_mean_absolute_delta": 8.77952321279389,
+          "correlation": 0.9995509265249766
+        }
+      ],
+      "sse": {
+        "audio_chunks": 3,
+        "terminal": {
+          "type": "speech.audio.done",
+          "usage": {
+            "input_tokens": 42,
+            "output_tokens": 28,
+            "total_tokens": 70
+          },
+          "finish_reason": "stop"
+        }
+      },
+      "startup_seconds_functional_only": 259.0198018550873,
+      "pcm_hashes_verified": true
+    },
+    "dense": {
+      "cases": 14,
+      "comparisons": [
+        {
+          "case": "en-reference0",
+          "offline_samples": 81144,
+          "stream_samples": 81144,
+          "pcm_max_absolute_delta": 1028,
+          "pcm_mean_absolute_delta": 32.275929212264614,
+          "correlation": 0.9997047068733367
+        },
+        {
+          "case": "en-reference1",
+          "offline_samples": 109368,
+          "stream_samples": 109368,
+          "pcm_max_absolute_delta": 11552,
+          "pcm_mean_absolute_delta": 82.1230615902275,
+          "correlation": 0.9786043510684024
+        },
+        {
+          "case": "zh-reference0",
+          "offline_samples": 172872,
+          "stream_samples": 172872,
+          "pcm_max_absolute_delta": 1856,
+          "pcm_mean_absolute_delta": 80.05453167661622,
+          "correlation": 0.9997107107542256
+        },
+        {
+          "case": "zh-reference1",
+          "offline_samples": 285768,
+          "stream_samples": 285768,
+          "pcm_max_absolute_delta": 910,
+          "pcm_mean_absolute_delta": 23.764966686262984,
+          "correlation": 0.9997540643569747
+        }
+      ],
+      "sse": {
+        "audio_chunks": 3,
+        "terminal": {
+          "type": "speech.audio.done",
+          "usage": {
+            "input_tokens": 114,
+            "output_tokens": 31,
+            "total_tokens": 145
+          },
+          "finish_reason": "stop"
+        }
+      },
+      "startup_seconds_functional_only": 121.92028522491455,
+      "pcm_hashes_verified": true
+    }
+  },
+  "tiny_vocoder_graphs": 250,
+  "quality_pairs": 8,
+  "all_normalized_transcripts_match": true,
+  "archive_sha256": "e2335148fb61b6a904bf9e6cefda5904c58d7aa649832429a9ca68586f824b52",
+  "scope": "Cumulative source-equivalent functional integration; not final merged-series performance"
+}
