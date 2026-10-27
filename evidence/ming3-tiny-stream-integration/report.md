@@ -1,6 +1,6 @@
 # Tiny full-graph and streaming-cache integration
 
-Source `8d0f5d4352b704986cbc50e44ec4df42cce0fbc9`, combining the Tiny precision/full-vocoder graphs with the existing Tiny/dense streaming stack. One H100 80GB, assigned GPU `GPU-7cea2752-34c7-f9c2-cd45-79163c61c398`; image `afb9f5ee0a17c70fe47598fa4802c6f1926bdd39c23fe1d35c8b14f701da0c23`. PyTorch2.14.1, SGLang0.5.22, Transformers5.19.0. This is functional validation, not a paired performance experiment.
+Source `8d0f5d4352b704986cbc50e44ec4df42cce0fbc9`, combining the Tiny precision/full-vocoder graphs with the existing Tiny/dense streaming stack. One H100 80GB, assigned GPU `GPU-7cea2752-34c7-f9c2-cd45-79163c61c398`; image `afb9f5ee0a17c70fe47598fa4802c6f1926bdd39c23fe1d35c8b14f701da0c23`. PyTorch 2.14.1, SGLang 0.5.22, Transformers 5.19.0. This is functional validation, not a paired performance experiment.
 
 - Full targeted Ming3/Ming-TTS/MPS/CPU-locality/scheduler/stage-environment suite: **428 passed, 6 skipped** (141.62s). The Tiny and dense variants of the full-graph versus incremental-cache routing regression both ran on CUDA. The six skips are unsupported native-normalization tiles with eager fallback.
 - Real Tiny checkpoint `7bd9446a8d47e462362261a0150258da6d458318`: **14 PCM cases passed**, plus SSE terminal usage/finish-reason checks, four concurrent streams, disconnect recovery and a one-latent terminal flush.
@@ -16,4 +16,4 @@ This functional result does not establish independent Tiny performance benefits.
 
 ## Publication and dependency order
 
-The original four PRs are now linked in native [stack #3254](https://github.com/sgl-project/sglang-omni/stack/3254): #3136 → #3189 → #3190 → #3217. All heads and draft states were preserved while the stack metadata was aligned. #3217 is still Draft, with current-main performance validation pending for both modes. The [new exact-head manual CI](https://github.com/sgl-project/sglang-omni/actions/runs/40466048020) verified unit-only preflight at `8d0f5d4`; unit results are pending.
+The original four PRs are now linked in native [stack #3254](https://github.com/sgl-project/sglang-omni/stack/3254): #3136 → #3189 → #3190 → #3217. All heads and draft states were preserved while the stack metadata was aligned. #3217 is still Draft, with current-main performance validation pending for both modes. The [new exact-head manual CI](https://github.com/sgl-project/sglang-omni/actions/runs/40466048020) verified unit-only preflight at `8d0f5d4`. CPU A passed 4,733 tests (87 skipped), CPU B passed 5,308 (36 skipped), and accelerator passed 1,145 (34 skipped), including both graph/cache routing cases. Workflow environment cleanup is queued; see `ci-current.json`.

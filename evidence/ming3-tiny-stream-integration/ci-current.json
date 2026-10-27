@@ -1,0 +1,35 @@
+{
+  "head": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9",
+  "run": 40466048020,
+  "results": [
+    {
+      "name": "PR Test / unit-test-accelerator",
+      "job": 122062284393,
+      "passed": 1145,
+      "skipped": 34,
+      "summary": "2026-10-27T07:27:27.4746187Z = 1145 passed, 34 skipped, 10307 deselected, 83 warnings in 504.86s (0:08:24) ==",
+      "routing_cases": [
+        "2026-10-27T07:22:31.7289468Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_nonstream_keeps_graph_dispatch_and_stream_uses_cache[tiny] PASSED [ 35%]",
+        "2026-10-27T07:22:31.7735412Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_nonstream_keeps_graph_dispatch_and_stream_uses_cache[dense] PASSED [ 36%]"
+      ]
+    },
+    {
+      "name": "PR Test / unit-test-b",
+      "job": 122062284426,
+      "passed": 5308,
+      "skipped": 36,
+      "summary": "2026-10-27T07:38:52.7772677Z == 5308 passed, 36 skipped, 6142 deselected, 82 warnings in 819.90s (0:13:39) ==",
+      "routing_cases": []
+    },
+    {
+      "name": "PR Test / unit-test-a",
+      "job": 122062284439,
+      "passed": 4733,
+      "skipped": 87,
+      "summary": "2026-10-27T07:32:51.2969582Z == 4733 passed, 87 skipped, 6666 deselected, 60 warnings in 829.28s (0:13:49) ==",
+      "routing_cases": []
+    }
+  ],
+  "workflow_cleanup": "queued",
+  "scope": "Exact-head manual unit-only; final-main integration and performance remain pending"
+}
