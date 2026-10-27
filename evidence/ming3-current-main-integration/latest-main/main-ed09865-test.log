@@ -1,0 +1,28 @@
+.......................................................................  [100%]
+=============================== warnings summary ===============================
+../integration-cpu-deps/sglang/srt/layers/quantization/awq/awq.py:53
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/srt/layers/quantization/awq/awq.py:53: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+    warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+
+../integration-cpu-deps/sglang/srt/layers/quantization/gguf.py:69
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/srt/layers/quantization/gguf.py:69: UserWarning: Only CUDA, MUSA and NPU support GGUF quantization currently.
+    warnings.warn(f"Only CUDA, MUSA and NPU support GGUF quantization currently.")
+
+../integration-cpu-deps/sglang/kernels/ops/attention/fla/utils.py:223
+../integration-cpu-deps/sglang/kernels/ops/attention/fla/utils.py:223
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/kernels/ops/attention/fla/utils.py:223: UserWarning: Triton is not supported on current platform, roll back to CPU.
+    warnings.warn(
+
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+
+../integration-torch214/torch/jit/_script.py:1491
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-torch214/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+../integration-torch214/torch/jit/_script.py:1643
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-torch214/torch/jit/_script.py:1643: FutureWarning: `torch.jit.interface` is deprecated. Please use `torch.compile` instead.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+71 passed, 8 deselected, 7 warnings in 20.28s

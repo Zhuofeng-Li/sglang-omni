@@ -1,0 +1,25 @@
+{
+  "started_utc": "2026-10-27T22:13:34.438709+00:00",
+  "main": "ed09865a840a017d8e1b1c921959c9311b304ed3",
+  "head": "a818f498de01b9412283e13ed0fbf12cdb48a049",
+  "tree": "150629cffdd60d0d3c19fa6cfe7dbbc37c67f17b",
+  "command": [
+    "/scratch/user/zhuofengli_tamu.edu/tasks/sglang-omni-pr-follow-up-20261016/validation-env/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "-m",
+    "not accelerator",
+    "tests/unit_test/pipeline/test_stage.py",
+    "tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py"
+  ],
+  "env": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "PYTHONPATH": "/scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-ed09865:/scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-torch214:/scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps:/scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/cpu-deps",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "finished_utc": "2026-10-27T22:14:37.741814+00:00"
+}

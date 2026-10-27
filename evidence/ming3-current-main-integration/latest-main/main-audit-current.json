@@ -1,0 +1,24 @@
+{
+  "utc": "2026-10-27T22:15:05.763928+00:00",
+  "main": "ed09865a840a017d8e1b1c921959c9311b304ed3",
+  "published_series_head": "a818f498de01b9412283e13ed0fbf12cdb48a049",
+  "local_integration_tree": "150629cffdd60d0d3c19fa6cfe7dbbc37c67f17b",
+  "changed_files": [
+    "sglang_omni/pipeline/stage/runtime.py",
+    "tests/unit_test/pipeline/test_stage.py"
+  ],
+  "analysis": "New main changes abort behavior only for TP leader/follower roles with scheduler fanout; measured and default Ming stages use tp_size=1 and role=single, preserving both early aborted-request rejection and scheduler.abort calls. No default inference or benchmark path change. The full targeted stage suite includes both newly added TP cases.",
+  "source_references": [
+    "sglang_omni/config/schema.py:401",
+    "sglang_omni/pipeline/mp_runner.py:265",
+    "sglang_omni/pipeline/mp_runner.py:478",
+    "sglang_omni/pipeline/stage/runtime.py:1193",
+    "sglang_omni/pipeline/stage/runtime.py:2569"
+  ],
+  "tests": {
+    "passed": 71,
+    "deselected_accelerator": 8,
+    "failed": 0
+  },
+  "decision": "Reuse frozen measurements without relabeling; no PR rebase needed for this conflict-free upstream-only fix. Latest-main integration tested locally; published-head CI remains separately tracked."
+}

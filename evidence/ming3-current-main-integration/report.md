@@ -29,3 +29,7 @@ Public text logs normalize trailing whitespace; the off-node archive retains ori
 ## Published-head CI
 
 Manual [Omni CI 40588572290](https://github.com/sgl-project/sglang-omni/actions/runs/40588572290) succeeded on exact #3217 head `a818f498de01b9412283e13ed0fbf12cdb48a049`: CPU A 4,705 passed / 74 skipped; CPU B 5,601 / 49; accelerator 1,159 / 34. Both Tiny/dense full-graph versus incremental-cache routing tests passed. Preflight selected unit tests only, with all model stages disabled and no model preset. Final environment cleanup passed. This does not replace the pending independent Tiny performance comparison. Other PR CI results are recorded separately as they finish.
+
+## Subsequent main update
+
+Main `ed09865a840a017d8e1b1c921959c9311b304ed3` changes TP abort fanout. A conflict-free local merge with published top `a818f498` produces tree `150629cffdd60d0d3c19fa6cfe7dbbc37c67f17b`. The targeted stage and Ming pipeline suite passed **71 tests** (8 accelerator tests deselected because this check covers host-side routing). Default/measured Ming stages use TP size 1 and role `single`; both changed conditions preserve that path. Newly added TP leader/follower tests are included. No new performance measurement is claimed. See `latest-main/`.
