@@ -1,0 +1,31 @@
+{
+  "changes": [
+    {
+      "pr": 3189,
+      "old": "14f5355ea89bc901ac820465a4f27c01f5c8b826",
+      "head": "6dc90443d1388e71c600285261749fee170bf034"
+    },
+    {
+      "pr": 3190,
+      "old": "348f6973d4878ed77a9c6c60d072c91addaf15d8",
+      "head": "17aba451eb98197c581ef2e72a1464b3753af634"
+    }
+  ],
+  "changed_paths": [
+    "sglang_omni/models/ming3_tts/__init__.py"
+  ],
+  "scope": "Only static capability declaration used by startup logging; synthesis, scheduling, cache state and tensor operators unchanged.",
+  "cpu_tests": "20 passed in 28.45s",
+  "architecture_aliases": {
+    "LingV3TTSForConditionalGeneration": {
+      "streaming_vocoder": true,
+      "batch_vocoder": false
+    },
+    "Ming3DenseTTSForConditionalGeneration": {
+      "streaming_vocoder": true,
+      "batch_vocoder": false
+    }
+  },
+  "measured_dense_source": "348f6973d4878ed77a9c6c60d072c91addaf15d8",
+  "measured_tiny_source": "251f02b467fe06269cb2d3d8c1063565d7c3de82"
+}

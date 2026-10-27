@@ -1,5 +1,7 @@
 # Current-main Ming3 streaming validation
 
+Subsequent metadata-only heads are Tiny `6dc90443` and dense `17aba451`. They change only the static streaming capability declaration used by the startup log. The 20 CPU model-capability tests and both architecture aliases pass; measured synthesis/scheduler/tensor paths remain unchanged. All timing and HTTP records retain their original measured commits.
+
 Base: `0fe60cf6c102caf982430e1764243c6e5c749d76`; measured integration: `348f6973d4878ed77a9c6c60d072c91addaf15d8`.
 
 This is a fresh 0.5B mode comparison on the merged current-main implementation, not an isolated speedup over main. The original Tiny timing data in the parent report retain their original source and date. Tiny preprocessing remains concurrency one and does not use the changed bounded worker pool; both models received fresh HTTP and paired transcription checks here.
