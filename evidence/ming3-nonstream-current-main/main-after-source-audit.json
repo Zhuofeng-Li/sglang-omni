@@ -1,7 +1,7 @@
 {
   "actual_measurement_base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "actual_candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "later_main_audited_through": "a57209f8ac8ddff66c43e4c650310922114f522b",
+  "later_main_audited_through": "6e1a217974743f7f858537169d835c42f9f0d5b9",
   "findings": [
     {
       "commit": "e8050949b382a8ae87492840574c17d722aba8f7",
@@ -46,6 +46,14 @@
     {
       "commit": "a57209f8ac8ddff66c43e4c650310922114f522b",
       "scope": "Qwen3-Omni audio/vision packed-attention implementation; only shared weight_loader change is return annotation, no execution change. New module-level SGLang attention imports may affect registry import startup; retain frozen timings and final integration requirement."
+    },
+    {
+      "commit": "e8c635ecb9c68bcf2fbc32ceb3c40f85f3590657",
+      "scope": "Release metadata0.1.9\u21920.2.0 and installation docs/README only; no dependency or runtime implementation changes."
+    },
+    {
+      "commit": "6e1a217974743f7f858537169d835c42f9f0d5b9",
+      "scope": "Multiple-choice benchmark scoring changes; TTS finish_reason_from_server moved unchanged into benchmark data module. No TTS metrics, request protocol, or Ming serving math change. Other-model CI reference constants updated."
     }
   ],
   "limitation": "No subsequent-main timings are claimed. Frozen-source cost rows retain the measured version; final-main integration and affected startup verification remain required."
