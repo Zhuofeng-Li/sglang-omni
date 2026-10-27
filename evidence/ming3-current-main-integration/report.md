@@ -22,6 +22,6 @@ After verification and backup, no containers or GPU clients remained; assignment
 
 ## Linear stack provenance
 
-The local linear stack is based on main `6087f786b3a9dd2d53dee5f321737cecda88dd12`. Each original PR remains separate and its cumulative tree exactly matches a clean merge of its original head with that main. The new top tree differs from the CUDA-tested tree only in `benchmarks/duplex/oracle.py` and `tests/unit_test/benchmarks/test_duplex_oracle.py`. This functional test does not substitute for CI on the published new heads. Original measured performance source IDs are unchanged. The final merged-series performance comparison and independent Tiny performance qualification remain required.
+The published linear stack is based on main `6087f786b3a9dd2d53dee5f321737cecda88dd12`. Each original PR remains separate and its cumulative tree exactly matches a clean merge of its original head with that main. The new top tree differs from the CUDA-tested tree only in `benchmarks/duplex/oracle.py` and `tests/unit_test/benchmarks/test_duplex_oracle.py`. This functional test does not substitute for CI on the published new heads. Original measured performance source IDs are unchanged. The final merged-series performance comparison and independent Tiny performance qualification remain required.
 
 Public text logs normalize trailing whitespace; the off-node archive retains original bytes.
