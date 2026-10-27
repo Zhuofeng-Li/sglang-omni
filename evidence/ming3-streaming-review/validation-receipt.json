@@ -1,0 +1,12 @@
+{
+  "source": "251f02b467fe06269cb2d3d8c1063565d7c3de82",
+  "blocks": 32,
+  "request_ids_match_within_each_model_language": true,
+  "attempted": 4096,
+  "failed": 0,
+  "stream_requests": 2048,
+  "underrun_na": 5,
+  "paired_asr_cases": 8,
+  "all_paired_normalized_transcripts_match": true,
+  "archive_sha256": "8f7df8eab016e1a774376c04831c5951635c7a59e37e9eb60c76803b0a70e595"
+}

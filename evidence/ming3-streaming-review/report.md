@@ -1,10 +1,10 @@
 # Ming3 streaming review evidence
 
-Measurement blocks: **24/32**. **In progress; partial results are not a full qualification.**
+Measurement blocks: **32/32**. All requested latency blocks are complete.
 
 Measured integration: `251f02b467fe06269cb2d3d8c1063565d7c3de82`, tree `3e68505e3a2c26ae6e88e8360007bc0d3896d5d7`. The final dense head `8ca2534388574830fbfb3b692feee6851c57e0f2` has the identical tree. Tiny revision `5c955911` differs only in the companion dense enablement guard and its test. Current heads `f24ba6fa` (Tiny) and `cf50d5a4` (dense) add cookbook-only clarification; runtime file blobs remain unchanged.
 
-One H200. Automatic pipeline configuration; server max running requests and graph batch 32. Dense MPS auto, Tiny MPS off. No CPU quota or affinity override. First 128 EN and 128 ZH samples of SeedTTS `27f4c1adee83b5b29b7c4b375f6b976324bda308`. All timed requests use reference audio/text conditioning. Per language/concurrency: nonstream42, stream42, stream43, nonstream43. Warmup equals concurrency. One service per model spans its 16 blocks; reference and compilation caches persist across blocks. Streaming follows a non-streaming pass over the same references, so first-audio values use warmed reference caches; mode throughput is not a cache-normalized A/B estimate.
+One H200. Automatic pipeline configuration; server max running requests and graph batch 32. Dense MPS auto, Tiny MPS off. No CPU quota or affinity override. First 128 EN and 128 ZH samples of SeedTTS `27f4c1adee83b5b29b7c4b375f6b976324bda308`. All timed requests use reference audio/text conditioning. Per language/concurrency: nonstream42, stream42, stream43, nonstream43. Warmup equals concurrency. One service per model spans its 16 blocks; compilation and speaker caches persist. Dense prompt-latent caching is seed-keyed: stream42 can reuse nonstream42, while stream43 first introduces seed43. Tiny still encodes reference prompts in its engine. These are measurements of this replay protocol, not cold-reference latency or a cache-normalized A/B estimate.
 
 Means are arithmetic seed means; p95s are seed ranges. First audio starts at request dispatch and ends at the first nonempty PCM packet. Playback begins immediately with no added buffer. Underrun is the maximum late playback deadline per request; fewer than two packets is N/A. Raw exported timing resolution is 0.1 ms.
 
@@ -54,8 +54,8 @@ HTTP smoke: complete; 14 raw PCM cases, plus SSE and disconnect recovery.
 | --- | ---: | --- | --- | --- |
 | EN / 1 | 0.917 | 1091.7 / 1691.8–1791.0 | N/A (completed WAV) | 0/256 |
 | EN / 32 | 9.827 | 2920.7 / 5007.3–5527.3 | N/A (completed WAV) | 0/256 |
-| ZH / 1 | Pending | Pending | Pending | Pending |
-| ZH / 32 | Pending | Pending | Pending | Pending |
+| ZH / 1 | 0.567 | 1765.6 / 2210.7–2319.0 | N/A (completed WAV) | 0/256 |
+| ZH / 32 | 7.781 | 3839.3 / 5093.3–5129.4 | N/A (completed WAV) | 0/256 |
 
 ### Streaming
 
@@ -63,15 +63,15 @@ HTTP smoke: complete; 14 raw PCM cases, plus SSE and disconnect recovery.
 | --- | ---: | --- | --- | --- |
 | EN / 1 | 0.861 | 1161.3 / 1872.8–1903.5 | 530.1 / 532.8–533.5 | 0/256 |
 | EN / 32 | 7.484 | 3816.1 / 6877.7–7062.9 | 1610.2 / 2157.8–2389.3 | 0/256 |
-| ZH / 1 | Pending | Pending | Pending | Pending |
-| ZH / 32 | Pending | Pending | Pending | Pending |
+| ZH / 1 | 0.518 | 1932.7 / 2423.4–2520.3 | 533.5 / 535.9–537.8 | 0/256 |
+| ZH / 32 | 5.517 | 5353.8 / 7053.9–7134.6 | 1423.9 / 1829.2–1844.8 | 0/256 |
 
 | Split / concurrency | Max underrun per request: mean / p95 range (ms) | Requests with underrun / scored | N/A requests | c50 / c100 / c200 (%) |
 | --- | --- | --- | ---: | --- |
 | EN / 1 | 0.0 / 0.0–0.0 | 0/253 | 3 | 100.00 / 100.00 / 100.00 |
 | EN / 32 | 229.5 / 669.6–674.1 | 182/254 | 2 | 30.71 / 31.89 / 52.36 |
-| ZH / 1 | Pending | Pending | Pending | Pending |
-| ZH / 32 | Pending | Pending | Pending | Pending |
+| ZH / 1 | 0.0 / 0.0–0.0 | 0/256 | 0 | 100.00 / 100.00 / 100.00 |
+| ZH / 32 | 129.7 / 292.9–303.8 | 171/256 | 0 | 36.72 / 44.14 / 67.58 |
 
 HTTP smoke: complete; 14 raw PCM cases, plus SSE and disconnect recovery.
 
@@ -84,7 +84,18 @@ HTTP smoke: complete; 14 raw PCM cases, plus SSE and disconnect recovery.
 
 ## Paired transcription check
 
-Pending after all latency measurements, to avoid GPU interference.
+Stage: complete. benchmarks.tasks.asr.normalize_text; ZH character based. This is a small functional comparison, not a full benchmark.
+
+| Model / case | Full WER or CER | Stream WER or CER | Same normalized transcript |
+| --- | ---: | ---: | --- |
+| dense / en / reference=0 | 0.00% | 0.00% | True |
+| dense / en / reference=1 | 0.00% | 0.00% | True |
+| dense / zh / reference=0 | 4.55% | 4.55% | True |
+| dense / zh / reference=1 | 4.55% | 4.55% | True |
+| tiny / en / reference=0 | 0.00% | 0.00% | True |
+| tiny / en / reference=1 | 0.00% | 0.00% | True |
+| tiny / zh / reference=0 | 9.09% | 9.09% | True |
+| tiny / zh / reference=1 | 4.55% | 4.55% | True |
 
 ## Validation and provenance
 

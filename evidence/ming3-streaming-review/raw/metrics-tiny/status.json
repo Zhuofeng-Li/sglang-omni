@@ -9,9 +9,17 @@
     "en-c32-nonstream-s42",
     "en-c32-stream-s42",
     "en-c32-stream-s43",
-    "en-c32-nonstream-s43"
+    "en-c32-nonstream-s43",
+    "zh-c1-nonstream-s42",
+    "zh-c1-stream-s42",
+    "zh-c1-stream-s43",
+    "zh-c1-nonstream-s43",
+    "zh-c32-nonstream-s42",
+    "zh-c32-stream-s42",
+    "zh-c32-stream-s43",
+    "zh-c32-nonstream-s43"
   ],
-  "stage": "benchmark",
+  "stage": "complete",
   "gpu": "NVIDIA H200",
   "gpu_uuid": "4ac09667-48f7-6a03-b930-8338f78d441e",
   "source_commit": "251f02b467fe06269cb2d3d8c1063565d7c3de82",
@@ -47,7 +55,8 @@
     "--tts_engine.engine.cuda_graph_max_bs",
     "32"
   ],
-  "updated": 1793069063.1476247,
+  "updated": 1793070152.7809026,
   "startup_s": 114.36053681373596,
-  "active": "zh-c1-nonstream-s42"
+  "active": "zh-c32-nonstream-s43",
+  "finished": 1793070152.7809
 }

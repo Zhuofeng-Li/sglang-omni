@@ -1,0 +1,196 @@
+{
+  "model": "/opt/rsi-assets/huggingface/hub/models--Qwen--Qwen3-ASR-1.7B/snapshots/7278e1e70fe206f11671096ffdd38061171dd6e5",
+  "revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+  "stage": "complete",
+  "cases": [
+    {
+      "model": "dense",
+      "language": "en",
+      "reference": 0,
+      "target": "Get the trust fund to the bank early.",
+      "outputs": {
+        "offline": {
+          "transcript": "Get the trust fund to the bank early.",
+          "wer_or_cer": 0.0,
+          "errors": 0,
+          "reference_units": 8
+        },
+        "stream": {
+          "transcript": "Get the trust fund to the bank early.",
+          "wer_or_cer": 0.0,
+          "errors": 0,
+          "reference_units": 8
+        }
+      },
+      "same_normalized_transcript": true
+    },
+    {
+      "model": "dense",
+      "language": "en",
+      "reference": 1,
+      "target": "Get the trust fund to the bank early.",
+      "outputs": {
+        "offline": {
+          "transcript": "Get the trust fund to the bank early.",
+          "wer_or_cer": 0.0,
+          "errors": 0,
+          "reference_units": 8
+        },
+        "stream": {
+          "transcript": "Get the trust fund to the bank early.",
+          "wer_or_cer": 0.0,
+          "errors": 0,
+          "reference_units": 8
+        }
+      },
+      "same_normalized_transcript": true
+    },
+    {
+      "model": "dense",
+      "language": "zh",
+      "reference": 0,
+      "target": "简单地说，这相当于惠普把消费领域市场拱手相让了。",
+      "outputs": {
+        "offline": {
+          "transcript": "简单的说，这相当于惠普把消费领域市场拱手相让了。",
+          "wer_or_cer": 0.045454545454545456,
+          "errors": 1,
+          "reference_units": 22
+        },
+        "stream": {
+          "transcript": "简单的说，这相当于惠普把消费领域市场拱手相让了。",
+          "wer_or_cer": 0.045454545454545456,
+          "errors": 1,
+          "reference_units": 22
+        }
+      },
+      "same_normalized_transcript": true
+    },
+    {
+      "model": "dense",
+      "language": "zh",
+      "reference": 1,
+      "target": "简单地说，这相当于惠普把消费领域市场拱手相让了。",
+      "outputs": {
+        "offline": {
+          "transcript": "简单的说，这相当于惠普把消费领域市场拱手相让了。",
+          "wer_or_cer": 0.045454545454545456,
+          "errors": 1,
+          "reference_units": 22
+        },
+        "stream": {
+          "transcript": "简单的说，这相当于惠普把消费领域市场拱手相让了。",
+          "wer_or_cer": 0.045454545454545456,
+          "errors": 1,
+          "reference_units": 22
+        }
+      },
+      "same_normalized_transcript": true
+    },
+    {
+      "model": "tiny",
+      "language": "en",
+      "reference": 0,
+      "target": "Get the trust fund to the bank early.",
+      "outputs": {
+        "offline": {
+          "transcript": "Get the trust fund to the bank early.",
+          "wer_or_cer": 0.0,
+          "errors": 0,
+          "reference_units": 8
+        },
+        "stream": {
+          "transcript": "Get the trust fund to the bank early.",
+          "wer_or_cer": 0.0,
+          "errors": 0,
+          "reference_units": 8
+        }
+      },
+      "same_normalized_transcript": true
+    },
+    {
+      "model": "tiny",
+      "language": "en",
+      "reference": 1,
+      "target": "Get the trust fund to the bank early.",
+      "outputs": {
+        "offline": {
+          "transcript": "Get the trust fund to the bank early.",
+          "wer_or_cer": 0.0,
+          "errors": 0,
+          "reference_units": 8
+        },
+        "stream": {
+          "transcript": "Get the trust fund to the bank early.",
+          "wer_or_cer": 0.0,
+          "errors": 0,
+          "reference_units": 8
+        }
+      },
+      "same_normalized_transcript": true
+    },
+    {
+      "model": "tiny",
+      "language": "zh",
+      "reference": 0,
+      "target": "简单地说，这相当于惠普把消费领域市场拱手相让了。",
+      "outputs": {
+        "offline": {
+          "transcript": "简单的说，这相当于惠普把消费领域市场拱手相让了。嗯。",
+          "wer_or_cer": 0.09090909090909091,
+          "errors": 2,
+          "reference_units": 22
+        },
+        "stream": {
+          "transcript": "简单的说，这相当于惠普把消费领域市场拱手相让了。嗯。",
+          "wer_or_cer": 0.09090909090909091,
+          "errors": 2,
+          "reference_units": 22
+        }
+      },
+      "same_normalized_transcript": true
+    },
+    {
+      "model": "tiny",
+      "language": "zh",
+      "reference": 1,
+      "target": "简单地说，这相当于惠普把消费领域市场拱手相让了。",
+      "outputs": {
+        "offline": {
+          "transcript": "简单的说，这相当于惠普把消费领域市场拱手相让了。",
+          "wer_or_cer": 0.045454545454545456,
+          "errors": 1,
+          "reference_units": 22
+        },
+        "stream": {
+          "transcript": "简单的说，这相当于惠普把消费领域市场拱手相让了。",
+          "wer_or_cer": 0.045454545454545456,
+          "errors": 1,
+          "reference_units": 22
+        }
+      },
+      "same_normalized_transcript": true
+    }
+  ],
+  "normalization": "benchmarks.tasks.asr.normalize_text; ZH character based",
+  "command": [
+    "/opt/sglang/bin/python3",
+    "-m",
+    "sglang_omni.cli",
+    "serve",
+    "--model-path",
+    "/opt/rsi-assets/huggingface/hub/models--Qwen--Qwen3-ASR-1.7B/snapshots/7278e1e70fe206f11671096ffdd38061171dd6e5",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18882",
+    "--mem-fraction-static",
+    "0.5",
+    "--asr.engine.enable_torch_compile",
+    "false",
+    "--asr.engine.max_running_requests",
+    "8",
+    "--asr.engine.cuda_graph_max_bs",
+    "8"
+  ]
+}

@@ -5,7 +5,7 @@
   "dense_current_head": "cf50d5a405cced0fb47709ce3abdacaf8cc5b049",
   "tiny_current_head": "f24ba6fabe01e76d1d711b0dfb1bb2689e23fdf8",
   "head_delta": "cookbook only relative to prior published runtime revisions",
-  "blocks_complete": 24,
+  "blocks_complete": 32,
   "blocks_expected": 32,
-  "quality_stage": "pending"
+  "quality_stage": "complete"
 }
