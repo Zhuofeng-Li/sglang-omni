@@ -1,0 +1,21 @@
+diff --git a/sglang_omni/models/ming3_tts/sglang_model.py b/sglang_omni/models/ming3_tts/sglang_model.py
+index 0b533a43..d2bf520b 100644
+--- a/sglang_omni/models/ming3_tts/sglang_model.py
++++ b/sglang_omni/models/ming3_tts/sglang_model.py
+@@ -157,6 +157,7 @@ class AcousticStep:
+ class AcousticGraph:
+     graph: torch.cuda.CUDAGraph
+     inputs: AcousticInputs
++    sampling_scales: torch.Tensor
+     outputs: AcousticStep
+ 
+ 
+@@ -247,7 +248,7 @@ class SpeechHeadModel:
+             with torch.cuda.graph(graph, pool=memory_pool, stream=stream):
+                 outputs = self.compute_acoustic_step(inputs, sampling_scales)
+             self.acoustic_graphs[batch_size] = AcousticGraph(
+-                graph=graph, inputs=inputs, outputs=outputs
++                graph=graph, inputs=inputs, sampling_scales=sampling_scales, outputs=outputs
+             )
+ 
+     @torch.no_grad()

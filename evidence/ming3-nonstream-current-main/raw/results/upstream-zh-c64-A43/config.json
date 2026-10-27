@@ -1,0 +1,13 @@
+{
+  "id": "upstream-zh-c64-A43",
+  "comparison": "upstream",
+  "language": "zh",
+  "concurrency": 64,
+  "label": "A43",
+  "arm": "control",
+  "seed": 43,
+  "variant": "native",
+  "gpu_uuid": "GPU-4ac09667-48f7-6a03-b930-8338f78d441e",
+  "candidate_commit": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+  "base_commit": "0fe60cf6c102caf982430e1764243c6e5c749d76"
+}

@@ -1,0 +1,281 @@
+2026-10-27 09:51:22,664 sglang_omni.platforms.musa WARNING Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-27 09:51:23,073 sglang.srt.configs.linear_attn_model_registry INFO Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-27 09:51:23,498 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python3 -m sglang_omni.cli serve --model-path inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0 --port 8000 --host localhost --config /results/server-config.yaml --tts_engine.engine.max_running_requests 64 --tts_engine.engine.cuda_graph_max_bs 64
+2026-10-27 09:51:23,499 benchmarks.benchmarker.utils INFO Waiting for service at http://localhost:8000 ...
+2026-10-27 09:53:28,609 benchmarks.benchmarker.utils INFO Service is ready.
+2026-10-27 09:53:28,675 datasets INFO JAX version 0.4.38 available.
+2026-10-27 09:53:28,779 benchmarks.dataset.seedtts INFO Loading zhaochenyang20/seed-tts-eval-arrow split=zh revision=27f4c1adee83b5b29b7c4b375f6b976324bda308 from HuggingFace ...
+Using the latest cached version of the dataset since zhaochenyang20/seed-tts-eval-arrow couldn't be found on the Hugging Face Hub (offline mode is enabled).
+2026-10-27 09:53:28,780 datasets.load WARNING Using the latest cached version of the dataset since zhaochenyang20/seed-tts-eval-arrow couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /results/cache/datasets/zhaochenyang20___seed-tts-eval-arrow/default/0.0.0/27f4c1adee83b5b29b7c4b375f6b976324bda308 (last modified on Mon Oct 26 14:25:07 2026).
+2026-10-27 09:53:28,780 datasets.packaged_modules.cache.cache WARNING Found the latest cached dataset configuration 'default' at /results/cache/datasets/zhaochenyang20___seed-tts-eval-arrow/default/0.0.0/27f4c1adee83b5b29b7c4b375f6b976324bda308 (last modified on Mon Oct 26 14:25:07 2026).
+2026-10-27 09:53:28,837 benchmarks.dataset.seedtts INFO Staging audio to /results/cache/tmp/seedtts_zh_cc5_modz
+2026-10-27 09:53:29,412 benchmarks.dataset.seedtts INFO Loaded 2020 samples (1010 unique audio files) from zhaochenyang20/seed-tts-eval-arrow/zh
+2026-10-27 09:53:29,428 __main__ INFO Prepared 2020 requests (offset 0)
+2026-10-27 09:53:29,429 benchmarks.benchmarker.runner INFO Warmup (64 requests)...
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 1/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 2/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 3/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 4/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 5/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 6/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 7/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 8/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 9/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 10/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 11/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 12/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 13/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 14/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 15/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 16/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 17/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 18/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 19/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 20/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 21/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 22/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 23/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 24/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 25/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 26/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 27/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 28/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 29/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 30/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 31/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 32/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 33/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 34/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 35/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 36/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 37/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 38/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 39/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 40/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 41/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 42/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 43/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 44/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 45/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 46/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 47/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 48/64: ok
+2026-10-27 09:53:37,820 benchmarks.benchmarker.runner INFO   warmup 49/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 50/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 51/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 52/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 53/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 54/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 55/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 56/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 57/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 58/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 59/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 60/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 61/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 62/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 63/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO   warmup 64/64: ok
+2026-10-27 09:53:37,821 benchmarks.benchmarker.runner INFO Benchmarking 2020 requests (max_concurrency=64)...
+  0%|          | 0/2020 [00:00<?, ?it/s]  0%|          | 1/2020 [00:00<20:47,  1.62it/s]  0%|          | 7/2020 [00:01<04:14,  7.90it/s]  0%|          | 9/2020 [00:01<05:06,  6.57it/s]  1%|          | 14/2020 [00:01<02:59, 11.15it/s]  1%|          | 20/2020 [00:01<01:52, 17.73it/s]  1%|▏         | 27/2020 [00:01<01:26, 22.91it/s]  2%|▏         | 32/2020 [00:02<01:16, 26.03it/s]  2%|▏         | 39/2020 [00:02<01:04, 30.67it/s]  2%|▏         | 45/2020 [00:02<00:54, 36.20it/s]  2%|▏         | 50/2020 [00:02<00:51, 38.09it/s]  3%|▎         | 55/2020 [00:02<00:50, 39.29it/s]  3%|▎         | 64/2020 [00:02<00:43, 45.22it/s]  4%|▎         | 71/2020 [00:02<00:39, 49.62it/s]  4%|▍         | 80/2020 [00:02<00:35, 55.32it/s]  4%|▍         | 86/2020 [00:03<00:41, 46.79it/s]  5%|▍         | 99/2020 [00:03<00:32, 59.67it/s]  5%|▌         | 106/2020 [00:03<00:46, 40.84it/s]  6%|▌         | 117/2020 [00:03<00:37, 50.61it/s]  6%|▌         | 124/2020 [00:03<00:36, 52.21it/s]  6%|▋         | 131/2020 [00:04<00:37, 50.45it/s]  7%|▋         | 137/2020 [00:04<00:37, 50.83it/s]  7%|▋         | 143/2020 [00:04<00:37, 50.02it/s]  7%|▋         | 150/2020 [00:04<00:34, 54.04it/s]  8%|▊         | 157/2020 [00:04<00:35, 52.81it/s]  8%|▊         | 168/2020 [00:04<00:33, 55.43it/s]  9%|▊         | 174/2020 [00:04<00:36, 50.17it/s]  9%|▉         | 185/2020 [00:04<00:30, 60.49it/s] 10%|▉         | 192/2020 [00:05<00:30, 59.03it/s] 10%|▉         | 199/2020 [00:05<00:36, 50.31it/s] 10%|█         | 209/2020 [00:05<00:31, 57.86it/s] 11%|█         | 216/2020 [00:05<00:36, 49.52it/s] 11%|█         | 225/2020 [00:05<00:31, 57.84it/s] 11%|█▏        | 232/2020 [00:05<00:33, 53.41it/s] 12%|█▏        | 238/2020 [00:06<00:35, 49.55it/s] 12%|█▏        | 245/2020 [00:06<00:33, 53.47it/s] 13%|█▎        | 258/2020 [00:06<00:25, 68.00it/s] 13%|█▎        | 266/2020 [00:06<00:33, 52.84it/s] 13%|█▎        | 272/2020 [00:06<00:33, 51.48it/s] 14%|█▍        | 282/2020 [00:06<00:28, 61.23it/s] 14%|█▍        | 289/2020 [00:06<00:29, 58.06it/s] 15%|█▍        | 296/2020 [00:07<00:33, 52.15it/s] 15%|█▌        | 303/2020 [00:07<00:31, 54.89it/s] 15%|█▌        | 309/2020 [00:07<00:31, 53.86it/s] 16%|█▌        | 317/2020 [00:07<00:29, 58.37it/s] 16%|█▌        | 324/2020 [00:07<00:33, 50.46it/s] 17%|█▋        | 335/2020 [00:07<00:27, 62.12it/s] 17%|█▋        | 346/2020 [00:07<00:23, 72.64it/s] 18%|█▊        | 354/2020 [00:07<00:28, 58.27it/s] 18%|█▊        | 361/2020 [00:08<00:33, 50.13it/s] 18%|█▊        | 371/2020 [00:08<00:27, 60.31it/s] 19%|█▊        | 378/2020 [00:08<00:32, 51.17it/s] 19%|█▉        | 385/2020 [00:08<00:30, 53.63it/s] 19%|█▉        | 392/2020 [00:08<00:35, 45.46it/s] 20%|█▉        | 400/2020 [00:08<00:31, 51.39it/s] 20%|██        | 407/2020 [00:09<00:29, 55.09it/s] 20%|██        | 414/2020 [00:09<00:28, 56.27it/s] 21%|██        | 421/2020 [00:09<00:31, 50.34it/s] 21%|██        | 429/2020 [00:09<00:29, 54.67it/s] 22%|██▏       | 435/2020 [00:09<00:31, 50.43it/s] 22%|██▏       | 441/2020 [00:09<00:30, 52.12it/s] 22%|██▏       | 447/2020 [00:09<00:31, 50.27it/s] 22%|██▏       | 454/2020 [00:09<00:28, 54.62it/s] 23%|██▎       | 461/2020 [00:10<00:26, 58.01it/s] 23%|██▎       | 467/2020 [00:10<00:30, 51.73it/s] 24%|██▎       | 476/2020 [00:10<00:25, 60.87it/s] 24%|██▍       | 483/2020 [00:10<00:26, 57.98it/s] 24%|██▍       | 490/2020 [00:10<00:26, 58.43it/s] 25%|██▍       | 497/2020 [00:10<00:31, 48.47it/s] 25%|██▍       | 504/2020 [00:10<00:29, 51.34it/s] 25%|██▌       | 510/2020 [00:10<00:30, 50.15it/s] 26%|██▌       | 516/2020 [00:11<00:30, 49.53it/s] 26%|██▌       | 529/2020 [00:11<00:21, 68.46it/s] 27%|██▋       | 537/2020 [00:11<00:24, 60.65it/s] 27%|██▋       | 544/2020 [00:11<00:27, 53.08it/s] 28%|██▊       | 556/2020 [00:11<00:28, 50.74it/s] 28%|██▊       | 564/2020 [00:11<00:26, 55.80it/s] 28%|██▊       | 571/2020 [00:12<00:28, 51.67it/s] 29%|██▊       | 577/2020 [00:12<00:28, 49.85it/s] 29%|██▉       | 587/2020 [00:12<00:23, 60.65it/s] 29%|██▉       | 595/2020 [00:12<00:22, 63.36it/s] 30%|██▉       | 602/2020 [00:12<00:23, 61.40it/s] 30%|███       | 611/2020 [00:12<00:21, 64.62it/s] 31%|███       | 618/2020 [00:12<00:24, 57.77it/s] 31%|███       | 625/2020 [00:12<00:26, 51.78it/s] 31%|███       | 631/2020 [00:13<00:30, 45.31it/s] 32%|███▏      | 643/2020 [00:13<00:22, 60.04it/s] 32%|███▏      | 653/2020 [00:13<00:22, 60.61it/s] 33%|███▎      | 660/2020 [00:13<00:24, 55.20it/s] 33%|███▎      | 666/2020 [00:13<00:24, 54.22it/s] 33%|███▎      | 672/2020 [00:13<00:24, 54.00it/s] 34%|███▎      | 678/2020 [00:13<00:27, 49.13it/s] 34%|███▍      | 684/2020 [00:14<00:26, 49.62it/s] 34%|███▍      | 692/2020 [00:14<00:23, 56.01it/s] 35%|███▍      | 698/2020 [00:14<00:25, 50.95it/s] 35%|███▌      | 708/2020 [00:14<00:21, 60.14it/s] 35%|███▌      | 715/2020 [00:14<00:23, 54.87it/s] 36%|███▌      | 723/2020 [00:14<00:21, 59.77it/s] 36%|███▌      | 730/2020 [00:14<00:24, 52.35it/s] 37%|███▋      | 740/2020 [00:15<00:20, 61.48it/s] 37%|███▋      | 747/2020 [00:15<00:24, 52.47it/s] 37%|███▋      | 753/2020 [00:15<00:25, 49.58it/s] 38%|███▊      | 763/2020 [00:15<00:20, 60.95it/s] 38%|███▊      | 770/2020 [00:15<00:24, 50.66it/s] 39%|███▉      | 783/2020 [00:15<00:18, 67.56it/s] 39%|███▉      | 791/2020 [00:15<00:21, 58.12it/s] 40%|███▉      | 798/2020 [00:16<00:21, 55.90it/s] 40%|███▉      | 807/2020 [00:16<00:19, 61.19it/s] 40%|████      | 814/2020 [00:16<00:20, 57.72it/s] 41%|████      | 821/2020 [00:16<00:23, 50.77it/s] 41%|████      | 831/2020 [00:16<00:20, 58.57it/s] 41%|████▏     | 838/2020 [00:16<00:21, 54.73it/s] 42%|████▏     | 845/2020 [00:16<00:22, 52.52it/s] 42%|████▏     | 853/2020 [00:17<00:20, 56.79it/s] 43%|████▎     | 859/2020 [00:17<00:23, 49.47it/s] 43%|████▎     | 869/2020 [00:17<00:19, 60.19it/s] 43%|████▎     | 877/2020 [00:17<00:20, 55.33it/s] 44%|████▎     | 883/2020 [00:17<00:21, 53.88it/s] 44%|████▍     | 889/2020 [00:17<00:22, 50.66it/s] 45%|████▍     | 900/2020 [00:17<00:17, 63.60it/s] 45%|████▍     | 907/2020 [00:18<00:19, 56.85it/s] 45%|████▌     | 914/2020 [00:18<00:19, 57.07it/s] 46%|████▌     | 920/2020 [00:18<00:22, 49.66it/s] 46%|████▌     | 926/2020 [00:18<00:21, 50.50it/s] 46%|████▌     | 933/2020 [00:18<00:20, 53.59it/s] 47%|████▋     | 943/2020 [00:18<00:17, 60.29it/s] 47%|████▋     | 950/2020 [00:18<00:18, 57.86it/s] 47%|████▋     | 958/2020 [00:18<00:18, 58.91it/s] 48%|████▊     | 964/2020 [00:19<00:18, 58.06it/s] 48%|████▊     | 972/2020 [00:19<00:20, 50.26it/s] 49%|████▊     | 980/2020 [00:19<00:18, 56.10it/s] 49%|████▉     | 990/2020 [00:19<00:15, 65.61it/s] 49%|████▉     | 997/2020 [00:19<00:17, 59.76it/s] 50%|████▉     | 1005/2020 [00:19<00:16, 62.26it/s] 50%|█████     | 1012/2020 [00:19<00:17, 58.50it/s] 51%|█████     | 1022/2020 [00:20<00:16, 61.57it/s] 51%|█████     | 1029/2020 [00:20<00:17, 56.71it/s] 51%|█████     | 1035/2020 [00:20<00:19, 49.39it/s] 52%|█████▏    | 1047/2020 [00:20<00:15, 64.10it/s] 52%|█████▏    | 1054/2020 [00:20<00:16, 57.90it/s] 53%|█████▎    | 1061/2020 [00:20<00:18, 53.12it/s] 53%|█████▎    | 1071/2020 [00:20<00:17, 55.14it/s] 53%|█████▎    | 1078/2020 [00:21<00:16, 57.52it/s] 54%|█████▎    | 1085/2020 [00:21<00:16, 57.35it/s] 54%|█████▍    | 1094/2020 [00:21<00:14, 64.21it/s] 55%|█████▍    | 1101/2020 [00:21<00:15, 58.41it/s] 55%|█████▍    | 1108/2020 [00:21<00:18, 48.89it/s] 55%|█████▌    | 1119/2020 [00:21<00:15, 59.45it/s] 56%|█████▌    | 1126/2020 [00:21<00:17, 52.04it/s] 56%|█████▋    | 1137/2020 [00:22<00:14, 62.02it/s] 57%|█████▋    | 1144/2020 [00:22<00:14, 60.96it/s] 57%|█████▋    | 1151/2020 [00:22<00:14, 59.15it/s] 57%|█████▋    | 1158/2020 [00:22<00:14, 59.41it/s] 58%|█████▊    | 1165/2020 [00:22<00:14, 58.59it/s] 58%|█████▊    | 1171/2020 [00:22<00:16, 51.05it/s] 58%|█████▊    | 1177/2020 [00:22<00:16, 52.09it/s] 59%|█████▊    | 1185/2020 [00:22<00:14, 57.84it/s] 59%|█████▉    | 1191/2020 [00:23<00:14, 56.84it/s] 59%|█████▉    | 1201/2020 [00:23<00:12, 67.60it/s] 60%|█████▉    | 1208/2020 [00:23<00:14, 56.56it/s] 60%|██████    | 1216/2020 [00:23<00:13, 61.61it/s] 61%|██████    | 1223/2020 [00:23<00:14, 54.12it/s] 61%|██████    | 1231/2020 [00:23<00:13, 58.12it/s] 61%|██████▏   | 1238/2020 [00:23<00:15, 49.78it/s] 62%|██████▏   | 1247/2020 [00:23<00:13, 58.21it/s] 62%|██████▏   | 1254/2020 [00:24<00:14, 54.15it/s] 62%|██████▏   | 1260/2020 [00:24<00:13, 54.50it/s] 63%|██████▎   | 1267/2020 [00:24<00:13, 53.97it/s] 63%|██████▎   | 1277/2020 [00:24<00:11, 63.99it/s] 64%|██████▎   | 1284/2020 [00:24<00:15, 48.10it/s] 64%|██████▍   | 1297/2020 [00:24<00:11, 64.51it/s] 65%|██████▍   | 1305/2020 [00:25<00:13, 52.60it/s] 65%|██████▍   | 1312/2020 [00:25<00:13, 50.80it/s] 65%|██████▌   | 1321/2020 [00:25<00:12, 58.16it/s] 66%|██████▌   | 1328/2020 [00:25<00:12, 53.96it/s] 66%|██████▌   | 1334/2020 [00:25<00:14, 48.93it/s] 66%|██████▋   | 1342/2020 [00:25<00:12, 53.87it/s] 67%|██████▋   | 1349/2020 [00:25<00:12, 55.66it/s] 67%|██████▋   | 1356/2020 [00:25<00:11, 58.10it/s] 67%|██████▋   | 1363/2020 [00:26<00:12, 51.13it/s] 68%|██████▊   | 1373/2020 [00:26<00:11, 54.59it/s] 68%|██████▊   | 1379/2020 [00:26<00:12, 53.27it/s] 69%|██████▊   | 1385/2020 [00:26<00:13, 48.09it/s] 69%|██████▉   | 1395/2020 [00:26<00:10, 59.66it/s] 69%|██████▉   | 1402/2020 [00:26<00:10, 57.70it/s] 70%|██████▉   | 1409/2020 [00:26<00:10, 59.87it/s] 70%|███████   | 1416/2020 [00:27<00:11, 50.77it/s] 70%|███████   | 1424/2020 [00:27<00:10, 57.24it/s] 71%|███████   | 1432/2020 [00:27<00:09, 61.03it/s] 71%|███████   | 1439/2020 [00:27<00:11, 49.72it/s] 72%|███████▏  | 1445/2020 [00:27<00:11, 50.27it/s] 72%|███████▏  | 1451/2020 [00:27<00:12, 46.18it/s] 72%|███████▏  | 1462/2020 [00:27<00:09, 60.44it/s] 73%|███████▎  | 1470/2020 [00:28<00:08, 62.04it/s] 73%|███████▎  | 1477/2020 [00:28<00:08, 60.48it/s] 73%|███████▎  | 1484/2020 [00:28<00:10, 53.53it/s] 74%|███████▍  | 1493/2020 [00:28<00:10, 52.59it/s] 74%|███████▍  | 1499/2020 [00:28<00:10, 51.78it/s] 75%|███████▍  | 1507/2020 [00:28<00:08, 57.21it/s] 75%|███████▍  | 1514/2020 [00:28<00:09, 55.90it/s] 75%|███████▌  | 1520/2020 [00:29<00:09, 52.19it/s] 76%|███████▌  | 1526/2020 [00:29<00:10, 48.20it/s] 76%|███████▌  | 1537/2020 [00:29<00:07, 62.20it/s] 77%|███████▋  | 1548/2020 [00:29<00:06, 72.92it/s] 77%|███████▋  | 1556/2020 [00:29<00:08, 53.93it/s] 77%|███████▋  | 1563/2020 [00:29<00:09, 49.88it/s] 78%|███████▊  | 1570/2020 [00:29<00:09, 49.36it/s] 78%|███████▊  | 1578/2020 [00:30<00:08, 53.52it/s] 78%|███████▊  | 1584/2020 [00:30<00:08, 52.29it/s] 79%|███████▉  | 1591/2020 [00:30<00:07, 55.72it/s] 79%|███████▉  | 1597/2020 [00:30<00:07, 56.70it/s] 79%|███████▉  | 1603/2020 [00:30<00:07, 53.27it/s] 80%|███████▉  | 1611/2020 [00:30<00:07, 57.13it/s] 80%|████████  | 1618/2020 [00:30<00:06, 58.34it/s] 80%|████████  | 1624/2020 [00:30<00:07, 54.00it/s] 81%|████████  | 1630/2020 [00:31<00:08, 46.42it/s] 81%|████████  | 1641/2020 [00:31<00:06, 61.01it/s] 82%|████████▏ | 1650/2020 [00:31<00:05, 62.53it/s] 82%|████████▏ | 1657/2020 [00:31<00:06, 58.20it/s] 82%|████████▏ | 1664/2020 [00:31<00:05, 60.46it/s] 83%|████████▎ | 1671/2020 [00:31<00:05, 58.98it/s] 83%|████████▎ | 1678/2020 [00:31<00:06, 54.09it/s] 83%|████████▎ | 1684/2020 [00:31<00:06, 50.38it/s] 84%|████████▎ | 1691/2020 [00:32<00:06, 52.92it/s] 84%|████████▍ | 1697/2020 [00:32<00:06, 52.24it/s] 84%|████████▍ | 1703/2020 [00:32<00:06, 49.06it/s] 85%|████████▍ | 1712/2020 [00:32<00:05, 58.10it/s] 85%|████████▌ | 1720/2020 [00:32<00:04, 62.12it/s] 85%|████████▌ | 1727/2020 [00:32<00:05, 53.99it/s] 86%|████████▌ | 1737/2020 [00:32<00:04, 61.31it/s] 86%|████████▋ | 1744/2020 [00:33<00:04, 56.69it/s] 87%|████████▋ | 1751/2020 [00:33<00:04, 55.15it/s] 87%|████████▋ | 1757/2020 [00:33<00:04, 52.95it/s] 87%|████████▋ | 1765/2020 [00:33<00:04, 56.32it/s] 88%|████████▊ | 1772/2020 [00:33<00:04, 59.33it/s] 88%|████████▊ | 1779/2020 [00:33<00:04, 53.12it/s] 89%|████████▊ | 1788/2020 [00:33<00:04, 57.26it/s] 89%|████████▉ | 1794/2020 [00:33<00:03, 56.82it/s] 89%|████████▉ | 1801/2020 [00:34<00:03, 59.81it/s] 90%|████████▉ | 1808/2020 [00:34<00:04, 50.71it/s] 90%|████████▉ | 1817/2020 [00:34<00:03, 52.23it/s] 90%|█████████ | 1827/2020 [00:34<00:03, 62.27it/s] 91%|█████████ | 1835/2020 [00:34<00:02, 63.07it/s] 91%|█████████ | 1842/2020 [00:34<00:03, 57.90it/s] 92%|█████████▏| 1849/2020 [00:34<00:02, 57.97it/s] 92%|█████████▏| 1855/2020 [00:34<00:03, 54.55it/s] 92%|█████████▏| 1864/2020 [00:35<00:02, 59.30it/s] 93%|█████████▎| 1871/2020 [00:35<00:02, 51.82it/s] 93%|█████████▎| 1878/2020 [00:35<00:02, 55.25it/s] 93%|█████████▎| 1884/2020 [00:35<00:02, 50.39it/s] 94%|█████████▎| 1893/2020 [00:35<00:02, 52.68it/s] 94%|█████████▍| 1901/2020 [00:35<00:02, 58.18it/s] 94%|█████████▍| 1908/2020 [00:35<00:01, 59.03it/s] 95%|█████████▍| 1915/2020 [00:36<00:02, 49.88it/s] 95%|█████████▌| 1921/2020 [00:36<00:02, 49.42it/s] 96%|█████████▌| 1933/2020 [00:36<00:01, 60.71it/s] 96%|█████████▌| 1940/2020 [00:36<00:01, 53.17it/s] 97%|█████████▋| 1951/2020 [00:36<00:01, 65.65it/s] 97%|█████████▋| 1959/2020 [00:36<00:01, 53.54it/s] 98%|█████████▊| 1970/2020 [00:36<00:00, 64.10it/s] 98%|█████████▊| 1979/2020 [00:37<00:00, 68.01it/s] 98%|█████████▊| 1989/2020 [00:37<00:00, 75.21it/s] 99%|█████████▉| 2001/2020 [00:37<00:00, 84.79it/s]100%|█████████▉| 2013/2020 [00:37<00:00, 92.70it/s]100%|██████████| 2020/2020 [00:37<00:00, 53.91it/s]
+2026-10-27 09:54:15,341 benchmarks.benchmarker.utils INFO Results saved to /results/output/speed_results.json
+2026-10-27 09:54:15,346 benchmarks.tasks.tts INFO Results saved to /results/output
+2026-10-27 09:54:15,361 benchmarks.tasks.tts INFO Generated audio metadata saved to /results/output/generated.json
+
+============================================================
+                   Speed Benchmark Result                   
+============================================================
+  Model:                         inclusionAI/Ming-3.0-tts-0.5B
+  Concurrency:                   64
+  Completed requests:            2020
+  Failed requests:               0
+  Max token hits:                0
+  Finish reasons observed:       2020
+------------------------------------------------------------
+  Latency mean (s):              1.178
+  Latency median (s):            1.142
+  Latency p95 (s):               1.555
+  Latency p99 (s):               2.371
+  RTF mean:                      0.2279
+  RTF median:                    0.2226
+  RTF p95:                       0.26
+  RTF p99:                       0.4574
+  Audio duration mean (s):       5.185
+  Audio throughput (s/s):        279.482
+  Output throughput (tok/s):     3493.5
+  Output tokens (mean):          65
+  Output tokens (total):         130914
+  Prompt tokens (mean):          129
+  Prompt tokens (total):         259608
+  Throughput (req/s):            53.905
+============================================================
+2026-10-27 09:54:15,362 benchmarks.benchmarker.utils INFO Stopping server (inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0)
+[gpu cleanup] running ensure_gpus_idle scope=0 (threshold=2048 MiB)...
+=== GPU cleanup scope (physical): 0 (input CVD='0') ===
+  orphan kill scoped to physical GPU(s): 0 (regex=/dev/nvidia(0)$)
+=== Checking GPU Utilization ===
+  No processes found on GPU 0.
+Waiting for selected GPU memory.used to drop below 2048 MiB...
+  GPU 0: 4 MiB used
+GPU memory cleanup complete: max memory.used=4 MiB.
+
+2026-10-27 09:54:18,466 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python3 -m sglang_omni.cli serve --model-path Qwen/Qwen3-ASR-1.7B --port 8000 --host localhost
+2026-10-27 09:54:18,467 benchmarks.benchmarker.utils INFO Waiting for service at http://localhost:8000 ...
+2026-10-27 09:56:06,571 benchmarks.benchmarker.utils INFO Service is ready.
+2026-10-27 09:56:06,576 benchmarks.tasks.tts INFO Loaded 2020 entries from /results/output/generated.json
+2026-10-27 09:56:06,577 benchmarks.benchmarker.runner INFO Warmup (64 requests)...
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 1/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 2/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 3/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 4/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 5/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 6/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 7/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 8/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 9/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 10/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 11/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 12/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 13/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 14/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 15/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 16/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 17/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 18/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 19/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 20/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 21/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 22/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 23/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 24/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 25/64: ok
+2026-10-27 09:56:07,817 benchmarks.benchmarker.runner INFO   warmup 26/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 27/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 28/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 29/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 30/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 31/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 32/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 33/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 34/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 35/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 36/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 37/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 38/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 39/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 40/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 41/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 42/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 43/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 44/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 45/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 46/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 47/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 48/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 49/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 50/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 51/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 52/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 53/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 54/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 55/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 56/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 57/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 58/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 59/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 60/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 61/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 62/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 63/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO   warmup 64/64: ok
+2026-10-27 09:56:07,818 benchmarks.benchmarker.runner INFO Benchmarking 2020 requests (max_concurrency=32)...
+
+============================================================
+         TTS Speed Benchmark Result (non-streaming)         
+============================================================
+  Model:                         inclusionAI/Ming-3.0-tts-0.5B
+  Dataset:                       zhaochenyang20/seed-tts-eval-arrow
+  Concurrency:                   64
+  Completed requests:            2020
+  Failed requests:               0
+  Max token hits:                0
+  Finish reasons observed:       2020
+------------------------------------------------------------
+  Latency mean (s):              1.178
+  Latency median (s):            1.142
+  Latency p95 (s):               1.555
+  Latency p99 (s):               2.371
+  RTF mean:                      0.2279
+  RTF median:                    0.2226
+  RTF p95:                       0.26
+  RTF p99:                       0.4574
+  Audio duration mean (s):       5.185
+  Audio throughput (s/s):        279.482
+  Output throughput (tok/s):     3493.5
+  Output tokens (mean):          65
+  Output tokens (total):         130914
+  Prompt tokens (mean):          129
+  Prompt tokens (total):         259608
+  Throughput (req/s):            53.905
+============================================================
+
+============================================================
+          TTS WER Benchmark Result (non-streaming)          
+============================================================
+  TTS model:                     inclusionAI/Ming-3.0-tts-0.5B
+  Generation mode:               non-streaming
+  Language:                      zh
+  Evaluated / Total:             2020/2020
+  Skipped:                       0
+------------------------------------------------------------
+  WER (corpus, micro-avg):       0.0069 (0.69%)
+------------------------------------------------------------
+  WER per-sample mean:           0.0066 (0.66%)
+  WER per-sample median:         0.0000
+  WER per-sample std:            0.0199
+  WER per-sample p95:            0.0476
+  WER per-sample max:            0.2500 (25.00%)
+  WER corpus (excl >50%):        0.0069 (0.69%)
+  WER mean (excl >50%):          0.0066 (0.66%)
+  >50% WER samples:              0 (0.0%)
+------------------------------------------------------------
+  Latency mean (s):              1.1779423762376235
+  Latency p95 (s):               1.555035
+  RTF mean:                      0.2280024229561923
+  Throughput (req/s):            53.905
+  Audio duration mean (s):       5.184712871287128
+============================================================
+
+
+============================================================
+                 ASR Speed Benchmark Result                 
+============================================================
+  ASR model:                     Qwen/Qwen3-ASR-1.7B
+  Evaluated / Total:             2020/2020
+  ASR concurrency:               32
+  Skipped:                       0
+------------------------------------------------------------
+  ASR latency mean (s):          0.17889267620964824
+  ASR latency median (s):        0.1706526824273169
+  ASR latency p95 (s):           0.24460697062313555
+  ASR latency p99 (s):           0.4332597814220935
+  ASR RTF mean:                  0.03496589123582315
+  ASR RTF median:                0.03352253229398205
+  ASR total time (s):            11.389873393811285
+  ASR latency sum (s):           361.36320594348945
+  ASR throughput (samples/s):    177.35052271060113
+  Audio processed (s):           10473.12
+============================================================
+2026-10-27 09:56:19,346 benchmarks.benchmarker.utils INFO Results saved to /results/output/wer_results.json
+2026-10-27 09:56:19,352 benchmarks.benchmarker.utils INFO Results saved to /results/output/asr_speed_results.json
+2026-10-27 09:56:19,353 benchmarks.benchmarker.utils INFO Stopping server (Qwen/Qwen3-ASR-1.7B)
+[gpu cleanup] running ensure_gpus_idle scope=0 (threshold=2048 MiB)...
+=== GPU cleanup scope (physical): 0 (input CVD='0') ===
+  orphan kill scoped to physical GPU(s): 0 (regex=/dev/nvidia(0)$)
+=== Checking GPU Utilization ===
+  No processes found on GPU 0.
+Waiting for selected GPU memory.used to drop below 2048 MiB...
+  GPU 0: 4 MiB used
+GPU memory cleanup complete: max memory.used=4 MiB.
+

@@ -1,8 +1,8 @@
 # Ming3 non-streaming current-main qualification
 
-Audited arms: 28/92; updated 2026-10-27T09:34:39.405952+00:00. Only complete ABBA cells are aggregated.
+Audited arms: 32/92; updated 2026-10-27T10:13:51.968034+00:00. Only complete ABBA cells are aggregated.
 
-Actual control `0fe60cf6c102caf982430e1764243c6e5c749d76`; candidate `3f8593f4cae19fe1c71e929a854bdc03b2c185e6`; corrected control `0d6a414e5e15c996900620d263143c89e0dd8acd`. One H200, full SeedTTS EN/ZH, seeds42/43, A42/B42/B43/A43 per cell. Source receipts, exact commands/YAMLs, per-request results, per-sample SIM and WAV hashes are retained below `raw/`.
+Actual control `0fe60cf6c102caf982430e1764243c6e5c749d76`; candidate `3f8593f4cae19fe1c71e929a854bdc03b2c185e6`; corrected control `0d6a414e5e15c996900620d263143c89e0dd8acd`. `current-corrected-control.patch` reproduces that control from the actual main commit by retaining only the captured sampling-scale tensor. One H200, full SeedTTS EN/ZH, seeds42/43, A42/B42/B43/A43 per cell. Source receipts, exact commands/YAMLs, per-request results, per-sample SIM and WAV hashes are retained below `raw/`.
 
 Protocol and metric definitions are in the original PR body and the archived release manifest. Each arm uses a fresh service and private compilation/reference caches; no CPU quota or affinity override. WER and CAM++ scores cover every request. Means are arithmetic seed means; p95 is the range of seed percentiles. The overview uses the geometric mean of matched EN/ZH throughput ratios. One-second GPU-memory sampling covers the TTS service window, excluding the later ASR scorer. The external graph observer is identical across arms.
 
@@ -19,7 +19,7 @@ Later main changes through `72b776c9` affect other-model/session paths and model
 | 1 | +213.28% |
 | 16 | +352.61% |
 | 32 | +417.63% |
-| 64 | Pending |
+| 64 | +312.20% |
 
 | Split | Concurrency | req/s A → B | Response mean / p95 range (ms), A → B | First packet | Mean audio seconds, A → B | WER (%), A → B | SIM, A → B | Failed / attempted, A → B |
 | --- | ---: | --- | --- | --- | --- | --- | --- | --- |
@@ -30,7 +30,7 @@ Later main changes through `72b776c9` affect other-model/session paths and model
 | ZH | 1 | 0.978 → 3.093 | 1023.5 / 1295.0–1295.0 → 323.0 / 417.0–425.0 | N/A | 5.202 → 5.202 | 0.6447 → 0.6566 | 0.77992 → 0.78032 | 0/4040 → 0/4040 |
 | ZH | 16 | 8.109 → 35.391 | 1967.5 / 2623.0–2651.0 → 449.5 / 573.0–582.0 | N/A | 5.261 → 5.202 | 0.7122 → 0.6589 | 0.78402 → 0.78018 | 0/4040 → 0/4040 |
 | ZH | 32 | 11.106 → 56.487 | 2866.5 / 3831.0–3915.0 → 561.5 / 727.0–735.0 | N/A | 5.257 → 5.201 | 0.6802 → 0.6601 | 0.78347 → 0.78001 | 0/4040 → 0/4040 |
-| ZH | 64 | Pending | Pending | N/A | Pending | Pending | Pending | Pending |
+| ZH | 64 | 13.688 → 54.995 | 4630.5 / 6336.0–6432.0 → 1153.5 / 1504.0–1555.0 | N/A | 5.269 → 5.202 | 0.7015 → 0.6838 | 0.78361 → 0.78005 | 0/4040 → 0/4040 |
 
 ## lifetime-corrected
 
@@ -113,6 +113,8 @@ Later main changes through `72b776c9` affect other-model/session paths and model
 | upstream/zh-c16 | 43 | -0.04022 | -0.0037110 |
 | upstream/zh-c32 | 42 | -0.04259 | -0.0033767 |
 | upstream/zh-c32 | 43 | +0.00237 | -0.0035310 |
+| upstream/zh-c64 | 42 | -0.06861 | -0.0038158 |
+| upstream/zh-c64 | 43 | +0.03312 | -0.0033195 |
 
 ## Costs and output lengths
 
@@ -125,5 +127,6 @@ Later main changes through `72b776c9` affect other-model/session paths and model
 | upstream/zh-c1 | 79.60 → 125.66 | 108.66 → 109.19 | [19] → [430] | 262696 → 262704 |
 | upstream/zh-c16 | 80.09 → 126.66 | 108.72 → 109.73 | [19] → [430] | 265706 → 262683 |
 | upstream/zh-c32 | 82.10 → 123.14 | 108.77 → 108.92 | [19] → [430] | 265479 → 262665 |
+| upstream/zh-c64 | 82.60 → 130.63 | 108.83 → 109.79 | [19] → [430] | 266102 → 262691 |
 
 A is clean/corrected main for the first two comparisons, and native candidate for ablations. B is the candidate for the first two comparisons, and MPS off/cache off/fused flow off for the respective ablation. A partial matrix does not establish merge readiness.

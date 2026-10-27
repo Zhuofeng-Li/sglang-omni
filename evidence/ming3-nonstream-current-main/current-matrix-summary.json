@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T09:34:39.405952+00:00",
-  "completed_arms": 28,
+  "updated_utc": "2026-10-27T10:13:51.968034+00:00",
+  "completed_arms": 32,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -314,13 +314,48 @@
       }
     },
     "upstream/zh-c64": {
-      "status": "pending",
-      "missing": [
-        "upstream-zh-c64-A42",
-        "upstream-zh-c64-B42",
-        "upstream-zh-c64-B43",
-        "upstream-zh-c64-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 13.6875,
+        "latency_mean_s": 4.6305,
+        "audio_duration_mean_s": 5.269,
+        "audio_throughput_s_per_s": 72.12049999999999,
+        "latency_p95_range_s": [
+          6.336,
+          6.432
+        ],
+        "wer": 0.007015094875313491,
+        "sim": 0.783613053178138,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 266102,
+        "startup_s": 82.60350000858307,
+        "peak_tts_device_gib": 108.8310546875,
+        "captures": [
+          19
+        ]
+      },
+      "B": {
+        "throughput_qps": 54.9955,
+        "latency_mean_s": 1.1535,
+        "audio_duration_mean_s": 5.202,
+        "audio_throughput_s_per_s": 286.09400000000005,
+        "latency_p95_range_s": [
+          1.504,
+          1.555
+        ],
+        "wer": 0.006837647281502863,
+        "sim": 0.780045413587353,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 262691,
+        "startup_s": 130.6305000782013,
+        "peak_tts_device_gib": 109.7861328125,
+        "captures": [
+          430
+        ]
+      }
     },
     "lifetime-corrected/en-c32": {
       "status": "pending",
@@ -487,7 +522,7 @@
       "1": 213.27601511911038,
       "16": 352.610389940826,
       "32": 417.63298133299315,
-      "64": null
+      "64": 312.20172902470813
     }
   },
   "per_seed_adverse_quality": [
@@ -574,6 +609,18 @@
       "seed": 43,
       "wer_delta": 2.3659679174749954e-05,
       "sim_delta": -0.003531039587341911
+    },
+    {
+      "cell": "upstream/zh-c64",
+      "seed": 42,
+      "wer_delta": -0.0006861306960677617,
+      "sim_delta": -0.003815822509845912
+    },
+    {
+      "cell": "upstream/zh-c64",
+      "seed": 43,
+      "wer_delta": 0.0003312355084465054,
+      "sim_delta": -0.0033194566717241747
     }
   ]
 }
