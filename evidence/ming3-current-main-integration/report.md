@@ -25,3 +25,7 @@ After verification and backup, no containers or GPU clients remained; assignment
 The published linear stack is based on main `6087f786b3a9dd2d53dee5f321737cecda88dd12`. Each original PR remains separate and its cumulative tree exactly matches a clean merge of its original head with that main. The new top tree differs from the CUDA-tested tree only in `benchmarks/duplex/oracle.py` and `tests/unit_test/benchmarks/test_duplex_oracle.py`. This functional test does not substitute for CI on the published new heads. Original measured performance source IDs are unchanged. The final merged-series performance comparison and independent Tiny performance qualification remain required.
 
 Public text logs normalize trailing whitespace; the off-node archive retains original bytes.
+
+## Published-head CI
+
+Manual [Omni CI 40588572290](https://github.com/sgl-project/sglang-omni/actions/runs/40588572290) succeeded on exact #3217 head `a818f498de01b9412283e13ed0fbf12cdb48a049`: CPU A 4,705 passed / 74 skipped; CPU B 5,601 / 49; accelerator 1,159 / 34. Both Tiny/dense full-graph versus incremental-cache routing tests passed. Preflight selected unit tests only, with all model stages disabled and no model preset. Final environment cleanup passed. This does not replace the pending independent Tiny performance comparison. Other PR CI results are recorded separately as they finish.

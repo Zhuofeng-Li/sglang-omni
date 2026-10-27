@@ -1,0 +1,342 @@
+﻿2026-10-27T22:08:40.9702652Z Current runner version: '2.338.0'
+2026-10-27T22:08:40.9706720Z Runner name: 'omni-runner-h100-2'
+2026-10-27T22:08:40.9707329Z Runner group name: 'Default'
+2026-10-27T22:08:40.9707982Z Machine name: 'host-85-234-79-62'
+2026-10-27T22:08:40.9710036Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T22:08:40.9711446Z Checks: read
+2026-10-27T22:08:40.9711869Z Contents: read
+2026-10-27T22:08:40.9712268Z Metadata: read
+2026-10-27T22:08:40.9712660Z PullRequests: read
+2026-10-27T22:08:40.9713065Z ##[endgroup]
+2026-10-27T22:08:40.9714481Z Secret source: Actions
+2026-10-27T22:08:40.9715144Z Cache mode: write
+2026-10-27T22:08:40.9715625Z Prepare workflow directory
+2026-10-27T22:08:41.0109651Z Prepare all required actions
+2026-10-27T22:08:41.0144134Z Getting action download info
+2026-10-27T22:08:41.3674738Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T22:08:41.6666934Z Complete job name: cleanup - reclaim ephemeral run home
+2026-10-27T22:08:41.7771080Z ##[group]Checking docker version
+2026-10-27T22:08:41.7780094Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker version --format '{{.Server.APIVersion}}'
+2026-10-27T22:08:41.8524953Z ''6.1.2'
+2026-10-27T22:08:41.8531117Z Docker daemon API version: ''6.1.2'
+2026-10-27T22:08:41.8531962Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker version --format '{{.Client.APIVersion}}'
+2026-10-27T22:08:41.9255838Z '6.1.2'
+2026-10-27T22:08:41.9268134Z Docker client API version: '6.1.2'
+2026-10-27T22:08:41.9272652Z ##[endgroup]
+2026-10-27T22:08:41.9274333Z ##[group]Clean up resources from previous jobs
+2026-10-27T22:08:41.9278742Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker ps --all --quiet --no-trunc --filter "label=f7217a"
+2026-10-27T22:08:42.0066904Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker network prune --force --filter "label=f7217a"
+2026-10-27T22:08:42.0841071Z ##[endgroup]
+2026-10-27T22:08:42.0841590Z ##[group]Create local container network
+2026-10-27T22:08:42.0848468Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker network create --label f7217a github_network_b70d86d0707d46c9ac72e7e3446ebf9e
+2026-10-27T22:08:42.1623164Z github_network_b70d86d0707d46c9ac72e7e3446ebf9e
+2026-10-27T22:08:42.1649119Z ##[endgroup]
+2026-10-27T22:08:42.1669237Z ##[group]Starting job container
+2026-10-27T22:08:42.1685470Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker pull hongccc/sglang-omni@sha256:06ed306707bcf3d9e9beb5ba7ce66f09a666cac11c23455ece50c34199c0e985
+2026-10-27T22:08:42.2470863Z Trying to pull docker.io/hongccc/sglang-omni@sha256:06ed306707bcf3d9e9beb5ba7ce66f09a666cac11c23455ece50c34199c0e985...
+2026-10-27T22:08:42.8863763Z Getting image source signatures
+2026-10-27T22:08:42.8864752Z Copying blob sha256:ccf9c70a85fc6158d617c85f3f719f669efb00c28fd45fa292575d351435bd2f
+2026-10-27T22:08:42.8865660Z Copying blob sha256:5e25946ba40dcbc2410bf1852d135a46cb31cc7f89c05b9ef1ab12a6ef988aeb
+2026-10-27T22:08:42.8866566Z Copying blob sha256:689b91d88a0f4086057ec826027b128902ecf2b516be510371c115bc55da19a6
+2026-10-27T22:08:42.8868080Z Copying blob sha256:95e35692d3cc347d712fd236fd2af3b1c697783518182b1ae716722f694ed616
+2026-10-27T22:08:42.8868857Z Copying blob sha256:f0af354daeda18f18684b23520969ef6bb3de82bb267936f867b12769be9125d
+2026-10-27T22:08:42.8869762Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-27T22:08:42.8870704Z Copying blob sha256:730c8029606bf4b4533d7a7159458cf5e3f348ea956ccfb10ce5da3e20adac8f
+2026-10-27T22:08:42.8871509Z Copying blob sha256:a30da298bda6986d68697bc361b9204f189616a3b7cc748c91846ecddbb873aa
+2026-10-27T22:08:42.8872499Z Copying blob sha256:21e0ed254c8bac8e7e21e80b250a5dc4a92211bbc2f658f9f81ef93c7c623f03
+2026-10-27T22:08:42.8873417Z Copying blob sha256:cb3db0ad5ae089b6ae0c5b39b73e73cac40a558df052e602f8b0f24972b003b4
+2026-10-27T22:08:42.8874280Z Copying blob sha256:8bd080c2e4b22c71c5058be60551a2735c1bead7341fe005313ca704578d9fa5
+2026-10-27T22:08:42.8875095Z Copying blob sha256:b533a7368b7da8141f98b9a2442f84b5aa5d32f2d286c2611a32f725361f84b6
+2026-10-27T22:08:42.8876165Z Copying blob sha256:cc689184d8c0977f56d2da63b3a3d225dc9c7fadb9375338768cf4909b016b32
+2026-10-27T22:08:42.8877089Z Copying blob sha256:adebc1576f3c07100011ce7679aef5e7bb1e4aaca050e6d8e729273d22a2442a
+2026-10-27T22:08:42.8878209Z Copying blob sha256:400821fd86ee1a17c460a7addf3892121cfb660a274b37e6a23cf36e7eaa931c
+2026-10-27T22:08:42.8879288Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-27T22:08:42.8880361Z Copying blob sha256:9aa3fcc3d1c6274e85f289a00b053a403e64afd6d9803006d588996bd5b5b3d6
+2026-10-27T22:08:42.8881427Z Copying blob sha256:6217dd078e93602927c04c36fd2be5f958ae9a9454a868d52dd60dba50a21b8b
+2026-10-27T22:08:42.8882569Z Copying blob sha256:56be3944eca78f2e503b2f9f4f138f7c04d85665bc124b465d7935a3250a0406
+2026-10-27T22:08:42.8883591Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-27T22:08:42.8884734Z Copying blob sha256:9acd6e847fd2bc35e1b3c180b8042a16bda8559c8a3de4591930fd665c058f2f
+2026-10-27T22:08:42.8885733Z Copying blob sha256:02917ae8ed11a4a39a8f86daf69bd1f09ba332ef652e218ee77140e8b1632b46
+2026-10-27T22:08:42.8886710Z Copying blob sha256:d1178ef40f4677f22bdd2355d002613676a3912376d678592c0f8a833cb1f52c
+2026-10-27T22:08:42.8887698Z Copying blob sha256:6af8cb467f1c70afc0c290d3f4f986483bf17dcd96e51a8f04e17face8872908
+2026-10-27T22:08:42.8888696Z Copying blob sha256:f949ba4e6dbfe59ba3f9bb77190ffb8c2d02be2083abc290246c2ab1f741c16b
+2026-10-27T22:08:42.8889701Z Copying blob sha256:5bf8f28ba597d3c17edfef27a85ef2a9a1660b534fe0c5aa0a227319fdd94809
+2026-10-27T22:08:42.8890703Z Copying blob sha256:793b08d56a66f684e2ca0354bc466a7a1a3438506efc5d57424b3a96924b52fc
+2026-10-27T22:08:42.8891694Z Copying blob sha256:287b53b27e665e3e5162a7b9ff97ddc1bdfa0ab0828a9ee235157d0f2b8b477a
+2026-10-27T22:08:42.8892737Z Copying blob sha256:30fdb7ca5f136b14fde8f661a1d15559e6527c4e60c18bb1c4732d44b236b4b6
+2026-10-27T22:08:42.8893708Z Copying blob sha256:d26ea0fe96f5220621b0c0b7457f8e5f628b15166a061fef3dcc81440d6a7d02
+2026-10-27T22:08:42.8894627Z Copying blob sha256:b2f7bd136538e3df630bfcf4813baaf49c5f47834fb0f2a90c070b2cdc9e443b
+2026-10-27T22:08:42.8895544Z Copying blob sha256:e3a1ffa68243eb9192a6ee99b6743763c5af4fe463303d7e563eb5ad151d9005
+2026-10-27T22:08:42.8896541Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-27T22:08:42.8897424Z Copying blob sha256:d86d256da52ae824fccef00775b0584966435719c85a84cc7267514b5a366fd9
+2026-10-27T22:08:42.8898315Z Copying blob sha256:b6daac9c49eec42c995b735ac860f5eb732cd21fb2e2e3b7f0a9037cc18ee6b2
+2026-10-27T22:08:42.8899191Z Copying blob sha256:67f2279dee0a57e3a9447a801688817714141a716d1d520e74f212e7a33e1aea
+2026-10-27T22:08:42.8900066Z Copying blob sha256:ff57be91853573c300706f8ff39c7621ff54d365560db6c2915853bdd85b1cad
+2026-10-27T22:08:42.8900955Z Copying blob sha256:dd12d8be94ecb7bfd11ee38167bbef1d85e87471fc49a5520adf88774cf47ba7
+2026-10-27T22:08:42.8901850Z Copying blob sha256:d40abe83109b570f21bcc7962f81ff101025a9e11c41fd16b05008690f1d58cf
+2026-10-27T22:08:42.8902787Z Copying blob sha256:0b5504bde9ebf2d6499c533d7bd6a8d19f565dea83c76c497356a2d0674687ef
+2026-10-27T22:08:42.8903687Z Copying blob sha256:3f7b9d5f648cdd8ca469cda64e10c4225f3e0bebb6067453dbb8984832f8e920
+2026-10-27T22:08:42.8904562Z Copying blob sha256:56a8069c1b2781f67a84782ec49b665ba42e87d40f7f5173aa8046368c446ef9
+2026-10-27T22:08:42.8905431Z Copying blob sha256:f2973f6318572cd2e39530bf080e391bff89cc08ca0778642b14e7a9c0b4c259
+2026-10-27T22:08:42.8906306Z Copying blob sha256:08e422f8ad6d1a401663a9c402e6137ec1e3ac5066ec8dff8f4b6c63b9938c63
+2026-10-27T22:08:42.8907190Z Copying blob sha256:e5e87d215ea470ce9641aaf7e937201a6de066000c2eb5ab0976c3ee61f1f3b8
+2026-10-27T22:08:42.8908064Z Copying blob sha256:3d3a6902481be872c0c9936201a587e0e71af7a1f84956aaae7172439526713b
+2026-10-27T22:08:42.8908928Z Copying blob sha256:80b04094673e5b294fe9300e872e1eb3b90f8b83a22bc2e22950093914b54223
+2026-10-27T22:08:42.8909803Z Copying blob sha256:5610161e6bad5fdd3ac6c8345f49bd3d4616219c00447a8be4d0e9f89a561fd1
+2026-10-27T22:08:42.8910792Z Copying blob sha256:b43a9617166c7d0a411079934dd13c12861dd2fb671608b96cbfb336f4c401be
+2026-10-27T22:08:42.8911641Z Copying blob sha256:483df6190b98ad704ed2e679beef908f475d83bfc2914cb9ebf61e0a8610d0fe
+2026-10-27T22:08:42.8912489Z Copying blob sha256:bb88b9b0f84c7b034d1c3d59a5a5a91495d902ddea33bd548f6751c308ab529b
+2026-10-27T22:08:42.8913325Z Copying blob sha256:129d4d79035455ddf837a9762d413f08ce94683584165c40c80633dd7b00f58d
+2026-10-27T22:08:42.8914161Z Copying blob sha256:4433b38b161acd1465441493acef13bc972ca7982d7f045f4c0e000adf1d108a
+2026-10-27T22:08:42.8914994Z Copying blob sha256:8900f0e82a2dba17a6fd34c134f9ed549b08ff997d47878583b36037db64dec1
+2026-10-27T22:08:42.8915835Z Copying blob sha256:88cec0a8755de10533a70438772c4ef90453ad0a5c3938912a007584902c095f
+2026-10-27T22:08:42.8916664Z Copying blob sha256:e5805954d648a016a75e9c6a4ec7e91220f598ec0ff9ea62424011f2f3b438f3
+2026-10-27T22:08:42.8917558Z Copying blob sha256:88aac20c36722e676eafb0b69fc78abcd111b846c70d96f29d7612bc4ab116b3
+2026-10-27T22:08:42.8918411Z Copying blob sha256:b4a5ec84e86aad8709af58d4049afe80a68cb69f2a94063e88c2d35dd49e6e04
+2026-10-27T22:08:42.8919245Z Copying blob sha256:a5d199131c57b865b54ee425b5b8f4c015130c949689ba045daded8a06ce6b29
+2026-10-27T22:08:42.8920073Z Copying blob sha256:15dcf352d5f55801a6a464cceb5437ba07d260084ba4738152845a8d151db018
+2026-10-27T22:08:42.8920908Z Copying blob sha256:1857c196c9a0376ac9e294e4625d978a80ad645ca5a841a859762fc406c8045e
+2026-10-27T22:08:42.8921776Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-27T22:08:42.8922632Z Copying blob sha256:79240c4350bb80908ce42839b945d7d760f873db93d63fb8cf173bc892251376
+2026-10-27T22:08:42.8923465Z Copying blob sha256:9d77f6d6025cd5dd992563104619a64341e65caf4e4da73d44ffeb9c93445458
+2026-10-27T22:08:42.8924307Z Copying blob sha256:f75d3eb013a26f9b291f2edf0d52bd30edd960243b60e2a1f28776306f64fa02
+2026-10-27T22:08:42.8925164Z Copying blob sha256:ed6cd7042f1b9f9143dec26254b5006940c79d3433637023702a261953484216
+2026-10-27T22:08:42.8925987Z Copying blob sha256:552b6359797ee0e808c77c04a83a384b8f518e57c7c53b4a2d7e0c96fc85355a
+2026-10-27T22:08:42.8926821Z Copying blob sha256:0d0bb7e058588a7952d1db67073eb393ab002d1534530e1b8a688bc1a134926f
+2026-10-27T22:08:42.8927652Z Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2026-10-27T22:08:42.8928487Z Copying blob sha256:79470083971908928636ac5347eefab7ae3e5aad61d5bd381fc9ac33cfd296e5
+2026-10-27T22:08:42.8929324Z Copying blob sha256:5ff98a7eb74c459e1dd9d7d728d51e5fdcbe8ec22ccae42965fa3a584bf7b1cf
+2026-10-27T22:08:42.8930161Z Copying blob sha256:7d135f2f9c10d28133917287a419dad1aeb30d2e11081397b0ba0f44fa0b6b80
+2026-10-27T22:08:42.8931003Z Copying blob sha256:ea6d87e8cc2d53d8bdea0247f686d14fdbc1ea8ee317861c672c097d1287b7a2
+2026-10-27T22:08:42.8931937Z Copying blob sha256:fb648c2a4c083ca6075a8a580a74ad999c0b63828273152060e6ee54a610150e
+2026-10-27T22:08:42.8932816Z Copying blob sha256:56c997f0a43e535719ea221c3919ee8b10152c750b541eb271afd0c6f39f6208
+2026-10-27T22:08:42.8933686Z Copying blob sha256:259de03cef1c0c6fce5033313451ac5ae16c4b1119c392604121f29f902d0938
+2026-10-27T22:08:42.8934576Z Copying config sha256:63465f9a640e084bb8b007d6bbec329a1f35d0ed9aeb9d383ded06e26349a201
+2026-10-27T22:08:42.8935264Z Writing manifest to image destination
+2026-10-27T22:08:42.8977519Z 63465f9a640e084bb8b007d6bbec329a1f35d0ed9aeb9d383ded06e26349a201
+2026-10-27T22:08:42.9052246Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker create --name cf0df636f9cf4ba0bfa5365888c72c1c_hongcccsglangomnisha25606ed306707bcf3d9e9beb5ba7ce66f09a666cac11c23455ece50c34199c0e985_eb8d5c --label f7217a --workdir /__w/sglang-omni/sglang-omni --network github_network_b70d86d0707d46c9ac72e7e3446ebf9e --rm -e NVIDIA_VISIBLE_DEVICES -e OMNI_CI_CPUSET -v /dev/shm:/dev/shm -v /data/omni-ci:/data/omni-ci -v /data/cache/huggingface:/github/home/.cache/huggingface -v /data/cache/huggingface:/root/.cache/huggingface -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-2/_work":"/__w" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-2/externals":"/__e":ro -v "/var/tmp/omni-ci-yxs-30019/runners/runner-2/_work/_temp":"/__w/_temp" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-2/_work/_actions":"/__w/_actions" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-2/_work/_tool":"/__w/_tool" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-2/_work/_temp/_github_home":"/github/home" -v "/var/tmp/omni-ci-yxs-30019/runners/runner-2/_work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" hongccc/sglang-omni@sha256:06ed306707bcf3d9e9beb5ba7ce66f09a666cac11c23455ece50c34199c0e985 "-f" "/dev/null"
+2026-10-27T22:08:43.0490389Z dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0
+2026-10-27T22:08:43.0509224Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker start dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0
+2026-10-27T22:08:43.6564613Z dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0
+2026-10-27T22:08:43.6589724Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker ps --all --filter id=dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-10-27T22:08:43.7389071Z dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0 Up Less than a second
+2026-10-27T22:08:43.7410544Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0
+2026-10-27T22:08:43.8222841Z NV_LIBCUBLAS_PACKAGE_NAME=libcublas-13-0
+2026-10-27T22:08:43.8224227Z NV_LIBNCCL_PACKAGE_VERSION=2.28.3-1
+2026-10-27T22:08:43.8225427Z CUDA_HOME=/usr/local/cuda
+2026-10-27T22:08:43.8226512Z LANG=en_US.UTF-8
+2026-10-27T22:08:43.8227635Z NV_LIBNCCL_DEV_PACKAGE=libnccl-dev=2.28.3-1+cuda13.0
+2026-10-27T22:08:43.8229204Z NV_CUDA_CUDART_DEV_VERSION=13.0.96-1
+2026-10-27T22:08:43.8230524Z NV_LIBNCCL_PACKAGE=libnccl2=2.28.3-1+cuda13.0
+2026-10-27T22:08:43.8231830Z CUDA_VERSION=13.0.3
+2026-10-27T22:08:43.8232814Z UV_LINK_MODE=copy
+2026-10-27T22:08:43.8233793Z NV_NVML_DEV_VERSION=13.0.87-1
+2026-10-27T22:08:43.8234930Z FLASHINFER_WORKSPACE_BASE=/root
+2026-10-27T22:08:43.8236082Z NCCL_VERSION=2.28.3-1
+2026-10-27T22:08:43.8238633Z NV_LIBCUBLAS_VERSION=13.1.1.3-1
+2026-10-27T22:08:43.8239785Z container=podman
+2026-10-27T22:08:43.8240735Z LC_ALL=en_US.UTF-8
+2026-10-27T22:08:43.8241984Z SGLANG_BUILD_COMMIT=baa9befa381511cd4d56f83980951e5a45fffc6d
+2026-10-27T22:08:43.8243498Z NV_LIBNCCL_PACKAGE_NAME=libnccl2
+2026-10-27T22:08:43.8244656Z NV_LIBCUBLAS_DEV_VERSION=13.1.1.3-1
+2026-10-27T22:08:43.8245784Z LANGUAGE=en_US:en
+2026-10-27T22:08:43.8246736Z NV_CUDA_LIB_VERSION=13.0.3-1
+2026-10-27T22:08:43.8247855Z NV_LIBCUSPARSE_DEV_VERSION=12.6.3.3-1
+2026-10-27T22:08:43.8248999Z GITHUB_ACTIONS=true
+2026-10-27T22:08:43.8249902Z OMNI_CI_CPUSET=48-63,112-127
+2026-10-27T22:08:43.8250993Z NVIDIA_DRIVER_CAPABILITIES=compute,utility
+2026-10-27T22:08:43.8252244Z NV_CUDNN_PACKAGE=libcudnn9-cuda-13=9.14.0.64-1
+2026-10-27T22:08:43.8253425Z OMNI_CI_RUNNER_ID=2
+2026-10-27T22:08:43.8254354Z NV_LIBNPP_DEV_VERSION=13.0.1.2-1
+2026-10-27T22:08:43.8255381Z SGLANG_RUST_BUILD_MODE=never
+2026-10-27T22:08:43.8256447Z NV_LIBCUBLAS_DEV_PACKAGE_NAME=libcublas-dev-13-0
+2026-10-27T22:08:43.8259431Z LD_LIBRARY_PATH=/opt/sglang/lib/python3.12/site-packages/nvidia/nccl/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-10-27T22:08:43.8262360Z NV_CUDNN_PACKAGE_NAME=libcudnn9-cuda-13
+2026-10-27T22:08:43.8263698Z NV_CUDNN_PACKAGE_DEV_HEADERS=libcudnn9-headers-cuda-13=9.14.0.64-1
+2026-10-27T22:08:43.8265087Z SGLANG_IMAGE_TAG=lmsysorg/sglang:v0.5.22
+2026-10-27T22:08:43.8266154Z NV_LIBCUSPARSE_VERSION=12.6.3.3-1
+2026-10-27T22:08:43.8267114Z NVIDIA_PRODUCT_NAME=CUDA
+2026-10-27T22:08:43.8268077Z NV_LIBCUBLAS_PACKAGE=libcublas-13-0=13.1.1.3-1
+2026-10-27T22:08:43.8269421Z HOME=/github/home
+2026-10-27T22:08:43.8270197Z CI=true
+2026-10-27T22:08:43.8270935Z VIRTUAL_ENV=/opt/sglang
+2026-10-27T22:08:43.8273174Z PATH=/root/.cargo/bin:/opt/sglang/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/nvidia/bin
+2026-10-27T22:08:43.8275585Z UV_PYTHON_INSTALL_DIR=/opt/python
+2026-10-27T22:08:43.8276715Z NV_LIBCUBLAS_DEV_PACKAGE=libcublas-dev-13-0=13.1.1.3-1
+2026-10-27T22:08:43.8300673Z NVIDIA_REQUIRE_CUDA=cuda>=13.0 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=575,driver<576 brand=grid,driver>=575,driver<576 brand=tesla,driver>=575,driver<576 brand=nvidia,driver>=575,driver<576 brand=quadro,driver>=575,driver<576 brand=quadrortx,driver>=575,driver<576 brand=nvidiartx,driver>=575,driver<576 brand=vapps,driver>=575,driver<576 brand=vpc,driver>=575,driver<576 brand=vcs,driver>=575,driver<576 brand=vws,driver>=575,driver<576 brand=cloudgaming,driver>=575,driver<576
+2026-10-27T22:08:43.8323378Z NV_CUDNN_PACKAGE_DEV=libcudnn9-dev-cuda-13=9.14.0.64-1
+2026-10-27T22:08:43.8324587Z NV_LIBNPP_DEV_PACKAGE=libnpp-dev-13-0=13.0.1.2-1
+2026-10-27T22:08:43.8325929Z NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE=cuda-nsight-compute-13-0=13.0.3-1
+2026-10-27T22:08:43.8327248Z NV_LIBNCCL_DEV_PACKAGE_NAME=libnccl-dev
+2026-10-27T22:08:43.8328238Z NV_NVTX_VERSION=13.0.85-1
+2026-10-27T22:08:43.8329133Z GDRCOPY_HOME=/usr/src/gdrdrv-2.5.1/
+2026-10-27T22:08:43.8330075Z NV_CUDNN_VERSION=9.14.0.64-1
+2026-10-27T22:08:43.8330991Z NV_LIBNCCL_DEV_PACKAGE_VERSION=2.28.3-1
+2026-10-27T22:08:43.8331981Z NV_LIBNPP_VERSION=13.0.1.2-1
+2026-10-27T22:08:43.8332901Z NV_LIBNPP_PACKAGE=libnpp-13-0=13.0.1.2-1
+2026-10-27T22:08:43.8333919Z DEBIAN_FRONTEND=noninteractive
+2026-10-27T22:08:43.8334815Z FLASHINFER_JIT_DEBUG=0
+2026-10-27T22:08:43.8335655Z NV_CUDA_CUDART_VERSION=13.0.96-1
+2026-10-27T22:08:43.8336608Z NV_CUDA_NSIGHT_COMPUTE_VERSION=13.0.3-1
+2026-10-27T22:08:43.8337594Z FLASHINFER_VERSION=0.7.1
+2026-10-27T22:08:43.8338922Z SGLANG_BUILD_URL=https://github.com/sgl-project/sglang/actions/runs/38824883379
+2026-10-27T22:08:43.8340320Z NCCL_NVLS_ENABLE=0
+2026-10-27T22:08:43.8341127Z NVARCH=x86_64
+2026-10-27T22:08:43.8341933Z UV_PYTHON_PREFERENCE=only-managed
+2026-10-27T22:08:43.8342894Z LIBRARY_PATH=/usr/local/cuda/lib64/stubs
+2026-10-27T22:08:43.8343912Z HOSTNAME=dd34f3bffcb0
+2026-10-27T22:08:43.8345614Z NVIDIA_CTK_LIBCUDA_DIR=/usr/lib/x86_64-linux-gnu
+2026-10-27T22:08:43.8346766Z NVIDIA_VISIBLE_DEVICES=void
+2026-10-27T22:08:43.8354041Z ##[endgroup]
+2026-10-27T22:08:43.8361597Z ##[group]Waiting for all services to be ready
+2026-10-27T22:08:43.8363640Z ##[endgroup]
+2026-10-27T22:08:43.8672979Z ##[group]Run actions/checkout@v4
+2026-10-27T22:08:43.8673951Z with:
+2026-10-27T22:08:43.8674638Z   repository: sgl-project/sglang-omni
+2026-10-27T22:08:43.8681398Z   token: ***
+2026-10-27T22:08:43.8682080Z   ssh-strict: true
+2026-10-27T22:08:43.8682739Z   ssh-user: git
+2026-10-27T22:08:43.8683408Z   persist-credentials: true
+2026-10-27T22:08:43.8684137Z   clean: true
+2026-10-27T22:08:43.8684807Z   sparse-checkout-cone-mode: true
+2026-10-27T22:08:43.8685590Z   fetch-depth: 1
+2026-10-27T22:08:43.8686239Z   fetch-tags: false
+2026-10-27T22:08:43.8686904Z   show-progress: true
+2026-10-27T22:08:43.8687564Z   lfs: false
+2026-10-27T22:08:43.8688176Z   submodules: false
+2026-10-27T22:08:43.8688847Z   set-safe-directory: true
+2026-10-27T22:08:43.8689620Z   allow-unsafe-pr-checkout: false
+2026-10-27T22:08:43.8690492Z env:
+2026-10-27T22:08:43.8691153Z   OMNI_CI_HOME: /data/omni-ci/run-40588572290
+2026-10-27T22:08:43.8692058Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-27T22:08:43.8693161Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-27T22:08:43.8694339Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-27T22:08:43.8695433Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-27T22:08:43.8696691Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-27T22:08:43.8697825Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-27T22:08:43.8698962Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-27T22:08:43.8700201Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-27T22:08:43.8701225Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-27T22:08:43.8702108Z ##[endgroup]
+2026-10-27T22:08:43.8758337Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker exec  dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0 sh -c "cat /etc/*release | grep ^ID"
+2026-10-27T22:08:44.3178329Z Syncing repository: sgl-project/sglang-omni
+2026-10-27T22:08:44.3179267Z ##[group]Getting Git version info
+2026-10-27T22:08:44.3179519Z Working directory is '/__w/sglang-omni/sglang-omni'
+2026-10-27T22:08:44.3179939Z [command]/usr/bin/git version
+2026-10-27T22:08:44.3182479Z git version 2.43.0
+2026-10-27T22:08:44.3193746Z ##[endgroup]
+2026-10-27T22:08:44.3200942Z Temporarily overriding HOME='/__w/_temp/db665270-e462-4241-a160-e713bba37f30' before making global git config changes
+2026-10-27T22:08:44.3201437Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T22:08:44.3204212Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang-omni/sglang-omni
+2026-10-27T22:08:44.3235205Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-10-27T22:08:44.3252592Z https://github.com/sgl-project/sglang-omni
+2026-10-27T22:08:44.3258554Z ##[group]Removing previously created refs, to avoid conflicts
+2026-10-27T22:08:44.3261033Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-10-27T22:08:44.3280916Z refs/heads/main
+2026-10-27T22:08:44.3286345Z [command]/usr/bin/git checkout --detach
+2026-10-27T22:08:44.3382494Z HEAD is now at ed09865 [Fix] Keep TP ranks paired when a fanned-out request is aborted (#3233)
+2026-10-27T22:08:44.3413256Z [command]/usr/bin/git branch --delete --force main
+2026-10-27T22:08:44.3438569Z Deleted branch main (was ed09865).
+2026-10-27T22:08:44.3475450Z ##[endgroup]
+2026-10-27T22:08:44.3478566Z [command]/usr/bin/git submodule status
+2026-10-27T22:08:44.3725659Z ##[group]Cleaning the repository
+2026-10-27T22:08:44.3726470Z [command]/usr/bin/git clean -ffdx
+2026-10-27T22:08:44.3785726Z [command]/usr/bin/git reset --hard HEAD
+2026-10-27T22:08:44.3905637Z HEAD is now at ed09865 [Fix] Keep TP ranks paired when a fanned-out request is aborted (#3233)
+2026-10-27T22:08:44.3906553Z ##[endgroup]
+2026-10-27T22:08:44.3908224Z ##[group]Disabling automatic garbage collection
+2026-10-27T22:08:44.3910778Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-27T22:08:44.3935303Z ##[endgroup]
+2026-10-27T22:08:44.3935598Z ##[group]Setting up auth
+2026-10-27T22:08:44.3940273Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T22:08:44.3963458Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T22:08:44.4185227Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T22:08:44.4213064Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T22:08:44.4441544Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T22:08:44.4465631Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T22:08:44.4697597Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-27T22:08:44.4729108Z ##[endgroup]
+2026-10-27T22:08:44.4729396Z ##[group]Fetching the repository
+2026-10-27T22:08:44.4734963Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a818f498de01b9412283e13ed0fbf12cdb48a049:refs/remotes/origin/codex/ming3-tiny-native-graphs-on-3136
+2026-10-27T22:08:44.9330483Z From https://github.com/sgl-project/sglang-omni
+2026-10-27T22:08:44.9331060Z  + 8071abb...a818f49 a818f498de01b9412283e13ed0fbf12cdb48a049 -> origin/codex/ming3-tiny-native-graphs-on-3136  (forced update)
+2026-10-27T22:08:44.9349396Z ##[endgroup]
+2026-10-27T22:08:44.9349799Z ##[group]Determining the checkout info
+2026-10-27T22:08:44.9351398Z ##[endgroup]
+2026-10-27T22:08:44.9355574Z [command]/usr/bin/git sparse-checkout disable
+2026-10-27T22:08:44.9408962Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-27T22:08:44.9433821Z ##[group]Checking out the ref
+2026-10-27T22:08:44.9437068Z [command]/usr/bin/git checkout --progress --force -B codex/ming3-tiny-native-graphs-on-3136 refs/remotes/origin/codex/ming3-tiny-native-graphs-on-3136
+2026-10-27T22:08:44.9573060Z Previous HEAD position was ed09865 [Fix] Keep TP ranks paired when a fanned-out request is aborted (#3233)
+2026-10-27T22:08:44.9578529Z Switched to a new branch 'codex/ming3-tiny-native-graphs-on-3136'
+2026-10-27T22:08:44.9579041Z branch 'codex/ming3-tiny-native-graphs-on-3136' set up to track 'origin/codex/ming3-tiny-native-graphs-on-3136'.
+2026-10-27T22:08:44.9581684Z ##[endgroup]
+2026-10-27T22:08:44.9611082Z [command]/usr/bin/git log -1 --format=%H
+2026-10-27T22:08:44.9633296Z a818f498de01b9412283e13ed0fbf12cdb48a049
+2026-10-27T22:08:44.9906213Z Prepare all required actions
+2026-10-27T22:08:44.9951480Z ##[group]Run ./.github/actions/omni-cleanup-host
+2026-10-27T22:08:44.9951841Z with:
+2026-10-27T22:08:44.9952098Z   ci-home: /data/omni-ci/run-40588572290
+2026-10-27T22:08:44.9952409Z env:
+2026-10-27T22:08:44.9952663Z   OMNI_CI_HOME: /data/omni-ci/run-40588572290
+2026-10-27T22:08:44.9953023Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-27T22:08:44.9953484Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-27T22:08:44.9953981Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-27T22:08:44.9954443Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-27T22:08:44.9954971Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-27T22:08:44.9955446Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-27T22:08:44.9955914Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-27T22:08:44.9956626Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-27T22:08:44.9957046Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-27T22:08:44.9957398Z ##[endgroup]
+2026-10-27T22:08:45.0014869Z ##[start-action display=Cleanup PR CI home;id=__self.__run]
+2026-10-27T22:08:45.0050538Z ##[group]Run bash .github/scripts/cleanup_ci_pr_home.sh "/data/omni-ci/run-40588572290"
+2026-10-27T22:08:45.0051242Z [36;1mbash .github/scripts/cleanup_ci_pr_home.sh "/data/omni-ci/run-40588572290"[0m
+2026-10-27T22:08:45.0054862Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-10-27T22:08:45.0055206Z env:
+2026-10-27T22:08:45.0055457Z   OMNI_CI_HOME: /data/omni-ci/run-40588572290
+2026-10-27T22:08:45.0055796Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-27T22:08:45.0056217Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-27T22:08:45.0056686Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-27T22:08:45.0057113Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-27T22:08:45.0057622Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-27T22:08:45.0058066Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-27T22:08:45.0058503Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-27T22:08:45.0058994Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-27T22:08:45.0059381Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-27T22:08:45.0059711Z ##[endgroup]
+2026-10-27T22:08:45.1614778Z Removing /data/omni-ci/run-40588572290...
+2026-10-27T22:08:45.2412638Z === GPU cleanup scope (physical): 0 1 (input CVD='') ===
+2026-10-27T22:08:45.2867705Z === Checking GPU Utilization ===
+2026-10-27T22:08:45.2867970Z   No processes found on GPU 0.
+2026-10-27T22:08:45.3572811Z   No processes found on GPU 1.
+2026-10-27T22:08:45.3573125Z Waiting for selected GPU memory.used to drop below 1024 MiB...
+2026-10-27T22:08:45.4286395Z   GPU 0: 0 MiB used
+2026-10-27T22:08:45.4573652Z   GPU 1: 0 MiB used
+2026-10-27T22:08:45.4573931Z GPU memory cleanup complete: max memory.used=0 MiB.
+2026-10-27T22:08:45.4574103Z
+2026-10-27T22:08:45.4574256Z PR CI home cleanup complete: /data/omni-ci/run-40588572290
+2026-10-27T22:08:45.4703421Z ##[end-action id=__self.__run;outcome=success;conclusion=success;duration_ms=468]
+2026-10-27T22:08:45.4793488Z Post job cleanup.
+2026-10-27T22:08:45.4799196Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker exec  dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0 sh -c "cat /etc/*release | grep ^ID"
+2026-10-27T22:08:45.9196852Z [command]/usr/bin/git version
+2026-10-27T22:08:45.9226123Z git version 2.43.0
+2026-10-27T22:08:45.9278910Z Temporarily overriding HOME='/__w/_temp/63f7f67d-6b12-4ba5-9bd9-2fb759b4236d' before making global git config changes
+2026-10-27T22:08:45.9279383Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T22:08:45.9282251Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang-omni/sglang-omni
+2026-10-27T22:08:45.9309408Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T22:08:45.9333779Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T22:08:45.9575497Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T22:08:45.9594183Z http.https://github.com/.extraheader
+2026-10-27T22:08:45.9599726Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T22:08:45.9622690Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T22:08:45.9843118Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T22:08:45.9865969Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T22:08:46.0269710Z Stop and remove container: cf0df636f9cf4ba0bfa5365888c72c1c_hongcccsglangomnisha25606ed306707bcf3d9e9beb5ba7ce66f09a666cac11c23455ece50c34199c0e985_eb8d5c
+2026-10-27T22:08:46.0273083Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker rm --force dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0
+2026-10-27T22:08:46.4725811Z dd34f3bffcb0184b9795c127cdc4859be30b55e0b7df41496624456accbebbd0
+2026-10-27T22:08:46.4749864Z Remove container network: github_network_b70d86d0707d46c9ac72e7e3446ebf9e
+2026-10-27T22:08:46.4752876Z ##[command]/data/yxs/home/omni-ci/runner-source/shims/docker network rm github_network_b70d86d0707d46c9ac72e7e3446ebf9e
+2026-10-27T22:08:46.6037708Z c1d6be5b74b74cf3f901ecf39474169d83ede96950b63b10e6277c0fd4718370
+2026-10-27T22:08:46.6098236Z Cleaning up orphan processes
+2026-10-27T22:08:46.7528579Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

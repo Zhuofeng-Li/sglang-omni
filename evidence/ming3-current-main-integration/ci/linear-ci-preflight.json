@@ -1,0 +1,51 @@
+{
+  "3217": {
+    "run": 40588572290,
+    "head": "a818f498de01b9412283e13ed0fbf12cdb48a049",
+    "event": "workflow_dispatch",
+    "ci_labels": "run-unit-test-ci-only",
+    "preflight": "passed",
+    "unit_test": true,
+    "model_stages": false,
+    "log": "linear-ci-40588572290-preflight.log"
+  },
+  "3136": {
+    "run": 40588559793,
+    "head": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+    "preflight": "success",
+    "resolved": [
+      "2026-10-27T21:39:24.6386598Z run_asr=false",
+      "2026-10-27T21:39:24.6387607Z run_tts=false",
+      "2026-10-27T21:39:24.6388594Z run_mps=true",
+      "2026-10-27T21:39:24.6389314Z mps_ci_model=higgs",
+      "2026-10-27T21:39:24.6389784Z run_omni=false",
+      "2026-10-27T21:39:24.6392423Z mps_ci_config=examples/mps_dp/configs/higgs_h100_dp3.yaml"
+    ]
+  },
+  "3189": {
+    "run": 40588561538,
+    "head": "827f2084537b6a1f6affcf61ffc852ddb7e94584",
+    "preflight": "success",
+    "resolved": [
+      "2026-10-27T21:39:24.6481954Z run_unit_test=true",
+      "2026-10-27T21:39:24.6482319Z run_asr=false",
+      "2026-10-27T21:39:24.6482847Z run_tts=false",
+      "2026-10-27T21:39:24.6483354Z run_mps=false",
+      "2026-10-27T21:39:24.6483600Z mps_ci_model=",
+      "2026-10-27T21:39:24.6483838Z run_omni=false"
+    ]
+  },
+  "3190": {
+    "run": 40588559995,
+    "head": "d64c8f591484ca1fc7a2c2e61508b3250650b04f",
+    "preflight": "success",
+    "resolved": [
+      "2026-10-27T21:39:24.9563105Z run_unit_test=true",
+      "2026-10-27T21:39:24.9563530Z run_asr=false",
+      "2026-10-27T21:39:24.9564197Z run_tts=false",
+      "2026-10-27T21:39:24.9564679Z run_mps=false",
+      "2026-10-27T21:39:24.9564906Z mps_ci_model=",
+      "2026-10-27T21:39:24.9565137Z run_omni=false"
+    ]
+  }
+}

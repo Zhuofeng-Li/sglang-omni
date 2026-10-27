@@ -1,0 +1,245 @@
+﻿2026-10-27T21:39:24.3824288Z Current runner version: '2.338.0'
+2026-10-27T21:39:24.3865352Z ##[group]Runner Image Provisioner
+2026-10-27T21:39:24.3866713Z Hosted Compute Agent
+2026-10-27T21:39:24.3867771Z Version: 20261021.618
+2026-10-27T21:39:24.3869660Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-27T21:39:24.3871138Z Build Date: 2026-10-21T00:45:21Z
+2026-10-27T21:39:24.3872470Z Worker ID: {0a15c947-cf75-494b-96d8-6b3683808d45}
+2026-10-27T21:39:24.3874058Z Region: eastus
+2026-10-27T21:39:24.3875138Z Cloud: Azure
+2026-10-27T21:39:24.3876140Z ##[endgroup]
+2026-10-27T21:39:24.3878786Z ##[group]Operating System
+2026-10-27T21:39:24.3879914Z Ubuntu
+2026-10-27T21:39:24.3880822Z 26.04.1
+2026-10-27T21:39:24.3881887Z LTS
+2026-10-27T21:39:24.3882804Z ##[endgroup]
+2026-10-27T21:39:24.3884146Z ##[group]Runner Image
+2026-10-27T21:39:24.3885243Z Image: ubuntu-26.04
+2026-10-27T21:39:24.3886232Z Version: 20261012.163.1
+2026-10-27T21:39:24.3888710Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261012.163/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-27T21:39:24.3891633Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261012.163
+2026-10-27T21:39:24.3893713Z ##[endgroup]
+2026-10-27T21:39:24.3896145Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T21:39:24.3899032Z Checks: read
+2026-10-27T21:39:24.3900027Z Contents: read
+2026-10-27T21:39:24.3901057Z Metadata: read
+2026-10-27T21:39:24.3902136Z PullRequests: read
+2026-10-27T21:39:24.3903477Z ##[endgroup]
+2026-10-27T21:39:24.3906853Z Secret source: Actions
+2026-10-27T21:39:24.3908515Z Cache mode: write
+2026-10-27T21:39:24.3909784Z Prepare workflow directory
+2026-10-27T21:39:24.4928218Z Prepare all required actions
+2026-10-27T21:39:24.4978945Z Getting action download info
+2026-10-27T21:39:24.6522727Z Download action repository 'actions/github-script@v7' (SHA:f28e40c7f34bde8b3046d885e986cb6290c5673b)
+2026-10-27T21:39:24.9399109Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T21:39:25.0769304Z Complete job name: omni-ci-gate
+2026-10-27T21:39:25.1548878Z ##[group]Run actions/github-script@v7
+2026-10-27T21:39:25.1549799Z with:
+2026-10-27T21:39:25.1554174Z   github-token: ***
+2026-10-27T21:39:25.1557949Z   script: if (context.eventName === "workflow_dispatch") {
+  const labels = process.env.DISPATCH_CI_LABELS.split(/\s+/).filter(Boolean);
+  core.setOutput("labels", JSON.stringify(labels));
+  core.setOutput("draft", "false");
+} else {
+  // Reruns reuse the original pull_request event payload, so fetch
+  // the live labels and draft state.
+  const pr = await github.rest.pulls.get({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    pull_number: context.issue.number,
+  });
+  core.setOutput("labels", JSON.stringify(pr.data.labels.map((label) => label.name)));
+  core.setOutput("draft", pr.data.draft ? "true" : "false");
+}
+
+2026-10-27T21:39:25.1561773Z   debug: false
+2026-10-27T21:39:25.1562238Z   user-agent: actions/github-script
+2026-10-27T21:39:25.1562792Z   result-encoding: json
+2026-10-27T21:39:25.1563444Z   retries: 0
+2026-10-27T21:39:25.1563958Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-27T21:39:25.1564976Z env:
+2026-10-27T21:39:25.1565467Z   OMNI_CI_HOME: /data/omni-ci/run-40588572290
+2026-10-27T21:39:25.1566098Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-27T21:39:25.1566835Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-27T21:39:25.1567645Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-27T21:39:25.1568401Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-27T21:39:25.1569280Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-27T21:39:25.1570068Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-27T21:39:25.1570863Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-27T21:39:25.1571715Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-27T21:39:25.1572410Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-27T21:39:25.1573597Z   DISPATCH_CI_LABELS: run-unit-test-ci-only
+2026-10-27T21:39:25.1574172Z ##[endgroup]
+2026-10-27T21:39:25.5123154Z ##[group]Run echo "CI labels: ["run-unit-test-ci-only"]"
+2026-10-27T21:39:25.5124119Z [36;1mecho "CI labels: ["run-unit-test-ci-only"]"[0m
+2026-10-27T21:39:25.5124848Z [36;1mecho "PR draft: false"[0m
+2026-10-27T21:39:25.5322586Z shell: /usr/bin/bash -e {0}
+2026-10-27T21:39:25.5323970Z env:
+2026-10-27T21:39:25.5324800Z   OMNI_CI_HOME: /data/omni-ci/run-40588572290
+2026-10-27T21:39:25.5325937Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-27T21:39:25.5327293Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-27T21:39:25.5328789Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-27T21:39:25.5330021Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-27T21:39:25.5331297Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-27T21:39:25.5332444Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-27T21:39:25.5333815Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-27T21:39:25.5335154Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-27T21:39:25.5336181Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-27T21:39:25.5337090Z ##[endgroup]
+2026-10-27T21:39:25.5463963Z CI labels: [run-unit-test-ci-only]
+2026-10-27T21:39:25.5465847Z PR draft: false
+2026-10-27T21:39:25.5665635Z ##[group]Run actions/checkout@v4
+2026-10-27T21:39:25.5666323Z with:
+2026-10-27T21:39:25.5666811Z   repository: sgl-project/sglang-omni
+2026-10-27T21:39:25.5671104Z   token: ***
+2026-10-27T21:39:25.5671577Z   ssh-strict: true
+2026-10-27T21:39:25.5672052Z   ssh-user: git
+2026-10-27T21:39:25.5672537Z   persist-credentials: true
+2026-10-27T21:39:25.5673338Z   clean: true
+2026-10-27T21:39:25.5673830Z   sparse-checkout-cone-mode: true
+2026-10-27T21:39:25.5754042Z   fetch-depth: 1
+2026-10-27T21:39:25.5755167Z   fetch-tags: false
+2026-10-27T21:39:25.5756105Z   show-progress: true
+2026-10-27T21:39:25.5757183Z   lfs: false
+2026-10-27T21:39:25.5758074Z   submodules: false
+2026-10-27T21:39:25.5759123Z   set-safe-directory: true
+2026-10-27T21:39:25.5760616Z   allow-unsafe-pr-checkout: false
+2026-10-27T21:39:25.5762014Z env:
+2026-10-27T21:39:25.5763200Z   OMNI_CI_HOME: /data/omni-ci/run-40588572290
+2026-10-27T21:39:25.5764351Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-27T21:39:25.5766060Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-27T21:39:25.5767962Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-27T21:39:25.5769666Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-27T21:39:25.5771791Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-27T21:39:25.5773812Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-27T21:39:25.5775493Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-27T21:39:25.5777259Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-27T21:39:25.5778804Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-27T21:39:25.5780105Z ##[endgroup]
+2026-10-27T21:39:25.6768029Z Syncing repository: sgl-project/sglang-omni
+2026-10-27T21:39:25.6770237Z ##[group]Getting Git version info
+2026-10-27T21:39:25.6771211Z Working directory is '/home/runner/work/sglang-omni/sglang-omni'
+2026-10-27T21:39:25.6772547Z [command]/usr/bin/git version
+2026-10-27T21:39:25.6788029Z git version 2.55.0
+2026-10-27T21:39:25.6810497Z ##[endgroup]
+2026-10-27T21:39:25.6826079Z Temporarily overriding HOME='/home/runner/work/_temp/8546d671-f012-4f05-af0d-d2d39655532d' before making global git config changes
+2026-10-27T21:39:25.6828634Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T21:39:25.6832109Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sglang-omni/sglang-omni
+2026-10-27T21:39:25.6901460Z Deleting the contents of '/home/runner/work/sglang-omni/sglang-omni'
+2026-10-27T21:39:25.6905129Z ##[group]Initializing the repository
+2026-10-27T21:39:25.6909480Z [command]/usr/bin/git init /home/runner/work/sglang-omni/sglang-omni
+2026-10-27T21:39:25.7041671Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-27T21:39:25.7044122Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-27T21:39:25.7045804Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-27T21:39:25.7047615Z hint: call:
+2026-10-27T21:39:25.7048840Z hint:
+2026-10-27T21:39:25.7050265Z hint: 	git config --global init.defaultBranch <name>
+2026-10-27T21:39:25.7051843Z hint:
+2026-10-27T21:39:25.7053116Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-27T21:39:25.7054815Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-27T21:39:25.7055903Z hint:
+2026-10-27T21:39:25.7056502Z hint: 	git branch -m <name>
+2026-10-27T21:39:25.7057174Z hint:
+2026-10-27T21:39:25.7058005Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-27T21:39:25.7059813Z Initialized empty Git repository in /home/runner/work/sglang-omni/sglang-omni/.git/
+2026-10-27T21:39:25.7063387Z [command]/usr/bin/git remote add origin https://github.com/sgl-project/sglang-omni
+2026-10-27T21:39:25.7120812Z ##[endgroup]
+2026-10-27T21:39:25.7122118Z ##[group]Disabling automatic garbage collection
+2026-10-27T21:39:25.7126110Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-27T21:39:25.7162419Z ##[endgroup]
+2026-10-27T21:39:25.7164029Z ##[group]Setting up auth
+2026-10-27T21:39:25.7171167Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T21:39:25.7208292Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T21:39:25.7684032Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T21:39:25.7719893Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T21:39:25.8029554Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T21:39:25.8065002Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T21:39:25.8347036Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-27T21:39:25.8391282Z ##[endgroup]
+2026-10-27T21:39:25.8392584Z ##[group]Fetching the repository
+2026-10-27T21:39:25.8405270Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a818f498de01b9412283e13ed0fbf12cdb48a049:refs/remotes/origin/codex/ming3-tiny-native-graphs-on-3136
+2026-10-27T21:39:28.0331383Z From https://github.com/sgl-project/sglang-omni
+2026-10-27T21:39:28.0333810Z  * [new ref]         a818f498de01b9412283e13ed0fbf12cdb48a049 -> origin/codex/ming3-tiny-native-graphs-on-3136
+2026-10-27T21:39:28.0338262Z ##[endgroup]
+2026-10-27T21:39:28.0339392Z ##[group]Determining the checkout info
+2026-10-27T21:39:28.0340443Z ##[endgroup]
+2026-10-27T21:39:28.0346840Z [command]/usr/bin/git sparse-checkout disable
+2026-10-27T21:39:28.0406036Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-27T21:39:28.0439627Z ##[group]Checking out the ref
+2026-10-27T21:39:28.0444712Z [command]/usr/bin/git checkout --progress --force -B codex/ming3-tiny-native-graphs-on-3136 refs/remotes/origin/codex/ming3-tiny-native-graphs-on-3136
+2026-10-27T21:39:28.5148897Z Switched to a new branch 'codex/ming3-tiny-native-graphs-on-3136'
+2026-10-27T21:39:28.5153148Z branch 'codex/ming3-tiny-native-graphs-on-3136' set up to track 'origin/codex/ming3-tiny-native-graphs-on-3136'.
+2026-10-27T21:39:28.5173259Z ##[endgroup]
+2026-10-27T21:39:28.5245207Z [command]/usr/bin/git log -1 --format=%H
+2026-10-27T21:39:28.5283977Z a818f498de01b9412283e13ed0fbf12cdb48a049
+2026-10-27T21:39:28.5462249Z ##[group]Run python .github/scripts/resolve_ci_labels.py resolve \
+2026-10-27T21:39:28.5463264Z [36;1mpython .github/scripts/resolve_ci_labels.py resolve \[0m
+2026-10-27T21:39:28.5463725Z [36;1m  --labels-json "${LABELS_JSON}" \[0m
+2026-10-27T21:39:28.5464088Z [36;1m  --seed "${GITHUB_RUN_ID}" \[0m
+2026-10-27T21:39:28.5464418Z [36;1m  --github-output "${GITHUB_OUTPUT}"[0m
+2026-10-27T21:39:28.5525001Z shell: /usr/bin/bash -e {0}
+2026-10-27T21:39:28.5525311Z env:
+2026-10-27T21:39:28.5525583Z   OMNI_CI_HOME: /data/omni-ci/run-40588572290
+2026-10-27T21:39:28.5525983Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-27T21:39:28.5526502Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-27T21:39:28.5527065Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-27T21:39:28.5527584Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-27T21:39:28.5528176Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-27T21:39:28.5528747Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-27T21:39:28.5529291Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-27T21:39:28.5529910Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-27T21:39:28.5530415Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-27T21:39:28.5530838Z   LABELS_JSON: ["run-unit-test-ci-only"]
+2026-10-27T21:39:28.5531193Z ##[endgroup]
+2026-10-27T21:39:28.6067982Z run_unit_test=true
+2026-10-27T21:39:28.6068770Z run_asr=false
+2026-10-27T21:39:28.6069231Z asr_ci_model=
+2026-10-27T21:39:28.6069716Z run_tts=false
+2026-10-27T21:39:28.6070193Z tts_ci_model=
+2026-10-27T21:39:28.6070634Z run_mps=false
+2026-10-27T21:39:28.6071046Z mps_ci_model=
+2026-10-27T21:39:28.6071519Z run_omni=false
+2026-10-27T21:39:28.6072041Z omni_ci_model=
+2026-10-27T21:39:28.6072667Z run_intel_cpu=false
+2026-10-27T21:39:28.6073537Z run_intel_xpu=false
+2026-10-27T21:39:28.6074002Z run_mac=false
+2026-10-27T21:39:28.6074467Z mps_ci_config=
+2026-10-27T21:39:28.6074939Z run_self_hosted=true
+2026-10-27T21:39:28.6221676Z ##[group]Run echo "Manual workflow_dispatch bypasses PR lint/mergeability gate."
+2026-10-27T21:39:28.6222705Z [36;1mecho "Manual workflow_dispatch bypasses PR lint/mergeability gate."[0m
+2026-10-27T21:39:28.6311020Z shell: /usr/bin/bash -e {0}
+2026-10-27T21:39:28.6311469Z env:
+2026-10-27T21:39:28.6311846Z   OMNI_CI_HOME: /data/omni-ci/run-40588572290
+2026-10-27T21:39:28.6312399Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-27T21:39:28.6313272Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-27T21:39:28.6314031Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-27T21:39:28.6314734Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-27T21:39:28.6315543Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-27T21:39:28.6316291Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-27T21:39:28.6317018Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-27T21:39:28.6317894Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-27T21:39:28.6318532Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-27T21:39:28.6319062Z ##[endgroup]
+2026-10-27T21:39:28.6408949Z Manual workflow_dispatch bypasses PR lint/mergeability gate.
+2026-10-27T21:39:28.6614851Z Post job cleanup.
+2026-10-27T21:39:28.7656399Z [command]/usr/bin/git version
+2026-10-27T21:39:28.7701453Z git version 2.55.0
+2026-10-27T21:39:28.7744577Z Temporarily overriding HOME='/home/runner/work/_temp/db7b0ebc-d725-493f-886e-32dced134ae1' before making global git config changes
+2026-10-27T21:39:28.7746451Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T21:39:28.7751245Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sglang-omni/sglang-omni
+2026-10-27T21:39:28.7796745Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T21:39:28.7838106Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T21:39:28.8162102Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T21:39:28.8213899Z http.https://github.com/.extraheader
+2026-10-27T21:39:28.8255347Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T21:39:28.8271612Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T21:39:28.8586506Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T21:39:28.8626637Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T21:39:28.9131446Z Evaluate and set job outputs
+2026-10-27T21:39:28.9140581Z Set output 'run_self_hosted'
+2026-10-27T21:39:28.9142350Z Set output 'run_asr'
+2026-10-27T21:39:28.9143395Z Set output 'run_tts'
+2026-10-27T21:39:28.9143719Z Set output 'run_mps'
+2026-10-27T21:39:28.9144046Z Set output 'run_omni'
+2026-10-27T21:39:28.9144818Z Cleaning up orphan processes
+2026-10-27T21:39:28.9747421Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/github-script@v7. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

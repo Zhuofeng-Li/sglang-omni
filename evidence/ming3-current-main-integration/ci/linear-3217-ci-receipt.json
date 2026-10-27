@@ -1,0 +1,25 @@
+{
+  "run": 40588572290,
+  "head": "a818f498de01b9412283e13ed0fbf12cdb48a049",
+  "jobs": {
+    "PR Test / unit-test-a": {
+      "job": 122487538750,
+      "summary": "2026-10-27T21:55:53.1281847Z == 4705 passed, 74 skipped, 6987 deselected, 55 warnings in 788.39s (0:13:08) ==",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40588572290/job/122487538750"
+    },
+    "PR Test / unit-test-accelerator": {
+      "job": 122487538803,
+      "summary": "2026-10-27T21:51:08.0474121Z = 1159 passed, 34 skipped, 10573 deselected, 83 warnings in 506.90s (0:08:26) ==",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40588572290/job/122487538803"
+    },
+    "PR Test / unit-test-b": {
+      "job": 122487538818,
+      "summary": "2026-10-27T21:57:39.0775103Z == 5601 passed, 49 skipped, 6116 deselected, 87 warnings in 901.87s (0:15:01) ==",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40588572290/job/122487538818"
+    }
+  },
+  "status": "completed",
+  "conclusion": "success",
+  "cleanup_pending": false,
+  "cleanup_job": 122495055010
+}
