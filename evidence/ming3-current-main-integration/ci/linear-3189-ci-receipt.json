@@ -1,0 +1,37 @@
+{
+  "run": 40588561538,
+  "head": "827f2084537b6a1f6affcf61ffc852ddb7e94584",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": {
+    "PR Test / unit-test-accelerator": {
+      "job": 122489337760,
+      "summary": "2026-10-27T22:07:19.9301199Z = 1141 passed, 28 skipped, 10562 deselected, 83 warnings in 494.66s (0:08:14) ==",
+      "checkout": [
+        "2026-10-27T21:58:01.5050209Z HEAD is now at a818f49 [Perf][Ming3-TTS] Preserve Tiny precision and capture complete vocoder graphs",
+        "2026-10-27T21:58:01.5778815Z HEAD is now at a818f49 [Perf][Ming3-TTS] Preserve Tiny precision and capture complete vocoder graphs",
+        "2026-10-27T21:58:02.1740090Z HEAD is now at 4368957 Merge 827f2084537b6a1f6affcf61ffc852ddb7e94584 into 65795c6577215e9d7379bf9d41237d0205f26583"
+      ]
+    },
+    "PR Test / unit-test-b": {
+      "job": 122489337996,
+      "summary": "2026-10-27T22:32:02.5615628Z == 5595 passed, 48 skipped, 6088 deselected, 86 warnings in 896.90s (0:14:56) ==",
+      "checkout": [
+        "2026-10-27T22:16:03.3046234Z HEAD is now at 86bdf5d Merge 0dbb32ee8785364b27967d4bfb26868792963841 into 6087f786b3a9dd2d53dee5f321737cecda88dd12",
+        "2026-10-27T22:16:03.8660964Z HEAD is now at 4368957 Merge 827f2084537b6a1f6affcf61ffc852ddb7e94584 into 65795c6577215e9d7379bf9d41237d0205f26583"
+      ]
+    },
+    "PR Test / unit-test-a": {
+      "job": 122489338015,
+      "summary": "2026-10-27T22:32:51.6978696Z == 4701 passed, 74 skipped, 6956 deselected, 54 warnings in 789.03s (0:13:09) ==",
+      "checkout": [
+        "2026-10-27T22:18:40.5114353Z HEAD is now at 65795c6 Merge d1be1e0cbd4c939383fe75e3cc8799962996f240 into 6087f786b3a9dd2d53dee5f321737cecda88dd12",
+        "2026-10-27T22:18:41.1004701Z HEAD is now at 4368957 Merge 827f2084537b6a1f6affcf61ffc852ddb7e94584 into 65795c6577215e9d7379bf9d41237d0205f26583"
+      ]
+    }
+  },
+  "tested_merge": "4368957213b72197af9e64d5d167299588149c41",
+  "tested_tree": "29a4d8cbc285ec1bc8748d4dc6023314d0704f7e",
+  "tree_matches_published_head": true,
+  "cleanup": "not applicable: final ephemeral cleanup job is workflow_dispatch-only; per-test container cleanup succeeded"
+}
