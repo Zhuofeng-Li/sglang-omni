@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T10:13:51.968034+00:00",
-  "completed_arms": 32,
+  "updated_utc": "2026-10-27T10:38:31.250482+00:00",
+  "completed_arms": 36,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -358,13 +358,48 @@
       }
     },
     "lifetime-corrected/en-c32": {
-      "status": "pending",
-      "missing": [
-        "lifetime-corrected-en-c32-A42",
-        "lifetime-corrected-en-c32-B42",
-        "lifetime-corrected-en-c32-B43",
-        "lifetime-corrected-en-c32-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 11.832,
+        "latency_mean_s": 2.6795,
+        "audio_duration_mean_s": 3.9015,
+        "audio_throughput_s_per_s": 46.161,
+        "latency_p95_range_s": [
+          3.968,
+          4.042
+        ],
+        "wer": 0.010089592229758016,
+        "sim": 0.7765681370134081,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 106123,
+        "startup_s": 80.0900000333786,
+        "peak_tts_device_gib": 107.5400390625,
+        "captures": [
+          19
+        ]
+      },
+      "B": {
+        "throughput_qps": 63.1995,
+        "latency_mean_s": 0.496,
+        "audio_duration_mean_s": 3.901,
+        "audio_throughput_s_per_s": 246.536,
+        "latency_p95_range_s": [
+          0.71,
+          0.721
+        ],
+        "wer": 0.010173323285606632,
+        "sim": 0.7770534894456539,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 106100,
+        "startup_s": 128.13699996471405,
+        "peak_tts_device_gib": 108.9833984375,
+        "captures": [
+          430
+        ]
+      }
     },
     "lifetime-corrected/en-c1": {
       "status": "pending",
@@ -621,6 +656,12 @@
       "seed": 43,
       "wer_delta": 0.0003312355084465054,
       "sim_delta": -0.0033194566717241747
+    },
+    {
+      "cell": "lifetime-corrected/en-c32",
+      "seed": 42,
+      "wer_delta": 0.00016746211169722976,
+      "sim_delta": 0.0002805495032054406
     }
   ]
 }

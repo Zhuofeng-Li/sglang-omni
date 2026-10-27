@@ -1,0 +1,249 @@
+2026-10-27 10:31:31,772 sglang_omni.platforms.musa WARNING Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-27 10:31:32,178 sglang.srt.configs.linear_attn_model_registry INFO Registered linear attn model: config=GigaChat35Config, backend=GDNAttnBackend, archs=['GigaChat35ForCausalLM', 'GigaChat35ForCausalLMNextN']
+2026-10-27 10:31:32,600 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python3 -m sglang_omni.cli serve --model-path inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0 --port 8000 --host localhost --config /results/server-config.yaml --tts_engine.engine.max_running_requests 64 --tts_engine.engine.cuda_graph_max_bs 64
+2026-10-27 10:31:32,601 benchmarks.benchmarker.utils INFO Waiting for service at http://localhost:8000 ...
+2026-10-27 10:32:50,687 benchmarks.benchmarker.utils INFO Service is ready.
+2026-10-27 10:32:50,753 datasets INFO JAX version 0.4.38 available.
+2026-10-27 10:32:50,860 benchmarks.dataset.seedtts INFO Loading zhaochenyang20/seed-tts-eval-arrow split=en revision=27f4c1adee83b5b29b7c4b375f6b976324bda308 from HuggingFace ...
+Using the latest cached version of the dataset since zhaochenyang20/seed-tts-eval-arrow couldn't be found on the Hugging Face Hub (offline mode is enabled).
+2026-10-27 10:32:50,861 datasets.load WARNING Using the latest cached version of the dataset since zhaochenyang20/seed-tts-eval-arrow couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /results/cache/datasets/zhaochenyang20___seed-tts-eval-arrow/default/0.0.0/27f4c1adee83b5b29b7c4b375f6b976324bda308 (last modified on Mon Oct 26 14:25:07 2026).
+2026-10-27 10:32:50,861 datasets.packaged_modules.cache.cache WARNING Found the latest cached dataset configuration 'default' at /results/cache/datasets/zhaochenyang20___seed-tts-eval-arrow/default/0.0.0/27f4c1adee83b5b29b7c4b375f6b976324bda308 (last modified on Mon Oct 26 14:25:07 2026).
+2026-10-27 10:32:50,917 benchmarks.dataset.seedtts INFO Staging audio to /results/cache/tmp/seedtts_en_9rr1xdz4
+2026-10-27 10:32:51,257 benchmarks.dataset.seedtts INFO Loaded 1088 samples (666 unique audio files) from zhaochenyang20/seed-tts-eval-arrow/en
+2026-10-27 10:32:51,266 __main__ INFO Prepared 1088 requests (offset 0)
+2026-10-27 10:32:51,267 benchmarks.benchmarker.runner INFO Warmup (32 requests)...
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 1/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 2/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 3/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 4/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 5/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 6/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 7/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 8/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 9/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 10/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 11/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 12/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 13/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 14/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 15/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 16/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 17/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 18/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 19/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 20/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 21/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 22/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 23/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 24/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 25/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 26/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 27/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 28/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 29/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 30/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 31/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO   warmup 32/32: ok
+2026-10-27 10:33:01,773 benchmarks.benchmarker.runner INFO Benchmarking 1088 requests (max_concurrency=32)...
+  0%|          | 0/1088 [00:00<?, ?it/s]  0%|          | 1/1088 [00:04<1:16:35,  4.23s/it]  0%|          | 3/1088 [00:04<23:25,  1.30s/it]    0%|          | 5/1088 [00:04<12:03,  1.50it/s]  1%|          | 8/1088 [00:05<06:10,  2.91it/s]  1%|          | 11/1088 [00:05<04:39,  3.85it/s]  1%|▏         | 14/1088 [00:05<03:16,  5.47it/s]  2%|▏         | 18/1088 [00:05<02:10,  8.17it/s]  2%|▏         | 22/1088 [00:06<02:45,  6.44it/s]  2%|▏         | 27/1088 [00:06<01:51,  9.51it/s]  3%|▎         | 29/1088 [00:06<01:44, 10.14it/s]  3%|▎         | 31/1088 [00:07<02:07,  8.27it/s]  3%|▎         | 33/1088 [00:07<02:20,  7.49it/s]  3%|▎         | 35/1088 [00:07<02:03,  8.55it/s]  3%|▎         | 37/1088 [00:08<02:49,  6.20it/s]  4%|▍         | 41/1088 [00:08<01:53,  9.25it/s]  4%|▍         | 45/1088 [00:08<01:21, 12.87it/s]  5%|▍         | 49/1088 [00:09<02:03,  8.41it/s]  5%|▍         | 51/1088 [00:09<01:52,  9.24it/s]  5%|▍         | 54/1088 [00:09<01:34, 10.97it/s]  5%|▌         | 56/1088 [00:10<01:48,  9.52it/s]  6%|▌         | 60/1088 [00:10<02:10,  7.87it/s]  6%|▌         | 62/1088 [00:10<01:56,  8.78it/s]  6%|▌         | 64/1088 [00:11<02:04,  8.24it/s]  6%|▌         | 66/1088 [00:11<01:49,  9.30it/s]  6%|▋         | 68/1088 [00:11<01:57,  8.65it/s]  7%|▋         | 71/1088 [00:11<01:27, 11.59it/s]  7%|▋         | 76/1088 [00:12<01:38, 10.30it/s]  7%|▋         | 79/1088 [00:12<01:21, 12.32it/s]  8%|▊         | 82/1088 [00:12<01:40, 10.02it/s]  8%|▊         | 85/1088 [00:12<01:21, 12.28it/s]  8%|▊         | 88/1088 [00:12<01:09, 14.41it/s]  8%|▊         | 90/1088 [00:13<01:15, 13.29it/s]  9%|▊         | 94/1088 [00:13<00:57, 17.35it/s]  9%|▉         | 97/1088 [00:13<01:35, 10.39it/s]  9%|▉         | 101/1088 [00:13<01:11, 13.89it/s] 10%|▉         | 104/1088 [00:14<01:30, 10.90it/s] 10%|█         | 109/1088 [00:14<01:02, 15.70it/s] 10%|█         | 112/1088 [00:14<01:06, 14.62it/s] 11%|█         | 115/1088 [00:15<01:45,  9.25it/s] 11%|█         | 120/1088 [00:15<01:11, 13.51it/s] 12%|█▏        | 126/1088 [00:15<00:50, 19.22it/s] 12%|█▏        | 130/1088 [00:16<01:11, 13.34it/s] 12%|█▏        | 133/1088 [00:16<01:10, 13.54it/s] 12%|█▎        | 136/1088 [00:16<01:16, 12.51it/s] 13%|█▎        | 139/1088 [00:17<01:38,  9.67it/s] 13%|█▎        | 141/1088 [00:17<01:27, 10.76it/s] 13%|█▎        | 144/1088 [00:17<01:36,  9.83it/s] 14%|█▎        | 149/1088 [00:17<01:08, 13.68it/s] 14%|█▍        | 152/1088 [00:18<01:38,  9.47it/s] 14%|█▍        | 156/1088 [00:18<01:14, 12.54it/s] 15%|█▍        | 159/1088 [00:18<01:18, 11.90it/s] 15%|█▍        | 161/1088 [00:18<01:17, 11.92it/s] 15%|█▌        | 164/1088 [00:19<01:07, 13.63it/s] 15%|█▌        | 166/1088 [00:19<01:35,  9.66it/s] 16%|█▌        | 170/1088 [00:19<01:16, 11.98it/s] 16%|█▌        | 172/1088 [00:20<01:25, 10.75it/s] 16%|█▌        | 175/1088 [00:20<01:08, 13.32it/s] 16%|█▋        | 177/1088 [00:20<01:20, 11.37it/s] 17%|█▋        | 182/1088 [00:20<00:56, 16.11it/s] 17%|█▋        | 184/1088 [00:20<01:22, 10.92it/s] 17%|█▋        | 187/1088 [00:21<01:12, 12.41it/s] 17%|█▋        | 189/1088 [00:21<01:20, 11.11it/s] 18%|█▊        | 191/1088 [00:21<01:18, 11.43it/s] 18%|█▊        | 193/1088 [00:21<01:16, 11.64it/s] 18%|█▊        | 198/1088 [00:22<01:25, 10.47it/s] 19%|█▊        | 202/1088 [00:22<01:16, 11.61it/s] 19%|█▉        | 205/1088 [00:22<01:03, 13.91it/s] 19%|█▉        | 207/1088 [00:22<01:22, 10.63it/s] 19%|█▉        | 209/1088 [00:23<01:21, 10.82it/s] 19%|█▉        | 211/1088 [00:23<01:17, 11.31it/s] 20%|█▉        | 213/1088 [00:23<01:09, 12.66it/s] 20%|█▉        | 215/1088 [00:23<01:29,  9.75it/s] 20%|██        | 218/1088 [00:23<01:07, 12.87it/s] 20%|██        | 220/1088 [00:24<01:26, 10.04it/s] 21%|██        | 224/1088 [00:24<00:59, 14.57it/s] 21%|██        | 227/1088 [00:24<00:58, 14.78it/s] 21%|██        | 230/1088 [00:24<01:13, 11.70it/s] 21%|██▏       | 232/1088 [00:24<01:12, 11.81it/s] 22%|██▏       | 237/1088 [00:25<00:53, 16.04it/s] 22%|██▏       | 239/1088 [00:25<01:31,  9.31it/s] 22%|██▏       | 241/1088 [00:25<01:21, 10.41it/s] 22%|██▏       | 244/1088 [00:26<01:29,  9.48it/s] 23%|██▎       | 248/1088 [00:26<01:08, 12.20it/s] 23%|██▎       | 250/1088 [00:26<01:27,  9.61it/s] 23%|██▎       | 253/1088 [00:26<01:09, 11.99it/s] 23%|██▎       | 255/1088 [00:27<01:09, 12.04it/s] 24%|██▎       | 257/1088 [00:27<01:11, 11.68it/s] 24%|██▍       | 260/1088 [00:27<01:11, 11.52it/s] 24%|██▍       | 262/1088 [00:27<01:04, 12.87it/s] 24%|██▍       | 265/1088 [00:27<00:56, 14.62it/s] 25%|██▍       | 267/1088 [00:28<01:14, 10.96it/s] 25%|██▍       | 269/1088 [00:28<01:28,  9.21it/s] 25%|██▌       | 273/1088 [00:28<01:00, 13.46it/s] 25%|██▌       | 275/1088 [00:28<01:07, 12.05it/s] 26%|██▌       | 278/1088 [00:29<01:10, 11.46it/s] 26%|██▌       | 282/1088 [00:29<01:00, 13.34it/s] 26%|██▌       | 284/1088 [00:29<01:00, 13.39it/s] 26%|██▋       | 287/1088 [00:29<00:57, 13.89it/s] 27%|██▋       | 289/1088 [00:29<00:58, 13.56it/s] 27%|██▋       | 291/1088 [00:30<01:11, 11.16it/s] 27%|██▋       | 294/1088 [00:30<01:02, 12.65it/s] 27%|██▋       | 296/1088 [00:30<01:01, 12.92it/s] 27%|██▋       | 298/1088 [00:30<01:06, 11.84it/s] 28%|██▊       | 301/1088 [00:30<00:52, 15.03it/s] 28%|██▊       | 304/1088 [00:30<00:53, 14.70it/s] 28%|██▊       | 306/1088 [00:31<01:05, 11.86it/s] 28%|██▊       | 309/1088 [00:31<01:06, 11.77it/s] 29%|██▊       | 311/1088 [00:31<01:12, 10.67it/s] 29%|██▉       | 316/1088 [00:31<00:47, 16.30it/s] 29%|██▉       | 319/1088 [00:31<00:45, 16.81it/s] 30%|██▉       | 321/1088 [00:32<00:49, 15.64it/s] 30%|██▉       | 324/1088 [00:32<00:43, 17.40it/s] 30%|██▉       | 326/1088 [00:32<01:00, 12.64it/s] 30%|███       | 328/1088 [00:32<01:18,  9.67it/s] 30%|███       | 330/1088 [00:32<01:10, 10.72it/s] 31%|███       | 332/1088 [00:33<01:20,  9.35it/s] 31%|███       | 336/1088 [00:33<01:02, 11.96it/s] 31%|███       | 338/1088 [00:33<01:06, 11.21it/s] 31%|███▏      | 340/1088 [00:33<01:06, 11.33it/s] 31%|███▏      | 342/1088 [00:34<01:07, 11.10it/s] 32%|███▏      | 347/1088 [00:34<00:41, 17.79it/s] 32%|███▏      | 350/1088 [00:34<00:55, 13.22it/s] 32%|███▏      | 352/1088 [00:34<00:54, 13.60it/s] 33%|███▎      | 354/1088 [00:34<00:50, 14.42it/s] 33%|███▎      | 356/1088 [00:35<01:19,  9.16it/s] 33%|███▎      | 360/1088 [00:35<00:59, 12.26it/s] 33%|███▎      | 362/1088 [00:35<01:11, 10.15it/s] 34%|███▎      | 366/1088 [00:35<00:55, 13.08it/s] 34%|███▍      | 368/1088 [00:36<01:00, 11.84it/s] 34%|███▍      | 372/1088 [00:36<00:51, 13.77it/s] 35%|███▍      | 377/1088 [00:36<00:36, 19.55it/s] 35%|███▍      | 380/1088 [00:36<00:43, 16.16it/s] 35%|███▌      | 383/1088 [00:37<00:51, 13.81it/s] 35%|███▌      | 386/1088 [00:37<00:48, 14.45it/s] 36%|███▌      | 388/1088 [00:37<01:18,  8.94it/s] 36%|███▌      | 391/1088 [00:37<01:03, 11.02it/s] 36%|███▌      | 394/1088 [00:38<00:59, 11.76it/s] 36%|███▋      | 396/1088 [00:38<01:23,  8.29it/s] 37%|███▋      | 399/1088 [00:38<01:15,  9.12it/s] 37%|███▋      | 403/1088 [00:39<00:57, 11.83it/s] 37%|███▋      | 405/1088 [00:39<00:54, 12.47it/s] 37%|███▋      | 407/1088 [00:39<00:58, 11.66it/s] 38%|███▊      | 409/1088 [00:39<01:07, 10.03it/s] 38%|███▊      | 412/1088 [00:39<00:52, 12.95it/s] 38%|███▊      | 415/1088 [00:39<00:49, 13.70it/s] 38%|███▊      | 417/1088 [00:40<00:46, 14.35it/s] 39%|███▊      | 419/1088 [00:40<00:45, 14.66it/s] 39%|███▊      | 421/1088 [00:40<00:46, 14.23it/s] 39%|███▉      | 423/1088 [00:40<01:00, 10.95it/s] 39%|███▉      | 426/1088 [00:40<00:55, 11.92it/s] 39%|███▉      | 428/1088 [00:40<00:49, 13.25it/s] 40%|███▉      | 430/1088 [00:41<00:53, 12.41it/s] 40%|███▉      | 432/1088 [00:41<00:53, 12.32it/s] 40%|███▉      | 434/1088 [00:41<01:05,  9.93it/s] 40%|████      | 439/1088 [00:41<00:39, 16.28it/s] 41%|████      | 442/1088 [00:41<00:35, 18.34it/s] 41%|████      | 445/1088 [00:42<00:49, 13.05it/s] 41%|████      | 447/1088 [00:42<00:50, 12.58it/s] 41%|████▏     | 449/1088 [00:42<00:50, 12.64it/s] 42%|████▏     | 452/1088 [00:42<00:45, 14.12it/s] 42%|████▏     | 454/1088 [00:42<00:56, 11.21it/s] 42%|████▏     | 458/1088 [00:43<00:41, 15.01it/s] 42%|████▏     | 461/1088 [00:43<00:37, 16.80it/s] 43%|████▎     | 463/1088 [00:43<00:47, 13.14it/s] 43%|████▎     | 465/1088 [00:43<01:01, 10.07it/s] 43%|████▎     | 467/1088 [00:44<01:04,  9.57it/s] 43%|████▎     | 470/1088 [00:44<00:57, 10.84it/s] 43%|████▎     | 473/1088 [00:44<00:47, 12.83it/s] 44%|████▍     | 476/1088 [00:44<00:39, 15.38it/s] 44%|████▍     | 478/1088 [00:44<00:49, 12.29it/s] 44%|████▍     | 480/1088 [00:44<00:45, 13.45it/s] 44%|████▍     | 482/1088 [00:45<00:49, 12.16it/s] 45%|████▍     | 485/1088 [00:45<00:39, 15.19it/s] 45%|████▍     | 487/1088 [00:45<00:42, 14.07it/s] 45%|████▍     | 489/1088 [00:45<00:52, 11.32it/s] 45%|████▌     | 491/1088 [00:45<00:51, 11.62it/s] 45%|████▌     | 493/1088 [00:46<00:54, 10.92it/s] 46%|████▌     | 498/1088 [00:46<00:33, 17.81it/s] 46%|████▌     | 501/1088 [00:46<00:38, 15.39it/s] 46%|████▌     | 503/1088 [00:46<00:48, 12.01it/s] 47%|████▋     | 506/1088 [00:46<00:39, 14.57it/s] 47%|████▋     | 508/1088 [00:46<00:39, 14.78it/s] 47%|████▋     | 510/1088 [00:47<00:51, 11.16it/s] 47%|████▋     | 513/1088 [00:47<00:45, 12.73it/s] 47%|████▋     | 515/1088 [00:47<00:45, 12.49it/s] 48%|████▊     | 518/1088 [00:47<00:36, 15.59it/s] 48%|████▊     | 520/1088 [00:47<00:43, 12.93it/s] 48%|████▊     | 522/1088 [00:48<00:56,  9.96it/s] 48%|████▊     | 527/1088 [00:48<00:34, 16.20it/s] 49%|████▊     | 530/1088 [00:48<00:46, 11.96it/s] 49%|████▉     | 533/1088 [00:48<00:39, 13.97it/s] 49%|████▉     | 536/1088 [00:49<00:44, 12.31it/s] 49%|████▉     | 538/1088 [00:49<00:49, 11.03it/s] 50%|████▉     | 543/1088 [00:49<00:41, 13.20it/s] 50%|█████     | 545/1088 [00:49<00:43, 12.51it/s] 50%|█████     | 547/1088 [00:50<00:39, 13.57it/s] 51%|█████     | 550/1088 [00:50<00:39, 13.57it/s] 51%|█████     | 552/1088 [00:50<00:42, 12.70it/s] 51%|█████     | 554/1088 [00:50<00:47, 11.17it/s] 51%|█████     | 557/1088 [00:50<00:45, 11.71it/s] 51%|█████▏    | 559/1088 [00:51<00:40, 12.91it/s] 52%|█████▏    | 561/1088 [00:51<00:40, 13.12it/s] 52%|█████▏    | 564/1088 [00:51<00:39, 13.16it/s] 52%|█████▏    | 567/1088 [00:51<00:35, 14.84it/s] 52%|█████▏    | 569/1088 [00:52<00:54,  9.59it/s] 53%|█████▎    | 572/1088 [00:52<00:52,  9.85it/s] 53%|█████▎    | 575/1088 [00:52<00:40, 12.57it/s] 53%|█████▎    | 578/1088 [00:52<00:34, 14.68it/s] 53%|█████▎    | 581/1088 [00:52<00:30, 16.65it/s] 54%|█████▎    | 584/1088 [00:53<00:41, 12.00it/s] 54%|█████▍    | 587/1088 [00:53<00:36, 13.65it/s] 54%|█████▍    | 590/1088 [00:53<00:33, 14.84it/s] 54%|█████▍    | 592/1088 [00:53<00:34, 14.53it/s] 55%|█████▍    | 594/1088 [00:53<00:47, 10.35it/s] 55%|█████▍    | 596/1088 [00:54<00:44, 10.93it/s] 55%|█████▍    | 598/1088 [00:54<00:44, 11.07it/s] 55%|█████▌    | 600/1088 [00:54<00:42, 11.37it/s] 55%|█████▌    | 602/1088 [00:54<00:45, 10.76it/s] 56%|█████▌    | 607/1088 [00:54<00:27, 17.42it/s] 56%|█████▌    | 610/1088 [00:54<00:28, 16.71it/s] 57%|█████▋    | 615/1088 [00:55<00:21, 22.49it/s] 57%|█████▋    | 618/1088 [00:55<00:30, 15.41it/s] 57%|█████▋    | 621/1088 [00:55<00:35, 13.34it/s] 57%|█████▋    | 623/1088 [00:56<00:52,  8.91it/s] 57%|█████▋    | 625/1088 [00:56<00:50,  9.12it/s] 58%|█████▊    | 629/1088 [00:56<00:35, 12.86it/s] 58%|█████▊    | 632/1088 [00:56<00:29, 15.34it/s] 58%|█████▊    | 635/1088 [00:57<00:41, 10.80it/s] 59%|█████▊    | 638/1088 [00:57<00:36, 12.41it/s] 59%|█████▉    | 640/1088 [00:57<00:42, 10.42it/s] 59%|█████▉    | 642/1088 [00:57<00:39, 11.37it/s] 59%|█████▉    | 644/1088 [00:58<00:45,  9.75it/s] 60%|█████▉    | 648/1088 [00:58<00:33, 13.08it/s] 60%|█████▉    | 651/1088 [00:58<00:37, 11.78it/s] 60%|██████    | 654/1088 [00:58<00:39, 10.86it/s] 61%|██████    | 659/1088 [00:59<00:30, 13.89it/s] 61%|██████    | 662/1088 [00:59<00:27, 15.48it/s] 61%|██████    | 664/1088 [00:59<00:27, 15.19it/s] 61%|██████    | 666/1088 [00:59<00:32, 13.09it/s] 61%|██████▏   | 668/1088 [00:59<00:32, 12.95it/s] 62%|██████▏   | 670/1088 [00:59<00:37, 11.20it/s] 62%|██████▏   | 675/1088 [01:00<00:23, 17.44it/s] 62%|██████▏   | 678/1088 [01:00<00:37, 10.86it/s] 62%|██████▎   | 680/1088 [01:00<00:36, 11.17it/s] 63%|██████▎   | 683/1088 [01:00<00:29, 13.88it/s] 63%|██████▎   | 686/1088 [01:01<00:29, 13.40it/s] 63%|██████▎   | 689/1088 [01:01<00:25, 15.45it/s] 64%|██████▎   | 691/1088 [01:01<00:35, 11.05it/s] 64%|██████▎   | 693/1088 [01:01<00:34, 11.39it/s] 64%|██████▍   | 696/1088 [01:01<00:27, 14.00it/s] 64%|██████▍   | 698/1088 [01:01<00:27, 14.39it/s] 64%|██████▍   | 701/1088 [01:02<00:22, 17.35it/s] 65%|██████▍   | 704/1088 [01:02<00:33, 11.50it/s] 65%|██████▌   | 708/1088 [01:02<00:30, 12.53it/s] 65%|██████▌   | 710/1088 [01:03<00:32, 11.59it/s] 66%|██████▌   | 714/1088 [01:03<00:29, 12.59it/s] 66%|██████▌   | 716/1088 [01:03<00:30, 12.07it/s] 66%|██████▌   | 720/1088 [01:03<00:32, 11.46it/s] 66%|██████▋   | 723/1088 [01:03<00:26, 13.85it/s] 67%|██████▋   | 725/1088 [01:04<00:28, 12.77it/s] 67%|██████▋   | 727/1088 [01:04<00:28, 12.70it/s] 67%|██████▋   | 730/1088 [01:04<00:24, 14.34it/s] 67%|██████▋   | 732/1088 [01:04<00:28, 12.30it/s] 68%|██████▊   | 737/1088 [01:04<00:18, 18.89it/s] 68%|██████▊   | 740/1088 [01:05<00:26, 13.00it/s] 68%|██████▊   | 742/1088 [01:05<00:30, 11.47it/s] 69%|██████▊   | 746/1088 [01:05<00:27, 12.43it/s] 69%|██████▉   | 748/1088 [01:05<00:28, 11.75it/s] 69%|██████▉   | 751/1088 [01:06<00:24, 13.80it/s] 69%|██████▉   | 753/1088 [01:06<00:28, 11.76it/s] 69%|██████▉   | 756/1088 [01:06<00:24, 13.65it/s] 70%|██████▉   | 758/1088 [01:06<00:28, 11.74it/s] 70%|███████   | 762/1088 [01:06<00:22, 14.52it/s] 70%|███████   | 764/1088 [01:07<00:27, 11.83it/s] 70%|███████   | 766/1088 [01:07<00:24, 13.01it/s] 71%|███████   | 768/1088 [01:07<00:23, 13.54it/s] 71%|███████   | 770/1088 [01:07<00:22, 14.02it/s] 71%|███████   | 772/1088 [01:07<00:28, 11.28it/s] 71%|███████▏  | 776/1088 [01:07<00:20, 15.24it/s] 72%|███████▏  | 778/1088 [01:08<00:22, 13.57it/s] 72%|███████▏  | 780/1088 [01:08<00:21, 14.24it/s] 72%|███████▏  | 784/1088 [01:08<00:23, 12.91it/s] 72%|███████▏  | 787/1088 [01:08<00:19, 15.64it/s] 73%|███████▎  | 789/1088 [01:09<00:25, 11.86it/s] 73%|███████▎  | 791/1088 [01:09<00:25, 11.82it/s] 73%|███████▎  | 793/1088 [01:09<00:29, 10.09it/s] 73%|███████▎  | 797/1088 [01:09<00:21, 13.60it/s] 74%|███████▎  | 801/1088 [01:09<00:17, 16.58it/s] 74%|███████▍  | 805/1088 [01:10<00:20, 13.50it/s] 74%|███████▍  | 807/1088 [01:10<00:24, 11.61it/s] 74%|███████▍  | 810/1088 [01:10<00:24, 11.34it/s] 75%|███████▍  | 814/1088 [01:10<00:18, 15.07it/s] 75%|███████▌  | 816/1088 [01:11<00:21, 12.67it/s] 75%|███████▌  | 818/1088 [01:11<00:20, 12.86it/s] 75%|███████▌  | 821/1088 [01:11<00:16, 15.73it/s] 76%|███████▌  | 823/1088 [01:11<00:16, 16.28it/s] 76%|███████▌  | 825/1088 [01:11<00:20, 12.81it/s] 76%|███████▌  | 828/1088 [01:11<00:17, 14.66it/s] 76%|███████▋  | 831/1088 [01:12<00:25,  9.89it/s] 77%|███████▋  | 836/1088 [01:12<00:16, 15.13it/s] 77%|███████▋  | 839/1088 [01:12<00:17, 13.99it/s] 77%|███████▋  | 841/1088 [01:12<00:17, 13.95it/s] 77%|███████▋  | 843/1088 [01:13<00:19, 12.65it/s] 78%|███████▊  | 847/1088 [01:13<00:13, 17.23it/s] 78%|███████▊  | 850/1088 [01:13<00:24,  9.88it/s] 78%|███████▊  | 852/1088 [01:13<00:21, 10.87it/s] 79%|███████▉  | 857/1088 [01:14<00:14, 16.42it/s] 79%|███████▉  | 860/1088 [01:14<00:18, 12.52it/s] 79%|███████▉  | 863/1088 [01:14<00:19, 11.33it/s] 80%|███████▉  | 866/1088 [01:14<00:18, 11.90it/s] 80%|███████▉  | 868/1088 [01:15<00:18, 11.89it/s] 80%|████████  | 871/1088 [01:15<00:14, 14.54it/s] 80%|████████  | 874/1088 [01:15<00:17, 11.99it/s] 81%|████████  | 877/1088 [01:15<00:14, 14.57it/s] 81%|████████  | 879/1088 [01:15<00:14, 14.09it/s] 81%|████████  | 883/1088 [01:16<00:12, 15.95it/s] 81%|████████▏ | 886/1088 [01:16<00:11, 16.89it/s] 82%|████████▏ | 888/1088 [01:16<00:19, 10.32it/s] 82%|████████▏ | 890/1088 [01:16<00:20,  9.54it/s] 82%|████████▏ | 893/1088 [01:17<00:17, 11.00it/s] 82%|████████▏ | 895/1088 [01:17<00:19, 10.08it/s] 83%|████████▎ | 900/1088 [01:17<00:14, 12.57it/s] 83%|████████▎ | 903/1088 [01:18<00:16, 11.26it/s] 83%|████████▎ | 906/1088 [01:18<00:13, 13.61it/s] 83%|████████▎ | 908/1088 [01:18<00:13, 13.18it/s] 84%|████████▎ | 911/1088 [01:18<00:11, 15.26it/s] 84%|████████▍ | 913/1088 [01:18<00:16, 10.51it/s] 84%|████████▍ | 918/1088 [01:19<00:13, 12.64it/s] 85%|████████▍ | 920/1088 [01:19<00:12, 12.96it/s] 85%|████████▍ | 922/1088 [01:19<00:14, 11.18it/s] 85%|████████▌ | 925/1088 [01:19<00:15, 10.75it/s] 85%|████████▌ | 928/1088 [01:19<00:12, 13.22it/s] 86%|████████▌ | 931/1088 [01:20<00:10, 15.23it/s] 86%|████████▌ | 933/1088 [01:20<00:11, 13.57it/s] 86%|████████▌ | 936/1088 [01:20<00:12, 12.56it/s] 86%|████████▋ | 939/1088 [01:20<00:10, 14.66it/s] 87%|████████▋ | 942/1088 [01:20<00:10, 14.52it/s] 87%|████████▋ | 944/1088 [01:21<00:10, 13.19it/s] 87%|████████▋ | 946/1088 [01:21<00:12, 11.09it/s] 87%|████████▋ | 951/1088 [01:21<00:08, 15.81it/s] 88%|████████▊ | 955/1088 [01:21<00:10, 12.53it/s] 88%|████████▊ | 957/1088 [01:22<00:11, 11.56it/s] 88%|████████▊ | 960/1088 [01:22<00:10, 11.86it/s] 89%|████████▊ | 963/1088 [01:22<00:08, 14.40it/s] 89%|████████▊ | 965/1088 [01:22<00:11, 10.69it/s] 89%|████████▉ | 967/1088 [01:23<00:10, 11.10it/s] 89%|████████▉ | 970/1088 [01:23<00:09, 12.75it/s] 89%|████████▉ | 972/1088 [01:23<00:08, 13.18it/s] 90%|████████▉ | 974/1088 [01:23<00:08, 13.48it/s] 90%|████████▉ | 978/1088 [01:23<00:06, 17.36it/s] 90%|█████████ | 981/1088 [01:23<00:05, 18.79it/s] 90%|█████████ | 984/1088 [01:24<00:06, 15.27it/s] 91%|█████████ | 986/1088 [01:24<00:08, 11.90it/s] 91%|█████████ | 988/1088 [01:24<00:08, 11.91it/s] 91%|█████████ | 992/1088 [01:24<00:06, 15.29it/s] 91%|█████████▏| 994/1088 [01:24<00:08, 11.60it/s] 92%|█████████▏| 998/1088 [01:25<00:06, 14.10it/s] 92%|█████████▏| 1000/1088 [01:25<00:06, 13.20it/s] 92%|█████████▏| 1002/1088 [01:25<00:06, 12.88it/s] 92%|█████████▏| 1005/1088 [01:25<00:06, 11.89it/s] 93%|█████████▎| 1010/1088 [01:25<00:04, 17.75it/s] 93%|█████████▎| 1013/1088 [01:26<00:03, 18.89it/s] 93%|█████████▎| 1016/1088 [01:26<00:04, 16.73it/s] 94%|█████████▎| 1018/1088 [01:26<00:04, 16.44it/s] 94%|█████████▍| 1020/1088 [01:26<00:05, 12.02it/s] 94%|█████████▍| 1022/1088 [01:26<00:06, 10.52it/s] 94%|█████████▍| 1027/1088 [01:27<00:03, 15.78it/s] 95%|█████████▍| 1029/1088 [01:27<00:04, 12.10it/s] 95%|█████████▍| 1031/1088 [01:27<00:05, 11.07it/s] 95%|█████████▌| 1034/1088 [01:27<00:04, 12.29it/s] 95%|█████████▌| 1036/1088 [01:27<00:04, 12.93it/s] 95%|█████████▌| 1039/1088 [01:28<00:03, 13.75it/s] 96%|█████████▌| 1041/1088 [01:28<00:03, 13.13it/s] 96%|█████████▌| 1044/1088 [01:28<00:02, 15.85it/s] 96%|█████████▌| 1046/1088 [01:28<00:02, 14.59it/s] 96%|█████████▋| 1048/1088 [01:28<00:03, 10.24it/s] 97%|█████████▋| 1052/1088 [01:29<00:02, 13.67it/s] 97%|█████████▋| 1054/1088 [01:29<00:02, 13.44it/s] 97%|█████████▋| 1056/1088 [01:29<00:02, 10.75it/s] 97%|█████████▋| 1059/1088 [01:29<00:02, 12.43it/s] 98%|█████████▊| 1063/1088 [01:29<00:01, 17.12it/s] 98%|█████████▊| 1068/1088 [01:29<00:00, 22.54it/s] 98%|█████████▊| 1071/1088 [01:30<00:00, 23.75it/s] 99%|█████████▊| 1074/1088 [01:30<00:00, 24.09it/s] 99%|█████████▉| 1077/1088 [01:30<00:00, 23.47it/s] 99%|█████████▉| 1080/1088 [01:30<00:00, 24.81it/s]100%|█████████▉| 1083/1088 [01:30<00:00, 25.22it/s]100%|█████████▉| 1086/1088 [01:30<00:00, 21.83it/s]100%|██████████| 1088/1088 [01:30<00:00, 11.96it/s]
+2026-10-27 10:34:32,767 benchmarks.benchmarker.utils INFO Results saved to /results/output/speed_results.json
+2026-10-27 10:34:32,770 benchmarks.tasks.tts INFO Results saved to /results/output
+2026-10-27 10:34:32,779 benchmarks.tasks.tts INFO Generated audio metadata saved to /results/output/generated.json
+
+============================================================
+                   Speed Benchmark Result                   
+============================================================
+  Model:                         inclusionAI/Ming-3.0-tts-0.5B
+  Concurrency:                   32
+  Completed requests:            1088
+  Failed requests:               0
+  Max token hits:                0
+  Finish reasons observed:       0
+------------------------------------------------------------
+  Latency mean (s):              2.653
+  Latency median (s):            2.558
+  Latency p95 (s):               3.968
+  Latency p99 (s):               6.022
+  RTF mean:                      0.6956
+  RTF median:                    0.6422
+  RTF p95:                       0.9515
+  RTF p99:                       1.7347
+  Audio duration mean (s):       3.875
+  Audio throughput (s/s):        46.351
+  Output throughput (tok/s):     579.4
+  Output tokens (mean):          48
+  Output tokens (total):         52705
+  Prompt tokens (mean):          128
+  Prompt tokens (total):         139037
+  Throughput (req/s):            11.96
+============================================================
+2026-10-27 10:34:32,780 benchmarks.benchmarker.utils INFO Stopping server (inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0)
+[gpu cleanup] running ensure_gpus_idle scope=0 (threshold=2048 MiB)...
+=== GPU cleanup scope (physical): 0 (input CVD='0') ===
+  orphan kill scoped to physical GPU(s): 0 (regex=/dev/nvidia(0)$)
+=== Checking GPU Utilization ===
+  No processes found on GPU 0.
+Waiting for selected GPU memory.used to drop below 2048 MiB...
+  GPU 0: 4 MiB used
+GPU memory cleanup complete: max memory.used=4 MiB.
+
+2026-10-27 10:34:35,471 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python3 -m sglang_omni.cli serve --model-path Qwen/Qwen3-ASR-1.7B --port 8000 --host localhost
+2026-10-27 10:34:35,472 benchmarks.benchmarker.utils INFO Waiting for service at http://localhost:8000 ...
+2026-10-27 10:36:19,570 benchmarks.benchmarker.utils INFO Service is ready.
+2026-10-27 10:36:19,572 benchmarks.tasks.tts INFO Loaded 1088 entries from /results/output/generated.json
+2026-10-27 10:36:19,573 benchmarks.benchmarker.runner INFO Warmup (64 requests)...
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 1/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 2/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 3/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 4/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 5/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 6/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 7/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 8/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 9/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 10/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 11/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 12/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 13/64: ok
+2026-10-27 10:36:20,583 benchmarks.benchmarker.runner INFO   warmup 14/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 15/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 16/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 17/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 18/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 19/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 20/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 21/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 22/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 23/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 24/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 25/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 26/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 27/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 28/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 29/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 30/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 31/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 32/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 33/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 34/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 35/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 36/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 37/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 38/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 39/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 40/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 41/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 42/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 43/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 44/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 45/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 46/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 47/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 48/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 49/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 50/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 51/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 52/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 53/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 54/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 55/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 56/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 57/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 58/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 59/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 60/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 61/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 62/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 63/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO   warmup 64/64: ok
+2026-10-27 10:36:20,584 benchmarks.benchmarker.runner INFO Benchmarking 1088 requests (max_concurrency=32)...
+
+============================================================
+         TTS Speed Benchmark Result (non-streaming)         
+============================================================
+  Model:                         inclusionAI/Ming-3.0-tts-0.5B
+  Dataset:                       zhaochenyang20/seed-tts-eval-arrow
+  Concurrency:                   32
+  Completed requests:            1088
+  Failed requests:               0
+  Max token hits:                0
+  Finish reasons observed:       0
+------------------------------------------------------------
+  Latency mean (s):              2.653
+  Latency median (s):            2.558
+  Latency p95 (s):               3.968
+  Latency p99 (s):               6.022
+  RTF mean:                      0.6956
+  RTF median:                    0.6422
+  RTF p95:                       0.9515
+  RTF p99:                       1.7347
+  Audio duration mean (s):       3.875
+  Audio throughput (s/s):        46.351
+  Output throughput (tok/s):     579.4
+  Output tokens (mean):          48
+  Output tokens (total):         52705
+  Prompt tokens (mean):          128
+  Prompt tokens (total):         139037
+  Throughput (req/s):            11.96
+============================================================
+
+============================================================
+          TTS WER Benchmark Result (non-streaming)          
+============================================================
+  TTS model:                     inclusionAI/Ming-3.0-tts-0.5B
+  Generation mode:               non-streaming
+  Language:                      en
+  Evaluated / Total:             1088/1088
+  Skipped:                       0
+------------------------------------------------------------
+  WER (corpus, micro-avg):       0.0102 (1.02%)
+------------------------------------------------------------
+  WER per-sample mean:           0.0099 (0.99%)
+  WER per-sample median:         0.0000
+  WER per-sample std:            0.0362
+  WER per-sample p95:            0.0833
+  WER per-sample max:            0.4286 (42.86%)
+  WER corpus (excl >50%):        0.0102 (1.02%)
+  WER mean (excl >50%):          0.0099 (0.99%)
+  >50% WER samples:              0 (0.0%)
+------------------------------------------------------------
+  Latency mean (s):              2.652543841911765
+  Latency p95 (s):               3.9675749999999996
+  RTF mean:                      0.6956573614347419
+  Throughput (req/s):            11.96
+  Audio duration mean (s):       3.875367647058823
+============================================================
+
+
+============================================================
+                 ASR Speed Benchmark Result                 
+============================================================
+  ASR model:                     Qwen/Qwen3-ASR-1.7B
+  Evaluated / Total:             1088/1088
+  ASR concurrency:               32
+  Skipped:                       0
+------------------------------------------------------------
+  ASR latency mean (s):          0.17125251054291285
+  ASR latency median (s):        0.16073349688667804
+  ASR latency p95 (s):           0.2766430411022155
+  ASR latency p99 (s):           0.4622121588652953
+  ASR RTF mean:                  0.04648912919740945
+  ASR RTF median:                0.04118496727535407
+  ASR total time (s):            5.883045119931921
+  ASR latency sum (s):           186.32273147068918
+  ASR throughput (samples/s):    184.9382382456707
+  Audio processed (s):           4216.4
+============================================================
+2026-10-27 10:36:27,333 benchmarks.benchmarker.utils INFO Results saved to /results/output/wer_results.json
+2026-10-27 10:36:27,338 benchmarks.benchmarker.utils INFO Results saved to /results/output/asr_speed_results.json
+2026-10-27 10:36:27,338 benchmarks.benchmarker.utils INFO Stopping server (Qwen/Qwen3-ASR-1.7B)
+[gpu cleanup] running ensure_gpus_idle scope=0 (threshold=2048 MiB)...
+=== GPU cleanup scope (physical): 0 (input CVD='0') ===
+  orphan kill scoped to physical GPU(s): 0 (regex=/dev/nvidia(0)$)
+=== Checking GPU Utilization ===
+  No processes found on GPU 0.
+Waiting for selected GPU memory.used to drop below 2048 MiB...
+  GPU 0: 4 MiB used
+GPU memory cleanup complete: max memory.used=4 MiB.
+
