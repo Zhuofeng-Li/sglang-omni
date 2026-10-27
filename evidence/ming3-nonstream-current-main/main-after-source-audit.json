@@ -1,0 +1,32 @@
+{
+  "actual_measurement_base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+  "actual_candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+  "later_main_audited_through": "72b776c9ce41c794e74fa609266915ad229bea3c",
+  "findings": [
+    {
+      "commit": "e8050949b382a8ae87492840574c17d722aba8f7",
+      "scope": "FlashInfer arch selection. Installed SM90 automatic target equals explicit9.0a; proof in main-e805-arch-equivalence.json."
+    },
+    {
+      "commit": "785f183844bf0959ffa39645a6c4aec124a321ce",
+      "scope": "Qwen3.8 cascade launch profiles and docs only."
+    },
+    {
+      "commit": "335d32b0496ca68e314c2ba20d4f1ac09ebe8bb3",
+      "scope": "Full-duplex docs consolidation; Python changes only docstrings."
+    },
+    {
+      "commit": "c239567ff0d5106d72d18a04bb7dc4cb286465ca",
+      "scope": "SessionGraph interrupted-reply controls/cascade paths, not Ming speech request route."
+    },
+    {
+      "commit": "18fa0d439a7910dfe0a7a82ac12828e85de166ca",
+      "scope": "Qwen3-TTS codec rings and unique custom op; no Ming codec changes."
+    },
+    {
+      "commit": "72b776c9ce41c794e74fa609266915ad229bea3c",
+      "scope": "Hy-SimulMT and model registration. Registry eagerly imports models; added import-time startup cost is not measured here."
+    }
+  ],
+  "limitation": "No subsequent-main timings are claimed. Frozen-source cost rows retain the measured version; final-main integration and affected startup verification remain required."
+}

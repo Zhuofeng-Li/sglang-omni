@@ -2,7 +2,7 @@
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate_commit": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
   "assignment": "01M5XFE1DE8PVBQWTSDP2JDYRY",
-  "lease_expires_epoch": 1793107571,
+  "lease_expires_epoch": 1793136371,
   "gpu_uuid": "GPU-4ac09667-48f7-6a03-b930-8338f78d441e",
   "archives": {},
   "released_utc": "2026-10-27T03:30:06.739587+00:00",
@@ -60,5 +60,13 @@
     "archive_sha256": "a5bd965bce4a9f60b70023a6c475513ffddf34a27612961e3e04e57356451be3"
   },
   "node_preflight_utc": "2026-10-27T03:30:07.413344+00:00",
-  "free_disk_bytes": 14063517089792
+  "free_disk_bytes": 14063517089792,
+  "lease_extensions": [
+    {
+      "observed_utc": "2026-10-27T08:55:32.745587+00:00",
+      "old": 1793107571,
+      "new": 1793136371,
+      "operator_receipt": "h200-extension.json"
+    }
+  ]
 }

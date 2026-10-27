@@ -1,0 +1,107 @@
+{
+  "config": {
+    "id": "upstream-zh-c32-B43",
+    "comparison": "upstream",
+    "language": "zh",
+    "concurrency": 32,
+    "label": "B43",
+    "arm": "candidate",
+    "seed": 43,
+    "variant": "native",
+    "gpu_uuid": "GPU-4ac09667-48f7-6a03-b930-8338f78d441e",
+    "candidate_commit": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+    "base_commit": "0fe60cf6c102caf982430e1764243c6e5c749d76"
+  },
+  "speed": {
+    "total_requests": 2020,
+    "completed_requests": 2020,
+    "failed_requests": 0,
+    "max_token_hits": 0,
+    "finish_reason_observed": 2020,
+    "client_slot_waits": 1988,
+    "latency_mean_s": 0.558,
+    "latency_median_s": 0.548,
+    "latency_p95_s": 0.727,
+    "latency_p99_s": 0.881,
+    "audio_duration_mean_s": 5.183,
+    "rtf_mean": 0.1081,
+    "rtf_median": 0.1064,
+    "rtf_p95": 0.1213,
+    "rtf_p99": 0.1694,
+    "throughput_qps": 56.686,
+    "output_throughput": 3672.3,
+    "output_tokens_mean": 65.0,
+    "output_tokens_total": 130861,
+    "prompt_tokens_mean": 129.0,
+    "prompt_tokens_total": 259608,
+    "audio_throughput_s_per_s": 293.781
+  },
+  "wer": {
+    "lang": "zh",
+    "total_samples": 2020,
+    "evaluated": 2020,
+    "skipped": 0,
+    "wer_corpus": 0.006861306960677613,
+    "wer_per_sample_mean": 0.006599545534189008,
+    "wer_per_sample_median": 0.0,
+    "wer_per_sample_std": 0.020289516510060484,
+    "wer_per_sample_p95": 0.047619047619047616,
+    "wer_per_sample_max": 0.25,
+    "wer_below_50_corpus": 0.006861306960677613,
+    "wer_below_50_per_sample_mean": 0.006599545534189008,
+    "n_above_50_pct_wer": 0,
+    "pct_above_50_pct_wer": 0.0,
+    "latency_mean_s": 0.5583605445544555,
+    "latency_median_s": 0.54785,
+    "latency_p95_s": 0.72663,
+    "rtf_mean": 0.10814833541542385,
+    "audio_duration_mean_s": 5.182613861386139
+  },
+  "speaker_sim": {
+    "mean": 0.7797089440692769,
+    "samples": 2020,
+    "method": "pinned CAM++ cosine; 16kHz native fbank"
+  },
+  "coverage": 2020,
+  "finished_utc": "2026-10-27T09:19:58.228838+00:00",
+  "costs": {
+    "startup_to_ready_s": 123.14200019836426,
+    "peak_tts_device_gib": 108.9228515625,
+    "successful_tts_captures": 430,
+    "memory_sampling_interval_s": 1,
+    "events": [
+      {
+        "epoch": 1793092294.939,
+        "event": "Starting server:",
+        "line": "2026-10-27 09:11:34,939 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python3 -m sglang_omni.cli serve --model-path inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0 --port 8000 --host localhost --config /results/server-config.yaml --tts_engine.engine.max_running_requests 64 --tts_engine.engine.cuda_graph_max_bs 64"
+      },
+      {
+        "epoch": 1793092418.081,
+        "event": "Service is ready.",
+        "line": "2026-10-27 09:13:38,081 benchmarks.benchmarker.utils INFO Service is ready."
+      },
+      {
+        "epoch": 1793092462.1,
+        "event": "Stopping server",
+        "line": "2026-10-27 09:14:22,100 benchmarks.benchmarker.utils INFO Stopping server (inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0)"
+      },
+      {
+        "epoch": 1793092465.257,
+        "event": "Starting server:",
+        "line": "2026-10-27 09:14:25,257 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python3 -m sglang_omni.cli serve --model-path Qwen/Qwen3-ASR-1.7B --port 8000 --host localhost"
+      },
+      {
+        "epoch": 1793092569.36,
+        "event": "Service is ready.",
+        "line": "2026-10-27 09:16:09,360 benchmarks.benchmarker.utils INFO Service is ready."
+      },
+      {
+        "epoch": 1793092582.519,
+        "event": "Stopping server",
+        "line": "2026-10-27 09:16:22,519 benchmarks.benchmarker.utils INFO Stopping server (Qwen/Qwen3-ASR-1.7B)"
+      }
+    ]
+  },
+  "reference_cache_logs": [],
+  "mps_lifecycle_logs": []
+}

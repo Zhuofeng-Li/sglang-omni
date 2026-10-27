@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T08:55:13.634403+00:00",
-  "completed_arms": 24,
+  "updated_utc": "2026-10-27T09:34:39.405952+00:00",
+  "completed_arms": 28,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -270,13 +270,48 @@
       }
     },
     "upstream/zh-c32": {
-      "status": "pending",
-      "missing": [
-        "upstream-zh-c32-A42",
-        "upstream-zh-c32-B42",
-        "upstream-zh-c32-B43",
-        "upstream-zh-c32-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 11.106,
+        "latency_mean_s": 2.8665000000000003,
+        "audio_duration_mean_s": 5.257,
+        "audio_throughput_s_per_s": 58.3835,
+        "latency_p95_range_s": [
+          3.831,
+          3.915
+        ],
+        "wer": 0.006802157762740737,
+        "sim": 0.7834687562419637,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 265479,
+        "startup_s": 82.09799993038177,
+        "peak_tts_device_gib": 108.7666015625,
+        "captures": [
+          19
+        ]
+      },
+      "B": {
+        "throughput_qps": 56.486999999999995,
+        "latency_mean_s": 0.5615,
+        "audio_duration_mean_s": 5.201499999999999,
+        "audio_throughput_s_per_s": 293.80150000000003,
+        "latency_p95_range_s": [
+          0.727,
+          0.735
+        ],
+        "wer": 0.0066010504897553585,
+        "sim": 0.7800148729861962,
+        "attempted": 4040,
+        "failed": 0,
+        "output_tokens": 262665,
+        "startup_s": 123.14250016212463,
+        "peak_tts_device_gib": 108.9228515625,
+        "captures": [
+          430
+        ]
+      }
     },
     "upstream/zh-c64": {
       "status": "pending",
@@ -451,7 +486,7 @@
     "upstream": {
       "1": 213.27601511911038,
       "16": 352.610389940826,
-      "32": null,
+      "32": 417.63298133299315,
       "64": null
     }
   },
@@ -527,6 +562,18 @@
       "seed": 43,
       "wer_delta": -0.00040221454597075615,
       "sim_delta": -0.003711037204997436
+    },
+    {
+      "cell": "upstream/zh-c32",
+      "seed": 42,
+      "wer_delta": -0.00042587422514550697,
+      "sim_delta": -0.0033767269241928854
+    },
+    {
+      "cell": "upstream/zh-c32",
+      "seed": 43,
+      "wer_delta": 2.3659679174749954e-05,
+      "sim_delta": -0.003531039587341911
     }
   ]
 }
