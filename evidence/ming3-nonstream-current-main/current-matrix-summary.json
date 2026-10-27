@@ -1,8 +1,8 @@
 {
   "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "updated_utc": "2026-10-27T12:14:15.510062+00:00",
-  "completed_arms": 44,
+  "updated_utc": "2026-10-27T12:41:42.217216+00:00",
+  "completed_arms": 48,
   "expected_arms": 92,
   "cells": {
     "upstream/en-c32": {
@@ -490,13 +490,48 @@
       }
     },
     "lifetime-corrected/en-c64": {
-      "status": "pending",
-      "missing": [
-        "lifetime-corrected-en-c64-A42",
-        "lifetime-corrected-en-c64-B42",
-        "lifetime-corrected-en-c64-B43",
-        "lifetime-corrected-en-c64-A43"
-      ]
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 13.612,
+        "latency_mean_s": 4.632,
+        "audio_duration_mean_s": 3.9025,
+        "audio_throughput_s_per_s": 53.114000000000004,
+        "latency_p95_range_s": [
+          7.199,
+          7.645
+        ],
+        "wer": 0.009880264590136481,
+        "sim": 0.7766652849420685,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 106147,
+        "startup_s": 80.58399999141693,
+        "peak_tts_device_gib": 107.6083984375,
+        "captures": [
+          19
+        ]
+      },
+      "B": {
+        "throughput_qps": 59.563,
+        "latency_mean_s": 1.0545,
+        "audio_duration_mean_s": 3.9035,
+        "audio_throughput_s_per_s": 232.4805,
+        "latency_p95_range_s": [
+          1.524,
+          1.534
+        ],
+        "wer": 0.009419743782969104,
+        "sim": 0.7774440607275157,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 106167,
+        "startup_s": 124.1414999961853,
+        "peak_tts_device_gib": 109.7841796875,
+        "captures": [
+          430
+        ]
+      }
     },
     "lifetime-corrected/zh-c1": {
       "status": "pending",
