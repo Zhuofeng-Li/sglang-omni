@@ -1,0 +1,293 @@
+{
+  "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+  "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+  "updated_utc": "2026-10-27T03:59:43.790122+00:00",
+  "completed_arms": 4,
+  "expected_arms": 92,
+  "cells": {
+    "upstream/en-c32": {
+      "status": "complete",
+      "missing": [],
+      "A": {
+        "throughput_qps": 11.6305,
+        "latency_mean_s": 2.7205000000000004,
+        "latency_p95_range_s": [
+          4.111,
+          4.18
+        ],
+        "wer": 0.010173323285606632,
+        "sim": 0.7785467494498282,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 107287,
+        "startup_s": 80.09349989891052,
+        "peak_tts_device_gib": 108.7607421875,
+        "captures": [
+          19
+        ]
+      },
+      "B": {
+        "throughput_qps": 61.2705,
+        "latency_mean_s": 0.5085,
+        "latency_p95_range_s": [
+          0.709,
+          0.725
+        ],
+        "wer": 0.009880264590136481,
+        "sim": 0.7768635542186744,
+        "attempted": 2176,
+        "failed": 0,
+        "output_tokens": 106172,
+        "startup_s": 124.14649999141693,
+        "peak_tts_device_gib": 109.8271484375,
+        "captures": [
+          430
+        ]
+      }
+    },
+    "upstream/en-c1": {
+      "status": "pending",
+      "missing": [
+        "upstream-en-c1-A42",
+        "upstream-en-c1-B42",
+        "upstream-en-c1-B43",
+        "upstream-en-c1-A43"
+      ]
+    },
+    "upstream/en-c16": {
+      "status": "pending",
+      "missing": [
+        "upstream-en-c16-A42",
+        "upstream-en-c16-B42",
+        "upstream-en-c16-B43",
+        "upstream-en-c16-A43"
+      ]
+    },
+    "upstream/en-c64": {
+      "status": "pending",
+      "missing": [
+        "upstream-en-c64-A42",
+        "upstream-en-c64-B42",
+        "upstream-en-c64-B43",
+        "upstream-en-c64-A43"
+      ]
+    },
+    "upstream/zh-c1": {
+      "status": "pending",
+      "missing": [
+        "upstream-zh-c1-A42",
+        "upstream-zh-c1-B42",
+        "upstream-zh-c1-B43",
+        "upstream-zh-c1-A43"
+      ]
+    },
+    "upstream/zh-c16": {
+      "status": "pending",
+      "missing": [
+        "upstream-zh-c16-A42",
+        "upstream-zh-c16-B42",
+        "upstream-zh-c16-B43",
+        "upstream-zh-c16-A43"
+      ]
+    },
+    "upstream/zh-c32": {
+      "status": "pending",
+      "missing": [
+        "upstream-zh-c32-A42",
+        "upstream-zh-c32-B42",
+        "upstream-zh-c32-B43",
+        "upstream-zh-c32-A43"
+      ]
+    },
+    "upstream/zh-c64": {
+      "status": "pending",
+      "missing": [
+        "upstream-zh-c64-A42",
+        "upstream-zh-c64-B42",
+        "upstream-zh-c64-B43",
+        "upstream-zh-c64-A43"
+      ]
+    },
+    "lifetime-corrected/en-c32": {
+      "status": "pending",
+      "missing": [
+        "lifetime-corrected-en-c32-A42",
+        "lifetime-corrected-en-c32-B42",
+        "lifetime-corrected-en-c32-B43",
+        "lifetime-corrected-en-c32-A43"
+      ]
+    },
+    "lifetime-corrected/en-c1": {
+      "status": "pending",
+      "missing": [
+        "lifetime-corrected-en-c1-A42",
+        "lifetime-corrected-en-c1-B42",
+        "lifetime-corrected-en-c1-B43",
+        "lifetime-corrected-en-c1-A43"
+      ]
+    },
+    "lifetime-corrected/en-c16": {
+      "status": "pending",
+      "missing": [
+        "lifetime-corrected-en-c16-A42",
+        "lifetime-corrected-en-c16-B42",
+        "lifetime-corrected-en-c16-B43",
+        "lifetime-corrected-en-c16-A43"
+      ]
+    },
+    "lifetime-corrected/en-c64": {
+      "status": "pending",
+      "missing": [
+        "lifetime-corrected-en-c64-A42",
+        "lifetime-corrected-en-c64-B42",
+        "lifetime-corrected-en-c64-B43",
+        "lifetime-corrected-en-c64-A43"
+      ]
+    },
+    "lifetime-corrected/zh-c1": {
+      "status": "pending",
+      "missing": [
+        "lifetime-corrected-zh-c1-A42",
+        "lifetime-corrected-zh-c1-B42",
+        "lifetime-corrected-zh-c1-B43",
+        "lifetime-corrected-zh-c1-A43"
+      ]
+    },
+    "lifetime-corrected/zh-c16": {
+      "status": "pending",
+      "missing": [
+        "lifetime-corrected-zh-c16-A42",
+        "lifetime-corrected-zh-c16-B42",
+        "lifetime-corrected-zh-c16-B43",
+        "lifetime-corrected-zh-c16-A43"
+      ]
+    },
+    "lifetime-corrected/zh-c32": {
+      "status": "pending",
+      "missing": [
+        "lifetime-corrected-zh-c32-A42",
+        "lifetime-corrected-zh-c32-B42",
+        "lifetime-corrected-zh-c32-B43",
+        "lifetime-corrected-zh-c32-A43"
+      ]
+    },
+    "lifetime-corrected/zh-c64": {
+      "status": "pending",
+      "missing": [
+        "lifetime-corrected-zh-c64-A42",
+        "lifetime-corrected-zh-c64-B42",
+        "lifetime-corrected-zh-c64-B43",
+        "lifetime-corrected-zh-c64-A43"
+      ]
+    },
+    "mps-attribution/en-c1": {
+      "status": "pending",
+      "missing": [
+        "mps-attribution-en-c1-A42",
+        "mps-attribution-en-c1-B42",
+        "mps-attribution-en-c1-B43",
+        "mps-attribution-en-c1-A43"
+      ]
+    },
+    "mps-attribution/en-c32": {
+      "status": "pending",
+      "missing": [
+        "mps-attribution-en-c32-A42",
+        "mps-attribution-en-c32-B42",
+        "mps-attribution-en-c32-B43",
+        "mps-attribution-en-c32-A43"
+      ]
+    },
+    "mps-attribution/zh-c1": {
+      "status": "pending",
+      "missing": [
+        "mps-attribution-zh-c1-A42",
+        "mps-attribution-zh-c1-B42",
+        "mps-attribution-zh-c1-B43",
+        "mps-attribution-zh-c1-A43"
+      ]
+    },
+    "mps-attribution/zh-c32": {
+      "status": "pending",
+      "missing": [
+        "mps-attribution-zh-c32-A42",
+        "mps-attribution-zh-c32-B42",
+        "mps-attribution-zh-c32-B43",
+        "mps-attribution-zh-c32-A43"
+      ]
+    },
+    "cache-attribution/en-c32": {
+      "status": "pending",
+      "missing": [
+        "cache-attribution-en-c32-A42",
+        "cache-attribution-en-c32-B42",
+        "cache-attribution-en-c32-B43",
+        "cache-attribution-en-c32-A43"
+      ]
+    },
+    "cache-attribution/zh-c32": {
+      "status": "pending",
+      "missing": [
+        "cache-attribution-zh-c32-A42",
+        "cache-attribution-zh-c32-B42",
+        "cache-attribution-zh-c32-B43",
+        "cache-attribution-zh-c32-A43"
+      ]
+    },
+    "fused-attribution/en-c32": {
+      "status": "pending",
+      "missing": [
+        "fused-attribution-en-c32-A42",
+        "fused-attribution-en-c32-B42",
+        "fused-attribution-en-c32-B43",
+        "fused-attribution-en-c32-A43"
+      ]
+    }
+  },
+  "geometric_throughput_change_percent": {
+    "cache-attribution": {
+      "1": null,
+      "16": null,
+      "32": null,
+      "64": null
+    },
+    "fused-attribution": {
+      "1": null,
+      "16": null,
+      "32": null,
+      "64": null
+    },
+    "lifetime-corrected": {
+      "1": null,
+      "16": null,
+      "32": null,
+      "64": null
+    },
+    "mps-attribution": {
+      "1": null,
+      "16": null,
+      "32": null,
+      "64": null
+    },
+    "upstream": {
+      "1": null,
+      "16": null,
+      "32": null,
+      "64": null
+    }
+  },
+  "per_seed_adverse_quality": [
+    {
+      "cell": "upstream/en-c32",
+      "seed": 42,
+      "wer_delta": -0.0005023863350916858,
+      "sim_delta": -0.0014246600022649325
+    },
+    {
+      "cell": "upstream/en-c32",
+      "seed": 43,
+      "wer_delta": -8.373105584861401e-05,
+      "sim_delta": -0.0019417304600424234
+    }
+  ]
+}

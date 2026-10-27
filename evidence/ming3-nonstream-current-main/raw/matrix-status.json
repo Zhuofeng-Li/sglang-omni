@@ -1,0 +1,13 @@
+{
+  "completed": [
+    "upstream-en-c32-A42",
+    "upstream-en-c32-B42",
+    "upstream-en-c32-B43",
+    "upstream-en-c32-A43"
+  ],
+  "started_utc": "2026-10-27T03:30:07.444361+00:00",
+  "stage": "running",
+  "updated_utc": "2026-10-27T03:59:26.439653+00:00",
+  "expected_arms": 92,
+  "active": "upstream-en-c1-A42"
+}

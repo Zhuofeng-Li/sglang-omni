@@ -1,0 +1,64 @@
+{
+  "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+  "candidate_commit": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+  "assignment": "01M5XFE1DE8PVBQWTSDP2JDYRY",
+  "lease_expires_epoch": 1793107571,
+  "gpu_uuid": "GPU-4ac09667-48f7-6a03-b930-8338f78d441e",
+  "archives": {},
+  "released_utc": "2026-10-27T03:30:06.739587+00:00",
+  "source_receipts": [
+    {
+      "name": "control",
+      "commit": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+      "verified_files": 3399,
+      "archive_sha256": "7b1ce7c5764984073464583e6786915eccce7649e7e53a35ebc5569bf9366371"
+    },
+    {
+      "name": "corrected-main",
+      "commit": "0d6a414e5e15c996900620d263143c89e0dd8acd",
+      "verified_files": 3399,
+      "archive_sha256": "7f23da65944c5aeeb6a63a2851e871204b4ac9e5073b4ae846f35f36264f093a"
+    },
+    {
+      "name": "candidate",
+      "commit": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+      "verified_files": 3404,
+      "archive_sha256": "395343ce6ecf6f5adccf62ab2780d273208c6f04b1c2434a913dd0c05bc28eaa"
+    },
+    {
+      "name": "stream",
+      "commit": "348f6973d4878ed77a9c6c60d072c91addaf15d8",
+      "verified_files": 3408,
+      "archive_sha256": "34e439729633aede2f084d0bcd036db801369efd704d950d5a5a1b1e99ab3240"
+    },
+    {
+      "name": "tiny-perf",
+      "commit": "ea0958cb4199f7752427c6974e3c3527d96d80f3",
+      "verified_files": 3411,
+      "archive_sha256": "5716fa22ccf121ca10a89018c1c874b52c21af356e4d17e484c9d1da3c2ab993"
+    }
+  ],
+  "operator_hashes": {
+    "run_arm.py": "300b68c7626ce30f3c5a1b39a711679979f773caa8ff2757d5333843e9dc08f5",
+    "run_matrix.py": "85cfe6f8fbdcacbff2098156e4221e5e3309592d0946ef5173c52bdb21b1b588"
+  },
+  "stream_validation": {
+    "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+    "stream_commit": "348f6973d4878ed77a9c6c60d072c91addaf15d8",
+    "completed_blocks": 16,
+    "attempted": 2048,
+    "failed": 0,
+    "stream_requests": 1024,
+    "underrun_na": 0,
+    "same_ordered_request_ids": true,
+    "http_smokes": {
+      "smoke-dense": 14,
+      "smoke-tiny": 14
+    },
+    "paired_asr_cases": 8,
+    "all_paired_normalized_transcripts_match": true,
+    "archive_sha256": "a5bd965bce4a9f60b70023a6c475513ffddf34a27612961e3e04e57356451be3"
+  },
+  "node_preflight_utc": "2026-10-27T03:30:07.413344+00:00",
+  "free_disk_bytes": 14063517089792
+}
