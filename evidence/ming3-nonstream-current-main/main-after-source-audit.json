@@ -1,7 +1,7 @@
 {
   "actual_measurement_base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
   "actual_candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
-  "later_main_audited_through": "00052c28747e2b2edfe571e1d3b9da4c6209da94",
+  "later_main_audited_through": "e9c058462d104451aa5144b12b001b0709a94a55",
   "findings": [
     {
       "commit": "e8050949b382a8ae87492840574c17d722aba8f7",
@@ -62,6 +62,10 @@
     {
       "commit": "00052c28747e2b2edfe571e1d3b9da4c6209da94",
       "scope": "README news and serving overview only; no code changes."
+    },
+    {
+      "commit": "e9c058462d104451aa5144b12b001b0709a94a55",
+      "scope": "Automatic model-path config discovery explicitly disables remote code. Measured services use explicit --config YAML and ConfigManager.from_file, bypassing the modified discovery function. No serving math/metrics change; final integration should cover model-path discovery too."
     }
   ],
   "limitation": "No subsequent-main timings are claimed. Frozen-source cost rows retain the measured version; final-main integration and affected startup verification remain required."
