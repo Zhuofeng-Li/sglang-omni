@@ -1,0 +1,82 @@
+....ssssssssssssssssssss..........ss.................ss.ss..sssss.s..... [ 11%]
+..............ss.....................s.................................. [ 22%]
+................................................................s....... [ 33%]
+........................................................................ [ 44%]
+........................................................................ [ 55%]
+........................................................................ [ 66%]
+..........................................................sss..........s [ 77%]
+ss...................................................................... [ 88%]
+...........FF........................................................... [ 99%]
+..                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_vocoder_decode_stream_priority_leaves_the_top_level_free[priority_range0--2] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ffe6cb97e60>
+priority_range = (0, -3), expected_priority = -2
+
+    @pytest.mark.parametrize(
+        ("priority_range", "expected_priority"),
+        [((0, -3), -2), ((0, -1), -1)],
+    )
+    def test_vocoder_decode_stream_priority_leaves_the_top_level_free(
+        monkeypatch: pytest.MonkeyPatch,
+        priority_range: tuple[int, int],
+        expected_priority: int,
+    ) -> None:
+>       monkeypatch.setattr(
+            torch.cuda.Stream, "priority_range", staticmethod(lambda: priority_range)
+        )
+E       AttributeError: <class 'torch.cuda.streams.Stream'> has no attribute 'priority_range'
+
+tests/unit_test/scheduling/test_streaming_vocoder.py:269: AttributeError
+_ test_vocoder_decode_stream_priority_leaves_the_top_level_free[priority_range1--1] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ffe629b4d40>
+priority_range = (0, -1), expected_priority = -1
+
+    @pytest.mark.parametrize(
+        ("priority_range", "expected_priority"),
+        [((0, -3), -2), ((0, -1), -1)],
+    )
+    def test_vocoder_decode_stream_priority_leaves_the_top_level_free(
+        monkeypatch: pytest.MonkeyPatch,
+        priority_range: tuple[int, int],
+        expected_priority: int,
+    ) -> None:
+>       monkeypatch.setattr(
+            torch.cuda.Stream, "priority_range", staticmethod(lambda: priority_range)
+        )
+E       AttributeError: <class 'torch.cuda.streams.Stream'> has no attribute 'priority_range'
+
+tests/unit_test/scheduling/test_streaming_vocoder.py:269: AttributeError
+=============================== warnings summary ===============================
+../integration-torch214/torch/jit/_script.py:1491
+../integration-torch214/torch/jit/_script.py:1491
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-torch214/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+../integration-cpu-deps/sglang/srt/layers/quantization/awq/awq.py:53
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/srt/layers/quantization/awq/awq.py:53: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+    warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+
+../integration-cpu-deps/sglang/srt/layers/quantization/gguf.py:69
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/srt/layers/quantization/gguf.py:69: UserWarning: Only CUDA, MUSA and NPU support GGUF quantization currently.
+    warnings.warn(f"Only CUDA, MUSA and NPU support GGUF quantization currently.")
+
+../integration-cpu-deps/sglang/kernels/ops/attention/fla/utils.py:223
+../integration-cpu-deps/sglang/kernels/ops/attention/fla/utils.py:223
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/kernels/ops/attention/fla/utils.py:223: UserWarning: Triton is not supported on current platform, roll back to CPU.
+    warnings.warn(
+
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+
+../integration-torch214/torch/jit/_script.py:1643
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-torch214/torch/jit/_script.py:1643: FutureWarning: `torch.jit.interface` is deprecated. Please use `torch.compile` instead.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/unit_test/scheduling/test_streaming_vocoder.py::test_vocoder_decode_stream_priority_leaves_the_top_level_free[priority_range0--2]
+FAILED tests/unit_test/scheduling/test_streaming_vocoder.py::test_vocoder_decode_stream_priority_leaves_the_top_level_free[priority_range1--1]
+2 failed, 606 passed, 42 skipped, 8 warnings in 23.43s

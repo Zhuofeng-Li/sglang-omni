@@ -1,0 +1,45 @@
+{
+  "finished_utc": "2026-10-27T18:47:41.506298+00:00",
+  "exit_code": 1,
+  "base": "e9c058462d104451aa5144b12b001b0709a94a55",
+  "head": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9",
+  "tree": "4c02de011867bef32cbec1b93f0929a219947fec",
+  "command": [
+    "/scratch/user/zhuofengli_tamu.edu/tasks/sglang-omni-pr-follow-up-20261016/validation-env/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/unit_test/ming3_tts",
+    "tests/unit_test/ming_tts",
+    "tests/unit_test/ming_omni",
+    "tests/unit_test/ming3_asr",
+    "tests/unit_test/ming3_audio",
+    "tests/unit_test/pipeline/test_async_decode.py",
+    "tests/unit_test/pipeline/test_streaming_simple_scheduler.py",
+    "tests/unit_test/scheduling/test_streaming_vocoder.py",
+    "tests/unit_test/scheduling/test_streaming_vocoder_session.py",
+    "tests/unit_test/models/test_model_capabilities.py",
+    "tests/unit_test/utils/test_checkpoint.py"
+  ],
+  "log": "/scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/latest-main-integration-cpu.log",
+  "passed": 606,
+  "skipped": 42,
+  "failed": 2,
+  "interpretation": "Two unchanged shared test cases fail before execution because CPU Torch build omits torch.cuda.Stream.priority_range; every collected Ming-family test passed. CUDA integration remains required.",
+  "cpu_wheel_limitation": true,
+  "source_files_unchanged_vs_main": [
+    "sglang_omni/scheduling/streaming_vocoder.py",
+    "tests/unit_test/scheduling/test_streaming_vocoder.py"
+  ],
+  "log_sha256": "8cc2f048e960d8e802d89cd0a81c5dc23bd0abd80c16a29b1292691716e736ca",
+  "runtime": {
+    "torch": "2.14.1+cpu",
+    "torchaudio": "2.11.0+cpu",
+    "torchvision": "0.29.1+cpu",
+    "transformers": "5.19.0",
+    "sglang": "0.5.22"
+  },
+  "scope": "Unpublished cumulative integration with main; not independent PR performance or current-head CUDA CI"
+}
