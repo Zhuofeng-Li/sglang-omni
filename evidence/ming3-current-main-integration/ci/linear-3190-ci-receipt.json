@@ -1,0 +1,30 @@
+{
+  "run": 40588559995,
+  "head": "d64c8f591484ca1fc7a2c2e61508b3250650b04f",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": {
+    "PR Test / unit-test-a": {
+      "job": 122492935371,
+      "summary": "2026-10-27T22:45:56.6576706Z == 4702 passed, 74 skipped, 6956 deselected, 54 warnings in 706.31s (0:11:46) ==",
+      "tested_sha": "52e64e45f541b6ceaf78ce2afc9bb034f7342492",
+      "checkout": "2026-10-27T22:33:07.2436338Z HEAD is now at 52e64e4 Merge d64c8f591484ca1fc7a2c2e61508b3250650b04f into 4368957213b72197af9e64d5d167299588149c41"
+    },
+    "PR Test / unit-test-accelerator": {
+      "job": 122492935381,
+      "summary": "2026-10-27T22:32:43.0847577Z = 1141 passed, 28 skipped, 10563 deselected, 83 warnings in 494.77s (0:08:14) ==",
+      "tested_sha": "52e64e45f541b6ceaf78ce2afc9bb034f7342492",
+      "checkout": "2026-10-27T22:23:25.5261565Z HEAD is now at 52e64e4 Merge d64c8f591484ca1fc7a2c2e61508b3250650b04f into 4368957213b72197af9e64d5d167299588149c41"
+    },
+    "PR Test / unit-test-b": {
+      "job": 122492935660,
+      "summary": "2026-10-27T22:51:39.2711178Z == 5595 passed, 48 skipped, 6089 deselected, 86 warnings in 890.66s (0:14:50) ==",
+      "tested_sha": "52e64e45f541b6ceaf78ce2afc9bb034f7342492",
+      "checkout": "2026-10-27T22:35:46.9484372Z HEAD is now at 52e64e4 Merge d64c8f591484ca1fc7a2c2e61508b3250650b04f into 4368957213b72197af9e64d5d167299588149c41"
+    }
+  },
+  "cleanup": "manual-only ephemeral cleanup not applicable; per-test containers removed",
+  "tested_merge": "52e64e45f541b6ceaf78ce2afc9bb034f7342492",
+  "tested_tree": "196ac00f6bb088910a9ea7f16a579efff8f897b3",
+  "tree_matches_published_head": true
+}
