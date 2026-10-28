@@ -1,0 +1,13 @@
+{
+  "id": "quality-zh-c1-A42",
+  "language": "zh",
+  "concurrency": 1,
+  "label": "A42",
+  "arm": "corrected-main",
+  "seed": 42,
+  "variant": "native",
+  "candidate_commit": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+  "base_commit": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+  "corrected_control_commit": "0d6a414e5e15c996900620d263143c89e0dd8acd",
+  "gpu_uuid": "GPU-99e2ecd1-862a-4af1-222d-841708198f30"
+}

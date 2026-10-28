@@ -1,6 +1,6 @@
 # Ming review follow-up — 2026-10-28
 
-Status: current-head code/CI checks complete; requested quality validation is running. This report does not qualify #3217 for release.
+Status: current-head code/CI and the requested quality follow-up are complete; quality acceptance and required reviews remain pending. This report does not qualify #3217 for release.
 
 ## Source and correctness
 
@@ -16,11 +16,33 @@ The four linked records verify actual test checkout SHAs, parentage, pass/skip c
 
 ## #3136 requested quality follow-up
 
-[Inspection](paired-error-inspection.json) of the existing paired ASR outputs confirms ENc16 +2/+6 net edits and ZHc1 +8/+12 (seeds42/43). Segmentation, number rendering and lexical changes are all present. Original WAVs were not retained after the old assignment was released; original hashes and transcriptions remain. No claim of listening to those original recordings is made.
+**Complete:** 12 arms / 18,648 formal requests, zero failures. Full EN 1,088 and ZH 2,020 per arm. Per cell the order is A42,B42,B43,A43,repeat-A42,repeat-A43 on one H200 `GPU-99e2ecd1-862a-4af1-222d-841708198f30`. Historical corrected-control source `0d6a414e5e15c996900620d263143c89e0dd8acd` and candidate `3f8593f4cae19fe1c71e929a854bdc03b2c185e6` were frozen throughout. These are review-requested source reproductions, not speedup measurements on today’s main. A read-only Hugging Face cache preflight failed before formal requests; the assets mount was made writable for normal snapshot bookkeeping, with the same mount/runtime policy in every accepted arm. Its failure evidence was retained separately.
 
-Fresh full-split ABBA plus repeated same-seed corrected controls are running on one H200. Actual historical source identities are control `0d6a414e5e15c996900620d263143c89e0dd8acd`, candidate `3f8593f4cae19fe1c71e929a854bdc03b2c185e6`; model `inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0`; data `zhaochenyang20/seed-tts-eval-arrow@27f4c1adee83b5b29b7c4b375f6b976324bda308`; scorer `Qwen/Qwen3-ASR-1.7B@7278e1e70fe206f11671096ffdd38061171dd6e5`. These are frozen-source reproductions, not new speedup measurements on today's main. The CSV's legacy `whisper_text` column contains Qwen ASR output.
+Model `inclusionAI/Ming-3.0-tts-0.5B@8d66b70a00f05ad183fa8a863b4ce609fc83cbc0`; data `zhaochenyang20/seed-tts-eval-arrow@27f4c1adee83b5b29b7c4b375f6b976324bda308`; scorer `Qwen/Qwen3-ASR-1.7B@7278e1e70fe206f11671096ffdd38061171dd6e5`; fixed CAM++. Original operator/evaluator and full-split request order retained, per-request seed42/43, nonstream, max-running/graph64, fresh service/cache per arm, native default CPU scheduling. All fresh arms share the same runtime. [Recorded historical/fresh runtime comparison](historical-fresh-runtime-comparison.json) discloses the Torch distribution strings2.14.1 versus2.14.1+cu130; no binary-identical runtime claim. The legacy CSV column `whisper_text` contains Qwen ASR output.
 
-ENc16 all six arms completed,1088 requests each with zero failures. Fresh A/B error counts are121/117 at42 and121/124 at43. Repeated A controls have121/122 errors. Some exactly identical WAV files received different ASR transcriptions; this documents evaluator variability without establishing non-inferiority. ZHc1 remains pending. Full conclusions await both cells.
+| Split/c | Seed | Historical A/B edits | Fresh A/B edits | Fresh Δ WER (pp) | Repeated A edits | Repeat Δ WER (pp) | Fresh SIM A → B |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| EN c16 | 42 | 120/122 | 121/117 | -0.033492 | 121 | +0.000000 | 0.775895 → 0.776506 |
+| EN c16 | 43 | 119/125 | 121/124 | +0.025119 | 122 | +0.008373 | 0.777017 → 0.777732 |
+| ZH c1 | 42 | 264/272 | 266/271 | +0.011830 | 264 | -0.004732 | 0.780467 → 0.780610 |
+| ZH c1 | 43 | 274/286 | 282/286 | +0.009464 | 285 | +0.007098 | 0.779372 → 0.780029 |
+
+Denominators are 11,943 EN reference units and 42,266 ZH reference units. Original corrected-control positive WER deltas are preserved, not overwritten. Fresh EN signs differ between seeds; fresh ZH positive deltas remain visible. Repeated controls and exactly identical WAVs with different transcriptions demonstrate scorer variability, not non-inferiority or a proof that every quality difference is evaluator noise.
+
+| Comparison | Same WAVs | Same-WAV changed ASR transcripts | Net edit change |
+|---|---:|---:|---:|
+| EN A42 → repeat-A42 | 1039/1088 | 5 | +0 |
+| EN A43 → repeat-A43 | 1048/1088 | 12 | +1 |
+| ZH A42 → repeat-A42 | 2020/2020 | 16 | -2 |
+| ZH A43 → repeat-A43 | 2020/2020 | 18 | +3 |
+| ZH historical-A42 → fresh-A42 | 2020/2020 | 16 | +2 |
+| ZH historical-B42 → fresh-B42 | 2020/2020 | 21 | -1 |
+| ZH historical-B43 → fresh-B43 | 2020/2020 | 16 | +0 |
+| ZH historical-A43 → fresh-A43 | 2020/2020 | 19 | +8 |
+
+[Original affected transcript inspection](paired-error-inspection.json) includes segmentation (moon bounce/moonbounce), number rendering (二零零九/2009), homophones and lexical changes. [Fresh paired and same-control transcript differences](quality-repeat-analysis.json) retain all examples. [Selected affected recordings](audio-examples.md) ([hash index](quality-audio-index.json)) explicitly identify exact historical waveform reconstructions; fresh EN recordings are not mislabeled as old files. No claim of listening to original unavailable recordings is made.
+
+The reviewer is asked to assess these measured quality differences; no formal equivalence margin was specified or inferred. Current CI/correctness checks are separately reported above. Original 92-arm throughput/ablation qualification retains its actual dates/revisions and remains linked in Prior complete records.
 
 ## #3217 requested shared-model validation
 
@@ -49,11 +71,11 @@ Two operator-input preflight failures (unsupported request seed, then generic 20
 
 #3217 remains Draft: dependency landing and the independent full Tiny matrix/quality/cost qualification are still pending. This complete shared-model subset fills only the specific cross-model review request.
 
-The shared-model assignment was released after verified off-node results/audio backup and process/cache cleanup; see [release receipt](omni-resource-release.json). The separate #3136 quality-repeat assignment is still active.
+The shared-model assignment was released after verified off-node results/audio backup and process/cache cleanup; see [release receipt](omni-resource-release.json). The separate #3136 quality-repeat assignment is also released after its final verified backup and cleanup; see [quality release receipt](quality-resource-release.json). All 330 affected original/fresh transcript IDs have recordings retained off-node; the public report selects 14 representative Ming3 WAVs.
 
 ## Remaining gates
 
-#3136 quality-repeat completion and reviewer approval; #3217 prerequisite landing, independent Tiny c1/c16/c32/c64 × both modes × EN/ZH × two-seed ABBA performance/quality/cost qualification, then approval. #3217 remains Draft. After accepted series merges, the final merged-main versus frozen pre-series main validation remains required. Resources are active only for the current tests and are backed up off-node every300 seconds; release is recorded after each assignment's consumers finish.
+#3136 quality assessment and reviewer approval; #3217 prerequisite landing, independent Tiny c1/c16/c32/c64 × both modes × EN/ZH × two-seed ABBA performance/quality/cost qualification, then approval. #3217 remains Draft. After accepted series merges, the final merged-main versus frozen pre-series main validation remains required. Resources are active only for the current tests and are backed up off-node every300 seconds; release is recorded after each assignment's consumers finish.
 
 ## Prior complete records
 

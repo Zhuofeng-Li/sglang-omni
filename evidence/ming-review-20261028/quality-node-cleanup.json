@@ -1,0 +1,26 @@
+{
+  "utc": "2026-10-28T23:36:34.212063+00:00",
+  "queue_complete": true,
+  "expected_requests": 18648,
+  "prep_container_removed": true,
+  "reproducible_paths_removed": [
+    "assets",
+    "unit-cache",
+    "quality-results/quality-zh-c1-A42/cache",
+    "quality-results/quality-zh-c1-B43/cache",
+    "quality-results/quality-en-c16-B43/cache",
+    "quality-results/quality-en-c16-repeat-A42/cache",
+    "quality-results/quality-en-c16-A43/cache",
+    "quality-results/quality-en-c16-B42/cache",
+    "quality-results/quality-en-c16-A42/cache",
+    "quality-results/quality-zh-c1-A43/cache",
+    "quality-results/quality-zh-c1-repeat-A42/cache",
+    "quality-results/quality-en-c16-repeat-A43/cache",
+    "quality-results/quality-zh-c1-B42/cache",
+    "quality-results/quality-zh-c1-repeat-A43/cache",
+    "preflight-failures/quality-en-c16-A42/cache"
+  ],
+  "runtime_image_remove_exit": 0,
+  "gpu_processes": "",
+  "retained": "Result/audio/metadata/logs left on node; all affected audio and necessary evidence verified off-node before cleanup."
+}

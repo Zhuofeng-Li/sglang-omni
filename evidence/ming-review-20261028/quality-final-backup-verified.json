@@ -1,0 +1,36 @@
+{
+  "utc": "2026-10-28T23:35:19.973345+00:00",
+  "receipt": {
+    "utc": "2026-10-28T23:35:05.697983+00:00",
+    "exit_code": 0,
+    "files": 2201,
+    "bytes": 707184973,
+    "sha256": "866064d417b9f0871f964ea39706e857c43c78ca57b8eeee9fb1814c83aed8ea",
+    "quality": {
+      "stage": "complete",
+      "completed": [
+        "quality-en-c16-A42",
+        "quality-en-c16-B42",
+        "quality-en-c16-B43",
+        "quality-en-c16-A43",
+        "quality-en-c16-repeat-A42",
+        "quality-en-c16-repeat-A43",
+        "quality-zh-c1-A42",
+        "quality-zh-c1-B42",
+        "quality-zh-c1-B43",
+        "quality-zh-c1-A43",
+        "quality-zh-c1-repeat-A42",
+        "quality-zh-c1-repeat-A43"
+      ],
+      "expected": 12,
+      "started_utc": "2026-10-28T19:10:26.081971+00:00",
+      "utc": "2026-10-28T23:33:45.859555+00:00",
+      "active": "quality-zh-c1-repeat-A43",
+      "finished_utc": "2026-10-28T23:33:45.859548+00:00"
+    },
+    "consecutive_failures": 0
+  },
+  "kind": "quality",
+  "completed": 12,
+  "readable_after_release": true
+}
