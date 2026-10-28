@@ -1,0 +1,51 @@
+{
+  "3136": [
+    "2026-10-28T18:57:55.8862537Z run_unit_test=false",
+    "2026-10-28T18:57:55.8863006Z run_asr=false",
+    "2026-10-28T18:57:55.8863522Z run_tts=false",
+    "2026-10-28T18:57:55.8864015Z run_mps=true",
+    "2026-10-28T18:57:55.8864258Z mps_ci_model=higgs",
+    "2026-10-28T18:57:55.8864506Z run_omni=false",
+    "2026-10-28T18:59:44.5883078Z Set output 'run_asr'",
+    "2026-10-28T18:59:44.5883813Z Set output 'run_tts'",
+    "2026-10-28T18:59:44.5884113Z Set output 'run_mps'",
+    "2026-10-28T18:59:44.5884409Z Set output 'run_omni'",
+    "2026-10-28T18:59:44.5885032Z Set output 'mps_ci_model'"
+  ],
+  "3189": [
+    "2026-10-28T18:57:56.8972923Z run_unit_test=true",
+    "2026-10-28T18:57:56.8973362Z run_asr=false",
+    "2026-10-28T18:57:56.8974018Z run_tts=false",
+    "2026-10-28T18:57:56.8974628Z run_mps=false",
+    "2026-10-28T18:57:56.8974933Z mps_ci_model=",
+    "2026-10-28T18:57:56.8975241Z run_omni=false",
+    "2026-10-28T19:00:33.5877105Z Set output 'run_asr'",
+    "2026-10-28T19:00:33.5877933Z Set output 'run_tts'",
+    "2026-10-28T19:00:33.5878424Z Set output 'run_mps'",
+    "2026-10-28T19:00:33.5879354Z Set output 'run_omni'"
+  ],
+  "3190": [
+    "2026-10-28T18:59:13.5904555Z run_unit_test=true",
+    "2026-10-28T18:59:13.5905088Z run_asr=false",
+    "2026-10-28T18:59:13.5906113Z run_tts=false",
+    "2026-10-28T18:59:13.5906947Z run_mps=false",
+    "2026-10-28T18:59:13.5907342Z mps_ci_model=",
+    "2026-10-28T18:59:13.5907724Z run_omni=false",
+    "2026-10-28T19:00:32.1248029Z Set output 'run_asr'",
+    "2026-10-28T19:00:32.1248732Z Set output 'run_tts'",
+    "2026-10-28T19:00:32.1249023Z Set output 'run_mps'",
+    "2026-10-28T19:00:32.1249305Z Set output 'run_omni'"
+  ],
+  "3217": [
+    "2026-10-28T19:04:16.5741019Z run_unit_test=true",
+    "2026-10-28T19:04:16.5741515Z run_asr=false",
+    "2026-10-28T19:04:16.5742205Z run_tts=false",
+    "2026-10-28T19:04:16.5742904Z run_mps=false",
+    "2026-10-28T19:04:16.5743248Z mps_ci_model=",
+    "2026-10-28T19:04:16.5743591Z run_omni=false",
+    "2026-10-28T19:04:16.8292450Z Set output 'run_asr'",
+    "2026-10-28T19:04:16.8293180Z Set output 'run_tts'",
+    "2026-10-28T19:04:16.8293466Z Set output 'run_mps'",
+    "2026-10-28T19:04:16.8293748Z Set output 'run_omni'"
+  ]
+}

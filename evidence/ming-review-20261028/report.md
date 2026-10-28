@@ -24,15 +24,36 @@ ENc16 all six arms completed,1088 requests each with zero failures. Fresh A/B er
 
 ## #3217 requested shared-model validation
 
-32 arms are running on a separate H200: first32 EN/ZH SeedTTS samples, c1/c8, both modes, A42/B42/B43/A43. Control is actual #3190 `d57f2e97` (tree64a386f4); candidate is actual #3217 `96957d08` (treea41d246d). This is a dependency ablation for the shared conditioning change, not an isolated-main Tiny performance claim.
+**Complete bounded shared-model check:** 32 arms / 1,024 formal requests, zero failures or output-budget hits. First 32 EN and ZH SeedTTS samples; c1/c8; both modes; startup seeds 42/43 ABBA. Control is #3190 `d57f2e970df64266b04e09bf716ba0ecc2342eca` (tree64a386f4); candidate is #3217 `96957d08e9dcd260005f5e92b9d13e90c544bbcf` (treea41d246d), on one H200 `GPU-da0d9c21-eb80-f5c6-c12c-bfc5bcb9f207`. This dependency ablation does not establish an independent-main Tiny gain.
 
-Checkpoint `inclusionAI/Ming-omni-tts-16.8B-A3B@2efcd28d04f83b1bd471af639b4210c9ecf2cd33`; provided `examples/configs/ming_omni_tts.yaml`, max-running8/graph buckets1,2,4,8 and output budget256, matching its serving cap. Request seeds are omitted because the native API rejects them. Process startup RNG and engine random seed are fixed to42/43; concurrent requests are not claimed to be individually deterministic. Real post-ready AR/acoustic-tail replays and, in streaming mode, AudioVAE graph replays are required before a result is accepted. Full-response AudioVAE uses the native compact eager path. ASR and CAM++ score every output; the pinned Dense CAM++ asset is shared across arms.
+Checkpoint `inclusionAI/Ming-omni-tts-16.8B-A3B@2efcd28d04f83b1bd471af639b4210c9ecf2cd33`; provided `examples/configs/ming_omni_tts.yaml`, max-running8 / graph buckets1,2,4,8 / output budget256. Request seeds are omitted because the native API rejects them; startup RNG and engine seed42/43 are verified from actual CPU/CUDA seeds at capture. Concurrent requests are not individually deterministic. ASR and fixed Dense CAM++ score every output. Full-response AudioVAE remains compact eager; AR and acoustic-tail graph serving replays are verified in every arm, with AudioVAE serving replays additionally required in every streaming arm.
 
-Two preflight operator-input failures were retained: unsupported request seed and generic output budget2048 exceeding the model's cap256. They occurred during warmup before formal requests; the production API guards and tests were retained. The corrected queue is running and preserves failures separately.
+| Language | c | Stream | WER% control → PR | SIM control → PR | Edits control/PR at42;43 | Failed/attempted |
+|---|---:|:---:|---:|---:|---|---:|
+| EN | 1 | false | 0.7082 → 0.7082 | 0.810337 → 0.810337 | 3/3; 2/2 | 0/128 |
+| EN | 1 | true | 0.7082 → 0.7082 | 0.810349 → 0.810349 | 3/3; 2/2 | 0/128 |
+| EN | 8 | false | 0.5666 → 0.7082 | 0.811814 → 0.808386 | 2/2; 2/3 | 0/128 |
+| EN | 8 | true | 0.5666 → 0.8499 | 0.811583 → 0.807644 | 2/4; 2/2 | 0/128 |
+| ZH | 1 | false | 0.7745 → 0.7745 | 0.858970 → 0.858970 | 5/5; 4/4 | 0/128 |
+| ZH | 1 | true | 0.7745 → 0.8606 | 0.859051 → 0.859051 | 5/5; 4/5 | 0/128 |
+| ZH | 8 | false | 0.7745 → 0.5164 | 0.857665 → 0.858625 | 4/3; 5/3 | 0/128 |
+| ZH | 8 | true | 1.8072 → 0.5164 | 0.847748 → 0.858058 | 2/3; 19/3 | 0/128 |
+
+All 256 c1 paired WAV comparisons are hash-identical. The ZH streaming seed 43 WER difference is one ASR edit on identical WAV `10002698-00000106` (发展生/发展商), demonstrating scoring variability without an audio change. Means are arithmetic means of the two seed corpus scores. Native concurrency8 scheduling can assign global FlowLoss noise differently despite the same startup seed. Differences remain visible; no non-inferiority threshold or deterministic per-request equivalence is asserted. One ZH c8 streaming control output (seed 43,10002539-00000054) transcribed as 嗯 and has 16 edits versus 0 in the candidate; its paired recordings are retained. Zero failed requests means transport/model completion, not zero word errors or uniformly good quality. [All per-seed results and paired transcript differences](omni-analysis.json); [selected affected audio with hashes](omni-audio-index.json).
+
+Every arm captured 4 AR + 4 acoustic-tail + 1 streaming AudioVAE graphs (the VAE graph is prepared at startup in both modes). Non-streaming requests do not replay the streaming VAE graph. Cost values below are observed subset-run ranges, not independent Tiny costs or a speedup claim.
+- omni-control: startup 112.12–122.11s; peak device 106.526–106.708GiB; 9 captures/arm, graph-count increment0.
+- omni-candidate: startup 112.09–118.14s; peak device 106.524–106.708GiB; 9 captures/arm, graph-count increment0.
+
+Two operator-input preflight failures (unsupported request seed, then generic 2048 budget exceeding the provided 256 cap) occurred during warmup before formal requests and were retained separately. Production request guards and regression assertions were kept.
+
+#3217 remains Draft: dependency landing and the independent full Tiny matrix/quality/cost qualification are still pending. This complete shared-model subset fills only the specific cross-model review request.
+
+The shared-model assignment was released after verified off-node results/audio backup and process/cache cleanup; see [release receipt](omni-resource-release.json). The separate #3136 quality-repeat assignment is still active.
 
 ## Remaining gates
 
-#3136 quality-repeat completion and reviewer approval; #3217 shared-model completion, prerequisite landing, independent Tiny c1/c16/c32/c64 × both modes × EN/ZH × two-seed ABBA performance/quality/cost qualification, then approval. #3217 remains Draft. After accepted series merges, the final merged-main versus frozen pre-series main validation remains required. Resources are active only for the current tests and are backed up off-node every300 seconds; release is recorded after each assignment's consumers finish.
+#3136 quality-repeat completion and reviewer approval; #3217 prerequisite landing, independent Tiny c1/c16/c32/c64 × both modes × EN/ZH × two-seed ABBA performance/quality/cost qualification, then approval. #3217 remains Draft. After accepted series merges, the final merged-main versus frozen pre-series main validation remains required. Resources are active only for the current tests and are backed up off-node every300 seconds; release is recorded after each assignment's consumers finish.
 
 ## Prior complete records
 

@@ -1,0 +1,98 @@
+[
+  {
+    "arm": "omni-zh-c8-stream-A43",
+    "sample_id": "10002539-00000018",
+    "sha256": "5a1d687354253e4234f86ed53b74b9d06828fe6afef6faf2dbf2d980fb91012a",
+    "file": "omni/omni-results/omni-zh-c8-stream-A43/output/audio/10002539-00000018.wav"
+  },
+  {
+    "arm": "omni-zh-c8-stream-A43",
+    "sample_id": "10002539-00000054",
+    "sha256": "26f37d7af1e7dc7ed517213a2185133e55dc742c746ab27643af33ee96a51071",
+    "file": "omni/omni-results/omni-zh-c8-stream-A43/output/audio/10002539-00000054.wav"
+  },
+  {
+    "arm": "omni-zh-c8-stream-A43",
+    "sample_id": "10002290-00000102",
+    "sha256": "5755244b3d4382f35967df24c8284fdd17fb1345fa1201bb3873a90e680c9248",
+    "file": "omni/omni-results/omni-zh-c8-stream-A43/output/audio/10002290-00000102.wav"
+  },
+  {
+    "arm": "omni-zh-c8-stream-A42",
+    "sample_id": "10002290-00000102",
+    "sha256": "7a2f5b21c580ce24cf6bfedefad405f2616d949e620ba861d80c2c603dd46734",
+    "file": "omni/omni-results/omni-zh-c8-stream-A42/output/audio/10002290-00000102.wav"
+  },
+  {
+    "arm": "omni-en-c8-stream-A42",
+    "sample_id": "common_voice_en_15734837-common_voice_en_15734838",
+    "sha256": "ec8e5b000b2714265568b34ffea1956e4320aff3b5a75227f1a29c8dd7f08ec9",
+    "file": "omni/omni-results/omni-en-c8-stream-A42/output/audio/common_voice_en_15734837-common_voice_en_15734838.wav"
+  },
+  {
+    "arm": "omni-zh-c8-full-A43",
+    "sample_id": "10002508-00000062",
+    "sha256": "a6247c613135625fe538186e7a168ced7de6b2d4880d5f895d7f232b2c44a9d1",
+    "file": "omni/omni-results/omni-zh-c8-full-A43/output/audio/10002508-00000062.wav"
+  },
+  {
+    "arm": "omni-zh-c8-stream-B43",
+    "sample_id": "10002539-00000018",
+    "sha256": "213fad7865a54548258b9d93de03c20c031140eca666e119cda3e7b335998820",
+    "file": "omni/omni-results/omni-zh-c8-stream-B43/output/audio/10002539-00000018.wav"
+  },
+  {
+    "arm": "omni-zh-c8-stream-B43",
+    "sample_id": "10002539-00000054",
+    "sha256": "2cc1c4fee69a44aa4a82ea03d5d4c706b4a8fd1ae19a3de9e3a08c53b6706331",
+    "file": "omni/omni-results/omni-zh-c8-stream-B43/output/audio/10002539-00000054.wav"
+  },
+  {
+    "arm": "omni-zh-c8-stream-B43",
+    "sample_id": "10002290-00000102",
+    "sha256": "2ef66acc646af7b37c92b80a8a39852f925f03f04880b47d32ab722cd59ea7f7",
+    "file": "omni/omni-results/omni-zh-c8-stream-B43/output/audio/10002290-00000102.wav"
+  },
+  {
+    "arm": "omni-en-c8-stream-B42",
+    "sample_id": "common_voice_en_15734837-common_voice_en_15734838",
+    "sha256": "676c8938b81c2e43e1831608121318b17655b18c9cb71384726320f1afcea3ad",
+    "file": "omni/omni-results/omni-en-c8-stream-B42/output/audio/common_voice_en_15734837-common_voice_en_15734838.wav"
+  },
+  {
+    "arm": "omni-en-c8-full-A43",
+    "sample_id": "common_voice_en_15265-common_voice_en_15266",
+    "sha256": "2ee20832f6ae761dbc75dbba2dae53ef080aa3eeef2cceb6091e1ef6b5b4cd0d",
+    "file": "omni/omni-results/omni-en-c8-full-A43/output/audio/common_voice_en_15265-common_voice_en_15266.wav"
+  },
+  {
+    "arm": "omni-zh-c8-full-B43",
+    "sample_id": "10002508-00000062",
+    "sha256": "339f674293955b67825b7bc491a22d4c216ac6463a8c408a756b3d05fa01390b",
+    "file": "omni/omni-results/omni-zh-c8-full-B43/output/audio/10002508-00000062.wav"
+  },
+  {
+    "arm": "omni-zh-c1-stream-B43",
+    "sample_id": "10002698-00000106",
+    "sha256": "f7790ec956a09f4281b80f31d1aa6f40bb96fc979b697f4350268314177ffdf2",
+    "file": "omni/omni-results/omni-zh-c1-stream-B43/output/audio/10002698-00000106.wav"
+  },
+  {
+    "arm": "omni-zh-c8-stream-B42",
+    "sample_id": "10002290-00000102",
+    "sha256": "14adaeced81eb1c027f17f109789b592a63bb39e40fd9d08942114259fab7c4d",
+    "file": "omni/omni-results/omni-zh-c8-stream-B42/output/audio/10002290-00000102.wav"
+  },
+  {
+    "arm": "omni-zh-c1-stream-A43",
+    "sample_id": "10002698-00000106",
+    "sha256": "f7790ec956a09f4281b80f31d1aa6f40bb96fc979b697f4350268314177ffdf2",
+    "file": "omni/omni-results/omni-zh-c1-stream-A43/output/audio/10002698-00000106.wav"
+  },
+  {
+    "arm": "omni-en-c8-full-B43",
+    "sample_id": "common_voice_en_15265-common_voice_en_15266",
+    "sha256": "9fc4c0be1823a58a5802f89308e0bd76b13c5c80c6554cab8e1e97b6d6089b49",
+    "file": "omni/omni-results/omni-en-c8-full-B43/output/audio/common_voice_en_15265-common_voice_en_15266.wav"
+  }
+]

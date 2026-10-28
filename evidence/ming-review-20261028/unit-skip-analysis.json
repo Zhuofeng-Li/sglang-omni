@@ -1,0 +1,6 @@
+{
+  "result": "276passed6skipped on actual CUDA H200/Torch2.14.1+cu130",
+  "skip_analysis": "Source-derived: test_graph_normalization_matches_native_reduction_and_owns_output explicitly skips strided rows1,3,33 for each fp16/bf16 (6 cases). Native strided graph dispatch requires complete4-row tiles. The CUDA/version guards do not apply on this host. Skips are not counted as passes.",
+  "source": "tests/unit_test/ming3_tts/test_acoustic_normalization.py:78",
+  "method": "Read parameterization and skip conditions; original quiet pytest log did not include -rs reason lines."
+}

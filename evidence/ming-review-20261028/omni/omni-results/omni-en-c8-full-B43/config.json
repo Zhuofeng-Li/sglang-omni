@@ -1,0 +1,14 @@
+{
+  "id": "omni-en-c8-full-B43",
+  "language": "en",
+  "concurrency": 8,
+  "stream": false,
+  "label": "B43",
+  "arm": "omni-candidate",
+  "seed": 43,
+  "variant": "native",
+  "gpu_uuid": "GPU-da0d9c21-eb80-f5c6-c12c-bfc5bcb9f207",
+  "model_revision": "2efcd28d04f83b1bd471af639b4210c9ecf2cd33",
+  "control_source": "d57f2e970df64266b04e09bf716ba0ecc2342eca",
+  "candidate_source": "96957d08e9dcd260005f5e92b9d13e90c544bbcf"
+}

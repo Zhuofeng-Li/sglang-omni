@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-28T22:49:29.583982+00:00",
+  "assignment": "01M61ZTADYQ4FKB1524HFEWQQY",
+  "machine": "node-radixark-16-0000",
+  "released": true,
+  "verified_absent": true,
+  "primary_and_unrelated_assignments_preserved": true,
+  "formal_requests": 1024,
+  "backup_sha256": "85d58e8a0ea7bf6e7a505f801180e07ae0f63a176ba8ca24ffb129f0372c6037"
+}

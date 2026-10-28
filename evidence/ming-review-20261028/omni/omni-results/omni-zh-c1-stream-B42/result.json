@@ -1,0 +1,149 @@
+{
+  "config": {
+    "id": "omni-zh-c1-stream-B42",
+    "language": "zh",
+    "concurrency": 1,
+    "stream": true,
+    "label": "B42",
+    "arm": "omni-candidate",
+    "seed": 42,
+    "variant": "native",
+    "gpu_uuid": "GPU-da0d9c21-eb80-f5c6-c12c-bfc5bcb9f207",
+    "model_revision": "2efcd28d04f83b1bd471af639b4210c9ecf2cd33",
+    "control_source": "d57f2e970df64266b04e09bf716ba0ecc2342eca",
+    "candidate_source": "96957d08e9dcd260005f5e92b9d13e90c544bbcf"
+  },
+  "speed": {
+    "total_requests": 32,
+    "completed_requests": 32,
+    "failed_requests": 0,
+    "max_token_hits": 0,
+    "finish_reason_observed": 32,
+    "client_slot_waits": 31,
+    "latency_mean_s": 0.411,
+    "latency_median_s": 0.365,
+    "latency_p95_s": 0.774,
+    "latency_p99_s": 0.857,
+    "audio_duration_mean_s": 5.91,
+    "rtf_mean": 0.0712,
+    "rtf_median": 0.0607,
+    "rtf_p95": 0.1221,
+    "rtf_p99": 0.1722,
+    "throughput_qps": 2.433,
+    "output_tok_per_req_s": 53.0,
+    "output_throughput": 44.9,
+    "output_tokens_mean": 18.0,
+    "output_tokens_total": 591,
+    "prompt_tokens_mean": 68.0,
+    "prompt_tokens_total": 2183,
+    "audio_throughput_s_per_s": 14.376,
+    "audio_ttfp_mean_s": 0.2405,
+    "audio_ttfp_median_s": 0.1972,
+    "audio_ttfp_p95_s": 0.612,
+    "audio_ttfp_p99_s": 0.6919,
+    "inter_chunk_mean_s": 0.0485,
+    "inter_chunk_p95_s": 0.0548,
+    "inter_chunk_p99_s": 0.0553,
+    "audio_chunks_mean": 4.5,
+    "audio_chunks_p95": 6.0,
+    "first_audio_payload_bytes_mean": 53802.0,
+    "first_audio_payload_bytes_p95": 53802.0,
+    "playback_continuity_requests": 32,
+    "playback_continuity_na_requests": 0,
+    "max_playback_underrun_mean_s": 0.0,
+    "max_playback_underrun_p95_s": 0.0,
+    "max_playback_underrun_p99_s": 0.0,
+    "c50": 100.0,
+    "c100": 100.0,
+    "c200": 100.0
+  },
+  "wer": {
+    "lang": "zh",
+    "total_samples": 32,
+    "evaluated": 32,
+    "skipped": 0,
+    "wer_corpus": 0.008605851979345954,
+    "wer_per_sample_mean": 0.008495670995670996,
+    "wer_per_sample_median": 0.0,
+    "wer_per_sample_std": 0.02614140469252492,
+    "wer_per_sample_p95": 0.04642857142857142,
+    "wer_per_sample_max": 0.13333333333333333,
+    "wer_below_50_corpus": 0.008605851979345954,
+    "wer_below_50_per_sample_mean": 0.008495670995670996,
+    "n_above_50_pct_wer": 0,
+    "pct_above_50_pct_wer": 0.0,
+    "latency_mean_s": 0.4109125,
+    "latency_median_s": 0.365,
+    "latency_p95_s": 0.77374,
+    "rtf_mean": 0.07125259626895639,
+    "audio_duration_mean_s": 5.91
+  },
+  "speaker_sim": {
+    "mean": 0.8590632826089859,
+    "samples": 32,
+    "method": "pinned CAM++ cosine; 16kHz native fbank"
+  },
+  "coverage": 32,
+  "finished_utc": "2026-10-28T21:54:47.091822+00:00",
+  "costs": {
+    "startup_to_ready_s": 112.0920000076294,
+    "peak_tts_device_gib": 106.5244140625,
+    "successful_tts_captures": 9,
+    "memory_sampling_interval_s": 1,
+    "events": [
+      {
+        "epoch": 1793224219.327,
+        "event": "Starting server:",
+        "line": "2026-10-28 21:50:19,327 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python3 -m sglang_omni.cli serve --model-path inclusionAI/Ming-omni-tts-16.8B-A3B@2efcd28d04f83b1bd471af639b4210c9ecf2cd33 --port 8000 --host localhost --config /results/server-config.yaml --tts_engine.engine.max_running_requests 8 --tts_engine.engine.cuda_graph_max_bs 8"
+      },
+      {
+        "epoch": 1793224331.419,
+        "event": "Service is ready.",
+        "line": "2026-10-28 21:52:11,419 benchmarks.benchmarker.utils INFO Service is ready."
+      },
+      {
+        "epoch": 1793224353.331,
+        "event": "Stopping server",
+        "line": "2026-10-28 21:52:33,331 benchmarks.benchmarker.utils INFO Stopping server (inclusionAI/Ming-omni-tts-16.8B-A3B@2efcd28d04f83b1bd471af639b4210c9ecf2cd33)"
+      },
+      {
+        "epoch": 1793224356.016,
+        "event": "Starting server:",
+        "line": "2026-10-28 21:52:36,016 benchmarks.benchmarker.utils INFO Starting server: /opt/sglang/bin/python3 -m sglang_omni.cli serve --model-path Qwen/Qwen3-ASR-1.7B --port 8000 --host localhost"
+      },
+      {
+        "epoch": 1793224476.343,
+        "event": "Service is ready.",
+        "line": "2026-10-28 21:54:36,343 benchmarks.benchmarker.utils INFO Service is ready."
+      },
+      {
+        "epoch": 1793224477.971,
+        "event": "Stopping server",
+        "line": "2026-10-28 21:54:37,971 benchmarks.benchmarker.utils INFO Stopping server (Qwen/Qwen3-ASR-1.7B)"
+      }
+    ]
+  },
+  "reference_cache_logs": [],
+  "mps_lifecycle_logs": [],
+  "serving_graph_coverage": {
+    "sglang_ar": {
+      "captures": 4,
+      "serving_replay_observations": 73
+    },
+    "ming_tts_tail": {
+      "captures": 4,
+      "serving_replay_observations": 76
+    },
+    "streaming_vae": {
+      "captures": 1,
+      "serving_replay_observations": 22
+    }
+  },
+  "rng_control": {
+    "scope": "process_startup_and_engine",
+    "startup_seed": 42,
+    "request_seed": null,
+    "contract": "Ming-Omni-TTS rejects request seeds; native request contract retained"
+  },
+  "quality_scope": "First32EN/ZH, same fixed CAM++ asset as3136; bounded shared-model regression, no independentTiny performance claim."
+}

@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-28T19:49:03.607742+00:00",
+  "request_seed_supported": false,
+  "process_startup_seeds": [
+    42,
+    43
+  ],
+  "engine_random_seed": [
+    42,
+    43
+  ],
+  "request_seed": null,
+  "production_contract_changes": false,
+  "caveat": "No per-request deterministic pairing promised at concurrent serving; paired aggregate quality on actual native stochastic model."
+}
