@@ -19,8 +19,10 @@ The AR adapter dropped complete latents whenever stream=true, including configur
 | --- | --- | --- |
 | #3136 | d1be1e0cbd4c939383fe75e3cc8799962996f240 | Previous successful run 40588559793; head unchanged |
 | #3189 | a821f8945d6400506b5696460566de88df7e2621 | 40696735289; pending |
-| #3190 | 432d34bafbf275a2a8b2850bed6bdb817ebe4ad1 | 40696735571; pending |
+| #3190 | 432d34bafbf275a2a8b2850bed6bdb817ebe4ad1 | 40696735571; success |
 | #3217 | eadc7611f6d3647db889000ca86c0c94a7ff518a | Manual 40696840691, unit-only; pending |
+
+Final #3190 CI passes on actual synthetic stack merge 0965c38cd02b4ba4c03029f7f2801c2fea1f5729 (tree9f3a832af6c503ab993151a91e09886945b77db2, includes main57f12ffe): CPU-A4730pass74skip, CPU-B5691pass49skip, accelerator1177pass28skip. All13 new fallback/routing cases executed and passed in CPU-B. Each unit job completed its own GPU cleanup and post-job steps; model stages and their ephemeral-home cleanup are N/A for this verified unit-only selection. Receipt with job IDs, checkout SHA and regression lines is archived alongside this report. #3189 and #3217 final runs remain pending.
 
 The original PRs and native stack3254 are preserved. Complete remote file lists are verified in cpu-fix-final-remote-files.json; counts remain 17/13/2/22 and the only doc/docs path is the explicitly requested Ming cookbook. This repair adds no documentation changes to the upstream PRs. Earlier local receipts and CI preflights in this directory preserve their actual superseded source IDs and are not passes on these final heads.
 
