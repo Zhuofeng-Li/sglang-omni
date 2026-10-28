@@ -1,0 +1,105 @@
+{
+  "utc": "2026-10-28T13:28:18.489413+00:00",
+  "main_audit": "57f12ffe2ee9a6d229a88047875127c9660e49ce",
+  "root_base": "6087f786b3a9dd2d53dee5f321737cecda88dd12",
+  "prs": [
+    {
+      "pr": 3136,
+      "branch": "codex/ming3-0.5b-nonstream-trajectory",
+      "old_head": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+      "new_head": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+      "base": "6087f786b3a9dd2d53dee5f321737cecda88dd12",
+      "tree": "9d56b4c3aa8f8a8e3e3247191be07c19caa894ca",
+      "files": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/acoustic.py",
+        "sglang_omni/models/ming3_tts/checkpoint.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/kernels.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/sglang_model.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/modules/ming_audio/vae/modeling_audio_vae.py",
+        "sglang_omni/mps/runtime.py",
+        "sglang_omni/mps/state.py",
+        "sglang_omni/utils/cpu.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+        "tests/unit_test/mps/test_mps_runtime.py",
+        "tests/unit_test/utils/test_cpu.py"
+      ]
+    },
+    {
+      "pr": 3189,
+      "branch": "codex/ming3-tiny-streaming",
+      "old_head": "30caf2a7e43dfcb972aa8f013f893b94dfb2aa3f",
+      "new_head": "a821f8945d6400506b5696460566de88df7e2621",
+      "base": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+      "tree": "c4382a9faf90cc7d8fff1fc5f65b86850f460f2f",
+      "files": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/__init__.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/streaming_vocoder.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/models/ming_tts/audio_decode.py",
+        "sglang_omni/models/ming_tts/streaming_vocoder.py",
+        "sglang_omni/modules/ming_audio/audio_decode.py",
+        "sglang_omni/modules/ming_audio/streaming_vocoder.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py",
+        "tests/unit_test/ming_tts/test_audio_decode.py"
+      ]
+    },
+    {
+      "pr": 3190,
+      "branch": "codex/ming3-05b-streaming",
+      "old_head": "82f26c38b694e90d766027ead6893522f8d4bd83",
+      "new_head": "432d34bafbf275a2a8b2850bed6bdb817ebe4ad1",
+      "base": "a821f8945d6400506b5696460566de88df7e2621",
+      "tree": "5842b96d1ba435a1525cc5677cc51cb81b293e9d",
+      "files": [
+        "sglang_omni/models/ming3_tts/stages.py",
+        "tests/unit_test/ming3_tts/test_ming3_dense_tts.py"
+      ]
+    },
+    {
+      "pr": 3217,
+      "branch": "codex/ming3-tiny-native-graphs-on-3136",
+      "old_head": "4650639e3bf6f880ea8c8f2d02c39142e39e0e4f",
+      "new_head": "eadc7611f6d3647db889000ca86c0c94a7ff518a",
+      "base": "432d34bafbf275a2a8b2850bed6bdb817ebe4ad1",
+      "tree": "61fcc46aebaab28630788f7f14f202827275d453",
+      "files": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/acoustic.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/model_config.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/native_acoustic.py",
+        "sglang_omni/models/ming3_tts/sglang_model.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/tiny_model_runner.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/models/ming3_tts/vocoder_graph.py",
+        "sglang_omni/modules/ming_audio/flow/dit.py",
+        "sglang_omni/modules/ming_audio/flow/flow_loss.py",
+        "sglang_omni/modules/ming_audio/flow/modules.py",
+        "sglang_omni/modules/ming_audio/flow/normalization.py",
+        "sglang_omni/modules/ming_audio/flow/rotary.py",
+        "sglang_omni/modules/ming_audio/vae/istft.py",
+        "tests/unit_test/ming3_tts/test_acoustic_normalization.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+        "tests/unit_test/ming3_tts/test_shared_rotary.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py"
+      ]
+    }
+  ],
+  "old_bundle_sha256": "096006cb92d933ad16faa32dff2c124a2225279479f499660de8a12ce79b7cc8",
+  "scope": "Standard CPU vocoders receive full-response fallback; non-CPU and custom vocoder dispatch remain unchanged. XPU is a mocked routing test, not an inference benchmark.",
+  "published_utc": "2026-10-28T13:28:22.279322+00:00",
+  "remote_verified": true
+}
