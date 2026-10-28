@@ -33,3 +33,12 @@ Two preflight operator-input failures were retained: unsupported request seed an
 ## Remaining gates
 
 #3136 quality-repeat completion and reviewer approval; #3217 shared-model completion, prerequisite landing, independent Tiny c1/c16/c32/c64 × both modes × EN/ZH × two-seed ABBA performance/quality/cost qualification, then approval. #3217 remains Draft. After accepted series merges, the final merged-main versus frozen pre-series main validation remains required. Resources are active only for the current tests and are backed up off-node every300 seconds; release is recorded after each assignment's consumers finish.
+
+## Prior complete records
+
+- [Original92-arm non-streaming matrix and ablations](../ming3-nonstream-current-main/report.md).
+- [c1/c32 first-packet and underrun evidence](../ming3-streaming-review/report.md).
+- [Earlier current-main CUDA/HTTP integration](../ming3-current-main-integration/report.md).
+- [CPU fallback regression and source records](../ming3-cpu-vocoder-fallback/report.md).
+- [Tiny streaming functional records](../ming3-tiny-stream-integration/report.md).
+- [Research provenance and original evidence index](https://gist.github.com/Zhuofeng-Li/ca0ebf3fc628f1921895867071befb34).
