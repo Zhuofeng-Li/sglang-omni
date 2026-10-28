@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-28T23:41:09.604669+00:00",
+  "actual_live_main": "c23a391ba77eecf3d543aceab25c001ac3711f2f",
+  "recorded_integration_main": "61a23967f010de309e65e6f1b1c3819be4b51e86",
+  "later_commits": [
+    "6d48890f docs/style tooling",
+    "c7b09e42 Qwen3-TTS model-local two-frame minimum",
+    "fddaa669 MiniCPM-o cut-reply status",
+    "c23a391b optionalSessionGraph preempting interrupt delivery"
+  ],
+  "changed_paths_after_c7": [
+    "sglang_omni/models/minicpm_o/talker_session.py",
+    "sglang_omni/pipeline/session_graph.py",
+    "tests/unit_test/minicpm_o/test_cut_reply_status.py",
+    "tests/unit_test/pipeline/test_session_graph_edges.py"
+  ],
+  "Ming_relevance": "No Ming model/config references SessionGraph/session_nodes/realtime graph. PipelineConfig.session_graph returnsNone when session_nodes absent; SessionManager.open_session reachesopen_graph only when graph configured. Changed control-edge/route_graph_outputs methods belong to optionalSessionGraph paths. Measured Ming HTTP speech routes use no session_nodes, so these deltas do not change tested TTS execution.",
+  "limits": "Read-only source relevance audit, not a new current-main CI/performance measurement; all source/test identities retained. No rebase/rebenchmark solely for unrelated main changes."
+}

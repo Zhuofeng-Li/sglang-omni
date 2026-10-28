@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-28T23:38:01.423813+00:00",
+  "head": "02103f988e5fc5d50e507318f66dbcdeb879931d",
+  "body_verified": true,
+  "body_sha256": "92821de52ae2b4ea673effa0542d9621fdeffb3cf9b53cbb2dd900bc11d92e5a",
+  "reply_id": 6483574880,
+  "reply_url": "https://github.com/sgl-project/sglang-omni/pull/3136#issuecomment-6483574880",
+  "reply_verified": true,
+  "evidence_commit": "11d4992c949603ebaa1bdd882afe7dd1bd978e8f",
+  "quality_acceptance_pending": true
+}

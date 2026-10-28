@@ -1,0 +1,47 @@
+{
+  "utc": "2026-10-28T23:39:27.978798+00:00",
+  "prs": {
+    "3136": {
+      "head": "02103f988e5fc5d50e507318f66dbcdeb879931d",
+      "files": 17,
+      "docs": [
+        "docs/cookbook/ming3_tts.md"
+      ],
+      "state": "OPEN",
+      "draft": false,
+      "review": "CHANGES_REQUESTED",
+      "body_verified": true
+    },
+    "3189": {
+      "head": "e2d7a33a63d8dba2d3410dea82677909e974b8c5",
+      "files": 16,
+      "docs": [
+        "docs/cookbook/ming3_tts.md"
+      ],
+      "state": "OPEN",
+      "draft": false,
+      "review": "REVIEW_REQUIRED",
+      "body_verified": true
+    },
+    "3190": {
+      "head": "d57f2e970df64266b04e09bf716ba0ecc2342eca",
+      "files": 2,
+      "docs": [],
+      "state": "OPEN",
+      "draft": false,
+      "review": "REVIEW_REQUIRED",
+      "body_verified": true
+    },
+    "3217": {
+      "head": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+      "files": 22,
+      "docs": [
+        "docs/cookbook/ming3_tts.md"
+      ],
+      "state": "OPEN",
+      "draft": true,
+      "review": "REVIEW_REQUIRED",
+      "body_verified": true
+    }
+  }
+}

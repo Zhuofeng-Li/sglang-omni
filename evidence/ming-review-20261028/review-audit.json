@@ -1,8 +1,8 @@
 {
-  "utc": "2026-10-28T23:37:41.002372+00:00",
-  "live_main": "c7b09e42804e923cb7794aa41a510790b9973166",
+  "utc": "2026-10-28T23:41:09.604669+00:00",
+  "live_main": "c23a391ba77eecf3d543aceab25c001ac3711f2f",
   "integration_main": "61a23967f010de309e65e6f1b1c3819be4b51e86",
-  "intervening_changes": "docs/style tooling and Qwen3-TTS model-local two-frame minimum; no Ming/shared execution delta; preserve frozen balanced blocks",
+  "intervening_changes": "No Ming model/config references SessionGraph/session_nodes/realtime graph. PipelineConfig.session_graph returnsNone when session_nodes absent; SessionManager.open_session reachesopen_graph only when graph configured. Changed control-edge/route_graph_outputs methods belong to optionalSessionGraph paths. Measured Ming HTTP speech routes use no session_nodes, so these deltas do not change tested TTS execution.",
   "3136": {
     "existing_matrix": "verified historical92arms141104requests0fails; actual revisions retained in original body",
     "review_quality_repeat": "complete12arms18648formalrequests0fail;ENc16A/B121/117,121/124,controls121/122;ZHc1A/B266/271,282/286,controls264/285; historicalsources0d6/3f8. Qualityacceptance pending reviewer; noNIclaim.",
