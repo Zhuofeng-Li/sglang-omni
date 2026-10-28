@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-28T13:09:46.639988+00:00",
+  "utc": "2026-10-28T13:33:40.411535+00:00",
   "scope": "Post-linearization readiness: identical per-PR cumulative trees to original-head/main merge; performance provenance retained.",
   "source_main": "57f12ffe2ee9a6d229a88047875127c9660e49ce",
   "docs_exception": "Only user-requested docs/cookbook/ming3_tts.md permitted; full per-PR lists verified.",
@@ -139,13 +139,26 @@
       "streaming": "N/A: explicitly nonstream scope",
       "quality": "Mixed WER/SIM and corrected-control outcomes disclosed; no preregistered noninferiority threshold",
       "costs": "Verified startup +44.61s, sampled peak +1.00GiB, captures +411 against actual measured main; later main changes not relabeled as measured",
-      "cpu_compatibility": "575latest-main host tests passed including10parameterized CPUfallback/CUDAdispatch regression cases; newly published accelerator CI pending"
+      "cpu_compatibility": "13regression cases;97feature suite;578latest-main host suite;49accelerator deselected;fullprecommit passes. Final-head GPU CI pending."
     },
     "3189": {
-      "head": "6272ee4c5a62c9527d312deba7cb23b0fa57fe5a",
+      "head": "a821f8945d6400506b5696460566de88df7e2621",
       "prior_head": "c864715c205d995835b48e26ca1d10cffff9350c",
-      "tree": "0f560c8b62e422e8ea770f8d5d51124ac3e91417",
-      "ci": "pending CPU-fallback-repair new head; unit-only preflight verified",
+      "tree": "c4382a9faf90cc7d8fff1fc5f65b86850f460f2f",
+      "ci": {
+        "run": 40696735289,
+        "head": "a821f8945d6400506b5696460566de88df7e2621",
+        "status": "queued",
+        "conclusion": "",
+        "preflight": "success",
+        "selection": [
+          "2026-10-28T13:28:37.9839150Z run_unit_test=true",
+          "2026-10-28T13:28:37.9839450Z run_asr=false",
+          "2026-10-28T13:28:37.9839818Z run_tts=false",
+          "2026-10-28T13:28:37.9840197Z run_mps=false",
+          "2026-10-28T13:28:37.9840544Z run_omni=false"
+        ]
+      },
       "approval": "pending",
       "ready_to_merge": false,
       "performance": "N/A clean-main streaming speedup: baseline lacks incremental endpoint; mode comparison only",
@@ -153,13 +166,26 @@
       "quality": "Functional eight ASR pairs; full-corpus WER/SIM not measured in latency scope",
       "costs": "Independent incremental peak-memory/graph comparison unmeasured; disclosed",
       "dependencies": "3136 then coordinated3189+3190 via native stack",
-      "cpu_compatibility": "575latest-main host tests passed including10parameterized CPUfallback/CUDAdispatch regression cases; newly published accelerator CI pending"
+      "cpu_compatibility": "13regression cases;97feature suite;578latest-main host suite;49accelerator deselected;fullprecommit passes. Final-head GPU CI pending."
     },
     "3190": {
-      "head": "eebeb3b70af3789e3e9c5dc36de6ccf67d7cb431",
+      "head": "432d34bafbf275a2a8b2850bed6bdb817ebe4ad1",
       "prior_head": "0ef18ce8952e027650d82d4292785e9687dface8",
-      "tree": "72f73ca08d3e15356b36eee79cfaa5aa928cf923",
-      "ci": "pending CPU-fallback-repair new head; unit-only preflight verified",
+      "tree": "5842b96d1ba435a1525cc5677cc51cb81b293e9d",
+      "ci": {
+        "run": 40696735571,
+        "head": "432d34bafbf275a2a8b2850bed6bdb817ebe4ad1",
+        "status": "in_progress",
+        "conclusion": "",
+        "preflight": "success",
+        "selection": [
+          "2026-10-28T13:29:03.3627823Z run_unit_test=true",
+          "2026-10-28T13:29:03.3628219Z run_asr=false",
+          "2026-10-28T13:29:03.3628559Z run_tts=false",
+          "2026-10-28T13:29:03.3628792Z run_mps=false",
+          "2026-10-28T13:29:03.3629013Z run_omni=false"
+        ]
+      },
       "approval": "pending",
       "ready_to_merge": false,
       "performance": "N/A clean-main streaming speedup: baseline lacks incremental endpoint; mode comparison only",
@@ -167,13 +193,26 @@
       "quality": "Functional eight ASR pairs; full-corpus WER/SIM not measured in latency scope",
       "costs": "Independent incremental peak-memory/graph comparison unmeasured; disclosed",
       "dependencies": "3136 then coordinated3189+3190 via native stack",
-      "cpu_compatibility": "575latest-main host tests passed including10parameterized CPUfallback/CUDAdispatch regression cases; newly published accelerator CI pending"
+      "cpu_compatibility": "13regression cases;97feature suite;578latest-main host suite;49accelerator deselected;fullprecommit passes. Final-head GPU CI pending."
     },
     "3217": {
-      "head": "292d54e0bf0da2bf238030a652c414eb83fcfb74",
+      "head": "eadc7611f6d3647db889000ca86c0c94a7ff518a",
       "prior_head": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9",
-      "tree": "29e4f1b812b34b305b3ecbb72e8f5c17b2b18db0",
-      "ci": "pending CPU-fallback-repair new head; unit-only preflight verified",
+      "tree": "61fcc46aebaab28630788f7f14f202827275d453",
+      "ci": {
+        "run": 40696840691,
+        "head": "eadc7611f6d3647db889000ca86c0c94a7ff518a",
+        "status": "queued",
+        "conclusion": "",
+        "preflight": "success",
+        "selection": [
+          "2026-10-28T13:29:19.7513110Z run_unit_test=true",
+          "2026-10-28T13:29:19.7513476Z run_asr=false",
+          "2026-10-28T13:29:19.7513995Z run_tts=false",
+          "2026-10-28T13:29:19.7514333Z run_mps=false",
+          "2026-10-28T13:29:19.7514774Z run_omni=false"
+        ]
+      },
       "approval": "pending",
       "ready_to_merge": false,
       "performance": "missing independent c1/c16/c32/c64 both modes EN/ZH two seeds ABBA after prerequisites land",
@@ -181,7 +220,7 @@
       "quality": "functional complete; full independent performance qualification pending",
       "state": "Draft retained",
       "dependencies": "3136+3189+3190 must land; acquire minimum Radix resource for missing independent matrix afterward",
-      "cpu_compatibility": "575latest-main host tests passed including10parameterized CPUfallback/CUDAdispatch regression cases; newly published accelerator CI pending"
+      "cpu_compatibility": "13regression cases;97feature suite;578latest-main host suite;49accelerator deselected;fullprecommit passes. Final-head GPU CI pending."
     }
   }
 }

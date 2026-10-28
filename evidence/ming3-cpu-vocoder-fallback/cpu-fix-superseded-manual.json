@@ -1,0 +1,7 @@
+{
+  "id": 40693453124,
+  "head": "292d54e0bf0da2bf238030a652c414eb83fcfb74",
+  "status": "completed",
+  "conclusion": "cancelled",
+  "reason": "Superseded by the finalized repair head; final manualrun40696840691 is authoritative."
+}
