@@ -1,0 +1,187 @@
+{
+  "utc": "2026-10-28T13:09:46.639988+00:00",
+  "scope": "Post-linearization readiness: identical per-PR cumulative trees to original-head/main merge; performance provenance retained.",
+  "source_main": "57f12ffe2ee9a6d229a88047875127c9660e49ce",
+  "docs_exception": "Only user-requested docs/cookbook/ming3_tts.md permitted; full per-PR lists verified.",
+  "functional_integration": {
+    "audited_utc": "2026-10-27T21:37:44.751101+00:00",
+    "tree": "4c02de011867bef32cbec1b93f0929a219947fec",
+    "series_head": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9",
+    "main": "e9c058462d104451aa5144b12b001b0709a94a55",
+    "gpu_uuid": "GPU-4ac09667-48f7-6a03-b930-8338f78d441e",
+    "image_id": "afb9f5ee0a17c70fe47598fa4802c6f1926bdd39c23fe1d35c8b14f701da0c23",
+    "unit": {
+      "passed": 644,
+      "skipped": 6,
+      "failed": 0
+    },
+    "smokes": {
+      "tiny": {
+        "cases": 14,
+        "comparisons": [
+          {
+            "case": "en-reference0",
+            "offline_samples": 882000,
+            "stream_samples": 882000,
+            "pcm_max_absolute_delta": 21946,
+            "pcm_mean_absolute_delta": 75.28551360544218,
+            "correlation": 0.9982081288667864
+          },
+          {
+            "case": "en-reference1",
+            "offline_samples": 98784,
+            "stream_samples": 98784,
+            "pcm_max_absolute_delta": 3215,
+            "pcm_mean_absolute_delta": 48.322744574020085,
+            "correlation": 0.9994953820811877
+          },
+          {
+            "case": "zh-reference0",
+            "offline_samples": 617400,
+            "stream_samples": 617400,
+            "pcm_max_absolute_delta": 10733,
+            "pcm_mean_absolute_delta": 68.43277129899579,
+            "correlation": 0.998628975103508
+          },
+          {
+            "case": "zh-reference1",
+            "offline_samples": 268128,
+            "stream_samples": 268128,
+            "pcm_max_absolute_delta": 850,
+            "pcm_mean_absolute_delta": 8.77952321279389,
+            "correlation": 0.9995509265249766
+          }
+        ],
+        "sse": {
+          "audio_chunks": 3,
+          "terminal": {
+            "type": "speech.audio.done",
+            "usage": {
+              "input_tokens": 42,
+              "output_tokens": 28,
+              "total_tokens": 70
+            },
+            "finish_reason": "stop"
+          }
+        },
+        "startup_seconds_functional_only": 259.0198018550873,
+        "pcm_hashes_verified": true
+      },
+      "dense": {
+        "cases": 14,
+        "comparisons": [
+          {
+            "case": "en-reference0",
+            "offline_samples": 81144,
+            "stream_samples": 81144,
+            "pcm_max_absolute_delta": 1028,
+            "pcm_mean_absolute_delta": 32.275929212264614,
+            "correlation": 0.9997047068733367
+          },
+          {
+            "case": "en-reference1",
+            "offline_samples": 109368,
+            "stream_samples": 109368,
+            "pcm_max_absolute_delta": 11552,
+            "pcm_mean_absolute_delta": 82.1230615902275,
+            "correlation": 0.9786043510684024
+          },
+          {
+            "case": "zh-reference0",
+            "offline_samples": 172872,
+            "stream_samples": 172872,
+            "pcm_max_absolute_delta": 1856,
+            "pcm_mean_absolute_delta": 80.05453167661622,
+            "correlation": 0.9997107107542256
+          },
+          {
+            "case": "zh-reference1",
+            "offline_samples": 285768,
+            "stream_samples": 285768,
+            "pcm_max_absolute_delta": 910,
+            "pcm_mean_absolute_delta": 23.764966686262984,
+            "correlation": 0.9997540643569747
+          }
+        ],
+        "sse": {
+          "audio_chunks": 3,
+          "terminal": {
+            "type": "speech.audio.done",
+            "usage": {
+              "input_tokens": 114,
+              "output_tokens": 31,
+              "total_tokens": 145
+            },
+            "finish_reason": "stop"
+          }
+        },
+        "startup_seconds_functional_only": 121.92028522491455,
+        "pcm_hashes_verified": true
+      }
+    },
+    "tiny_vocoder_graphs": 250,
+    "quality_pairs": 8,
+    "all_normalized_transcripts_match": true,
+    "archive_sha256": "e2335148fb61b6a904bf9e6cefda5904c58d7aa649832429a9ca68586f824b52",
+    "scope": "Cumulative source-equivalent functional integration; not final merged-series performance"
+  },
+  "prs": {
+    "3136": {
+      "head": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+      "prior_head": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+      "tree": "9d56b4c3aa8f8a8e3e3247191be07c19caa894ca",
+      "ci": "verified previous successful run; same head",
+      "approval": "pending",
+      "ready_to_merge": false,
+      "performance": "verified c1/c16/c32/c64 nonstream EN/ZH, seeds42/43 ABBA;92 arms including controls and requested ablations",
+      "measured_main": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+      "measured_candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+      "streaming": "N/A: explicitly nonstream scope",
+      "quality": "Mixed WER/SIM and corrected-control outcomes disclosed; no preregistered noninferiority threshold",
+      "costs": "Verified startup +44.61s, sampled peak +1.00GiB, captures +411 against actual measured main; later main changes not relabeled as measured",
+      "cpu_compatibility": "575latest-main host tests passed including10parameterized CPUfallback/CUDAdispatch regression cases; newly published accelerator CI pending"
+    },
+    "3189": {
+      "head": "6272ee4c5a62c9527d312deba7cb23b0fa57fe5a",
+      "prior_head": "c864715c205d995835b48e26ca1d10cffff9350c",
+      "tree": "0f560c8b62e422e8ea770f8d5d51124ac3e91417",
+      "ci": "pending CPU-fallback-repair new head; unit-only preflight verified",
+      "approval": "pending",
+      "ready_to_merge": false,
+      "performance": "N/A clean-main streaming speedup: baseline lacks incremental endpoint; mode comparison only",
+      "latency": "verified requested c1/c32 EN/ZH two seeds matched stream/nonstream modes; original measured source retained",
+      "quality": "Functional eight ASR pairs; full-corpus WER/SIM not measured in latency scope",
+      "costs": "Independent incremental peak-memory/graph comparison unmeasured; disclosed",
+      "dependencies": "3136 then coordinated3189+3190 via native stack",
+      "cpu_compatibility": "575latest-main host tests passed including10parameterized CPUfallback/CUDAdispatch regression cases; newly published accelerator CI pending"
+    },
+    "3190": {
+      "head": "eebeb3b70af3789e3e9c5dc36de6ccf67d7cb431",
+      "prior_head": "0ef18ce8952e027650d82d4292785e9687dface8",
+      "tree": "72f73ca08d3e15356b36eee79cfaa5aa928cf923",
+      "ci": "pending CPU-fallback-repair new head; unit-only preflight verified",
+      "approval": "pending",
+      "ready_to_merge": false,
+      "performance": "N/A clean-main streaming speedup: baseline lacks incremental endpoint; mode comparison only",
+      "latency": "verified requested c1/c32 EN/ZH two seeds matched stream/nonstream modes; original measured source retained",
+      "quality": "Functional eight ASR pairs; full-corpus WER/SIM not measured in latency scope",
+      "costs": "Independent incremental peak-memory/graph comparison unmeasured; disclosed",
+      "dependencies": "3136 then coordinated3189+3190 via native stack",
+      "cpu_compatibility": "575latest-main host tests passed including10parameterized CPUfallback/CUDAdispatch regression cases; newly published accelerator CI pending"
+    },
+    "3217": {
+      "head": "292d54e0bf0da2bf238030a652c414eb83fcfb74",
+      "prior_head": "8d0f5d4352b704986cbc50e44ec4df42cce0fbc9",
+      "tree": "29e4f1b812b34b305b3ecbb72e8f5c17b2b18db0",
+      "ci": "pending CPU-fallback-repair new head; unit-only preflight verified",
+      "approval": "pending",
+      "ready_to_merge": false,
+      "performance": "missing independent c1/c16/c32/c64 both modes EN/ZH two seeds ABBA after prerequisites land",
+      "costs": "missing independent startup/memory/graph comparison",
+      "quality": "functional complete; full independent performance qualification pending",
+      "state": "Draft retained",
+      "dependencies": "3136+3189+3190 must land; acquire minimum Radix resource for missing independent matrix afterward",
+      "cpu_compatibility": "575latest-main host tests passed including10parameterized CPUfallback/CUDAdispatch regression cases; newly published accelerator CI pending"
+    }
+  }
+}

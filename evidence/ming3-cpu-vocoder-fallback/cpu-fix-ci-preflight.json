@@ -1,0 +1,41 @@
+{
+  "3189": {
+    "run": 40693188549,
+    "head": "6272ee4c5a62c9527d312deba7cb23b0fa57fe5a",
+    "status": "queued",
+    "preflight": "success",
+    "selection": [
+      "2026-10-28T13:04:54.9440513Z run_unit_test=true",
+      "2026-10-28T13:04:54.9441011Z run_asr=false",
+      "2026-10-28T13:04:54.9441757Z run_tts=false",
+      "2026-10-28T13:04:54.9442507Z run_mps=false",
+      "2026-10-28T13:04:54.9443230Z run_omni=false"
+    ]
+  },
+  "3190": {
+    "run": 40693190104,
+    "head": "eebeb3b70af3789e3e9c5dc36de6ccf67d7cb431",
+    "status": "queued",
+    "preflight": "success",
+    "selection": [
+      "2026-10-28T13:04:57.6239159Z run_unit_test=true",
+      "2026-10-28T13:04:57.6239614Z run_asr=false",
+      "2026-10-28T13:04:57.6240322Z run_tts=false",
+      "2026-10-28T13:04:57.6240782Z run_mps=false",
+      "2026-10-28T13:04:57.6241232Z run_omni=false"
+    ]
+  },
+  "3217": {
+    "run": 40693453124,
+    "head": "292d54e0bf0da2bf238030a652c414eb83fcfb74",
+    "status": "queued",
+    "preflight": "success",
+    "selection": [
+      "2026-10-28T13:06:40.7842836Z run_unit_test=true",
+      "2026-10-28T13:06:40.7843649Z run_asr=false",
+      "2026-10-28T13:06:40.7844983Z run_tts=false",
+      "2026-10-28T13:06:40.7845766Z run_mps=false",
+      "2026-10-28T13:06:40.7846512Z run_omni=false"
+    ]
+  }
+}

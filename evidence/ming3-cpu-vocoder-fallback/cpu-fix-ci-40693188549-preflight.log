@@ -1,0 +1,273 @@
+﻿2026-10-28T13:04:49.9067442Z Current runner version: '2.338.0'
+2026-10-28T13:04:49.9091275Z ##[group]Runner Image Provisioner
+2026-10-28T13:04:49.9092228Z Hosted Compute Agent
+2026-10-28T13:04:49.9092886Z Version: 20261021.618
+2026-10-28T13:04:49.9093494Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-28T13:04:49.9094277Z Build Date: 2026-10-21T00:45:21Z
+2026-10-28T13:04:49.9094989Z Worker ID: {a30dcfa5-b6b5-451c-b085-41d33687c4e9}
+2026-10-28T13:04:49.9095713Z Region: westus3
+2026-10-28T13:04:49.9096257Z Cloud: Azure
+2026-10-28T13:04:49.9096973Z ##[endgroup]
+2026-10-28T13:04:49.9098518Z ##[group]Operating System
+2026-10-28T13:04:49.9099712Z Ubuntu
+2026-10-28T13:04:49.9100306Z 26.04.1
+2026-10-28T13:04:49.9100830Z LTS
+2026-10-28T13:04:49.9101323Z ##[endgroup]
+2026-10-28T13:04:49.9101910Z ##[group]Runner Image
+2026-10-28T13:04:49.9102543Z Image: ubuntu-26.04
+2026-10-28T13:04:49.9103120Z Version: 20261012.163.1
+2026-10-28T13:04:49.9104426Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261012.163/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-28T13:04:49.9106093Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261012.163
+2026-10-28T13:04:49.9107072Z ##[endgroup]
+2026-10-28T13:04:49.9108385Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T13:04:49.9110603Z Checks: read
+2026-10-28T13:04:49.9111195Z Contents: read
+2026-10-28T13:04:49.9111897Z Metadata: read
+2026-10-28T13:04:49.9112484Z PullRequests: read
+2026-10-28T13:04:49.9113078Z ##[endgroup]
+2026-10-28T13:04:49.9115061Z Secret source: Actions
+2026-10-28T13:04:49.9116039Z Cache mode: write
+2026-10-28T13:04:49.9116810Z Prepare workflow directory
+2026-10-28T13:04:49.9693021Z Prepare all required actions
+2026-10-28T13:04:49.9741597Z Getting action download info
+2026-10-28T13:04:50.2793074Z Download action repository 'actions/github-script@v7' (SHA:f28e40c7f34bde8b3046d885e986cb6290c5673b)
+2026-10-28T13:04:50.9072534Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-28T13:04:51.0378016Z Complete job name: omni-ci-gate
+2026-10-28T13:04:51.1258715Z ##[group]Run actions/github-script@v7
+2026-10-28T13:04:51.1260024Z with:
+2026-10-28T13:04:51.1264021Z   github-token: ***
+2026-10-28T13:04:51.1267794Z   script: if (context.eventName === "workflow_dispatch") {
+  const labels = process.env.DISPATCH_CI_LABELS.split(/\s+/).filter(Boolean);
+  core.setOutput("labels", JSON.stringify(labels));
+  core.setOutput("draft", "false");
+} else {
+  // Reruns reuse the original pull_request event payload, so fetch
+  // the live labels and draft state.
+  const pr = await github.rest.pulls.get({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    pull_number: context.issue.number,
+  });
+  core.setOutput("labels", JSON.stringify(pr.data.labels.map((label) => label.name)));
+  core.setOutput("draft", pr.data.draft ? "true" : "false");
+}
+
+2026-10-28T13:04:51.1271787Z   debug: false
+2026-10-28T13:04:51.1272286Z   user-agent: actions/github-script
+2026-10-28T13:04:51.1272878Z   result-encoding: json
+2026-10-28T13:04:51.1273430Z   retries: 0
+2026-10-28T13:04:51.1274029Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-28T13:04:51.1274985Z env:
+2026-10-28T13:04:51.1275495Z   OMNI_CI_HOME: /data/omni-ci/pr-3189
+2026-10-28T13:04:51.1276121Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-28T13:04:51.1276898Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-28T13:04:51.1277764Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-28T13:04:51.1278556Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-28T13:04:51.1279647Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-28T13:04:51.1280475Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-28T13:04:51.1281306Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-28T13:04:51.1282207Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-28T13:04:51.1282951Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-28T13:04:51.1283867Z   DISPATCH_CI_LABELS:
+2026-10-28T13:04:51.1284363Z ##[endgroup]
+2026-10-28T13:04:52.6182320Z ##[group]Run echo "CI labels: ["run-unit-test-ci-only"]"
+2026-10-28T13:04:52.6184241Z [36;1mecho "CI labels: ["run-unit-test-ci-only"]"[0m
+2026-10-28T13:04:52.6185866Z [36;1mecho "PR draft: false"[0m
+2026-10-28T13:04:52.6361765Z shell: /usr/bin/bash -e {0}
+2026-10-28T13:04:52.6363073Z env:
+2026-10-28T13:04:52.6364187Z   OMNI_CI_HOME: /data/omni-ci/pr-3189
+2026-10-28T13:04:52.6365694Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-28T13:04:52.6367584Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-28T13:04:52.6369841Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-28T13:04:52.6371631Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-28T13:04:52.6373682Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-28T13:04:52.6375505Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-28T13:04:52.6377353Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-28T13:04:52.6379561Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-28T13:04:52.6381222Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-28T13:04:52.6382629Z ##[endgroup]
+2026-10-28T13:04:52.6510455Z CI labels: [run-unit-test-ci-only]
+2026-10-28T13:04:52.6512100Z PR draft: false
+2026-10-28T13:04:52.6942061Z ##[group]Run actions/checkout@v4
+2026-10-28T13:04:52.6943311Z with:
+2026-10-28T13:04:52.6944385Z   ref: 6272ee4c5a62c9527d312deba7cb23b0fa57fe5a
+2026-10-28T13:04:52.6945851Z   repository: sgl-project/sglang-omni
+2026-10-28T13:04:52.6956550Z   token: ***
+2026-10-28T13:04:52.6957547Z   ssh-strict: true
+2026-10-28T13:04:52.6958560Z   ssh-user: git
+2026-10-28T13:04:52.6959732Z   persist-credentials: true
+2026-10-28T13:04:52.6960903Z   clean: true
+2026-10-28T13:04:52.6961975Z   sparse-checkout-cone-mode: true
+2026-10-28T13:04:52.6963224Z   fetch-depth: 1
+2026-10-28T13:04:52.6964233Z   fetch-tags: false
+2026-10-28T13:04:52.6965306Z   show-progress: true
+2026-10-28T13:04:52.6966366Z   lfs: false
+2026-10-28T13:04:52.6967686Z   submodules: false
+2026-10-28T13:04:52.6969575Z   set-safe-directory: true
+2026-10-28T13:04:52.6971360Z   allow-unsafe-pr-checkout: false
+2026-10-28T13:04:52.6973487Z env:
+2026-10-28T13:04:52.6975100Z   OMNI_CI_HOME: /data/omni-ci/pr-3189
+2026-10-28T13:04:52.6977462Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-28T13:04:52.6980020Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-28T13:04:52.6981907Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-28T13:04:52.6983667Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-28T13:04:52.6985679Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-28T13:04:52.6987453Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-28T13:04:52.6989553Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-28T13:04:52.6991574Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-28T13:04:52.6993233Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-28T13:04:52.6994638Z ##[endgroup]
+2026-10-28T13:04:52.7987928Z Syncing repository: sgl-project/sglang-omni
+2026-10-28T13:04:52.7991138Z ##[group]Getting Git version info
+2026-10-28T13:04:52.7993448Z Working directory is '/home/runner/work/sglang-omni/sglang-omni'
+2026-10-28T13:04:52.7995932Z [command]/usr/bin/git version
+2026-10-28T13:04:52.7997295Z git version 2.55.0
+2026-10-28T13:04:52.8015870Z ##[endgroup]
+2026-10-28T13:04:52.8031486Z Temporarily overriding HOME='/home/runner/work/_temp/d9b13077-3a5a-496d-b74a-4f0dfcbdecf5' before making global git config changes
+2026-10-28T13:04:52.8036003Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-28T13:04:52.8040126Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sglang-omni/sglang-omni
+2026-10-28T13:04:52.8094845Z Deleting the contents of '/home/runner/work/sglang-omni/sglang-omni'
+2026-10-28T13:04:52.8098187Z ##[group]Initializing the repository
+2026-10-28T13:04:52.8103472Z [command]/usr/bin/git init /home/runner/work/sglang-omni/sglang-omni
+2026-10-28T13:04:52.8213346Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-28T13:04:52.8216416Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-28T13:04:52.8220303Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-28T13:04:52.8223492Z hint: call:
+2026-10-28T13:04:52.8224993Z hint:
+2026-10-28T13:04:52.8226931Z hint: 	git config --global init.defaultBranch <name>
+2026-10-28T13:04:52.8230668Z hint:
+2026-10-28T13:04:52.8232767Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-28T13:04:52.8235222Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-28T13:04:52.8237301Z hint:
+2026-10-28T13:04:52.8238477Z hint: 	git branch -m <name>
+2026-10-28T13:04:52.8240168Z hint:
+2026-10-28T13:04:52.8241997Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-28T13:04:52.8244774Z Initialized empty Git repository in /home/runner/work/sglang-omni/sglang-omni/.git/
+2026-10-28T13:04:52.8249458Z [command]/usr/bin/git remote add origin https://github.com/sgl-project/sglang-omni
+2026-10-28T13:04:52.8278643Z ##[endgroup]
+2026-10-28T13:04:52.8281471Z ##[group]Disabling automatic garbage collection
+2026-10-28T13:04:52.8283339Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-28T13:04:52.8317227Z ##[endgroup]
+2026-10-28T13:04:52.8319475Z ##[group]Setting up auth
+2026-10-28T13:04:52.8323592Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-28T13:04:52.8356338Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-28T13:04:52.8842384Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-28T13:04:52.8877797Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-28T13:04:52.9149837Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-28T13:04:52.9184391Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-28T13:04:52.9453858Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-28T13:04:52.9494455Z ##[endgroup]
+2026-10-28T13:04:52.9496879Z ##[group]Fetching the repository
+2026-10-28T13:04:52.9511187Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 6272ee4c5a62c9527d312deba7cb23b0fa57fe5a
+2026-10-28T13:04:54.3981545Z From https://github.com/sgl-project/sglang-omni
+2026-10-28T13:04:54.3982498Z  * branch            6272ee4c5a62c9527d312deba7cb23b0fa57fe5a -> FETCH_HEAD
+2026-10-28T13:04:54.3987889Z ##[endgroup]
+2026-10-28T13:04:54.3988647Z ##[group]Determining the checkout info
+2026-10-28T13:04:54.3991868Z ##[endgroup]
+2026-10-28T13:04:54.3997587Z [command]/usr/bin/git sparse-checkout disable
+2026-10-28T13:04:54.4049885Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-28T13:04:54.4077666Z ##[group]Checking out the ref
+2026-10-28T13:04:54.4082308Z [command]/usr/bin/git checkout --progress --force 6272ee4c5a62c9527d312deba7cb23b0fa57fe5a
+2026-10-28T13:04:54.8639415Z Note: switching to '6272ee4c5a62c9527d312deba7cb23b0fa57fe5a'.
+2026-10-28T13:04:54.8640166Z
+2026-10-28T13:04:54.8640641Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-28T13:04:54.8641661Z changes and commit them, and you can discard any commits you make in this
+2026-10-28T13:04:54.8642601Z state without impacting any branches by switching back to a branch.
+2026-10-28T13:04:54.8643512Z
+2026-10-28T13:04:54.8643915Z If you want to create a new branch to retain commits you create, you may
+2026-10-28T13:04:54.8644765Z do so (now or later) by using -c with the switch command. Example:
+2026-10-28T13:04:54.8645230Z
+2026-10-28T13:04:54.8645447Z   git switch -c <new-branch-name>
+2026-10-28T13:04:54.8645781Z
+2026-10-28T13:04:54.8645967Z Or undo this operation with:
+2026-10-28T13:04:54.8646260Z
+2026-10-28T13:04:54.8646420Z   git switch -
+2026-10-28T13:04:54.8646664Z
+2026-10-28T13:04:54.8647050Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-28T13:04:54.8647614Z
+2026-10-28T13:04:54.8647995Z HEAD is now at 6272ee4 Preserve full latent payloads for CPU vocoder fallback
+2026-10-28T13:04:54.8665402Z ##[endgroup]
+2026-10-28T13:04:54.8718491Z [command]/usr/bin/git log -1 --format=%H
+2026-10-28T13:04:54.8745568Z 6272ee4c5a62c9527d312deba7cb23b0fa57fe5a
+2026-10-28T13:04:54.8889558Z ##[group]Run python .github/scripts/resolve_ci_labels.py resolve \
+2026-10-28T13:04:54.8890096Z [36;1mpython .github/scripts/resolve_ci_labels.py resolve \[0m
+2026-10-28T13:04:54.8890467Z [36;1m  --labels-json "${LABELS_JSON}" \[0m
+2026-10-28T13:04:54.8890760Z [36;1m  --seed "${GITHUB_RUN_ID}" \[0m
+2026-10-28T13:04:54.8891051Z [36;1m  --github-output "${GITHUB_OUTPUT}"[0m
+2026-10-28T13:04:54.8948116Z shell: /usr/bin/bash -e {0}
+2026-10-28T13:04:54.8948372Z env:
+2026-10-28T13:04:54.8948630Z   OMNI_CI_HOME: /data/omni-ci/pr-3189
+2026-10-28T13:04:54.8949227Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-28T13:04:54.8949621Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-28T13:04:54.8950037Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-28T13:04:54.8950412Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-28T13:04:54.8950851Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-28T13:04:54.8951278Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-28T13:04:54.8951682Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-28T13:04:54.8952117Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-28T13:04:54.8952466Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-28T13:04:54.8952785Z   LABELS_JSON: ["run-unit-test-ci-only"]
+2026-10-28T13:04:54.8953051Z ##[endgroup]
+2026-10-28T13:04:54.9440513Z run_unit_test=true
+2026-10-28T13:04:54.9441011Z run_asr=false
+2026-10-28T13:04:54.9441393Z asr_ci_model=
+2026-10-28T13:04:54.9441757Z run_tts=false
+2026-10-28T13:04:54.9442139Z tts_ci_model=
+2026-10-28T13:04:54.9442507Z run_mps=false
+2026-10-28T13:04:54.9442868Z mps_ci_model=
+2026-10-28T13:04:54.9443230Z run_omni=false
+2026-10-28T13:04:54.9443608Z omni_ci_model=
+2026-10-28T13:04:54.9443986Z run_intel_cpu=false
+2026-10-28T13:04:54.9444383Z run_intel_xpu=false
+2026-10-28T13:04:54.9444688Z run_mac=false
+2026-10-28T13:04:54.9444952Z mps_ci_config=
+2026-10-28T13:04:54.9445250Z run_self_hosted=true
+2026-10-28T13:04:54.9536852Z ##[group]Run python .github/scripts/pr_ci_gate.py
+2026-10-28T13:04:54.9537244Z [36;1mpython .github/scripts/pr_ci_gate.py[0m
+2026-10-28T13:04:54.9591786Z shell: /usr/bin/bash -e {0}
+2026-10-28T13:04:54.9592038Z env:
+2026-10-28T13:04:54.9592249Z   OMNI_CI_HOME: /data/omni-ci/pr-3189
+2026-10-28T13:04:54.9592539Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b
+2026-10-28T13:04:54.9592926Z   MOSS_TTS_MODEL_PATH: OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5
+2026-10-28T13:04:54.9593489Z   QWEN3_TTS_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-Base
+2026-10-28T13:04:54.9593869Z   COSYVOICE3_MODEL_PATH: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+2026-10-28T13:04:54.9594306Z   QWEN3_TTS_CUSTOM_VOICE_MODEL_PATH: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+2026-10-28T13:04:54.9594694Z   QWEN3_ASR_MODEL_PATH: Qwen/Qwen3-ASR-1.7B
+2026-10-28T13:04:54.9595082Z   MOSS_TRANSCRIBE_DIARIZE_MODEL_PATH: OpenMOSS-Team/MOSS-Transcribe-Diarize
+2026-10-28T13:04:54.9595539Z   FUN_ASR_MODEL_PATH: FunAudioLLM/Fun-ASR-Nano-2512-hf
+2026-10-28T13:04:54.9596088Z   WHISPER_ASR_MODEL_PATH: openai/whisper-large-v3
+2026-10-28T13:04:54.9598533Z   GITHUB_TOKEN: ***
+2026-10-28T13:04:54.9598756Z ##[endgroup]
+2026-10-28T13:06:44.7293265Z Checking PR CI gate: pr=3189 base=codex/ming3-0.5b-nonstream-trajectory head_sha=6272ee4c5a62c9527d312deba7cb23b0fa57fe5a
+2026-10-28T13:06:44.7294580Z PR mergeability: mergeable=True mergeable_state=blocked
+2026-10-28T13:06:44.7295797Z Found 'lint' check: status=in_progress conclusion=None url=https://github.com/sgl-project/sglang-omni/actions/runs/40693188492/job/122833002470
+2026-10-28T13:06:44.7297490Z Found 'lint' check: status=in_progress conclusion=None url=https://github.com/sgl-project/sglang-omni/actions/runs/40693188492/job/122833002470
+2026-10-28T13:06:44.7298687Z Found 'lint' check: status=in_progress conclusion=None url=https://github.com/sgl-project/sglang-omni/actions/runs/40693188492/job/122833002470
+2026-10-28T13:06:44.7300512Z Found 'lint' check: status=in_progress conclusion=None url=https://github.com/sgl-project/sglang-omni/actions/runs/40693188492/job/122833002470
+2026-10-28T13:06:44.7302257Z Found 'lint' check: status=in_progress conclusion=None url=https://github.com/sgl-project/sglang-omni/actions/runs/40693188492/job/122833002470
+2026-10-28T13:06:44.7304094Z Found 'lint' check: status=in_progress conclusion=None url=https://github.com/sgl-project/sglang-omni/actions/runs/40693188492/job/122833002470
+2026-10-28T13:06:44.7305817Z Found 'lint' check: status=in_progress conclusion=None url=https://github.com/sgl-project/sglang-omni/actions/runs/40693188492/job/122833002470
+2026-10-28T13:06:44.7307564Z Found 'lint' check: status=completed conclusion=success url=https://github.com/sgl-project/sglang-omni/actions/runs/40693188492/job/122833002470
+2026-10-28T13:06:44.7308745Z PR CI gate passed.
+2026-10-28T13:06:44.7549727Z Post job cleanup.
+2026-10-28T13:06:44.8389063Z [command]/usr/bin/git version
+2026-10-28T13:06:44.8427502Z git version 2.55.0
+2026-10-28T13:06:44.8465217Z Temporarily overriding HOME='/home/runner/work/_temp/4f6d49d3-193b-48b7-a8a2-cedabcdedf11' before making global git config changes
+2026-10-28T13:06:44.8466261Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-28T13:06:44.8470042Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sglang-omni/sglang-omni
+2026-10-28T13:06:44.8509247Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-28T13:06:44.8544532Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-28T13:06:44.8822305Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-28T13:06:44.8846386Z http.https://github.com/.extraheader
+2026-10-28T13:06:44.8858056Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-28T13:06:44.8892234Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-28T13:06:44.9165684Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-28T13:06:44.9200249Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-28T13:06:44.9664374Z Evaluate and set job outputs
+2026-10-28T13:06:44.9671500Z Set output 'run_self_hosted'
+2026-10-28T13:06:44.9673160Z Set output 'run_asr'
+2026-10-28T13:06:44.9673889Z Set output 'run_tts'
+2026-10-28T13:06:44.9674191Z Set output 'run_mps'
+2026-10-28T13:06:44.9674479Z Set output 'run_omni'
+2026-10-28T13:06:44.9675138Z Cleaning up orphan processes
+2026-10-28T13:06:45.0139267Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/github-script@v7. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
