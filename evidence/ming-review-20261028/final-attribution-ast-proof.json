@@ -1,0 +1,9 @@
+{
+  "parent": "a1c337c0ef8a11d17e0a476694fd04879ce98b40",
+  "head": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+  "ast_identical": {
+    "sglang_omni/models/ming3_tts/tiny_model_runner.py": true,
+    "sglang_omni/models/ming3_tts/vocoder_graph.py": true,
+    "sglang_omni/modules/ming_audio/flow/normalization.py": true
+  }
+}

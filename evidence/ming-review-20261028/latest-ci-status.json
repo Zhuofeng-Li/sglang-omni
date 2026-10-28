@@ -1,0 +1,273 @@
+{
+  "utc": "2026-10-28T20:05:46.182202+00:00",
+  "prs": {
+    "3136": {
+      "head": "02103f988e5fc5d50e507318f66dbcdeb879931d",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "omni-ci-gate",
+          "id": 123033494987,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "setup - omni venv",
+          "id": 123034718196,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-accelerator",
+          "id": 123036084039,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-b",
+          "id": 123036084087,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-a",
+          "id": 123036084115,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "ASR CI",
+          "id": 123048108604,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "MPS CI / stage 1 - MPS non-streaming",
+          "id": 123048109082,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "TTS CI",
+          "id": 123048110631,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Omni model CI ()",
+          "id": 123062651441,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "cleanup - reclaim ephemeral run home",
+          "id": 123062652446,
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    "3189": {
+      "head": "e2d7a33a63d8dba2d3410dea82677909e974b8c5",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "omni-ci-gate",
+          "id": 123033586504,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "setup - omni venv",
+          "id": 123035160509,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-accelerator",
+          "id": 123037504022,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-a",
+          "id": 123037504037,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-b",
+          "id": 123037504093,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "ASR CI",
+          "id": 123065707837,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "TTS CI",
+          "id": 123065708998,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "MPS CI",
+          "id": 123065709082,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "cleanup - reclaim ephemeral run home",
+          "id": 123065710215,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Omni model CI ()",
+          "id": 123065710663,
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    "3190": {
+      "head": "d57f2e970df64266b04e09bf716ba0ecc2342eca",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "omni-ci-gate",
+          "id": 123034348291,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "setup - omni venv",
+          "id": 123035148084,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-b",
+          "id": 123036505033,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-a",
+          "id": 123036505092,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-accelerator",
+          "id": 123036505195,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "ASR CI",
+          "id": 123052446551,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "TTS CI",
+          "id": 123052446583,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Omni model CI ()",
+          "id": 123052447638,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "MPS CI",
+          "id": 123052448090,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "cleanup - reclaim ephemeral run home",
+          "id": 123052449412,
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    "3217": {
+      "head": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "omni-ci-gate",
+          "id": 123036867962,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "setup - omni venv",
+          "id": 123037128833,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-a",
+          "id": 123038336805,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-b",
+          "id": 123038336879,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-accelerator",
+          "id": 123038337157,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "ASR CI",
+          "id": 123060485488,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "cleanup - reclaim ephemeral run home",
+          "id": 123060486394,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "TTS CI",
+          "id": 123060486472,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "MPS CI",
+          "id": 123060486824,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Omni model CI ()",
+          "id": 123060487945,
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    }
+  }
+}

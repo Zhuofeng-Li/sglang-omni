@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-28T20:11:17.157814+00:00",
+  "live_main": "c7b09e42804e923cb7794aa41a510790b9973166",
+  "integration_main": "61a23967f010de309e65e6f1b1c3819be4b51e86",
+  "intervening_changes": "docs/style tooling and Qwen3-TTS model-local two-frame minimum; no Ming/shared execution delta; preserve frozen balanced blocks",
+  "3136": {
+    "existing_matrix": "verified historical92arms141104requests0fails; actual revisions retained in original body",
+    "review_quality_repeat": "running ENc16 done6arms; ZHc1 in progress,12planned; same historical control0d6/candidate3f8 not current-main gain",
+    "current_ci": "passed 40749897047 units plus actual Higgs MPS checkout021",
+    "required_approval": "pending charlieZcr CHANGES_REQUESTED; do not bypass"
+  },
+  "3217": {
+    "attribution": "verified final969 AST identical to parenta1 across3files; original thread replied",
+    "shared_model": "running32arms first32ENZH, c1/c8 bothmodes,startupseed42/43 ABBA,native request seedNone,budget256",
+    "shared_graphs": "first valid control arm has AR and acoustic-tail post-ready replays; streamed VAE pending streaming arm",
+    "current_ci": "passed manualunit40750866735 exact969; Draft auto gate is expected failure, not a passing run",
+    "independent_tiny_matrix": "missing; c1/c16/c32/c64 bothmodes ENZH2seedsABBA, quality/failures/costs; prerequisite PRs not landed; remain Draft",
+    "series_final_matrix": "pending actual accepted merges, not synthetic dependency base"
+  },
+  "resource_policy": "both H200 active,offnode backups300sec,release each when all its consumers finished and necessary evidence verified"
+}

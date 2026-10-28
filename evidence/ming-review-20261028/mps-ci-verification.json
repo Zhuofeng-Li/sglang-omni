@@ -1,0 +1,12 @@
+{
+  "head": "02103f988e5fc5d50e507318f66dbcdeb879931d",
+  "actual_checkout": [
+    "02103f988e5fc5d50e507318f66dbcdeb879931d"
+  ],
+  "run": 40749897047,
+  "model": "higgs",
+  "config": "examples/mps_dp/configs/higgs_h100_dp3.yaml",
+  "artifact": 12846337026,
+  "test": "1 passed",
+  "cleanup": "verified rm output/state root; unit worker post steps separately verified"
+}

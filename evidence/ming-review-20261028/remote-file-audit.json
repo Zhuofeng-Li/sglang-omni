@@ -1,0 +1,90 @@
+{
+  "utc": "2026-10-28T20:07:31.266692+00:00",
+  "prs": {
+    "3136": {
+      "head": "02103f988e5fc5d50e507318f66dbcdeb879931d",
+      "base": "main",
+      "paths": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/acoustic.py",
+        "sglang_omni/models/ming3_tts/checkpoint.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/kernels.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/sglang_model.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/modules/ming_audio/vae/modeling_audio_vae.py",
+        "sglang_omni/mps/runtime.py",
+        "sglang_omni/mps/state.py",
+        "sglang_omni/utils/cpu.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+        "tests/unit_test/mps/test_mps_runtime.py",
+        "tests/unit_test/utils/test_cpu.py"
+      ],
+      "doc_exception": "docs/cookbook/ming3_tts.md explicitly requested"
+    },
+    "3189": {
+      "head": "e2d7a33a63d8dba2d3410dea82677909e974b8c5",
+      "base": "codex/ming3-0.5b-nonstream-trajectory",
+      "paths": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/__init__.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/streaming_vocoder.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/models/ming_tts/audio_decode.py",
+        "sglang_omni/models/ming_tts/audio_upsample.py",
+        "sglang_omni/models/ming_tts/streaming_vocoder.py",
+        "sglang_omni/modules/ming_audio/audio_decode.py",
+        "sglang_omni/modules/ming_audio/audio_upsample.py",
+        "sglang_omni/modules/ming_audio/streaming_vocoder.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py",
+        "tests/unit_test/ming_tts/test_audio_decode.py",
+        "tests/unit_test/ming_tts/test_audio_upsample.py"
+      ],
+      "doc_exception": "docs/cookbook/ming3_tts.md explicitly requested"
+    },
+    "3190": {
+      "head": "d57f2e970df64266b04e09bf716ba0ecc2342eca",
+      "base": "codex/ming3-tiny-streaming",
+      "paths": [
+        "sglang_omni/models/ming3_tts/stages.py",
+        "tests/unit_test/ming3_tts/test_ming3_dense_tts.py"
+      ],
+      "doc_exception": "docs/cookbook/ming3_tts.md explicitly requested"
+    },
+    "3217": {
+      "head": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+      "base": "codex/ming3-05b-streaming",
+      "paths": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/acoustic.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/model_config.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/native_acoustic.py",
+        "sglang_omni/models/ming3_tts/sglang_model.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/tiny_model_runner.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/models/ming3_tts/vocoder_graph.py",
+        "sglang_omni/modules/ming_audio/flow/dit.py",
+        "sglang_omni/modules/ming_audio/flow/flow_loss.py",
+        "sglang_omni/modules/ming_audio/flow/modules.py",
+        "sglang_omni/modules/ming_audio/flow/normalization.py",
+        "sglang_omni/modules/ming_audio/flow/rotary.py",
+        "sglang_omni/modules/ming_audio/vae/istft.py",
+        "tests/unit_test/ming3_tts/test_acoustic_normalization.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+        "tests/unit_test/ming3_tts/test_shared_rotary.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py"
+      ],
+      "doc_exception": "docs/cookbook/ming3_tts.md explicitly requested"
+    }
+  }
+}

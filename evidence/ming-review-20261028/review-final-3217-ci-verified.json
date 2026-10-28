@@ -1,0 +1,702 @@
+{
+  "pr": "3217",
+  "run": 40750866735,
+  "head": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+  "observed_utc": "2026-10-28T20:06:30.939545+00:00",
+  "run_data": {
+    "conclusion": "success",
+    "headSha": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+    "jobs": [
+      {
+        "completedAt": "2026-10-28T19:04:18Z",
+        "conclusion": "success",
+        "databaseId": 123036867962,
+        "name": "omni-ci-gate",
+        "startedAt": "2026-10-28T19:03:52Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-28T19:03:53Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-28T19:03:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:03:53Z",
+            "conclusion": "success",
+            "name": "Fetch CI labels",
+            "number": 2,
+            "startedAt": "2026-10-28T19:03:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:03:53Z",
+            "conclusion": "success",
+            "name": "Log CI gate state",
+            "number": 3,
+            "startedAt": "2026-10-28T19:03:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:03:53Z",
+            "conclusion": "skipped",
+            "name": "Block draft PR",
+            "number": 4,
+            "startedAt": "2026-10-28T19:03:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:03:53Z",
+            "conclusion": "skipped",
+            "name": "Checkout workflow scripts",
+            "number": 5,
+            "startedAt": "2026-10-28T19:03:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:16Z",
+            "conclusion": "success",
+            "name": "Checkout workflow scripts for manual dispatch",
+            "number": 6,
+            "startedAt": "2026-10-28T19:03:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:16Z",
+            "conclusion": "success",
+            "name": "Resolve CI stages and models",
+            "number": 7,
+            "startedAt": "2026-10-28T19:04:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:16Z",
+            "conclusion": "skipped",
+            "name": "Check PR lint and mergeability",
+            "number": 8,
+            "startedAt": "2026-10-28T19:04:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:16Z",
+            "conclusion": "success",
+            "name": "Manual dispatch preflight",
+            "number": 9,
+            "startedAt": "2026-10-28T19:04:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:16Z",
+            "conclusion": "success",
+            "name": "Post Checkout workflow scripts for manual dispatch",
+            "number": 18,
+            "startedAt": "2026-10-28T19:04:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:16Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 19,
+            "startedAt": "2026-10-28T19:04:16Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123036867962"
+      },
+      {
+        "completedAt": "2026-10-28T19:06:29Z",
+        "conclusion": "success",
+        "databaseId": 123037128833,
+        "name": "setup - omni venv",
+        "startedAt": "2026-10-28T19:04:34Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-28T19:04:36Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-28T19:04:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:38Z",
+            "conclusion": "success",
+            "name": "Initialize containers",
+            "number": 2,
+            "startedAt": "2026-10-28T19:04:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:39Z",
+            "conclusion": "success",
+            "name": "Checkout code",
+            "number": 3,
+            "startedAt": "2026-10-28T19:04:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:04:40Z",
+            "conclusion": "success",
+            "name": "Assess CI environment completeness",
+            "number": 4,
+            "startedAt": "2026-10-28T19:04:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:05:34Z",
+            "conclusion": "success",
+            "name": "Run ./.github/actions/omni-setup",
+            "number": 5,
+            "startedAt": "2026-10-28T19:04:40Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:05:34Z",
+            "conclusion": "success",
+            "name": "Build Rust router",
+            "number": 6,
+            "startedAt": "2026-10-28T19:05:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:05:51Z",
+            "conclusion": "success",
+            "name": "Run ./.github/actions/omni-save-cache",
+            "number": 7,
+            "startedAt": "2026-10-28T19:05:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:05:51Z",
+            "conclusion": "success",
+            "name": "Ensure CI model weights",
+            "number": 8,
+            "startedAt": "2026-10-28T19:05:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:06:08Z",
+            "conclusion": "success",
+            "name": "Mark PR environment complete",
+            "number": 9,
+            "startedAt": "2026-10-28T19:05:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:06:25Z",
+            "conclusion": "success",
+            "name": "Verify setup completion marker",
+            "number": 10,
+            "startedAt": "2026-10-28T19:06:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:06:25Z",
+            "conclusion": "success",
+            "name": "Post Checkout code",
+            "number": 19,
+            "startedAt": "2026-10-28T19:06:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:06:26Z",
+            "conclusion": "success",
+            "name": "Stop containers",
+            "number": 20,
+            "startedAt": "2026-10-28T19:06:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:06:27Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 21,
+            "startedAt": "2026-10-28T19:06:26Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123037128833"
+      },
+      {
+        "completedAt": "2026-10-28T19:40:18Z",
+        "conclusion": "success",
+        "databaseId": 123038336805,
+        "name": "PR Test / unit-test-a",
+        "startedAt": "2026-10-28T19:24:51Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-28T19:24:55Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-28T19:24:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:24:58Z",
+            "conclusion": "success",
+            "name": "Initialize containers",
+            "number": 2,
+            "startedAt": "2026-10-28T19:24:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:24:59Z",
+            "conclusion": "success",
+            "name": "Checkout code",
+            "number": 3,
+            "startedAt": "2026-10-28T19:24:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:25:52Z",
+            "conclusion": "success",
+            "name": "Run ./.github/actions/omni-setup",
+            "number": 4,
+            "startedAt": "2026-10-28T19:24:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:40:13Z",
+            "conclusion": "success",
+            "name": "Run test",
+            "number": 5,
+            "startedAt": "2026-10-28T19:25:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:40:14Z",
+            "conclusion": "success",
+            "name": "Post Checkout code",
+            "number": 9,
+            "startedAt": "2026-10-28T19:40:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:40:15Z",
+            "conclusion": "success",
+            "name": "Stop containers",
+            "number": 10,
+            "startedAt": "2026-10-28T19:40:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:40:15Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-28T19:40:15Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123038336805"
+      },
+      {
+        "completedAt": "2026-10-28T19:48:18Z",
+        "conclusion": "success",
+        "databaseId": 123038336879,
+        "name": "PR Test / unit-test-b",
+        "startedAt": "2026-10-28T19:33:06Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-28T19:33:08Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-28T19:33:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:33:10Z",
+            "conclusion": "success",
+            "name": "Initialize containers",
+            "number": 2,
+            "startedAt": "2026-10-28T19:33:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:33:11Z",
+            "conclusion": "success",
+            "name": "Checkout code",
+            "number": 3,
+            "startedAt": "2026-10-28T19:33:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:34:04Z",
+            "conclusion": "success",
+            "name": "Run ./.github/actions/omni-setup",
+            "number": 4,
+            "startedAt": "2026-10-28T19:33:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:48:14Z",
+            "conclusion": "success",
+            "name": "Run test",
+            "number": 5,
+            "startedAt": "2026-10-28T19:34:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:48:14Z",
+            "conclusion": "success",
+            "name": "Post Checkout code",
+            "number": 9,
+            "startedAt": "2026-10-28T19:48:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:48:16Z",
+            "conclusion": "success",
+            "name": "Stop containers",
+            "number": 10,
+            "startedAt": "2026-10-28T19:48:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:48:16Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-28T19:48:16Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123038336879"
+      },
+      {
+        "completedAt": "2026-10-28T19:43:03Z",
+        "conclusion": "success",
+        "databaseId": 123038337157,
+        "name": "PR Test / unit-test-accelerator",
+        "startedAt": "2026-10-28T19:33:15Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-28T19:33:17Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-28T19:33:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:33:19Z",
+            "conclusion": "success",
+            "name": "Initialize containers",
+            "number": 2,
+            "startedAt": "2026-10-28T19:33:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:33:21Z",
+            "conclusion": "success",
+            "name": "Checkout code",
+            "number": 3,
+            "startedAt": "2026-10-28T19:33:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:34:13Z",
+            "conclusion": "success",
+            "name": "Run ./.github/actions/omni-setup",
+            "number": 4,
+            "startedAt": "2026-10-28T19:33:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:42:59Z",
+            "conclusion": "success",
+            "name": "Run accelerator test",
+            "number": 5,
+            "startedAt": "2026-10-28T19:34:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:42:59Z",
+            "conclusion": "success",
+            "name": "Post Checkout code",
+            "number": 9,
+            "startedAt": "2026-10-28T19:42:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:43:00Z",
+            "conclusion": "success",
+            "name": "Stop containers",
+            "number": 10,
+            "startedAt": "2026-10-28T19:42:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:43:01Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-28T19:43:00Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123038337157"
+      },
+      {
+        "completedAt": "2026-10-28T19:48:19Z",
+        "conclusion": "skipped",
+        "databaseId": 123060485488,
+        "name": "ASR CI",
+        "startedAt": "2026-10-28T19:48:19Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123060485488"
+      },
+      {
+        "completedAt": "2026-10-28T19:52:41Z",
+        "conclusion": "success",
+        "databaseId": 123060486394,
+        "name": "cleanup - reclaim ephemeral run home",
+        "startedAt": "2026-10-28T19:52:32Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-28T19:52:33Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-28T19:52:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:52:35Z",
+            "conclusion": "success",
+            "name": "Initialize containers",
+            "number": 2,
+            "startedAt": "2026-10-28T19:52:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:52:37Z",
+            "conclusion": "success",
+            "name": "Checkout code",
+            "number": 3,
+            "startedAt": "2026-10-28T19:52:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:52:37Z",
+            "conclusion": "success",
+            "name": "Run ./.github/actions/omni-cleanup-host",
+            "number": 4,
+            "startedAt": "2026-10-28T19:52:37Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:52:38Z",
+            "conclusion": "success",
+            "name": "Post Checkout code",
+            "number": 7,
+            "startedAt": "2026-10-28T19:52:37Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:52:38Z",
+            "conclusion": "success",
+            "name": "Stop containers",
+            "number": 8,
+            "startedAt": "2026-10-28T19:52:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-28T19:52:39Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 9,
+            "startedAt": "2026-10-28T19:52:38Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123060486394"
+      },
+      {
+        "completedAt": "2026-10-28T19:48:19Z",
+        "conclusion": "skipped",
+        "databaseId": 123060486472,
+        "name": "TTS CI",
+        "startedAt": "2026-10-28T19:48:19Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123060486472"
+      },
+      {
+        "completedAt": "2026-10-28T19:48:19Z",
+        "conclusion": "skipped",
+        "databaseId": 123060486824,
+        "name": "MPS CI",
+        "startedAt": "2026-10-28T19:48:19Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123060486824"
+      },
+      {
+        "completedAt": "2026-10-28T19:48:19Z",
+        "conclusion": "skipped",
+        "databaseId": 123060487945,
+        "name": "Omni model CI ()",
+        "startedAt": "2026-10-28T19:48:19Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/sgl-project/sglang-omni/actions/runs/40750866735/job/123060487945"
+      }
+    ],
+    "status": "completed"
+  },
+  "parts": [
+    {
+      "job": 123038336805,
+      "name": "PR Test / unit-test-a",
+      "checkout": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+      "tree": "a41d246dc14e476e4aaff18088e99cba76910fd7",
+      "parents": [
+        "a1c337c0ef8a11d17e0a476694fd04879ce98b40"
+      ],
+      "passed": 4863,
+      "skipped": 87,
+      "summary": "2026-10-28T19:40:08.9321016Z == 4863 passed, 87 skipped, 7031 deselected, 60 warnings in 847.52s (0:14:07) ==",
+      "post_steps": [
+        {
+          "completedAt": "2026-10-28T19:40:14Z",
+          "conclusion": "success",
+          "name": "Post Checkout code",
+          "number": 9,
+          "startedAt": "2026-10-28T19:40:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T19:40:15Z",
+          "conclusion": "success",
+          "name": "Stop containers",
+          "number": 10,
+          "startedAt": "2026-10-28T19:40:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T19:40:15Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 11,
+          "startedAt": "2026-10-28T19:40:15Z",
+          "status": "completed"
+        }
+      ],
+      "gpu_cleanup": [
+        "2026-10-28T19:25:52.3188872Z GPU memory cleanup complete: max memory.used=0 MiB."
+      ],
+      "cpu_fallback_cases": []
+    },
+    {
+      "job": 123038336879,
+      "name": "PR Test / unit-test-b",
+      "checkout": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+      "tree": "a41d246dc14e476e4aaff18088e99cba76910fd7",
+      "parents": [
+        "a1c337c0ef8a11d17e0a476694fd04879ce98b40"
+      ],
+      "passed": 5611,
+      "skipped": 37,
+      "summary": "2026-10-28T19:48:09.5477463Z == 5611 passed, 37 skipped, 6333 deselected, 82 warnings in 835.37s (0:13:55) ==",
+      "post_steps": [
+        {
+          "completedAt": "2026-10-28T19:48:14Z",
+          "conclusion": "success",
+          "name": "Post Checkout code",
+          "number": 9,
+          "startedAt": "2026-10-28T19:48:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T19:48:16Z",
+          "conclusion": "success",
+          "name": "Stop containers",
+          "number": 10,
+          "startedAt": "2026-10-28T19:48:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T19:48:16Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 11,
+          "startedAt": "2026-10-28T19:48:16Z",
+          "status": "completed"
+        }
+      ],
+      "gpu_cleanup": [
+        "2026-10-28T19:34:04.7131765Z GPU memory cleanup complete: max memory.used=0 MiB."
+      ],
+      "cpu_fallback_cases": [
+        "2026-10-28T19:36:37.2049774Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-cpu-True-current-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.2177978Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-cpu-True-legacy-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.2304447Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-cpu-True-current-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.2432237Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-cpu-True-legacy-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.2559332Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-cpu-False-current-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.2705562Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-cpu-False-legacy-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.2818603Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-None-True-current-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.2920689Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-None-True-legacy-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.3022066Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-None-True-current-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.3125985Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-None-True-legacy-cuda] PASSED [ 22%]",
+        "2026-10-28T19:36:37.3227993Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-None-True-current-xpu] PASSED [ 22%]",
+        "2026-10-28T19:36:37.3329989Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-None-True-legacy-xpu] PASSED [ 22%]",
+        "2026-10-28T19:36:37.3437607Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-None-True-custom-cuda] PASSED [ 22%]"
+      ]
+    },
+    {
+      "job": 123038337157,
+      "name": "PR Test / unit-test-accelerator",
+      "checkout": "96957d08e9dcd260005f5e92b9d13e90c544bbcf",
+      "tree": "a41d246dc14e476e4aaff18088e99cba76910fd7",
+      "parents": [
+        "a1c337c0ef8a11d17e0a476694fd04879ce98b40"
+      ],
+      "passed": 1205,
+      "skipped": 34,
+      "summary": "2026-10-28T19:42:53.2038560Z = 1205 passed, 34 skipped, 10742 deselected, 83 warnings in 509.15s (0:08:29) ==",
+      "post_steps": [
+        {
+          "completedAt": "2026-10-28T19:42:59Z",
+          "conclusion": "success",
+          "name": "Post Checkout code",
+          "number": 9,
+          "startedAt": "2026-10-28T19:42:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T19:43:00Z",
+          "conclusion": "success",
+          "name": "Stop containers",
+          "number": 10,
+          "startedAt": "2026-10-28T19:42:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T19:43:01Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 11,
+          "startedAt": "2026-10-28T19:43:00Z",
+          "status": "completed"
+        }
+      ],
+      "gpu_cleanup": [
+        "2026-10-28T19:34:13.6003461Z GPU memory cleanup complete: max memory.used=0 MiB."
+      ],
+      "cpu_fallback_cases": []
+    }
+  ],
+  "coverage": "Unit-only, no target model preset; skipped stages not passes"
+}
