@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-28T12:55:54.718812+00:00",
+  "prior_head": "827f2084537b6a1f6affcf61ffc852ddb7e94584",
+  "prefixed_negative_exit": 1,
+  "fixed_suite_exit": 0,
+  "suite_log": "cpu-vocoder-related-tests.log",
+  "command": [
+    "/scratch/user/zhuofengli_tamu.edu/tasks/sglang-omni-pr-follow-up-20261016/validation-env/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ]
+}

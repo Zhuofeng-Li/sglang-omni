@@ -1,0 +1,162 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-cpu-True-False] _
+
+vocoder = <sglang_omni.models.ming3_tts.streaming_vocoder.Ming3StreamingVocoder object at 0x7ffe7560d520>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ffe753403e0>
+dense = False, vocoder_device = 'cpu', stream = True, legacy_factory = False
+
+    @pytest.mark.parametrize("legacy_factory", [False, True])
+    @pytest.mark.parametrize(
+        "dense,vocoder_device,stream",
+        [
+            (False, "cpu", True),
+            (True, "cpu", True),
+            (True, "cpu", False),
+            (False, None, True),
+            (True, None, True),
+        ],
+    )
+    @torch.inference_mode()
+    def test_gpu_generation_retains_full_latents_for_cpu_vocoder(
+        vocoder: Ming3StreamingVocoder,
+        monkeypatch: pytest.MonkeyPatch,
+        dense: bool,
+        vocoder_device: str | None,
+        stream: bool,
+        legacy_factory: bool,
+    ) -> None:
+        """GPU generation dropped full latents for stream=true even with a CPU vocoder."""
+        monkeypatch.setattr(
+            platforms, "current_platform", SimpleNamespace(device_type="cuda")
+        )
+        stages = default_stages(dense)
+        stages[-1].factory.device = vocoder_device
+        if legacy_factory:
+            stages[-1].factory_path = (
+                "sglang_omni.models.ming3_tts.stages.create_vocoder_executor"
+            )
+        else:
+            pass
+        config = Ming3TTSPipelineConfig(model_path="checkpoint", stages=stages, mps="off")
+        engine_kwargs = resolve_stage_factory_kwargs(
+            config.stage_named("tts_engine"), config
+        )
+        checkpoint_config = {
+            "model_type": "dense" if dense else "tiny",
+            "audio_tokenizer_config": {"enc_kwargs": {"latent_dim": 4}},
+            "tts_config": {
+                "prompt_format": "legacy_antmmf",
+                "with_rml": True,
+                "conditioning_mode": "speaker_only",
+                "decode_alignment": "old_shift",
+                "patch_size": 1,
+                "history_size": 1,
+                "latent_dim": 4,
+                "speaker_embedding_dim": 4,
+                "sampling_temperature": 1.5,
+                "stop_threshold": 0.5,
+                "minimum_decode_steps": 1,
+                "maximum_decode_steps": 32,
+                "audio_patch_token_id": 1,
+                "audio_start_token_id": 2,
+                "audio_end_token_id": 3,
+                "speaker_start_token_id": 4,
+                "speaker_end_token_id": 5,
+            },
+        }
+        scheduler_factory = Mock()
+        with monkeypatch.context() as engine_patches:
+            engine_patches.setattr(
+                engine_module,
+                "resolve_concrete_device",
+                lambda *args: torch.device("cuda", 0),
+            )
+            engine_patches.setattr(engine_module, "resolve_checkpoint", lambda path: path)
+            engine_patches.setattr(
+                engine_module, "load_checkpoint_config", lambda path: checkpoint_config
+            )
+            engine_patches.setattr(
+                engine_module,
+                "build_sglang_server_args",
+                lambda *args, **kwargs: SimpleNamespace(max_running_requests=32),
+            )
+            engine_patches.setattr(
+                engine_module,
+                "create_sglang_infrastructure",
+                lambda *args, **kwargs: (None, None, None, None, None),
+            )
+            engine_patches.setattr(
+                engine_module, "get_tokenizer", lambda *args, **kwargs: None
+            )
+            engine_patches.setattr(engine_module, "Ming3TTSModelRunner", Mock())
+            engine_patches.setattr(engine_module, "OmniScheduler", scheduler_factory)
+            engine_patches.setattr(
+                torch,
+                "get_device_module",
+                lambda device: SimpleNamespace(
+                    Stream=lambda **kwargs: None, stream=lambda stream: nullcontext()
+                ),
+            )
+            engine_module.create_tts_engine_executor(
+                "checkpoint",
+                max_seq_len=4096,
+                enable_acoustic_graph=False,
+                **engine_kwargs,
+            )
+            generated_latents = torch.randn(
+                5, 1, 4, generator=torch.Generator().manual_seed(19)
+            )
+            request = Ming3TTSRequestData(
+                stage_payload=StagePayload(
+                    "cpu-fallback", OmniRequest("text", params={"stream": stream}), {}
+                ),
+                input_ids=torch.tensor([1, 2]),
+                output_ids=[3] * 5,
+                speaker_embedding=torch.zeros(4),
+                speaker_position=0,
+                sampling_temperature=0.0,
+                noise_generator=torch.Generator(),
+                latent_history=torch.zeros(1, 4),
+                latents=list(generated_latents),
+                finish_reason="length",
+            )
+            result = scheduler_factory.call_args.kwargs["result_adapter"](request)
+        streaming_builder = scheduler_factory.call_args.kwargs["stream_output_builder"]
+        if vocoder_device is None:
+            assert result.data["latents"] is None
+            assert streaming_builder is engine_module.build_stream_output
+        else:
+>           assert streaming_builder is None
+E           assert <function build_stream_output at 0x7ffe75330900> is None
+
+tests/unit_test/ming3_tts/test_streaming_vocoder.py:508: AssertionError
+=============================== warnings summary ===============================
+../integration-cpu-deps/sglang/srt/layers/quantization/awq/awq.py:53
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/srt/layers/quantization/awq/awq.py:53: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+    warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+
+../integration-cpu-deps/sglang/srt/layers/quantization/gguf.py:69
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/srt/layers/quantization/gguf.py:69: UserWarning: Only CUDA, MUSA and NPU support GGUF quantization currently.
+    warnings.warn(f"Only CUDA, MUSA and NPU support GGUF quantization currently.")
+
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+
+../integration-torch214/torch/jit/_script.py:1491
+../integration-torch214/torch/jit/_script.py:1491
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-torch214/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+../integration-cpu-deps/sglang/kernels/ops/attention/fla/utils.py:223
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-cpu-deps/sglang/kernels/ops/attention/fla/utils.py:223: UserWarning: Triton is not supported on current platform, roll back to CPU.
+    warnings.warn(
+
+../integration-torch214/torch/jit/_script.py:1643
+  /scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261027/integration-torch214/torch/jit/_script.py:1643: FutureWarning: `torch.jit.interface` is deprecated. Please use `torch.compile` instead.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-cpu-True-False]
+1 failed, 7 warnings in 23.62s

@@ -1,0 +1,121 @@
+{
+  "utc": "2026-10-28T13:04:14.179357+00:00",
+  "main_audit": "57f12ffe2ee9a6d229a88047875127c9660e49ce",
+  "root_base": "6087f786b3a9dd2d53dee5f321737cecda88dd12",
+  "prs": [
+    {
+      "pr": 3136,
+      "branch": "codex/ming3-0.5b-nonstream-trajectory",
+      "old_head": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+      "new_head": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+      "tree": "9d56b4c3aa8f8a8e3e3247191be07c19caa894ca",
+      "base": "6087f786b3a9dd2d53dee5f321737cecda88dd12",
+      "files": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/acoustic.py",
+        "sglang_omni/models/ming3_tts/checkpoint.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/kernels.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/sglang_model.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/modules/ming_audio/vae/modeling_audio_vae.py",
+        "sglang_omni/mps/runtime.py",
+        "sglang_omni/mps/state.py",
+        "sglang_omni/utils/cpu.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+        "tests/unit_test/mps/test_mps_runtime.py",
+        "tests/unit_test/utils/test_cpu.py"
+      ],
+      "files_changed_by_cpu_fix": []
+    },
+    {
+      "pr": 3189,
+      "branch": "codex/ming3-tiny-streaming",
+      "old_head": "827f2084537b6a1f6affcf61ffc852ddb7e94584",
+      "new_head": "6272ee4c5a62c9527d312deba7cb23b0fa57fe5a",
+      "tree": "0f560c8b62e422e8ea770f8d5d51124ac3e91417",
+      "base": "d1be1e0cbd4c939383fe75e3cc8799962996f240",
+      "files": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/__init__.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/streaming_vocoder.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/models/ming_tts/audio_decode.py",
+        "sglang_omni/models/ming_tts/streaming_vocoder.py",
+        "sglang_omni/modules/ming_audio/audio_decode.py",
+        "sglang_omni/modules/ming_audio/streaming_vocoder.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py",
+        "tests/unit_test/ming_tts/test_audio_decode.py"
+      ],
+      "files_changed_by_cpu_fix": [
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py"
+      ]
+    },
+    {
+      "pr": 3190,
+      "branch": "codex/ming3-05b-streaming",
+      "old_head": "d64c8f591484ca1fc7a2c2e61508b3250650b04f",
+      "new_head": "eebeb3b70af3789e3e9c5dc36de6ccf67d7cb431",
+      "tree": "72f73ca08d3e15356b36eee79cfaa5aa928cf923",
+      "base": "6272ee4c5a62c9527d312deba7cb23b0fa57fe5a",
+      "files": [
+        "sglang_omni/models/ming3_tts/stages.py",
+        "tests/unit_test/ming3_tts/test_ming3_dense_tts.py"
+      ],
+      "files_changed_by_cpu_fix": [
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py"
+      ]
+    },
+    {
+      "pr": 3217,
+      "branch": "codex/ming3-tiny-native-graphs-on-3136",
+      "old_head": "a818f498de01b9412283e13ed0fbf12cdb48a049",
+      "new_head": "292d54e0bf0da2bf238030a652c414eb83fcfb74",
+      "tree": "29e4f1b812b34b305b3ecbb72e8f5c17b2b18db0",
+      "base": "eebeb3b70af3789e3e9c5dc36de6ccf67d7cb431",
+      "files": [
+        "docs/cookbook/ming3_tts.md",
+        "sglang_omni/models/ming3_tts/acoustic.py",
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/model_config.py",
+        "sglang_omni/models/ming3_tts/model_runner.py",
+        "sglang_omni/models/ming3_tts/native_acoustic.py",
+        "sglang_omni/models/ming3_tts/sglang_model.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "sglang_omni/models/ming3_tts/tiny_model_runner.py",
+        "sglang_omni/models/ming3_tts/vocoder.py",
+        "sglang_omni/models/ming3_tts/vocoder_graph.py",
+        "sglang_omni/modules/ming_audio/flow/dit.py",
+        "sglang_omni/modules/ming_audio/flow/flow_loss.py",
+        "sglang_omni/modules/ming_audio/flow/modules.py",
+        "sglang_omni/modules/ming_audio/flow/normalization.py",
+        "sglang_omni/modules/ming_audio/flow/rotary.py",
+        "sglang_omni/modules/ming_audio/vae/istft.py",
+        "tests/unit_test/ming3_tts/test_acoustic_normalization.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py",
+        "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+        "tests/unit_test/ming3_tts/test_shared_rotary.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py"
+      ],
+      "files_changed_by_cpu_fix": [
+        "sglang_omni/models/ming3_tts/config.py",
+        "sglang_omni/models/ming3_tts/stages.py",
+        "tests/unit_test/ming3_tts/test_streaming_vocoder.py"
+      ]
+    }
+  ],
+  "bundle_sha256": "5a59cfb8a8aaaedbc2035e661532788a0200a3dc61fd1b07eb5af2e7a69fe9d0",
+  "gpu_path": "Default CUDA vocoder resolves use_streaming_vocoder=True; existing incremental stream builder and null terminal latent payload retained. CPU vocoder resolvesFalse and restores full latent payload with no unused incremental chunks. No new performance measurement is claimed.",
+  "published_utc": "2026-10-28T13:04:39.423950+00:00",
+  "remote_verified": true
+}
