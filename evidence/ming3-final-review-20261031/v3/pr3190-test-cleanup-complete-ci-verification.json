@@ -1,0 +1,194 @@
+{
+  "observed_utc": "2026-10-31T22:53:48.087943+00:00",
+  "run": 41246677809,
+  "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+  "state": "Selected Omni CI complete and successful; all4unit first attempts passed",
+  "units": [
+    {
+      "pr": "3190",
+      "partition": "accelerator",
+      "job": 124672437003,
+      "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "actual_checkout": "ba485f4b529e667bd92fcc9491d1f2adb6d7351f",
+      "tree": "120a16195fd895d684d8599486da1ba939c1eb11",
+      "counts": {
+        "passed": 1214,
+        "skipped": 31,
+        "deselected": 10954,
+        "failed": 0,
+        "errors": 0
+      },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 1214,
+            "skipped": 31,
+            "deselected": 10954,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:31:26.0393979Z = 1214 passed, 31 skipped, 10954 deselected, 83 warnings in 521.88s (0:08:41) =="
+        }
+      ],
+      "log": "pr3190-test-cleanup-unit-accelerator-124672437003.log",
+      "log_sha256": "d7a423820fe7236ef8eac8c74dd171faf6fdfd82c46c94c66f7ad328eda7df06",
+      "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
+    },
+    {
+      "pr": "3190",
+      "partition": "c",
+      "job": 124672437062,
+      "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "actual_checkout": "ba485f4b529e667bd92fcc9491d1f2adb6d7351f",
+      "tree": "120a16195fd895d684d8599486da1ba939c1eb11",
+      "counts": {
+        "passed": 3605,
+        "skipped": 62,
+        "deselected": 8532,
+        "failed": 0,
+        "errors": 0
+      },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3605,
+            "skipped": 62,
+            "deselected": 8532,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:46:32.1588491Z == 3605 passed, 62 skipped, 8532 deselected, 54 warnings in 652.25s (0:10:52) =="
+        }
+      ],
+      "log": "pr3190-test-cleanup-unit-c-124672437062.log",
+      "log_sha256": "00765d1449f0aa63ef56fd022e1430546e99240bb92f30fc894485a2e577c679",
+      "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
+    },
+    {
+      "pr": "3190",
+      "partition": "a",
+      "job": 124672437076,
+      "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "actual_checkout": "ba485f4b529e667bd92fcc9491d1f2adb6d7351f",
+      "tree": "120a16195fd895d684d8599486da1ba939c1eb11",
+      "counts": {
+        "passed": 3267,
+        "skipped": 36,
+        "deselected": 8896,
+        "failed": 0,
+        "errors": 0
+      },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3267,
+            "skipped": 36,
+            "deselected": 8896,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:46:01.0646797Z == 3267 passed, 36 skipped, 8896 deselected, 83 warnings in 608.34s (0:10:08) =="
+        }
+      ],
+      "log": "pr3190-test-cleanup-unit-a-124672437076.log",
+      "log_sha256": "4045bf8f8b43cd3a7efc678d301ee61670c31468e2f909efcc8ccb9812ad6233",
+      "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
+    },
+    {
+      "pr": "3190",
+      "partition": "b",
+      "job": 124672437104,
+      "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "actual_checkout": "ba485f4b529e667bd92fcc9491d1f2adb6d7351f",
+      "tree": "120a16195fd895d684d8599486da1ba939c1eb11",
+      "counts": {
+        "passed": 3814,
+        "skipped": 28,
+        "deselected": 8357,
+        "failed": 0,
+        "errors": 0
+      },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3814,
+            "skipped": 28,
+            "deselected": 8357,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:50:23.2908767Z == 3814 passed, 28 skipped, 8357 deselected, 50 warnings in 603.26s (0:10:03) =="
+        }
+      ],
+      "log": "pr3190-test-cleanup-unit-b-124672437104.log",
+      "log_sha256": "f57f9269063d8bbab0fd230df391b2159a317fbdf22ed5d7a84555c96060e956",
+      "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 124671443561,
+      "name": "omni-ci-gate",
+      "conclusion": "success"
+    },
+    {
+      "id": 124671837202,
+      "name": "setup - omni venv",
+      "conclusion": "success"
+    },
+    {
+      "id": 124672437003,
+      "name": "PR Test / unit-test-accelerator",
+      "conclusion": "success"
+    },
+    {
+      "id": 124672437062,
+      "name": "PR Test / unit-test-c",
+      "conclusion": "success"
+    },
+    {
+      "id": 124672437076,
+      "name": "PR Test / unit-test-a",
+      "conclusion": "success"
+    },
+    {
+      "id": 124672437104,
+      "name": "PR Test / unit-test-b",
+      "conclusion": "success"
+    },
+    {
+      "id": 124681210364,
+      "name": "ASR CI",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 124681210585,
+      "name": "Omni model CI ()",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 124681210599,
+      "name": "TTS CI",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 124681210647,
+      "name": "cleanup - reclaim ephemeral run home",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 124681210850,
+      "name": "MPS CI",
+      "conclusion": "skipped"
+    }
+  ],
+  "selection": "PR Test only; ASR/TTS/MPS/Omni unselected, dispatch-only ephemeral-home cleanup skipped, not passed"
+}
