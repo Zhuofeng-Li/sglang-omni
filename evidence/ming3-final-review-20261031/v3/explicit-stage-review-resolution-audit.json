@@ -1,0 +1,41 @@
+{
+  "observed_utc": "2026-10-31T22:59:03.705512+00:00",
+  "thread": "PRRT_kwDOQ1KxM86wfwo5",
+  "origin_comment": 4383657372,
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "actual_ci_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+  "ci_job": 124672375385,
+  "stage_blob_identical": "5f6a8d2c08bb8dd8972d3dbd59b5f61a55199c73",
+  "preprocessing_defaults": {
+    "max_concurrency": "1",
+    "reference_cache_entries": "0",
+    "reference_cache_bytes": "64 * 1024 * 1024",
+    "max_reference_seconds": "None",
+    "device": "None",
+    "gpu_id": "None"
+  },
+  "only_required_engine_keywords": [
+    "max_seq_len",
+    "enable_acoustic_graph"
+  ],
+  "retained_current_ci_pass_lines": [
+    "2026-10-31T22:27:16.7079896Z tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py::test_legacy_explicit_stage_factories_accept_previous_arguments PASSED [ 32%]",
+    "2026-10-31T22:27:16.6971047Z tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py::test_preprocessing_cache_bypasses_unseeded_prompts_and_urls[None-0] PASSED [ 31%]",
+    "2026-10-31T22:27:16.7003418Z tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py::test_preprocessing_cache_bypasses_unseeded_prompts_and_urls[None-16] PASSED [ 32%]"
+  ],
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wfwo5",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4383657372
+        }
+      ]
+    }
+  },
+  "scope": "Existing explicit factory argument compatibility and omitted preprocessing-device CPU path; independent approvals/other requests unchanged.",
+  "resolved": true,
+  "resolved_utc": "2026-10-31T22:59:20.966905+00:00"
+}

@@ -1,0 +1,147 @@
+{
+  "observed_utc": "2026-10-31T23:01:19.662743+00:00",
+  "origin_comment": 4396752939,
+  "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+  "actual_ci_checkout": "bebb17690054d4069e1cbfbbc91ab579770ba962",
+  "thread": "PRRT_kwDOQ1KxM86w-iic",
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86w-iic",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4396752939
+        }
+      ]
+    }
+  },
+  "same_runtime_test_blobs": [
+    {
+      "path": "sglang_omni/models/ming3_tts/config.py",
+      "publication_ci_blob": "5421cb2cacee3539a410161282ed7a7a6d6dfee0"
+    },
+    {
+      "path": "sglang_omni/models/ming3_tts/stages.py",
+      "publication_ci_blob": "6da0946e341b3190d6814145311b3bc399e8588f"
+    },
+    {
+      "path": "tests/unit_test/ming3_tts/test_streaming_vocoder.py",
+      "publication_ci_blob": "32fe65ffb59c6f50a375b76ff1a2d9f14806c3a7"
+    }
+  ],
+  "passed_cases": [
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.2481125Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_cpu_factory_preserves_full_decode PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.2614521Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-False-cpu-True-current-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.2741234Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-False-cpu-True-legacy-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.2868009Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-cpu-True-current-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.2994748Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-cpu-True-legacy-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.3122138Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-cpu-False-current-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.3245456Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-cpu-False-legacy-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.3351241Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-False-None-True-current-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.3454594Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-False-None-True-legacy-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.3578070Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-None-True-current-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.3704747Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-None-True-legacy-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.3831743Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-None-True-current-xpu] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.3958494Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-None-True-legacy-xpu] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.4086189Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[False-True-None-True-custom-cuda] PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.4211207Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-False-cpu-True-current-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.4336854Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-False-cpu-True-legacy-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.4462814Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-cpu-True-current-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.4591390Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-cpu-True-legacy-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.4719246Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-cpu-False-current-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.4847164Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-cpu-False-legacy-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.4951825Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-False-None-True-current-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.5055868Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-False-None-True-legacy-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.5162867Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-None-True-current-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.5261596Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-None-True-legacy-cuda] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.5364312Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-None-True-current-xpu] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.5473187Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-None-True-legacy-xpu] PASSED [ 37%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.5574160Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_gpu_generation_retains_full_latents_for_cpu_vocoder[True-True-None-True-custom-cuda] PASSED [ 37%]"
+    }
+  ],
+  "coverage": "26 current CI parameter cases:13 routing/device/model/request combinations \u00d7 dense streaming disabled/enabled, plus direct CPU full-decode factory test. Existing regression runs actual result adapter and small CPU AudioVAE, stubs external GPU engine infrastructure; XPU routing is mocked, not XPU hardware validation. Standard CPU paths retain full terminal latents and suppress unused incremental output; legacy/current aliases and custom routing preserved.",
+  "scope": "CPU full-response fallback correctness, not paired GPU performance or approving review.",
+  "resolved": true,
+  "resolved_utc": "2026-10-31T23:01:31.290823+00:00"
+}

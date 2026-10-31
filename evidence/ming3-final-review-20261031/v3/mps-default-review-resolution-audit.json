@@ -1,0 +1,45 @@
+{
+  "observed_utc": "2026-10-31T23:09:30.683106+00:00",
+  "origin_comment": 4432962390,
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "thread": "PRRT_kwDOQ1KxM86yTzKF",
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86yTzKF",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4432962390
+        }
+      ]
+    }
+  },
+  "source_config_blob": "2c4e1c74408046345f73439b7d5f3a68a77c4e69",
+  "source_check": "Ming3 pipeline inherits PipelineConfig without any model mps field/override",
+  "named_current_ci_passes": [
+    "2026-10-31T22:27:16.6836280Z tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py::test_checkpoint_defaults_preserve_unqualified_tiny_execution[True] PASSED [ 31%]",
+    "2026-10-31T22:27:16.6871568Z tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py::test_checkpoint_defaults_preserve_unqualified_tiny_execution[False] PASSED [ 31%]"
+  ],
+  "original_body_checks": {
+    "3136": {
+      "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+      "body_sha256": "910f45811db8a9c3c1ab086b50540f85086b744b830e55846e828af2a4a9330b",
+      "default_off_cells_and_separate_historical_optional_mps_present": true
+    },
+    "3189": {
+      "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+      "body_sha256": "e17622f53340e588d25a303d3de2d6611d015c5db1846baed9d2ca588f112f12",
+      "default_off_cells_and_separate_historical_optional_mps_present": true
+    },
+    "3190": {
+      "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "body_sha256": "bfad2ec45da12d7965d10fa2e5349729bd6d9a2819fc11b400cc01795495679e",
+      "default_off_cells_and_separate_historical_optional_mps_present": true
+    }
+  },
+  "performance_evidence": "Both complete default-off ENc16/ZHc1 ABBA blocks verified; historical optional-auto source/results explicitly separate, not an isolated MPS gain. Existing24 config-equivalence records preserve explicit off/on/auto.",
+  "scope": "Maintainer default/description request only; does not close separate cookbook, quality, landing or required-review gates.",
+  "resolved": true,
+  "resolved_utc": "2026-10-31T23:09:45.849527+00:00"
+}

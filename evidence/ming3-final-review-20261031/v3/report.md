@@ -1,6 +1,6 @@
 # Ming3 final review: inherited default MPS off
 
-Updated 2026-10-31T21:57:22.059933+00:00. Qualification is incomplete; no merge-readiness claim.
+Updated 2026-10-31T23:11:37.846339+00:00. Qualification is incomplete; no merge-readiness claim.
 
 ## Source and review fixes
 
@@ -61,7 +61,7 @@ Full EN1088, seeds42/43, A42/B42/B43/A43 on the same measured final source `2a63
 | Maximum observed device GiB across seeds | 108.8389 | 110.0674 | +1.2285GiB |
 | Successful capture events each arm | 430 | 430 | +0 events; unique resident graph count not established |
 
-WER changes in opposite directions by seed: seed42 120→113 edits, seed43 118→123, each over11943 reference words. Output-token totals seed42/43 are53465/52737→53419/52751. The improved mean WER/SIM does not erase the throughput/latency cost or establish noninferiority; no acceptance margin was predeclared. Nominal1s memory polls retain actual gaps; observed maximum is not a guaranteed instantaneous peak. The remaining four full ZH c1 mode arms continue under the fixed protocol, without restarts or source changes.
+WER changes in opposite directions by seed: seed42 120→113 edits, seed43 118→123, each over11943 reference words. Output-token totals seed42/43 are53465/52737→53419/52751. The improved mean WER/SIM does not erase the throughput/latency cost or establish noninferiority; no acceptance margin was predeclared. Nominal1s memory polls retain actual gaps; observed maximum is not a guaranteed instantaneous peak. The ZH c1 mode block continues under the fixed protocol, without restarts or source changes; its complete paired aggregate remains pending.
 
 ## Historical optional MPS on
 
@@ -96,6 +96,19 @@ All three selected Omni CI runs completed successfully on the publication heads,
 ASR/TTS/Omni stages were unselected; companions also did not select MPS. Workflow_dispatch-only ephemeral-home cleanup was skipped, not passed. Skips/deselections are not hardware/model/cleanup passes. Other head checks, approving reviews, remaining ZH corpus pairs and final merged-main overall validation remain separate gates; selected Omni CI success is not merge readiness.
 
 The [old factory import-path P1](legacy-vocoder-review-resolution-audit.json) was individually audited/resolved with retained identical regression and416-case coverage. The [cookbook clarification](cookbook-current-revision-clarification-receipt.json) corrects the historical auto/docs reply; that request remains open and no docs edit or approval is claimed.
+
+## Additional individually verified review resolutions
+
+The following requests were resolved only after checking the fresh publication head, actual CI source blobs/named passes and author resolution permission. These are targeted request resolutions, not review approvals or a blanket resolution of outdated threads.
+
+| Original request | Verified handling | Audit |
+| --- | --- | --- |
+| #3136 explicit-stage compatibility4383657372 | New factory keywords have backward-compatible defaults; actual current unit-A passed the old-signature case and both omitted-device preprocessing cases | [Source/default/current-CI audit](explicit-stage-review-resolution-audit.json) |
+| #3189 CPU vocoder fallback4396752939 | Complete terminal latents retained for CPU paths;26 current routing/model/device/request combinations plus direct CPU decode passed. GPU engine infrastructure is stubbed in the CPU regression; XPU selection is mocked, not hardware qualification | [Named cases and exact blobs](cpu-vocoder-review-resolution-audit.json) |
+| #3189 nonstream finish reason4381483173 | Nonstream copies finish reason through audio payload rebuild; current CPU stop and CUDA-graph length assertions passed | [Source and current CI](finish-reason-review-resolution-audit.json) |
+| #3136 inherited MPS off4432962390 | Model-specific field/override removed; current Tiny/Dense off/round-trip cases passed; all3 original bodies separately identify default-off and historical optional-auto measurements | [Config/source/CI/body audit](mps-default-review-resolution-audit.json) |
+
+The cookbook request, latency/throughput tradeoff discussion, required approvals and coordinated #3189/#3190 landing remain separate open gates. Historical Tiny c1/c32 TTFA/underrun data is retained at its actual older source in the linked earlier streaming evidence, including real c32 underruns and its128-sample/warm-cache scope; it is not relabeled as current-head or full-corpus qualification. No new Tiny experiment was started merely because that evidence is older. Remaining final-head ZH mode arms continue on the dedicated H200; no source/test changes or experiment restart accompanied these resolutions.
 
 ## Interpretation and storage limits
 

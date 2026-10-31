@@ -1,0 +1,48 @@
+{
+  "observed_utc": "2026-10-31T23:04:56.053510+00:00",
+  "origin_comment": 4381483173,
+  "thread": "PRRT_kwDOQ1KxM86waqbM",
+  "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+  "actual_ci_checkout": "bebb17690054d4069e1cbfbbc91ab579770ba962",
+  "same_source_blobs": [
+    {
+      "path": "sglang_omni/models/ming3_tts/vocoder.py",
+      "publication_and_ci_blob": "7c7a1a84b4bcb3fdd745f4e8bbce9c4d997aefa8"
+    },
+    {
+      "path": "sglang_omni/models/ming3_tts/streaming_vocoder.py",
+      "publication_and_ci_blob": "2cac0061d4f8abc5e86a1273280c973d206845ad"
+    },
+    {
+      "path": "tests/unit_test/ming3_tts/test_streaming_vocoder.py",
+      "publication_and_ci_blob": "32fe65ffb59c6f50a375b76ff1a2d9f14806c3a7"
+    }
+  ],
+  "source_fix": "Nonstream decoder saves incoming finish_reason before replacing payload data, then restores it with usage. Stream terminal output forwards same metadata.",
+  "named_current_ci_passes": [
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "line": "2026-10-31T22:15:17.2481125Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_cpu_factory_preserves_full_decode PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-accelerator-124672331248.log",
+      "line": "2026-10-31T22:36:06.4588118Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_nonstream_keeps_graph_dispatch_and_stream_uses_cache PASSED [ 32%]"
+    }
+  ],
+  "coverage": "Retained CPU full-decode test asserts stop; CUDA full-graph dispatch test asserts length. Both passed on exact current integration source, with no skip.",
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86waqbM",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4381483173
+        }
+      ]
+    }
+  },
+  "scope": "Finish-reason preservation correctness only; not full-corpus acceptance or coordinated landing completion.",
+  "resolved": true,
+  "resolved_utc": "2026-10-31T23:05:06.009530+00:00"
+}
