@@ -54,9 +54,21 @@ Main subsequently advanced to `e727710aa6a0b29cef7dc362155c350dae313f21`: #3030 
 
 ## New-head CI setup and targeted review resolution
 
-All three new-head gate/preflight and shared setup jobs passed. [Setup source identities](test-cleanup-setup-source-identities.json) verify synthetic checkouts: #3136 `2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6`, #3189 `bebb17690054d4069e1cbfbbc91ab579770ba962`, #3190 `ba485f4b529e667bd92fcc9491d1f2adb6d7351f`. The final setup tree `120a16195fd895d684d8599486da1ba939c1eb11` matches the updated prospective merge and includes main e727710a. Actual unit/model job checkouts and results remain unverified; setup is not a test pass. [Original-body receipts](test-cleanup-setup-body-receipts.json) record this distinction. Existing labels are unchanged: PR Test plus selected Higgs MPS for #3136, PR Test only for the companions.
+All three new-head gate/preflight and shared setup jobs passed. [Setup source identities](test-cleanup-setup-source-identities.json) verify synthetic checkouts: #3136 `2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6`, #3189 `bebb17690054d4069e1cbfbbc91ab579770ba962`, #3190 `ba485f4b529e667bd92fcc9491d1f2adb6d7351f`. The final setup tree `120a16195fd895d684d8599486da1ba939c1eb11` matches the updated prospective merge and includes main e727710a. At that setup checkpoint, actual unit/model job checkouts and results were unverified; setup is not a test pass. Subsequent verified partitions are recorded below. [Original-body receipts](test-cleanup-setup-body-receipts.json) record this distinction. Existing labels are unchanged: PR Test plus selected Higgs MPS for #3136, PR Test only for the companions.
 
 Only the specific duplicate-test request4433447951 was [resolved](minimal-tests-thread-resolution.json), after current-head deletion, unchanged existing regression, complete pre-commit and author resolution permission were verified. Other threads and required approvals remain independent. The default-off full-pair results were [replied to in the original MPS-default thread](complete-default-off-review-reply-receipt.json); no reviewer approval is inferred.
+
+## Subsequent current-run unit results (selected CI incomplete)
+
+[Per-job log/hash/source verification](test-cleanup-current-unit-verification.json) and [final-prefix accelerator verification](pr3190-test-cleanup-accelerator-verification.json) record seven successful partitions. Counts below are passed / skipped; skipped and deselected cases are not passes. Checkouts match the recorded setup identities and prospective integrations with main e727710a. Original Tests sections were updated and read back for [#3136](pr3136-test-cleanup-cpu-body-receipt.json), [#3189](pr3189-test-cleanup-cpu-body-receipt.json), [#3190](pr3190-test-cleanup-accelerator-body-receipt.json).
+
+| PR | CPU A | CPU B | CPU C | Accelerator | MPS |
+| --- | --- | --- | --- | --- | --- |
+| #3136 | 3307 / 45 | 3806 / 26 | 3532 / 55 | Pending | Selected Higgs, pending |
+| #3189 | 3267 / 36 | 3813 / 28 | 3605 / 62 | Pending | Not selected |
+| #3190 | Pending | Pending | Pending | 1214 / 31 | Not selected |
+
+A [current-revision clarification](cookbook-current-revision-clarification-receipt.json) in the original cookbook review distinguishes the historical auto/docs reply from the current inherited-off, code/test-only patch. That cookbook request remains open; no docs edit or reviewer approval is claimed. Corpus source identities stay frozen, and incomplete final-mode blocks still have no paired aggregate.
 
 ## Interpretation and storage limits
 

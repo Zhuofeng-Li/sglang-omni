@@ -1,0 +1,14 @@
+{
+  "observed_utc": "2026-10-31T22:32:59.900570+00:00",
+  "job": 124672437003,
+  "pr": 3190,
+  "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+  "actual_checkout": "ba485f4b529e667bd92fcc9491d1f2adb6d7351f",
+  "tree": "120a16195fd895d684d8599486da1ba939c1eb11",
+  "counts": {
+    "passed": 1214,
+    "skipped": 31,
+    "deselected": 10954
+  },
+  "scope": "Accelerator passed on native final-prefix integration with main e727. CPU partitions still pending; this is not full CI or full corpus qualification."
+}

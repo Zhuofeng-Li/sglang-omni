@@ -1,0 +1,6 @@
+{
+  "id": 4433490733,
+  "url": "https://github.com/sgl-project/sglang-omni/pull/3136#discussion_r4433490733",
+  "body": "Current-revision clarification: the cookbook update and mps: auto default described in my earlier reply are historical, and are no longer in this patch. Following the later owner/maintainer decision in discussion_r4432962390, both Tiny and Dense now inherit the shared mps: off default, with no model-specific MPS field/override; auto/on remain explicit opt-ins. The current PR contains code/tests only and has no doc/ or docs/ changes. Dense GPU preprocessing/four workers, Tiny placement, optional MPS implications, and complete default-off paired measurements are recorded in the original PR description. This clarification does not claim that the requested cookbook edit has been delivered; I am leaving this thread open.",
+  "thread_left_open": true
+}
