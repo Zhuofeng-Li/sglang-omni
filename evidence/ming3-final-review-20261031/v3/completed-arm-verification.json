@@ -1,6 +1,6 @@
 {
-  "verified_epoch": 1793480321.4907172,
-  "source_archive_sha256": "d5b0d0b90119ad171dffd2b68c675f6807ee2aa134f24b461ffc13d2c584d94f",
+  "verified_epoch": 1793482604.3021,
+  "source_archive_sha256": "cd3f1e44748d30c813e9982579d5b61bdfd25fc91fc8cb2ba08125e8b2f9a34f",
   "runtime_identity_equal_across_completed_arms": true,
   "runtime_versions": {
     "sglang": "0.5.22",
@@ -104,10 +104,42 @@
       "memory_poll_gap_max_s": 2.0882532596588135,
       "memory_poll_failures": 0,
       "verification": "Unique matching request/quality/SIM/audio-hash IDs, completion, errors and score arithmetic checked."
+    },
+    {
+      "arm": "paired-zh-c1-A43",
+      "requests": 2020,
+      "failed": 0,
+      "quality_evaluated": 2020,
+      "edits": 280,
+      "reference_units": 42266,
+      "wer_percent": 0.6624710168930109,
+      "sim_mean": 0.7793717519038975,
+      "throughput_qps_reported": 0.981,
+      "actual_source_commit": "74003d00f53e7f1a05593b556f21a31760a6fab6",
+      "paired_candidate_identifier": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+      "resolved_mps": "off",
+      "finish_reasons": {
+        "stop": 0,
+        "length": 0,
+        "unknown": 2020
+      },
+      "finish_reason_observed": 0,
+      "tts_start_epoch": 1793480071.424,
+      "tts_ready_epoch": 1793480164.52,
+      "tts_stop_epoch": 1793482234.656,
+      "full_quality_finished_epoch": 1793482582.381134,
+      "stream_first_packet_coverage": null,
+      "costs_verified_from_raw_logs": true,
+      "capture_end_events_during_tts": 19,
+      "memory_points_during_tts": 2033,
+      "memory_poll_gap_median_s": 1.016270637512207,
+      "memory_poll_gap_max_s": 2.608616352081299,
+      "memory_poll_failures": 0,
+      "verification": "Unique matching request/quality/SIM/audio-hash IDs, completion, errors and score arithmetic checked."
     }
   ],
-  "completed_count": 3,
-  "checked_count": 3,
+  "completed_count": 4,
+  "checked_count": 4,
   "pending_queue_ack_audit": null,
   "authoritative_queue_state_unchanged": true,
   "expected_count": 16,
