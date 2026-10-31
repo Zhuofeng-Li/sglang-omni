@@ -1,5 +1,5 @@
 {
-  "archive_sha256": "dbddf598e87c38c52e3319b420afb0970408d3c87e05ee2b758d93bcd1871904",
+  "archive_sha256": "a2aadf3cb4e84187b75410634cfd010d6c9976d40fc968b05c9a1c46bd61718d",
   "blocks": [
     {
       "comparison": "actual-main-to-pr3136",
@@ -217,9 +217,121 @@
       "comparison": "same-final-head-nonstream-to-stream",
       "language": "en",
       "concurrency": 16,
-      "completed": 0,
+      "completed": 4,
       "expected": 4,
-      "status": "Pending; no paired aggregate claimed"
+      "status": "Complete block; descriptive differences, no quality acceptance threshold assumed",
+      "sides": {
+        "A": {
+          "source_commits": [
+            "2a636231d688b7bc83d78769e4f5162502680675"
+          ],
+          "stream": false,
+          "throughput_qps_seed_mean": 35.6755,
+          "latency_mean_s_seed_mean": 0.4455,
+          "latency_p95_s_seed_range": [
+            0.613,
+            0.631
+          ],
+          "wer_percent_seed_mean": 0.9963995645985095,
+          "sim_seed_mean": 0.7768535364200087,
+          "audio_duration_s_seed_mean": 3.904485294117647,
+          "output_tokens_total_by_seed": {
+            "42": 53465,
+            "43": 52737
+          },
+          "requests_total": 2176,
+          "failed_total": 0,
+          "finish_reasons_by_seed": {
+            "42": {
+              "stop": 1088,
+              "length": 0,
+              "unknown": 0
+            },
+            "43": {
+              "stop": 1088,
+              "length": 0,
+              "unknown": 0
+            }
+          },
+          "startup_s_seed_mean": 137.17049992084503,
+          "peak_device_gib_by_seed": {
+            "42": 108.8193359375,
+            "43": 108.8388671875
+          },
+          "capture_events_by_seed": {
+            "42": 430,
+            "43": 430
+          },
+          "first_packet_metrics_by_seed": {
+            "42": {},
+            "43": {}
+          }
+        },
+        "B": {
+          "source_commits": [
+            "2a636231d688b7bc83d78769e4f5162502680675"
+          ],
+          "stream": true,
+          "throughput_qps_seed_mean": 15.001000000000001,
+          "latency_mean_s_seed_mean": 1.0615,
+          "latency_p95_s_seed_range": [
+            1.333,
+            1.337
+          ],
+          "wer_percent_seed_mean": 0.988026459013648,
+          "sim_seed_mean": 0.78052238426993,
+          "audio_duration_s_seed_mean": 3.9033088235294118,
+          "output_tokens_total_by_seed": {
+            "42": 53419,
+            "43": 52751
+          },
+          "requests_total": 2176,
+          "failed_total": 0,
+          "finish_reasons_by_seed": {
+            "42": {
+              "stop": 1088,
+              "length": 0,
+              "unknown": 0
+            },
+            "43": {
+              "stop": 1088,
+              "length": 0,
+              "unknown": 0
+            }
+          },
+          "startup_s_seed_mean": 140.67400002479553,
+          "peak_device_gib_by_seed": {
+            "42": 110.0673828125,
+            "43": 109.2158203125
+          },
+          "capture_events_by_seed": {
+            "42": 430,
+            "43": 430
+          },
+          "first_packet_metrics_by_seed": {
+            "42": {
+              "audio_ttfp_mean_s": 0.6574,
+              "audio_ttfp_median_s": 0.6584,
+              "audio_ttfp_p95_s": 0.7724,
+              "audio_ttfp_p99_s": 0.8198,
+              "first_audio_payload_bytes_mean": 54034.7,
+              "first_audio_payload_bytes_p95": 53802.0
+            },
+            "43": {
+              "audio_ttfp_mean_s": 0.6608,
+              "audio_ttfp_median_s": 0.6627,
+              "audio_ttfp_p95_s": 0.759,
+              "audio_ttfp_p99_s": 0.8003,
+              "first_audio_payload_bytes_mean": 53871.7,
+              "first_audio_payload_bytes_p95": 53802.0
+            }
+          }
+        }
+      },
+      "throughput_change_percent": -57.951535367409,
+      "wer_change_percentage_points": -0.008373105584861484,
+      "sim_change": 0.003668847849921386,
+      "audio_duration_change_percent": -0.03013125929831606
     },
     {
       "comparison": "same-final-head-nonstream-to-stream",
