@@ -1,0 +1,8 @@
+M	docs/cookbook/ming3_asr.md
+M	sglang_omni/models/ming3_asr/config.py
+A	sglang_omni/models/ming3_asr/encoder_service.py
+M	sglang_omni/models/ming3_asr/stages.py
+M	sglang_omni/modules/ming_audio/audio_encoder.py
+A	tests/unit_test/ming3_asr/test_encoder_service.py
+M	tests/unit_test/ming3_asr/test_ming3_asr_pipeline.py
+M	tests/unit_test/ming3_audio/test_audio_encoder.py
