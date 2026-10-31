@@ -1,0 +1,82 @@
+{
+  "observed_utc": "2026-10-31T23:36:40.959923+00:00",
+  "origin_comment": 4381483168,
+  "prior_reply": 4384492134,
+  "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+  "actual_ci_checkout": "bebb17690054d4069e1cbfbbc91ab579770ba962",
+  "source_blobs": [
+    {
+      "path": "sglang_omni/modules/ming_audio/audio_decode.py",
+      "publication_ci_blob": "98c13849c54fa1db5880680373028228efc9e5ae"
+    },
+    {
+      "path": "sglang_omni/modules/ming_audio/streaming_vocoder.py",
+      "publication_ci_blob": "0cc75d35eed89423a709081ecabefef779ec8e5b"
+    },
+    {
+      "path": "sglang_omni/models/ming_tts/audio_decode.py",
+      "publication_ci_blob": "3345eae850b13b949eaa75d24b43cf4852eea287"
+    },
+    {
+      "path": "sglang_omni/models/ming_tts/streaming_vocoder.py",
+      "publication_ci_blob": "382e7914876c8855f5061defe38a5604169b98c0"
+    },
+    {
+      "path": "sglang_omni/models/ming3_tts/streaming_vocoder.py",
+      "publication_ci_blob": "2cac0061d4f8abc5e86a1273280c973d206845ad"
+    },
+    {
+      "path": "tests/unit_test/ming_tts/test_audio_decode.py",
+      "publication_ci_blob": "db29a45b4062597203bd8484a4d7518c091b8449"
+    },
+    {
+      "path": "tests/unit_test/ming_tts/test_streaming_vocoder.py",
+      "publication_ci_blob": "86b4468d87c57f5390d25b58a26e21f866214b5a"
+    },
+    {
+      "path": "tests/unit_test/ming3_tts/test_streaming_vocoder.py",
+      "publication_ci_blob": "32fe65ffb59c6f50a375b76ff1a2d9f14806c3a7"
+    }
+  ],
+  "named_current_ci_passes": [
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "passed": "2026-10-31T22:15:17.1796764Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_abort_discards_cache_and_rejects_late_latents PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "passed": "2026-10-31T22:15:17.2117092Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_interleaved_streams_finish_after_late_payload_and_release_state PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-a-124672331259.log",
+      "passed": "2026-10-31T22:15:17.2233446Z tests/unit_test/ming3_tts/test_streaming_vocoder.py::test_ready_streams_share_one_decoder_step PASSED [ 36%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-b-124672331207.log",
+      "passed": "2026-10-31T22:14:47.4317556Z tests/unit_test/ming_tts/test_audio_decode.py::test_fixed_streaming_transition_matches_independent_heterogeneous_slots PASSED [ 23%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-b-124672331207.log",
+      "passed": "2026-10-31T22:14:47.4588281Z tests/unit_test/ming_tts/test_audio_decode.py::test_fixed_transition_keeps_inactive_row_state_unchanged_on_cpu PASSED [ 23%]"
+    },
+    {
+      "log": "pr3189-test-cleanup-unit-b-124672331207.log",
+      "passed": "2026-10-31T22:14:48.2092159Z tests/unit_test/ming_tts/test_streaming_vocoder.py::test_external_abort_during_fixed_wave_suppresses_output_and_resets_after_fence PASSED [ 25%]"
+    }
+  ],
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86waqbI",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4381483168
+        }
+      ]
+    }
+  },
+  "scope": "Shared decoder and batching implementation verified against current CI checkout. Six named CPU unit cases verify multi-request batching, heterogeneous fixed slots, inactive-row isolation and cancellation; earlier H200 measurements retain their recorded source and warm-cache protocol. Does not prove a speed gain or current full-corpus Tiny quality. Performance/underrun discussion and coordinated landing remain open.",
+  "resolved": true,
+  "resolved_utc": "2026-10-31T23:36:42.224687+00:00"
+}

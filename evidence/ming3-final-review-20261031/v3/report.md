@@ -134,3 +134,7 @@ The original #3189 body now explicitly retains the historical Tiny c32 playback 
 - [Live reload audit](live-reload-review-resolution-audit.json): current unit-C verifies a second load is rejected before parameter mutation. Whole-pipeline restart remains required and explicit in the PR Changes. Online refresh of preprocessing replicas and captured constants is unsupported.
 
 Both original code requests are now resolved after exact publication/actual-CI source blob checks and fresh thread permissions. Required reviewer approval and final qualification remain pending.
+
+### Shared streaming backend review verification
+
+[Current shared-decoder audit](shared-decoder-review-resolution-audit.json) verifies publication/actual-CI blob identity for the shared modules, both model adapters, compatibility export and three test files. Six named current CPU CI cases passed for multi-request batching, fixed-slot isolation and cancellation/reset behavior. The original #3189 Changes records the extraction. The code reuse request is resolved; this does not close the performance/underrun discussion, imply new-head Tiny full-corpus quality, or waive paired landing of #3189/#3190.
