@@ -60,13 +60,17 @@ Only the specific duplicate-test request4433447951 was [resolved](minimal-tests-
 
 ## Subsequent current-run unit results (selected CI incomplete)
 
-[Per-job log/hash/source verification](test-cleanup-current-unit-verification.json) and [final-prefix accelerator verification](pr3190-test-cleanup-accelerator-verification.json) record seven successful partitions. Counts below are passed / skipped; skipped and deselected cases are not passes. Checkouts match the recorded setup identities and prospective integrations with main e727710a. Original Tests sections were updated and read back for [#3136](pr3136-test-cleanup-cpu-body-receipt.json), [#3189](pr3189-test-cleanup-cpu-body-receipt.json), [#3190](pr3190-test-cleanup-accelerator-body-receipt.json).
+[Per-job log/hash/source verification](test-cleanup-current-unit-verification.json) and [final-prefix accelerator verification](pr3190-test-cleanup-accelerator-verification.json) record eight successful terminal partitions, including one accelerator job that required an automatic retry; the first failure is preserved below. Counts below are passed / skipped; skipped and deselected cases are not passes. Checkouts match the recorded setup identities and prospective integrations with main e727710a. Original Tests sections were updated and read back for [#3136](pr3136-test-cleanup-cpu-body-receipt.json), [#3189](pr3189-test-cleanup-cpu-body-receipt.json), [#3190](pr3190-test-cleanup-accelerator-body-receipt.json).
 
 | PR | CPU A | CPU B | CPU C | Accelerator | MPS |
 | --- | --- | --- | --- | --- | --- |
-| #3136 | 3307 / 45 | 3806 / 26 | 3532 / 55 | Pending | Selected Higgs, pending |
+| #3136 | 3307 / 45 | 3806 / 26 | 3532 / 55 | 1213 / 31 on attempt2; attempt1 failed | Selected Higgs, queued |
 | #3189 | 3267 / 36 | 3813 / 28 | 3605 / 62 | Pending | Not selected |
 | #3190 | Pending | Pending | Pending | 1214 / 31 | Not selected |
+
+**#3136 accelerator retry:** [causal/source audit](pr3136-test-cleanup-accelerator-retry-audit.json), [original-body readback](pr3136-test-cleanup-accelerator-retry-body-receipt.json). Attempt1 had1 failure/937 passed/29 skipped in Qwen3-TTS cross-process final-code CUDA IPC (zeros instead of sevens); the workflow automatically reran the suite and attempt2 had1213 passed/31 skipped. This is not a clean first pass. The failing direct-call test, adapter/default-stream handoff, serializer and payload code are byte-identical to main e727710a. Root cause and preceding-test interactions remain unproven. Two [reference main-development PR CI runs](main-reference-pr-accelerator-observations.json) passed that test on their recorded earlier checkouts; they do not establish a baseline occurrence of this failure. No manual rerun, weakened assertion, or extra GPU job was used. The artifact verifier now retains every parsed attempt and rejects unparsed retry failures.
+
+The previously fixed old factory import-path P1 was separately [audited and resolved](legacy-vocoder-review-resolution-audit.json): all three branches retain the same factory export, the identical import/signature regression remains and was included in the416-case pinned-runtime run. This resolves only that request; it does not grant review approval or close the cookbook request.
 
 A [current-revision clarification](cookbook-current-revision-clarification-receipt.json) in the original cookbook review distinguishes the historical auto/docs reply from the current inherited-off, code/test-only patch. That cookbook request remains open; no docs edit or reviewer approval is claimed. Corpus source identities stay frozen, and incomplete final-mode blocks still have no paired aggregate.
 

@@ -1,0 +1,46 @@
+{
+  "observed_utc": "2026-10-31T22:41:36.260133+00:00",
+  "job": 124672375369,
+  "actual_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+  "state": "CI job succeeded after its automatic second attempt; not a clean first pass",
+  "first_attempt": {
+    "failed": 1,
+    "passed": 937,
+    "skipped": 29,
+    "test": "tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_another_process_reads_complete_final_codes",
+    "observed": "Child read zeros instead of sevens across direct CUDA IPC"
+  },
+  "second_attempt": {
+    "passed": 1213,
+    "skipped": 31,
+    "failed": 0
+  },
+  "main": "e727710aa6a0b29cef7dc362155c350dae313f21",
+  "source_equality": [
+    {
+      "path": "tests/unit_test/qwen3_tts/test_pipeline.py",
+      "main_blob": "909719b9404dd7b70269876b6f14852393635dab",
+      "ci_blob": "909719b9404dd7b70269876b6f14852393635dab",
+      "identical": true
+    },
+    {
+      "path": "sglang_omni/models/qwen3_tts/request_builders.py",
+      "main_blob": "2a55469b39188a336aa7d75e0c621c89dd15f4d3",
+      "ci_blob": "2a55469b39188a336aa7d75e0c621c89dd15f4d3",
+      "identical": true
+    },
+    {
+      "path": "sglang_omni/comm/stage_io.py",
+      "main_blob": "427ddcc3edb9262b45808c5b6281aa3973216314",
+      "ci_blob": "427ddcc3edb9262b45808c5b6281aa3973216314",
+      "identical": true
+    },
+    {
+      "path": "sglang_omni/proto/request.py",
+      "main_blob": "39e274e9edb1e622bd9a89f1a0536e1c93d8afee",
+      "ci_blob": "39e274e9edb1e622bd9a89f1a0536e1c93d8afee",
+      "identical": true
+    }
+  ],
+  "assessment": "The failing direct-call test, result adapter/default-stream handoff, serializer and payload code are byte-identical to current main. No evidence yet attributes this intermittent failure to this PR; exact root cause and possible preceding-test interactions remain unproven. Do not call it a clean pass or a proven infrastructure flake. No manual rerun, assertion weakening, or extra GPU job submitted."
+}

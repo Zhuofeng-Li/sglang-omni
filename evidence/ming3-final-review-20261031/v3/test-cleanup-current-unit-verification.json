@@ -1,5 +1,5 @@
 {
-  "observed_utc": "2026-10-31T22:36:42.454070+00:00",
+  "observed_utc": "2026-10-31T22:42:51.466637+00:00",
   "jobs": [
     {
       "pr": "3136",
@@ -11,8 +11,24 @@
       "counts": {
         "passed": 3806,
         "skipped": 26,
-        "deselected": 8325
+        "deselected": 8325,
+        "failed": 0,
+        "errors": 0
       },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3806,
+            "skipped": 26,
+            "deselected": 8325,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:21:17.9507234Z == 3806 passed, 26 skipped, 8325 deselected, 58 warnings in 536.98s (0:08:56) =="
+        }
+      ],
       "log": "pr3136-test-cleanup-unit-b-124672375329.log",
       "log_sha256": "75f33dff870d52c75edcab5ac329d7de948e9c70b1c5d3a697ef42ee67aeefbd",
       "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
@@ -27,11 +43,72 @@
       "counts": {
         "passed": 3532,
         "skipped": 55,
-        "deselected": 8570
+        "deselected": 8570,
+        "failed": 0,
+        "errors": 0
       },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3532,
+            "skipped": 55,
+            "deselected": 8570,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:34:28.5640264Z == 3532 passed, 55 skipped, 8570 deselected, 52 warnings in 647.71s (0:10:47) =="
+        }
+      ],
       "log": "pr3136-test-cleanup-unit-c-124672375367.log",
       "log_sha256": "bbd7fbb6ec3a45b8561d1847f8963e93011b1aa5d00e90e8ac1db4cb95f96051",
       "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
+    },
+    {
+      "pr": "3136",
+      "partition": "accelerator",
+      "job": 124672375369,
+      "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+      "actual_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+      "tree": "32128881129006ab0c8a535074bb580a509679c8",
+      "counts": {
+        "passed": 1213,
+        "skipped": 31,
+        "deselected": 10913,
+        "failed": 0,
+        "errors": 0
+      },
+      "clean_first_pass": false,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 937,
+            "skipped": 29,
+            "deselected": 10913,
+            "failed": 1,
+            "errors": 0
+          },
+          "failed_tests": [
+            "tests/unit_test/qwen3_tts/test_pipeline.py::test_qwen3_tts_another_process_reads_complete_final_codes"
+          ],
+          "summary": "2026-10-31T22:30:04.9216731Z = 1 failed, 937 passed, 29 skipped, 10913 deselected, 61 warnings in 450.76s (0:07:30) ="
+        },
+        {
+          "counts": {
+            "passed": 1213,
+            "skipped": 31,
+            "deselected": 10913,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:38:54.4222427Z = 1213 passed, 31 skipped, 10913 deselected, 83 warnings in 501.38s (0:08:21) =="
+        }
+      ],
+      "log": "pr3136-test-cleanup-unit-accelerator-124672375369.log",
+      "log_sha256": "04d291c433bc2d91194d482a111a164e0f81696d8fc9d515186b2db061cc1271",
+      "state": "CI succeeded after automatic retry; earlier failure retained, causal audit required"
     },
     {
       "pr": "3136",
@@ -43,8 +120,24 @@
       "counts": {
         "passed": 3307,
         "skipped": 45,
-        "deselected": 8805
+        "deselected": 8805,
+        "failed": 0,
+        "errors": 0
       },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3307,
+            "skipped": 45,
+            "deselected": 8805,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:34:14.7146092Z == 3307 passed, 45 skipped, 8805 deselected, 77 warnings in 610.08s (0:10:10) =="
+        }
+      ],
       "log": "pr3136-test-cleanup-unit-a-124672375385.log",
       "log_sha256": "c17c3a103c3facdcb37f20319b9b7915726844e19dea6c29f61b87688744e4ee",
       "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
@@ -59,8 +152,24 @@
       "counts": {
         "passed": 3813,
         "skipped": 28,
-        "deselected": 8357
+        "deselected": 8357,
+        "failed": 0,
+        "errors": 0
       },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3813,
+            "skipped": 28,
+            "deselected": 8357,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:21:08.2166396Z == 3813 passed, 28 skipped, 8357 deselected, 50 warnings in 554.80s (0:09:14) =="
+        }
+      ],
       "log": "pr3189-test-cleanup-unit-b-124672331207.log",
       "log_sha256": "4416bd149e029ffa84a1ad224aee555233b335bc3b3b18551bac553c6fb5e60d",
       "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
@@ -75,8 +184,24 @@
       "counts": {
         "passed": 3605,
         "skipped": 62,
-        "deselected": 8531
+        "deselected": 8531,
+        "failed": 0,
+        "errors": 0
       },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3605,
+            "skipped": 62,
+            "deselected": 8531,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:22:39.4426583Z == 3605 passed, 62 skipped, 8531 deselected, 54 warnings in 651.97s (0:10:51) =="
+        }
+      ],
       "log": "pr3189-test-cleanup-unit-c-124672331224.log",
       "log_sha256": "44ebf8d6597a188ee231009595d8bb873bf68265c362829b88a306a4e3202627",
       "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
@@ -91,8 +216,24 @@
       "counts": {
         "passed": 3267,
         "skipped": 36,
-        "deselected": 8895
+        "deselected": 8895,
+        "failed": 0,
+        "errors": 0
       },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 3267,
+            "skipped": 36,
+            "deselected": 8895,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:22:15.8241799Z == 3267 passed, 36 skipped, 8895 deselected, 83 warnings in 611.02s (0:10:11) =="
+        }
+      ],
       "log": "pr3189-test-cleanup-unit-a-124672331259.log",
       "log_sha256": "e09340e79da8b576acd442b12607cd200c24bf442b0c6ad3b8f849bd4296177c",
       "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"
@@ -107,8 +248,24 @@
       "counts": {
         "passed": 1214,
         "skipped": 31,
-        "deselected": 10954
+        "deselected": 10954,
+        "failed": 0,
+        "errors": 0
       },
+      "clean_first_pass": true,
+      "attempts": [
+        {
+          "counts": {
+            "passed": 1214,
+            "skipped": 31,
+            "deselected": 10954,
+            "failed": 0,
+            "errors": 0
+          },
+          "failed_tests": [],
+          "summary": "2026-10-31T22:31:26.0393979Z = 1214 passed, 31 skipped, 10954 deselected, 83 warnings in 521.88s (0:08:41) =="
+        }
+      ],
       "log": "pr3190-test-cleanup-unit-accelerator-124672437003.log",
       "log_sha256": "d7a423820fe7236ef8eac8c74dd171faf6fdfd82c46c94c66f7ad328eda7df06",
       "state": "Verified passed at recorded synthetic integration; skips/deselections are not passes"

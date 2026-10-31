@@ -1,0 +1,27 @@
+{
+  "observed_utc": "2026-10-31T22:39:08.977542+00:00",
+  "origin_comment": 4383662406,
+  "thread": "PRRT_kwDOQ1KxM86wfxaP",
+  "branches": {
+    "3136": {
+      "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+      "legacy_factory_reexport": true,
+      "retained_test": "test_legacy_explicit_stage_factories_accept_previous_arguments"
+    },
+    "3189": {
+      "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+      "legacy_factory_reexport": true,
+      "retained_test": "test_legacy_explicit_stage_factories_accept_previous_arguments"
+    },
+    "3190": {
+      "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "legacy_factory_reexport": true,
+      "retained_test": "test_legacy_explicit_stage_factories_accept_previous_arguments"
+    }
+  },
+  "evidence": "Legacy stages.create_vocoder_executor directly reexports the current vocoder factory in each branch; identical retained regression imports it, binds previous arguments and asserts object identity. Full416-case pinned-runtime integrated regression included the entire test module, zero skips. Published heads differ only by separate duplicate-test deletion from measured sources.",
+  "scope": "Import path/previous factory-call compatibility only; not full CI approval or resolution of other requests.",
+  "resolved": true,
+  "resolution_utc": "2026-10-31T22:39:29.774225+00:00",
+  "fresh_viewer_can_resolve": true
+}
