@@ -1,12 +1,11 @@
 {
-  "sha256": "966880edaf8dc3fa940784e7902f757dc54d0e6135bd94bcb9cb296a5c6ac8bf",
-  "bytes": 1872147,
-  "queue_acknowledged_arms": 2,
+  "sha256": "d5b0d0b90119ad171dffd2b68c675f6807ee2aa134f24b461ffc13d2c584d94f",
+  "bytes": 1887322,
+  "queue_acknowledged_arms": 3,
   "finished_result_arms": 3,
   "formal_requests_finished": 6060,
   "failed_requests_finished": 0,
-  "pending_queue_acknowledgement": "paired-zh-c1-B43",
-  "benchmark_records_unchanged": true,
-  "verification": "Strict raw score/IDs/runtime/memory/capture/timestamp/finish-reason audit for all3 in pending-arm-verification.json; native queue state remains unchanged with only2 acknowledged because parent is held for Radix SSO reauthorization. No complete ABBA aggregate yet.",
-  "verified_utc": "2026-10-31T20:44:11.799688+00:00"
+  "active": "paired-zh-c1-A43",
+  "verification": "All3 acknowledged complete arms strictly verified from unchanged native records after originalparentresume. A43 active; no complete ABBA aggregate yet. Historical unacknowledged audit/rawsnapshot is preserved in predecessor commit1c6cd6b3.",
+  "verified_utc": "2026-10-31T21:03:05.187401+00:00"
 }

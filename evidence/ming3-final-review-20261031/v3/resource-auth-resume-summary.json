@@ -1,0 +1,7 @@
+{
+  "resumed_epoch": 1793480037.4645774,
+  "same_gpu_uuid": "GPU-99e2ecd1-862a-4af1-222d-841708198f30",
+  "no_benchmark_restart": true,
+  "launch_settings_unchanged": true,
+  "scope": "Fresh Radix identity/assignment/lease verification completed; same original queue resumed and acknowledged B43; mainA43 launched. Other B200 resource untouched."
+}

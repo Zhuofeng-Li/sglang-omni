@@ -1,0 +1,77 @@
+{
+  "run": 41235981255,
+  "head": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+  "status": "completed",
+  "conclusion": "success",
+  "units": {
+    "unit-a": {
+      "job": 124642760412,
+      "passed": 3238,
+      "skipped": 36,
+      "elapsed_s": 604.12,
+      "actual_checkout": "c341888db34fde9c8259e68390882556db5f4a4c"
+    },
+    "unit-b": {
+      "job": 124642760439,
+      "passed": 3798,
+      "skipped": 28,
+      "elapsed_s": 609.54,
+      "actual_checkout": "c341888db34fde9c8259e68390882556db5f4a4c"
+    },
+    "unit-c": {
+      "job": 124642760448,
+      "passed": 3604,
+      "skipped": 62,
+      "elapsed_s": 630.92,
+      "actual_checkout": "c341888db34fde9c8259e68390882556db5f4a4c"
+    },
+    "accelerator": {
+      "job": 124642760408,
+      "passed": 1213,
+      "skipped": 31,
+      "elapsed_s": 523.7,
+      "actual_checkout": "c341888db34fde9c8259e68390882556db5f4a4c"
+    }
+  },
+  "unit_actual_tree": "8fe7611ae58dea5a0311f52d0c6c588d7c6acb07",
+  "unit_extra_patch_identical_to_audited_main3cb": true,
+  "mps": {
+    "job": 124651084729,
+    "artifact_id": 13057435796,
+    "artifact_sha256": "bf87bbb13da94d80674dac96512b45183aeb4d79b331bb97721291da84a3f5d1",
+    "actual_checkout": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+    "selected_model": "higgs",
+    "topology": "mps_dp2_independent_weights",
+    "requests": 1088,
+    "failed": 0,
+    "canary_requests": 8,
+    "correctness": "pass",
+    "configured_performance_gates": "pass",
+    "configured_quality_gates": "pass",
+    "quality_coverage": {
+      "wer": 1088,
+      "utmos": 1088,
+      "similarity": 50
+    },
+    "overlap": "pass",
+    "cleanup": {
+      "checks": {
+        "gpu_baseline_available": true,
+        "launch_down_succeeded": true,
+        "mps_state_removed": true,
+        "no_new_gpu_clients": true,
+        "ports_released": true,
+        "tracked_processes_exited": true
+      },
+      "live_pids": [],
+      "new_gpu_clients": [],
+      "occupied_ports": [],
+      "post_gpu_clients": [],
+      "status": "pass"
+    },
+    "scope": "Cross-model shared MPS path; not Ming paired performance/quality evidence. Similarity covers the preset50 samples, not fullcorpus."
+  },
+  "other_model_stages": "ASR/TTS/Omni not selected",
+  "independent_home_cleanup": "workflow_dispatch-only; skipped here, not passed",
+  "verified_utc": "2026-10-31T20:50:40.362758+00:00"
+}

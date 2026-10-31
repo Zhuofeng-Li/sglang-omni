@@ -1,6 +1,6 @@
 {
-  "verified_epoch": 1793479451.6992817,
-  "source_archive_sha256": "966880edaf8dc3fa940784e7902f757dc54d0e6135bd94bcb9cb296a5c6ac8bf",
+  "verified_epoch": 1793480321.4907172,
+  "source_archive_sha256": "d5b0d0b90119ad171dffd2b68c675f6807ee2aa134f24b461ffc13d2c584d94f",
   "runtime_identity_equal_across_completed_arms": true,
   "runtime_versions": {
     "sglang": "0.5.22",
@@ -72,10 +72,42 @@
       "memory_poll_gap_max_s": 2.295443058013916,
       "memory_poll_failures": 0,
       "verification": "Unique matching request/quality/SIM/audio-hash IDs, completion, errors and score arithmetic checked."
+    },
+    {
+      "arm": "paired-zh-c1-B43",
+      "requests": 2020,
+      "failed": 0,
+      "quality_evaluated": 2020,
+      "edits": 286,
+      "reference_units": 42266,
+      "wer_percent": 0.6766668243978612,
+      "sim_mean": 0.7800286239179054,
+      "throughput_qps_reported": 3.467,
+      "actual_source_commit": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+      "paired_candidate_identifier": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+      "resolved_mps": "off",
+      "finish_reasons": {
+        "stop": 2020,
+        "length": 0,
+        "unknown": 0
+      },
+      "finish_reason_observed": 2020,
+      "tts_start_epoch": 1793477335.35,
+      "tts_ready_epoch": 1793477473.523,
+      "tts_stop_epoch": 1793478065.935,
+      "full_quality_finished_epoch": 1793478423.470825,
+      "stream_first_packet_coverage": null,
+      "costs_verified_from_raw_logs": true,
+      "capture_end_events_during_tts": 430,
+      "memory_points_during_tts": 709,
+      "memory_poll_gap_median_s": 1.0175973176956177,
+      "memory_poll_gap_max_s": 2.0882532596588135,
+      "memory_poll_failures": 0,
+      "verification": "Unique matching request/quality/SIM/audio-hash IDs, completion, errors and score arithmetic checked."
     }
   ],
-  "completed_count": 2,
-  "checked_count": 2,
+  "completed_count": 3,
+  "checked_count": 3,
   "pending_queue_ack_audit": null,
   "authoritative_queue_state_unchanged": true,
   "expected_count": 16,
