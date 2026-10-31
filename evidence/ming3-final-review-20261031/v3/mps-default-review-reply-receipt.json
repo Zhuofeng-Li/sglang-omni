@@ -1,0 +1,6 @@
+{
+  "id": 4433076884,
+  "url": "https://github.com/sgl-project/sglang-omni/pull/3136#discussion_r4433076884",
+  "in_reply_to_id": 4432962390,
+  "body": "Implemented in 78d8c310a65c14dd4bceb87e220c8304917805bb and propagated through both companion branches. Tiny and dense now inherit shared PipelineConfig `mps: off`; the redundant model field and model-specific override are removed. Explicit `--mps auto` remains available.\n\nThe final integrated source passed 416 GPU/host regressions (zero skipped), full all-files pre-commit, and 24 resolved-config equivalence cases across the three branches. The latter compare every resolved field for Tiny/dense: explicit off/on/auto are unchanged; only the implicit default changes to off.\n\nI rewrote the original PR description to separate default-off results (currently being measured) from the earlier optional-MPS-enabled EN comparison, preserving its actual old source identity, lower SIM and startup/memory costs. The new default-off EN c16 / ZH c1 ABBA and final-head streaming corpus quality checks are running on the same dedicated H200/image/assets. No new performance or quality pass is claimed yet. [Source/protocol/test evidence](https://github.com/Zhuofeng-Li/sglang-omni/blob/codex/ming3-streaming-review-evidence/evidence/ming3-final-review-20261031/v3/report.md)."
+}
