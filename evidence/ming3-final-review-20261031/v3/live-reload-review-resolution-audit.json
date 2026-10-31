@@ -1,0 +1,36 @@
+{
+  "observed_utc": "2026-10-31T23:33:45.306651+00:00",
+  "origin_comment": 4373225976,
+  "thread": "PRRT_kwDOQ1KxM86wG7xr",
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "actual_ci_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+  "source_blobs": [
+    {
+      "path": "sglang_omni/models/ming3_tts/sglang_model.py",
+      "publication_ci_blob": "bfeeb71902ba1275444f7b4fed865cccddee3ebc"
+    },
+    {
+      "path": "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+      "publication_ci_blob": "b7bad0825fcd4c2a8ee0ca95b3e25e18b9999d3a"
+    }
+  ],
+  "ci_log": "pr3136-test-cleanup-unit-c-124672375367.log",
+  "named_current_ci_passes": [
+    "2026-10-31T22:24:47.1336851Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_live_weight_updates_are_rejected_before_mutating_weights PASSED [ 22%]"
+  ],
+  "scope": "Current model rejects a second load before mutating parameters, with a whole-pipeline restart error. CPU regression confirms weights unchanged on rejection. No live reload/recapture support or integration API success is claimed. The original Changes explicitly states the restart requirement.",
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wG7xr",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4373225976
+        }
+      ]
+    }
+  },
+  "resolved": true,
+  "resolved_utc": "2026-10-31T23:33:46.693435+00:00"
+}

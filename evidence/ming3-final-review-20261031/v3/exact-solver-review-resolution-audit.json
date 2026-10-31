@@ -1,0 +1,49 @@
+{
+  "observed_utc": "2026-10-31T23:33:43.271920+00:00",
+  "origin_comment": 4373225972,
+  "thread": "PRRT_kwDOQ1KxM86wG7xn",
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "actual_ci_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+  "source_blobs": [
+    {
+      "path": "sglang_omni/models/ming3_tts/kernels.py",
+      "publication_ci_blob": "8d35ff3fc77b72e5d41a86f2bc31993ac2113b24"
+    },
+    {
+      "path": "sglang_omni/models/ming3_tts/acoustic.py",
+      "publication_ci_blob": "10c5a9abe991acd33dd5c93cea8e0417f6581725"
+    },
+    {
+      "path": "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+      "publication_ci_blob": "b7bad0825fcd4c2a8ee0ca95b3e25e18b9999d3a"
+    }
+  ],
+  "ci_log": "pr3136-test-cleanup-unit-accelerator-124672375369.log",
+  "named_current_ci_passes": [
+    "2026-10-31T22:25:46.9140022Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_solver_kernel_matches_eager_arithmetic_exactly[True] PASSED [ 32%]",
+    "2026-10-31T22:33:22.9278717Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_solver_kernel_matches_eager_arithmetic_exactly[True] PASSED [ 32%]",
+    "2026-10-31T22:25:46.9170037Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_solver_kernel_matches_eager_arithmetic_exactly[False] PASSED [ 32%]",
+    "2026-10-31T22:33:22.9306171Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_solver_kernel_matches_eager_arithmetic_exactly[False] PASSED [ 32%]",
+    "2026-10-31T22:25:46.9314077Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_zero_velocity_solve_keeps_noise_timestep_and_temperature_scaling[0.0] PASSED [ 32%]",
+    "2026-10-31T22:33:22.9438191Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_zero_velocity_solve_keeps_noise_timestep_and_temperature_scaling[0.0] PASSED [ 32%]",
+    "2026-10-31T22:25:46.9453842Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_zero_velocity_solve_keeps_noise_timestep_and_temperature_scaling[0.25] PASSED [ 32%]",
+    "2026-10-31T22:33:22.9572954Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_zero_velocity_solve_keeps_noise_timestep_and_temperature_scaling[0.25] PASSED [ 32%]",
+    "2026-10-31T22:25:46.9593412Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_zero_velocity_solve_keeps_noise_timestep_and_temperature_scaling[1.0] PASSED [ 32%]",
+    "2026-10-31T22:33:22.9706205Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_zero_velocity_solve_keeps_noise_timestep_and_temperature_scaling[1.0] PASSED [ 32%]"
+  ],
+  "scope": "Exact equality for isolated conditional/unconditional guidance, drift and optional noise; zero-velocity full solve at three temperatures checks current timestep/noise indexing, sqrt temperature and no final noise. All five named CUDA cases passed in both automatic attempts of the current accelerator job. The same job had an unrelated first-attempt Qwen IPC failure; full-suite automatic retry passed. This is not a performance or full-quality acceptance claim.",
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wG7xn",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4373225972
+        }
+      ]
+    }
+  },
+  "resolved": true,
+  "resolved_utc": "2026-10-31T23:33:44.813460+00:00"
+}

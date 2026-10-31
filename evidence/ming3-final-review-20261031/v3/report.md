@@ -127,3 +127,10 @@ The following resolved code-review requests have source identity and named curre
 - [Full-width PCI domain](pci-domain-review-resolution-audit.json): six mocked NVML/sysfs cases cover normal/large domains and fallback without mutating affinity; no large-domain hardware claim.
 
 The original #3189 body now explicitly retains the historical Tiny c32 playback underruns from measured integration `251f02b467fe06269cb2d3d8c1063565d7c3de82`, Tiny runtime `5c955911`: mean maximum EN229.5ms and ZH129.7ms. These are warm-cache first128-sample latency observations, not new-head or full-corpus quality results. See [body readback receipt](pr3189-historical-tiny-limit-body-receipt.json) and the earlier streaming-review evidence. The result archive elsewhere in this report remains the published12-arm snapshot; incomplete later ZH mode measurements are not substituted for a complete paired block.
+
+### Exact solver and weight-update review verification
+
+- [Exact solver audit](exact-solver-review-resolution-audit.json): two isolated exact-equality guidance/drift/noise cases and three zero-velocity solve temperatures passed in both attempts of the current accelerator CI job. This retains the unrelated first-attempt Qwen IPC failure and successful automatic full retry; no widening of the transformer tolerance or new GPU experiment.
+- [Live reload audit](live-reload-review-resolution-audit.json): current unit-C verifies a second load is rejected before parameter mutation. Whole-pipeline restart remains required and explicit in the PR Changes. Online refresh of preprocessing replicas and captured constants is unsupported.
+
+Both original code requests are now resolved after exact publication/actual-CI source blob checks and fresh thread permissions. Required reviewer approval and final qualification remain pending.
