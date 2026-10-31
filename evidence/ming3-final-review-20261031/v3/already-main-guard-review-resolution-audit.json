@@ -1,0 +1,44 @@
+{
+  "observed_utc": "2026-10-31T23:13:09.153482+00:00",
+  "origin_comment": 4373225946,
+  "thread": "PRRT_kwDOQ1KxM86wG7xY",
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "actual_main": "e727710aa6a0b29cef7dc362155c350dae313f21",
+  "path": "sglang_omni/models/qwen3_omni/components/audio_layer_graph.py",
+  "main_head_prospective_blob": "e7d508def2209bb9d082818136ab4430fc06d5dc",
+  "prospective_merge_tree": "32128881129006ab0c8a535074bb580a509679c8",
+  "prospective_merge_conflict_free": true,
+  "full_pr_files": [
+    "sglang_omni/models/ming3_tts/acoustic.py",
+    "sglang_omni/models/ming3_tts/checkpoint.py",
+    "sglang_omni/models/ming3_tts/config.py",
+    "sglang_omni/models/ming3_tts/kernels.py",
+    "sglang_omni/models/ming3_tts/model_runner.py",
+    "sglang_omni/models/ming3_tts/sglang_model.py",
+    "sglang_omni/models/ming3_tts/stages.py",
+    "sglang_omni/models/ming3_tts/vocoder.py",
+    "sglang_omni/modules/ming_audio/vae/modeling_audio_vae.py",
+    "sglang_omni/mps/runtime.py",
+    "sglang_omni/mps/state.py",
+    "sglang_omni/utils/cpu.py",
+    "tests/unit_test/ming3_tts/test_ming3_tts_pipeline.py",
+    "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+    "tests/unit_test/mps/test_mps_runtime.py",
+    "tests/unit_test/utils/test_cpu.py"
+  ],
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wG7xY",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4373225946
+        }
+      ]
+    }
+  },
+  "scope": "Already-main Qwen3-Omni change removed from own PR patch, main file retained exactly; no related source change or new test required. Approvals and other review gates remain independent.",
+  "resolved": true,
+  "resolved_utc": "2026-10-31T23:13:20.263375+00:00"
+}

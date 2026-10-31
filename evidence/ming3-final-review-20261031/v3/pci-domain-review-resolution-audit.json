@@ -1,0 +1,41 @@
+{
+  "observed_utc": "2026-10-31T23:21:16.639321+00:00",
+  "origin_comment": 4373225986,
+  "thread": "PRRT_kwDOQ1KxM86wG7xy",
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "actual_ci_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+  "ci_job": 124672375367,
+  "source_blobs": [
+    {
+      "path": "sglang_omni/utils/cpu.py",
+      "publication_ci_blob": "2d35d5a9f83b23412a03dc969e72e72eda092ee8"
+    },
+    {
+      "path": "tests/unit_test/utils/test_cpu.py",
+      "publication_ci_blob": "e89e7934ba21852e6ad076f214b6d4a981815b20"
+    }
+  ],
+  "named_current_ci_passes": [
+    "2026-10-31T22:34:10.4006074Z tests/unit_test/utils/test_cpu.py::test_gpu_cpu_locality_uses_sysfs_without_changing_thread_affinity[0-0-3,8,10-11] PASSED [ 96%]",
+    "2026-10-31T22:34:10.4036733Z tests/unit_test/utils/test_cpu.py::test_gpu_cpu_locality_uses_sysfs_without_changing_thread_affinity[0-None] PASSED [ 96%]",
+    "2026-10-31T22:34:10.4070360Z tests/unit_test/utils/test_cpu.py::test_gpu_cpu_locality_uses_sysfs_without_changing_thread_affinity[0-invalid] PASSED [ 96%]",
+    "2026-10-31T22:34:10.4103362Z tests/unit_test/utils/test_cpu.py::test_gpu_cpu_locality_uses_sysfs_without_changing_thread_affinity[65536-0-3,8,10-11] PASSED [ 96%]",
+    "2026-10-31T22:34:10.4135552Z tests/unit_test/utils/test_cpu.py::test_gpu_cpu_locality_uses_sysfs_without_changing_thread_affinity[65536-None] PASSED [ 96%]",
+    "2026-10-31T22:34:10.4169257Z tests/unit_test/utils/test_cpu.py::test_gpu_cpu_locality_uses_sysfs_without_changing_thread_affinity[65536-invalid] PASSED [ 96%]"
+  ],
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wG7xy",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4373225986
+        }
+      ]
+    }
+  },
+  "scope": "Full-width PCI-domain sysfs lookup and missing/invalid fallback, with no affinity mutation, verified by6 mocked NVML/sysfs unit cases. Not a large-domain hardware benchmark or approving review.",
+  "resolved": true,
+  "resolved_utc": "2026-10-31T23:21:18.006567+00:00"
+}
