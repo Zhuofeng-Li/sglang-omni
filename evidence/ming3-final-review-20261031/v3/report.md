@@ -43,6 +43,10 @@ The [prior source record](../v2/report.md) retains the completed EN c16 ABBA on 
 
 The [complete earlier qualification and trajectories](../../ming-review-20261028/report.md) preserve earlier source identities, the full historical matrix, corrected-lifetime controls, repeated scoring, adverse deltas and ablations. They are not relabeled as current-head measurements. The complete default-off ZH block is reported above; default-off EN and integrated streaming corpus blocks remain pending. No quality margin was predeclared.
 
+## New main integration checkpoint
+
+Main subsequently advanced to `e727710aa6a0b29cef7dc362155c350dae313f21`: #3030 speculative decode overlap and #2854 PersonaPlex radix guard. The fixed corpus campaign continues on its recorded sources. Read-only prospective final-prefix integration is conflict-free, tree `ffa0d2776a5c821974ed17d8aa174a1f1a9823e2`; its own 29-path patch remains doc/docs-free. [Integration audit](main-e727-integration-audit.json) and [original-body readback receipts](main-e727-body-receipts.json) record this boundary. Existing selected CI is valid for its recorded checkout, but does not cover this new integration. Non-speculative Ming keeps overlap disabled; new shared startup and pending-batch handling still need final integration verification. Prior exact-tree reuse proof is historical, not sufficient for the new main. No extra performance conclusion or merge-readiness claim follows from a clean merge-tree.
+
 ## Interpretation and storage limits
 
 Means are matched-seed arithmetic means; p95 is a seed range. EN c16 and ZH c1 cannot form a cross-language geometric summary. Preserve failures and adverse WER/SIM changes. Finish-reason observability is separate from native token-cap counts; the raw-main non-stream WAV control did not expose stop reasons, whereas the new candidate does; retain the actual per-arm coverage. Native throughput reports lack absolute per-request timestamps for independent recomputation. Memory is observed maximum with actual raw poll gaps retained; successful capture events need not be unique resident graphs.
