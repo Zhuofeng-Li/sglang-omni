@@ -1,0 +1,54 @@
+{
+  "run": 41236000842,
+  "head": "2a636231d688b7bc83d78769e4f5162502680675",
+  "status": "completed",
+  "conclusion": "success",
+  "units": {
+    "a": {
+      "passed": 3307,
+      "skipped": 37,
+      "elapsed_s": 607.16,
+      "actual_checkout": "a6549eaef6cc4a0d790ce7a4e1bf0e753e49e632"
+    },
+    "b": {
+      "passed": 3723,
+      "skipped": 57,
+      "elapsed_s": 618.41,
+      "actual_checkout": "a6549eaef6cc4a0d790ce7a4e1bf0e753e49e632"
+    },
+    "c": {
+      "passed": 3651,
+      "skipped": 32,
+      "elapsed_s": 639.55,
+      "actual_checkout": "a6549eaef6cc4a0d790ce7a4e1bf0e753e49e632"
+    }
+  },
+  "accelerator": {
+    "head": "2a636231d688b7bc83d78769e4f5162502680675",
+    "run": 41236000842,
+    "job": 124642396505,
+    "job_url": "https://github.com/sgl-project/sglang-omni/actions/runs/41236000842/job/124642396505",
+    "actual_checkout": "a6549eaef6cc4a0d790ce7a4e1bf0e753e49e632",
+    "actual_tree": "66b5237126b03481b98668135242b0c0c5c8d913",
+    "head_tree": "eec21d638e59ae8a4e2adce1d003b5592a7378dd",
+    "head_tree_matches": false,
+    "additional_source": "Exact diff from head to tested synthetic checkout equals main740 \u2192 main3cb3 Ming-ASR #2977 patch, including its own docs update. That base change is not a PR docs modification. No measurement relabeling or source restart.",
+    "additional_patch_sha256": "17ffcdc25e585cc4cbb121794457004cbc12b0e1efd3c1590332811834ce4c92",
+    "passed": 1214,
+    "skipped": 31,
+    "newly_skipped_cases": "Three checkpoint-dependent Ming-ASR encoder-service batch cases (2/4/8); these are not Ming3-TTS coverage. Prior28 skips retain their original hardware/optional-integration limits.",
+    "deselected": 10949,
+    "elapsed_s": 522.11,
+    "other_unit_partitions": "in progress",
+    "verified_utc": "2026-10-31T20:15:06.509081+00:00",
+    "new_skipped_case_names": [
+      "tests/unit_test/ming3_asr/test_encoder_service.py::test_checkpoint_bf16_batch_matches_separate_utterances[batch-2]",
+      "tests/unit_test/ming3_asr/test_encoder_service.py::test_checkpoint_bf16_batch_matches_separate_utterances[batch-4]",
+      "tests/unit_test/ming3_asr/test_encoder_service.py::test_checkpoint_bf16_batch_matches_separate_utterances[batch-8]"
+    ],
+    "removed_skip_cases": []
+  },
+  "preflight": "run-unit-test-ci-only; PR Test, no model stages",
+  "skipped_stages": "ASR/TTS/MPS/Omni unselected; separate ephemeral-home cleanup workflow_dispatch-only. Skips are not passes.",
+  "verified_utc": "2026-10-31T20:21:53.076481+00:00"
+}
