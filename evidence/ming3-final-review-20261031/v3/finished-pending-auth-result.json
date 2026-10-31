@@ -1,0 +1,12 @@
+{
+  "arm": "paired-zh-c1-B43",
+  "full_result_finished_utc": "2026-10-31T20:27:03.470825+00:00",
+  "coverage": 2020,
+  "failed": 0,
+  "raw_archive_sha256": "966880edaf8dc3fa940784e7902f757dc54d0e6135bd94bcb9cb296a5c6ac8bf",
+  "raw_archive_bytes": 1872147,
+  "node_parent_held": 1072737,
+  "queue_ack_pending": true,
+  "reason": "Preserved finished result while Radix SSO reauthorization pending; do not restart benchmark or edit live queue state. Resume same parent only after ownership/lease verification; normal parent will acknowledge B43 and startA43.",
+  "verified_utc": "2026-10-31T20:28:14.271947+00:00"
+}

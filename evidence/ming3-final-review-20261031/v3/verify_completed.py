@@ -12,6 +12,7 @@ import time
 root = Path(__file__).resolve().parent
 archive_path = Path(sys.argv[1]) if len(sys.argv) > 1 else root / 'latest-results.tar.gz'
 payload = archive_path.read_bytes()
+pending_arm = sys.argv[2] if len(sys.argv) > 2 else None
 plan = {row['id']: row for row in json.loads((root / 'measurement-plan.json').read_text())}
 sources = json.loads((root / 'source-manifest.json').read_text())
 checked = []
@@ -21,7 +22,13 @@ with tarfile.open(archive_path) as archive:
         return json.load(archive.extractfile(name))
     queue = read('queue-status.json')
     assert queue['completed'] == list(plan)[:len(queue['completed'])], 'Completed arms must preserve the predeclared order'
-    for arm in queue['completed']:
+    audit_arms = list(queue['completed'])
+    if pending_arm:
+        assert pending_arm == queue['active'] == list(plan)[len(audit_arms)]
+        hold = json.loads((root / 'resource-auth-hold-observation.json').read_text())
+        assert hold['active'] == pending_arm and hold['full_result_ready'] and hold['queue_parent_state'] == 'T'
+        audit_arms.append(pending_arm)
+    for arm in audit_arms:
         prefix = 'results/' + arm + '/'
         result = read(prefix + 'result.json')
         speed = read(prefix + 'output/speed_results.json')
@@ -122,9 +129,10 @@ with tarfile.open(archive_path) as archive:
 output = {'verified_epoch': time.time(), 'source_archive_sha256': hashlib.sha256(payload).hexdigest(),
           'runtime_identity_equal_across_completed_arms': True,
           'runtime_versions': runtime_identity['versions'] if runtime_identity else None,
-          'checked': checked, 'completed_count': len(checked), 'expected_count': len(plan),
+          'checked': checked, 'completed_count': len(queue['completed']), 'checked_count': len(checked),
+          'pending_queue_ack_audit': pending_arm, 'authoritative_queue_state_unchanged': True, 'expected_count': len(plan),
           'limitations': ['Native throughput summary is preserved; reports lack absolute per-request start/end times to independently recompute throughput.',
                          'Memory is the maximum observed device usage under nominal one-second polling; actual sampling gaps are retained. Capture counts are successful capture_end events, not necessarily unique graphs.',
                          'Artifact checks are not an independent experiment rerun; uncompleted paired cells have no conclusion.']}
-(root / 'completed-arm-verification.json').write_text(json.dumps(output, indent=2) + '\n')
+(root / ('pending-arm-verification.json' if pending_arm else 'completed-arm-verification.json')).write_text(json.dumps(output, indent=2) + '\n')
 print(json.dumps(output))

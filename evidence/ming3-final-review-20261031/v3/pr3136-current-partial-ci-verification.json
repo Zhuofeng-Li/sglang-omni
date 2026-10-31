@@ -1,0 +1,20 @@
+{
+  "head": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+  "run": 41235981255,
+  "passed_jobs": {
+    "accelerator": {
+      "job": 124642760408,
+      "passed": 1213,
+      "skipped": 31,
+      "elapsed_s": 523.7,
+      "actual_checkout": "c341888db34fde9c8259e68390882556db5f4a4c"
+    }
+  },
+  "actual_checkout": "c341888db34fde9c8259e68390882556db5f4a4c",
+  "actual_tree": "8fe7611ae58dea5a0311f52d0c6c588d7c6acb07",
+  "head_tree_matches": false,
+  "extra_patch_identical_to_audited_main3cb": true,
+  "extra_patch_sha256": "17ffcdc25e585cc4cbb121794457004cbc12b0e1efd3c1590332811834ce4c92",
+  "remaining": "Other unit partitions and selected HiggsMPS pending",
+  "verified_utc": "2026-10-31T20:31:47.757376+00:00"
+}

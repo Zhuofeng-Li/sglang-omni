@@ -1,0 +1,44 @@
+{
+  "head": "35bf42ec695da774d6e1cf8731c70b291d671af9",
+  "run": 41235989382,
+  "passed_jobs": {
+    "unit-a": {
+      "job": 124642793158,
+      "passed": 3306,
+      "skipped": 37,
+      "elapsed_s": 604.66,
+      "actual_checkout": "ca6f8cb7903a202088fe67e0f21edd85baa2b9cb"
+    },
+    "unit-b": {
+      "job": 124642793150,
+      "passed": 3723,
+      "skipped": 57,
+      "elapsed_s": 615.04,
+      "actual_checkout": "ca6f8cb7903a202088fe67e0f21edd85baa2b9cb"
+    },
+    "unit-c": {
+      "job": 124642793100,
+      "passed": 3651,
+      "skipped": 32,
+      "elapsed_s": 636.7,
+      "actual_checkout": "ca6f8cb7903a202088fe67e0f21edd85baa2b9cb"
+    },
+    "accelerator": {
+      "job": 124642793157,
+      "passed": 1214,
+      "skipped": 31,
+      "elapsed_s": 523.96,
+      "actual_checkout": "ca6f8cb7903a202088fe67e0f21edd85baa2b9cb"
+    }
+  },
+  "actual_checkout": "ca6f8cb7903a202088fe67e0f21edd85baa2b9cb",
+  "actual_tree": "a794c682ec13f56527cdee4d73cdeecfe7bf23bf",
+  "head_tree_matches": false,
+  "extra_patch_identical_to_audited_main3cb": true,
+  "extra_patch_sha256": "17ffcdc25e585cc4cbb121794457004cbc12b0e1efd3c1590332811834ce4c92",
+  "remaining": "Default-off corpus pairs and final streaming quality/review pending; no model stage selected",
+  "verified_utc": "2026-10-31T20:37:10.722637+00:00",
+  "status": "completed",
+  "conclusion": "success",
+  "cleanup": "Independent ephemeral-home cleanup workflow_dispatch-only, skipped forpull_request, not counted as passed"
+}

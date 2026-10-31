@@ -1,0 +1,13 @@
+{
+  "epoch": 1793478437.0383475,
+  "queue_parent_state": "T",
+  "active": "paired-zh-c1-B43",
+  "active_container_running": false,
+  "active_container_pid": null,
+  "container_inspect_exit": 125,
+  "full_result_ready": true,
+  "queue_completed": [
+    "paired-zh-c1-A42",
+    "paired-zh-c1-B42"
+  ]
+}

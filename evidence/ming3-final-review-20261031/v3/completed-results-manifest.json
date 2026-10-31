@@ -1,9 +1,12 @@
 {
-  "sha256": "16540e339aa939a0f79bbe1b52edfb7ec0b20e67d1f53984b111925b458f681a",
-  "bytes": 1254434,
-  "completed_arms": 2,
-  "formal_requests": 4040,
-  "failed_requests": 0,
-  "verified_utc": "2026-10-31T20:10:58.234092+00:00",
-  "contents": "Minimal raw native speed/WER reports, SIM, request/hash IDs, cost logs, source configurations and queue state. Active-arm partial records may be present but never included in complete-arm or paired summaries. WAVs, weights and credentials excluded."
+  "sha256": "966880edaf8dc3fa940784e7902f757dc54d0e6135bd94bcb9cb296a5c6ac8bf",
+  "bytes": 1872147,
+  "queue_acknowledged_arms": 2,
+  "finished_result_arms": 3,
+  "formal_requests_finished": 6060,
+  "failed_requests_finished": 0,
+  "pending_queue_acknowledgement": "paired-zh-c1-B43",
+  "benchmark_records_unchanged": true,
+  "verification": "Strict raw score/IDs/runtime/memory/capture/timestamp/finish-reason audit for all3 in pending-arm-verification.json; native queue state remains unchanged with only2 acknowledged because parent is held for Radix SSO reauthorization. No complete ABBA aggregate yet.",
+  "verified_utc": "2026-10-31T20:44:11.799688+00:00"
 }
