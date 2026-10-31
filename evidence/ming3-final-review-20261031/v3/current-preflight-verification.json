@@ -1,0 +1,62 @@
+{
+  "3136": {
+    "head_sha": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+    "preflight": {
+      "run_unit_test": "false",
+      "run_asr": "false",
+      "asr_ci_model": "",
+      "run_tts": "false",
+      "tts_ci_model": "",
+      "run_mps": "true",
+      "mps_ci_model": "higgs",
+      "run_omni": "false",
+      "omni_ci_model": "",
+      "mps_ci_config": "examples/mps_dp/configs/higgs_h100_dp3.yaml",
+      "run_self_hosted": "true"
+    },
+    "verified_utc": "2026-10-31T19:52:41.310920+00:00",
+    "pr_test_after_setup": true,
+    "pr_test_basis": "Latest omni-ci.yaml pr-test needs setup success without run_unit_test predicate; stage flags are not a substitute for workflow job conditions.",
+    "ci_label_changes": false
+  },
+  "3189": {
+    "head_sha": "35bf42ec695da774d6e1cf8731c70b291d671af9",
+    "preflight": {
+      "run_unit_test": "true",
+      "run_asr": "false",
+      "asr_ci_model": "",
+      "run_tts": "false",
+      "tts_ci_model": "",
+      "run_mps": "false",
+      "mps_ci_model": "",
+      "run_omni": "false",
+      "omni_ci_model": "",
+      "mps_ci_config": "",
+      "run_self_hosted": "true"
+    },
+    "verified_utc": "2026-10-31T19:52:41.313728+00:00",
+    "pr_test_after_setup": true,
+    "pr_test_basis": "Latest omni-ci.yaml pr-test needs setup success without run_unit_test predicate; stage flags are not a substitute for workflow job conditions.",
+    "ci_label_changes": false
+  },
+  "3190": {
+    "head_sha": "2a636231d688b7bc83d78769e4f5162502680675",
+    "preflight": {
+      "run_unit_test": "true",
+      "run_asr": "false",
+      "asr_ci_model": "",
+      "run_tts": "false",
+      "tts_ci_model": "",
+      "run_mps": "false",
+      "mps_ci_model": "",
+      "run_omni": "false",
+      "omni_ci_model": "",
+      "mps_ci_config": "",
+      "run_self_hosted": "true"
+    },
+    "verified_utc": "2026-10-31T19:52:41.316395+00:00",
+    "pr_test_after_setup": true,
+    "pr_test_basis": "Latest omni-ci.yaml pr-test needs setup success without run_unit_test predicate; stage flags are not a substitute for workflow job conditions.",
+    "ci_label_changes": false
+  }
+}

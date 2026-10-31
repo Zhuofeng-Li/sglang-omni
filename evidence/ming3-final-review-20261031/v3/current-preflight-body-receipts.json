@@ -1,0 +1,20 @@
+{
+  "3136": {
+    "head": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+    "body_readback": true,
+    "run": 41235981255,
+    "selection": "Existing labels selected PR Test plus **Higgs MPS** (`examples/mps_dp/configs/higgs_h100_dp3.yaml`); TTS/ASR/Omni stages were not selected. Higgs MPS is shared-path coverage, not Ming paired evidence."
+  },
+  "3189": {
+    "head": "35bf42ec695da774d6e1cf8731c70b291d671af9",
+    "body_readback": true,
+    "run": 41235989382,
+    "selection": "Existing `run-unit-test-ci-only` selects PR Test; no model stage was selected."
+  },
+  "3190": {
+    "head": "2a636231d688b7bc83d78769e4f5162502680675",
+    "body_readback": true,
+    "run": 41236000842,
+    "selection": "Existing `run-unit-test-ci-only` selects PR Test; no model stage was selected."
+  }
+}
