@@ -1,6 +1,6 @@
 {
-  "verified_epoch": 1793476071.3635294,
-  "source_archive_sha256": "274d8588989d009954d96b8324e0ec739fd26b253747715774db9615b9154e6d",
+  "verified_epoch": 1793477401.4179149,
+  "source_archive_sha256": "16540e339aa939a0f79bbe1b52edfb7ec0b20e67d1f53984b111925b458f681a",
   "runtime_identity_equal_across_completed_arms": true,
   "runtime_versions": {
     "sglang": "0.5.22",
@@ -21,6 +21,18 @@
       "throughput_qps_reported": 0.957,
       "actual_source_commit": "74003d00f53e7f1a05593b556f21a31760a6fab6",
       "paired_candidate_identifier": "b6d7dbc51360bf6c4a1e6f44976802c20967dcb3",
+      "resolved_mps": "off",
+      "finish_reasons": {
+        "stop": 0,
+        "length": 0,
+        "unknown": 2020
+      },
+      "finish_reason_observed": 0,
+      "tts_start_epoch": 1793473324.306,
+      "tts_ready_epoch": 1793473418.421,
+      "tts_stop_epoch": 1793475541.459,
+      "full_quality_finished_epoch": 1793475963.405851,
+      "stream_first_packet_coverage": null,
       "costs_verified_from_raw_logs": true,
       "capture_end_events_during_tts": 19,
       "memory_points_during_tts": 2148,
@@ -28,9 +40,41 @@
       "memory_poll_gap_max_s": 2.073277711868286,
       "memory_poll_failures": 0,
       "verification": "Unique matching request/quality/SIM/audio-hash IDs, completion, errors and score arithmetic checked."
+    },
+    {
+      "arm": "paired-zh-c1-B42",
+      "requests": 2020,
+      "failed": 0,
+      "quality_evaluated": 2020,
+      "edits": 270,
+      "reference_units": 42266,
+      "wer_percent": 0.6388113377182605,
+      "sim_mean": 0.7806096803433824,
+      "throughput_qps_reported": 3.446,
+      "actual_source_commit": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+      "paired_candidate_identifier": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+      "resolved_mps": "off",
+      "finish_reasons": {
+        "stop": 2020,
+        "length": 0,
+        "unknown": 0
+      },
+      "finish_reason_observed": 2020,
+      "tts_start_epoch": 1793476134.228,
+      "tts_ready_epoch": 1793476282.403,
+      "tts_stop_epoch": 1793476877.96,
+      "full_quality_finished_epoch": 1793477300.602959,
+      "stream_first_packet_coverage": null,
+      "costs_verified_from_raw_logs": true,
+      "capture_end_events_during_tts": 430,
+      "memory_points_during_tts": 715,
+      "memory_poll_gap_median_s": 1.0176129341125488,
+      "memory_poll_gap_max_s": 2.295443058013916,
+      "memory_poll_failures": 0,
+      "verification": "Unique matching request/quality/SIM/audio-hash IDs, completion, errors and score arithmetic checked."
     }
   ],
-  "completed_count": 1,
+  "completed_count": 2,
   "expected_count": 16,
   "limitations": [
     "Native throughput summary is preserved; reports lack absolute per-request start/end times to independently recompute throughput.",

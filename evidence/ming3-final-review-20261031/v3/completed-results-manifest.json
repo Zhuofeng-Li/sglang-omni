@@ -1,0 +1,9 @@
+{
+  "sha256": "16540e339aa939a0f79bbe1b52edfb7ec0b20e67d1f53984b111925b458f681a",
+  "bytes": 1254434,
+  "completed_arms": 2,
+  "formal_requests": 4040,
+  "failed_requests": 0,
+  "verified_utc": "2026-10-31T20:10:58.234092+00:00",
+  "contents": "Minimal raw native speed/WER reports, SIM, request/hash IDs, cost logs, source configurations and queue state. Active-arm partial records may be present but never included in complete-arm or paired summaries. WAVs, weights and credentials excluded."
+}

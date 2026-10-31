@@ -1,0 +1,110 @@
+{
+  "3136": {
+    "observed_utc": "2026-10-31T19:58:57.757362+00:00",
+    "head": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+    "fast_checks_passed": [
+      "lint",
+      "playback-test",
+      "test-layout",
+      "doc-style-test",
+      "build-docs",
+      "quality"
+    ],
+    "all_observed_failures": [],
+    "remaining": [
+      {
+        "id": 124640372894,
+        "name": "setup - omni venv",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 124639804361,
+        "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 124639804347,
+        "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "hardware_skipped": [
+      "Intel CPU and XPU jobs not selected by current labels; skipped is not counted as a hardware pass."
+    ]
+  },
+  "3189": {
+    "observed_utc": "2026-10-31T19:58:57.759818+00:00",
+    "head": "35bf42ec695da774d6e1cf8731c70b291d671af9",
+    "fast_checks_passed": [
+      "lint",
+      "playback-test",
+      "test-layout",
+      "doc-style-test",
+      "build-docs",
+      "quality"
+    ],
+    "all_observed_failures": [],
+    "remaining": [
+      {
+        "id": 124640409584,
+        "name": "setup - omni venv",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 124639840944,
+        "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 124639840884,
+        "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "hardware_skipped": [
+      "Intel CPU and XPU jobs not selected by current labels; skipped is not counted as a hardware pass."
+    ]
+  },
+  "3190": {
+    "observed_utc": "2026-10-31T19:58:57.760974+00:00",
+    "head": "2a636231d688b7bc83d78769e4f5162502680675",
+    "fast_checks_passed": [
+      "lint",
+      "playback-test",
+      "test-layout",
+      "doc-style-test",
+      "build-docs",
+      "quality"
+    ],
+    "all_observed_failures": [],
+    "remaining": [
+      {
+        "id": 124640316913,
+        "name": "setup - omni venv",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 124639862663,
+        "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+        "status": "in_progress",
+        "conclusion": null
+      },
+      {
+        "id": 124639862465,
+        "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "hardware_skipped": [
+      "Intel CPU and XPU jobs not selected by current labels; skipped is not counted as a hardware pass."
+    ]
+  }
+}

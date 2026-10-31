@@ -49,6 +49,7 @@ with tarfile.open(archive_path) as archive:
                 "output_tokens_total_by_seed": {a["config"]["seed"]: a["speed"]["output_tokens_total"] for a in arms},
                 "requests_total": sum(a["speed"]["total_requests"] for a in arms),
                 "failed_total": sum(a["speed"]["failed_requests"] for a in arms),
+                "finish_reasons_by_seed": {a["config"]["seed"]: checked[a["config"]["id"]]["finish_reasons"] for a in arms},
                 "startup_s_seed_mean": mean("costs", "startup_to_ready_s"),
                 "peak_device_gib_by_seed": {a["config"]["seed"]: a["costs"]["peak_tts_device_gib"] for a in arms},
                 "capture_events_by_seed": {a["config"]["seed"]: a["costs"]["successful_tts_captures"] for a in arms},

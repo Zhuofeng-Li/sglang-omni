@@ -20,6 +20,7 @@ with tarfile.open(archive_path) as archive:
     def read(name):
         return json.load(archive.extractfile(name))
     queue = read('queue-status.json')
+    assert queue['completed'] == list(plan)[:len(queue['completed'])], 'Completed arms must preserve the predeclared order'
     for arm in queue['completed']:
         prefix = 'results/' + arm + '/'
         result = read(prefix + 'result.json')
@@ -39,6 +40,8 @@ with tarfile.open(archive_path) as archive:
         else:
             assert runtime == runtime_identity, (arm, 'runtime or CPU affinity differs')
         assert config == plan[arm]
+        resolved = read(prefix + 'resolved-pipeline.json')
+        assert resolved['mps'] == 'off', (arm, 'Default-off qualification unexpectedly enabled MPS')
         count = {'en': 1088, 'zh': 2020}[config['language']]
         requests = speed['per_request']
         ids = [row['id'] for row in requests]
@@ -46,9 +49,17 @@ with tarfile.open(archive_path) as archive:
         assert all(row['is_success'] and not row['error'] for row in requests)
         assert speed['summary']['completed_requests'] == speed['summary']['total_requests'] == count
         assert speed['summary']['failed_requests'] == 0
+        finish_reasons = {reason: sum(row['finish_reason'] == reason for row in requests) for reason in ['stop', 'length', 'unknown']}
+        assert sum(finish_reasons.values()) == count
+        assert speed['summary']['finish_reason_observed'] == count - finish_reasons['unknown']
+        assert speed['summary']['max_token_hits'] == finish_reasons['length']
         assert speed['config']['stream'] == config['stream']
         assert speed['config']['concurrency'] == config['concurrency']
         assert speed['config']['seed'] == config['seed']
+        assert all(math.isfinite(row['latency_s']) and row['latency_s'] > 0 and row['audio_duration_s'] > 0 for row in requests)
+        if config['stream']:
+            assert all(row['audio_ttfp_s'] is not None and 0 < row['audio_ttfp_s'] <= row['latency_s'] + 0.0002 and row['audio_chunk_count'] >= 1 and row['first_audio_payload_bytes'] > 0 for row in requests), (arm, 'Missing or invalid streaming first-packet evidence')
+            assert math.isclose(statistics.mean(row['audio_ttfp_s'] for row in requests), speed['summary']['audio_ttfp_mean_s'], abs_tol=0.00011)
         samples = quality['per_sample']
         assert len(samples) == count and {row['id'] for row in samples} == set(ids)
         assert all(row['is_success'] and not row['error'] for row in samples)
@@ -73,6 +84,10 @@ with tarfile.open(archive_path) as archive:
         ready = next(stamp for stamp, event in events if stamp >= start and event == 'Service is ready.')
         stop = next(stamp for stamp, event in events if stamp >= start and event == 'Stopping server')
         assert math.isclose(ready - start, result['costs']['startup_to_ready_s'], abs_tol=1e-6)
+        finished = datetime.datetime.fromisoformat(result['finished_utc']).timestamp()
+        assert start < ready < stop < finished
+        if checked:
+            assert checked[-1]['full_quality_finished_epoch'] <= start, (arm, 'Measurement arms overlap or violate actual execution order')
         captures = [json.loads(line) for line in archive.extractfile(prefix + 'graphs.jsonl').read().splitlines()]
         capture_count = sum(start <= event['epoch'] <= stop for event in captures)
         assert capture_count == result['costs']['successful_tts_captures']
@@ -91,6 +106,12 @@ with tarfile.open(archive_path) as archive:
                         'sim_mean': sim_mean, 'throughput_qps_reported': speed['summary']['throughput_qps'],
                         'actual_source_commit': sources[{'control': 'main', 'candidate3136': '3136', 'integrated-final': '3190'}[config['arm']]]['commit'],
                         'paired_candidate_identifier': config['candidate_commit'],
+                        'resolved_mps': resolved['mps'],
+                        'finish_reasons': finish_reasons,
+                        'finish_reason_observed': count - finish_reasons['unknown'],
+                        'tts_start_epoch': start, 'tts_ready_epoch': ready, 'tts_stop_epoch': stop,
+                        'full_quality_finished_epoch': finished,
+                        'stream_first_packet_coverage': count if config['stream'] else None,
                         'costs_verified_from_raw_logs': True,
                         'capture_end_events_during_tts': capture_count,
                         'memory_points_during_tts': len(points),

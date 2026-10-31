@@ -1,0 +1,43 @@
+{
+  "archive_sha256": "16540e339aa939a0f79bbe1b52edfb7ec0b20e67d1f53984b111925b458f681a",
+  "blocks": [
+    {
+      "comparison": "actual-main-to-pr3136",
+      "language": "zh",
+      "concurrency": 1,
+      "completed": 2,
+      "expected": 4,
+      "status": "Pending; no paired aggregate claimed"
+    },
+    {
+      "comparison": "actual-main-to-pr3136",
+      "language": "en",
+      "concurrency": 16,
+      "completed": 0,
+      "expected": 4,
+      "status": "Pending; no paired aggregate claimed"
+    },
+    {
+      "comparison": "same-final-head-nonstream-to-stream",
+      "language": "en",
+      "concurrency": 16,
+      "completed": 0,
+      "expected": 4,
+      "status": "Pending; no paired aggregate claimed"
+    },
+    {
+      "comparison": "same-final-head-nonstream-to-stream",
+      "language": "zh",
+      "concurrency": 1,
+      "completed": 0,
+      "expected": 4,
+      "status": "Pending; no paired aggregate claimed"
+    }
+  ],
+  "protocol": "Seed means for mean metrics; p95 retained as seed range. ABBA A42 B42 B43 A43. EN c16 and ZH c1 are different cells and must not be combined into an EN/ZH geometric throughput number.",
+  "limitations": [
+    "Native throughput summary is preserved; reports lack absolute per-request start/end times to independently recompute throughput.",
+    "Memory is the maximum observed device usage under nominal one-second polling; actual sampling gaps are retained. Capture counts are successful capture_end events, not necessarily unique graphs.",
+    "Artifact checks are not an independent experiment rerun; uncompleted paired cells have no conclusion."
+  ]
+}
