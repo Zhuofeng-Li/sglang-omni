@@ -59,4 +59,3 @@ if '-m' in sys.orig_argv and sys.orig_argv[sys.orig_argv.index('-m')+1] == 'benc
                 time.sleep(.25)
 
     benchmark_utils.stop_server = stop_server_and_drain_port
-
