@@ -1,0 +1,60 @@
+[
+  {
+    "pr": 3189,
+    "job": 124601060162,
+    "kind": "accelerator",
+    "checkouts": [
+      [
+        "d53e10b",
+        "[Perf][Qwen3-TTS] Compile the reference encoder once and capture every graph bucket from it (#3390)"
+      ],
+      [
+        "d53e10b",
+        "[Perf][Qwen3-TTS] Compile the reference encoder once and capture every graph bucket from it (#3390)"
+      ],
+      [
+        "e0415b5",
+        "Merge c2ea3f8a6bbfff80d05e2a23b2c86e425f5ab2df into b646d00c725f69f5086220c3d8dbf1542060051c"
+      ]
+    ],
+    "summaries": [
+      "2026-10-31T17:17:11.4689071Z = 1213 passed, 28 skipped, 10922 deselected, 83 warnings in 518.85s (0:08:38) =="
+    ]
+  },
+  {
+    "pr": 3189,
+    "job": 124601060194,
+    "kind": "unit-c",
+    "checkouts": [
+      [
+        "3ece1c1",
+        "Merge b4b4f0f9b2fdae9e254ac557967d55b9c4a3d572 into 7537f89baca54d19de2b7afe5465bb614c10b625"
+      ],
+      [
+        "e0415b5",
+        "Merge c2ea3f8a6bbfff80d05e2a23b2c86e425f5ab2df into b646d00c725f69f5086220c3d8dbf1542060051c"
+      ]
+    ],
+    "summaries": [
+      "2026-10-31T17:23:59.3131572Z == 3559 passed, 55 skipped, 8549 deselected, 52 warnings in 645.50s (0:10:45) =="
+    ]
+  },
+  {
+    "pr": 3190,
+    "job": 124601141241,
+    "kind": "unit-a",
+    "checkouts": [
+      [
+        "1f982d1",
+        "Merge 01e02fe16371b89a1a1139e2ff9b32b0b0cca61e into 7537f89baca54d19de2b7afe5465bb614c10b625"
+      ],
+      [
+        "0683fc1",
+        "Merge 08f6a11201074948de8320ec14ead37cb9dd2053 into e0415b51bceeb1b0ab288eca658e6ad5ef525560"
+      ]
+    ],
+    "summaries": [
+      "2026-10-31T17:19:27.3354431Z == 3285 passed, 45 skipped, 8834 deselected, 77 warnings in 612.34s (0:10:12) =="
+    ]
+  }
+]

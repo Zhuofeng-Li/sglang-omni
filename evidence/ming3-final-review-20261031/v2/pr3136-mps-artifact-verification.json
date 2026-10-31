@@ -1,0 +1,30 @@
+{
+  "run": 41229499606,
+  "job": 124624637466,
+  "artifact_id": 13053699202,
+  "artifact_sha256": "5a076b08fa81c98ad74926abcac7d00610d484bf0521c1281d4d3e8873266128",
+  "exact_sha": "b6d7dbc51360bf6c4a1e6f44976802c20967dcb3",
+  "selected_model": "higgs",
+  "topology": "mps_dp2_independent_weights",
+  "requests": 1088,
+  "failed": 0,
+  "correctness": "pass",
+  "performance": "pass",
+  "overlap": "pass",
+  "cleanup": {
+    "checks": {
+      "gpu_baseline_available": true,
+      "launch_down_succeeded": true,
+      "mps_state_removed": true,
+      "no_new_gpu_clients": true,
+      "ports_released": true,
+      "tracked_processes_exited": true
+    },
+    "live_pids": [],
+    "new_gpu_clients": [],
+    "occupied_ports": [],
+    "post_gpu_clients": [],
+    "status": "pass"
+  },
+  "scope": "Higgs MPS non-streaming cross-model shared-path CI; not Ming paired performance or quality evidence"
+}

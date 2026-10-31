@@ -1,0 +1,117 @@
+{
+  "archive_sha256": "aaf567d10a6420ee79e60b79b6c314da606b67a91a582adef49490b72fa4c060",
+  "blocks": [
+    {
+      "comparison": "actual-main-to-pr3136",
+      "language": "en",
+      "concurrency": 16,
+      "completed": 4,
+      "expected": 4,
+      "status": "Complete block; descriptive differences, no quality acceptance threshold assumed",
+      "sides": {
+        "A": {
+          "source_commits": [
+            "74003d00f53e7f1a05593b556f21a31760a6fab6"
+          ],
+          "stream": false,
+          "throughput_qps_seed_mean": 8.863,
+          "latency_mean_s_seed_mean": 1.7955,
+          "latency_p95_s_seed_range": [
+            2.675,
+            2.69
+          ],
+          "wer_percent_seed_mean": 1.0759440676546932,
+          "sim_seed_mean": 0.7788315178716885,
+          "audio_duration_s_seed_mean": 3.9459926470588234,
+          "output_tokens_total_by_seed": {
+            "42": 54024,
+            "43": 53307
+          },
+          "requests_total": 2176,
+          "failed_total": 0,
+          "startup_s_seed_mean": 94.11449992656708,
+          "peak_device_gib_by_seed": {
+            "42": 108.6943359375,
+            "43": 108.6943359375
+          },
+          "capture_events_by_seed": {
+            "42": 19,
+            "43": 19
+          },
+          "first_packet_metrics_by_seed": {
+            "42": {},
+            "43": {}
+          }
+        },
+        "B": {
+          "source_commits": [
+            "b6d7dbc51360bf6c4a1e6f44976802c20967dcb3"
+          ],
+          "stream": false,
+          "throughput_qps_seed_mean": 41.617000000000004,
+          "latency_mean_s_seed_mean": 0.3805,
+          "latency_p95_s_seed_range": [
+            0.526,
+            0.526
+          ],
+          "wer_percent_seed_mean": 0.9963995645985095,
+          "sim_seed_mean": 0.7766812281710479,
+          "audio_duration_s_seed_mean": 3.903198529411765,
+          "output_tokens_total_by_seed": {
+            "42": 53451,
+            "43": 52716
+          },
+          "requests_total": 2176,
+          "failed_total": 0,
+          "startup_s_seed_mean": 137.17149996757507,
+          "peak_device_gib_by_seed": {
+            "42": 108.8232421875,
+            "43": 109.6669921875
+          },
+          "capture_events_by_seed": {
+            "42": 430,
+            "43": 430
+          },
+          "first_packet_metrics_by_seed": {
+            "42": {},
+            "43": {}
+          }
+        }
+      },
+      "throughput_change_percent": 369.558840121855,
+      "wer_change_percentage_points": -0.07954450305618366,
+      "sim_change": -0.002150289700640573,
+      "audio_duration_change_percent": -1.084495625681292
+    },
+    {
+      "comparison": "actual-main-to-pr3136",
+      "language": "zh",
+      "concurrency": 1,
+      "completed": 0,
+      "expected": 4,
+      "status": "Pending; no paired aggregate claimed"
+    },
+    {
+      "comparison": "same-final-head-nonstream-to-stream",
+      "language": "en",
+      "concurrency": 16,
+      "completed": 0,
+      "expected": 4,
+      "status": "Pending; no paired aggregate claimed"
+    },
+    {
+      "comparison": "same-final-head-nonstream-to-stream",
+      "language": "zh",
+      "concurrency": 1,
+      "completed": 0,
+      "expected": 4,
+      "status": "Pending; no paired aggregate claimed"
+    }
+  ],
+  "protocol": "Seed means for mean metrics; p95 retained as seed range. ABBA A42 B42 B43 A43. EN c16 and ZH c1 are different cells and must not be combined into an EN/ZH geometric throughput number.",
+  "limitations": [
+    "Native throughput summary is preserved; reports lack absolute per-request start/end times to independently recompute throughput.",
+    "Memory is the maximum observed device usage under nominal one-second polling; actual sampling gaps are retained. Capture counts are successful capture_end events, not necessarily unique graphs.",
+    "Artifact checks are not an independent experiment rerun; uncompleted paired cells have no conclusion."
+  ]
+}

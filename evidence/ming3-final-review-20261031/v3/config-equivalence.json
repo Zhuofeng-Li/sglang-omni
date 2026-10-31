@@ -1,0 +1,21 @@
+{
+  "verified_epoch": 1793476096.1437578,
+  "results": {
+    "3136": {
+      "default_off_only_change": true,
+      "explicit_off_on_auto_unchanged": true,
+      "config_cases": 8
+    },
+    "3189": {
+      "default_off_only_change": true,
+      "explicit_off_on_auto_unchanged": true,
+      "config_cases": 8
+    },
+    "3190": {
+      "default_off_only_change": true,
+      "explicit_off_on_auto_unchanged": true,
+      "config_cases": 8
+    }
+  },
+  "method": "Real pipeline and schema classes in pinned node runtime; checkpoint architecture mocked as in unit tests. All resolved fields compared, Tiny and dense."
+}

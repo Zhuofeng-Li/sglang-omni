@@ -1,0 +1,75 @@
+[
+  {
+    "path": ".mps",
+    "main": "off",
+    "pr": "auto"
+  },
+  {
+    "path": ".stages.preprocessing.factory.max_concurrency",
+    "main": null,
+    "pr": 4
+  },
+  {
+    "path": ".stages.preprocessing.factory.max_reference_seconds",
+    "main": "<absent>",
+    "pr": 120.0
+  },
+  {
+    "path": ".stages.preprocessing.factory.reference_cache_bytes",
+    "main": "<absent>",
+    "pr": 67108864
+  },
+  {
+    "path": ".stages.preprocessing.factory.reference_cache_entries",
+    "main": "<absent>",
+    "pr": 256
+  },
+  {
+    "path": ".stages.preprocessing.gpu",
+    "main": null,
+    "pr": 0
+  },
+  {
+    "path": ".stages.tts_engine.factory.enable_async_decode",
+    "main": null,
+    "pr": true
+  },
+  {
+    "path": ".stages.tts_engine.factory.enable_fused_flow_head",
+    "main": "<absent>",
+    "pr": true
+  },
+  {
+    "path": ".stages.tts_engine.factory.prefill_graph_max_requests",
+    "main": "<absent>",
+    "pr": 32
+  },
+  {
+    "path": ".stages.tts_engine.factory.prefill_graph_token_counts",
+    "main": "<absent>",
+    "pr": [
+      64,
+      96,
+      128,
+      160,
+      192,
+      224,
+      256,
+      288,
+      320,
+      384,
+      448,
+      512
+    ]
+  },
+  {
+    "path": ".stages.vocoder.factory.graph_latent_steps",
+    "main": "<absent>",
+    "pr": 384
+  },
+  {
+    "path": ".stages.vocoder.factory_path",
+    "main": "sglang_omni.models.ming3_tts.stages.create_vocoder_executor",
+    "pr": "sglang_omni.models.ming3_tts.vocoder.create_vocoder_executor"
+  }
+]

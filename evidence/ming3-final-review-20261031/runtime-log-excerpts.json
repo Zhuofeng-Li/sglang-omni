@@ -1,0 +1,293 @@
+{
+  "epoch": 1793469115.3885908,
+  "completed_arms": [
+    {
+      "arm": "paired-en-c16-A42",
+      "config": {
+        "id": "paired-en-c16-A42",
+        "language": "en",
+        "concurrency": 16,
+        "label": "A42",
+        "arm": "control",
+        "seed": 42,
+        "variant": "native",
+        "stream": false,
+        "base_commit": "7537f89b",
+        "candidate_commit": "94092b37",
+        "gpu_uuid": "GPU-99e2ecd1-862a-4af1-222d-841708198f30",
+        "comparison": "actual-main-to-pr3136"
+      },
+      "excerpts": [
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:02,048 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 1 batches, 1 items (avg 1.00 items/batch, last batch: 1), cache: {'hits': 0, 'misses': 1, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0, 'batches': 1, 'items': 1, 'queue_depth': 0, 'queue_wait_avg_s': 6.556417793035507e-05, 'queue_wait_max_s': 6.556417793035507e-05, 'encoder_time_s': 0.1336670471355319, 'cache_entries': 1, 'cache_bytes': 131072, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:03,920 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 51 batches, 128 items (avg 2.51 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 128, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.20496894409937888, 'batches': 51, 'items': 128, 'queue_depth': 0, 'queue_wait_avg_s': 0.007510679388360586, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 0.5962345092557371, 'cache_entries': 128, 'cache_bytes': 24395776, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:04,355 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 101 batches, 216 items (avg 2.14 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 219, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.13095238095238096, 'batches': 101, 'items': 216, 'queue_depth': 3, 'queue_wait_avg_s': 0.006162187196659269, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 0.9934662184678018, 'cache_entries': 216, 'cache_bytes': 42745856, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:04,813 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 151 batches, 310 items (avg 2.05 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 310, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.09620991253644315, 'batches': 151, 'items': 310, 'queue_depth': 0, 'queue_wait_avg_s': 0.005989855891394038, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 1.3923409064300358, 'cache_entries': 310, 'cache_bytes': 63606784, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:05,261 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 201 batches, 403 items (avg 2.00 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 405, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.07534246575342465, 'batches': 201, 'items': 403, 'queue_depth': 2, 'queue_wait_avg_s': 0.005399971191653469, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 1.7705441419966519, 'cache_entries': 403, 'cache_bytes': 83398656, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:05,723 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 251 batches, 499 items (avg 1.99 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 499, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.06203007518796992, 'batches': 251, 'items': 499, 'queue_depth': 0, 'queue_wait_avg_s': 0.00521448916589509, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 2.168351307976991, 'cache_entries': 499, 'cache_bytes': 104669184, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:06,174 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 301 batches, 591 items (avg 1.96 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 593, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.052715654952076675, 'batches': 301, 'items': 591, 'queue_depth': 2, 'queue_wait_avg_s': 0.005077439206675981, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 2.562942032236606, 'cache_entries': 591, 'cache_bytes': 124846080, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:06,569 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 351 batches, 674 items (avg 1.92 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 674, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.04667609618104668, 'batches': 351, 'items': 674, 'queue_depth': 0, 'queue_wait_avg_s': 0.004941863996510115, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 2.941382051911205, 'cache_entries': 674, 'cache_bytes': 142602240, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:06,979 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 401 batches, 757 items (avg 1.89 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 758, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.041719342604298354, 'batches': 401, 'items': 757, 'queue_depth': 1, 'queue_wait_avg_s': 0.00483017703739722, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 3.30571217648685, 'cache_entries': 757, 'cache_bytes': 161259520, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:07,414 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 451 batches, 845 items (avg 1.87 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 847, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0375, 'batches': 451, 'items': 845, 'queue_depth': 2, 'queue_wait_avg_s': 0.004753243433829595, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 3.6947547076269984, 'cache_entries': 845, 'cache_bytes': 180428800, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:07,917 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 501 batches, 934 items (avg 1.86 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 938, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03398558187435633, 'batches': 501, 'items': 934, 'queue_depth': 4, 'queue_wait_avg_s': 0.004671493403581659, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 4.074727911502123, 'cache_entries': 934, 'cache_bytes': 199311360, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:09:08,370 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 551 batches, 1030 items (avg 1.87 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 1031, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03101503759398496, 'batches': 551, 'items': 1030, 'queue_depth': 1, 'queue_wait_avg_s': 0.004612654027556186, 'queue_wait_max_s': 0.029192361049354076, 'encoder_time_s': 4.459036624524742, 'cache_entries': 1030, 'cache_bytes': 217989120, 'cache_evictions': 0}"
+        }
+      ]
+    },
+    {
+      "arm": "paired-en-c16-B42",
+      "config": {
+        "id": "paired-en-c16-B42",
+        "language": "en",
+        "concurrency": 16,
+        "label": "B42",
+        "arm": "candidate3136",
+        "seed": 42,
+        "variant": "native",
+        "stream": false,
+        "base_commit": "7537f89b",
+        "candidate_commit": "94092b37",
+        "gpu_uuid": "GPU-99e2ecd1-862a-4af1-222d-841708198f30",
+        "comparison": "actual-main-to-pr3136"
+      },
+      "excerpts": [
+        {
+          "log": "tts_server.log",
+          "line": "2026-10-31 17:11:50,458 [INFO] sglang_omni.mps.runtime: MPS daemon ready on physical GPU GPU-99e2ecd1-862a-4af1-222d-841708198f30 (logical GPUs [0], pipe dir /results/cache/tmp/sglang-omni-mps-root/GPU-99e2ecd1-862a-4af1-222d-841708198f30/pipe)"
+        },
+        {
+          "log": "tts_server.log",
+          "line": "2026-10-31 17:11:50,458 [INFO] sglang_omni.mps.runtime: MPS summary: mode=auto {'GPU-99e2ecd1-862a-4af1-222d-841708198f30': {'logical_gpus': [0], 'daemon_pid': 1019, 'clients': ['preprocessing', 'tts_engine', 'vocoder']}}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:24,190 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 1 batches, 1 items (avg 1.00 items/batch, last batch: 1), cache: {'hits': 0, 'misses': 1, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0, 'batches': 1, 'items': 1, 'queue_depth': 0, 'queue_wait_avg_s': 0.00011220388114452362, 'queue_wait_max_s': 0.00011220388114452362, 'encoder_time_s': 0.13159488886594772, 'cache_entries': 1, 'cache_bytes': 131072, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:26,054 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 51 batches, 124 items (avg 2.43 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 125, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.2088607594936709, 'batches': 51, 'items': 124, 'queue_depth': 1, 'queue_wait_avg_s': 0.008521703879288849, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 0.6076358347199857, 'cache_entries': 124, 'cache_bytes': 23420928, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:26,529 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 101 batches, 221 items (avg 2.19 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 222, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.12941176470588237, 'batches': 101, 'items': 221, 'queue_depth': 1, 'queue_wait_avg_s': 0.00657448609574483, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 1.011230945121497, 'cache_entries': 221, 'cache_bytes': 43438080, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:27,010 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 151 batches, 323 items (avg 2.14 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 323, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.09269662921348315, 'batches': 151, 'items': 323, 'queue_depth': 0, 'queue_wait_avg_s': 0.00574763091540558, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 1.4226823737844825, 'cache_entries': 323, 'cache_bytes': 65343488, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:27,495 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 201 batches, 419 items (avg 2.08 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 420, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0728476821192053, 'batches': 201, 'items': 419, 'queue_depth': 1, 'queue_wait_avg_s': 0.0054507396708471535, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 1.8298146738670766, 'cache_entries': 419, 'cache_bytes': 86138880, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:27,980 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 251 batches, 521 items (avg 2.08 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 522, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.05945945945945946, 'batches': 251, 'items': 521, 'queue_depth': 1, 'queue_wait_avg_s': 0.005310671723084864, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 2.2419268134981394, 'cache_entries': 521, 'cache_bytes': 108027904, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:28,397 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 301 batches, 601 items (avg 2.00 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 606, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.051643192488262914, 'batches': 301, 'items': 601, 'queue_depth': 5, 'queue_wait_avg_s': 0.005093041310759382, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 2.612622803542763, 'cache_entries': 601, 'cache_bytes': 125534208, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:28,925 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 351 batches, 698 items (avg 1.99 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 701, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.04495912806539509, 'batches': 351, 'items': 698, 'queue_depth': 3, 'queue_wait_avg_s': 0.005060326311347691, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 3.01669859001413, 'cache_entries': 698, 'cache_bytes': 146276352, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:29,352 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 401 batches, 785 items (avg 1.96 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 787, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.04024390243902439, 'batches': 401, 'items': 785, 'queue_depth': 2, 'queue_wait_avg_s': 0.005009390831966499, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 3.401111774612218, 'cache_entries': 785, 'cache_bytes': 165310464, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:29,764 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 451 batches, 869 items (avg 1.93 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 872, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.036464088397790057, 'batches': 451, 'items': 869, 'queue_depth': 3, 'queue_wait_avg_s': 0.004915431901165236, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 3.7790933810174465, 'cache_entries': 869, 'cache_bytes': 183496704, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:30,188 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 501 batches, 957 items (avg 1.91 items/batch, last batch: 4), cache: {'hits': 33, 'misses': 960, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03323262839879154, 'batches': 501, 'items': 957, 'queue_depth': 3, 'queue_wait_avg_s': 0.004765513861530471, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 4.151564048137516, 'cache_entries': 957, 'cache_bytes': 201404416, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:16:30,620 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 551 batches, 1046 items (avg 1.90 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 1052, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.030414746543778803, 'batches': 551, 'items': 1046, 'queue_depth': 6, 'queue_wait_avg_s': 0.004670810089740425, 'queue_wait_max_s': 0.034793463069945574, 'encoder_time_s': 4.522122067864984, 'cache_entries': 1046, 'cache_bytes': 218480640, 'cache_evictions': 0}"
+        }
+      ]
+    },
+    {
+      "arm": "paired-en-c16-B43",
+      "config": {
+        "id": "paired-en-c16-B43",
+        "language": "en",
+        "concurrency": 16,
+        "label": "B43",
+        "arm": "candidate3136",
+        "seed": 43,
+        "variant": "native",
+        "stream": false,
+        "base_commit": "7537f89b",
+        "candidate_commit": "94092b37",
+        "gpu_uuid": "GPU-99e2ecd1-862a-4af1-222d-841708198f30",
+        "comparison": "actual-main-to-pr3136"
+      },
+      "excerpts": [
+        {
+          "log": "tts_server.log",
+          "line": "2026-10-31 17:20:11,472 [INFO] sglang_omni.mps.runtime: MPS daemon ready on physical GPU GPU-99e2ecd1-862a-4af1-222d-841708198f30 (logical GPUs [0], pipe dir /results/cache/tmp/sglang-omni-mps-root/GPU-99e2ecd1-862a-4af1-222d-841708198f30/pipe)"
+        },
+        {
+          "log": "tts_server.log",
+          "line": "2026-10-31 17:20:11,472 [INFO] sglang_omni.mps.runtime: MPS summary: mode=auto {'GPU-99e2ecd1-862a-4af1-222d-841708198f30': {'logical_gpus': [0], 'daemon_pid': 1029, 'clients': ['preprocessing', 'tts_engine', 'vocoder']}}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:02,504 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 1 batches, 1 items (avg 1.00 items/batch, last batch: 1), cache: {'hits': 0, 'misses': 1, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0, 'batches': 1, 'items': 1, 'queue_depth': 0, 'queue_wait_avg_s': 6.305519491434097e-05, 'queue_wait_max_s': 6.305519491434097e-05, 'encoder_time_s': 0.14770822459831834, 'cache_entries': 1, 'cache_bytes': 102400, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:04,526 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 51 batches, 119 items (avg 2.33 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 121, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.21428571428571427, 'batches': 51, 'items': 119, 'queue_depth': 2, 'queue_wait_avg_s': 0.007790174143498435, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 0.6201444426551461, 'cache_entries': 119, 'cache_bytes': 22519808, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:05,033 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 101 batches, 213 items (avg 2.11 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 213, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.13414634146341464, 'batches': 101, 'items': 213, 'queue_depth': 0, 'queue_wait_avg_s': 0.00622609998165092, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 1.0516831744462252, 'cache_entries': 213, 'cache_bytes': 41345024, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:05,471 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 151 batches, 295 items (avg 1.95 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 299, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.09939759036144578, 'batches': 151, 'items': 295, 'queue_depth': 4, 'queue_wait_avg_s': 0.00554534651938889, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 1.4453106261789799, 'cache_entries': 295, 'cache_bytes': 58748928, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:05,926 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 201 batches, 385 items (avg 1.92 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 385, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.07894736842105263, 'batches': 201, 'items': 385, 'queue_depth': 0, 'queue_wait_avg_s': 0.004897780155206656, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 1.8470584326423705, 'cache_entries': 385, 'cache_bytes': 77578240, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:06,381 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 251 batches, 469 items (avg 1.87 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 471, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.06547619047619048, 'batches': 251, 'items': 469, 'queue_depth': 2, 'queue_wait_avg_s': 0.0047891263687200765, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 2.2555918931029737, 'cache_entries': 469, 'cache_bytes': 95870976, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:06,837 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 301 batches, 555 items (avg 1.84 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 555, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.05612244897959184, 'batches': 301, 'items': 555, 'queue_depth': 0, 'queue_wait_avg_s': 0.004698975183707368, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 2.6343993563205004, 'cache_entries': 555, 'cache_bytes': 114081792, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:07,311 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 351 batches, 652 items (avg 1.86 items/batch, last batch: 3), cache: {'hits': 33, 'misses': 652, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.04817518248175182, 'batches': 351, 'items': 652, 'queue_depth': 0, 'queue_wait_avg_s': 0.004604074110539824, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 3.0324122942984104, 'cache_entries': 652, 'cache_bytes': 134959104, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:07,740 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 401 batches, 735 items (avg 1.83 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 736, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.04291287386215865, 'batches': 401, 'items': 735, 'queue_depth': 1, 'queue_wait_avg_s': 0.004458223460685639, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 3.4101124708540738, 'cache_entries': 735, 'cache_bytes': 152977408, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:08,219 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 451 batches, 832 items (avg 1.84 items/batch, last batch: 4), cache: {'hits': 33, 'misses': 833, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03810623556581986, 'batches': 451, 'items': 832, 'queue_depth': 1, 'queue_wait_avg_s': 0.004453817522377134, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 3.817191096022725, 'cache_entries': 832, 'cache_bytes': 173608960, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:08,695 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 501 batches, 913 items (avg 1.82 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 916, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03477344573234984, 'batches': 501, 'items': 913, 'queue_depth': 3, 'queue_wait_avg_s': 0.004407376456936374, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 4.164094557054341, 'cache_entries': 913, 'cache_bytes': 190296064, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:25:09,151 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 551 batches, 1009 items (avg 1.83 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 1011, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.031609195402298854, 'batches': 551, 'items': 1009, 'queue_depth': 2, 'queue_wait_avg_s': 0.004363336616516025, 'queue_wait_max_s': 0.02876514010131359, 'encoder_time_s': 4.5400685002096, 'cache_entries': 1009, 'cache_bytes': 209326080, 'cache_evictions': 0}"
+        }
+      ]
+    },
+    {
+      "arm": "paired-en-c16-A43",
+      "config": {
+        "id": "paired-en-c16-A43",
+        "language": "en",
+        "concurrency": 16,
+        "label": "A43",
+        "arm": "control",
+        "seed": 43,
+        "variant": "native",
+        "stream": false,
+        "base_commit": "7537f89b",
+        "candidate_commit": "94092b37",
+        "gpu_uuid": "GPU-99e2ecd1-862a-4af1-222d-841708198f30",
+        "comparison": "actual-main-to-pr3136"
+      },
+      "excerpts": [
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:40,282 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 1 batches, 1 items (avg 1.00 items/batch, last batch: 1), cache: {'hits': 0, 'misses': 1, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0, 'batches': 1, 'items': 1, 'queue_depth': 0, 'queue_wait_avg_s': 7.211090996861458e-05, 'queue_wait_max_s': 7.211090996861458e-05, 'encoder_time_s': 0.13696171529591084, 'cache_entries': 1, 'cache_bytes': 110592, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:42,183 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 51 batches, 123 items (avg 2.41 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 126, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.20754716981132076, 'batches': 51, 'items': 123, 'queue_depth': 3, 'queue_wait_avg_s': 0.006470101718919549, 'queue_wait_max_s': 0.02273154305294156, 'encoder_time_s': 0.5903368815779686, 'cache_entries': 123, 'cache_bytes': 23314432, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:42,790 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 101 batches, 222 items (avg 2.20 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 222, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.12941176470588237, 'batches': 101, 'items': 222, 'queue_depth': 0, 'queue_wait_avg_s': 0.005352144381283103, 'queue_wait_max_s': 0.02273154305294156, 'encoder_time_s': 1.0095370770432055, 'cache_entries': 222, 'cache_bytes': 43700224, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:43,242 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 151 batches, 314 items (avg 2.08 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 316, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.09455587392550144, 'batches': 151, 'items': 314, 'queue_depth': 2, 'queue_wait_avg_s': 0.004745413405393624, 'queue_wait_max_s': 0.02273154305294156, 'encoder_time_s': 1.3958878149278462, 'cache_entries': 314, 'cache_bytes': 63578112, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:43,659 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 201 batches, 398 items (avg 1.98 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 399, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0763888888888889, 'batches': 201, 'items': 398, 'queue_depth': 1, 'queue_wait_avg_s': 0.00448439461670479, 'queue_wait_max_s': 0.02273154305294156, 'encoder_time_s': 1.7650019694119692, 'cache_entries': 398, 'cache_bytes': 81235968, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:44,187 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 251 batches, 506 items (avg 2.02 items/batch, last batch: 4), cache: {'hits': 33, 'misses': 506, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.061224489795918366, 'batches': 251, 'items': 506, 'queue_depth': 0, 'queue_wait_avg_s': 0.004577095312040608, 'queue_wait_max_s': 0.02273154305294156, 'encoder_time_s': 2.195927895139903, 'cache_entries': 506, 'cache_bytes': 104972288, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:44,660 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 301 batches, 599 items (avg 1.99 items/batch, last batch: 1), cache: {'hits': 33, 'misses': 599, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.05221518987341772, 'batches': 301, 'items': 599, 'queue_depth': 0, 'queue_wait_avg_s': 0.004543562984103353, 'queue_wait_max_s': 0.02273154305294156, 'encoder_time_s': 2.585511881392449, 'cache_entries': 599, 'cache_bytes': 125243392, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:45,158 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 351 batches, 694 items (avg 1.98 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 694, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0453920220082531, 'batches': 351, 'items': 694, 'queue_depth': 0, 'queue_wait_avg_s': 0.0047477634693428835, 'queue_wait_max_s': 0.041459721978753805, 'encoder_time_s': 3.0306650241836905, 'cache_entries': 694, 'cache_bytes': 145350656, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:45,593 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 401 batches, 775 items (avg 1.93 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 776, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.0407911001236094, 'batches': 401, 'items': 775, 'queue_depth': 1, 'queue_wait_avg_s': 0.0046137480239474005, 'queue_wait_max_s': 0.041459721978753805, 'encoder_time_s': 3.4062000550329685, 'cache_entries': 775, 'cache_bytes': 163045376, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:46,111 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 451 batches, 878 items (avg 1.95 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 880, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03614457831325301, 'batches': 451, 'items': 878, 'queue_depth': 2, 'queue_wait_avg_s': 0.004638266644137222, 'queue_wait_max_s': 0.041459721978753805, 'encoder_time_s': 3.851152407936752, 'cache_entries': 878, 'cache_bytes': 185085952, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:46,722 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 501 batches, 987 items (avg 1.97 items/batch, last batch: 5), cache: {'hits': 33, 'misses': 987, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.03235294117647059, 'batches': 501, 'items': 987, 'queue_depth': 0, 'queue_wait_avg_s': 0.004686962909385064, 'queue_wait_max_s': 0.041459721978753805, 'encoder_time_s': 4.278551252558827, 'cache_entries': 987, 'cache_bytes': 207138816, 'cache_evictions': 0}"
+        },
+        {
+          "log": "asr_server.log",
+          "line": "2026-10-31 17:34:47,124 [INFO] sglang_omni.models.qwen3_asr.encoder_service: Qwen3-ASR pre-LM encoder stage: 551 batches, 1072 items (avg 1.95 items/batch, last batch: 2), cache: {'hits': 33, 'misses': 1074, 'merged': 31, 'failed': 0, 'cache_hit_rate': 0.02981029810298103, 'batches': 551, 'items': 1072, 'queue_depth': 2, 'queue_wait_avg_s': 0.004619530702718714, 'queue_wait_max_s': 0.041459721978753805, 'encoder_time_s': 4.6422951342538, 'cache_entries': 1072, 'cache_bytes': 223383552, 'cache_evictions': 0}"
+        }
+      ]
+    }
+  ],
+  "active_arm": "paired-zh-c1-A42",
+  "queue_stage": "running",
+  "mps_processes_for_assignment_user": [],
+  "scope": "Informational startup/cache excerpts only; no measurement process or source was changed."
+}

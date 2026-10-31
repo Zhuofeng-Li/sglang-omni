@@ -1,0 +1,12 @@
+{
+  "predeclared_utc": "2026-10-31T19:38:47.027785+00:00",
+  "id": "paired-zh-c1-A42",
+  "original_root": "/scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261031/v2",
+  "original_node_root": "/data/zhuofeng-li/home/ming-final-review-20261031/qualification-v2",
+  "actual_source_commit": "74003d00f53e7f1a05593b556f21a31760a6fab6",
+  "source_archive_sha256": "cbc2fa4c614b49df1ad8e530b68b106d067b61b4a5f5ce7506d71afcdd2cf4fd",
+  "new_paired_candidate_commit": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+  "original_candidate_identifier": "b6d7dbc51360bf6c4a1e6f44976802c20967dcb3",
+  "reason": "Actual clean-main source, native default MPS off, image, assets, device and launch settings unchanged. Preserve original raw config and identify candidate field as original comparison context. Reuse elected while result still in flight. ZH ABBA first; fresh full EN ABBA for new default-off behavior.",
+  "requires_complete_result_and_verification": true
+}

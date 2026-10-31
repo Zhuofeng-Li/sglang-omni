@@ -1,0 +1,29 @@
+{
+  "verified_utc": "2026-10-31T19:46:59.605850+00:00",
+  "raw_archive": "/scratch/user/zhuofengli_tamu.edu/tasks/ming3-streaming/review-20261031/v2/final-mps-on-prior-results.tar.gz",
+  "raw_archive_sha256": "b6aa19a5f3b9042be5062e0e7c1cd1de820fe6365a2f0c5730eea257ed1849bf",
+  "checked_arm": {
+    "arm": "paired-zh-c1-A42",
+    "requests": 2020,
+    "failed": 0,
+    "quality_evaluated": 2020,
+    "edits": 265,
+    "reference_units": 42266,
+    "wer_percent": 0.6269814981308853,
+    "sim_mean": 0.7804672421942843,
+    "throughput_qps_reported": 0.957,
+    "actual_source_commit": "74003d00f53e7f1a05593b556f21a31760a6fab6",
+    "paired_candidate_identifier": "b6d7dbc51360bf6c4a1e6f44976802c20967dcb3",
+    "costs_verified_from_raw_logs": true,
+    "capture_end_events_during_tts": 19,
+    "memory_points_during_tts": 2148,
+    "memory_poll_gap_median_s": 1.0175769329071045,
+    "memory_poll_gap_max_s": 2.073277711868286,
+    "memory_poll_failures": 0,
+    "verification": "Unique matching request/quality/SIM/audio-hash IDs, completion, errors and score arithmetic checked."
+  },
+  "actual_control_source_unchanged": true,
+  "original_raw_files_preserved": true,
+  "predeclared_provenance": "reused-controls.json",
+  "node_preflight": "reuse-control-node-check.json"
+}

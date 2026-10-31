@@ -1,0 +1,8 @@
+{
+  "revision": "7537f89baca54d19de2b7afe5465bb614c10b625",
+  "file": ".github/workflows/omni-ci.yaml",
+  "job": "cleanup",
+  "condition": "always() && !cancelled() && needs.setup.result == 'success' && github.event_name == 'workflow_dispatch'",
+  "current_run_event": "pull_request",
+  "assessment": "Job skipped due event, independently of chosen model stages. MPS job resource cleanup is verified separately."
+}

@@ -1,0 +1,27 @@
+{
+  "epoch": 1793467693.692492,
+  "sources": [
+    {
+      "source": "main",
+      "folder": "control",
+      "files_verified": 3473,
+      "archive_sha256": "6e2cbea655eb020d16ad85029e6bd8ac9bbfbf6ce65e900e5d8e424f3d12de61",
+      "commit": "7537f89baca54d19de2b7afe5465bb614c10b625"
+    },
+    {
+      "source": "3136",
+      "folder": "candidate3136",
+      "files_verified": 3478,
+      "archive_sha256": "71196b0d645a6482b9ba18f2b1e8dda06ea926598e9ee847b5a71991cf959f3d",
+      "commit": "94092b37409c85b96deb1ec23f94eda957417220"
+    },
+    {
+      "source": "3190",
+      "folder": "integrated-final",
+      "files_verified": 3483,
+      "archive_sha256": "d06518409be201730033dc9e299b4a4fbc77be03151dd2986b4e6dd58392a4ce",
+      "commit": "08f6a11201074948de8320ec14ead37cb9dd2053"
+    }
+  ],
+  "verification": "All archived regular source files and symlinks match runtime mounts; archive SHA256 matches controller manifest."
+}

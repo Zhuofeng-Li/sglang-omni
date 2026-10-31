@@ -1,0 +1,26 @@
+{
+  "main": {
+    "commit": "74003d00f53e7f1a05593b556f21a31760a6fab6",
+    "tree": "14b83c5235a64d7547dfd93b6a5eaa34c24e661a",
+    "archive": "control.tar",
+    "sha256": "cbc2fa4c614b49df1ad8e530b68b106d067b61b4a5f5ce7506d71afcdd2cf4fd"
+  },
+  "3136": {
+    "commit": "b6d7dbc51360bf6c4a1e6f44976802c20967dcb3",
+    "tree": "bc87025860d2d1c637e5fd746b0d68a4d0f2db9e",
+    "archive": "candidate3136.tar",
+    "sha256": "f7a53ff0707947f04f8796845e38fd6d9489806089f34bc7eff1b8e0b00ff43f"
+  },
+  "3189": {
+    "commit": "8b432a47fb5afdcaf98892174e73201055e2d4bd",
+    "tree": "a5993a719061602217e496f95056f87ab4d5367d",
+    "archive": "candidate3189-final.tar",
+    "sha256": "75815d4eaa04747ced4764155c7b4937da45beb35fcd56145523bc23ce4cf8d7"
+  },
+  "3190": {
+    "commit": "90fafa93b786011801a0ae5aecb5fac7ea773c47",
+    "tree": "c7835cd018fc1daf63bc509db81737f3506eae70",
+    "archive": "integrated-final.tar",
+    "sha256": "82a134db5e26fc7bcf33dadfe5b7c318e28cc25ce5172306bb7fd0baaf4d36c7"
+  }
+}

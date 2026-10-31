@@ -1,0 +1,11 @@
+{
+  "arm": "paired-zh-c1-A42",
+  "verified_epoch": 1793475973.3865156,
+  "coverage": 2020,
+  "mps": "off",
+  "raw_result_sha256": "dfa0b187a325decda7913775d86b74870b76a5f662b7cf1a1d08a01122e01d8f",
+  "config_sha256": "74a4e621dedab11752bd02282b5992d0b05bff614629ecdc9925bc91ea260660",
+  "actual_source_commit": "74003d00f53e7f1a05593b556f21a31760a6fab6",
+  "original_candidate_identifier": "b6d7dbc51360bf6c4a1e6f44976802c20967dcb3",
+  "preserved_original_raw_files": true
+}

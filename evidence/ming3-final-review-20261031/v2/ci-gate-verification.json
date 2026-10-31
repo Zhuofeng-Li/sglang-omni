@@ -1,0 +1,38 @@
+[
+  {
+    "pr": 3136,
+    "job": 124620520555,
+    "selection": [
+      "2026-10-31T18:27:31.1708698Z   LABELS_JSON: [\"run-higgs-tts-3-4b\",\"run-mps-ci\"]",
+      "2026-10-31T18:27:31.2053012Z run_asr=false",
+      "2026-10-31T18:27:31.2053694Z run_tts=false",
+      "2026-10-31T18:27:31.2054149Z run_mps=true",
+      "2026-10-31T18:27:31.2054348Z mps_ci_model=higgs",
+      "2026-10-31T18:27:31.2055832Z mps_ci_config=examples/mps_dp/configs/higgs_h100_dp3.yaml"
+    ]
+  },
+  {
+    "pr": 3189,
+    "job": 124620588148,
+    "selection": [
+      "2026-10-31T18:27:47.0611664Z   LABELS_JSON: [\"run-unit-test-ci-only\"]",
+      "2026-10-31T18:27:47.1089566Z run_asr=false",
+      "2026-10-31T18:27:47.1090179Z run_tts=false",
+      "2026-10-31T18:27:47.1090835Z run_mps=false",
+      "2026-10-31T18:27:47.1091128Z mps_ci_model=",
+      "2026-10-31T18:27:47.1092976Z mps_ci_config="
+    ]
+  },
+  {
+    "pr": 3190,
+    "job": 124620644464,
+    "selection": [
+      "2026-10-31T18:28:01.8010298Z   LABELS_JSON: [\"run-unit-test-ci-only\"]",
+      "2026-10-31T18:28:01.8395288Z run_asr=false",
+      "2026-10-31T18:28:01.8395926Z run_tts=false",
+      "2026-10-31T18:28:01.8396551Z run_mps=false",
+      "2026-10-31T18:28:01.8396849Z mps_ci_model=",
+      "2026-10-31T18:28:01.8398269Z mps_ci_config="
+    ]
+  }
+]

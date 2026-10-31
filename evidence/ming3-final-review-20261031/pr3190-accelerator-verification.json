@@ -1,0 +1,13 @@
+{
+  "verified_utc": "2026-10-31T17:23:59.565978+00:00",
+  "pr": 3190,
+  "head": "08f6a11201074948de8320ec14ead37cb9dd2053",
+  "workflow_run": 41222533557,
+  "job": 124601141208,
+  "actual_test_revision": "0683fc1b718a8c312a1ee12c457d2379ab0231c2",
+  "test_tree": "2f437be70ce32491f08eba2aef61c309d4b643fc",
+  "matches_final_head_tree": true,
+  "result": "1213 passed, 28 skipped, 10923 deselected",
+  "coverage": "accelerator unit tests, not corpus model benchmark",
+  "logs": "pr3190-accelerator.log"
+}

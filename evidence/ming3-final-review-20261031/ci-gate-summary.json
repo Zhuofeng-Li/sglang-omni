@@ -1,0 +1,81 @@
+[
+  {
+    "pr": 3136,
+    "lines": [
+      "  core.setOutput(\"labels\", JSON.stringify(labels));",
+      "  // the live labels and draft state.",
+      "  core.setOutput(\"labels\", JSON.stringify(pr.data.labels.map((label) => label.name)));",
+      "2026-10-31T17:02:15.7378944Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:15.7385361Z   DISPATCH_CI_LABELS: ",
+      "2026-10-31T17:02:16.6304751Z ##[group]Run echo \"CI labels: [\"run-higgs-tts-3-4b\",\"run-mps-ci\"]\"",
+      "2026-10-31T17:02:16.6305788Z \u001b[36;1mecho \"CI labels: [\"run-higgs-tts-3-4b\",\"run-mps-ci\"]\"\u001b[0m",
+      "2026-10-31T17:02:16.6331620Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:16.6414584Z CI labels: [run-higgs-tts-3-4b,run-mps-ci]",
+      "2026-10-31T17:02:16.6610758Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:19.7809000Z ##[group]Run python .github/scripts/resolve_ci_labels.py resolve \\",
+      "2026-10-31T17:02:19.7809502Z \u001b[36;1mpython .github/scripts/resolve_ci_labels.py resolve \\\u001b[0m",
+      "2026-10-31T17:02:19.7809876Z \u001b[36;1m  --labels-json \"${LABELS_JSON}\" \\\u001b[0m",
+      "2026-10-31T17:02:19.7831952Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:19.7835443Z   LABELS_JSON: [\"run-higgs-tts-3-4b\",\"run-mps-ci\"]",
+      "2026-10-31T17:02:19.8280498Z run_mps=true",
+      "2026-10-31T17:02:19.8280713Z mps_ci_model=higgs",
+      "2026-10-31T17:02:19.8282126Z mps_ci_config=examples/mps_dp/configs/higgs_h100_dp3.yaml",
+      "2026-10-31T17:02:19.8421612Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:04:24.0733946Z Set output 'run_mps'",
+      "2026-10-31T17:04:24.0734807Z Set output 'mps_ci_model'",
+      "2026-10-31T17:04:24.0735154Z Set output 'mps_ci_config'"
+    ]
+  },
+  {
+    "pr": 3189,
+    "lines": [
+      "  const labels = process.env.DISPATCH_CI_LABELS.split(/\\s+/).filter(Boolean);",
+      "  core.setOutput(\"labels\", JSON.stringify(labels));",
+      "  // the live labels and draft state.",
+      "  core.setOutput(\"labels\", JSON.stringify(pr.data.labels.map((label) => label.name)));",
+      "2026-10-31T17:02:25.4214124Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:25.4220746Z   DISPATCH_CI_LABELS: ",
+      "2026-10-31T17:02:26.7257744Z ##[group]Run echo \"CI labels: [\"run-unit-test-ci-only\"]\"",
+      "2026-10-31T17:02:26.7258678Z \u001b[36;1mecho \"CI labels: [\"run-unit-test-ci-only\"]\"\u001b[0m",
+      "2026-10-31T17:02:26.7284433Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:26.7366468Z CI labels: [run-unit-test-ci-only]",
+      "2026-10-31T17:02:26.7556037Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:29.9357598Z ##[group]Run python .github/scripts/resolve_ci_labels.py resolve \\",
+      "2026-10-31T17:02:29.9358203Z \u001b[36;1mpython .github/scripts/resolve_ci_labels.py resolve \\\u001b[0m",
+      "2026-10-31T17:02:29.9358586Z \u001b[36;1m  --labels-json \"${LABELS_JSON}\" \\\u001b[0m",
+      "2026-10-31T17:02:29.9380155Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:29.9383968Z   LABELS_JSON: [\"run-unit-test-ci-only\"]",
+      "2026-10-31T17:02:29.9768466Z run_mps=false",
+      "2026-10-31T17:02:29.9768692Z mps_ci_model=",
+      "2026-10-31T17:02:29.9770190Z mps_ci_config=",
+      "2026-10-31T17:02:29.9903432Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:04:19.3898096Z Set output 'run_mps'"
+    ]
+  },
+  {
+    "pr": 3190,
+    "lines": [
+      "  const labels = process.env.DISPATCH_CI_LABELS.split(/\\s+/).filter(Boolean);",
+      "  core.setOutput(\"labels\", JSON.stringify(labels));",
+      "  // the live labels and draft state.",
+      "  core.setOutput(\"labels\", JSON.stringify(pr.data.labels.map((label) => label.name)));",
+      "2026-10-31T17:02:15.1625192Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:15.1629109Z   DISPATCH_CI_LABELS: ",
+      "2026-10-31T17:02:16.0506210Z ##[group]Run echo \"CI labels: [\"run-unit-test-ci-only\"]\"",
+      "2026-10-31T17:02:16.0506823Z \u001b[36;1mecho \"CI labels: [\"run-unit-test-ci-only\"]\"\u001b[0m",
+      "2026-10-31T17:02:16.0534675Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:16.0600942Z CI labels: [run-unit-test-ci-only]",
+      "2026-10-31T17:02:16.0780668Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:17.6979608Z ##[group]Run python .github/scripts/resolve_ci_labels.py resolve \\",
+      "2026-10-31T17:02:17.6979911Z \u001b[36;1mpython .github/scripts/resolve_ci_labels.py resolve \\\u001b[0m",
+      "2026-10-31T17:02:17.6980120Z \u001b[36;1m  --labels-json \"${LABELS_JSON}\" \\\u001b[0m",
+      "2026-10-31T17:02:17.7005563Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:02:17.7007709Z   LABELS_JSON: [\"run-unit-test-ci-only\"]",
+      "2026-10-31T17:02:17.7317855Z run_mps=false",
+      "2026-10-31T17:02:17.7317972Z mps_ci_model=",
+      "2026-10-31T17:02:17.7318672Z mps_ci_config=",
+      "2026-10-31T17:02:17.7410682Z   TTS_MODEL_PATH: bosonai/higgs-tts-3-4b",
+      "2026-10-31T17:04:22.2622414Z Set output 'run_mps'"
+    ]
+  }
+]

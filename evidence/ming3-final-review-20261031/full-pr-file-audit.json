@@ -1,0 +1,51 @@
+{
+  "observed_utc": "2026-10-31T17:36:17.875924+00:00",
+  "prs": [
+    {
+      "pr": 3136,
+      "files": 16,
+      "doc_docs_changes": []
+    },
+    {
+      "pr": 3189,
+      "files": 186,
+      "doc_docs_changes": [
+        "docs/_static/js/sidebar_company_toggle.js",
+        "docs/basic_usage/qwen3_omni.md",
+        "docs/conf.py",
+        "docs/cookbook/companies/autoark_ai.md",
+        "docs/cookbook/companies/boson_ai.md",
+        "docs/cookbook/companies/dots_studio.md",
+        "docs/cookbook/companies/fish_audio.md",
+        "docs/cookbook/companies/fun_audio_llm.md",
+        "docs/cookbook/companies/inclusionai.md",
+        "docs/cookbook/companies/minimax.md",
+        "docs/cookbook/companies/mistral_ai.md",
+        "docs/cookbook/companies/nvidia.md",
+        "docs/cookbook/companies/openai.md",
+        "docs/cookbook/companies/openbmb.md",
+        "docs/cookbook/companies/openmoss.md",
+        "docs/cookbook/companies/qwen.md",
+        "docs/cookbook/companies/tencent.md",
+        "docs/cookbook/companies/zyphra.md",
+        "docs/cookbook/fishaudio_drama3.md",
+        "docs/cookbook/ming3_tts.md",
+        "docs/cookbook/ming_omni.md",
+        "docs/cookbook/minicpm_o.md",
+        "docs/cookbook/minimax_music3.md",
+        "docs/cookbook/nemotron_voicechat.md",
+        "docs/cookbook/qwen3_tts.md",
+        "docs/developer_reference/ci_labels.md",
+        "docs/developer_reference/duplex_load_generator_pacing.md",
+        "docs/developer_reference/full_duplex_guide.md",
+        "docs/developer_reference/main.md",
+        "docs/index.rst"
+      ]
+    },
+    {
+      "pr": 3190,
+      "files": 2,
+      "doc_docs_changes": []
+    }
+  ]
+}
