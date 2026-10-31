@@ -1,29 +1,35 @@
 {
   "3136": {
-    "head": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+    "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+    "measured_head": "78d8c310a65c14dd4bceb87e220c8304917805bb",
     "body_readback": true,
     "complete_default_off_cells": [
-      "zh"
+      "zh",
+      "en"
     ],
-    "source_archive_sha256": "cd3f1e44748d30c813e9982579d5b61bdfd25fc91fc8cb2ba08125e8b2f9a34f",
-    "updated_utc": "2026-10-31T21:44:16.583384+00:00"
+    "source_archive_sha256": "dbddf598e87c38c52e3319b420afb0970408d3c87e05ee2b758d93bcd1871904",
+    "updated_utc": "2026-10-31T22:10:28.301330+00:00"
   },
   "3189": {
-    "head": "35bf42ec695da774d6e1cf8731c70b291d671af9",
+    "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+    "measured_head": "35bf42ec695da774d6e1cf8731c70b291d671af9",
     "body_readback": true,
     "complete_default_off_cells": [
-      "zh"
+      "zh",
+      "en"
     ],
-    "source_archive_sha256": "cd3f1e44748d30c813e9982579d5b61bdfd25fc91fc8cb2ba08125e8b2f9a34f",
-    "updated_utc": "2026-10-31T21:44:21.117070+00:00"
+    "source_archive_sha256": "dbddf598e87c38c52e3319b420afb0970408d3c87e05ee2b758d93bcd1871904",
+    "updated_utc": "2026-10-31T22:10:32.349474+00:00"
   },
   "3190": {
-    "head": "2a636231d688b7bc83d78769e4f5162502680675",
+    "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+    "measured_head": "2a636231d688b7bc83d78769e4f5162502680675",
     "body_readback": true,
     "complete_default_off_cells": [
-      "zh"
+      "zh",
+      "en"
     ],
-    "source_archive_sha256": "cd3f1e44748d30c813e9982579d5b61bdfd25fc91fc8cb2ba08125e8b2f9a34f",
-    "updated_utc": "2026-10-31T21:44:24.721509+00:00"
+    "source_archive_sha256": "dbddf598e87c38c52e3319b420afb0970408d3c87e05ee2b758d93bcd1871904",
+    "updated_utc": "2026-10-31T22:10:35.375310+00:00"
   }
 }

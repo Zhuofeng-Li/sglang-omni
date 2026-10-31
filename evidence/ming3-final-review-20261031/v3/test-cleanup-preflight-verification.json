@@ -1,0 +1,44 @@
+{
+  "observed_utc": "2026-10-31T22:09:13.058310+00:00",
+  "prs": {
+    "3136": {
+      "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+      "run": 41246658357,
+      "gate_passed": true,
+      "resolver": {
+        "run_unit_test": "false",
+        "run_mps": "true",
+        "mps_ci_model": "higgs"
+      },
+      "coverage": "PR Test plus selected Higgs MPS",
+      "unit_note": "PR Test is selected by workflow for any selected stage after setup; resolver false for3136 does not skip PR Test",
+      "remaining": "Setup, test/model jobs, actual checkout and artifacts pending verification"
+    },
+    "3189": {
+      "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+      "run": 41246664995,
+      "gate_passed": true,
+      "resolver": {
+        "run_unit_test": "true",
+        "run_mps": "false",
+        "mps_ci_model": ""
+      },
+      "coverage": "PR Test only; model stages unselected",
+      "unit_note": "PR Test is selected by workflow for any selected stage after setup; resolver false for3136 does not skip PR Test",
+      "remaining": "Setup, test/model jobs, actual checkout and artifacts pending verification"
+    },
+    "3190": {
+      "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "run": 41246677809,
+      "gate_passed": true,
+      "resolver": {
+        "run_unit_test": "true",
+        "run_mps": "false",
+        "mps_ci_model": ""
+      },
+      "coverage": "PR Test only; model stages unselected",
+      "unit_note": "PR Test is selected by workflow for any selected stage after setup; resolver false for3136 does not skip PR Test",
+      "remaining": "Setup, test/model jobs, actual checkout and artifacts pending verification"
+    }
+  }
+}

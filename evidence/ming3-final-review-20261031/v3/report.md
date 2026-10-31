@@ -20,32 +20,33 @@ See [plan](measurement-plan.json), [source identities/archive hashes](source-man
 
 The previously running main740 ZH A42 control already uses native MPS off, with unchanged source/image/GPU/assets/settings. Reuse was elected before its result finished. Preserve its original raw config, including old `candidate_commit` as comparison context; actual measured source is main740. Do not rewrite it as a new candidate measurement. Old queue is held while that control finishes quality, then terminated without starting an old-auto candidate. New GPU tests and candidate measurements start only after its container exits. Raw coverage/scoring/costs must be verified before accepting reuse.
 
-## Complete default-off ZH c1 ABBA; remaining cells pending
+## Complete default-off paired blocks; final-mode corpus checks pending
 
-Four full ZH arms (A42/B42/B43/A43) are acknowledged by the native queue and independently audited in [raw compact evidence](completed-results.tar.gz), [strict complete-arm verification](completed-arm-verification.json) and [paired summary](paired-block-summary.json). Snapshot SHA256 `cd3f1e44748d30c813e9982579d5b61bdfd25fc91fc8cb2ba08125e8b2f9a34f`. Actual sources are frozen main74003d00 → PR3136 head78d8c310, inherited MPS off on both sides. Original PR bodies were updated and read back; [publication receipts](default-off-blocks-body-receipts.json). EN c16 and final-head mode checks remain incomplete; no merge-readiness or quality noninferiority claim.
+Both full-corpus two-seed ABBA blocks are complete: frozen main74003d00 → measured #3136 head78d8c310, inherited MPS off on both sides. Publication-head test-only equivalence is documented above. [Strict verification](completed-arm-verification.json), [paired summary](paired-block-summary.json), [original-body readbacks](default-off-blocks-body-receipts.json), [compact raw evidence](completed-results.tar.gz). Eight acknowledged complete arms; snapshot SHA256 `dbddf598e87c38c52e3319b420afb0970408d3c87e05ee2b758d93bcd1871904`. Native seed means are arithmetic; p95 is a seed range.
 
-| ZH c1, two-seed arithmetic means unless stated | Main | PR | Difference |
-| --- | ---: | ---: | ---: |
-| Native throughput req/s | 0.969 | 3.4565 | +256.71% |
-| Mean latency s | 1.032 | 0.289 | -0.743 |
-| p95 latency s, seed range | 1.292–1.330 | 0.377–0.381 | — |
-| WER % | 0.644726 | 0.657739 | **+0.013013 percentage points (adverse)** |
-| CAM++ SIM | 0.779919 | 0.780319 | +0.000400 |
-| Audio duration s | 5.201901 | 5.202059 | +0.003045% |
-| Failures | 0/4040 | 0/4040 | 0 |
-| Startup s | 93.6055 | 143.1740 | +49.5685 |
-| Maximum observed device memory GiB, across seeds | 107.4209 | 109.1416 | +1.7207 |
-| Successful capture events, each arm | 19 | 430 | +411 |
+| Condition | req/s main → PR | Latency mean / p95 range s, main → PR | WER % main → PR | CAM++ SIM main → PR | Failures |
+| --- | --- | --- | --- | --- | --- |
+| ZH c1 | 0.9690 → 3.4565 (+256.71%) | 1.0320 / 1.292–1.330 → 0.2890 / 0.377–0.381 | 0.644726 → 0.657739 (+0.013013 pp) | 0.779919 → 0.780319 (+0.000400) | 0/4040 → 0/4040 |
+| EN c16 | 9.0170 → 35.8540 (+297.63%) | 1.7655 / 2.582–2.642 → 0.4435 / 0.606–0.636 | 1.088504 → 1.008959 (-0.079545 pp) | 0.778928 → 0.776780 (-0.002148) | 0/2176 → 0/2176 |
 
-WER is worse in both matched seeds: seed42 265→270 edits, seed43 280→286, each over42,266 reference units. SIM improves in the aggregate. No quality acceptance margin was predeclared. Main/PR output-token totals by seed42 are131679/131772 and by seed43 are131017/130932. Raw-main quality includes its known sampling-storage lifetime bug, so optimization-only attribution is not assumed. Main exposes **0/4040** finish reasons; PR reports **4040/4040 stop**, zero reported length finishes. Unknown main reasons do not prove absence of truncation. Capture counts are events, not a unique resident graph inventory; memory is observed, not guaranteed true peak.
+| Condition | Startup s main → PR (delta) | Observed peak GiB main → PR (delta) | Capture events each arm |
+| --- | --- | --- | --- |
+| ZH c1 | 93.6055 → 143.1740 (+49.5685) | 107.4209 → 109.1416 (+1.7207) | 19 → 430 (+411) |
+| EN c16 | 96.0960 → 130.1435 (+34.0475) | 108.6943 → 109.6221 (+0.9277) | 19 → 430 (+411) |
 
-Radix SSO was renewed and the original parent resumed after fresh same-assignment/GPU/lease checks; no completed measurement was restarted. The historical [unacknowledged-result snapshot](https://github.com/Zhuofeng-Li/sglang-omni/blob/1c6cd6b3/evidence/ming3-final-review-20261031/v3/completed-results.tar.gz) preserves the earlier auth boundary. Newer live progress is recorded privately and will be published only after complete paired blocks verify.
+ZH c1: seed42 265→270 edits; seed43 280→286 edits. Audio duration mean 5.201901→5.202059s (+0.003045%); output tokens seed42/43 131679/131017→131772/130932.
+
+EN c16: seed42 136→116 edits; seed43 124→125 edits. Audio duration mean 3.948199→3.902500s (-1.157453%); output tokens seed42/43 54086/53305→53407/52741.
+
+**Adverse results retained:** ZH WER rises in both seeds; EN SIM falls in aggregate, audio is about1.16% shorter, and EN seed43 WER has one additional edit despite the better two-seed mean. No quality noninferiority margin was predeclared. Raw main contains the known sampling-storage lifetime bug, so these results mix its correctness fix with optimization effects and do not isolate pure optimization gains. Main exposes no stop reasons (EN2176, ZH4040 unknown); PR reports stop for all formal requests, zero reported length finishes. Unknown main reasons do not prove absence of truncation. EN c16 and ZH c1 are different conditions and cannot form a matched EN/ZH geometric gain. Capture counts are successful events, not necessarily unique resident graphs. Memory is observed, not guaranteed true peak.
+
+Final #3190 nonstreaming/streaming mode checks are now running on the original fixed source and protocol. They are not complete, and no final-series quality or merge-readiness claim is made. The earlier auth boundary and partial snapshots remain available in immutable evidence history; no completed measurement was restarted.
 
 ## Historical optional MPS on
 
 The [prior source record](../v2/report.md) retains the completed EN c16 ABBA on main740off → PR3136b6d7auto: mean req/s8.863→41.617 (+369.56%), WER1.075944%→0.996400%, CAM++SIM0.778832→0.776681, zero failures/2176 per side, audio3.945993→3.903199s. Startup94.1145→137.1715s; observed peak108.6943→109.6670GiB; successful capture events19→430. This is whole-candidate optional-MPS performance, not an isolated MPS benefit or default-off result. SIM regresses and output length differs. Main contains the sampling-storage lifetime correctness bug, so raw-main differences mix the fix with optimization effects.
 
-The [complete earlier qualification and trajectories](../../ming-review-20261028/report.md) preserve earlier source identities, the full historical matrix, corrected-lifetime controls, repeated scoring, adverse deltas and ablations. They are not relabeled as current-head measurements. The complete default-off ZH block is reported above; default-off EN and integrated streaming corpus blocks remain pending. No quality margin was predeclared.
+The [complete earlier qualification and trajectories](../../ming-review-20261028/report.md) preserve earlier source identities, the full historical matrix, corrected-lifetime controls, repeated scoring, adverse deltas and ablations. They are not relabeled as current-head measurements. Both complete default-off blocks are reported above; integrated streaming corpus blocks remain pending. No quality margin was predeclared.
 
 ## New main integration checkpoint
 
