@@ -1,0 +1,5 @@
+{
+  "id": 4433468864,
+  "url": "https://github.com/sgl-project/sglang-omni/pull/3136#discussion_r4433468864",
+  "body": "Removed the redundant test file in 97614b3a and carried the dependency update through #3189/#3190. The existing test_checkpoint_defaults_preserve_unqualified_tiny_execution remains unchanged, including Tiny/Dense MPS-off and config round-trip assertions. Full pre-commit run --all-files passed on #3136 and the final integrated branch. The original descriptions now distinguish the new test-only heads from the frozen benchmark sources and mark new-head CI as pending. Runtime/model/evaluator/config trees are unchanged, so the in-flight paired corpus checks continue without restarting."
+}

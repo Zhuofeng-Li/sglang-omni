@@ -1,0 +1,25 @@
+{
+  "observed_utc": "2026-10-31T22:04:18.844470+00:00",
+  "comment": 4433447951,
+  "sources": {
+    "3136": {
+      "measured_head": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+      "publication_head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+      "only_diff": "D\ttests/unit_test/ming3_tts/test_mps_defaults.py",
+      "runtime_evaluation_config_identical": true
+    },
+    "3189": {
+      "measured_head": "35bf42ec695da774d6e1cf8731c70b291d671af9",
+      "publication_head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+      "only_diff": "D\ttests/unit_test/ming3_tts/test_mps_defaults.py",
+      "runtime_evaluation_config_identical": true
+    },
+    "3190": {
+      "measured_head": "2a636231d688b7bc83d78769e4f5162502680675",
+      "publication_head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "only_diff": "D\ttests/unit_test/ming3_tts/test_mps_defaults.py",
+      "runtime_evaluation_config_identical": true
+    }
+  },
+  "measurement_sources_remain_frozen": true
+}
