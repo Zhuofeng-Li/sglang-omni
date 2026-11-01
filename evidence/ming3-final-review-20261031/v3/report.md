@@ -131,3 +131,11 @@ Developed through [RSI-Harness](https://github.com/OpenRSI-Foundation/OpenRSI-In
 ## Original quality-review response
 
 The [original #3190 corpus-quality review has been answered](https://github.com/sgl-project/sglang-omni/pull/3190#issuecomment-6551076083) after all3 original bodies and the complete16-arm evidence were published and read back. [Reply receipt](final-quality-review-reply-receipt.json), [complete evidence publication identity](complete16-evidence-publication.json), [fresh head/check/review state](complete16-current-pr-state.json). At this observation no head checks failed or remained incomplete, while #3136 still had CHANGES_REQUESTED and both companions REVIEW_REQUIRED. No merge or reviewer approval is claimed.
+
+## VAE component, Tiny reference duration and cache attribution audits
+
+- [VAE component audit](vae-component-review-resolution-audit.json): unused VAE half is removed before device transfer. Exact publication/current-CI/measured source blobs match; four real0.5B default-off candidate arms completed6216 requests without failures. No isolated VAE-only peak-memory savings measurement or dedicated loader unit case is claimed; whole-service costs remain adverse where measured.
+- [Tiny duration-default audit](tiny-duration-default-review-resolution-audit.json): static config/consumer checks confirm Tiny getsNone and both duration rejection branches require a non-None limit; dense defaults120s and explicit limits still apply. No new greater-than120s runtime input test or GPU experiment is claimed.
+- [Cache attribution audit](cache-attribution-review-resolution-audit.json): original #3136 body now explicitly limits generalization to unique-reference traffic. The already-completed EN/ZH c32 cache-off ABBA belongs to candidate3f8593f4 and its2026-10-27 protocol; it is not relabeled as a current default-off isolated cache gain. Current seeded/fresh, unseeded/URL, zero-entry and budget regressions remain separately attributed.
+
+Only the matching three handled requests were resolved after fresh head/file/thread guards. Required approvals, cookbook delivery and paired prefix landing remain open; no new qualification run or source commit was created.

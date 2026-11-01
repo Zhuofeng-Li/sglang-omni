@@ -1,0 +1,60 @@
+{
+  "observed_utc": "2026-11-01T00:27:29.619753+00:00",
+  "origin_comment": 4373225983,
+  "previous_reply": 4379965162,
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "actual_ci_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+  "measured_source": "78d8c310a65c14dd4bceb87e220c8304917805bb",
+  "source_blobs": [
+    {
+      "path": "sglang_omni/models/ming3_tts/checkpoint.py",
+      "publication_ci_measured_blob": "f607b966d7c501c3c43ce29fd9a42bd58be2dcc4"
+    },
+    {
+      "path": "sglang_omni/models/ming3_tts/stages.py",
+      "publication_ci_measured_blob": "5f6a8d2c08bb8dd8972d3dbd59b5f61a55199c73"
+    },
+    {
+      "path": "sglang_omni/models/ming3_tts/vocoder.py",
+      "publication_ci_measured_blob": "c117cc2c3fbf2ad9500cae2c0e7778def31e6dd3"
+    }
+  ],
+  "scope": "Source inspection confirms construction/state loading then removal of decoder for encoder-only use or encoder for decoder-only use before device transfer. Both callers request their required component. Four default-off real0.5B candidate arms from byte-identical loader/caller files completed6216 formal requests with zero failures. No dedicated component-loader unit case or isolated VAE-only startup-peak savings measurement is claimed; whole-service sampled peak costs remain in the original body.",
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wG7xw",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4373225983
+        }
+      ]
+    }
+  },
+  "resolved": true,
+  "native_candidate_evidence": [
+    {
+      "arm": "paired-zh-c1-B42",
+      "requests": 2020,
+      "failed": 0
+    },
+    {
+      "arm": "paired-zh-c1-B43",
+      "requests": 2020,
+      "failed": 0
+    },
+    {
+      "arm": "paired-en-c16-B42",
+      "requests": 1088,
+      "failed": 0
+    },
+    {
+      "arm": "paired-en-c16-B43",
+      "requests": 1088,
+      "failed": 0
+    }
+  ],
+  "archive_sha256": "14fba1d2ed1b2f07c2159c66fb6ae1744459ae7755f22b27f56c823498b13062",
+  "resolved_utc": "2026-11-01T00:27:31.106018+00:00"
+}

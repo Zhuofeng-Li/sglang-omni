@@ -1,0 +1,37 @@
+{
+  "observed_utc": "2026-11-01T00:30:23.215303+00:00",
+  "origin_comment": 4373225941,
+  "previous_reply": 4379961616,
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "body_readback": true,
+  "current_key_contract_proof": "cache-budget-review-resolution-audit.json",
+  "history": {
+    "measured_date": "2026-10-27",
+    "candidate": "3f8593f4cae19fe1c71e929a854bdc03b2c185e6",
+    "report": "https://github.com/Zhuofeng-Li/sglang-omni/blob/codex/ming3-streaming-review-evidence/evidence/ming3-nonstream-current-main/report.md",
+    "protocol": "Full EN/ZH atc32, seeds42/43 ABBA, original recorded private-cache/image/configuration; not current default-off attribution",
+    "en_qps_on_off": [
+      62.522,
+      46.029
+    ],
+    "zh_qps_on_off": [
+      56.568,
+      47.145
+    ]
+  },
+  "scope": "Original request allowed one cache-off cell; two historical complete cells already exist and retain their recorded sources, protocol, quality and length results. Current zero-entry bypass and seeded/URL/unseeded/budget behavior were checked separately. Original body now explicitly limits unique-reference generalization. No new benchmark or extrapolated new-head cache-only gain.",
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wG7xT",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4373225941
+        }
+      ]
+    }
+  },
+  "resolved": true,
+  "resolved_utc": "2026-11-01T00:30:24.626760+00:00"
+}
