@@ -1,0 +1,591 @@
+{
+  "observed_utc": "2026-11-01T00:19:59.774452+00:00",
+  "actual_main": "e727710aa6a0b29cef7dc362155c350dae313f21",
+  "prs": [
+    {
+      "pr": "3136",
+      "state": {
+        "baseRefName": "main",
+        "headRefOid": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+        "isDraft": false,
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "CHANGES_REQUESTED",
+        "state": "OPEN",
+        "url": "https://github.com/sgl-project/sglang-omni/pull/3136"
+      },
+      "check_runs": [
+        {
+          "name": "cleanup - reclaim ephemeral run home",
+          "id": 124680850627,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Omni model CI ()",
+          "id": 124680850514,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "TTS CI",
+          "id": 124678764866,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "ASR CI",
+          "id": 124678764630,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "MPS CI / stage 1 - MPS non-streaming",
+          "id": 124678764339,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-a",
+          "id": 124672375385,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-accelerator",
+          "id": 124672375369,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-c",
+          "id": 124672375367,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-b",
+          "id": 124672375329,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "setup - omni venv",
+          "id": 124671791102,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "xpu-ci (device_layer)",
+          "id": 124671480575,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "xpu-ci-gate",
+          "id": 124671449565,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+          "id": 124671448748,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+          "id": 124671448743,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "intel-cpu-ci (unit_test/cpu)",
+          "id": 124671442803,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "CPU CI Status",
+          "id": 124671441724,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cpu-ci-gate",
+          "id": 124671419772,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "omni-ci-gate",
+          "id": 124671385379,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build / preprocess",
+          "id": 124671384556,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "xpu-ci-changes",
+          "id": 124671384506,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cpu-ci-changes",
+          "id": 124671384348,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "doc-style-test",
+          "id": 124671384339,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "lint",
+          "id": 124671384327,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "test-layout",
+          "id": 124671384266,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "quality",
+          "id": 124671384219,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "playback-test",
+          "id": 124671384168,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build-docs",
+          "id": 124671384018,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cancel",
+          "id": 124671370356,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Analyze (python)",
+          "id": 124671367922,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Analyze (javascript-typescript)",
+          "id": 124671367744,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "classic_statuses": []
+    },
+    {
+      "pr": "3189",
+      "state": {
+        "baseRefName": "codex/ming3-0.5b-nonstream-trajectory",
+        "headRefOid": "75500328388a30af3a0a91e1190b36b178bf08f5",
+        "isDraft": false,
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "state": "OPEN",
+        "url": "https://github.com/sgl-project/sglang-omni/pull/3189"
+      },
+      "check_runs": [
+        {
+          "name": "cleanup - reclaim ephemeral run home",
+          "id": 124679344450,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "MPS CI",
+          "id": 124679343852,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "TTS CI",
+          "id": 124679343378,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Omni model CI ()",
+          "id": 124679343356,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "ASR CI",
+          "id": 124679343201,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "PR Test / unit-test-a",
+          "id": 124672331259,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-accelerator",
+          "id": 124672331248,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-c",
+          "id": 124672331224,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-b",
+          "id": 124672331207,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "setup - omni venv",
+          "id": 124671747061,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "intel-cpu-ci (unit_test/cpu)",
+          "id": 124671464380,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "CPU CI Status",
+          "id": 124671463174,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "xpu-ci (device_layer)",
+          "id": 124671458654,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+          "id": 124671449177,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+          "id": 124671449087,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cpu-ci-gate",
+          "id": 124671439641,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "xpu-ci-gate",
+          "id": 124671438015,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "omni-ci-gate",
+          "id": 124671404265,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "quality",
+          "id": 124671403978,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cpu-ci-changes",
+          "id": 124671403915,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build-docs",
+          "id": 124671403781,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build / preprocess",
+          "id": 124671403688,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "doc-style-test",
+          "id": 124671403592,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "test-layout",
+          "id": 124671403585,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "playback-test",
+          "id": 124671403516,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "xpu-ci-changes",
+          "id": 124671403456,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "lint",
+          "id": 124671403383,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cancel",
+          "id": 124671403068,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Analyze (javascript-typescript)",
+          "id": 124671400207,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Analyze (python)",
+          "id": 124671399962,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "classic_statuses": []
+    },
+    {
+      "pr": "3190",
+      "state": {
+        "baseRefName": "codex/ming3-tiny-streaming",
+        "headRefOid": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+        "isDraft": false,
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "state": "OPEN",
+        "url": "https://github.com/sgl-project/sglang-omni/pull/3190"
+      },
+      "check_runs": [
+        {
+          "name": "MPS CI",
+          "id": 124681210850,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "cleanup - reclaim ephemeral run home",
+          "id": 124681210647,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "TTS CI",
+          "id": 124681210599,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Omni model CI ()",
+          "id": 124681210585,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "ASR CI",
+          "id": 124681210364,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "PR Test / unit-test-b",
+          "id": 124672437104,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-a",
+          "id": 124672437076,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-c",
+          "id": 124672437062,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PR Test / unit-test-accelerator",
+          "id": 124672437003,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "setup - omni venv",
+          "id": 124671837202,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+          "id": 124671524041,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+          "id": 124671523991,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "xpu-ci (device_layer)",
+          "id": 124671515885,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "intel-cpu-ci (unit_test/cpu)",
+          "id": 124671508515,
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "CPU CI Status",
+          "id": 124671508091,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "xpu-ci-gate",
+          "id": 124671480198,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cpu-ci-gate",
+          "id": 124671476193,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build / preprocess",
+          "id": 124671443926,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "lint",
+          "id": 124671443632,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "xpu-ci-changes",
+          "id": 124671443589,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cpu-ci-changes",
+          "id": 124671443573,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "omni-ci-gate",
+          "id": 124671443561,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "test-layout",
+          "id": 124671443557,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "quality",
+          "id": 124671443500,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "doc-style-test",
+          "id": 124671443472,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "build-docs",
+          "id": 124671443439,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "playback-test",
+          "id": 124671443359,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "cancel",
+          "id": 124671434156,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Analyze (javascript-typescript)",
+          "id": 124671432361,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Analyze (python)",
+          "id": 124671432226,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "classic_statuses": []
+    }
+  ]
+}

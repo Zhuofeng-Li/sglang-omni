@@ -127,3 +127,7 @@ The [immutable prior report](https://github.com/Zhuofeng-Li/sglang-omni/blob/90e
 Native throughput lacks absolute per-request start/end timestamps for independent recomputation. Raw reports, matching request/scorer IDs, WER arithmetic, per-request SIM and audio hashes were checked; these checks do not constitute an independent experiment rerun. Minimal results/score/hash/cost evidence is backed up privately and published here; WAVs, weights and caches are excluded. No assignment credentials or authentication state are published. The separate8B200 Muse allocation was not modified.
 
 Developed through [RSI-Harness](https://github.com/OpenRSI-Foundation/OpenRSI-Index/tree/main/RSI-Harness) in [OpenRSI-Index](https://github.com/OpenRSI-Foundation/OpenRSI-Index), with co-author [Ethan Feng](https://yichenfeng.me/).
+
+## Original quality-review response
+
+The [original #3190 corpus-quality review has been answered](https://github.com/sgl-project/sglang-omni/pull/3190#issuecomment-6551076083) after all3 original bodies and the complete16-arm evidence were published and read back. [Reply receipt](final-quality-review-reply-receipt.json), [complete evidence publication identity](complete16-evidence-publication.json), [fresh head/check/review state](complete16-current-pr-state.json). At this observation no head checks failed or remained incomplete, while #3136 still had CHANGES_REQUESTED and both companions REVIEW_REQUIRED. No merge or reviewer approval is claimed.
