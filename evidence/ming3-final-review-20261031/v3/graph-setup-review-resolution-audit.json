@@ -95,6 +95,7 @@
     "archive": "completed-results.tar.gz",
     "archive_sha256": "a2aadf3cb4e84187b75410634cfd010d6c9976d40fc968b05c9a1c46bd61718d",
     "all_four_log_sha256_match": true,
-    "note": "Only the four immutable default-off completed logs are reused. This does not claim completion of the later ZH mode ABBA."
+    "note": "Only the four immutable default-off completed logs are reused. This does not claim completion of the later ZH mode ABBA.",
+    "archive_immutable_url": "https://github.com/Zhuofeng-Li/sglang-omni/blob/90e529eeb80eeaffaf21be35682cc9c0a10a01c1/evidence/ming3-final-review-20261031/v3/completed-results.tar.gz"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "archive_sha256": "a2aadf3cb4e84187b75410634cfd010d6c9976d40fc968b05c9a1c46bd61718d",
+  "archive_sha256": "14fba1d2ed1b2f07c2159c66fb6ae1744459ae7755f22b27f56c823498b13062",
   "blocks": [
     {
       "comparison": "actual-main-to-pr3136",
@@ -337,9 +337,121 @@
       "comparison": "same-final-head-nonstream-to-stream",
       "language": "zh",
       "concurrency": 1,
-      "completed": 0,
+      "completed": 4,
       "expected": 4,
-      "status": "Pending; no paired aggregate claimed"
+      "status": "Complete block; descriptive differences, no quality acceptance threshold assumed",
+      "sides": {
+        "A": {
+          "source_commits": [
+            "2a636231d688b7bc83d78769e4f5162502680675"
+          ],
+          "stream": false,
+          "throughput_qps_seed_mean": 3.4509999999999996,
+          "latency_mean_s_seed_mean": 0.2895,
+          "latency_p95_s_seed_range": [
+            0.377,
+            0.378
+          ],
+          "wer_percent_seed_mean": 0.6612880329342734,
+          "sim_seed_mean": 0.7803191521306438,
+          "audio_duration_s_seed_mean": 5.202059405940593,
+          "output_tokens_total_by_seed": {
+            "42": 131772,
+            "43": 130932
+          },
+          "requests_total": 4040,
+          "failed_total": 0,
+          "finish_reasons_by_seed": {
+            "42": {
+              "stop": 2020,
+              "length": 0,
+              "unknown": 0
+            },
+            "43": {
+              "stop": 2020,
+              "length": 0,
+              "unknown": 0
+            }
+          },
+          "startup_s_seed_mean": 152.69799995422363,
+          "peak_device_gib_by_seed": {
+            "42": 108.3447265625,
+            "43": 108.3447265625
+          },
+          "capture_events_by_seed": {
+            "42": 430,
+            "43": 430
+          },
+          "first_packet_metrics_by_seed": {
+            "42": {},
+            "43": {}
+          }
+        },
+        "B": {
+          "source_commits": [
+            "2a636231d688b7bc83d78769e4f5162502680675"
+          ],
+          "stream": true,
+          "throughput_qps_seed_mean": 2.1745,
+          "latency_mean_s_seed_mean": 0.46,
+          "latency_p95_s_seed_range": [
+            0.594,
+            0.594
+          ],
+          "wer_percent_seed_mean": 0.6577390810580609,
+          "sim_seed_mean": 0.7806631000103927,
+          "audio_duration_s_seed_mean": 5.202059405940593,
+          "output_tokens_total_by_seed": {
+            "42": 131772,
+            "43": 130932
+          },
+          "requests_total": 4040,
+          "failed_total": 0,
+          "finish_reasons_by_seed": {
+            "42": {
+              "stop": 2020,
+              "length": 0,
+              "unknown": 0
+            },
+            "43": {
+              "stop": 2020,
+              "length": 0,
+              "unknown": 0
+            }
+          },
+          "startup_s_seed_mean": 136.17699992656708,
+          "peak_device_gib_by_seed": {
+            "42": 108.7490234375,
+            "43": 108.7490234375
+          },
+          "capture_events_by_seed": {
+            "42": 430,
+            "43": 430
+          },
+          "first_packet_metrics_by_seed": {
+            "42": {
+              "audio_ttfp_mean_s": 0.1551,
+              "audio_ttfp_median_s": 0.1652,
+              "audio_ttfp_p95_s": 0.1913,
+              "audio_ttfp_p99_s": 0.2038,
+              "first_audio_payload_bytes_mean": 53802.0,
+              "first_audio_payload_bytes_p95": 53802.0
+            },
+            "43": {
+              "audio_ttfp_mean_s": 0.1559,
+              "audio_ttfp_median_s": 0.1642,
+              "audio_ttfp_p95_s": 0.1936,
+              "audio_ttfp_p99_s": 0.2201,
+              "first_audio_payload_bytes_mean": 53802.0,
+              "first_audio_payload_bytes_p95": 53802.0
+            }
+          }
+        }
+      },
+      "throughput_change_percent": -36.98927847000868,
+      "wer_change_percentage_points": -0.003548951876212514,
+      "sim_change": 0.00034394787974889596,
+      "audio_duration_change_percent": 0.0
     }
   ],
   "protocol": "Seed means for mean metrics; p95 retained as seed range. ABBA A42 B42 B43 A43. EN c16 and ZH c1 are different cells and must not be combined into an EN/ZH geometric throughput number.",

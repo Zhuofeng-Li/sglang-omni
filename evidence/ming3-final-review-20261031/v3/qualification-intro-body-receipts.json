@@ -1,0 +1,35 @@
+{
+  "3136": {
+    "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+    "body_readback": true,
+    "archive_sha256": "14fba1d2ed1b2f07c2159c66fb6ae1744459ae7755f22b27f56c823498b13062",
+    "default_off_en_zh_complete": true,
+    "mode_complete": {
+      "en": true,
+      "zh": true
+    },
+    "updated_utc": "2026-11-01T00:16:58.131346+00:00"
+  },
+  "3189": {
+    "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+    "body_readback": true,
+    "archive_sha256": "14fba1d2ed1b2f07c2159c66fb6ae1744459ae7755f22b27f56c823498b13062",
+    "default_off_en_zh_complete": true,
+    "mode_complete": {
+      "en": true,
+      "zh": true
+    },
+    "updated_utc": "2026-11-01T00:17:01.621076+00:00"
+  },
+  "3190": {
+    "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+    "body_readback": true,
+    "archive_sha256": "14fba1d2ed1b2f07c2159c66fb6ae1744459ae7755f22b27f56c823498b13062",
+    "default_off_en_zh_complete": true,
+    "mode_complete": {
+      "en": true,
+      "zh": true
+    },
+    "updated_utc": "2026-11-01T00:17:05.156813+00:00"
+  }
+}

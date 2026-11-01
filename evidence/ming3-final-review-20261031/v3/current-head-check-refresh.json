@@ -1,0 +1,566 @@
+{
+  "observed_utc": "2026-10-31T23:51:19.573450+00:00",
+  "prs": [
+    {
+      "pr": "3136",
+      "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+      "checks": [
+        {
+          "id": 124680850627,
+          "name": "cleanup - reclaim ephemeral run home",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124680850514,
+          "name": "Omni model CI ()",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124678764866,
+          "name": "TTS CI",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124678764630,
+          "name": "ASR CI",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124678764339,
+          "name": "MPS CI / stage 1 - MPS non-streaming",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672375385,
+          "name": "PR Test / unit-test-a",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672375369,
+          "name": "PR Test / unit-test-accelerator",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672375367,
+          "name": "PR Test / unit-test-c",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672375329,
+          "name": "PR Test / unit-test-b",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671791102,
+          "name": "setup - omni venv",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671480575,
+          "name": "xpu-ci (device_layer)",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124671449565,
+          "name": "xpu-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671448748,
+          "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671448743,
+          "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671442803,
+          "name": "intel-cpu-ci (unit_test/cpu)",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124671441724,
+          "name": "CPU CI Status",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671419772,
+          "name": "cpu-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671385379,
+          "name": "omni-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384556,
+          "name": "build / preprocess",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384506,
+          "name": "xpu-ci-changes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384348,
+          "name": "cpu-ci-changes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384339,
+          "name": "doc-style-test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384327,
+          "name": "lint",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384266,
+          "name": "test-layout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384219,
+          "name": "quality",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384168,
+          "name": "playback-test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671384018,
+          "name": "build-docs",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671370356,
+          "name": "cancel",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671367922,
+          "name": "Analyze (python)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671367744,
+          "name": "Analyze (javascript-typescript)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "classic_statuses": []
+    },
+    {
+      "pr": "3189",
+      "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+      "checks": [
+        {
+          "id": 124679344450,
+          "name": "cleanup - reclaim ephemeral run home",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124679343852,
+          "name": "MPS CI",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124679343378,
+          "name": "TTS CI",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124679343356,
+          "name": "Omni model CI ()",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124679343201,
+          "name": "ASR CI",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124672331259,
+          "name": "PR Test / unit-test-a",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672331248,
+          "name": "PR Test / unit-test-accelerator",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672331224,
+          "name": "PR Test / unit-test-c",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672331207,
+          "name": "PR Test / unit-test-b",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671747061,
+          "name": "setup - omni venv",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671464380,
+          "name": "intel-cpu-ci (unit_test/cpu)",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124671463174,
+          "name": "CPU CI Status",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671458654,
+          "name": "xpu-ci (device_layer)",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124671449177,
+          "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671449087,
+          "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671439641,
+          "name": "cpu-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671438015,
+          "name": "xpu-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671404265,
+          "name": "omni-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403978,
+          "name": "quality",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403915,
+          "name": "cpu-ci-changes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403781,
+          "name": "build-docs",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403688,
+          "name": "build / preprocess",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403592,
+          "name": "doc-style-test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403585,
+          "name": "test-layout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403516,
+          "name": "playback-test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403456,
+          "name": "xpu-ci-changes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403383,
+          "name": "lint",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671403068,
+          "name": "cancel",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671400207,
+          "name": "Analyze (javascript-typescript)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671399962,
+          "name": "Analyze (python)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "classic_statuses": []
+    },
+    {
+      "pr": "3190",
+      "head": "9dac9ab9715db96ee2bafbe1c974b7dc26d23e07",
+      "checks": [
+        {
+          "id": 124681210850,
+          "name": "MPS CI",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124681210647,
+          "name": "cleanup - reclaim ephemeral run home",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124681210599,
+          "name": "TTS CI",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124681210585,
+          "name": "Omni model CI ()",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124681210364,
+          "name": "ASR CI",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124672437104,
+          "name": "PR Test / unit-test-b",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672437076,
+          "name": "PR Test / unit-test-a",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672437062,
+          "name": "PR Test / unit-test-c",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124672437003,
+          "name": "PR Test / unit-test-accelerator",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671837202,
+          "name": "setup - omni venv",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671524041,
+          "name": "build / build_and_publish_arm64 (950, 9.1.0)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671523991,
+          "name": "build / build_and_publish_arm64 (a3, 9.1.0)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671515885,
+          "name": "xpu-ci (device_layer)",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124671508515,
+          "name": "intel-cpu-ci (unit_test/cpu)",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 124671508091,
+          "name": "CPU CI Status",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671480198,
+          "name": "xpu-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671476193,
+          "name": "cpu-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443926,
+          "name": "build / preprocess",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443632,
+          "name": "lint",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443589,
+          "name": "xpu-ci-changes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443573,
+          "name": "cpu-ci-changes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443561,
+          "name": "omni-ci-gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443557,
+          "name": "test-layout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443500,
+          "name": "quality",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443472,
+          "name": "doc-style-test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443439,
+          "name": "build-docs",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671443359,
+          "name": "playback-test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671434156,
+          "name": "cancel",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671432361,
+          "name": "Analyze (javascript-typescript)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 124671432226,
+          "name": "Analyze (python)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "classic_statuses": []
+    }
+  ]
+}
