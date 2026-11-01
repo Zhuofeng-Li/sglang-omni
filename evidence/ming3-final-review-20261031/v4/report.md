@@ -26,3 +26,8 @@ Official current CI image `hongccc/sglang-omni@sha256:06ed306707bcf3d9e9beb5ba7c
 [Raw result archive](latest-results.tar.gz) SHA256 `613a6f82eab68f67f9f867c6724c661f67626c35afb3e8fbbce60c4f9ce9645a`. Logs include the expected pre-fix failures and initial setup failures: the first allocator test could not import an omitted sparse-checkout package, and the first HTTP attempt had a host-absolute asset symlink unavailable inside its container. Both occurred before their corresponding checks; neither is counted as passed. Corrected full Python source and relative asset mount were used for successful verification. The archive also contains separate SGLang allocator checks; these are not Ming performance results.
 
 The [prior full qualification](../v3/report.md) remains attributed to its original frozen main/candidate commits and date. Current source includes subsequent shared-main changes; old corpus metrics are not relabeled as measurements of these review heads. Required new-head CI/review and final actually-merged-main overall paired validation remain outstanding. Meta Omni is excluded by user instruction.
+
+
+## Later base observation
+
+Upstream main advanced to `e5b87a8fe91f25fa62c229809484b48d8c748c18` during publication. Its107-file diff from the tested base touches other model families, MLX, docs/workflows and CPU Whisper backend validation. The CPU platform change adds a Whisper-only guard after the same inherited backend policy; it does not alter the Ming CUDA/CPU-vocoder paths. Ming3-TTS and the shared AudioVAE source files are unchanged. New CI synthetic integration remains independently tracked; these tests retain the actual `e354ea41` integrated base.
