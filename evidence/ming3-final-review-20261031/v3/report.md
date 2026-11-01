@@ -139,3 +139,20 @@ The [original #3190 corpus-quality review has been answered](https://github.com/
 - [Cache attribution audit](cache-attribution-review-resolution-audit.json): original #3136 body now explicitly limits generalization to unique-reference traffic. The already-completed EN/ZH c32 cache-off ABBA belongs to candidate3f8593f4 and its2026-10-27 protocol; it is not relabeled as a current default-off isolated cache gain. Current seeded/fresh, unseeded/URL, zero-entry and budget regressions remain separately attributed.
 
 Only the matching three handled requests were resolved after fresh head/file/thread guards. Required approvals, cookbook delivery and paired prefix landing remain open; no new qualification run or source commit was created.
+
+## Restored original Tiny latency request
+
+The original #3189 body had retained the adverse-underrun summary but omitted the corresponding Tiny first-audio/completion rows during later body consolidation. They are now restored from the original report, with source/protocol and qualification limits preserved. [Original-body readback receipt](restored-tiny-latency-body-receipt.json). The associated performance discussion remains open.
+
+<!-- historical-tiny-load-limit -->
+**Historical Tiny mode timing, retained for the original review request:** one H200 at measured integration `251f02b467fe06269cb2d3d8c1063565d7c3de82`, Tiny runtime `5c955911`; first128 EN/ZH samples, seeds42/43 in nonstream42/stream42/stream43/nonstream43 order, Tiny MPS off, warm service/caches, server limit32. Means are seed arithmetic means; p95 values are seed ranges. These older-source observations are not relabeled as current-head, independent main→#3189 gains or full-corpus Tiny quality qualification.
+
+| Tiny split / concurrency | req/s nonstream→stream | Completion mean / p95 ms nonstream→stream | Stream first audio mean / p95 ms | Max playback underrun mean / p95 ms | Underrun/scored (N/A) | Failures nonstream→stream |
+| --- | --- | --- | --- | --- | --- | --- |
+| EN / 1 | 0.917→0.861 | 1091.7 / 1691.8–1791.0→1161.3 / 1872.8–1903.5 | 530.1 / 532.8–533.5 | 0.0 / 0.0–0.0 | 0/253 (3) | 0/256→0/256 |
+| EN / 32 | 9.827→7.484 | 2920.7 / 5007.3–5527.3→3816.1 / 6877.7–7062.9 | 1610.2 / 2157.8–2389.3 | 229.5 / 669.6–674.1 | 182/254 (2) | 0/256→0/256 |
+| ZH / 1 | 0.567→0.518 | 1765.6 / 2210.7–2319.0→1932.7 / 2423.4–2520.3 | 533.5 / 535.9–537.8 | 0.0 / 0.0–0.0 | 0/256 (0) | 0/256→0/256 |
+| ZH / 32 | 7.781→5.517 | 3839.3 / 5093.3–5129.4→5353.8 / 7053.9–7134.6 | 1423.9 / 1829.2–1844.8 | 129.7 / 292.9–303.8 | 171/256 (0) | 0/256→0/256 |
+
+Playback starts immediately without added buffering; fewer than two packets is N/A, not zero underrun. The real c32 underruns remain an explicit load limit. This timing subset has no corpus-level Tiny WER/SIM or cold-start/memory/capture-delta qualification; the Dense corpus results do not supply it. Full raw timing, functional/paired-ASR scope and source history remain in the single linked evidence record. No smaller-first-group ablation or new experiment is claimed.
+<!-- /historical-tiny-load-limit -->

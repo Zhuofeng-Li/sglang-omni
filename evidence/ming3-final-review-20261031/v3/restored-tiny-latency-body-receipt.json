@@ -1,0 +1,13 @@
+{
+  "head": "75500328388a30af3a0a91e1190b36b178bf08f5",
+  "body_readback": true,
+  "historical_source": "251f02b467fe06269cb2d3d8c1063565d7c3de82",
+  "historical_tiny_runtime": "5c955911",
+  "source_report": "https://github.com/Zhuofeng-Li/sglang-omni/blob/codex/ming3-streaming-review-evidence/evidence/ming3-streaming-review/report.md",
+  "source_report_sha256": "117acba76ffb47d4c94e9af97d60474d0a0a95721f394fb48b9658424ba19410",
+  "table_rows": 4,
+  "request": 4381483153,
+  "thread_left_open": true,
+  "scope": "Restore requested original timing/underrun rows to original body. No new experiment, no current-head Tiny full-corpus quality, no cold-start or per-feature current performance claim. Existing Dense final-mode results and fixed geometric overview tables preserved.",
+  "updated_utc": "2026-11-01T00:35:08.122738+00:00"
+}
