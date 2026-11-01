@@ -1,0 +1,100 @@
+{
+  "observed_utc": "2026-10-31T23:58:42.842849+00:00",
+  "origin_comment": 4373225979,
+  "previous_reply": 4379964802,
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "actual_ci_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+  "source_archive_sha256": "7bc356c2d6233d3e04939d6bdc93124217acff1efe13cceb9d406189bb3b591c",
+  "source_blobs": [
+    {
+      "path": "sglang_omni/models/ming3_tts/vocoder.py",
+      "publication_ci_blob": "c117cc2c3fbf2ad9500cae2c0e7778def31e6dd3"
+    },
+    {
+      "path": "sglang_omni/models/ming3_tts/config.py",
+      "publication_ci_blob": "2c4e1c74408046345f73439b7d5f3a68a77c4e69"
+    },
+    {
+      "path": "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+      "publication_ci_blob": "b7bad0825fcd4c2a8ee0ca95b3e25e18b9999d3a"
+    }
+  ],
+  "named_current_ci_passes": [
+    {
+      "log": "pr3136-test-cleanup-unit-accelerator-124672375369.log",
+      "passed": "2026-10-31T22:25:46.9118246Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_vocoder_graphs_match_eager_decode_bit_for_bit[True] PASSED [ 31%]"
+    },
+    {
+      "log": "pr3136-test-cleanup-unit-accelerator-124672375369.log",
+      "passed": "2026-10-31T22:33:22.9258786Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_vocoder_graphs_match_eager_decode_bit_for_bit[True] PASSED [ 31%]"
+    },
+    {
+      "log": "pr3136-test-cleanup-unit-c-124672375367.log",
+      "passed": "2026-10-31T22:24:47.1161764Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_vocoder_graphs_match_eager_decode_bit_for_bit[False] PASSED [ 22%]"
+    }
+  ],
+  "current_default_off_measured_graph_setup": [
+    {
+      "arm": "paired-en-c16-B42",
+      "graph_count": 384,
+      "setup_wall_s": 34.425,
+      "shared_buffer_bytes": 5505024,
+      "raw_log": "results/paired-en-c16-B42/output/server_logs/tts_server.log",
+      "raw_line": "2026-10-31 21:46:38,406 [INFO] sglang_omni.models.ming3_tts.vocoder: Ming 3 TTS vocoder graph setup: 384 graphs, 34.425s, 5505024 shared buffer bytes",
+      "raw_log_sha256": "df734e73cfb473933bf79f7cb38abc6f1a3cc18e9735cb531141d5712c4c152f"
+    },
+    {
+      "arm": "paired-en-c16-B43",
+      "graph_count": 384,
+      "setup_wall_s": 34.115,
+      "shared_buffer_bytes": 5505024,
+      "raw_log": "results/paired-en-c16-B43/output/server_logs/tts_server.log",
+      "raw_line": "2026-10-31 21:55:17,064 [INFO] sglang_omni.models.ming3_tts.vocoder: Ming 3 TTS vocoder graph setup: 384 graphs, 34.115s, 5505024 shared buffer bytes",
+      "raw_log_sha256": "ed033a97f96e8bd5afa44686549f59ed8636917008be17bc1fff44241d76ea03"
+    },
+    {
+      "arm": "paired-zh-c1-B42",
+      "graph_count": 384,
+      "setup_wall_s": 49.81,
+      "shared_buffer_bytes": 5505024,
+      "raw_log": "results/paired-zh-c1-B42/output/server_logs/tts_server.log",
+      "raw_line": "2026-10-31 19:50:34,082 [INFO] sglang_omni.models.ming3_tts.vocoder: Ming 3 TTS vocoder graph setup: 384 graphs, 49.810s, 5505024 shared buffer bytes",
+      "raw_log_sha256": "d567dbae6da7e3b8fbd5ce14ab9f04d0a780867a673b6256098592658e2bbba1"
+    },
+    {
+      "arm": "paired-zh-c1-B43",
+      "graph_count": 384,
+      "setup_wall_s": 37.612,
+      "shared_buffer_bytes": 5505024,
+      "raw_log": "results/paired-zh-c1-B43/output/server_logs/tts_server.log",
+      "raw_line": "2026-10-31 20:10:23,404 [INFO] sglang_omni.models.ming3_tts.vocoder: Ming 3 TTS vocoder graph setup: 384 graphs, 37.612s, 5505024 shared buffer bytes",
+      "raw_log_sha256": "ee3dd14efd05082c8769d6a2b0cf515393cfa48c812d00c7fab0119165555a8a"
+    }
+  ],
+  "setup_wall_s_seed_means": {
+    "en": 34.269999999999996,
+    "zh": 43.711
+  },
+  "scope": "Source uses one flat input/output storage pair with stride-preserving views, longest-first shared graph-pool capture. Tiny default graph limit is0; explicit nonzero limits are capped by checkpoint maximum_decode_steps. Named current CUDA/CPU bit-for-bit decoder cases pass, with unrelated first-attempt Qwen IPC failure retained. Logged buffer bytes are explicit input/output storage only, not graph-pool/model or device peak. Setup phase includes its warmups/captures; concurrent stage initialization prevents subtracting it from total startup as an isolated contribution. No new run or allocation.",
+  "resolved": true,
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wG7xu",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4373225979
+        }
+      ]
+    }
+  },
+  "resolved_utc": "2026-10-31T23:58:55.775983+00:00",
+  "archive_reuse_note": "Four completed-arm logs are immutable; verify their per-member SHA256 when publishing in the final16-arm archive. The original15-arm snapshot hash remains an observation identity and is not relabeled as a later archive.",
+  "public_log_reuse_proof": {
+    "archive": "completed-results.tar.gz",
+    "archive_sha256": "a2aadf3cb4e84187b75410634cfd010d6c9976d40fc968b05c9a1c46bd61718d",
+    "all_four_log_sha256_match": true,
+    "note": "Only the four immutable default-off completed logs are reused. This does not claim completion of the later ZH mode ABBA."
+  }
+}
