@@ -1,0 +1,14 @@
+{
+  "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+  "recorded_control": "0d6a414e5e15c996900620d263143c89e0dd8acd",
+  "reconstructed_tree": "848144b0a88715450b35064371aa5358cebb7556",
+  "recorded_control_tree_available": false,
+  "recorded_control_tree_matches": null,
+  "paths": [
+    "sglang_omni/models/ming3_tts/sglang_model.py"
+  ],
+  "numstat": "2\t1\tsglang_omni/models/ming3_tts/sglang_model.py",
+  "patch_sha256": "18bcef80e739a0b08dcff35f65fa7a8412f1314dd3b31a497e902edbed3c2d4b",
+  "worktree_modified": false,
+  "method": "Temporary private git index, read-tree frozen historical main then apply only recorded three-changed-line lifetime patch; no working tree/source/PR mutation"
+}

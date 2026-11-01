@@ -1,0 +1,63 @@
+{
+  "observed_utc": "2026-11-01T00:40:34.836878+00:00",
+  "origin_comment": 4373225936,
+  "previous_reply": 4379961195,
+  "head": "97614b3aa844770b34c3d8c8ff360fd4e972b2bd",
+  "actual_ci_checkout": "2e3fb3e6dbd841b10f1dbfe38d3a1bb8c0c651c6",
+  "source_blobs": [
+    {
+      "path": "sglang_omni/models/ming3_tts/acoustic.py",
+      "publication_ci_measured_blob": "10c5a9abe991acd33dd5c93cea8e0417f6581725"
+    },
+    {
+      "path": "sglang_omni/models/ming3_tts/sglang_model.py",
+      "publication_ci_measured_blob": "bfeeb71902ba1275444f7b4fed865cccddee3ebc"
+    },
+    {
+      "path": "tests/unit_test/ming3_tts/test_ming3_tts_runtime.py",
+      "publication_ci_measured_blob": "b7bad0825fcd4c2a8ee0ca95b3e25e18b9999d3a"
+    }
+  ],
+  "named_current_ci_passes": [
+    "2026-10-31T22:25:46.7664301Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_acoustic_graph_replays_the_declared_guidance_after_allocator_reuse PASSED [ 31%]",
+    "2026-10-31T22:33:22.8101114Z tests/unit_test/ming3_tts/test_ming3_tts_runtime.py::test_acoustic_graph_replays_the_declared_guidance_after_allocator_reuse PASSED [ 31%]"
+  ],
+  "historical_control_source_receipt": {
+    "name": "corrected-main",
+    "commit": "0d6a414e5e15c996900620d263143c89e0dd8acd",
+    "verified_files": 3399,
+    "archive_sha256": "7f23da65944c5aeeb6a63a2851e871204b4ac9e5073b4ae846f35f36264f093a"
+  },
+  "historical_control_patch_reproduction": {
+    "base": "0fe60cf6c102caf982430e1764243c6e5c749d76",
+    "recorded_control": "0d6a414e5e15c996900620d263143c89e0dd8acd",
+    "reconstructed_tree": "848144b0a88715450b35064371aa5358cebb7556",
+    "recorded_control_tree_available": false,
+    "recorded_control_tree_matches": null,
+    "paths": [
+      "sglang_omni/models/ming3_tts/sglang_model.py"
+    ],
+    "numstat": "2\t1\tsglang_omni/models/ming3_tts/sglang_model.py",
+    "patch_sha256": "18bcef80e739a0b08dcff35f65fa7a8412f1314dd3b31a497e902edbed3c2d4b",
+    "worktree_modified": false,
+    "method": "Temporary private git index, read-tree frozen historical main then apply only recorded three-changed-line lifetime patch; no working tree/source/PR mutation"
+  },
+  "history_report": "https://github.com/Zhuofeng-Li/sglang-omni/blob/codex/ming3-streaming-review-evidence/evidence/ming3-nonstream-current-main/report.md",
+  "current_output_table_archive_sha256": "14fba1d2ed1b2f07c2159c66fb6ae1744459ae7755f22b27f56c823498b13062",
+  "body_readback": true,
+  "permission": {
+    "id": "PRRT_kwDOQ1KxM86wG7xQ",
+    "isResolved": false,
+    "viewerCanResolve": true,
+    "comments": {
+      "nodes": [
+        {
+          "databaseId": 4373225936
+        }
+      ]
+    }
+  },
+  "scope": "Original description now visibly identifies the baseline correctness confounder and native per-arm output lengths. Current allocator-pressure CUDA regression passed in both automatic attempts; global first-attempt Qwen IPC failure remains in separate CI evidence. Historical isolated-lifetime control retains its originally verified source archive receipt; the minimal patch was independently applied only to a temporary index of historical main. Its recorded control commit object is absent locally, so no new direct control-tree match or new benchmark is claimed. The fix remains in the combined PR; an optional separate PR was not created. No pure current-head optimization or quality noninferiority claim.",
+  "resolved": true,
+  "resolved_utc": "2026-11-01T00:40:36.428677+00:00"
+}
